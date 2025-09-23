@@ -134,6 +134,7 @@ namespace DazaBestApplication.Pages
 
         }
 
+        //Buttons Click Events
         private void AdddItem(object sender, EventArgs e)
         {
             ShowAddItemModal();
