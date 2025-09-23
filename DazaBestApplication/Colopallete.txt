@@ -1,0 +1,19 @@
+﻿Daza's Best Color Palette
+
+Sunburst Yellow: #F9A825
+Usage: Background highlights, buttons, accents
+
+Rooster Red: #D32F2F
+Usage: Headers, call-to-action buttons, borders
+
+Beak Gold: #FBC02D
+Usage: Icons, hover states, playful highlights
+
+Feather White: #FFFFFF
+Usage: Main background, text contrast
+
+Shadow Gray: #616161
+Usage: Secondary text, outlines, subtle depth
+
+Barn Brown: #8D6E63
+Usage: Optional grounding color for structure
