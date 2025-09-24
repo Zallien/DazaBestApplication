@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="bin\Debug\net8.0-windows\DazaBestApplication.db" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SystemBackEnd\SystemBackEnd.csproj" />
   </ItemGroup>
 

@@ -14,4 +14,10 @@
     <PackageReference Include="System.Data.SQLite" Version="2.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="EventHandlers\" />
+    <Folder Include="ServiceModels\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>

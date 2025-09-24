@@ -1,0 +1,23 @@
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SystemBackEnd.Models;
+
+namespace SystemBackEnd
+{
+    public class Dbcontext:DbContext
+    {
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite("Data Source = DazaBestApplication.db");
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Items>().ToTable("Items");
+        }
+        public DbSet<Items> Items { get; set; }
+    }
+}
