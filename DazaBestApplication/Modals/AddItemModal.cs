@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemBackEnd.Services;
 
 namespace DazaBestApplication.Modals
 {
@@ -23,11 +24,14 @@ namespace DazaBestApplication.Modals
         {
             this.Close();
             this.DialogResult = DialogResult.OK;
+
         }
 
-        private void AddItemModal_Load(object sender, EventArgs e)
+        private async void AddItemModal_Load(object sender, EventArgs e)
         {
             FadeIn();
+            ItemServices itemservices = new ItemServices();
+            await itemservices.GetAllItems();
         }
 
         //FadeIn Animation

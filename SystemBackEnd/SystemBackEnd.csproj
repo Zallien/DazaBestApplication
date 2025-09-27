@@ -10,14 +10,16 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="SQLite" Version="3.13.0" />
     <PackageReference Include="System.Data.SQLite" Version="2.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="EventHandlers\" />
-    <Folder Include="ServiceModels\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

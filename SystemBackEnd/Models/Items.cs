@@ -18,5 +18,6 @@ namespace SystemBackEnd.Models
         public int? BalanceStocks { get; set; }
         public DateTime? DateCreated { get; set; }
         public bool? IsActive { get; set; }
+        public byte[] ItemImage { get; set; }
     }
 }
