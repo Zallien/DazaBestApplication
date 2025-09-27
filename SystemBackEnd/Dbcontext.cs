@@ -18,6 +18,9 @@ namespace SystemBackEnd
         {
             modelBuilder.Entity<Items>().ToTable("Items");
         }
+
+
+        //Dbsets
         public DbSet<Items> Items { get; set; }
     }
 }
