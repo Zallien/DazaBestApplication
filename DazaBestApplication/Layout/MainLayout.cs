@@ -11,19 +11,6 @@ namespace DazaBestApplication
         public MainPage()
         {
             InitializeComponent();
-            SetMaxSize();
-        }
-
-        //Set to Full Screen
-        private void SetMaxSize()
-        {
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.StartPosition = FormStartPosition.Manual;
-            Rectangle Screenbounds = Screen.PrimaryScreen.WorkingArea;
-            this.Location = Screenbounds.Location;
-            this.Size = Screenbounds.Size;
-            Program.WorkspaceSize = this.Size;
-
         }
 
         private void MainPage_Load(object sender, EventArgs e)
