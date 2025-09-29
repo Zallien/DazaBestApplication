@@ -34,5 +34,11 @@ namespace DazaBestApplication
 
 
         }
+
+        private void NavButton_Item_Click(object sender, EventArgs e)
+        {
+            ItemPage();
+
+        }
     }
 }

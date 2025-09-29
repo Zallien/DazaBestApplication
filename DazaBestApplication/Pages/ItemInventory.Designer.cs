@@ -29,85 +29,117 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            ItemList = new DataGridView();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            TopPanel = new Panel();
+            MainContainer = new Panel();
+            ItemsDatagrid = new Bunifu.UI.WinForms.BunifuDataGridView();
             IdCol = new DataGridViewTextBoxColumn();
-            CodeCol = new DataGridViewTextBoxColumn();
+            ItemCodeCol = new DataGridViewTextBoxColumn();
             ItemNameCol = new DataGridViewTextBoxColumn();
-            StockCol = new DataGridViewTextBoxColumn();
+            StocksCol = new DataGridViewTextBoxColumn();
             StatusCol = new DataGridViewTextBoxColumn();
             PriceCol = new DataGridViewTextBoxColumn();
-            Topnav = new Panel();
-            label1 = new Label();
-            label2 = new Label();
-            textBox1 = new TextBox();
-            Datanav = new Panel();
-            DelBtn = new Panel();
-            label4 = new Label();
-            pictureBox2 = new PictureBox();
-            AddItemBtn = new Panel();
-            label3 = new Label();
-            pictureBox1 = new PictureBox();
-            ItemPageMainContainer = new Panel();
-            ((System.ComponentModel.ISupportInitialize)ItemList).BeginInit();
-            Topnav.SuspendLayout();
-            Datanav.SuspendLayout();
-            DelBtn.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            AddItemBtn.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ItemPageMainContainer.SuspendLayout();
+            MainContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ItemsDatagrid).BeginInit();
             SuspendLayout();
             // 
-            // ItemList
+            // TopPanel
             // 
-            ItemList.AllowUserToAddRows = false;
-            ItemList.AllowUserToDeleteRows = false;
-            ItemList.AllowUserToResizeColumns = false;
-            ItemList.AllowUserToResizeRows = false;
-            ItemList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            ItemList.BackgroundColor = Color.White;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(251, 192, 45);
-            dataGridViewCellStyle1.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            ItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            ItemList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ItemList.Columns.AddRange(new DataGridViewColumn[] { IdCol, CodeCol, ItemNameCol, StockCol, StatusCol, PriceCol });
-            ItemList.Dock = DockStyle.Fill;
-            ItemList.GridColor = Color.White;
-            ItemList.Location = new Point(0, 0);
-            ItemList.MultiSelect = false;
-            ItemList.Name = "ItemList";
-            ItemList.ReadOnly = true;
-            ItemList.RowHeadersVisible = false;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new Font("Times New Roman", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ItemList.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            ItemList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            ItemList.Size = new Size(900, 551);
-            ItemList.TabIndex = 0;
+            TopPanel.Dock = DockStyle.Top;
+            TopPanel.Location = new Point(0, 0);
+            TopPanel.Name = "TopPanel";
+            TopPanel.Size = new Size(900, 50);
+            TopPanel.TabIndex = 0;
+            // 
+            // MainContainer
+            // 
+            MainContainer.Controls.Add(ItemsDatagrid);
+            MainContainer.Dock = DockStyle.Fill;
+            MainContainer.Location = new Point(0, 50);
+            MainContainer.Name = "MainContainer";
+            MainContainer.Size = new Size(900, 612);
+            MainContainer.TabIndex = 1;
+            MainContainer.Paint += MainContainer_Paint;
+            // 
+            // ItemsDatagrid
+            // 
+            ItemsDatagrid.AllowCustomTheming = false;
+            ItemsDatagrid.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(44, 48, 52);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            ItemsDatagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            ItemsDatagrid.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            ItemsDatagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ItemsDatagrid.BorderStyle = BorderStyle.None;
+            ItemsDatagrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            ItemsDatagrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(15, 16, 18);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(63, 63, 65);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            ItemsDatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            ItemsDatagrid.ColumnHeadersHeight = 40;
+            ItemsDatagrid.Columns.AddRange(new DataGridViewColumn[] { IdCol, ItemCodeCol, ItemNameCol, StocksCol, StatusCol, PriceCol });
+            ItemsDatagrid.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(44, 48, 52);
+            ItemsDatagrid.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            ItemsDatagrid.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.White;
+            ItemsDatagrid.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(114, 117, 119);
+            ItemsDatagrid.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.WhiteSmoke;
+            ItemsDatagrid.CurrentTheme.BackColor = Color.FromArgb(15, 16, 18);
+            ItemsDatagrid.CurrentTheme.GridColor = Color.FromArgb(50, 56, 62);
+            ItemsDatagrid.CurrentTheme.HeaderStyle.BackColor = Color.FromArgb(15, 16, 18);
+            ItemsDatagrid.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            ItemsDatagrid.CurrentTheme.HeaderStyle.ForeColor = Color.White;
+            ItemsDatagrid.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(63, 63, 65);
+            ItemsDatagrid.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
+            ItemsDatagrid.CurrentTheme.Name = null;
+            ItemsDatagrid.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(33, 37, 41);
+            ItemsDatagrid.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            ItemsDatagrid.CurrentTheme.RowsStyle.ForeColor = Color.White;
+            ItemsDatagrid.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(114, 117, 119);
+            ItemsDatagrid.CurrentTheme.RowsStyle.SelectionForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(33, 37, 41);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(114, 117, 119);
+            dataGridViewCellStyle3.SelectionForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            ItemsDatagrid.DefaultCellStyle = dataGridViewCellStyle3;
+            ItemsDatagrid.EnableHeadersVisualStyles = false;
+            ItemsDatagrid.GridColor = Color.FromArgb(50, 56, 62);
+            ItemsDatagrid.HeaderBackColor = Color.FromArgb(15, 16, 18);
+            ItemsDatagrid.HeaderBgColor = Color.Empty;
+            ItemsDatagrid.HeaderForeColor = Color.White;
+            ItemsDatagrid.Location = new Point(5, 143);
+            ItemsDatagrid.Name = "ItemsDatagrid";
+            ItemsDatagrid.ReadOnly = true;
+            ItemsDatagrid.RowHeadersVisible = false;
+            ItemsDatagrid.RowTemplate.Height = 40;
+            ItemsDatagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            ItemsDatagrid.Size = new Size(890, 422);
+            ItemsDatagrid.TabIndex = 0;
+            ItemsDatagrid.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Dark;
             // 
             // IdCol
             // 
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(251, 192, 45);
-            dataGridViewCellStyle2.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            IdCol.DefaultCellStyle = dataGridViewCellStyle2;
-            IdCol.HeaderText = "ID";
+            IdCol.HeaderText = "ItemID";
             IdCol.Name = "IdCol";
             IdCol.ReadOnly = true;
             IdCol.Visible = false;
             // 
-            // CodeCol
+            // ItemCodeCol
             // 
-            CodeCol.FillWeight = 25F;
-            CodeCol.HeaderText = "Item Code";
-            CodeCol.Name = "CodeCol";
-            CodeCol.ReadOnly = true;
+            ItemCodeCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ItemCodeCol.FillWeight = 20F;
+            ItemCodeCol.HeaderText = "Item Code";
+            ItemCodeCol.Name = "ItemCodeCol";
+            ItemCodeCol.ReadOnly = true;
+            ItemCodeCol.Width = 110;
             // 
             // ItemNameCol
             // 
@@ -115,161 +147,32 @@
             ItemNameCol.Name = "ItemNameCol";
             ItemNameCol.ReadOnly = true;
             // 
-            // StockCol
+            // StocksCol
             // 
-            StockCol.FillWeight = 15F;
-            StockCol.HeaderText = "Stocks";
-            StockCol.Name = "StockCol";
-            StockCol.ReadOnly = true;
+            StocksCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            StocksCol.FillWeight = 20F;
+            StocksCol.HeaderText = "Stocks";
+            StocksCol.Name = "StocksCol";
+            StocksCol.ReadOnly = true;
+            StocksCol.Width = 81;
             // 
             // StatusCol
             // 
-            StatusCol.FillWeight = 18F;
+            StatusCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            StatusCol.FillWeight = 13F;
             StatusCol.HeaderText = "Status";
             StatusCol.Name = "StatusCol";
             StatusCol.ReadOnly = true;
+            StatusCol.Width = 78;
             // 
             // PriceCol
             // 
-            PriceCol.FillWeight = 18F;
+            PriceCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            PriceCol.FillWeight = 13F;
             PriceCol.HeaderText = "Price";
             PriceCol.Name = "PriceCol";
             PriceCol.ReadOnly = true;
-            // 
-            // Topnav
-            // 
-            Topnav.Controls.Add(label1);
-            Topnav.Controls.Add(label2);
-            Topnav.Controls.Add(textBox1);
-            Topnav.Dock = DockStyle.Top;
-            Topnav.Location = new Point(0, 0);
-            Topnav.Name = "Topnav";
-            Topnav.Size = new Size(900, 40);
-            Topnav.TabIndex = 1;
-            // 
-            // label1
-            // 
-            label1.Dock = DockStyle.Left;
-            label1.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(0, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(171, 40);
-            label1.TabIndex = 0;
-            label1.Text = "Item Inventory";
-            label1.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label2.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(604, 6);
-            label2.Name = "label2";
-            label2.Size = new Size(116, 26);
-            label2.TabIndex = 1;
-            label2.Text = "Search :";
-            label2.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // textBox1
-            // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(720, 7);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(175, 26);
-            textBox1.TabIndex = 0;
-            // 
-            // Datanav
-            // 
-            Datanav.Controls.Add(DelBtn);
-            Datanav.Controls.Add(AddItemBtn);
-            Datanav.Dock = DockStyle.Top;
-            Datanav.Location = new Point(0, 40);
-            Datanav.Name = "Datanav";
-            Datanav.Size = new Size(900, 71);
-            Datanav.TabIndex = 2;
-            // 
-            // DelBtn
-            // 
-            DelBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            DelBtn.BackColor = Color.White;
-            DelBtn.BorderStyle = BorderStyle.FixedSingle;
-            DelBtn.Controls.Add(label4);
-            DelBtn.Controls.Add(pictureBox2);
-            DelBtn.Location = new Point(751, 34);
-            DelBtn.Name = "DelBtn";
-            DelBtn.Size = new Size(145, 30);
-            DelBtn.TabIndex = 1;
-            // 
-            // label4
-            // 
-            label4.BackColor = Color.Transparent;
-            label4.Dock = DockStyle.Fill;
-            label4.Location = new Point(30, 0);
-            label4.Name = "label4";
-            label4.Padding = new Padding(2);
-            label4.Size = new Size(113, 28);
-            label4.TabIndex = 1;
-            label4.Text = "Delete";
-            label4.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.Dock = DockStyle.Left;
-            pictureBox2.Image = Properties.Resources.delete16px;
-            pictureBox2.Location = new Point(0, 0);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(30, 28);
-            pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox2.TabIndex = 0;
-            pictureBox2.TabStop = false;
-            // 
-            // AddItemBtn
-            // 
-            AddItemBtn.BackColor = Color.FromArgb(251, 192, 45);
-            AddItemBtn.BorderStyle = BorderStyle.FixedSingle;
-            AddItemBtn.Controls.Add(label3);
-            AddItemBtn.Controls.Add(pictureBox1);
-            AddItemBtn.Location = new Point(0, 34);
-            AddItemBtn.Name = "AddItemBtn";
-            AddItemBtn.Size = new Size(145, 30);
-            AddItemBtn.TabIndex = 0;
-            AddItemBtn.Click += AdddItem;
-            // 
-            // label3
-            // 
-            label3.BackColor = Color.Transparent;
-            label3.Dock = DockStyle.Fill;
-            label3.Location = new Point(30, 0);
-            label3.Name = "label3";
-            label3.Padding = new Padding(2);
-            label3.Size = new Size(113, 28);
-            label3.TabIndex = 1;
-            label3.Text = "Add Item";
-            label3.TextAlign = ContentAlignment.MiddleLeft;
-            label3.Click += AdddItem;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Dock = DockStyle.Left;
-            pictureBox1.Image = Properties.Resources.add16px;
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(30, 28);
-            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += AdddItem;
-            // 
-            // ItemPageMainContainer
-            // 
-            ItemPageMainContainer.Controls.Add(ItemList);
-            ItemPageMainContainer.Dock = DockStyle.Fill;
-            ItemPageMainContainer.Location = new Point(0, 111);
-            ItemPageMainContainer.Name = "ItemPageMainContainer";
-            ItemPageMainContainer.Size = new Size(900, 551);
-            ItemPageMainContainer.TabIndex = 3;
+            PriceCol.Width = 69;
             // 
             // ItemInventory
             // 
@@ -277,47 +180,29 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(900, 662);
-            Controls.Add(ItemPageMainContainer);
-            Controls.Add(Datanav);
-            Controls.Add(Topnav);
+            Controls.Add(MainContainer);
+            Controls.Add(TopPanel);
             Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
             Name = "ItemInventory";
             Text = "ItemInventory";
             Load += ItemInventory_Load;
-            ((System.ComponentModel.ISupportInitialize)ItemList).EndInit();
-            Topnav.ResumeLayout(false);
-            Topnav.PerformLayout();
-            Datanav.ResumeLayout(false);
-            DelBtn.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            AddItemBtn.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ItemPageMainContainer.ResumeLayout(false);
+            MainContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)ItemsDatagrid).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView ItemList;
-        private Panel Topnav;
-        private Panel Datanav;
-        private Label label1;
-        private Panel ItemPageMainContainer;
+        private Panel TopPanel;
+        private Panel MainContainer;
+        private Bunifu.UI.WinForms.BunifuDataGridView ItemsDatagrid;
         private DataGridViewTextBoxColumn IdCol;
-        private DataGridViewTextBoxColumn CodeCol;
+        private DataGridViewTextBoxColumn ItemCodeCol;
         private DataGridViewTextBoxColumn ItemNameCol;
-        private DataGridViewTextBoxColumn StockCol;
+        private DataGridViewTextBoxColumn StocksCol;
         private DataGridViewTextBoxColumn StatusCol;
         private DataGridViewTextBoxColumn PriceCol;
-        private Label label2;
-        private TextBox textBox1;
-        private Panel AddItemBtn;
-        private Label label3;
-        private PictureBox pictureBox1;
-        private Panel DelBtn;
-        private Label label4;
-        private PictureBox pictureBox2;
     }
 }
