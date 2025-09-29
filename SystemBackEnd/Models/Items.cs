@@ -12,12 +12,12 @@ namespace SystemBackEnd.Models
         [Key]
         public int Row { get; set; }
         public string? ItemName { get; set; }
-        public Guid? ItemID { get; set; }
+        public Guid ItemID { get; set; }
         public string? ItemCode { get; set; }
         public decimal? ItemPrice { get; set; }
         public int? BalanceStocks { get; set; }
         public DateTime? DateCreated { get; set; }
         public bool? IsActive { get; set; }
-        public byte[] ItemImage { get; set; }
+        public byte[]? ItemImage { get; set; }
     }
 }

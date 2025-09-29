@@ -20,7 +20,9 @@ namespace SystemBackEnd.Services
         //GetData
         public async Task<List<Items>> GetAllItems()
         {
-            List<Items> _theitems = await _db.Items.OrderByDescending(x => x.Row).ToListAsync();
+            List<Items> _theitems = await _db.Items
+                                    .Where(x => x.IsActive == true)
+                                    .OrderByDescending(x => x.Row).ToListAsync();
             return _theitems;
         }
         //Add Item
@@ -58,7 +60,7 @@ namespace SystemBackEnd.Services
         {
             try
             {
-                Items _Theitem = await _db.Items.FirstOrDefaultAsync(x => x.ItemID == ItemID);
+                Items _Theitem = await _db.Items.Where(x => x.ItemID == ItemID).FirstOrDefaultAsync();
                 _Theitem.IsActive = !_Theitem.IsActive;
                 _db.Items.Update(_Theitem);
                 await _db.SaveChangesAsync();

@@ -117,8 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="bunifuLabel1.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 14px;font-family: 'Times New Roman'; font-size: 14.25pt; width: 100%; height: 100%; font-style: normal; font-weight: bold; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="bunifuButton22.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAJYAAAAnCAYAAADtl7EyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACbSURBVHhe7dJBDcJQFADBJ400QSo+aJCBjAoo+Wj4e5vD
+        JCtg5/Oc7/sxN+yynpoV9wv2WU8Zi+2MRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxF
+        wlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXiP9Z5zLUCdjmP
+        uX53k1Ri3LUUvAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="bunifuTextBox1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAARgAAAAnCAYAAADU1VdAAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC4SURBVHhe7dQxDQMxAARB80fll2EERgDkZclNem83I11z
+        AHYApNZanznnz8zsxnZTTl7G2AfALbspJy8CA9wlMEBGYICMwAAZgQEyAgNkBAbICAyQERggIzBARmCA
+        jMAAGYEBMgIDZAQGyAgMkBEYICMwQEZggIzAABmBATICA2QEBsgIDJARGCAjMEBGYICMwAAZgQEyAgNk
+        BAbICAyQERggIzBA5i8wz/N892FmdmO7KScvAIUxXilCUhkj9c/ZAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="AddItemButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAJYAAAAnCAYAAADtl7EyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACbSURBVHhe7dJBDcJQFADBJ400QSo+aJCBjAoo+Wj4e5vD
+        JCtg5/Oc7/sxN+yynpoV9wv2WU8Zi+2MRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxF
+        wlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXiP9Z5zLUCdjmP
+        uX53k1Ri3LUUvAAAAABJRU5ErkJggg==
+</value>
   </data>
   <metadata name="IdCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

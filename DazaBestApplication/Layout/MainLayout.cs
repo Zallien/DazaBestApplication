@@ -17,9 +17,9 @@ namespace DazaBestApplication
         {
 
         }
-
+            
         //Routing Each Pages
-        private void ItemPage()
+        private void ShowItemPage()
         {
             if (MainContainerForm != null)
             {
@@ -35,11 +35,10 @@ namespace DazaBestApplication
 
         }
 
-
+        //Open Item Inventory Page
         private void NavButton_Item_Click(object sender, EventArgs e)
         {
-            ItemPage();
-
+            ShowItemPage();
         }
     }
 }
