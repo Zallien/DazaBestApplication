@@ -31,6 +31,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemInventory));
             TopPanel = new Panel();
             MainContainer = new Panel();
             ItemsDatagrid = new Bunifu.UI.WinForms.BunifuDataGridView();
@@ -40,12 +41,15 @@
             StocksCol = new DataGridViewTextBoxColumn();
             StatusCol = new DataGridViewTextBoxColumn();
             PriceCol = new DataGridViewTextBoxColumn();
+            bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
+            TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ItemsDatagrid).BeginInit();
             SuspendLayout();
             // 
             // TopPanel
             // 
+            TopPanel.Controls.Add(bunifuLabel1);
             TopPanel.Dock = DockStyle.Top;
             TopPanel.Location = new Point(0, 0);
             TopPanel.Name = "TopPanel";
@@ -66,53 +70,54 @@
             // 
             ItemsDatagrid.AllowCustomTheming = false;
             ItemsDatagrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(44, 48, 52);
-            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(255, 232, 191);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
             ItemsDatagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             ItemsDatagrid.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ItemsDatagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ItemsDatagrid.BackgroundColor = Color.White;
             ItemsDatagrid.BorderStyle = BorderStyle.None;
             ItemsDatagrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             ItemsDatagrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(15, 16, 18);
+            dataGridViewCellStyle2.BackColor = Color.Orange;
             dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
             dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(63, 63, 65);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(204, 132, 0);
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             ItemsDatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             ItemsDatagrid.ColumnHeadersHeight = 40;
             ItemsDatagrid.Columns.AddRange(new DataGridViewColumn[] { IdCol, ItemCodeCol, ItemNameCol, StocksCol, StatusCol, PriceCol });
-            ItemsDatagrid.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(44, 48, 52);
+            ItemsDatagrid.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(255, 232, 191);
             ItemsDatagrid.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            ItemsDatagrid.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.White;
-            ItemsDatagrid.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(114, 117, 119);
-            ItemsDatagrid.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.WhiteSmoke;
-            ItemsDatagrid.CurrentTheme.BackColor = Color.FromArgb(15, 16, 18);
-            ItemsDatagrid.CurrentTheme.GridColor = Color.FromArgb(50, 56, 62);
-            ItemsDatagrid.CurrentTheme.HeaderStyle.BackColor = Color.FromArgb(15, 16, 18);
+            ItemsDatagrid.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
+            ItemsDatagrid.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(255, 201, 102);
+            ItemsDatagrid.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.Black;
+            ItemsDatagrid.CurrentTheme.BackColor = Color.Orange;
+            ItemsDatagrid.CurrentTheme.GridColor = Color.FromArgb(255, 226, 173);
+            ItemsDatagrid.CurrentTheme.HeaderStyle.BackColor = Color.Orange;
             ItemsDatagrid.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
             ItemsDatagrid.CurrentTheme.HeaderStyle.ForeColor = Color.White;
-            ItemsDatagrid.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(63, 63, 65);
+            ItemsDatagrid.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(204, 132, 0);
             ItemsDatagrid.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
             ItemsDatagrid.CurrentTheme.Name = null;
-            ItemsDatagrid.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(33, 37, 41);
+            ItemsDatagrid.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(255, 237, 204);
             ItemsDatagrid.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            ItemsDatagrid.CurrentTheme.RowsStyle.ForeColor = Color.White;
-            ItemsDatagrid.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(114, 117, 119);
-            ItemsDatagrid.CurrentTheme.RowsStyle.SelectionForeColor = Color.WhiteSmoke;
+            ItemsDatagrid.CurrentTheme.RowsStyle.ForeColor = Color.Black;
+            ItemsDatagrid.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(255, 201, 102);
+            ItemsDatagrid.CurrentTheme.RowsStyle.SelectionForeColor = Color.Black;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(33, 37, 41);
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 237, 204);
             dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(114, 117, 119);
-            dataGridViewCellStyle3.SelectionForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 201, 102);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             ItemsDatagrid.DefaultCellStyle = dataGridViewCellStyle3;
             ItemsDatagrid.EnableHeadersVisualStyles = false;
-            ItemsDatagrid.GridColor = Color.FromArgb(50, 56, 62);
-            ItemsDatagrid.HeaderBackColor = Color.FromArgb(15, 16, 18);
+            ItemsDatagrid.GridColor = Color.FromArgb(255, 226, 173);
+            ItemsDatagrid.HeaderBackColor = Color.Orange;
             ItemsDatagrid.HeaderBgColor = Color.Empty;
             ItemsDatagrid.HeaderForeColor = Color.White;
             ItemsDatagrid.Location = new Point(5, 143);
@@ -123,7 +128,7 @@
             ItemsDatagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             ItemsDatagrid.Size = new Size(890, 422);
             ItemsDatagrid.TabIndex = 0;
-            ItemsDatagrid.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Dark;
+            ItemsDatagrid.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Orange;
             // 
             // IdCol
             // 
@@ -174,6 +179,24 @@
             PriceCol.ReadOnly = true;
             PriceCol.Width = 69;
             // 
+            // bunifuLabel1
+            // 
+            bunifuLabel1.AllowParentOverrides = false;
+            bunifuLabel1.AutoEllipsis = false;
+            bunifuLabel1.AutoSize = false;
+            bunifuLabel1.CursorType = Cursors.Default;
+            bunifuLabel1.Dock = DockStyle.Left;
+            bunifuLabel1.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bunifuLabel1.Location = new Point(0, 0);
+            bunifuLabel1.Name = "bunifuLabel1";
+            bunifuLabel1.Padding = new Padding(10, 0, 0, 0);
+            bunifuLabel1.RightToLeft = RightToLeft.No;
+            bunifuLabel1.Size = new Size(219, 50);
+            bunifuLabel1.TabIndex = 0;
+            bunifuLabel1.Text = "Inventory";
+            bunifuLabel1.TextAlignment = ContentAlignment.MiddleLeft;
+            bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
             // ItemInventory
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
@@ -188,6 +211,7 @@
             Name = "ItemInventory";
             Text = "ItemInventory";
             Load += ItemInventory_Load;
+            TopPanel.ResumeLayout(false);
             MainContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)ItemsDatagrid).EndInit();
             ResumeLayout(false);
@@ -204,5 +228,6 @@
         private DataGridViewTextBoxColumn StocksCol;
         private DataGridViewTextBoxColumn StatusCol;
         private DataGridViewTextBoxColumn PriceCol;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
     }
 }

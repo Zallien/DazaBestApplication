@@ -453,7 +453,6 @@
             NavButton_Item.TextMarginLeft = 0;
             NavButton_Item.TextPadding = new Padding(0);
             NavButton_Item.UseDefaultRadiusAndThickness = true;
-            NavButton_Item.Click += NavButton_Item_Click;
             // 
             // NavButton_Home
             // 
