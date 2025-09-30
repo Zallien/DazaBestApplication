@@ -71,6 +71,7 @@ namespace SystemBackEnd.Services
         {
             try
             {
+                //Items theitem = await _db.Items.FirstOrDefaultAsync(x => x.ItemID == ItemID);
                 Items _Theitem = await _db.Items.Where(x => x.ItemID == ItemID).FirstOrDefaultAsync();
                 if (_Theitem != null)
                 {
@@ -120,6 +121,27 @@ namespace SystemBackEnd.Services
                 MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return count;
+        }
+        //Search Items with Pagination
+        public async Task<List<Items>> SearchItems(SearchItem item)
+        {
+            List<Items> _theitems = new();
+            try
+            {
+                _theitems = await _db.Items
+                                   .Where(x => x.IsActive == true &&
+                                               (x.ItemName!.ToLower().Contains(item.SearchValue.ToLower()) ||
+                                                x.ItemCode!.ToLower().Contains(item.SearchValue.ToLower())))
+                                   .OrderByDescending(x => x.Row)
+                                   .Skip((item.PageNumber - 1) * item.ItemperPage)
+                                   .Take(item.ItemperPage)
+                                   .ToListAsync();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return _theitems;
         }
     }
 }

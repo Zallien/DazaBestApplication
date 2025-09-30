@@ -237,5 +237,32 @@ namespace DazaBestApplication.Pages
         {
             ShowAddItemModal();
         }
+
+        private async void bunifuTextBox1_TextChange(object sender, EventArgs e)
+        {
+            
+            Allitems = new List<Items>();
+            Allitems = await itemservices.SearchItems(new SearchItem()
+                        {
+                            SearchValue = bunifuTextBox1.Text,
+                            PageNumber = 1,
+                            ItemperPage = 10
+                        });
+            AllItemsDatagrid.Rows.Clear();
+            foreach (var item in Allitems)
+            {
+                int rowindex = AllItemsDatagrid.Rows.Add();
+                DataGridViewRow row = AllItemsDatagrid.Rows[rowindex];
+
+                row.Cells["RowCol"].Value = item.Row;
+                row.Cells["IdCol"].Value = item.ItemID;
+                row.Cells["ItemCodeCol"].Value = item.ItemCode;
+                row.Cells["ItemNameCol"].Value = item.ItemName;
+                row.Cells["StocksCol"].Value = item.BalanceStocks;
+                row.Cells["PriceCol"].Value = item.ItemPrice;
+                row.Cells["StatusCol"].Value = item.IsActive == true ? "Active" : "Not active";
+            }
+
+        }
     }
 }
