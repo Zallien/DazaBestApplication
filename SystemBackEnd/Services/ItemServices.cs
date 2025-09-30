@@ -36,7 +36,7 @@ namespace SystemBackEnd.Services
             return _theitems;
         }
         //Add Item
-        public async Task<Boolean> AddItem(ItemDetails item)
+        public async Task<Boolean> AddItem(InsertItem item)
         {
             try
             {
@@ -91,7 +91,7 @@ namespace SystemBackEnd.Services
             }
         }
         //Update Item
-        public async Task<Boolean> UpdateItem(Guid ItemID, ItemDetails item)
+        public async Task<Boolean> UpdateItem(Guid ItemID, InsertItem item)
         {
             try
             {
@@ -106,6 +106,20 @@ namespace SystemBackEnd.Services
             {
                 return false;
             }
+        }
+        //Get Items Count
+        public async Task<int> GetItemsCount()
+        {
+            int count = 0;
+            try
+            {
+                count = await _db.Items.Where(x => x.IsActive == true).CountAsync();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return count;
         }
     }
 }

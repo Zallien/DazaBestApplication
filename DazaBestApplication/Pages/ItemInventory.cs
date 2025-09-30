@@ -25,6 +25,7 @@ namespace DazaBestApplication.Pages
         private BunifuTransition bunifuTransition = new();
         private ItemModal itemmodal = new ItemModal();
 
+        //Constructor
         public ItemInventory(Form _MainForm)
         {
             InitializeComponent();
@@ -47,7 +48,7 @@ namespace DazaBestApplication.Pages
             itemmodal = new ItemModal()
             {
                 Action = "AddItem",
-                ItemDetails = null
+                EditItem = null
             };
             Form ModalBackgorund = new();
             using (ItemModalForm modalcontent = new(itemmodal))
@@ -78,6 +79,46 @@ namespace DazaBestApplication.Pages
             await GetData();
             ItemEventHandlers.ItemInventoryChanged += GetData;
             deletetoolstrip.Click += DeleteusingDelToolstrip; //Delete using Del Toolstrip
+            edittoolstrip.Click += EditusingEditToolstrip; //Edit using Edit Toolstrip
+        }
+
+        private void EditusingEditToolstrip(object? sender, EventArgs e)
+        {
+            if (AllItemsDatagrid.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedrow = AllItemsDatagrid.SelectedRows[0];
+                itemmodal = new ItemModal()
+                {
+                    Action = "EditItem",
+                    EditItem = new EditItem()
+                    {
+                        ItemID = Guid.Parse(selectedrow.Cells["IdCol"].Value.ToString()),
+                        ItemName = selectedrow.Cells["ItemNameCol"].Value.ToString(),
+                        ItemPrice = decimal.Parse(selectedrow.Cells["PriceCol"].Value.ToString())
+                    }
+                };
+                Form ModalBackgorund = new();
+                using (ItemModalForm modalcontent = new(itemmodal))
+                {
+                    var mainBounds = Mainform.Bounds;
+
+                    ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                    ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                    ModalBackgorund.Opacity = .60d;
+                    ModalBackgorund.BackColor = Color.Black;
+                    ModalBackgorund.Bounds = mainBounds;
+                    ModalBackgorund.Size = Mainform.Size;
+                    ModalBackgorund.Location = Mainform.Location;
+                    ModalBackgorund.ShowInTaskbar = false;
+                    ModalBackgorund.Show(Mainform);
+
+
+                    modalcontent.Owner = ModalBackgorund;
+                    modalcontent.StartPosition = FormStartPosition.CenterParent;
+                    modalcontent.ShowDialog();
+                    ModalBackgorund.Dispose();
+                }
+            }
         }
 
         //Get Data
@@ -91,6 +132,7 @@ namespace DazaBestApplication.Pages
                 int rowindex = AllItemsDatagrid.Rows.Add();
                 DataGridViewRow row = AllItemsDatagrid.Rows[rowindex];
 
+                row.Cells["RowCol"].Value = item.Row;
                 row.Cells["IdCol"].Value = item.ItemID;
                 row.Cells["ItemCodeCol"].Value = item.ItemCode;
                 row.Cells["ItemNameCol"].Value = item.ItemName;
@@ -100,12 +142,7 @@ namespace DazaBestApplication.Pages
             }
         }
 
-        private void AddItemButton_Click(object sender, EventArgs e)
-        {
-            ShowAddItemModal();
-        }
-
-        // Control + D Key For Deleting Item
+        //Control + D Key For Deleting Item
         private async void AllItemsDatagrid_KeyDown(object sender, KeyEventArgs e)
         {
             if (AllItemsDatagrid.SelectedRows.Count > 0)
@@ -183,13 +220,22 @@ namespace DazaBestApplication.Pages
             }
         }
 
+        //Events
         private void AllItemsDatagrid_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
-                edittoolstrip.Visible = AllItemsDatagrid.SelectedRows.Count > 1 ? false : true;
+                if (AllItemsDatagrid.SelectedRows.Count > 1)
+                {
+                    edittoolstrip.Visible = false;
+                    sep1.Visible = false;
+                }
                 MenustripforItems.Show(Cursor.Position);
             }
+        }
+        private void AddItemButton_Click(object sender, EventArgs e)
+        {
+            ShowAddItemModal();
         }
     }
 }

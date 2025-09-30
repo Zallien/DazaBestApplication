@@ -17,6 +17,8 @@ namespace DazaBestApplication.Modals
     {
         private System.Windows.Forms.Timer fadeTimer;
         private ItemServices itemservices = new ItemServices();
+        private Guid UpdateItemID;
+        private string ActionButton;
 
         public ItemModalForm(ItemModal Item)
         {
@@ -31,15 +33,18 @@ namespace DazaBestApplication.Modals
             {
                 label1.Text = "Add New Item";
                 AddItemButton.Text = "Add Item";
+                ActionButton = "AddItem";
             }
             else if (Item.Action == "EditItem")
             {
                 label1.Text = "Edit Item";
                 AddItemButton.Text = "Save Changes";
-                if (Item.ItemDetails != null)
+                ActionButton = "EditItem";
+                if (Item.EditItem != null)
                 {
-                    ItemNametxt.Text = Item.ItemDetails.ItemName;
-                    ItemPricetxt.Text = Item.ItemDetails.ItemPrice.ToString();
+                    UpdateItemID = Item.EditItem.ItemID;
+                    ItemNametxt.Text = Item.EditItem.ItemName;
+                    ItemPricetxt.Text = Item.EditItem.ItemPrice.ToString();
                 }
             }
         }
@@ -80,7 +85,7 @@ namespace DazaBestApplication.Modals
             string ItemName = ItemNametxt.Text.Trim();
             decimal ItemPrice = decimal.Parse(ItemPricetxt.Text.Trim());
             DateTime DateCreated = DateTime.Now;
-            var newitem = new ItemDetails()
+            var newitem = new InsertItem()
             {
                 ItemName = ItemName,
                 ItemPrice = ItemPrice,
@@ -100,6 +105,30 @@ namespace DazaBestApplication.Modals
             }
         }
 
+        //Edit Item
+        private async Task EditItem()
+        {
+            string ItemName = ItemNametxt.Text.Trim();
+            decimal ItemPrice = decimal.Parse(ItemPricetxt.Text.Trim());
+            DateTime DateModified = DateTime.Now;
+            var updateditem = new InsertItem()
+            {
+                ItemName = ItemName,
+                ItemPrice = ItemPrice,
+            };
+            bool IsItemUpdated = await itemservices.UpdateItem(UpdateItemID, updateditem);
+            if (IsItemUpdated)
+            {
+                await ItemEventHandlers.InvokeItemChanged();
+                MessageBox.Show("Item Updated Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClosethisModal();
+            }
+            else
+            {
+                MessageBox.Show("Failed to Update Item", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         //Close Modal
         private void ClosethisModal()
         {
@@ -112,7 +141,16 @@ namespace DazaBestApplication.Modals
         //Button Click Events
         private async void AddItemButton_Click(object sender, EventArgs e)
         {
-            await Additem();
+            if (ActionButton == "AddItem")
+            {
+                await Additem();
+            }
+            else
+            {
+                await EditItem();
+            }
+
+            
         }
         private void CloseModal_Click(object sender, EventArgs e)
         {

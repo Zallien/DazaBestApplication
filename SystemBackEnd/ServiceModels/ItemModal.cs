@@ -9,6 +9,6 @@ namespace SystemBackEnd.ServiceModels
     public class ItemModal
     {
         public string Action { get; set; }
-        public ItemDetails? ItemDetails { get; set; }
+        public EditItem? EditItem { get; set; }
     }
 }
