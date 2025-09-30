@@ -77,6 +77,7 @@ namespace DazaBestApplication.Pages
         {
             await GetData();
             ItemEventHandlers.ItemInventoryChanged += GetData;
+            deletetoolstrip.Click += DeleteusingDelToolstrip; //Delete using Del Toolstrip
         }
 
         //Get Data
@@ -135,6 +136,31 @@ namespace DazaBestApplication.Pages
                 }
             }
         }
+        //Delete using Del Toolstrip
+        private async void DeleteusingDelToolstrip(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you want to delete the selected item(s)?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                List<ItemID> AllSelectedID = new List<ItemID>();
+                foreach (DataGridViewRow row in AllItemsDatagrid.SelectedRows)
+                {
+                    if (row.Cells["IdCol"].Value != null)
+                    {
+                        Guid id = Guid.Parse(row.Cells["IdCol"].Value.ToString());
+                        AllSelectedID.Add(new ItemID { ID = id });
+                    }
+                }
+
+                if (await DeleteItems(AllSelectedID))
+                {
+                    MessageBox.Show("Deleted Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Deleted Unsuccessfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
         private async Task<Boolean> DeleteItems(List<ItemID> AllSelectedID)
         {
@@ -157,5 +183,13 @@ namespace DazaBestApplication.Pages
             }
         }
 
+        private void AllItemsDatagrid_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                edittoolstrip.Visible = AllItemsDatagrid.SelectedRows.Count > 1 ? false : true;
+                MenustripforItems.Show(Cursor.Position);
+            }
+        }
     }
 }

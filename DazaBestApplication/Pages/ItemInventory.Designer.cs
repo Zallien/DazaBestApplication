@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemInventory));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
@@ -46,6 +47,10 @@
             bunifuButton22 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             bunifuTextBox1 = new Bunifu.UI.WinForms.BunifuTextBox();
             AllItemsDatagrid = new Bunifu.UI.WinForms.BunifuDataGridView();
+            MenustripforItems = new ContextMenuStrip(components);
+            edittoolstrip = new ToolStripMenuItem();
+            sep1 = new ToolStripSeparator();
+            deletetoolstrip = new ToolStripMenuItem();
             IdCol = new DataGridViewTextBoxColumn();
             ItemCodeCol = new DataGridViewTextBoxColumn();
             ItemNameCol = new DataGridViewTextBoxColumn();
@@ -56,6 +61,7 @@
             MainContainer.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllItemsDatagrid).BeginInit();
+            MenustripforItems.SuspendLayout();
             SuspendLayout();
             // 
             // TopPanel
@@ -99,7 +105,7 @@
             panel1.Location = new Point(0, 10);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(5, 0, 5, 0);
-            panel1.Size = new Size(900, 40);
+            panel1.Size = new Size(900, 130);
             panel1.TabIndex = 4;
             // 
             // AddItemButton
@@ -149,7 +155,7 @@
             AddItemButton.IdleIconLeftImage = null;
             AddItemButton.IdleIconRightImage = null;
             AddItemButton.IndicateFocus = false;
-            AddItemButton.Location = new Point(5, 0);
+            AddItemButton.Location = new Point(5, 90);
             AddItemButton.Name = "AddItemButton";
             AddItemButton.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             AddItemButton.OnDisabledState.BorderRadius = 1;
@@ -239,7 +245,7 @@
             bunifuButton22.IdleIconLeftImage = null;
             bunifuButton22.IdleIconRightImage = null;
             bunifuButton22.IndicateFocus = false;
-            bunifuButton22.Location = new Point(459, 0);
+            bunifuButton22.Location = new Point(459, 90);
             bunifuButton22.Name = "bunifuButton22";
             bunifuButton22.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton22.OnDisabledState.BorderRadius = 1;
@@ -309,7 +315,7 @@
             bunifuTextBox1.IconPadding = 10;
             bunifuTextBox1.IconRight = null;
             bunifuTextBox1.IconRightCursor = Cursors.IBeam;
-            bunifuTextBox1.Location = new Point(615, 1);
+            bunifuTextBox1.Location = new Point(615, 91);
             bunifuTextBox1.MaxLength = 32767;
             bunifuTextBox1.MinimumSize = new Size(1, 1);
             bunifuTextBox1.Modified = false;
@@ -413,16 +419,45 @@
             AllItemsDatagrid.HeaderBackColor = Color.Orange;
             AllItemsDatagrid.HeaderBgColor = Color.Empty;
             AllItemsDatagrid.HeaderForeColor = Color.White;
-            AllItemsDatagrid.Location = new Point(5, 55);
+            AllItemsDatagrid.Location = new Point(5, 146);
             AllItemsDatagrid.Name = "AllItemsDatagrid";
             AllItemsDatagrid.ReadOnly = true;
             AllItemsDatagrid.RowHeadersVisible = false;
             AllItemsDatagrid.RowTemplate.Height = 40;
             AllItemsDatagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            AllItemsDatagrid.Size = new Size(890, 510);
+            AllItemsDatagrid.Size = new Size(890, 419);
             AllItemsDatagrid.TabIndex = 0;
             AllItemsDatagrid.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Orange;
             AllItemsDatagrid.KeyDown += AllItemsDatagrid_KeyDown;
+            AllItemsDatagrid.MouseClick += AllItemsDatagrid_MouseClick;
+            // 
+            // MenustripforItems
+            // 
+            MenustripforItems.Items.AddRange(new ToolStripItem[] { edittoolstrip, sep1, deletetoolstrip });
+            MenustripforItems.Name = "MenustripforItems";
+            MenustripforItems.Size = new Size(121, 54);
+            MenustripforItems.Text = "Actions";
+            // 
+            // edittoolstrip
+            // 
+            edittoolstrip.Font = new Font("Cambria", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            edittoolstrip.Name = "edittoolstrip";
+            edittoolstrip.Size = new Size(120, 22);
+            edittoolstrip.Text = "Edit";
+            edittoolstrip.ToolTipText = "Edit the Selected Item";
+            // 
+            // sep1
+            // 
+            sep1.Name = "sep1";
+            sep1.Size = new Size(117, 6);
+            // 
+            // deletetoolstrip
+            // 
+            deletetoolstrip.Font = new Font("Cambria", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            deletetoolstrip.Name = "deletetoolstrip";
+            deletetoolstrip.Size = new Size(120, 22);
+            deletetoolstrip.Text = "Delete";
+            deletetoolstrip.ToolTipText = "Delete the Selected Item";
             // 
             // IdCol
             // 
@@ -491,6 +526,7 @@
             MainContainer.ResumeLayout(false);
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)AllItemsDatagrid).EndInit();
+            MenustripforItems.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -499,16 +535,20 @@
         private Panel TopPanel;
         private Panel MainContainer;
         private Bunifu.UI.WinForms.BunifuDataGridView AllItemsDatagrid;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 AddItemButton;
+        private Label label1;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton22;
+        private Bunifu.UI.WinForms.BunifuTextBox bunifuTextBox1;
+        private Panel panel1;
+        private ContextMenuStrip MenustripforItems;
+        private ToolStripMenuItem edittoolstrip;
+        private ToolStripSeparator sep1;
+        private ToolStripMenuItem deletetoolstrip;
         private DataGridViewTextBoxColumn IdCol;
         private DataGridViewTextBoxColumn ItemCodeCol;
         private DataGridViewTextBoxColumn ItemNameCol;
         private DataGridViewTextBoxColumn StocksCol;
         private DataGridViewTextBoxColumn StatusCol;
         private DataGridViewTextBoxColumn PriceCol;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 AddItemButton;
-        private Label label1;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton22;
-        private Bunifu.UI.WinForms.BunifuTextBox bunifuTextBox1;
-        private Panel panel1;
     }
 }
