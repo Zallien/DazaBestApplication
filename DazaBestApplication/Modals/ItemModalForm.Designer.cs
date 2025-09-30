@@ -1,6 +1,6 @@
 ﻿namespace DazaBestApplication.Modals
 {
-    partial class AddItemModal
+    partial class ItemModalForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddItemModal));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemModalForm));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -110,7 +110,7 @@
             label1.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(142, 40);
+            label1.Size = new Size(154, 40);
             label1.TabIndex = 0;
             label1.Text = "Add Item";
             label1.TextAlign = ContentAlignment.MiddleLeft;
@@ -269,9 +269,9 @@
             // label5
             // 
             label5.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(246, 121);
+            label5.Location = new Point(248, 121);
             label5.Name = "label5";
-            label5.Size = new Size(164, 30);
+            label5.Size = new Size(162, 30);
             label5.TabIndex = 9;
             label5.Text = "09/20/2025";
             label5.TextAlign = ContentAlignment.MiddleLeft;
@@ -303,7 +303,7 @@
             ItemNametxt.IconPadding = 10;
             ItemNametxt.IconRight = null;
             ItemNametxt.IconRightCursor = Cursors.IBeam;
-            ItemNametxt.Location = new Point(246, 52);
+            ItemNametxt.Location = new Point(248, 52);
             ItemNametxt.MaxLength = 32767;
             ItemNametxt.MinimumSize = new Size(1, 1);
             ItemNametxt.Modified = false;
@@ -377,7 +377,7 @@
             ItemPricetxt.IconPadding = 10;
             ItemPricetxt.IconRight = null;
             ItemPricetxt.IconRightCursor = Cursors.IBeam;
-            ItemPricetxt.Location = new Point(246, 85);
+            ItemPricetxt.Location = new Point(248, 85);
             ItemPricetxt.MaxLength = 32767;
             ItemPricetxt.MinimumSize = new Size(1, 1);
             ItemPricetxt.Modified = false;
@@ -424,7 +424,7 @@
             ItemPricetxt.UseSystemPasswordChar = false;
             ItemPricetxt.WordWrap = true;
             // 
-            // AddItemModal
+            // ItemModalForm
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -442,7 +442,7 @@
             Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
-            Name = "AddItemModal";
+            Name = "ItemModalForm";
             Load += AddItemModal_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);

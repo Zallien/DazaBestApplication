@@ -22,7 +22,8 @@ namespace DazaBestApplication.Pages
         private ItemServices itemservices = new ItemServices();
         private Form Mainform;
         private List<Items> Allitems;
-
+        private BunifuTransition bunifuTransition = new();
+        private ItemModal itemmodal = new ItemModal();
 
         public ItemInventory(Form _MainForm)
         {
@@ -31,13 +32,25 @@ namespace DazaBestApplication.Pages
             {
                 Mainform = _MainForm;
             }
+            typeof(DataGridView).InvokeMember(
+                "DoubleBuffered",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty,
+                null,
+                AllItemsDatagrid,
+                new object[] { true }
+            );
         }
 
         //ShowAddItemModal
         private void ShowAddItemModal()
         {
+            itemmodal = new ItemModal()
+            {
+                Action = "AddItem",
+                ItemDetails = null
+            };
             Form ModalBackgorund = new();
-            using (AddItemModal modalcontent = new())
+            using (ItemModalForm modalcontent = new(itemmodal))
             {
                 var mainBounds = Mainform.Bounds;
 

@@ -13,14 +13,35 @@ using SystemBackEnd.Services;
 
 namespace DazaBestApplication.Modals
 {
-    public partial class AddItemModal : Form
+    public partial class ItemModalForm : Form
     {
         private System.Windows.Forms.Timer fadeTimer;
         private ItemServices itemservices = new ItemServices();
 
-        public AddItemModal()
+        public ItemModalForm(ItemModal Item)
         {
             InitializeComponent();
+            CheckAction(Item);
+        }
+
+        //Check if Add or Edit
+        private void CheckAction(ItemModal Item)
+        {
+            if (Item.Action == "AddItem")
+            {
+                label1.Text = "Add New Item";
+                AddItemButton.Text = "Add Item";
+            }
+            else if (Item.Action == "EditItem")
+            {
+                label1.Text = "Edit Item";
+                AddItemButton.Text = "Save Changes";
+                if (Item.ItemDetails != null)
+                {
+                    ItemNametxt.Text = Item.ItemDetails.ItemName;
+                    ItemPricetxt.Text = Item.ItemDetails.ItemPrice.ToString();
+                }
+            }
         }
 
         //Main Load
@@ -59,7 +80,7 @@ namespace DazaBestApplication.Modals
             string ItemName = ItemNametxt.Text.Trim();
             decimal ItemPrice = decimal.Parse(ItemPricetxt.Text.Trim());
             DateTime DateCreated = DateTime.Now;
-            var newitem = new InsertItem()
+            var newitem = new ItemDetails()
             {
                 ItemName = ItemName,
                 ItemPrice = ItemPrice,
@@ -88,13 +109,11 @@ namespace DazaBestApplication.Modals
             this.DialogResult = DialogResult.OK;
         }
 
-
         //Button Click Events
         private async void AddItemButton_Click(object sender, EventArgs e)
         {
             await Additem();
         }
-
         private void CloseModal_Click(object sender, EventArgs e)
         {
             ClosethisModal();

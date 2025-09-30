@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SystemBackEnd.ServiceModels
 {
-    public class InsertItem
+    public class ItemDetails
     {
         public string? ItemName { get; set; }
         public decimal? ItemPrice { get; set; }

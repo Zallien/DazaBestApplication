@@ -17,16 +17,26 @@ namespace SystemBackEnd.Services
         {
             _db = new Dbcontext();
         }
+
         //GetData
         public async Task<List<Items>> GetAllItems()
         {
-            List<Items> _theitems = await _db.Items
-                                    .Where(x => x.IsActive == true)
-                                    .OrderByDescending(x => x.Row).ToListAsync();
+            List<Items> _theitems = new();
+            try
+            {
+                _theitems = await _db.Items
+                                   .Where(x => x.IsActive == true)
+                                   .OrderByDescending(x => x.Row).ToListAsync();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             return _theitems;
         }
         //Add Item
-        public async Task<Boolean> AddItem(InsertItem item)
+        public async Task<Boolean> AddItem(ItemDetails item)
         {
             try
             {
@@ -45,13 +55,14 @@ namespace SystemBackEnd.Services
                 await _db.SaveChangesAsync();
                 //Set the item code after getting the row number
                 Items _theitem = await _db.Items.FirstOrDefaultAsync(x => x.ItemID == uid);
-                _theitem.ItemCode = "ITM-" + _theitem.Row.ToString("D6");
+                _theitem.ItemCode = "ITM-" + _theitem.Row.ToString("D4");
                 _db.Items.Update(_theitem);
                 await _db.SaveChangesAsync();
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -61,18 +72,26 @@ namespace SystemBackEnd.Services
             try
             {
                 Items _Theitem = await _db.Items.Where(x => x.ItemID == ItemID).FirstOrDefaultAsync();
-                _Theitem.IsActive = !_Theitem.IsActive;
-                _db.Items.Update(_Theitem);
-                await _db.SaveChangesAsync();
-                return true;
+                if (_Theitem != null)
+                {
+                    _Theitem.IsActive = !_Theitem.IsActive;
+                    _db.Items.Update(_Theitem);
+                    await _db.SaveChangesAsync();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception e)
             {
+                MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
         //Update Item
-        public async Task<Boolean> UpdateItem(Guid ItemID, InsertItem item)
+        public async Task<Boolean> UpdateItem(Guid ItemID, ItemDetails item)
         {
             try
             {

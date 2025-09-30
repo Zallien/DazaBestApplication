@@ -1,3 +1,4 @@
+using Bunifu.UI.WinForms;
 using DazaBestApplication.Pages;
 using System.Windows.Forms;
 
@@ -7,6 +8,7 @@ namespace DazaBestApplication
     {
         List<Panel> AllPanels;
         Form MainContainerForm = null;
+        private BunifuTransition BunifuTransition = new();
 
         public MainPage()
         {
@@ -17,7 +19,7 @@ namespace DazaBestApplication
         {
 
         }
-            
+
         //Routing Each Pages
         private void ShowItemPage()
         {
@@ -31,8 +33,6 @@ namespace DazaBestApplication
             MainContainerForm.Dock = DockStyle.Fill;
             MainContainer.Controls.Add(MainContainerForm);
             MainContainerForm.Show();
-
-
         }
 
         //Open Item Inventory Page
