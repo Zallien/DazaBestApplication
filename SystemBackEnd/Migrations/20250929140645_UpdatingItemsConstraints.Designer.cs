@@ -10,7 +10,7 @@ using SystemBackEnd;
 
 namespace SystemBackEnd.Migrations
 {
-    [DbContext(typeof(Dbcontext))]
+    [DbContext(typeof(BackEndDBContext))]
     [Migration("20250929140645_UpdatingItemsConstraints")]
     partial class UpdatingItemsConstraints
     {

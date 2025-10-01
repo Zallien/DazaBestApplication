@@ -11,8 +11,8 @@ using SystemBackEnd;
 namespace SystemBackEnd.Migrations
 {
     [DbContext(typeof(BackEndDBContext))]
-    [Migration("20250927083030_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251001055501_ProductAdded")]
+    partial class ProductAdded
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,11 +38,10 @@ namespace SystemBackEnd.Migrations
                     b.Property<string>("ItemCode")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ItemID")
+                    b.Property<Guid>("ItemID")
                         .HasColumnType("TEXT");
 
                     b.Property<byte[]>("ItemImage")
-                        .IsRequired()
                         .HasColumnType("BLOB");
 
                     b.Property<string>("ItemName")
@@ -54,6 +53,46 @@ namespace SystemBackEnd.Migrations
                     b.HasKey("Row");
 
                     b.ToTable("Items", (string)null);
+                });
+
+            modelBuilder.Entity("SystemBackEnd.Models.Products", b =>
+                {
+                    b.Property<int>("Row")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("BalanceStocks")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProductCode")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ProductID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<byte[]>("ProductImage")
+                        .HasColumnType("BLOB");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Row");
+
+                    b.ToTable("Products", (string)null);
                 });
 #pragma warning restore 612, 618
         }

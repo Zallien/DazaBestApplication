@@ -8,7 +8,7 @@ using SystemBackEnd.Models;
 
 namespace SystemBackEnd
 {
-    public class Dbcontext:DbContext
+    public class BackEndDBContext:DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -17,7 +17,11 @@ namespace SystemBackEnd
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Items>().ToTable("Items");
+            modelBuilder.Entity<Products>().ToTable("Products");
+            modelBuilder.Entity<IngredientsByProduct>().ToTable("IngredientsByProduct");
         }
         public DbSet<Items> Items { get; set; }
+        public DbSet<Products> Products { get; set; }
+        public DbSet<IngredientsByProduct> Ingredients { get; set; }
     }
 }

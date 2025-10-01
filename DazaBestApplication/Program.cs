@@ -14,7 +14,7 @@ namespace DazaBestApplication
         {
             try
             {
-                using (var context = new Dbcontext())
+                using (var context = new BackEndDBContext())
                 {
                     context.Database.Migrate();
                 }

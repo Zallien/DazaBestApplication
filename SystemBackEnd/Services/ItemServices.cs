@@ -11,11 +11,11 @@ namespace SystemBackEnd.Services
 {
     public class ItemServices
     {
-        private Dbcontext _db;
+        private BackEndDBContext _db;
 
-        public ItemServices()
+        public ItemServices(BackEndDBContext mdb)
         {
-            _db = new Dbcontext();
+            _db = mdb;
         }
 
         //GetData

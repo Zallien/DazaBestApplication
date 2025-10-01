@@ -10,15 +10,16 @@ using System.Windows.Forms;
 using SystemBackEnd.EventHandlers;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
+using SystemBackEnd;
 
 namespace DazaBestApplication.Modals
 {
     public partial class ItemModalForm : Form
     {
-        private System.Windows.Forms.Timer fadeTimer;
-        private ItemServices itemservices = new ItemServices();
-        private Guid UpdateItemID;
-        private string ActionButton;
+        private System.Windows.Forms.Timer _fadetimer;
+        private ItemServices itemservices = new ItemServices(new BackEndDBContext());
+        private Guid _updateitemid;
+        private string _actionbutton;
 
         public ItemModalForm(ItemModal Item)
         {
@@ -33,38 +34,34 @@ namespace DazaBestApplication.Modals
             {
                 label1.Text = "Add New Item";
                 AddItemButton.Text = "Add Item";
-                ActionButton = "AddItem";
+                _actionbutton = "AddItem";
             }
             else if (Item.Action == "EditItem")
             {
                 label1.Text = "Edit Item";
                 AddItemButton.Text = "Save Changes";
-                ActionButton = "EditItem";
+                _actionbutton = "EditItem";
                 if (Item.EditItem != null)
                 {
-                    UpdateItemID = Item.EditItem.ItemID;
+                    _updateitemid = Item.EditItem.ItemID;
                     ItemNametxt.Text = Item.EditItem.ItemName;
                     ItemPricetxt.Text = Item.EditItem.ItemPrice.ToString();
                 }
             }
         }
-
         //Main Load
         private async void AddItemModal_Load(object sender, EventArgs e)
         {
             FadeIn();
-            ItemServices itemservices = new ItemServices();
-            await itemservices.GetAllItems();
         }
-
         //FadeIn Animation
         private void FadeIn()
         {
             this.Opacity = 0;
 
-            fadeTimer = new System.Windows.Forms.Timer();
-            fadeTimer.Interval = 30;
-            fadeTimer.Tick += (s, args) =>
+            _fadetimer = new System.Windows.Forms.Timer();
+            _fadetimer.Interval = 30;
+            _fadetimer.Tick += (s, args) =>
             {
                 if (this.Opacity < 1)
                 {
@@ -72,12 +69,14 @@ namespace DazaBestApplication.Modals
                 }
                 else
                 {
-                    fadeTimer.Stop();
-                    fadeTimer.Dispose();
+                    _fadetimer.Stop();
+                    _fadetimer.Dispose();
                 }
             };
-            fadeTimer.Start();
+            _fadetimer.Start();
         }
+
+
 
         //Add Item
         private async Task Additem()
@@ -91,7 +90,7 @@ namespace DazaBestApplication.Modals
                 ItemPrice = ItemPrice,
                 DateCreated = DateCreated
             };
-
+            itemservices = new ItemServices(new BackEndDBContext());
             bool IsItemAdded = await itemservices.AddItem(newitem);
             if (IsItemAdded)
             {
@@ -104,7 +103,6 @@ namespace DazaBestApplication.Modals
                 MessageBox.Show("Failed to Add Item", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         //Edit Item
         private async Task EditItem()
         {
@@ -116,7 +114,8 @@ namespace DazaBestApplication.Modals
                 ItemName = ItemName,
                 ItemPrice = ItemPrice,
             };
-            bool IsItemUpdated = await itemservices.UpdateItem(UpdateItemID, updateditem);
+            itemservices = new ItemServices(new BackEndDBContext());
+            bool IsItemUpdated = await itemservices.UpdateItem(_updateitemid, updateditem);
             if (IsItemUpdated)
             {
                 await ItemEventHandlers.InvokeItemChanged();
@@ -128,7 +127,6 @@ namespace DazaBestApplication.Modals
                 MessageBox.Show("Failed to Update Item", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         //Close Modal
         private void ClosethisModal()
         {
@@ -138,10 +136,13 @@ namespace DazaBestApplication.Modals
             this.DialogResult = DialogResult.OK;
         }
 
-        //Button Click Events
+
+
+
+        //Events
         private async void AddItemButton_Click(object sender, EventArgs e)
         {
-            if (ActionButton == "AddItem")
+            if (_actionbutton == "AddItem")
             {
                 await Additem();
             }

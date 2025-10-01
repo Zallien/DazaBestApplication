@@ -14,12 +14,13 @@ using SystemBackEnd.EventHandlers;
 using SystemBackEnd.Models;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
+using SystemBackEnd;
 
 namespace DazaBestApplication.Pages
 {
     public partial class ItemInventory : Form
     {
-        private ItemServices itemservices = new ItemServices();
+        private ItemServices itemservices = new ItemServices(new BackEndDBContext());
         private Form Mainform;
         private List<Items> _allitem;
         private ItemModal _itemmodal = new ItemModal();
@@ -92,6 +93,7 @@ namespace DazaBestApplication.Pages
                 ItemperPage = _itemperpage
             };
             _allitem = new List<Items>();
+            itemservices = new ItemServices(new BackEndDBContext());
             _allitem = await itemservices.GetAllItemsByPagination(Bypage);
             await PopulatAllItemDataGrid(_allitem);
         }
@@ -234,7 +236,7 @@ namespace DazaBestApplication.Pages
                 row.Cells["PriceCol"].Value = item.ItemPrice;
             }
         }
-        //Open Modal
+        //Open Item Modal
         private void OpenModal()
         {
             Form ModalBackgorund = new();
