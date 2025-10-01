@@ -1,6 +1,6 @@
 ﻿namespace DazaBestApplication.Pages
 {
-    partial class Products
+    partial class pRODUCTiNVENTORY
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,7 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Products));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(pRODUCTiNVENTORY));
             TopPanel = new Panel();
             label1 = new Label();
             MainContainer = new Panel();

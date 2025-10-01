@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DazaBestApplication.Pages
 {
-    public partial class Products : Form
+    public partial class pRODUCTiNVENTORY : Form
     {
-        public Products()
+        public pRODUCTiNVENTORY()
         {
             InitializeComponent();
         }
