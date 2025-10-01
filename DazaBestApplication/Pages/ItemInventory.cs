@@ -312,13 +312,13 @@ namespace DazaBestApplication.Pages
         {
             ShowAddItemModal();
         }
-        private async void bunifuTextBox1_TextChange(object sender, EventArgs e)
+        private async void SearchBox(object sender, EventArgs e)
         {
 
             _allitem = new List<Items>();
             _allitem = await itemservices.SearchItems(new SearchItem()
             {
-                SearchValue = bunifuTextBox1.Text,
+                SearchValue = SearchBoxTextBox.Text,
                 PageNumber = 1,
                 ItemperPage = 10
             });
