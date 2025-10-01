@@ -194,7 +194,7 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAD4DfSgAAVWXEH8AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="bunifuButton24.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="NavButton_Reports.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAMgAAAAoCAYAAAC7HLUcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA2SURBVHhe7cExAQAAAMKg9U9tBn+gAAAAAAAAAAAAAAAA
@@ -302,6 +302,13 @@
         AAAAAAAAAAAAAAAAAAAAAAAA/z////8+P///8Af//wAD//8AAH/+AAB/+AAAD/AAAA/gAAAH4AAAA8AA
         AAPAAAADgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAOAAAADwAAAA8AAAAPgAAAH8AAAD/AA
         AB/4AAA//gAAf/8AAP//wAf///////////8=
+</value>
+  </data>
+  <data name="LogOut_btn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAMgAAAAoCAYAAAC7HLUcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA2SURBVHhe7cExAQAAAMKg9U9tBn+gAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAD4DfSgAAVWXEH8AAAAASUVORK5CYII=
 </value>
   </data>
 </root>
