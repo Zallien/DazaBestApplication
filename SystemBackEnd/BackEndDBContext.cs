@@ -20,6 +20,7 @@ namespace SystemBackEnd
             modelBuilder.Entity<Products>().ToTable("Products");
             modelBuilder.Entity<IngredientsByProduct>().ToTable("IngredientsByProduct");
         }
+
         public DbSet<Items> Items { get; set; }
         public DbSet<Products> Products { get; set; }
         public DbSet<IngredientsByProduct> Ingredients { get; set; }
