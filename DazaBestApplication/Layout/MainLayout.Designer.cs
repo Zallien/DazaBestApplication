@@ -177,7 +177,7 @@
             // 
             // SideNav
             // 
-            SideNav.BackColor = Color.FromArgb(33, 33, 33);
+            SideNav.BackColor = Color.FromArgb(230, 126, 34);
             SideNav.Controls.Add(bunifuButton21);
             SideNav.Controls.Add(bunifuButton24);
             SideNav.Controls.Add(NavButton_Products);
