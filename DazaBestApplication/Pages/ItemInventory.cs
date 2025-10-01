@@ -21,13 +21,12 @@ namespace DazaBestApplication.Pages
     {
         private ItemServices itemservices = new ItemServices();
         private Form Mainform;
-        private List<Items> Allitems;
-        private BunifuTransition bunifuTransition = new();
-        private ItemModal itemmodal = new ItemModal();
-        private int PageNumber = 1;
-        private int ItemperPage = 12;
-        private int TotalItems = 0;
-        private int MaxPageNumber;
+        private List<Items> _allitem;
+        private ItemModal _itemmodal = new ItemModal();
+        private int _pagenumber = 1;
+        private int _itemperpage = 12;
+        private int _totalitems = 0;
+        private int _maxpagenumber;
 
         //Constructor
         public ItemInventory(Form _MainForm)
@@ -49,32 +48,12 @@ namespace DazaBestApplication.Pages
         //ShowAddItemModal
         private void ShowAddItemModal()
         {
-            itemmodal = new ItemModal()
+            _itemmodal = new ItemModal()
             {
                 Action = "AddItem",
                 EditItem = null
             };
-            Form ModalBackgorund = new();
-            using (ItemModalForm modalcontent = new(itemmodal))
-            {
-                var mainBounds = Mainform.Bounds;
-
-                ModalBackgorund.StartPosition = FormStartPosition.Manual;
-                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
-                ModalBackgorund.Opacity = .60d;
-                ModalBackgorund.BackColor = Color.Black;
-                ModalBackgorund.Bounds = mainBounds;
-                ModalBackgorund.Size = Mainform.Size;
-                ModalBackgorund.Location = Mainform.Location;
-                ModalBackgorund.ShowInTaskbar = false;
-                ModalBackgorund.Show(Mainform);
-
-
-                modalcontent.Owner = ModalBackgorund;
-                modalcontent.StartPosition = FormStartPosition.CenterParent;
-                modalcontent.ShowDialog();
-                ModalBackgorund.Dispose();
-            }
+            OpenModal();
         }
 
         //Main Load
@@ -82,58 +61,25 @@ namespace DazaBestApplication.Pages
         {
             await GetData();
             await GetAllItemCount();
-            ItemEventHandlers.ItemInventoryChanged += GetData;
-            deletetoolstrip.Click += DeleteusingDelToolstrip; //Delete using Del Toolstrip
-            edittoolstrip.Click += EditusingEditToolstrip; //Edit using Edit Toolstrip
-            PaginationLabel.Text = $"{PageNumber}";//Pagination Label
+            HookEvents();
+            PaginationLabel.Text = $"{_pagenumber}";//Pagination Label
             CheckPageNumber();
         }
 
-        private void EditusingEditToolstrip(object? sender, EventArgs e)
+        //Hook Events
+        private void HookEvents()
         {
-            if (AllItemsDatagrid.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedrow = AllItemsDatagrid.SelectedRows[0];
-                itemmodal = new ItemModal()
-                {
-                    Action = "EditItem",
-                    EditItem = new EditItem()
-                    {
-                        ItemID = Guid.Parse(selectedrow.Cells["IdCol"].Value.ToString()),
-                        ItemName = selectedrow.Cells["ItemNameCol"].Value.ToString(),
-                        ItemPrice = decimal.Parse(selectedrow.Cells["PriceCol"].Value.ToString())
-                    }
-                };
-                Form ModalBackgorund = new();
-                using (ItemModalForm modalcontent = new(itemmodal))
-                {
-                    var mainBounds = Mainform.Bounds;
-
-                    ModalBackgorund.StartPosition = FormStartPosition.Manual;
-                    ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
-                    ModalBackgorund.Opacity = .60d;
-                    ModalBackgorund.BackColor = Color.Black;
-                    ModalBackgorund.Bounds = mainBounds;
-                    ModalBackgorund.Size = Mainform.Size;
-                    ModalBackgorund.Location = Mainform.Location;
-                    ModalBackgorund.ShowInTaskbar = false;
-                    ModalBackgorund.Show(Mainform);
-
-
-                    modalcontent.Owner = ModalBackgorund;
-                    modalcontent.StartPosition = FormStartPosition.CenterParent;
-                    modalcontent.ShowDialog();
-                    ModalBackgorund.Dispose();
-                }
-            }
+            ItemEventHandlers.ItemInventoryChanged += GetData;
+            deletetoolstrip.Click += DeleteusingDelToolstrip; //Delete using Del Toolstrip
+            edittoolstrip.Click += EditusingEditToolstrip; //Edit using Edit Toolstrip
         }
 
         //Get All item Count
         private async Task GetAllItemCount()
         {
-            TotalItems = await itemservices.GetItemsCount();
-            MaxPageNumber = TotalItems % ItemperPage != 0 ? (TotalItems / ItemperPage) + 1 
-                                                        : TotalItems / ItemperPage;
+            _totalitems = await itemservices.GetItemsCount();
+            _maxpagenumber = _totalitems % _itemperpage != 0 ? (_totalitems / _itemperpage) + 1 
+                                                        : _totalitems / _itemperpage;
 
         }
         //Get Data
@@ -142,46 +88,34 @@ namespace DazaBestApplication.Pages
             SearchItem Bypage = new SearchItem()
             {
                 SearchValue = "",
-                PageNumber = PageNumber,
-                ItemperPage = ItemperPage
+                PageNumber = _pagenumber,
+                ItemperPage = _itemperpage
             };
-            Allitems = new List<Items>();
-            Allitems = await itemservices.GetAllItemsByPagination(Bypage);
-            AllItemsDatagrid.Rows.Clear();
-            foreach (var item in Allitems)
-            {
-                int rowindex = AllItemsDatagrid.Rows.Add();
-                DataGridViewRow row = AllItemsDatagrid.Rows[rowindex];
-
-                row.Cells["RowCol"].Value = item.Row;
-                row.Cells["IdCol"].Value = item.ItemID;
-                row.Cells["ItemCodeCol"].Value = item.ItemCode;
-                row.Cells["ItemNameCol"].Value = item.ItemName;
-                row.Cells["PriceCol"].Value = item.ItemPrice;
-                row.Cells["StocksCol"].Value = item.BalanceStocks;
-            }
+            _allitem = new List<Items>();
+            _allitem = await itemservices.GetAllItemsByPagination(Bypage);
+            await PopulatAllItemDataGrid(_allitem);
         }
         //Pagination Next
         private async void NextButton_Click()
         {
 
-            if (PageNumber < MaxPageNumber)
+            if (_pagenumber < _maxpagenumber)
             {
-                PageNumber++;
+                _pagenumber++;
                 await CheckPageNumber();
                 await GetData();
-                PaginationLabel.Text = $"{PageNumber}";//Pagination Label
+                PaginationLabel.Text = $"{_pagenumber}";//Pagination Label
             }
         }
         //Pagination Previous
         private async void PreviousButton_Click()
         {
-            if (PageNumber > 1)
+            if (_pagenumber > 1)
             {
-                PageNumber--;
+                _pagenumber--;
                 await CheckPageNumber();
                 await GetData();
-                PaginationLabel.Text = $"{PageNumber}";//Pagination Label
+                PaginationLabel.Text = $"{_pagenumber}";//Pagination Label
                 
             }
         }
@@ -189,7 +123,7 @@ namespace DazaBestApplication.Pages
         private async Task CheckPageNumber()
         {
             await Task.Delay(200);
-            if (PageNumber == 1)
+            if (_pagenumber == 1)
             {
                 PaginationPREV.Enabled = false;
             }
@@ -197,7 +131,7 @@ namespace DazaBestApplication.Pages
             {
                 PaginationPREV.Enabled = true;
             }
-            if (PageNumber >= MaxPageNumber)
+            if (_pagenumber >= _maxpagenumber)
             {
                 PaginationNext.Enabled = false;
             }
@@ -206,7 +140,6 @@ namespace DazaBestApplication.Pages
                 PaginationNext.Enabled = true;
             }
         }
-
         //Control + D Key For Deleting Item
         private async void AllItemsDatagrid_KeyDown(object sender, KeyEventArgs e)
         {
@@ -263,7 +196,7 @@ namespace DazaBestApplication.Pages
                 }
             }
         }
-
+        //Delete Item Validation
         private async Task<Boolean> DeleteItems(List<ItemID> AllSelectedID)
         {
             try
@@ -284,8 +217,78 @@ namespace DazaBestApplication.Pages
                 return false;
             }
         }
+        //Populate DataGrid
+        private async Task PopulatAllItemDataGrid(List<Items> _allitemparam)
+        {
+            _allitem = new List<Items>();
+            AllItemsDatagrid.Rows.Clear();
+            foreach (var item in _allitemparam)
+            {
+                int rowindex = AllItemsDatagrid.Rows.Add();
+                DataGridViewRow row = AllItemsDatagrid.Rows[rowindex];
+                row.Cells["RowCol"].Value = item.Row;
+                row.Cells["IdCol"].Value = item.ItemID;
+                row.Cells["ItemCodeCol"].Value = item.ItemCode;
+                row.Cells["ItemNameCol"].Value = item.ItemName;
+                row.Cells["StocksCol"].Value = item.BalanceStocks;
+                row.Cells["PriceCol"].Value = item.ItemPrice;
+            }
+        }
+        //Open Modal
+        private void OpenModal()
+        {
+            Form ModalBackgorund = new();
+            using (ItemModalForm modalcontent = new(_itemmodal))
+            {
+                var mainBounds = Mainform.Bounds;
+
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = Mainform.Size;
+                ModalBackgorund.Location = Mainform.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(Mainform);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+                modalcontent.ShowDialog();
+                ModalBackgorund.Dispose();
+            }
+        }
+
+
+
+
+
+
+
+
+
+
 
         //Events
+        private void EditusingEditToolstrip(object? sender, EventArgs e)
+        {
+            if (AllItemsDatagrid.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedrow = AllItemsDatagrid.SelectedRows[0];
+                _itemmodal = new ItemModal()
+                {
+                    Action = "EditItem",
+                    EditItem = new EditItem()
+                    {
+                        ItemID = Guid.Parse(selectedrow.Cells["IdCol"].Value.ToString()),
+                        ItemName = selectedrow.Cells["ItemNameCol"].Value.ToString(),
+                        ItemPrice = decimal.Parse(selectedrow.Cells["PriceCol"].Value.ToString())
+                    }
+                };
+                OpenModal();
+            }
+        }
         private void AllItemsDatagrid_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -310,26 +313,14 @@ namespace DazaBestApplication.Pages
         private async void bunifuTextBox1_TextChange(object sender, EventArgs e)
         {
 
-            Allitems = new List<Items>();
-            Allitems = await itemservices.SearchItems(new SearchItem()
+            _allitem = new List<Items>();
+            _allitem = await itemservices.SearchItems(new SearchItem()
             {
                 SearchValue = bunifuTextBox1.Text,
                 PageNumber = 1,
                 ItemperPage = 10
             });
-            AllItemsDatagrid.Rows.Clear();
-            foreach (var item in Allitems)
-            {
-                int rowindex = AllItemsDatagrid.Rows.Add();
-                DataGridViewRow row = AllItemsDatagrid.Rows[rowindex];
-
-                row.Cells["RowCol"].Value = item.Row;
-                row.Cells["IdCol"].Value = item.ItemID;
-                row.Cells["ItemCodeCol"].Value = item.ItemCode;
-                row.Cells["ItemNameCol"].Value = item.ItemName;
-                row.Cells["StocksCol"].Value = item.BalanceStocks;
-                row.Cells["PriceCol"].Value = item.ItemPrice;
-            }
+            await PopulatAllItemDataGrid(_allitem);
 
         } //Search
         private void PaginationNext_Click(object sender, EventArgs e)
