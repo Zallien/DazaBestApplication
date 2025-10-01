@@ -35,6 +35,25 @@ namespace SystemBackEnd.Services
 
             return _theitems;
         }
+        //Get Data By Pagination
+        public async Task<List<Items>> GetAllItemsByPagination(SearchItem item)
+        {
+            List<Items> _theitems = new();
+            try
+            {
+                _theitems = await _db.Items
+                                   .Where(x => x.IsActive == true)
+                                   .OrderByDescending(x => x.Row)
+                                   .Skip((item.PageNumber - 1) * item.ItemperPage)
+                                   .Take(item.ItemperPage)
+                                   .ToListAsync();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return _theitems;
+        }
         //Add Item
         public async Task<Boolean> AddItem(InsertItem item)
         {

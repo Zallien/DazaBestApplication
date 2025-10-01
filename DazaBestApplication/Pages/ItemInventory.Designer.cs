@@ -43,9 +43,9 @@
             label1 = new Label();
             MainContainer = new Panel();
             Pagination = new Panel();
-            label2 = new Label();
-            bunifuImageButton1 = new Bunifu.UI.WinForms.BunifuImageButton();
-            bunifuImageButton2 = new Bunifu.UI.WinForms.BunifuImageButton();
+            PaginationLabel = new Label();
+            PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
+            PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
             panel1 = new Panel();
             AddItemButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             bunifuButton22 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
@@ -56,7 +56,6 @@
             ItemCodeCol = new DataGridViewTextBoxColumn();
             ItemNameCol = new DataGridViewTextBoxColumn();
             StocksCol = new DataGridViewTextBoxColumn();
-            StatusCol = new DataGridViewTextBoxColumn();
             PriceCol = new DataGridViewTextBoxColumn();
             MenustripforItems = new ContextMenuStrip(components);
             edittoolstrip = new ToolStripMenuItem();
@@ -106,91 +105,93 @@
             // Pagination
             // 
             Pagination.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            Pagination.Controls.Add(label2);
-            Pagination.Controls.Add(bunifuImageButton1);
-            Pagination.Controls.Add(bunifuImageButton2);
+            Pagination.Controls.Add(PaginationLabel);
+            Pagination.Controls.Add(PaginationPREV);
+            Pagination.Controls.Add(PaginationNext);
             Pagination.Location = new Point(10, 559);
             Pagination.Name = "Pagination";
             Pagination.Size = new Size(145, 50);
             Pagination.TabIndex = 8;
             // 
-            // label2
+            // PaginationLabel
             // 
-            label2.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(52, 7);
-            label2.Name = "label2";
-            label2.Size = new Size(40, 40);
-            label2.TabIndex = 7;
-            label2.Text = "0";
-            label2.TextAlign = ContentAlignment.MiddleCenter;
+            PaginationLabel.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            PaginationLabel.Location = new Point(52, 7);
+            PaginationLabel.Name = "PaginationLabel";
+            PaginationLabel.Size = new Size(40, 40);
+            PaginationLabel.TabIndex = 7;
+            PaginationLabel.Text = "0";
+            PaginationLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // bunifuImageButton1
+            // PaginationPREV
             // 
-            bunifuImageButton1.ActiveImage = null;
-            bunifuImageButton1.AllowAnimations = true;
-            bunifuImageButton1.AllowBuffering = false;
-            bunifuImageButton1.AllowToggling = false;
-            bunifuImageButton1.AllowZooming = true;
-            bunifuImageButton1.AllowZoomingOnFocus = false;
-            bunifuImageButton1.BackColor = Color.Transparent;
-            bunifuImageButton1.DialogResult = DialogResult.None;
-            bunifuImageButton1.ErrorImage = (Image)resources.GetObject("bunifuImageButton1.ErrorImage");
-            bunifuImageButton1.FadeWhenInactive = false;
-            bunifuImageButton1.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            bunifuImageButton1.Image = Properties.Resources.prev;
-            bunifuImageButton1.ImageActive = null;
-            bunifuImageButton1.ImageLocation = null;
-            bunifuImageButton1.ImageMargin = 20;
-            bunifuImageButton1.ImageSize = new Size(20, 20);
-            bunifuImageButton1.ImageZoomSize = new Size(40, 40);
-            bunifuImageButton1.InitialImage = (Image)resources.GetObject("bunifuImageButton1.InitialImage");
-            bunifuImageButton1.Location = new Point(6, 7);
-            bunifuImageButton1.Name = "bunifuImageButton1";
-            bunifuImageButton1.Rotation = 0;
-            bunifuImageButton1.ShowActiveImage = true;
-            bunifuImageButton1.ShowCursorChanges = true;
-            bunifuImageButton1.ShowImageBorders = true;
-            bunifuImageButton1.ShowSizeMarkers = false;
-            bunifuImageButton1.Size = new Size(40, 40);
-            bunifuImageButton1.TabIndex = 5;
-            bunifuImageButton1.ToolTipText = "";
-            bunifuImageButton1.WaitOnLoad = false;
-            bunifuImageButton1.Zoom = 20;
-            bunifuImageButton1.ZoomSpeed = 10;
+            PaginationPREV.ActiveImage = null;
+            PaginationPREV.AllowAnimations = true;
+            PaginationPREV.AllowBuffering = false;
+            PaginationPREV.AllowToggling = false;
+            PaginationPREV.AllowZooming = true;
+            PaginationPREV.AllowZoomingOnFocus = false;
+            PaginationPREV.BackColor = Color.Transparent;
+            PaginationPREV.DialogResult = DialogResult.None;
+            PaginationPREV.ErrorImage = (Image)resources.GetObject("PaginationPREV.ErrorImage");
+            PaginationPREV.FadeWhenInactive = false;
+            PaginationPREV.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            PaginationPREV.Image = Properties.Resources.prev;
+            PaginationPREV.ImageActive = null;
+            PaginationPREV.ImageLocation = null;
+            PaginationPREV.ImageMargin = 20;
+            PaginationPREV.ImageSize = new Size(20, 20);
+            PaginationPREV.ImageZoomSize = new Size(40, 40);
+            PaginationPREV.InitialImage = (Image)resources.GetObject("PaginationPREV.InitialImage");
+            PaginationPREV.Location = new Point(6, 7);
+            PaginationPREV.Name = "PaginationPREV";
+            PaginationPREV.Rotation = 0;
+            PaginationPREV.ShowActiveImage = true;
+            PaginationPREV.ShowCursorChanges = true;
+            PaginationPREV.ShowImageBorders = true;
+            PaginationPREV.ShowSizeMarkers = false;
+            PaginationPREV.Size = new Size(40, 40);
+            PaginationPREV.TabIndex = 5;
+            PaginationPREV.ToolTipText = "";
+            PaginationPREV.WaitOnLoad = false;
+            PaginationPREV.Zoom = 20;
+            PaginationPREV.ZoomSpeed = 10;
+            PaginationPREV.Click += PaginationPREV_Click;
             // 
-            // bunifuImageButton2
+            // PaginationNext
             // 
-            bunifuImageButton2.ActiveImage = null;
-            bunifuImageButton2.AllowAnimations = true;
-            bunifuImageButton2.AllowBuffering = false;
-            bunifuImageButton2.AllowToggling = false;
-            bunifuImageButton2.AllowZooming = true;
-            bunifuImageButton2.AllowZoomingOnFocus = false;
-            bunifuImageButton2.BackColor = Color.Transparent;
-            bunifuImageButton2.DialogResult = DialogResult.None;
-            bunifuImageButton2.ErrorImage = (Image)resources.GetObject("bunifuImageButton2.ErrorImage");
-            bunifuImageButton2.FadeWhenInactive = false;
-            bunifuImageButton2.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            bunifuImageButton2.Image = Properties.Resources.right;
-            bunifuImageButton2.ImageActive = null;
-            bunifuImageButton2.ImageLocation = null;
-            bunifuImageButton2.ImageMargin = 20;
-            bunifuImageButton2.ImageSize = new Size(20, 20);
-            bunifuImageButton2.ImageZoomSize = new Size(40, 40);
-            bunifuImageButton2.InitialImage = (Image)resources.GetObject("bunifuImageButton2.InitialImage");
-            bunifuImageButton2.Location = new Point(98, 7);
-            bunifuImageButton2.Name = "bunifuImageButton2";
-            bunifuImageButton2.Rotation = 0;
-            bunifuImageButton2.ShowActiveImage = true;
-            bunifuImageButton2.ShowCursorChanges = true;
-            bunifuImageButton2.ShowImageBorders = true;
-            bunifuImageButton2.ShowSizeMarkers = false;
-            bunifuImageButton2.Size = new Size(40, 40);
-            bunifuImageButton2.TabIndex = 6;
-            bunifuImageButton2.ToolTipText = "";
-            bunifuImageButton2.WaitOnLoad = false;
-            bunifuImageButton2.Zoom = 20;
-            bunifuImageButton2.ZoomSpeed = 10;
+            PaginationNext.ActiveImage = null;
+            PaginationNext.AllowAnimations = true;
+            PaginationNext.AllowBuffering = false;
+            PaginationNext.AllowToggling = false;
+            PaginationNext.AllowZooming = true;
+            PaginationNext.AllowZoomingOnFocus = false;
+            PaginationNext.BackColor = Color.Transparent;
+            PaginationNext.DialogResult = DialogResult.None;
+            PaginationNext.ErrorImage = (Image)resources.GetObject("PaginationNext.ErrorImage");
+            PaginationNext.FadeWhenInactive = false;
+            PaginationNext.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            PaginationNext.Image = Properties.Resources.right;
+            PaginationNext.ImageActive = null;
+            PaginationNext.ImageLocation = null;
+            PaginationNext.ImageMargin = 20;
+            PaginationNext.ImageSize = new Size(20, 20);
+            PaginationNext.ImageZoomSize = new Size(40, 40);
+            PaginationNext.InitialImage = (Image)resources.GetObject("PaginationNext.InitialImage");
+            PaginationNext.Location = new Point(98, 7);
+            PaginationNext.Name = "PaginationNext";
+            PaginationNext.Rotation = 0;
+            PaginationNext.ShowActiveImage = true;
+            PaginationNext.ShowCursorChanges = true;
+            PaginationNext.ShowImageBorders = true;
+            PaginationNext.ShowSizeMarkers = false;
+            PaginationNext.Size = new Size(40, 40);
+            PaginationNext.TabIndex = 6;
+            PaginationNext.ToolTipText = "";
+            PaginationNext.WaitOnLoad = false;
+            PaginationNext.Zoom = 20;
+            PaginationNext.ZoomSpeed = 10;
+            PaginationNext.Click += PaginationNext_Click;
             // 
             // panel1
             // 
@@ -483,7 +484,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             AllItemsDatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             AllItemsDatagrid.ColumnHeadersHeight = 40;
-            AllItemsDatagrid.Columns.AddRange(new DataGridViewColumn[] { IdCol, RowCol, ItemCodeCol, ItemNameCol, StocksCol, StatusCol, PriceCol });
+            AllItemsDatagrid.Columns.AddRange(new DataGridViewColumn[] { IdCol, RowCol, ItemCodeCol, ItemNameCol, StocksCol, PriceCol });
             AllItemsDatagrid.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(255, 232, 191);
             AllItemsDatagrid.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             AllItemsDatagrid.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
@@ -565,15 +566,6 @@
             StocksCol.ReadOnly = true;
             StocksCol.Width = 81;
             // 
-            // StatusCol
-            // 
-            StatusCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            StatusCol.FillWeight = 13F;
-            StatusCol.HeaderText = "Status";
-            StatusCol.Name = "StatusCol";
-            StatusCol.ReadOnly = true;
-            StatusCol.Width = 78;
-            // 
             // PriceCol
             // 
             PriceCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -648,16 +640,15 @@
         private ToolStripMenuItem edittoolstrip;
         private ToolStripSeparator sep1;
         private ToolStripMenuItem deletetoolstrip;
+        private Label PaginationLabel;
+        private Bunifu.UI.WinForms.BunifuImageButton PaginationNext;
+        private Bunifu.UI.WinForms.BunifuImageButton PaginationPREV;
+        private Panel Pagination;
         private DataGridViewTextBoxColumn IdCol;
         private DataGridViewTextBoxColumn RowCol;
         private DataGridViewTextBoxColumn ItemCodeCol;
         private DataGridViewTextBoxColumn ItemNameCol;
         private DataGridViewTextBoxColumn StocksCol;
-        private DataGridViewTextBoxColumn StatusCol;
         private DataGridViewTextBoxColumn PriceCol;
-        private Label label2;
-        private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton2;
-        private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton1;
-        private Panel Pagination;
     }
 }

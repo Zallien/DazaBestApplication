@@ -24,6 +24,10 @@ namespace DazaBestApplication.Pages
         private List<Items> Allitems;
         private BunifuTransition bunifuTransition = new();
         private ItemModal itemmodal = new ItemModal();
+        private int PageNumber = 1;
+        private int ItemperPage = 12;
+        private int TotalItems = 0;
+        private int MaxPageNumber;
 
         //Constructor
         public ItemInventory(Form _MainForm)
@@ -77,9 +81,12 @@ namespace DazaBestApplication.Pages
         private async void ItemInventory_Load(object sender, EventArgs e)
         {
             await GetData();
+            await GetAllItemCount();
             ItemEventHandlers.ItemInventoryChanged += GetData;
             deletetoolstrip.Click += DeleteusingDelToolstrip; //Delete using Del Toolstrip
             edittoolstrip.Click += EditusingEditToolstrip; //Edit using Edit Toolstrip
+            PaginationLabel.Text = $"{PageNumber}";//Pagination Label
+            CheckPageNumber();
         }
 
         private void EditusingEditToolstrip(object? sender, EventArgs e)
@@ -121,11 +128,25 @@ namespace DazaBestApplication.Pages
             }
         }
 
+        //Get All item Count
+        private async Task GetAllItemCount()
+        {
+            TotalItems = await itemservices.GetItemsCount();
+            MaxPageNumber = TotalItems % ItemperPage != 0 ? (TotalItems / ItemperPage) + 1 
+                                                        : TotalItems / ItemperPage;
+
+        }
         //Get Data
         private async Task GetData()
         {
+            SearchItem Bypage = new SearchItem()
+            {
+                SearchValue = "",
+                PageNumber = PageNumber,
+                ItemperPage = ItemperPage
+            };
             Allitems = new List<Items>();
-            Allitems = await itemservices.GetAllItems();
+            Allitems = await itemservices.GetAllItemsByPagination(Bypage);
             AllItemsDatagrid.Rows.Clear();
             foreach (var item in Allitems)
             {
@@ -136,9 +157,53 @@ namespace DazaBestApplication.Pages
                 row.Cells["IdCol"].Value = item.ItemID;
                 row.Cells["ItemCodeCol"].Value = item.ItemCode;
                 row.Cells["ItemNameCol"].Value = item.ItemName;
-                row.Cells["StocksCol"].Value = item.BalanceStocks;
                 row.Cells["PriceCol"].Value = item.ItemPrice;
-                row.Cells["StatusCol"].Value = item.IsActive == true ? "Active" : "Not active";
+                row.Cells["StocksCol"].Value = item.BalanceStocks;
+            }
+        }
+        //Pagination Next
+        private async void NextButton_Click()
+        {
+
+            if (PageNumber < MaxPageNumber)
+            {
+                PageNumber++;
+                await CheckPageNumber();
+                await GetData();
+                PaginationLabel.Text = $"{PageNumber}";//Pagination Label
+            }
+        }
+        //Pagination Previous
+        private async void PreviousButton_Click()
+        {
+            if (PageNumber > 1)
+            {
+                PageNumber--;
+                await CheckPageNumber();
+                await GetData();
+                PaginationLabel.Text = $"{PageNumber}";//Pagination Label
+                
+            }
+        }
+        //Check Page Number
+        private async Task CheckPageNumber()
+        {
+            await Task.Delay(200);
+            if (PageNumber == 1)
+            {
+                PaginationPREV.Enabled = false;
+            }
+            else
+            {
+                PaginationPREV.Enabled = true;
+            }
+            if (PageNumber >= MaxPageNumber)
+            {
+                PaginationNext.Enabled = false;
+            }
+            else
+            {
+                PaginationNext.Enabled = true;
             }
         }
 
@@ -230,6 +295,11 @@ namespace DazaBestApplication.Pages
                     edittoolstrip.Visible = false;
                     sep1.Visible = false;
                 }
+                else
+                {
+                    edittoolstrip.Visible = true;
+                    sep1.Visible = true;
+                }
                 MenustripforItems.Show(Cursor.Position);
             }
         }
@@ -237,17 +307,16 @@ namespace DazaBestApplication.Pages
         {
             ShowAddItemModal();
         }
-
         private async void bunifuTextBox1_TextChange(object sender, EventArgs e)
         {
-            
+
             Allitems = new List<Items>();
             Allitems = await itemservices.SearchItems(new SearchItem()
-                        {
-                            SearchValue = bunifuTextBox1.Text,
-                            PageNumber = 1,
-                            ItemperPage = 10
-                        });
+            {
+                SearchValue = bunifuTextBox1.Text,
+                PageNumber = 1,
+                ItemperPage = 10
+            });
             AllItemsDatagrid.Rows.Clear();
             foreach (var item in Allitems)
             {
@@ -260,9 +329,16 @@ namespace DazaBestApplication.Pages
                 row.Cells["ItemNameCol"].Value = item.ItemName;
                 row.Cells["StocksCol"].Value = item.BalanceStocks;
                 row.Cells["PriceCol"].Value = item.ItemPrice;
-                row.Cells["StatusCol"].Value = item.IsActive == true ? "Active" : "Not active";
             }
 
+        } //Search
+        private void PaginationNext_Click(object sender, EventArgs e)
+        {
+            NextButton_Click();
+        }
+        private void PaginationPREV_Click(object sender, EventArgs e)
+        {
+            PreviousButton_Click();
         }
     }
 }
