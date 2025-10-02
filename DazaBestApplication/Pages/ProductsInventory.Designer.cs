@@ -572,6 +572,7 @@
             AddProductBTN.TextMarginLeft = 0;
             AddProductBTN.TextPadding = new Padding(0);
             AddProductBTN.UseDefaultRadiusAndThickness = true;
+            AddProductBTN.Click += AddProductBTN_Click;
             // 
             // ProductMenuStrip
             // 

@@ -9,7 +9,7 @@ namespace SystemBackEnd.ServiceModels
     public class InsertProduct
     {
         public string? ProductName { get; set; }
-        public decimal? ProductPrice { get; set; }
+        public decimal ProductPrice { get; set; }
         public DateTime? DateCreated { get; set; }
     }
 }

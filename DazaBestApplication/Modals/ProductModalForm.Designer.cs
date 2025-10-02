@@ -1,6 +1,6 @@
 ﻿namespace DazaBestApplication.Modals
 {
-    partial class ProductModal
+    partial class ProductModalForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductModal));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductModalForm));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -41,15 +41,13 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             panel1 = new Panel();
             CloseModal = new Bunifu.UI.WinForms.BunifuImageButton();
-            label1 = new Label();
+            Modaltitle = new Label();
             pictureBox1 = new PictureBox();
             bunifuButton1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             label2 = new Label();
-            bunifuTextBox1 = new Bunifu.UI.WinForms.BunifuTextBox();
-            bunifuTextBox2 = new Bunifu.UI.WinForms.BunifuTextBox();
+            ProductNametxt = new Bunifu.UI.WinForms.BunifuTextBox();
+            Productpricetxt = new Bunifu.UI.WinForms.BunifuTextBox();
             label3 = new Label();
-            label4 = new Label();
-            bunifuDropdown1 = new Bunifu.UI.WinForms.BunifuDropdown();
             panel2 = new Panel();
             ProductModalButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             panel1.SuspendLayout();
@@ -61,7 +59,7 @@
             // 
             panel1.BackColor = Color.FromArgb(251, 192, 45);
             panel1.Controls.Add(CloseModal);
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(Modaltitle);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -102,18 +100,19 @@
             CloseModal.WaitOnLoad = false;
             CloseModal.Zoom = 20;
             CloseModal.ZoomSpeed = 10;
+            CloseModal.Click += CloseModal_Click;
             // 
-            // label1
+            // Modaltitle
             // 
-            label1.BackColor = Color.Transparent;
-            label1.Dock = DockStyle.Left;
-            label1.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(0, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(154, 40);
-            label1.TabIndex = 0;
-            label1.Text = "Add Product";
-            label1.TextAlign = ContentAlignment.MiddleLeft;
+            Modaltitle.BackColor = Color.Transparent;
+            Modaltitle.Dock = DockStyle.Left;
+            Modaltitle.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Modaltitle.Location = new Point(0, 0);
+            Modaltitle.Name = "Modaltitle";
+            Modaltitle.Size = new Size(154, 40);
+            Modaltitle.TabIndex = 0;
+            Modaltitle.Text = "Add Product";
+            Modaltitle.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // pictureBox1
             // 
@@ -223,153 +222,153 @@
             label2.Text = "Product Name :";
             label2.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // bunifuTextBox1
+            // ProductNametxt
             // 
-            bunifuTextBox1.AcceptsReturn = false;
-            bunifuTextBox1.AcceptsTab = false;
-            bunifuTextBox1.AnimationSpeed = 200;
-            bunifuTextBox1.AutoCompleteMode = AutoCompleteMode.None;
-            bunifuTextBox1.AutoCompleteSource = AutoCompleteSource.None;
-            bunifuTextBox1.AutoSizeHeight = true;
-            bunifuTextBox1.BackColor = Color.Transparent;
-            bunifuTextBox1.BackgroundImage = (Image)resources.GetObject("bunifuTextBox1.BackgroundImage");
-            bunifuTextBox1.BorderColorActive = Color.DodgerBlue;
-            bunifuTextBox1.BorderColorDisabled = Color.FromArgb(204, 204, 204);
-            bunifuTextBox1.BorderColorHover = Color.FromArgb(105, 181, 255);
-            bunifuTextBox1.BorderColorIdle = Color.Silver;
-            bunifuTextBox1.BorderRadius = 1;
-            bunifuTextBox1.BorderThickness = 1;
-            bunifuTextBox1.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
-            bunifuTextBox1.CharacterCasing = CharacterCasing.Normal;
-            bunifuTextBox1.DefaultFont = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            bunifuTextBox1.DefaultText = "";
-            bunifuTextBox1.FillColor = Color.White;
-            bunifuTextBox1.HideSelection = true;
-            bunifuTextBox1.IconLeft = null;
-            bunifuTextBox1.IconLeftCursor = Cursors.IBeam;
-            bunifuTextBox1.IconPadding = 10;
-            bunifuTextBox1.IconRight = null;
-            bunifuTextBox1.IconRightCursor = Cursors.IBeam;
-            bunifuTextBox1.Location = new Point(146, 76);
-            bunifuTextBox1.MaxLength = 32767;
-            bunifuTextBox1.MinimumSize = new Size(1, 1);
-            bunifuTextBox1.Modified = false;
-            bunifuTextBox1.Multiline = false;
-            bunifuTextBox1.Name = "bunifuTextBox1";
+            ProductNametxt.AcceptsReturn = false;
+            ProductNametxt.AcceptsTab = false;
+            ProductNametxt.AnimationSpeed = 200;
+            ProductNametxt.AutoCompleteMode = AutoCompleteMode.None;
+            ProductNametxt.AutoCompleteSource = AutoCompleteSource.None;
+            ProductNametxt.AutoSizeHeight = true;
+            ProductNametxt.BackColor = Color.Transparent;
+            ProductNametxt.BackgroundImage = (Image)resources.GetObject("ProductNametxt.BackgroundImage");
+            ProductNametxt.BorderColorActive = Color.DodgerBlue;
+            ProductNametxt.BorderColorDisabled = Color.FromArgb(204, 204, 204);
+            ProductNametxt.BorderColorHover = Color.FromArgb(105, 181, 255);
+            ProductNametxt.BorderColorIdle = Color.Silver;
+            ProductNametxt.BorderRadius = 1;
+            ProductNametxt.BorderThickness = 1;
+            ProductNametxt.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
+            ProductNametxt.CharacterCasing = CharacterCasing.Normal;
+            ProductNametxt.DefaultFont = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ProductNametxt.DefaultText = "";
+            ProductNametxt.FillColor = Color.White;
+            ProductNametxt.HideSelection = true;
+            ProductNametxt.IconLeft = null;
+            ProductNametxt.IconLeftCursor = Cursors.IBeam;
+            ProductNametxt.IconPadding = 10;
+            ProductNametxt.IconRight = null;
+            ProductNametxt.IconRightCursor = Cursors.IBeam;
+            ProductNametxt.Location = new Point(146, 76);
+            ProductNametxt.MaxLength = 32767;
+            ProductNametxt.MinimumSize = new Size(1, 1);
+            ProductNametxt.Modified = false;
+            ProductNametxt.Multiline = false;
+            ProductNametxt.Name = "ProductNametxt";
             stateProperties1.BorderColor = Color.DodgerBlue;
             stateProperties1.FillColor = Color.Empty;
             stateProperties1.ForeColor = Color.Empty;
             stateProperties1.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox1.OnActiveState = stateProperties1;
+            ProductNametxt.OnActiveState = stateProperties1;
             stateProperties2.BorderColor = Color.FromArgb(204, 204, 204);
             stateProperties2.FillColor = Color.FromArgb(240, 240, 240);
             stateProperties2.ForeColor = Color.FromArgb(109, 109, 109);
             stateProperties2.PlaceholderForeColor = Color.DarkGray;
-            bunifuTextBox1.OnDisabledState = stateProperties2;
+            ProductNametxt.OnDisabledState = stateProperties2;
             stateProperties3.BorderColor = Color.FromArgb(105, 181, 255);
             stateProperties3.FillColor = Color.Empty;
             stateProperties3.ForeColor = Color.Empty;
             stateProperties3.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox1.OnHoverState = stateProperties3;
+            ProductNametxt.OnHoverState = stateProperties3;
             stateProperties4.BorderColor = Color.Silver;
             stateProperties4.FillColor = Color.White;
             stateProperties4.ForeColor = Color.Empty;
             stateProperties4.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox1.OnIdleState = stateProperties4;
-            bunifuTextBox1.Padding = new Padding(3);
-            bunifuTextBox1.PasswordChar = '\0';
-            bunifuTextBox1.PlaceholderForeColor = Color.Silver;
-            bunifuTextBox1.PlaceholderText = "Enter text";
-            bunifuTextBox1.ReadOnly = false;
-            bunifuTextBox1.ScrollBars = ScrollBars.None;
-            bunifuTextBox1.SelectedText = "";
-            bunifuTextBox1.SelectionLength = 0;
-            bunifuTextBox1.SelectionStart = 0;
-            bunifuTextBox1.ShortcutsEnabled = true;
-            bunifuTextBox1.Size = new Size(292, 32);
-            bunifuTextBox1.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            bunifuTextBox1.TabIndex = 5;
-            bunifuTextBox1.TextAlign = HorizontalAlignment.Left;
-            bunifuTextBox1.TextMarginBottom = 0;
-            bunifuTextBox1.TextMarginLeft = 3;
-            bunifuTextBox1.TextMarginTop = 1;
-            bunifuTextBox1.TextPlaceholder = "Enter text";
-            bunifuTextBox1.UseSystemPasswordChar = false;
-            bunifuTextBox1.WordWrap = true;
+            ProductNametxt.OnIdleState = stateProperties4;
+            ProductNametxt.Padding = new Padding(3);
+            ProductNametxt.PasswordChar = '\0';
+            ProductNametxt.PlaceholderForeColor = Color.Silver;
+            ProductNametxt.PlaceholderText = "Enter text";
+            ProductNametxt.ReadOnly = false;
+            ProductNametxt.ScrollBars = ScrollBars.None;
+            ProductNametxt.SelectedText = "";
+            ProductNametxt.SelectionLength = 0;
+            ProductNametxt.SelectionStart = 0;
+            ProductNametxt.ShortcutsEnabled = true;
+            ProductNametxt.Size = new Size(292, 40);
+            ProductNametxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            ProductNametxt.TabIndex = 5;
+            ProductNametxt.TextAlign = HorizontalAlignment.Left;
+            ProductNametxt.TextMarginBottom = 0;
+            ProductNametxt.TextMarginLeft = 3;
+            ProductNametxt.TextMarginTop = 1;
+            ProductNametxt.TextPlaceholder = "Enter text";
+            ProductNametxt.UseSystemPasswordChar = false;
+            ProductNametxt.WordWrap = true;
             // 
-            // bunifuTextBox2
+            // Productpricetxt
             // 
-            bunifuTextBox2.AcceptsReturn = false;
-            bunifuTextBox2.AcceptsTab = false;
-            bunifuTextBox2.AnimationSpeed = 200;
-            bunifuTextBox2.AutoCompleteMode = AutoCompleteMode.None;
-            bunifuTextBox2.AutoCompleteSource = AutoCompleteSource.None;
-            bunifuTextBox2.AutoSizeHeight = true;
-            bunifuTextBox2.BackColor = Color.Transparent;
-            bunifuTextBox2.BackgroundImage = (Image)resources.GetObject("bunifuTextBox2.BackgroundImage");
-            bunifuTextBox2.BorderColorActive = Color.DodgerBlue;
-            bunifuTextBox2.BorderColorDisabled = Color.FromArgb(204, 204, 204);
-            bunifuTextBox2.BorderColorHover = Color.FromArgb(105, 181, 255);
-            bunifuTextBox2.BorderColorIdle = Color.Silver;
-            bunifuTextBox2.BorderRadius = 1;
-            bunifuTextBox2.BorderThickness = 1;
-            bunifuTextBox2.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
-            bunifuTextBox2.CharacterCasing = CharacterCasing.Normal;
-            bunifuTextBox2.DefaultFont = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            bunifuTextBox2.DefaultText = "";
-            bunifuTextBox2.FillColor = Color.White;
-            bunifuTextBox2.HideSelection = true;
-            bunifuTextBox2.IconLeft = null;
-            bunifuTextBox2.IconLeftCursor = Cursors.IBeam;
-            bunifuTextBox2.IconPadding = 10;
-            bunifuTextBox2.IconRight = null;
-            bunifuTextBox2.IconRightCursor = Cursors.IBeam;
-            bunifuTextBox2.Location = new Point(146, 140);
-            bunifuTextBox2.MaxLength = 32767;
-            bunifuTextBox2.MinimumSize = new Size(1, 1);
-            bunifuTextBox2.Modified = false;
-            bunifuTextBox2.Multiline = false;
-            bunifuTextBox2.Name = "bunifuTextBox2";
+            Productpricetxt.AcceptsReturn = false;
+            Productpricetxt.AcceptsTab = false;
+            Productpricetxt.AnimationSpeed = 200;
+            Productpricetxt.AutoCompleteMode = AutoCompleteMode.None;
+            Productpricetxt.AutoCompleteSource = AutoCompleteSource.None;
+            Productpricetxt.AutoSizeHeight = true;
+            Productpricetxt.BackColor = Color.Transparent;
+            Productpricetxt.BackgroundImage = (Image)resources.GetObject("Productpricetxt.BackgroundImage");
+            Productpricetxt.BorderColorActive = Color.DodgerBlue;
+            Productpricetxt.BorderColorDisabled = Color.FromArgb(204, 204, 204);
+            Productpricetxt.BorderColorHover = Color.FromArgb(105, 181, 255);
+            Productpricetxt.BorderColorIdle = Color.Silver;
+            Productpricetxt.BorderRadius = 1;
+            Productpricetxt.BorderThickness = 1;
+            Productpricetxt.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
+            Productpricetxt.CharacterCasing = CharacterCasing.Normal;
+            Productpricetxt.DefaultFont = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Productpricetxt.DefaultText = "";
+            Productpricetxt.FillColor = Color.White;
+            Productpricetxt.HideSelection = true;
+            Productpricetxt.IconLeft = null;
+            Productpricetxt.IconLeftCursor = Cursors.IBeam;
+            Productpricetxt.IconPadding = 10;
+            Productpricetxt.IconRight = null;
+            Productpricetxt.IconRightCursor = Cursors.IBeam;
+            Productpricetxt.Location = new Point(146, 140);
+            Productpricetxt.MaxLength = 32767;
+            Productpricetxt.MinimumSize = new Size(1, 1);
+            Productpricetxt.Modified = false;
+            Productpricetxt.Multiline = false;
+            Productpricetxt.Name = "Productpricetxt";
             stateProperties5.BorderColor = Color.DodgerBlue;
             stateProperties5.FillColor = Color.Empty;
             stateProperties5.ForeColor = Color.Empty;
             stateProperties5.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox2.OnActiveState = stateProperties5;
+            Productpricetxt.OnActiveState = stateProperties5;
             stateProperties6.BorderColor = Color.FromArgb(204, 204, 204);
             stateProperties6.FillColor = Color.FromArgb(240, 240, 240);
             stateProperties6.ForeColor = Color.FromArgb(109, 109, 109);
             stateProperties6.PlaceholderForeColor = Color.DarkGray;
-            bunifuTextBox2.OnDisabledState = stateProperties6;
+            Productpricetxt.OnDisabledState = stateProperties6;
             stateProperties7.BorderColor = Color.FromArgb(105, 181, 255);
             stateProperties7.FillColor = Color.Empty;
             stateProperties7.ForeColor = Color.Empty;
             stateProperties7.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox2.OnHoverState = stateProperties7;
+            Productpricetxt.OnHoverState = stateProperties7;
             stateProperties8.BorderColor = Color.Silver;
             stateProperties8.FillColor = Color.White;
             stateProperties8.ForeColor = Color.Empty;
             stateProperties8.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox2.OnIdleState = stateProperties8;
-            bunifuTextBox2.Padding = new Padding(3);
-            bunifuTextBox2.PasswordChar = '\0';
-            bunifuTextBox2.PlaceholderForeColor = Color.Silver;
-            bunifuTextBox2.PlaceholderText = "Enter text";
-            bunifuTextBox2.ReadOnly = false;
-            bunifuTextBox2.ScrollBars = ScrollBars.None;
-            bunifuTextBox2.SelectedText = "";
-            bunifuTextBox2.SelectionLength = 0;
-            bunifuTextBox2.SelectionStart = 0;
-            bunifuTextBox2.ShortcutsEnabled = true;
-            bunifuTextBox2.Size = new Size(136, 32);
-            bunifuTextBox2.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            bunifuTextBox2.TabIndex = 7;
-            bunifuTextBox2.TextAlign = HorizontalAlignment.Left;
-            bunifuTextBox2.TextMarginBottom = 0;
-            bunifuTextBox2.TextMarginLeft = 3;
-            bunifuTextBox2.TextMarginTop = 1;
-            bunifuTextBox2.TextPlaceholder = "Enter text";
-            bunifuTextBox2.UseSystemPasswordChar = false;
-            bunifuTextBox2.WordWrap = true;
+            Productpricetxt.OnIdleState = stateProperties8;
+            Productpricetxt.Padding = new Padding(3);
+            Productpricetxt.PasswordChar = '\0';
+            Productpricetxt.PlaceholderForeColor = Color.Silver;
+            Productpricetxt.PlaceholderText = "Enter text";
+            Productpricetxt.ReadOnly = false;
+            Productpricetxt.ScrollBars = ScrollBars.None;
+            Productpricetxt.SelectedText = "";
+            Productpricetxt.SelectionLength = 0;
+            Productpricetxt.SelectionStart = 0;
+            Productpricetxt.ShortcutsEnabled = true;
+            Productpricetxt.Size = new Size(217, 40);
+            Productpricetxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            Productpricetxt.TabIndex = 7;
+            Productpricetxt.TextAlign = HorizontalAlignment.Left;
+            Productpricetxt.TextMarginBottom = 0;
+            Productpricetxt.TextMarginLeft = 3;
+            Productpricetxt.TextMarginTop = 1;
+            Productpricetxt.TextPlaceholder = "Enter text";
+            Productpricetxt.UseSystemPasswordChar = false;
+            Productpricetxt.WordWrap = true;
             // 
             // label3
             // 
@@ -380,61 +379,6 @@
             label3.TabIndex = 6;
             label3.Text = "Product Price :";
             label3.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label4
-            // 
-            label4.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(294, 109);
-            label4.Name = "label4";
-            label4.Size = new Size(144, 30);
-            label4.TabIndex = 8;
-            label4.Text = "Product Status :";
-            label4.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // bunifuDropdown1
-            // 
-            bunifuDropdown1.BackColor = Color.Transparent;
-            bunifuDropdown1.BackgroundColor = Color.White;
-            bunifuDropdown1.BorderColor = Color.Silver;
-            bunifuDropdown1.BorderRadius = 1;
-            bunifuDropdown1.Color = Color.Silver;
-            bunifuDropdown1.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
-            bunifuDropdown1.DisabledBackColor = Color.FromArgb(240, 240, 240);
-            bunifuDropdown1.DisabledBorderColor = Color.FromArgb(204, 204, 204);
-            bunifuDropdown1.DisabledColor = Color.FromArgb(240, 240, 240);
-            bunifuDropdown1.DisabledForeColor = Color.FromArgb(109, 109, 109);
-            bunifuDropdown1.DisabledIndicatorColor = Color.DarkGray;
-            bunifuDropdown1.DrawMode = DrawMode.OwnerDrawFixed;
-            bunifuDropdown1.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
-            bunifuDropdown1.DropDownStyle = ComboBoxStyle.DropDownList;
-            bunifuDropdown1.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
-            bunifuDropdown1.FillDropDown = true;
-            bunifuDropdown1.FillIndicator = false;
-            bunifuDropdown1.FlatStyle = FlatStyle.Flat;
-            bunifuDropdown1.Font = new Font("Cambria", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            bunifuDropdown1.ForeColor = Color.Black;
-            bunifuDropdown1.FormattingEnabled = true;
-            bunifuDropdown1.Icon = null;
-            bunifuDropdown1.IndicatorAlignment = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
-            bunifuDropdown1.IndicatorColor = Color.DarkGray;
-            bunifuDropdown1.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
-            bunifuDropdown1.IndicatorThickness = 2;
-            bunifuDropdown1.IsDropdownOpened = false;
-            bunifuDropdown1.ItemBackColor = Color.White;
-            bunifuDropdown1.ItemBorderColor = Color.White;
-            bunifuDropdown1.ItemForeColor = Color.Black;
-            bunifuDropdown1.ItemHeight = 26;
-            bunifuDropdown1.ItemHighLightColor = Color.DodgerBlue;
-            bunifuDropdown1.ItemHighLightForeColor = Color.White;
-            bunifuDropdown1.Items.AddRange(new object[] { "Active", "Not Active" });
-            bunifuDropdown1.ItemTopMargin = 3;
-            bunifuDropdown1.Location = new Point(294, 140);
-            bunifuDropdown1.Name = "bunifuDropdown1";
-            bunifuDropdown1.Size = new Size(148, 32);
-            bunifuDropdown1.TabIndex = 9;
-            bunifuDropdown1.Text = null;
-            bunifuDropdown1.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
-            bunifuDropdown1.TextLeftMargin = 5;
             // 
             // panel2
             // 
@@ -536,18 +480,17 @@
             ProductModalButton.TextMarginLeft = 0;
             ProductModalButton.TextPadding = new Padding(0);
             ProductModalButton.UseDefaultRadiusAndThickness = true;
+            ProductModalButton.Click += ProductModalButton_Click;
             // 
-            // ProductModal
+            // ProductModalForm
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(450, 262);
             Controls.Add(panel2);
-            Controls.Add(bunifuDropdown1);
-            Controls.Add(label4);
-            Controls.Add(bunifuTextBox2);
+            Controls.Add(Productpricetxt);
             Controls.Add(label3);
-            Controls.Add(bunifuTextBox1);
+            Controls.Add(ProductNametxt);
             Controls.Add(label2);
             Controls.Add(bunifuButton1);
             Controls.Add(pictureBox1);
@@ -555,8 +498,9 @@
             Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
-            Name = "ProductModal";
+            Name = "ProductModalForm";
             Text = "ProductModal";
+            Load += ProductModalForm_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
@@ -567,15 +511,13 @@
 
         private Panel panel1;
         private Bunifu.UI.WinForms.BunifuImageButton CloseModal;
-        private Label label1;
+        private Label Modaltitle;
         private PictureBox pictureBox1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton1;
         private Label label2;
-        private Bunifu.UI.WinForms.BunifuTextBox bunifuTextBox1;
-        private Bunifu.UI.WinForms.BunifuTextBox bunifuTextBox2;
+        private Bunifu.UI.WinForms.BunifuTextBox ProductNametxt;
+        private Bunifu.UI.WinForms.BunifuTextBox Productpricetxt;
         private Label label3;
-        private Label label4;
-        private Bunifu.UI.WinForms.BunifuDropdown bunifuDropdown1;
         private Panel panel2;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ProductModalButton;
     }

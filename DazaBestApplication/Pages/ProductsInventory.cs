@@ -20,6 +20,7 @@ namespace DazaBestApplication.Pages
     public partial class ProductsInventory : Form
     {
         private List<Products> _theproducts = new();
+        private ProductModal _productmodal = new();
         private Form Mainform;
         private int _currentPage;
         private int _productsperpage = 12;
@@ -185,6 +186,31 @@ namespace DazaBestApplication.Pages
                 return result == DialogResult.Yes;
             }
         }
+        //Open Product Modal
+        private void OpenProductModal()
+        {
+            Form ModalBackgorund = new();
+            using (ProductModalForm modalcontent = new ProductModalForm(_productmodal))
+            {
+                var mainBounds = Mainform.Bounds;
+
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = Mainform.Size;
+                ModalBackgorund.Location = Mainform.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(Mainform);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+                modalcontent.ShowDialog();
+                ModalBackgorund.Dispose();
+            }
+        }
         //Delete Item Validation
         private async Task<Boolean> DeleteProduct(List<ProductID> AllSelectedID)
         {
@@ -207,7 +233,16 @@ namespace DazaBestApplication.Pages
                 return false;
             }
         }
-
+        //Add New Product
+        private void AddNewProduct()
+        {
+            _productmodal = new ProductModal()
+            {
+                Action = "AddProduct",
+                EditItem = null
+            };
+            OpenProductModal();
+        }
 
 
 
@@ -274,6 +309,9 @@ namespace DazaBestApplication.Pages
                 ProductMenuStrip.Show(Cursor.Position);
             }
         }
-
+        private void AddProductBTN_Click(object sender, EventArgs e)
+        {
+            AddNewProduct();
+        }
     }
 }

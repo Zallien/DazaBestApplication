@@ -96,5 +96,39 @@ namespace SystemBackEnd.Services
             }
             return _issuccess;
         }
+        //Add Product
+        public async Task<bool> AddProduct(InsertProduct product)
+        {
+            bool _issuccess = false;
+            try
+            {
+                Guid _theid = Guid.NewGuid();
+                Products _theaddedproduct = new Products()
+                {
+                    ProductID = _theid,
+                    ProductName = product.ProductName,
+                    IsActive = true,
+                    ProductCode = "",
+                    DateCreated = DateTime.Now,
+                    Quantity = 0,
+                    Price = product.ProductPrice,
+                    BalanceStocks = 0
+                };
+                await _db.Products.AddAsync(_theaddedproduct);
+                await _db.SaveChangesAsync();
+                //Generate Product Code
+                _theaddedproduct = new Products();
+                _theaddedproduct = await _db.Products.Where(x => x.ProductID == _theid).FirstOrDefaultAsync();
+                _theaddedproduct.ProductCode = "PR" + _theaddedproduct.Row.ToString("D4");
+                _db.Update(_theaddedproduct);
+                await _db.SaveChangesAsync();
+                _issuccess = true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return _issuccess;
+        }
     }
 }
