@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DecisionModal));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             panel1 = new Panel();
             TitleLabel = new Label();
             QuestionLabel = new Label();
@@ -91,11 +91,11 @@
             YesButton.ButtonTextMarginLeft = 0;
             YesButton.ColorContrastOnClick = 45;
             YesButton.ColorContrastOnHover = 45;
-            borderEdges3.BottomLeft = true;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = true;
-            borderEdges3.TopRight = true;
-            YesButton.CustomizableEdges = borderEdges3;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            YesButton.CustomizableEdges = borderEdges1;
             YesButton.DialogResult = DialogResult.None;
             YesButton.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             YesButton.DisabledFillColor = Color.Empty;
@@ -162,6 +162,7 @@
             YesButton.TextMarginLeft = 0;
             YesButton.TextPadding = new Padding(0);
             YesButton.UseDefaultRadiusAndThickness = true;
+            YesButton.Click += YesButton_Click;
             // 
             // NoButton
             // 
@@ -182,11 +183,11 @@
             NoButton.ButtonTextMarginLeft = 0;
             NoButton.ColorContrastOnClick = 45;
             NoButton.ColorContrastOnHover = 45;
-            borderEdges4.BottomLeft = true;
-            borderEdges4.BottomRight = true;
-            borderEdges4.TopLeft = true;
-            borderEdges4.TopRight = true;
-            NoButton.CustomizableEdges = borderEdges4;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            NoButton.CustomizableEdges = borderEdges2;
             NoButton.DialogResult = DialogResult.None;
             NoButton.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             NoButton.DisabledFillColor = Color.Empty;
@@ -253,6 +254,7 @@
             NoButton.TextMarginLeft = 0;
             NoButton.TextPadding = new Padding(0);
             NoButton.UseDefaultRadiusAndThickness = true;
+            NoButton.Click += NoButton_Click;
             // 
             // DecisionModal
             // 
@@ -267,6 +269,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "DecisionModal";
             Text = "DecisionModal";
+            Load += DecisionModal_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }

@@ -128,12 +128,15 @@ namespace SystemBackEnd.Services
             }
         }
         //Get Items Count
-        public async Task<int> GetItemsCount()
+        public async Task<int> GetItemsCount(SearchItem item)
         {
             int count = 0;
             try
             {
-                count = await _db.Items.Where(x => x.IsActive == true).CountAsync();
+                count = await _db.Items.Where(x => x.IsActive == true &&
+                                               (x.ItemName!.ToLower().Contains(item.SearchValue.ToLower()) ||
+                                                x.ItemCode!.ToLower().Contains(item.SearchValue.ToLower())))
+                                               .CountAsync();
             }
             catch (Exception e)
             {

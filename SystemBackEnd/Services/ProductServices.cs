@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SystemBackEnd.Models;
+using SystemBackEnd.ServiceModels;
 
 namespace SystemBackEnd.Services
 {
@@ -16,23 +19,23 @@ namespace SystemBackEnd.Services
         }
 
         //GetData By Pagination
-        //private async Task<List<Products>> GetAllProductsByPagination(int pageNumber, int itemPerPage)
-        //{
-        //    List<Products> _theproducts = new();
-        //    try
-        //    {
-        //        _theproducts = await _db.Products
-        //                           .Where(x => x.IsActive == true)
-        //                           .OrderByDescending(x => x.Row)
-        //                           .Skip((pageNumber - 1) * itemPerPage)
-        //                           .Take(itemPerPage)
-        //                           .ToListAsync();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //    return _theproducts;
-        //}
+        public async Task<List<Products>> GetAllProductsByPagination(SearchItem product)
+        {
+            List<Products> _theproducts = new();
+            try
+            {
+                _theproducts = await _db.Products
+                                   .Where(x => x.IsActive == true)
+                                   .OrderByDescending(x => x.Row)
+                                   .Skip((product.PageNumber - 1) * product.ItemperPage)
+                                   .Take(product.ItemperPage)
+                                   .ToListAsync();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return _theproducts;
+        }
     }
 }

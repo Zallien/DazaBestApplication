@@ -24,11 +24,13 @@ namespace DazaBestApplication.Pages
         private Form Mainform;
         private List<Items> _allitem;
         private ItemModal _itemmodal = new ItemModal();
+        private DecisionModel _decision = new DecisionModel();
         private int _pagenumber = 1;
         private int _itemperpage = 12;
         private int _totalitems = 0;
         private int _maxpagenumber;
-
+        private bool DesicionResult;
+        
         //Constructor
         public ItemInventory(Form _MainForm)
         {
@@ -37,13 +39,6 @@ namespace DazaBestApplication.Pages
             {
                 Mainform = _MainForm;
             }
-            typeof(DataGridView).InvokeMember(
-                "DoubleBuffered",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty,
-                null,
-                AllItemsDatagrid,
-                new object[] { true }
-            );
         }
 
         //ShowAddItemModal
@@ -73,15 +68,23 @@ namespace DazaBestApplication.Pages
             ItemEventHandlers.ItemInventoryChanged += GetData;
             deletetoolstrip.Click += DeleteusingDelToolstrip; //Delete using Del Toolstrip
             edittoolstrip.Click += EditusingEditToolstrip; //Edit using Edit Toolstrip
+            ItemEventHandlers.ChangeItemDisplayed += GetAllItemCount; //Update Item Count
         }
-
         //Get All item Count
         private async Task GetAllItemCount()
         {
-            _totalitems = await itemservices.GetItemsCount();
+            _pagenumber = 1;
+            PaginationLabel.Text = $"{_pagenumber}";//Pagination Label
+            SearchItem Bypage = new SearchItem()
+            {
+                SearchValue = SearchBoxTextBox.Text,
+                PageNumber = _pagenumber,
+                ItemperPage = _itemperpage
+            };
+            _totalitems = await itemservices.GetItemsCount(Bypage);
             _maxpagenumber = _totalitems % _itemperpage != 0 ? (_totalitems / _itemperpage) + 1 
                                                         : _totalitems / _itemperpage;
-
+            await CheckPageNumber();
         }
         //Get Data
         private async Task GetData()
@@ -142,62 +145,6 @@ namespace DazaBestApplication.Pages
                 PaginationNext.Enabled = true;
             }
         }
-        //Control + D Key For Deleting Item
-        private async void AllItemsDatagrid_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (AllItemsDatagrid.SelectedRows.Count > 0)
-            {
-                if (e.Control && e.KeyCode == Keys.D)
-                {
-                    if (MessageBox.Show("Do you want to delete the selected item(s)?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                    {
-                        List<ItemID> AllSelectedID = new List<ItemID>();
-                        foreach (DataGridViewRow row in AllItemsDatagrid.SelectedRows)
-                        {
-                            if (row.Cells["IdCol"].Value != null)
-                            {
-                                Guid id = Guid.Parse(row.Cells["IdCol"].Value.ToString());
-                                AllSelectedID.Add(new ItemID { ID = id });
-                            }
-                        }
-
-                        if (await DeleteItems(AllSelectedID))
-                        {
-                            MessageBox.Show("Deleted Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Deleted Unsuccessfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-            }
-        }
-        //Delete using Del Toolstrip
-        private async void DeleteusingDelToolstrip(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Do you want to delete the selected item(s)?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            {
-                List<ItemID> AllSelectedID = new List<ItemID>();
-                foreach (DataGridViewRow row in AllItemsDatagrid.SelectedRows)
-                {
-                    if (row.Cells["IdCol"].Value != null)
-                    {
-                        Guid id = Guid.Parse(row.Cells["IdCol"].Value.ToString());
-                        AllSelectedID.Add(new ItemID { ID = id });
-                    }
-                }
-
-                if (await DeleteItems(AllSelectedID))
-                {
-                    MessageBox.Show("Deleted Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Deleted Unsuccessfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
         //Delete Item Validation
         private async Task<Boolean> DeleteItems(List<ItemID> AllSelectedID)
         {
@@ -211,6 +158,7 @@ namespace DazaBestApplication.Pages
                     }
                 }
                 await ItemEventHandlers.InvokeItemChanged();
+                await ItemEventHandlers.InvokeChangeItemDisplayed();
                 return true;
             }
             catch (Exception e)
@@ -261,7 +209,35 @@ namespace DazaBestApplication.Pages
                 ModalBackgorund.Dispose();
             }
         }
+        //Open Decision Modal
+        private bool OpenDecisionModal()
+        {
+            Form ModalBackgorund = new();
+            using (DecisionModal modalcontent = new(_decision))
+            {
+                var mainBounds = Mainform.Bounds;
 
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = Mainform.Size;
+                ModalBackgorund.Location = Mainform.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(Mainform);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+
+                var result = modalcontent.ShowDialog();
+
+                ModalBackgorund.Dispose();
+
+                return result == DialogResult.Yes;
+            }
+        }
 
 
 
@@ -323,6 +299,7 @@ namespace DazaBestApplication.Pages
                 ItemperPage = 10
             });
             await PopulatAllItemDataGrid(_allitem);
+            await ItemEventHandlers.InvokeChangeItemDisplayed();
 
         } //Search
         private void PaginationNext_Click(object sender, EventArgs e)
@@ -333,5 +310,74 @@ namespace DazaBestApplication.Pages
         {
             PreviousButton_Click();
         }
+        private async void AllItemsDatagrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (AllItemsDatagrid.SelectedRows.Count > 0)
+            {
+                if (e.Control && e.KeyCode == Keys.D)
+                {
+                    _decision = new DecisionModel()
+                    {
+                        DecisionTitle = "Delete Item(s)",
+                        DecisionQuestion = "Are you sure you want to delete the selected item(s)?"
+                    };
+                    var decision = OpenDecisionModal();
+                    if (decision)
+                    {
+                        List<ItemID> AllSelectedID = new List<ItemID>();
+                        foreach (DataGridViewRow row in AllItemsDatagrid.SelectedRows)
+                        {
+                            if (row.Cells["IdCol"].Value != null)
+                            {
+                                Guid id = Guid.Parse(row.Cells["IdCol"].Value.ToString());
+                                AllSelectedID.Add(new ItemID { ID = id });
+                            }
+                        }
+
+                        if (await DeleteItems(AllSelectedID))
+                        {
+                            MessageBox.Show("Deleted Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Deleted Unsuccessfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+        }//Control + D Key For Deleting Item
+        private async void DeleteusingDelToolstrip(object sender, EventArgs e)
+        {
+
+            _decision = new DecisionModel()
+            {
+                DecisionTitle = "Delete Item(s)",
+                DecisionQuestion = "Are you sure you want to delete the selected item(s)?"
+            };
+
+            var decision = OpenDecisionModal();
+
+            if (decision)
+            {
+                List<ItemID> AllSelectedID = new List<ItemID>();
+                foreach (DataGridViewRow row in AllItemsDatagrid.SelectedRows)
+                {
+                    if (row.Cells["IdCol"].Value != null)
+                    {
+                        Guid id = Guid.Parse(row.Cells["IdCol"].Value.ToString());
+                        AllSelectedID.Add(new ItemID { ID = id });
+                    }
+                }
+
+                if (await DeleteItems(AllSelectedID))
+                {
+                    MessageBox.Show("Deleted Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Deleted Unsuccessfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }//Delete using Del Toolstrip
     }
 }

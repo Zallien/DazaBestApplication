@@ -10,12 +10,20 @@ namespace SystemBackEnd.EventHandlers
     {
         //Event that need to notify when item inventory changes Add, Update, Delete
         public static event Func<Task>? ItemInventoryChanged;
+        public static event Func<Task>? ChangeItemDisplayed;
 
         public static async Task InvokeItemChanged()
         {
             if (ItemInventoryChanged != null)
             {
                 await ItemInventoryChanged.Invoke();
+            }
+        }
+        public static async Task InvokeChangeItemDisplayed()
+        {
+            if (ChangeItemDisplayed != null)
+            {
+                await ChangeItemDisplayed.Invoke();
             }
         }
     }
