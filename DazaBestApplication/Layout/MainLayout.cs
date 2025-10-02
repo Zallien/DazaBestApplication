@@ -34,11 +34,29 @@ namespace DazaBestApplication
             MainContainer.Controls.Add(MainContainerForm);
             MainContainerForm.Show();
         }
+        private void ShowProductPage()
+        {
+            if (MainContainerForm != null)
+            {
+                MainContainer.Controls.Remove(MainContainerForm);
+                MainContainerForm = null;
+            }
+            MainContainerForm = new ProductsInventory(this);
+            MainContainerForm.TopLevel = false;
+            MainContainerForm.Dock = DockStyle.Fill;
+            MainContainer.Controls.Add(MainContainerForm);
+            MainContainerForm.Show();
+        }
 
         //Open Item Inventory Page
         private void NavButton_Item_Click(object sender, EventArgs e)
         {
             ShowItemPage();
+        }
+
+        private void NavButton_Products_Click(object sender, EventArgs e)
+        {
+            ShowProductPage();
         }
     }
 }

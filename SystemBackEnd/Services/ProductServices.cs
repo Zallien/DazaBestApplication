@@ -37,5 +37,23 @@ namespace SystemBackEnd.Services
             }
             return _theproducts;
         }
+        //Gwt Products Count
+        public async Task<int> GetProductsCount(SearchItem product)
+        {
+            int _thecount = 0;
+            try
+            {
+                _thecount = await _db.Products
+                                   .Where(x => x.IsActive == true &&
+                                               (x.ProductName!.ToLower().Contains(product.SearchValue.ToLower()) ||
+                                                x.ProductCode!.ToLower().Contains(product.SearchValue.ToLower())))
+                                               .CountAsync();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return _thecount;
+        }
     }
 }

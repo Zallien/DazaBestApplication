@@ -568,19 +568,20 @@
   </data>
   <data name="bunifuTextBox1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAASQAAAAeCAYAAACFb2OTAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACgSURBVHhe7dQxDQMxAARB80fll2EERgDkZclNEHiLGema
+        iVBORw0KGgoAAAANSUhEUgAAASQAAAAgCAYAAAC7HwVOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACmSURBVHhe7dQxDQMxAARB80fll2EERgDkZclNEHiLGema
         A7ADIGWt9Zlz/szMbmw36ORojH0A3LIbdHIkSMBdggRkCBKQIUhAhiABGYIEZAgSkCFIQIYgARmCBGQI
-        EpAhSECGIAEZggRkCBKQIUhAhiABGYIEZAgSkCFIQIYgARmCBGQIEpAhSECGIAEZf0F6nue7DzOzG9sN
-        OjkCKBjjBYkqlYX4PXKpAAAAAElFTkSuQmCC
+        EpAhSECGIAEZggRkCBKQIUhAhiABGYIEZAgSkCFIQIYgARmCBGQIEpAhSECGIAEZggRkCBKQ8Rek53m+
+        +zAzu7HdoJMjgIIxXoqumghqf0UXAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="bunifuTextBox2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAIgAAAAeCAYAAAD3hVYMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACDSURBVHhe7dLBCcMwAARB9V+VhcpIGSkgQWBDQsi6gRm4
+        iVBORw0KGgoAAAANSUhEUgAAAIgAAAAgCAYAAADJ9TDRAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACISURBVHhe7dLBCcMwAARB9V+VhcpIGSkgQWBDQsi6gRm4
         z713wK211uM4jpfZtd3EmccY+4BPu4kzD4HwSyAkgZAEQhIISSAkgZAEQhIISSAkgZAEQhIISSAkgZAE
-        QhIISSAkgZAEQhIISSAkgZAEQhII6SuQOedzH2bXdhNnHvDPGG9Iu3wwBHWYJgAAAABJRU5ErkJggg==
+        QhIISSAkgZAEQhIISSAkgZAEQhIISSAkgZC+AplzPvdhdm03ceYB/4zxBoHupUhED/PpAAAAAElFTkSu
+        QmCC
 </value>
   </data>
   <data name="ProductModalButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
