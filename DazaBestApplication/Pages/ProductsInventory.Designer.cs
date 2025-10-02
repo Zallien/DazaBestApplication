@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductsInventory));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
@@ -56,11 +57,16 @@
             bunifuButton22 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
             AddProductBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            ProductMenuStrip = new ContextMenuStrip(components);
+            Edittoolstrip = new ToolStripMenuItem();
+            sep1 = new ToolStripSeparator();
+            Deletetoolstrip = new ToolStripMenuItem();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             Pagination.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllProductDatagridView).BeginInit();
             panel1.SuspendLayout();
+            ProductMenuStrip.SuspendLayout();
             SuspendLayout();
             // 
             // TopPanel
@@ -253,6 +259,7 @@
             AllProductDatagridView.Size = new Size(890, 392);
             AllProductDatagridView.TabIndex = 1;
             AllProductDatagridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Orange;
+            AllProductDatagridView.MouseClick += AllItemsDatagrid_MouseClick;
             // 
             // IdCol
             // 
@@ -475,6 +482,7 @@
             SearchBox.TextPlaceholder = "Search";
             SearchBox.UseSystemPasswordChar = false;
             SearchBox.WordWrap = true;
+            SearchBox.TextChange += SearchBox_TextChange;
             // 
             // AddProductBTN
             // 
@@ -565,6 +573,29 @@
             AddProductBTN.TextPadding = new Padding(0);
             AddProductBTN.UseDefaultRadiusAndThickness = true;
             // 
+            // ProductMenuStrip
+            // 
+            ProductMenuStrip.Items.AddRange(new ToolStripItem[] { Edittoolstrip, sep1, Deletetoolstrip });
+            ProductMenuStrip.Name = "ProductMenuStrip";
+            ProductMenuStrip.Size = new Size(108, 54);
+            // 
+            // Edittoolstrip
+            // 
+            Edittoolstrip.Name = "Edittoolstrip";
+            Edittoolstrip.Size = new Size(107, 22);
+            Edittoolstrip.Text = "Edit";
+            // 
+            // sep1
+            // 
+            sep1.Name = "sep1";
+            sep1.Size = new Size(104, 6);
+            // 
+            // Deletetoolstrip
+            // 
+            Deletetoolstrip.Name = "Deletetoolstrip";
+            Deletetoolstrip.Size = new Size(107, 22);
+            Deletetoolstrip.Text = "Delete";
+            // 
             // ProductsInventory
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -581,6 +612,7 @@
             Pagination.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)AllProductDatagridView).EndInit();
             panel1.ResumeLayout(false);
+            ProductMenuStrip.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -604,5 +636,9 @@
         private DataGridViewTextBoxColumn ProductNameCol;
         private DataGridViewTextBoxColumn QuantityCol;
         private DataGridViewTextBoxColumn PriceCol;
+        private ContextMenuStrip ProductMenuStrip;
+        private ToolStripMenuItem Edittoolstrip;
+        private ToolStripSeparator sep1;
+        private ToolStripMenuItem Deletetoolstrip;
     }
 }

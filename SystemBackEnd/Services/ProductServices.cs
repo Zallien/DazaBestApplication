@@ -55,5 +55,46 @@ namespace SystemBackEnd.Services
             }
             return _thecount;
         }
+        //Search Products
+        public async Task<List<Products>> SearchProducts(SearchItem product)
+        {
+            List<Products> _theproducts = new();
+            try
+            {
+                _theproducts = await _db.Products
+                                   .Where(x => x.IsActive == true &&
+                                               (x.ProductName!.ToLower().Contains(product.SearchValue.ToLower()) ||
+                                                x.ProductCode!.ToLower().Contains(product.SearchValue.ToLower())))
+                                   .OrderByDescending(x => x.Row)
+                                   .Skip((product.PageNumber - 1) * product.ItemperPage)
+                                   .Take(product.ItemperPage)
+                                   .ToListAsync();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return _theproducts;
+        }
+        //Toggle Product Status
+        public async Task<bool> ToggleProductStatus(Guid _productid)
+        {
+            bool _issuccess = false;
+            try
+            {
+                var _theproduct = await _db.Products.Where(x => x.ProductID == _productid).FirstOrDefaultAsync();
+                if (_theproduct != null)
+                {
+                    _theproduct.IsActive = false;
+                    await _db.SaveChangesAsync();
+                    _issuccess = true;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return _issuccess;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+﻿using DazaBestApplication.Modals;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SystemBackEnd;
+using SystemBackEnd.EventHandlers;
 using SystemBackEnd.Models;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
@@ -23,6 +25,7 @@ namespace DazaBestApplication.Pages
         private int _productsperpage = 12;
         private int _totalproducts;
         private int _maxpages;
+        private DecisionModel _decision;
 
         //Constructor
         public ProductsInventory(Form _MainForm)
@@ -33,11 +36,19 @@ namespace DazaBestApplication.Pages
                 Mainform = _MainForm;
             }
         }
-
+        //Main Load
         private async void ProductsInventory_Load(object sender, EventArgs e)
         {
             await CheckAllProductsCount();
             await LoadProducts();
+            HookEvents();
+        }
+
+        //Hook Events
+        private void HookEvents()
+        {
+            ProductEventHandlers.ProductInventoryChanged += LoadProducts;
+            Deletetoolstrip.Click += DeleteusingDelToolstrip;
         }
         //Load Data
         private async Task LoadProducts()
@@ -74,7 +85,7 @@ namespace DazaBestApplication.Pages
         //Get All Products Count
         private async Task CheckAllProductsCount()
         {
-            _currentPage = 1;
+            _currentPage = 1;//Reset Current Page
             PaginationLabel.Text = $"{_currentPage}";//Pagination Label
             ProductServices _productservices = new ProductServices(new BackEndDBContext());
             _totalproducts = await _productservices.GetProductsCount(new SearchItem
@@ -109,6 +120,7 @@ namespace DazaBestApplication.Pages
                 await LoadProducts();
             }
         }
+        //Check Page Number
         private async Task CheckPageNumber()
         {
             await Task.Delay(200);
@@ -129,6 +141,74 @@ namespace DazaBestApplication.Pages
                 PaginationNext.Enabled = true;
             }
         }
+        //Search Box
+        private async Task SearchProduct()
+        {
+            _theproducts = new List<Products>();
+            ProductServices _productservices = new ProductServices(new BackEndDBContext());
+            _theproducts = await _productservices.SearchProducts(new SearchItem
+            {
+                SearchValue = SearchBox.Text.Trim(),
+                PageNumber = _currentPage,
+                ItemperPage = _productsperpage
+            });
+            PopulateProductsDatagrid(_theproducts);
+            await CheckAllProductsCount();
+            await CheckPageNumber();
+        }
+        //Open Decision Modal
+        private bool OpenDecisionModal()
+        {
+            Form ModalBackgorund = new();
+            using (DecisionModal modalcontent = new(_decision))
+            {
+                var mainBounds = Mainform.Bounds;
+
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = Mainform.Size;
+                ModalBackgorund.Location = Mainform.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(Mainform);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+
+                var result = modalcontent.ShowDialog();
+
+                ModalBackgorund.Dispose();
+
+                return result == DialogResult.Yes;
+            }
+        }
+        //Delete Item Validation
+        private async Task<Boolean> DeleteProduct(List<ProductID> AllSelectedID)
+        {
+            try
+            {
+                foreach (var item in AllSelectedID)
+                {
+                    ProductServices _productServices = new ProductServices(new BackEndDBContext());
+                    if (!await _productServices.ToggleProductStatus(item.ID))
+                    {
+                        return false;
+                    }
+                }
+                await ProductEventHandlers.InvokeProductChanged();
+                await CheckAllProductsCount();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+
 
 
         //Evemts
@@ -140,5 +220,60 @@ namespace DazaBestApplication.Pages
         {
             await NextButton_Click();
         }
+        private async void SearchBox_TextChange(object sender, EventArgs e)
+        {
+            await SearchProduct();
+        }
+        private async void DeleteusingDelToolstrip(object sender, EventArgs e)
+        {
+
+            _decision = new DecisionModel()
+            {
+                DecisionTitle = "Delete Item(s)",
+                DecisionQuestion = "Are you sure you want to delete the selected item(s)?"
+            };
+
+            var decision = OpenDecisionModal();
+
+            if (decision)
+            {
+                List<ProductID> AllSelectedID = new List<ProductID>();
+                foreach (DataGridViewRow row in AllProductDatagridView.SelectedRows)
+                {
+                    if (row.Cells["IdCol"].Value != null)
+                    {
+                        Guid id = Guid.Parse(row.Cells["IdCol"].Value.ToString());
+                        AllSelectedID.Add(new ProductID { ID = id });
+                    }
+                }
+
+                if (await DeleteProduct(AllSelectedID))
+                {
+                    MessageBox.Show("Deleted Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Deleted Unsuccessfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }//Delete using Del Toolstrip
+        private void AllItemsDatagrid_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (AllProductDatagridView.SelectedRows.Count > 1)
+                {
+                    Edittoolstrip.Visible = false;
+                    sep1.Visible = false;
+                }
+                else
+                {
+                    Edittoolstrip.Visible = true;
+                    sep1.Visible = true;
+                }
+                ProductMenuStrip.Show(Cursor.Position);
+            }
+        }
+
     }
 }
