@@ -75,11 +75,12 @@ namespace DazaBestApplication.Pages
                     int rowindex = AllProductDatagridView.Rows.Add();
                     DataGridViewRow row = AllProductDatagridView.Rows[rowindex];
                     row.Cells["IdCol"].Value = item.ProductID;
-                    row.Cells["RowCol"].Value = item.Row;
                     row.Cells["ProductCodeCol"].Value = item.ProductCode;
                     row.Cells["ProductNameCol"].Value = item.ProductName;
                     row.Cells["QuantityCol"].Value = item.Quantity;
                     row.Cells["PriceCol"].Value = item.Price;
+                    row.Cells["AvailabilityCol"].Value = item.IsAvailable == true ? Properties.Resources.check :
+                                        Properties.Resources.cancel;
                 }
             }
         }
@@ -243,6 +244,22 @@ namespace DazaBestApplication.Pages
             };
             OpenProductModal();
         }
+        //Aciton Button
+        private async Task ChangeAvailability(Guid _productid)
+        {
+            ProductServices _productservices = new ProductServices(new BackEndDBContext());
+            bool _isSuccess = await _productservices.ChangeAvailability(_productid);
+            if (_isSuccess)
+            {
+                await ProductEventHandlers.InvokeProductChanged();
+                MessageBox.Show("Changed Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Changed Not Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
 
 
@@ -312,6 +329,14 @@ namespace DazaBestApplication.Pages
         private void AddProductBTN_Click(object sender, EventArgs e)
         {
             AddNewProduct();
+        }
+
+        private async void AllProductDatagridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && AllProductDatagridView.Columns[e.ColumnIndex].Name == "ActionCol")
+            {
+                await ChangeAvailability(Guid.Parse(AllProductDatagridView.Rows[e.RowIndex].Cells["IdCol"].Value.ToString()));
+            }
         }
     }
 }

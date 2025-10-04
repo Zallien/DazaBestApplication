@@ -112,7 +112,7 @@ namespace SystemBackEnd.Services
                     DateCreated = DateTime.Now,
                     Quantity = 0,
                     Price = product.ProductPrice,
-                    BalanceStocks = 0
+                    IsAvailable = false
                 };
                 await _db.Products.AddAsync(_theaddedproduct);
                 await _db.SaveChangesAsync();
@@ -127,6 +127,27 @@ namespace SystemBackEnd.Services
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return _issuccess;
+        }
+        //Change Availability Status
+        public async Task<bool> ChangeAvailability(Guid _productid)
+        {
+            bool _issuccess = false;
+            try
+            {
+                Products _theproduct = await _db.Products.FirstOrDefaultAsync(x => x.ProductID == _productid);
+                if (_theproduct != null)
+                {
+                    _theproduct.IsAvailable = !_theproduct.IsAvailable;
+                    _db.Update(_theproduct);
+                    await _db.SaveChangesAsync();
+                    _issuccess = true;
+                }
+            }
+            catch (Exception e)
+            {
+                
             }
             return _issuccess;
         }

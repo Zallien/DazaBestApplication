@@ -32,13 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductsInventory));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             TopPanel = new Panel();
             label1 = new Label();
             MainContainer = new Panel();
@@ -47,12 +49,6 @@
             PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
             PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
             AllProductDatagridView = new Bunifu.UI.WinForms.BunifuDataGridView();
-            IdCol = new DataGridViewTextBoxColumn();
-            RowCol = new DataGridViewTextBoxColumn();
-            ProductCodeCol = new DataGridViewTextBoxColumn();
-            ProductNameCol = new DataGridViewTextBoxColumn();
-            QuantityCol = new DataGridViewTextBoxColumn();
-            PriceCol = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
             bunifuButton22 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -61,6 +57,13 @@
             Edittoolstrip = new ToolStripMenuItem();
             sep1 = new ToolStripSeparator();
             Deletetoolstrip = new ToolStripMenuItem();
+            IdCol = new DataGridViewTextBoxColumn();
+            AvailabilityCol = new DataGridViewImageColumn();
+            ProductCodeCol = new DataGridViewTextBoxColumn();
+            ProductNameCol = new DataGridViewTextBoxColumn();
+            QuantityCol = new DataGridViewTextBoxColumn();
+            PriceCol = new DataGridViewTextBoxColumn();
+            ActionCol = new DataGridViewButtonColumn();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             Pagination.SuspendLayout();
@@ -218,7 +221,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             AllProductDatagridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             AllProductDatagridView.ColumnHeadersHeight = 40;
-            AllProductDatagridView.Columns.AddRange(new DataGridViewColumn[] { IdCol, RowCol, ProductCodeCol, ProductNameCol, QuantityCol, PriceCol });
+            AllProductDatagridView.Columns.AddRange(new DataGridViewColumn[] { IdCol, AvailabilityCol, ProductCodeCol, ProductNameCol, QuantityCol, PriceCol, ActionCol });
             AllProductDatagridView.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(255, 232, 191);
             AllProductDatagridView.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             AllProductDatagridView.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
@@ -237,14 +240,14 @@
             AllProductDatagridView.CurrentTheme.RowsStyle.ForeColor = Color.Black;
             AllProductDatagridView.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(255, 201, 102);
             AllProductDatagridView.CurrentTheme.RowsStyle.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 237, 204);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 201, 102);
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            AllProductDatagridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(255, 237, 204);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(255, 201, 102);
+            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            AllProductDatagridView.DefaultCellStyle = dataGridViewCellStyle5;
             AllProductDatagridView.EnableHeadersVisualStyles = false;
             AllProductDatagridView.GridColor = Color.FromArgb(255, 226, 173);
             AllProductDatagridView.HeaderBackColor = Color.Orange;
@@ -259,54 +262,8 @@
             AllProductDatagridView.Size = new Size(890, 392);
             AllProductDatagridView.TabIndex = 1;
             AllProductDatagridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Orange;
+            AllProductDatagridView.CellContentClick += AllProductDatagridView_CellContentClick;
             AllProductDatagridView.MouseClick += AllItemsDatagrid_MouseClick;
-            // 
-            // IdCol
-            // 
-            IdCol.HeaderText = "ItemID";
-            IdCol.Name = "IdCol";
-            IdCol.ReadOnly = true;
-            IdCol.Visible = false;
-            // 
-            // RowCol
-            // 
-            RowCol.FillWeight = 15F;
-            RowCol.HeaderText = "No";
-            RowCol.Name = "RowCol";
-            RowCol.ReadOnly = true;
-            // 
-            // ProductCodeCol
-            // 
-            ProductCodeCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            ProductCodeCol.FillWeight = 25F;
-            ProductCodeCol.HeaderText = "Code";
-            ProductCodeCol.Name = "ProductCodeCol";
-            ProductCodeCol.ReadOnly = true;
-            ProductCodeCol.Width = 72;
-            // 
-            // ProductNameCol
-            // 
-            ProductNameCol.HeaderText = "Product Name";
-            ProductNameCol.Name = "ProductNameCol";
-            ProductNameCol.ReadOnly = true;
-            // 
-            // QuantityCol
-            // 
-            QuantityCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            QuantityCol.FillWeight = 20F;
-            QuantityCol.HeaderText = "Qty.";
-            QuantityCol.Name = "QuantityCol";
-            QuantityCol.ReadOnly = true;
-            QuantityCol.Width = 62;
-            // 
-            // PriceCol
-            // 
-            PriceCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            PriceCol.FillWeight = 13F;
-            PriceCol.HeaderText = "Price";
-            PriceCol.Name = "PriceCol";
-            PriceCol.ReadOnly = true;
-            PriceCol.Width = 69;
             // 
             // panel1
             // 
@@ -597,6 +554,76 @@
             Deletetoolstrip.Size = new Size(107, 22);
             Deletetoolstrip.Text = "Delete";
             // 
+            // IdCol
+            // 
+            IdCol.HeaderText = "ItemID";
+            IdCol.Name = "IdCol";
+            IdCol.ReadOnly = true;
+            IdCol.Visible = false;
+            // 
+            // AvailabilityCol
+            // 
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
+            dataGridViewCellStyle3.Padding = new Padding(3, 5, 3, 5);
+            AvailabilityCol.DefaultCellStyle = dataGridViewCellStyle3;
+            AvailabilityCol.FillWeight = 10F;
+            AvailabilityCol.HeaderText = "";
+            AvailabilityCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            AvailabilityCol.Name = "AvailabilityCol";
+            AvailabilityCol.ReadOnly = true;
+            AvailabilityCol.Resizable = DataGridViewTriState.True;
+            AvailabilityCol.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // ProductCodeCol
+            // 
+            ProductCodeCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ProductCodeCol.FillWeight = 25F;
+            ProductCodeCol.HeaderText = "Code";
+            ProductCodeCol.Name = "ProductCodeCol";
+            ProductCodeCol.ReadOnly = true;
+            ProductCodeCol.Width = 72;
+            // 
+            // ProductNameCol
+            // 
+            ProductNameCol.HeaderText = "Product Name";
+            ProductNameCol.Name = "ProductNameCol";
+            ProductNameCol.ReadOnly = true;
+            // 
+            // QuantityCol
+            // 
+            QuantityCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            QuantityCol.FillWeight = 20F;
+            QuantityCol.HeaderText = "Qty.";
+            QuantityCol.Name = "QuantityCol";
+            QuantityCol.ReadOnly = true;
+            QuantityCol.Width = 62;
+            // 
+            // PriceCol
+            // 
+            PriceCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            PriceCol.FillWeight = 13F;
+            PriceCol.HeaderText = "Price";
+            PriceCol.Name = "PriceCol";
+            PriceCol.ReadOnly = true;
+            PriceCol.Width = 69;
+            // 
+            // ActionCol
+            // 
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new Font("Cambria", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle4.Padding = new Padding(5, 2, 5, 2);
+            ActionCol.DefaultCellStyle = dataGridViewCellStyle4;
+            ActionCol.FillWeight = 18F;
+            ActionCol.FlatStyle = FlatStyle.Flat;
+            ActionCol.HeaderText = "Status";
+            ActionCol.Name = "ActionCol";
+            ActionCol.ReadOnly = true;
+            ActionCol.Text = "Change Status";
+            ActionCol.UseColumnTextForButtonValue = true;
+            // 
             // ProductsInventory
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -631,15 +658,16 @@
         private Label PaginationLabel;
         private Bunifu.UI.WinForms.BunifuImageButton PaginationPREV;
         private Bunifu.UI.WinForms.BunifuImageButton PaginationNext;
-        private DataGridViewTextBoxColumn IdCol;
-        private DataGridViewTextBoxColumn RowCol;
-        private DataGridViewTextBoxColumn ProductCodeCol;
-        private DataGridViewTextBoxColumn ProductNameCol;
-        private DataGridViewTextBoxColumn QuantityCol;
-        private DataGridViewTextBoxColumn PriceCol;
         private ContextMenuStrip ProductMenuStrip;
         private ToolStripMenuItem Edittoolstrip;
         private ToolStripSeparator sep1;
         private ToolStripMenuItem Deletetoolstrip;
+        private DataGridViewTextBoxColumn IdCol;
+        private DataGridViewImageColumn AvailabilityCol;
+        private DataGridViewTextBoxColumn ProductCodeCol;
+        private DataGridViewTextBoxColumn ProductNameCol;
+        private DataGridViewTextBoxColumn QuantityCol;
+        private DataGridViewTextBoxColumn PriceCol;
+        private DataGridViewButtonColumn ActionCol;
     }
 }
