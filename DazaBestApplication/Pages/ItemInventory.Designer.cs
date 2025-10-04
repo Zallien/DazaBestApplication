@@ -42,13 +42,13 @@
             TopPanel = new Panel();
             label1 = new Label();
             MainContainer = new Panel();
+            AddItemButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             Pagination = new Panel();
             PaginationLabel = new Label();
             PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
             PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
-            panel1 = new Panel();
-            AddItemButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             PrintItemBtn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            panel1 = new Panel();
             SearchBoxTextBox = new Bunifu.UI.WinForms.BunifuTextBox();
             AllItemsDatagrid = new Bunifu.UI.WinForms.BunifuDataGridView();
             IdCol = new DataGridViewTextBoxColumn();
@@ -64,7 +64,6 @@
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             Pagination.SuspendLayout();
-            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllItemsDatagrid).BeginInit();
             MenustripforItems.SuspendLayout();
             SuspendLayout();
@@ -92,15 +91,108 @@
             // 
             // MainContainer
             // 
+            MainContainer.Controls.Add(AddItemButton);
             MainContainer.Controls.Add(Pagination);
+            MainContainer.Controls.Add(PrintItemBtn);
             MainContainer.Controls.Add(panel1);
+            MainContainer.Controls.Add(SearchBoxTextBox);
             MainContainer.Controls.Add(AllItemsDatagrid);
-            MainContainer.Dock = DockStyle.Fill;
+            MainContainer.Dock = DockStyle.Bottom;
             MainContainer.Location = new Point(0, 50);
             MainContainer.Name = "MainContainer";
             MainContainer.Padding = new Padding(0, 10, 0, 0);
             MainContainer.Size = new Size(900, 612);
             MainContainer.TabIndex = 1;
+            // 
+            // AddItemButton
+            // 
+            AddItemButton.AllowAnimations = true;
+            AddItemButton.AllowMouseEffects = true;
+            AddItemButton.AllowToggling = false;
+            AddItemButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            AddItemButton.AnimationSpeed = 200;
+            AddItemButton.AutoGenerateColors = false;
+            AddItemButton.AutoRoundBorders = false;
+            AddItemButton.AutoSizeLeftIcon = true;
+            AddItemButton.AutoSizeRightIcon = true;
+            AddItemButton.BackColor = Color.Transparent;
+            AddItemButton.BackColor1 = Color.Maroon;
+            AddItemButton.BackgroundImage = (Image)resources.GetObject("AddItemButton.BackgroundImage");
+            AddItemButton.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            AddItemButton.ButtonText = "Add Item";
+            AddItemButton.ButtonTextMarginLeft = 0;
+            AddItemButton.ColorContrastOnClick = 45;
+            AddItemButton.ColorContrastOnHover = 45;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            AddItemButton.CustomizableEdges = borderEdges1;
+            AddItemButton.DialogResult = DialogResult.None;
+            AddItemButton.DisabledBorderColor = Color.FromArgb(191, 191, 191);
+            AddItemButton.DisabledFillColor = Color.FromArgb(204, 204, 204);
+            AddItemButton.DisabledForecolor = Color.FromArgb(168, 160, 168);
+            AddItemButton.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            AddItemButton.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddItemButton.ForeColor = Color.White;
+            AddItemButton.IconLeftAlign = ContentAlignment.MiddleLeft;
+            AddItemButton.IconLeftCursor = Cursors.Default;
+            AddItemButton.IconLeftPadding = new Padding(11, 3, 3, 3);
+            AddItemButton.IconMarginLeft = 11;
+            AddItemButton.IconPadding = 10;
+            AddItemButton.IconRightAlign = ContentAlignment.MiddleRight;
+            AddItemButton.IconRightCursor = Cursors.Default;
+            AddItemButton.IconRightPadding = new Padding(3, 3, 7, 3);
+            AddItemButton.IconSize = 25;
+            AddItemButton.IdleBorderColor = Color.Maroon;
+            AddItemButton.IdleBorderRadius = 1;
+            AddItemButton.IdleBorderThickness = 1;
+            AddItemButton.IdleFillColor = Color.Maroon;
+            AddItemButton.IdleIconLeftImage = null;
+            AddItemButton.IdleIconRightImage = null;
+            AddItemButton.IndicateFocus = false;
+            AddItemButton.Location = new Point(5, 110);
+            AddItemButton.Name = "AddItemButton";
+            AddItemButton.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
+            AddItemButton.OnDisabledState.BorderRadius = 1;
+            AddItemButton.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            AddItemButton.OnDisabledState.BorderThickness = 1;
+            AddItemButton.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
+            AddItemButton.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
+            AddItemButton.OnDisabledState.IconLeftImage = null;
+            AddItemButton.OnDisabledState.IconRightImage = null;
+            AddItemButton.onHoverState.BorderColor = Color.FromArgb(105, 181, 255);
+            AddItemButton.onHoverState.BorderRadius = 1;
+            AddItemButton.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            AddItemButton.onHoverState.BorderThickness = 1;
+            AddItemButton.onHoverState.FillColor = Color.FromArgb(255, 128, 0);
+            AddItemButton.onHoverState.ForeColor = Color.White;
+            AddItemButton.onHoverState.IconLeftImage = null;
+            AddItemButton.onHoverState.IconRightImage = null;
+            AddItemButton.OnIdleState.BorderColor = Color.Maroon;
+            AddItemButton.OnIdleState.BorderRadius = 1;
+            AddItemButton.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            AddItemButton.OnIdleState.BorderThickness = 1;
+            AddItemButton.OnIdleState.FillColor = Color.Maroon;
+            AddItemButton.OnIdleState.ForeColor = Color.White;
+            AddItemButton.OnIdleState.IconLeftImage = null;
+            AddItemButton.OnIdleState.IconRightImage = null;
+            AddItemButton.OnPressedState.BorderColor = Color.FromArgb(40, 96, 144);
+            AddItemButton.OnPressedState.BorderRadius = 1;
+            AddItemButton.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            AddItemButton.OnPressedState.BorderThickness = 1;
+            AddItemButton.OnPressedState.FillColor = Color.FromArgb(192, 64, 0);
+            AddItemButton.OnPressedState.ForeColor = Color.White;
+            AddItemButton.OnPressedState.IconLeftImage = null;
+            AddItemButton.OnPressedState.IconRightImage = null;
+            AddItemButton.Size = new Size(150, 40);
+            AddItemButton.TabIndex = 1;
+            AddItemButton.TextAlign = ContentAlignment.MiddleCenter;
+            AddItemButton.TextAlignment = HorizontalAlignment.Center;
+            AddItemButton.TextMarginLeft = 0;
+            AddItemButton.TextPadding = new Padding(0);
+            AddItemButton.UseDefaultRadiusAndThickness = true;
+            AddItemButton.Click += AddItemButton_Click;
             // 
             // Pagination
             // 
@@ -193,108 +285,6 @@
             PaginationNext.ZoomSpeed = 10;
             PaginationNext.Click += PaginationNext_Click;
             // 
-            // panel1
-            // 
-            panel1.Controls.Add(AddItemButton);
-            panel1.Controls.Add(PrintItemBtn);
-            panel1.Controls.Add(SearchBoxTextBox);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 10);
-            panel1.Name = "panel1";
-            panel1.Padding = new Padding(5, 0, 5, 0);
-            panel1.Size = new Size(900, 130);
-            panel1.TabIndex = 4;
-            // 
-            // AddItemButton
-            // 
-            AddItemButton.AllowAnimations = true;
-            AddItemButton.AllowMouseEffects = true;
-            AddItemButton.AllowToggling = false;
-            AddItemButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            AddItemButton.AnimationSpeed = 200;
-            AddItemButton.AutoGenerateColors = false;
-            AddItemButton.AutoRoundBorders = false;
-            AddItemButton.AutoSizeLeftIcon = true;
-            AddItemButton.AutoSizeRightIcon = true;
-            AddItemButton.BackColor = Color.Transparent;
-            AddItemButton.BackColor1 = Color.Maroon;
-            AddItemButton.BackgroundImage = (Image)resources.GetObject("AddItemButton.BackgroundImage");
-            AddItemButton.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            AddItemButton.ButtonText = "Add Item";
-            AddItemButton.ButtonTextMarginLeft = 0;
-            AddItemButton.ColorContrastOnClick = 45;
-            AddItemButton.ColorContrastOnHover = 45;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            AddItemButton.CustomizableEdges = borderEdges1;
-            AddItemButton.DialogResult = DialogResult.None;
-            AddItemButton.DisabledBorderColor = Color.FromArgb(191, 191, 191);
-            AddItemButton.DisabledFillColor = Color.FromArgb(204, 204, 204);
-            AddItemButton.DisabledForecolor = Color.FromArgb(168, 160, 168);
-            AddItemButton.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            AddItemButton.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            AddItemButton.ForeColor = Color.White;
-            AddItemButton.IconLeftAlign = ContentAlignment.MiddleLeft;
-            AddItemButton.IconLeftCursor = Cursors.Default;
-            AddItemButton.IconLeftPadding = new Padding(11, 3, 3, 3);
-            AddItemButton.IconMarginLeft = 11;
-            AddItemButton.IconPadding = 10;
-            AddItemButton.IconRightAlign = ContentAlignment.MiddleRight;
-            AddItemButton.IconRightCursor = Cursors.Default;
-            AddItemButton.IconRightPadding = new Padding(3, 3, 7, 3);
-            AddItemButton.IconSize = 25;
-            AddItemButton.IdleBorderColor = Color.Maroon;
-            AddItemButton.IdleBorderRadius = 1;
-            AddItemButton.IdleBorderThickness = 1;
-            AddItemButton.IdleFillColor = Color.Maroon;
-            AddItemButton.IdleIconLeftImage = null;
-            AddItemButton.IdleIconRightImage = null;
-            AddItemButton.IndicateFocus = false;
-            AddItemButton.Location = new Point(5, 87);
-            AddItemButton.Name = "AddItemButton";
-            AddItemButton.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
-            AddItemButton.OnDisabledState.BorderRadius = 1;
-            AddItemButton.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            AddItemButton.OnDisabledState.BorderThickness = 1;
-            AddItemButton.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
-            AddItemButton.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
-            AddItemButton.OnDisabledState.IconLeftImage = null;
-            AddItemButton.OnDisabledState.IconRightImage = null;
-            AddItemButton.onHoverState.BorderColor = Color.FromArgb(105, 181, 255);
-            AddItemButton.onHoverState.BorderRadius = 1;
-            AddItemButton.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            AddItemButton.onHoverState.BorderThickness = 1;
-            AddItemButton.onHoverState.FillColor = Color.FromArgb(255, 128, 0);
-            AddItemButton.onHoverState.ForeColor = Color.White;
-            AddItemButton.onHoverState.IconLeftImage = null;
-            AddItemButton.onHoverState.IconRightImage = null;
-            AddItemButton.OnIdleState.BorderColor = Color.Maroon;
-            AddItemButton.OnIdleState.BorderRadius = 1;
-            AddItemButton.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            AddItemButton.OnIdleState.BorderThickness = 1;
-            AddItemButton.OnIdleState.FillColor = Color.Maroon;
-            AddItemButton.OnIdleState.ForeColor = Color.White;
-            AddItemButton.OnIdleState.IconLeftImage = null;
-            AddItemButton.OnIdleState.IconRightImage = null;
-            AddItemButton.OnPressedState.BorderColor = Color.FromArgb(40, 96, 144);
-            AddItemButton.OnPressedState.BorderRadius = 1;
-            AddItemButton.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            AddItemButton.OnPressedState.BorderThickness = 1;
-            AddItemButton.OnPressedState.FillColor = Color.FromArgb(192, 64, 0);
-            AddItemButton.OnPressedState.ForeColor = Color.White;
-            AddItemButton.OnPressedState.IconLeftImage = null;
-            AddItemButton.OnPressedState.IconRightImage = null;
-            AddItemButton.Size = new Size(150, 40);
-            AddItemButton.TabIndex = 1;
-            AddItemButton.TextAlign = ContentAlignment.MiddleCenter;
-            AddItemButton.TextAlignment = HorizontalAlignment.Center;
-            AddItemButton.TextMarginLeft = 0;
-            AddItemButton.TextPadding = new Padding(0);
-            AddItemButton.UseDefaultRadiusAndThickness = true;
-            AddItemButton.Click += AddItemButton_Click;
-            // 
             // PrintItemBtn
             // 
             PrintItemBtn.AllowAnimations = true;
@@ -342,7 +332,7 @@
             PrintItemBtn.IdleIconLeftImage = null;
             PrintItemBtn.IdleIconRightImage = null;
             PrintItemBtn.IndicateFocus = false;
-            PrintItemBtn.Location = new Point(459, 87);
+            PrintItemBtn.Location = new Point(459, 110);
             PrintItemBtn.Name = "PrintItemBtn";
             PrintItemBtn.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             PrintItemBtn.OnDisabledState.BorderRadius = 1;
@@ -384,6 +374,15 @@
             PrintItemBtn.TextPadding = new Padding(0);
             PrintItemBtn.UseDefaultRadiusAndThickness = true;
             // 
+            // panel1
+            // 
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 10);
+            panel1.Name = "panel1";
+            panel1.Padding = new Padding(5, 0, 5, 0);
+            panel1.Size = new Size(900, 54);
+            panel1.TabIndex = 4;
+            // 
             // SearchBoxTextBox
             // 
             SearchBoxTextBox.AcceptsReturn = false;
@@ -412,7 +411,7 @@
             SearchBoxTextBox.IconPadding = 10;
             SearchBoxTextBox.IconRight = null;
             SearchBoxTextBox.IconRightCursor = Cursors.IBeam;
-            SearchBoxTextBox.Location = new Point(615, 87);
+            SearchBoxTextBox.Location = new Point(615, 110);
             SearchBoxTextBox.MaxLength = 32767;
             SearchBoxTextBox.MinimumSize = new Size(1, 1);
             SearchBoxTextBox.Modified = false;
@@ -622,7 +621,6 @@
             TopPanel.ResumeLayout(false);
             MainContainer.ResumeLayout(false);
             Pagination.ResumeLayout(false);
-            panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)AllItemsDatagrid).EndInit();
             MenustripforItems.ResumeLayout(false);
             ResumeLayout(false);
@@ -633,10 +631,7 @@
         private Panel TopPanel;
         private Panel MainContainer;
         private Bunifu.UI.WinForms.BunifuDataGridView AllItemsDatagrid;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 AddItemButton;
         private Label label1;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 PrintItemBtn;
-        private Bunifu.UI.WinForms.BunifuTextBox SearchBoxTextBox;
         private Panel panel1;
         private ContextMenuStrip MenustripforItems;
         private ToolStripMenuItem edittoolstrip;
@@ -652,5 +647,8 @@
         private DataGridViewTextBoxColumn ItemNameCol;
         private DataGridViewTextBoxColumn StocksCol;
         private DataGridViewTextBoxColumn PriceCol;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 AddItemButton;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 PrintItemBtn;
+        private Bunifu.UI.WinForms.BunifuTextBox SearchBoxTextBox;
     }
 }
