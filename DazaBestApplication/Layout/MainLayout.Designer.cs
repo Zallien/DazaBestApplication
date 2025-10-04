@@ -88,6 +88,7 @@
             LogOut_btn.AllowAnimations = true;
             LogOut_btn.AllowMouseEffects = true;
             LogOut_btn.AllowToggling = false;
+            LogOut_btn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             LogOut_btn.AnimationSpeed = 200;
             LogOut_btn.AutoGenerateColors = false;
             LogOut_btn.AutoRoundBorders = false;
@@ -129,7 +130,7 @@
             LogOut_btn.IdleIconLeftImage = null;
             LogOut_btn.IdleIconRightImage = null;
             LogOut_btn.IndicateFocus = false;
-            LogOut_btn.Location = new Point(0, 588);
+            LogOut_btn.Location = new Point(0, 648);
             LogOut_btn.Name = "LogOut_btn";
             LogOut_btn.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             LogOut_btn.OnDisabledState.BorderRadius = 1;
