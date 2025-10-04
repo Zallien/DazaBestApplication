@@ -121,11 +121,10 @@
   <data name="NavButton_PurchaseItem.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAMgAAAAoCAYAAAC7HLUcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADzSURBVHhe7d3BSQVREAXRF5qhmZmhKcPHgcFSA7jnQG/u
-        vtZ9DvCvt3POu3PuvquJ2zV8Oufuu5r4EchHlOTc0l0N/BrIY4RB2UKOMChbyBEGZQs5wqBsIUcYlC3k
-        CIOyhRxhULaQIwzKFnKEQdlCjjAoW8gRBmULOcKgbCFHGJQt5AiDsoUcYVC2kCMMyhZyhEHZQo4wKFvI
-        EQZlCznCoGwhRxiULeQIg7KFHGFQtpAjDMoWcoRB2UKOMChbyBEGZQs5wqBsIUcYlC3kCIOyhRxhULaQ
-        IwzKFr5HD3Tc+v35QMc597pHIJ54Ove8xxNPIHwBtsaWXjH35nYAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACuSURBVHhe7d3RCQIxFAXRlGZpdmZpalgNBHUsYM+BCyH/
+        8/0G8N/luauZrc0mlvlxN7O12cTyDuT2epuddbOBn4Fsn3BCX1sQCBwEAkEgEAQCQSAQBAJBIBAEAkEg
+        EAQCQSAQBAJBIBAEAkEgEAQCQSAQBAJBIBAEAkEgEAQCQSAQBAJBIBAEAkEgEAQCQSAQBAJBIBAyEAd0
+        7OzLAzpmdmwLxBFPs33bEU/gwxgPtsaWXjN252AAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="LogOut_btn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

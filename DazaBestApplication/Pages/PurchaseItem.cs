@@ -12,7 +12,9 @@ namespace DazaBestApplication.Pages
 {
     public partial class PurchaseItem : Form
     {
-        public PurchaseItem()
+
+
+        public PurchaseItem(Form _mainform)
         {
             InitializeComponent();
         }

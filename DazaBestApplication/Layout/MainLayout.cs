@@ -62,6 +62,19 @@ namespace DazaBestApplication
             MainContainer.Controls.Add(MainContainerForm);
             MainContainerForm.Show();
         }
+        private void ShowPurchaseItemPage()
+        {
+            if (MainContainerForm != null)
+            {
+                MainContainer.Controls.Remove(MainContainerForm);
+                MainContainerForm = null;
+            }
+            MainContainerForm = new PurchaseItem(this);
+            MainContainerForm.TopLevel = false;
+            MainContainerForm.Dock = DockStyle.Fill;
+            MainContainer.Controls.Add(MainContainerForm);
+            MainContainerForm.Show();
+        }
 
         //Open Item Inventory Page
         private void NavButton_Item_Click(object sender, EventArgs e)
@@ -78,9 +91,13 @@ namespace DazaBestApplication
         }
         private void NavButton_Home_Click(object sender, EventArgs e)
         {
-            NavButton_Home.BackColor= System.Drawing.Color.Maroon;
-            NavButton_Home.ForeColor= System.Drawing.Color.White;
+            NavButton_Home.BackColor = System.Drawing.Color.Maroon;
+            NavButton_Home.ForeColor = System.Drawing.Color.White;
 
+        }
+        private void NavButton_PurchaseItem_Click(object sender, EventArgs e)
+        {
+            ShowPurchaseItemPage();
         }
     }
 }

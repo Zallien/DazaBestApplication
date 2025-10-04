@@ -157,6 +157,7 @@
             NavButton_PurchaseItem.TextMarginLeft = 0;
             NavButton_PurchaseItem.TextPadding = new Padding(0);
             NavButton_PurchaseItem.UseDefaultRadiusAndThickness = true;
+            NavButton_PurchaseItem.Click += NavButton_PurchaseItem_Click;
             // 
             // bunifuPictureBox1
             // 
