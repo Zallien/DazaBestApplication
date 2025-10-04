@@ -118,6 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="NavButton_PurchaseItem.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAMgAAAAoCAYAAAC7HLUcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADzSURBVHhe7d3BSQVREAXRF5qhmZmhKcPHgcFSA7jnQG/u
+        vtZ9DvCvt3POu3PuvquJ2zV8Oufuu5r4EchHlOTc0l0N/BrIY4RB2UKOMChbyBEGZQs5wqBsIUcYlC3k
+        CIOyhRxhULaQIwzKFnKEQdlCjjAoW8gRBmULOcKgbCFHGJQt5AiDsoUcYVC2kCMMyhZyhEHZQo4wKFvI
+        EQZlCznCoGwhRxiULeQIg7KFHGFQtpAjDMoWcoRB2UKOMChbyBEGZQs5wqBsIUcYlC3kCIOyhRxhULaQ
+        IwzKFr5HD3Tc+v35QMc597pHIJ54Ove8xxNPIHwBtsaWXjH35nYAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="LogOut_btn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAMgAAAAoCAYAAAC7HLUcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
