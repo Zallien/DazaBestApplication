@@ -58,5 +58,17 @@ namespace DazaBestApplication
         {
             ShowProductPage();
         }
+
+        private void LogOut_btn_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void NavButton_Home_Click(object sender, EventArgs e)
+        {
+            NavButton_Home.BackColor= System.Drawing.Color.Maroon;
+            NavButton_Home.ForeColor= System.Drawing.Color.White;
+
+        }
     }
 }
