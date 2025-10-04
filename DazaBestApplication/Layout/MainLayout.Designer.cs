@@ -632,7 +632,7 @@
             NavButton_Home.BackColor1 = Color.Transparent;
             NavButton_Home.BackgroundImage = (Image)resources.GetObject("NavButton_Home.BackgroundImage");
             NavButton_Home.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            NavButton_Home.ButtonText = "Home";
+            NavButton_Home.ButtonText = "Dashboard";
             NavButton_Home.ButtonTextMarginLeft = 0;
             NavButton_Home.ColorContrastOnClick = 45;
             NavButton_Home.ColorContrastOnHover = 45;
