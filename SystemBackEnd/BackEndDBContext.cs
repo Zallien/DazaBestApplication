@@ -19,10 +19,15 @@ namespace SystemBackEnd
             modelBuilder.Entity<Items>().ToTable("Items");
             modelBuilder.Entity<Products>().ToTable("Products");
             modelBuilder.Entity<IngredientsByProduct>().ToTable("IngredientsByProduct");
+            modelBuilder.Entity<PurchaseitemDetails>().ToTable("PurchaseItemDetails");
+            modelBuilder.Entity<PurchaseItemHeader>().ToTable("PurcahseItemHeader");
+
         }
 
         public DbSet<Items> Items { get; set; }
         public DbSet<Products> Products { get; set; }
         public DbSet<IngredientsByProduct> Ingredients { get; set; }
+        public DbSet<PurchaseItemHeader> PurcahseItemHeader { get; set; }
+        public DbSet<PurchaseitemDetails> PurchaseItemDetails { get; set; }
     }
 }
