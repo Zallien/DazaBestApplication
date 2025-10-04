@@ -13,12 +13,23 @@ namespace DazaBestApplication
         public MainPage()
         {
             InitializeComponent();
+            MaximizeSystem();
         }
 
         private void MainPage_Load(object sender, EventArgs e)
         {
 
         }
+        //Maximize the System AUTOMATICALLY
+        private void MaximizeSystem()
+        {
+            var screensize = Screen.PrimaryScreen.Bounds;
+            this.Size = screensize.Size;
+            this.Location = screensize.Location;
+        }
+
+
+
 
         //Routing Each Pages
         private void ShowItemPage()
@@ -53,17 +64,14 @@ namespace DazaBestApplication
         {
             ShowItemPage();
         }
-
         private void NavButton_Products_Click(object sender, EventArgs e)
         {
             ShowProductPage();
         }
-
         private void LogOut_btn_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void NavButton_Home_Click(object sender, EventArgs e)
         {
             NavButton_Home.BackColor= System.Drawing.Color.Maroon;
