@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SystemBackEnd;
 
@@ -10,9 +11,11 @@ using SystemBackEnd;
 namespace SystemBackEnd.Migrations
 {
     [DbContext(typeof(BackEndDBContext))]
-    partial class DbcontextModelSnapshot : ModelSnapshot
+    [Migration("20251004071410_FixProductDB")]
+    partial class FixProductDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.9");
@@ -123,68 +126,6 @@ namespace SystemBackEnd.Migrations
                     b.HasKey("Row");
 
                     b.ToTable("Products", (string)null);
-                });
-
-            modelBuilder.Entity("SystemBackEnd.Models.PurchaseItemHeader", b =>
-                {
-                    b.Property<int>("Row")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<Guid>("Addedby")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("Dateverified")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("Grandtotal")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("Isverified")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<Guid>("Purchaseheaderid")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Purchasenumber")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("Verifiedby")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Row");
-
-                    b.ToTable("PurcahseItemHeader", (string)null);
-                });
-
-            modelBuilder.Entity("SystemBackEnd.Models.PurchaseitemDetails", b =>
-                {
-                    b.Property<int>("Row")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("MyProperty")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("Priceperunit")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("Purchasedetailsid")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("Purchaseheaderid")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Row");
-
-                    b.ToTable("PurchaseItemDetails", (string)null);
                 });
 #pragma warning restore 612, 618
         }

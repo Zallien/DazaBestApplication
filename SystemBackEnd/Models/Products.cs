@@ -19,6 +19,6 @@ namespace SystemBackEnd.Models
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         public byte[]? ProductImage { get; set; }
-        public int BalanceStocks { get; set; }
+        public bool IsAvailable { get; set; }
     }
 }

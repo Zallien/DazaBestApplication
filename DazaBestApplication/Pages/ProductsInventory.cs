@@ -50,7 +50,6 @@ namespace DazaBestApplication.Pages
         {
             ProductEventHandlers.ProductInventoryChanged += LoadProducts;
             Deletetoolstrip.Click += DeleteusingDelToolstrip;
-            Edittoolstrip.Click += EditusingEdittoolstrip;
         }
         //Load Data
         private async Task LoadProducts()
@@ -76,11 +75,12 @@ namespace DazaBestApplication.Pages
                     int rowindex = AllProductDatagridView.Rows.Add();
                     DataGridViewRow row = AllProductDatagridView.Rows[rowindex];
                     row.Cells["IdCol"].Value = item.ProductID;
-                    row.Cells["RowCol"].Value = item.Row;
                     row.Cells["ProductCodeCol"].Value = item.ProductCode;
                     row.Cells["ProductNameCol"].Value = item.ProductName;
                     row.Cells["QuantityCol"].Value = item.Quantity;
                     row.Cells["PriceCol"].Value = item.Price;
+                    row.Cells["AvailabilityCol"].Value = item.IsAvailable == true ? Properties.Resources.check :
+                                        Properties.Resources.cancel;
                 }
             }
         }
@@ -244,6 +244,22 @@ namespace DazaBestApplication.Pages
             };
             OpenProductModal();
         }
+        //Aciton Button
+        private async Task ChangeAvailability(Guid _productid)
+        {
+            ProductServices _productservices = new ProductServices(new BackEndDBContext());
+            bool _isSuccess = await _productservices.ChangeAvailability(_productid);
+            if (_isSuccess)
+            {
+                await ProductEventHandlers.InvokeProductChanged();
+                MessageBox.Show("Changed Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Changed Not Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
 
 
@@ -314,27 +330,12 @@ namespace DazaBestApplication.Pages
         {
             AddNewProduct();
         }
-        private async void EditusingEdittoolstrip(object sender, EventArgs e)
+
+        private async void AllProductDatagridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (AllProductDatagridView.SelectedRows.Count == 1)
+            if (e.RowIndex >= 0 && AllProductDatagridView.Columns[e.ColumnIndex].Name == "ActionCol")
             {
-                Guid id = Guid.Parse(AllProductDatagridView.SelectedRows[0].Cells["IdCol"].Value.ToString());
-                Products _theitem = _theproducts.Where(x => x.ProductID == id).FirstOrDefault();
-                if (_theitem != null)
-                {
-                    _productmodal = new ProductModal()
-                    {
-                        Action = "EditProduct",
-                        EditItem = new EditProduct
-                        {
-                            ProductID = _theitem.ProductID,
-                            ProductName = _theitem.ProductName,
-                            ProductPrice = _theitem.Price,
-                            ProductImage = _theitem.ProductImage
-                        }
-                    };
-                    OpenProductModal();
-                }
+                await ChangeAvailability(Guid.Parse(AllProductDatagridView.Rows[e.RowIndex].Cells["IdCol"].Value.ToString()));
             }
         }
     }
