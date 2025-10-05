@@ -130,5 +130,30 @@ namespace SystemBackEnd.Services
             }
             return _issuccess;
         }
+        //Update Product
+        public async Task<bool> UpdateProduct(EditProduct product)
+        {
+            bool _issuccess = false;
+            try
+            {
+                var _theproduct = await _db.Products.Where(x => x.ProductID == product.ProductID).FirstOrDefaultAsync();
+                if (_theproduct != null)
+                {
+                    _theproduct.ProductName = product.ProductName;
+                    _theproduct.Price = product.ProductPrice;
+                    if (product.ProductImage != null)
+                    {
+                        _theproduct.ProductImage = product.ProductImage;
+                    }
+                    await _db.SaveChangesAsync();
+                    _issuccess = true;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return _issuccess;
+        }
     }
 }

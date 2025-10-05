@@ -50,6 +50,7 @@ namespace DazaBestApplication.Pages
         {
             ProductEventHandlers.ProductInventoryChanged += LoadProducts;
             Deletetoolstrip.Click += DeleteusingDelToolstrip;
+            Edittoolstrip.Click += EditusingEdittoolstrip;
         }
         //Load Data
         private async Task LoadProducts()
@@ -312,6 +313,29 @@ namespace DazaBestApplication.Pages
         private void AddProductBTN_Click(object sender, EventArgs e)
         {
             AddNewProduct();
+        }
+        private async void EditusingEdittoolstrip(object sender, EventArgs e)
+        {
+            if (AllProductDatagridView.SelectedRows.Count == 1)
+            {
+                Guid id = Guid.Parse(AllProductDatagridView.SelectedRows[0].Cells["IdCol"].Value.ToString());
+                Products _theitem = _theproducts.Where(x => x.ProductID == id).FirstOrDefault();
+                if (_theitem != null)
+                {
+                    _productmodal = new ProductModal()
+                    {
+                        Action = "EditProduct",
+                        EditItem = new EditProduct
+                        {
+                            ProductID = _theitem.ProductID,
+                            ProductName = _theitem.ProductName,
+                            ProductPrice = _theitem.Price,
+                            ProductImage = _theitem.ProductImage
+                        }
+                    };
+                    OpenProductModal();
+                }
+            }
         }
     }
 }

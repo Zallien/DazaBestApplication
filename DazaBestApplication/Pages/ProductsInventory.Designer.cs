@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductsInventory));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductsInventory));
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -65,7 +65,6 @@
             MainContainer.SuspendLayout();
             Pagination.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllProductDatagridView).BeginInit();
-            panel1.SuspendLayout();
             ProductMenuStrip.SuspendLayout();
             SuspendLayout();
             // 
@@ -92,8 +91,11 @@
             // 
             // MainContainer
             // 
+            MainContainer.Controls.Add(SearchBox);
+            MainContainer.Controls.Add(bunifuButton22);
             MainContainer.Controls.Add(Pagination);
             MainContainer.Controls.Add(AllProductDatagridView);
+            MainContainer.Controls.Add(AddProductBTN);
             MainContainer.Controls.Add(panel1);
             MainContainer.Dock = DockStyle.Fill;
             MainContainer.Location = new Point(0, 50);
@@ -310,13 +312,10 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(bunifuButton22);
-            panel1.Controls.Add(SearchBox);
-            panel1.Controls.Add(AddProductBTN);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 10);
             panel1.Name = "panel1";
-            panel1.Size = new Size(900, 127);
+            panel1.Size = new Size(900, 93);
             panel1.TabIndex = 0;
             // 
             // bunifuButton22
@@ -366,7 +365,7 @@
             bunifuButton22.IdleIconLeftImage = null;
             bunifuButton22.IdleIconRightImage = null;
             bunifuButton22.IndicateFocus = false;
-            bunifuButton22.Location = new Point(457, 84);
+            bunifuButton22.Location = new Point(463, 109);
             bunifuButton22.Name = "bunifuButton22";
             bunifuButton22.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton22.OnDisabledState.BorderRadius = 1;
@@ -436,7 +435,7 @@
             SearchBox.IconPadding = 10;
             SearchBox.IconRight = null;
             SearchBox.IconRightCursor = Cursors.IBeam;
-            SearchBox.Location = new Point(613, 84);
+            SearchBox.Location = new Point(615, 110);
             SearchBox.MaxLength = 32767;
             SearchBox.MinimumSize = new Size(1, 1);
             SearchBox.Modified = false;
@@ -531,7 +530,7 @@
             AddProductBTN.IdleIconLeftImage = null;
             AddProductBTN.IdleIconRightImage = null;
             AddProductBTN.IndicateFocus = false;
-            AddProductBTN.Location = new Point(5, 84);
+            AddProductBTN.Location = new Point(5, 109);
             AddProductBTN.Name = "AddProductBTN";
             AddProductBTN.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             AddProductBTN.OnDisabledState.BorderRadius = 1;
@@ -612,7 +611,6 @@
             MainContainer.ResumeLayout(false);
             Pagination.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)AllProductDatagridView).EndInit();
-            panel1.ResumeLayout(false);
             ProductMenuStrip.ResumeLayout(false);
             ResumeLayout(false);
         }

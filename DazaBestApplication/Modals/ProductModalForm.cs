@@ -51,6 +51,8 @@ namespace DazaBestApplication.Modals
             {
                 Modaltitle.Text = "Edit Product";
                 ProductModalButton.Text = "Save Changes";
+                ProductNametxt.Text = _productmodal.EditItem.ProductName;
+                Productpricetxt.Text = _productmodal.EditItem.ProductPrice.ToString();
             }
         }
         //Add Product
