@@ -20,6 +20,8 @@ namespace DazaBestApplication.Modals
 
         private ProductModal _productmodal;
         private ProductServices _productservices = new ProductServices(new BackEndDBContext());
+        private Guid ProducteditID;
+
 
         //Constructor
         public ProductModalForm(ProductModal product)
@@ -51,8 +53,9 @@ namespace DazaBestApplication.Modals
             {
                 Modaltitle.Text = "Edit Product";
                 ProductModalButton.Text = "Save Changes";
+                ProducteditID = _productmodal.EditItem.ProductID;
                 ProductNametxt.Text = _productmodal.EditItem.ProductName;
-                Productpricetxt.Text = _productmodal.EditItem.ProductPrice.ToString();
+                Productpricetxt.Text = _productmodal.EditItem.ProductPrice.ToString("#.##0");
             }
         }
         //Add Product

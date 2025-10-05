@@ -151,5 +151,28 @@ namespace SystemBackEnd.Services
             }
             return _issuccess;
         }
+        //Update Product
+        public async Task<bool> UpdateProduct(EditProduct _editedproduct)
+        {
+            bool _issuccess = false;
+            try
+            {
+                Products _theproduct = await _db.Products.FirstOrDefaultAsync(x => x.ProductID == _editedproduct.ProductID);
+                if (_theproduct != null)
+                {
+                    _theproduct.ProductName = _editedproduct.ProductName;
+                    _theproduct.Price = _editedproduct.ProductPrice;
+                    _db.Update(_theproduct);
+                    await _db.SaveChangesAsync();
+                    _issuccess = true;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return _issuccess;
+        }
+
     }
 }

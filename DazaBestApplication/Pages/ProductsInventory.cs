@@ -259,7 +259,24 @@ namespace DazaBestApplication.Pages
                 MessageBox.Show("Changed Not Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        //Edit Product
+        private void EditProduct()
+        {
+            EditProduct _editproduct = new EditProduct();
+            if (AllProductDatagridView.SelectedRows.Count == 1)
+            {
+                DataGridViewRow selectedRow = AllProductDatagridView.SelectedRows[0];
+                _editproduct.ProductPrice = decimal.Parse(selectedRow.Cells["PriceCol"].Value.ToString());
+                _editproduct.ProductName = selectedRow.Cells["ProductNameCol"].Value.ToString();
+                _editproduct.ProductID = Guid.Parse(selectedRow.Cells["IdCol"].Value.ToString());
+                _productmodal = new ProductModal()
+                {
+                    Action = "EditProduct",
+                    EditItem = _editproduct
+                };
+                OpenProductModal();
+            }
+        }
 
 
 
@@ -330,7 +347,6 @@ namespace DazaBestApplication.Pages
         {
             AddNewProduct();
         }
-
         private async void AllProductDatagridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && AllProductDatagridView.Columns[e.ColumnIndex].Name == "ActionCol")
@@ -338,5 +354,47 @@ namespace DazaBestApplication.Pages
                 await ChangeAvailability(Guid.Parse(AllProductDatagridView.Rows[e.RowIndex].Cells["IdCol"].Value.ToString()));
             }
         }
+        private async void RemoveButton_Click(object sender, EventArgs e)
+        {
+            _decision = new DecisionModel()
+            {
+                DecisionTitle = "Delete Item(s)",
+                DecisionQuestion = "Are you sure you want to delete the selected item(s)?"
+            };
+
+            var decision = OpenDecisionModal();
+
+            if (decision)
+            {
+                List<ProductID> AllSelectedID = new List<ProductID>();
+                foreach (DataGridViewRow row in AllProductDatagridView.SelectedRows)
+                {
+                    if (row.Cells["IdCol"].Value != null)
+                    {
+                        Guid id = Guid.Parse(row.Cells["IdCol"].Value.ToString());
+                        AllSelectedID.Add(new ProductID { ID = id });
+                    }
+                }
+
+                if (await DeleteProduct(AllSelectedID))
+                {
+                    MessageBox.Show("Deleted Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Deleted Unsuccessfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void Edittoolstrip_Click(object sender, EventArgs e)
+        {
+            EditProduct();
+        }
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            EditProduct();
+        }
+
+
     }
 }

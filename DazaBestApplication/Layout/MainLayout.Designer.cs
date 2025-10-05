@@ -64,6 +64,7 @@
             SideNav.Controls.Add(NavButton_Item);
             SideNav.Controls.Add(NavButton_Home);
             SideNav.Dock = DockStyle.Left;
+            SideNav.Font = new Font("Courier New", 12F, FontStyle.Bold);
             SideNav.Location = new Point(0, 0);
             SideNav.Name = "SideNav";
             SideNav.Padding = new Padding(0, 20, 0, 10);
@@ -98,7 +99,7 @@
             NavButton_PurchaseItem.DisabledFillColor = Color.FromArgb(204, 204, 204);
             NavButton_PurchaseItem.DisabledForecolor = Color.FromArgb(168, 160, 168);
             NavButton_PurchaseItem.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            NavButton_PurchaseItem.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NavButton_PurchaseItem.Font = new Font("Courier New", 12F, FontStyle.Bold);
             NavButton_PurchaseItem.ForeColor = Color.Black;
             NavButton_PurchaseItem.IconLeftAlign = ContentAlignment.MiddleLeft;
             NavButton_PurchaseItem.IconLeftCursor = Cursors.Default;
@@ -204,7 +205,7 @@
             LogOut_btn.DisabledForecolor = Color.FromArgb(168, 160, 168);
             LogOut_btn.Dock = DockStyle.Bottom;
             LogOut_btn.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            LogOut_btn.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LogOut_btn.Font = new Font("Courier New", 12F, FontStyle.Bold);
             LogOut_btn.ForeColor = Color.Black;
             LogOut_btn.IconLeftAlign = ContentAlignment.MiddleLeft;
             LogOut_btn.IconLeftCursor = Cursors.Default;
@@ -293,7 +294,7 @@
             bunifuButton21.DisabledFillColor = Color.FromArgb(204, 204, 204);
             bunifuButton21.DisabledForecolor = Color.FromArgb(168, 160, 168);
             bunifuButton21.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            bunifuButton21.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bunifuButton21.Font = new Font("Courier New", 12F, FontStyle.Bold);
             bunifuButton21.ForeColor = Color.Black;
             bunifuButton21.IconLeftAlign = ContentAlignment.MiddleLeft;
             bunifuButton21.IconLeftCursor = Cursors.Default;
@@ -381,7 +382,7 @@
             NavButton_Reports.DisabledFillColor = Color.FromArgb(204, 204, 204);
             NavButton_Reports.DisabledForecolor = Color.FromArgb(168, 160, 168);
             NavButton_Reports.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            NavButton_Reports.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NavButton_Reports.Font = new Font("Courier New", 12F, FontStyle.Bold);
             NavButton_Reports.ForeColor = Color.Black;
             NavButton_Reports.IconLeftAlign = ContentAlignment.MiddleLeft;
             NavButton_Reports.IconLeftCursor = Cursors.Default;
@@ -469,7 +470,7 @@
             NavButton_Products.DisabledFillColor = Color.FromArgb(204, 204, 204);
             NavButton_Products.DisabledForecolor = Color.FromArgb(168, 160, 168);
             NavButton_Products.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            NavButton_Products.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NavButton_Products.Font = new Font("Courier New", 12F, FontStyle.Bold);
             NavButton_Products.ForeColor = Color.Black;
             NavButton_Products.IconLeftAlign = ContentAlignment.MiddleLeft;
             NavButton_Products.IconLeftCursor = Cursors.NoMoveHoriz;
@@ -558,7 +559,7 @@
             NavButton_Item.DisabledFillColor = Color.FromArgb(204, 204, 204);
             NavButton_Item.DisabledForecolor = Color.FromArgb(168, 160, 168);
             NavButton_Item.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            NavButton_Item.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NavButton_Item.Font = new Font("Courier New", 12F, FontStyle.Bold);
             NavButton_Item.ForeColor = Color.Black;
             NavButton_Item.IconLeftAlign = ContentAlignment.MiddleLeft;
             NavButton_Item.IconLeftCursor = Cursors.Default;
@@ -647,7 +648,7 @@
             NavButton_Home.DisabledFillColor = Color.FromArgb(204, 204, 204);
             NavButton_Home.DisabledForecolor = Color.FromArgb(168, 160, 168);
             NavButton_Home.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            NavButton_Home.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NavButton_Home.Font = new Font("Courier New", 12F, FontStyle.Bold);
             NavButton_Home.ForeColor = Color.Black;
             NavButton_Home.IconLeftAlign = ContentAlignment.MiddleLeft;
             NavButton_Home.IconLeftCursor = Cursors.Default;
