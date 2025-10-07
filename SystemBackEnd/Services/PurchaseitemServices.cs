@@ -37,7 +37,65 @@ namespace SystemBackEnd.Services
             }
             return purchaseItemHeaders; 
         }
+        //Insert New Purchase Item Header and Details
+        public async Task<bool> AddPurchaseItem(InsertPurchaseItem newitem)
+        {
+            bool isadded = false;
+            try
+            {
+                Guid _PurchaseItemHeaderID = Guid.NewGuid();
 
+                //Insert Header
+                PurchaseItemHeader _newheader = new PurchaseItemHeader()
+                {
+                    Purchaseheaderid = _PurchaseItemHeaderID,
+                    DateCreated = DateTime.Now,
+                    Addedby = newitem.Addedby,
+                    Isverified = false,
+                    Grandtotal = 0
+                };
+                await _db.PurcahseItemHeader.AddAsync(_newheader);
+                await _db.SaveChangesAsync();
+
+                _newheader = new PurchaseItemHeader();
+                _newheader = await _db.PurcahseItemHeader.Where(x => x.Purchaseheaderid == _PurchaseItemHeaderID).FirstOrDefaultAsync();
+                _newheader.Purchasenumber = $"P-{DateTime.Now.ToString("yyyyMMddHHmmss")}-{_newheader.Row.ToString("D4")}";
+                _db.PurcahseItemHeader.Update(_newheader);
+                await _db.SaveChangesAsync();
+
+                //Insert Details
+                decimal _totalamount = 0;
+
+                foreach (var item in newitem.PurchaseItemDetails)
+                {
+                    PurchaseitemDetails _newdetails = new PurchaseitemDetails()
+                    {
+                        Purchasedetailsid = Guid.NewGuid(),
+                        Purchaseheaderid = _PurchaseItemHeaderID,
+                        ItemID = item.ItemID,
+                        Quantity = item.Quantity,
+                        Priceperunit = item.Unitprice
+                    };
+                    _totalamount += (item.Quantity * item.Unitprice);
+                    await _db.AddAsync(_newdetails);
+                    await _db.SaveChangesAsync();
+                }
+
+                //Update the Grand Total
+                _newheader = new PurchaseItemHeader();
+                _newheader = await _db.PurcahseItemHeader.Where(x => x.Purchaseheaderid == _PurchaseItemHeaderID).FirstOrDefaultAsync();
+                _newheader.Grandtotal = _totalamount;
+                _db.PurcahseItemHeader.Update(_newheader);
+                await _db.SaveChangesAsync();
+                isadded = true;
+            }
+            catch (Exception e)
+            {
+                
+            }
+            return isadded;
+
+        }
 
 
 

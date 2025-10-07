@@ -12,7 +12,7 @@ namespace SystemBackEnd.Models
         [Key]
         public int Row { get; set; }
         public Guid Purchaseheaderid { get; set; }
-        public string Purchasenumber { get; set; }
+        public string? Purchasenumber { get; set; }
         public DateTime DateCreated { get; set; }
         public Guid Addedby { get; set; }
         public DateTime Dateverified { get; set; }

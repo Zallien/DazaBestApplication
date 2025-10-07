@@ -998,6 +998,14 @@
         RK5CYII=
 </value>
   </data>
+  <data name="AddPurchaseItemButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAGQAAAAYCAYAAAAMAljuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABlSURBVGhD7dGhAQAgDMCwXbKX4b+dgR9wAJ6KiqjKRs6u
+        nHuLoOsOeQX94hAYh8A4BMYhMA6BcQiMQ2AcAuMQGIfAOATGITAOgXEIjENgHALjEBiHwDgExiEwDoGJ
+        HL1eQR+MXgeUlw2SehvcpgAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="IdCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

@@ -146,6 +146,42 @@ namespace DazaBestApplication.Modals
                 MessageBox.Show(ex.Message);
             }
         }
+        //Add Purchase Item
+        private async Task AddPurchaseItem()
+        {
+            List<InsertPurchaseItem_Details> _allpurchasedetails = new List<InsertPurchaseItem_Details>();
+            _allpurchasedetails = (from DataGridViewRow row in AllPickedItems.Rows
+                                   select new InsertPurchaseItem_Details()
+                                   {
+                                       ItemID = Guid.Parse(row.Cells["IdCol"].Value.ToString()),
+                                       Quantity = int.Parse(row.Cells["ItemQuantityCol"].Value.ToString()),
+                                       Unitprice = decimal.Parse(row.Cells["ItemPriceCol"].Value.ToString())
+                                   }).ToList();
+
+
+            InsertPurchaseItem _newpurchaseitem = new InsertPurchaseItem()
+            {
+                Addedby = Guid.NewGuid(), //Replace with actual user ID
+                PurchaseItemDetails = _allpurchasedetails
+            };
+
+            //Call the service to add the purchase item
+            PurchaseitemServices = new PurchaseitemServices(new BackEndDBContext());
+            bool isadded = await PurchaseitemServices.AddPurchaseItem(_newpurchaseitem);
+            if (isadded)
+            {
+                MessageBox.Show("Purchase Item Added Successfully!");
+                this.Close();
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Failed to Add Purchase Item.");
+            }
+
+
+        }
+
 
         //----Event Handlers----//
         private void bunifuButton1_Click(object sender, EventArgs e)
@@ -161,6 +197,7 @@ namespace DazaBestApplication.Modals
         {
             if (e.RowIndex >= 0 && AllItemDatagridview.Columns[e.ColumnIndex].Name == "ALLI_ActionCol")
             {
+                AllSelectedProducts.Add(Guid.Parse(AllItemDatagridview.Rows[e.RowIndex].Cells["ALLI_ItemIdCol"].Value.ToString()));
                 AddPickedItemtoList(Guid.Parse(AllItemDatagridview.Rows[e.RowIndex].Cells["ALLI_ItemIdCol"].Value.ToString()));
                 await PopulatAllItemDataGrid();
             }
@@ -169,13 +206,16 @@ namespace DazaBestApplication.Modals
         {
             CloseAllItemsPanel();
         }
-
         private async void AllPickedItems_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && AllPickedItems.Columns[e.ColumnIndex].Name == "ItemQuantityCol" && AllProductsContainer.Visible == false)
             {
                 await UpdateTheTotalAmountofSelectedRow(e.RowIndex, e);
             }
+        }
+        private async void AddPurchaseItemButton_Click(object sender, EventArgs e)
+        {
+            await AddPurchaseItem();
         }
     }
 }

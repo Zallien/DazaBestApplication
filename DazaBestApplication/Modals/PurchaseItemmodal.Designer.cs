@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PurchaseItemmodal));
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
@@ -46,6 +47,7 @@
             Modaltitle = new Label();
             label1 = new Label();
             footer = new Panel();
+            AddPurchaseItemButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             AllPickedItems = new Bunifu.UI.WinForms.BunifuDataGridView();
             IdCol = new DataGridViewTextBoxColumn();
             ItemNameCol = new DataGridViewTextBoxColumn();
@@ -167,21 +169,113 @@
             // label1
             // 
             label1.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 0);
+            label1.Location = new Point(3, 2);
             label1.Name = "label1";
-            label1.Size = new Size(137, 24);
+            label1.Size = new Size(146, 33);
             label1.TabIndex = 3;
             label1.Text = "Prepared By: ";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // footer
             // 
+            footer.Controls.Add(AddPurchaseItemButton);
             footer.Controls.Add(label1);
             footer.Dock = DockStyle.Bottom;
-            footer.Location = new Point(0, 320);
+            footer.Location = new Point(0, 315);
             footer.Name = "footer";
-            footer.Size = new Size(590, 30);
+            footer.Size = new Size(590, 35);
             footer.TabIndex = 4;
+            // 
+            // AddPurchaseItemButton
+            // 
+            AddPurchaseItemButton.AllowAnimations = true;
+            AddPurchaseItemButton.AllowMouseEffects = true;
+            AddPurchaseItemButton.AllowToggling = false;
+            AddPurchaseItemButton.AnimationSpeed = 200;
+            AddPurchaseItemButton.AutoGenerateColors = false;
+            AddPurchaseItemButton.AutoRoundBorders = false;
+            AddPurchaseItemButton.AutoSizeLeftIcon = true;
+            AddPurchaseItemButton.AutoSizeRightIcon = true;
+            AddPurchaseItemButton.BackColor = Color.Transparent;
+            AddPurchaseItemButton.BackColor1 = Color.FromArgb(51, 122, 183);
+            AddPurchaseItemButton.BackgroundImage = (Image)resources.GetObject("AddPurchaseItemButton.BackgroundImage");
+            AddPurchaseItemButton.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            AddPurchaseItemButton.ButtonText = "Add";
+            AddPurchaseItemButton.ButtonTextMarginLeft = 0;
+            AddPurchaseItemButton.ColorContrastOnClick = 45;
+            AddPurchaseItemButton.ColorContrastOnHover = 45;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            AddPurchaseItemButton.CustomizableEdges = borderEdges1;
+            AddPurchaseItemButton.DialogResult = DialogResult.None;
+            AddPurchaseItemButton.DisabledBorderColor = Color.FromArgb(191, 191, 191);
+            AddPurchaseItemButton.DisabledFillColor = Color.Empty;
+            AddPurchaseItemButton.DisabledForecolor = Color.Empty;
+            AddPurchaseItemButton.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            AddPurchaseItemButton.Font = new Font("Courier New", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddPurchaseItemButton.ForeColor = Color.White;
+            AddPurchaseItemButton.IconLeft = null;
+            AddPurchaseItemButton.IconLeftAlign = ContentAlignment.MiddleLeft;
+            AddPurchaseItemButton.IconLeftCursor = Cursors.Default;
+            AddPurchaseItemButton.IconLeftPadding = new Padding(11, 3, 3, 3);
+            AddPurchaseItemButton.IconMarginLeft = 11;
+            AddPurchaseItemButton.IconPadding = 10;
+            AddPurchaseItemButton.IconRight = null;
+            AddPurchaseItemButton.IconRightAlign = ContentAlignment.MiddleRight;
+            AddPurchaseItemButton.IconRightCursor = Cursors.Default;
+            AddPurchaseItemButton.IconRightPadding = new Padding(3, 3, 7, 3);
+            AddPurchaseItemButton.IconSize = 25;
+            AddPurchaseItemButton.IdleBorderColor = Color.Empty;
+            AddPurchaseItemButton.IdleBorderRadius = 0;
+            AddPurchaseItemButton.IdleBorderThickness = 0;
+            AddPurchaseItemButton.IdleFillColor = Color.Empty;
+            AddPurchaseItemButton.IdleIconLeftImage = null;
+            AddPurchaseItemButton.IdleIconRightImage = null;
+            AddPurchaseItemButton.IndicateFocus = false;
+            AddPurchaseItemButton.Location = new Point(480, 6);
+            AddPurchaseItemButton.Name = "AddPurchaseItemButton";
+            AddPurchaseItemButton.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
+            AddPurchaseItemButton.OnDisabledState.BorderRadius = 1;
+            AddPurchaseItemButton.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            AddPurchaseItemButton.OnDisabledState.BorderThickness = 1;
+            AddPurchaseItemButton.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
+            AddPurchaseItemButton.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
+            AddPurchaseItemButton.OnDisabledState.IconLeftImage = null;
+            AddPurchaseItemButton.OnDisabledState.IconRightImage = null;
+            AddPurchaseItemButton.onHoverState.BorderColor = Color.FromArgb(30, 150, 255);
+            AddPurchaseItemButton.onHoverState.BorderRadius = 1;
+            AddPurchaseItemButton.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            AddPurchaseItemButton.onHoverState.BorderThickness = 1;
+            AddPurchaseItemButton.onHoverState.FillColor = Color.FromArgb(30, 150, 255);
+            AddPurchaseItemButton.onHoverState.ForeColor = Color.White;
+            AddPurchaseItemButton.onHoverState.IconLeftImage = null;
+            AddPurchaseItemButton.onHoverState.IconRightImage = null;
+            AddPurchaseItemButton.OnIdleState.BorderColor = Color.DodgerBlue;
+            AddPurchaseItemButton.OnIdleState.BorderRadius = 1;
+            AddPurchaseItemButton.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            AddPurchaseItemButton.OnIdleState.BorderThickness = 1;
+            AddPurchaseItemButton.OnIdleState.FillColor = Color.DodgerBlue;
+            AddPurchaseItemButton.OnIdleState.ForeColor = Color.White;
+            AddPurchaseItemButton.OnIdleState.IconLeftImage = null;
+            AddPurchaseItemButton.OnIdleState.IconRightImage = null;
+            AddPurchaseItemButton.OnPressedState.BorderColor = Color.FromArgb(40, 96, 144);
+            AddPurchaseItemButton.OnPressedState.BorderRadius = 1;
+            AddPurchaseItemButton.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            AddPurchaseItemButton.OnPressedState.BorderThickness = 1;
+            AddPurchaseItemButton.OnPressedState.FillColor = Color.FromArgb(40, 96, 144);
+            AddPurchaseItemButton.OnPressedState.ForeColor = Color.White;
+            AddPurchaseItemButton.OnPressedState.IconLeftImage = null;
+            AddPurchaseItemButton.OnPressedState.IconRightImage = null;
+            AddPurchaseItemButton.Size = new Size(100, 24);
+            AddPurchaseItemButton.TabIndex = 7;
+            AddPurchaseItemButton.TextAlign = ContentAlignment.MiddleCenter;
+            AddPurchaseItemButton.TextAlignment = HorizontalAlignment.Center;
+            AddPurchaseItemButton.TextMarginLeft = 0;
+            AddPurchaseItemButton.TextPadding = new Padding(0);
+            AddPurchaseItemButton.UseDefaultRadiusAndThickness = true;
+            AddPurchaseItemButton.Click += AddPurchaseItemButton_Click;
             // 
             // AllPickedItems
             // 
@@ -238,7 +332,7 @@
             AllPickedItems.HeaderBackColor = Color.Orange;
             AllPickedItems.HeaderBgColor = Color.Empty;
             AllPickedItems.HeaderForeColor = Color.White;
-            AllPickedItems.Location = new Point(0, 144);
+            AllPickedItems.Location = new Point(0, 137);
             AllPickedItems.Name = "AllPickedItems";
             AllPickedItems.RowHeadersVisible = false;
             AllPickedItems.RowTemplate.Height = 40;
@@ -297,11 +391,11 @@
             bunifuButton1.ButtonTextMarginLeft = 0;
             bunifuButton1.ColorContrastOnClick = 45;
             bunifuButton1.ColorContrastOnHover = 45;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            bunifuButton1.CustomizableEdges = borderEdges1;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            bunifuButton1.CustomizableEdges = borderEdges2;
             bunifuButton1.DialogResult = DialogResult.None;
             bunifuButton1.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton1.DisabledFillColor = Color.Empty;
@@ -327,7 +421,7 @@
             bunifuButton1.IdleIconLeftImage = null;
             bunifuButton1.IdleIconRightImage = null;
             bunifuButton1.IndicateFocus = false;
-            bunifuButton1.Location = new Point(6, 108);
+            bunifuButton1.Location = new Point(6, 101);
             bunifuButton1.Name = "bunifuButton1";
             bunifuButton1.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton1.OnDisabledState.BorderRadius = 1;
@@ -390,7 +484,7 @@
             bunifuImageButton2.ImageSize = new Size(10, 10);
             bunifuImageButton2.ImageZoomSize = new Size(30, 30);
             bunifuImageButton2.InitialImage = (Image)resources.GetObject("bunifuImageButton2.InitialImage");
-            bunifuImageButton2.Location = new Point(553, 108);
+            bunifuImageButton2.Location = new Point(553, 101);
             bunifuImageButton2.Name = "bunifuImageButton2";
             bunifuImageButton2.Rotation = 0;
             bunifuImageButton2.ShowActiveImage = true;
@@ -448,11 +542,11 @@
             CloseAllPModal.ButtonTextMarginLeft = 0;
             CloseAllPModal.ColorContrastOnClick = 45;
             CloseAllPModal.ColorContrastOnHover = 45;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            CloseAllPModal.CustomizableEdges = borderEdges2;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            CloseAllPModal.CustomizableEdges = borderEdges3;
             CloseAllPModal.DialogResult = DialogResult.None;
             CloseAllPModal.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             CloseAllPModal.DisabledFillColor = Color.Empty;
@@ -685,5 +779,6 @@
         private DataGridViewTextBoxColumn ItemQuantityCol;
         private DataGridViewTextBoxColumn ItemPriceCol;
         private DataGridViewTextBoxColumn ItemTotalCol;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton AddPurchaseItemButton;
     }
 }

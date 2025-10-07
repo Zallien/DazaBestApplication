@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace SystemBackEnd.ServiceModels
 {
-    public class InsertPurchaseItemDetails
+    public class InsertPurchaseItem_Details
     {
         public Guid ItemID { get; set; }
         public int Quantity { get; set; }
         public decimal Unitprice { get; set; }
-        public decimal GrandTotal { get; set; }
     }
 }
