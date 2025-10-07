@@ -39,24 +39,25 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             MainContainer = new Panel();
-            TopPanel = new Panel();
-            label1 = new Label();
             PurchaseReportBtn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
             BuyProductBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             AllPurchaseDatagridView = new Bunifu.UI.WinForms.BunifuDataGridView();
+            IdCol = new DataGridViewTextBoxColumn();
+            PurcahseNumberCol = new DataGridViewTextBoxColumn();
+            PurcahseDateCol = new DataGridViewTextBoxColumn();
+            AddedByCol = new DataGridViewTextBoxColumn();
+            VerifiedByCol = new DataGridViewTextBoxColumn();
+            Pagination = new Panel();
             PaginationLabel = new Label();
             PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
             PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
-            Pagination = new Panel();
-            PI_No = new DataGridViewTextBoxColumn();
-            Date_Created = new DataGridViewTextBoxColumn();
-            AddedBy = new DataGridViewTextBoxColumn();
-            Verified_By = new DataGridViewTextBoxColumn();
+            TopPanel = new Panel();
+            label1 = new Label();
             MainContainer.SuspendLayout();
-            TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllPurchaseDatagridView).BeginInit();
             Pagination.SuspendLayout();
+            TopPanel.SuspendLayout();
             SuspendLayout();
             // 
             // MainContainer
@@ -72,27 +73,6 @@
             MainContainer.Padding = new Padding(0, 10, 0, 0);
             MainContainer.Size = new Size(900, 612);
             MainContainer.TabIndex = 4;
-            // 
-            // TopPanel
-            // 
-            TopPanel.Controls.Add(label1);
-            TopPanel.Dock = DockStyle.Top;
-            TopPanel.Location = new Point(0, 0);
-            TopPanel.Name = "TopPanel";
-            TopPanel.Padding = new Padding(10, 0, 10, 0);
-            TopPanel.Size = new Size(900, 50);
-            TopPanel.TabIndex = 3;
-            // 
-            // label1
-            // 
-            label1.Dock = DockStyle.Left;
-            label1.Font = new Font("Times New Roman", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(10, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(191, 50);
-            label1.TabIndex = 0;
-            label1.Text = "Purchase Item";
-            label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // PurchaseReportBtn
             // 
@@ -273,7 +253,7 @@
             BuyProductBTN.BackColor1 = Color.Maroon;
             BuyProductBTN.BackgroundImage = (Image)resources.GetObject("BuyProductBTN.BackgroundImage");
             BuyProductBTN.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            BuyProductBTN.ButtonText = "New ";
+            BuyProductBTN.ButtonText = "Purchase Item";
             BuyProductBTN.ButtonTextMarginLeft = 0;
             BuyProductBTN.ColorContrastOnClick = 45;
             BuyProductBTN.ColorContrastOnHover = 45;
@@ -346,6 +326,7 @@
             BuyProductBTN.TextMarginLeft = 0;
             BuyProductBTN.TextPadding = new Padding(0);
             BuyProductBTN.UseDefaultRadiusAndThickness = true;
+            BuyProductBTN.Click += BuyProductBTN_Click;
             // 
             // AllPurchaseDatagridView
             // 
@@ -372,7 +353,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             AllPurchaseDatagridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             AllPurchaseDatagridView.ColumnHeadersHeight = 40;
-            AllPurchaseDatagridView.Columns.AddRange(new DataGridViewColumn[] { PI_No, Date_Created, AddedBy, Verified_By });
+            AllPurchaseDatagridView.Columns.AddRange(new DataGridViewColumn[] { IdCol, PurcahseNumberCol, PurcahseDateCol, AddedByCol, VerifiedByCol });
             AllPurchaseDatagridView.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
             AllPurchaseDatagridView.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             AllPurchaseDatagridView.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
@@ -413,6 +394,52 @@
             AllPurchaseDatagridView.Size = new Size(890, 392);
             AllPurchaseDatagridView.TabIndex = 10;
             AllPurchaseDatagridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
+            // 
+            // IdCol
+            // 
+            IdCol.HeaderText = "PurchaseId";
+            IdCol.Name = "IdCol";
+            IdCol.ReadOnly = true;
+            IdCol.Visible = false;
+            // 
+            // PurcahseNumberCol
+            // 
+            PurcahseNumberCol.FillWeight = 40F;
+            PurcahseNumberCol.HeaderText = "Purchase No";
+            PurcahseNumberCol.Name = "PurcahseNumberCol";
+            PurcahseNumberCol.ReadOnly = true;
+            // 
+            // PurcahseDateCol
+            // 
+            PurcahseDateCol.FillWeight = 35F;
+            PurcahseDateCol.HeaderText = "Date";
+            PurcahseDateCol.Name = "PurcahseDateCol";
+            PurcahseDateCol.ReadOnly = true;
+            // 
+            // AddedByCol
+            // 
+            AddedByCol.FillWeight = 25F;
+            AddedByCol.HeaderText = "Added By";
+            AddedByCol.Name = "AddedByCol";
+            AddedByCol.ReadOnly = true;
+            // 
+            // VerifiedByCol
+            // 
+            VerifiedByCol.FillWeight = 25F;
+            VerifiedByCol.HeaderText = "Verified By";
+            VerifiedByCol.Name = "VerifiedByCol";
+            VerifiedByCol.ReadOnly = true;
+            // 
+            // Pagination
+            // 
+            Pagination.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            Pagination.Controls.Add(PaginationLabel);
+            Pagination.Controls.Add(PaginationPREV);
+            Pagination.Controls.Add(PaginationNext);
+            Pagination.Location = new Point(4, 557);
+            Pagination.Name = "Pagination";
+            Pagination.Size = new Size(145, 50);
+            Pagination.TabIndex = 14;
             // 
             // PaginationLabel
             // 
@@ -492,40 +519,26 @@
             PaginationNext.Zoom = 20;
             PaginationNext.ZoomSpeed = 10;
             // 
-            // Pagination
+            // TopPanel
             // 
-            Pagination.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            Pagination.Controls.Add(PaginationLabel);
-            Pagination.Controls.Add(PaginationPREV);
-            Pagination.Controls.Add(PaginationNext);
-            Pagination.Location = new Point(4, 557);
-            Pagination.Name = "Pagination";
-            Pagination.Size = new Size(145, 50);
-            Pagination.TabIndex = 14;
+            TopPanel.Controls.Add(label1);
+            TopPanel.Dock = DockStyle.Top;
+            TopPanel.Location = new Point(0, 0);
+            TopPanel.Name = "TopPanel";
+            TopPanel.Padding = new Padding(10, 0, 10, 0);
+            TopPanel.Size = new Size(900, 50);
+            TopPanel.TabIndex = 3;
             // 
-            // PI_No
+            // label1
             // 
-            PI_No.HeaderText = "Purchase No";
-            PI_No.Name = "PI_No";
-            PI_No.ReadOnly = true;
-            // 
-            // Date_Created
-            // 
-            Date_Created.HeaderText = "Date";
-            Date_Created.Name = "Date_Created";
-            Date_Created.ReadOnly = true;
-            // 
-            // AddedBy
-            // 
-            AddedBy.HeaderText = "Added By";
-            AddedBy.Name = "AddedBy";
-            AddedBy.ReadOnly = true;
-            // 
-            // Verified_By
-            // 
-            Verified_By.HeaderText = "Verified By";
-            Verified_By.Name = "Verified_By";
-            Verified_By.ReadOnly = true;
+            label1.Dock = DockStyle.Left;
+            label1.Font = new Font("Times New Roman", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(10, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(191, 50);
+            label1.TabIndex = 0;
+            label1.Text = "Purchase Item";
+            label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // PurchaseItem
             // 
@@ -538,9 +551,9 @@
             Name = "PurchaseItem";
             Text = "PurchaseItem";
             MainContainer.ResumeLayout(false);
-            TopPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)AllPurchaseDatagridView).EndInit();
             Pagination.ResumeLayout(false);
+            TopPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -557,9 +570,10 @@
         private Label PaginationLabel;
         private Bunifu.UI.WinForms.BunifuImageButton PaginationPREV;
         private Bunifu.UI.WinForms.BunifuImageButton PaginationNext;
-        private DataGridViewTextBoxColumn PI_No;
-        private DataGridViewTextBoxColumn Date_Created;
-        private DataGridViewTextBoxColumn AddedBy;
-        private DataGridViewTextBoxColumn Verified_By;
+        private DataGridViewTextBoxColumn IdCol;
+        private DataGridViewTextBoxColumn PurcahseNumberCol;
+        private DataGridViewTextBoxColumn PurcahseDateCol;
+        private DataGridViewTextBoxColumn AddedByCol;
+        private DataGridViewTextBoxColumn VerifiedByCol;
     }
 }

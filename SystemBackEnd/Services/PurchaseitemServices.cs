@@ -37,5 +37,60 @@ namespace SystemBackEnd.Services
             }
             return purchaseItemHeaders; 
         }
+
+
+
+
+
+
+
+        //Get All Available and Active Items 
+        public async Task<List<Items>> GetAllActiveProducts(GetAvailableItemswithpagination item)
+        {
+            List<Items> AllItems = new List<Items>();
+            try
+            {
+                AllItems = await _db.Items
+                                    .Where(x => x.IsActive == true 
+                                        && (x.ItemName.ToLower().Contains(item.Searchvalue.ToLower()) ||
+                                        x.ItemCode.ToLower().Contains(item.Searchvalue.ToLower()))
+                                        && !item.AllSelectedItem.Contains(x.ItemID))
+                                    .OrderByDescending(x => x.Row)
+                                    .Skip((item.Pagenumber - 1) * item.Itemperpage)
+                                    .Take(item.Itemperpage)
+                                    .ToListAsync();
+            }
+            catch (Exception e)
+            {
+                return AllItems;
+            }
+            return AllItems;
+        }
+        //Get The Picked Items
+        public async Task<PurcahseItemDisplay> GetPickedItem(Guid ItemID)
+        {
+            PurcahseItemDisplay? _theitem = new PurcahseItemDisplay();
+            try
+            {
+                _theitem = await (from a in _db.Items
+                                  where a.ItemID == ItemID
+                                  select new PurcahseItemDisplay
+                                  {
+                                      ItemID = a.ItemID,
+                                      ItemName = a.ItemName,
+                                      Quantity = 1,
+                                      Unitprice = a.ItemPrice ?? 0,
+                                      GrandTotal = 0
+                                  }).FirstOrDefaultAsync();
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return _theitem;
+
+
+        }
     }
 }

@@ -27,7 +27,6 @@ namespace DazaBestApplication
         {
             var screensize = Screen.PrimaryScreen.Bounds;
             Program.WorkspaceSize = screensize.Size;
-            MessageBox.Show($"{Program.WorkspaceSize}");
             this.Size = screensize.Size;
             this.Location = screensize.Location;
         }
