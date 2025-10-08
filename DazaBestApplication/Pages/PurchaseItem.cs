@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SystemBackEnd.ServiceModels;
+using SystemBackEnd.Services;
 
 namespace DazaBestApplication.Pages
 {
@@ -16,6 +17,11 @@ namespace DazaBestApplication.Pages
     {
         private Form Mainform;
         private PurchaseItemModal _purcahseitemmodal;
+        private List<PurchaseItemHeaderDisplay> _allpurchaseitemsheaders;
+
+        //pagination
+        private int currentpage = 1;
+        private int itemperpage = 12;
 
         public PurchaseItem(Form _mainform)
         {
@@ -35,6 +41,39 @@ namespace DazaBestApplication.Pages
                 EditPurchaseDetails = null
             };
             OpenModal();
+        }
+        //Main Load
+        private async void PurchaseItem_Load(object sender, EventArgs e)
+        {
+            await GetAllPurchaseItemHeaders();
+        }
+        //Get Purchase Items
+        private async Task GetAllPurchaseItemHeaders()
+        {
+            _allpurchaseitemsheaders = new List<PurchaseItemHeaderDisplay>();
+            PurchaseitemServices purchaseitemServices = new PurchaseitemServices(new SystemBackEnd.BackEndDBContext());
+            _allpurchaseitemsheaders = await purchaseitemServices.GetPurchaseHeaders(new SearchItem()
+            {
+                SearchValue = SearchBox.Text,
+                PageNumber = currentpage,
+                ItemperPage = itemperpage
+            });
+            await PopulatePurchaseItemDatagrid();
+        }
+        //Populate Purchase Item Headers DataGrid
+        private async Task PopulatePurchaseItemDatagrid()
+        {
+            AllPurchaseDatagridView.Rows.Clear();
+            foreach (var item in _allpurchaseitemsheaders)
+            {
+                int rowindex = AllPurchaseDatagridView.Rows.Add();
+                DataGridViewRow row = AllPurchaseDatagridView.Rows[rowindex];
+                row.Cells["IdCol"].Value = item.Purchaseheaderid;
+                row.Cells["PurchaseNumberCol"].Value = item.Purchasenumber;
+                row.Cells["PurchaseDateCol"].Value = item.DateCreated;
+                row.Cells["AddedByCol"].Value = item.AddedbyName;
+                row.Cells["VerifiedByCol"].Value = item.VerifiedbyName == null ? "N/A" : item.VerifiedbyName;
+            }
         }
 
         //Open purchase item modal

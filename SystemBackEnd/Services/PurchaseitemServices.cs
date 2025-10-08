@@ -20,16 +20,25 @@ namespace SystemBackEnd.Services
         }
 
         //Get All Purchase Header
-        public async Task<List<PurchaseItemHeader>> GetPurchaseHeaders(SearchItem purchaseitem)
+        public async Task<List<PurchaseItemHeaderDisplay>> GetPurchaseHeaders(SearchItem purchaseitem)
         {
-            List<PurchaseItemHeader> purchaseItemHeaders = new List<PurchaseItemHeader>();
+            List<PurchaseItemHeaderDisplay> purchaseItemHeaders = new List<PurchaseItemHeaderDisplay>();
             try
             {
-                purchaseItemHeaders = await _db.PurcahseItemHeader
-                                       .OrderByDescending(x => x.Row)
-                                       .Skip((purchaseitem.PageNumber - 1) * purchaseitem.ItemperPage)
-                                       .Take(purchaseitem.ItemperPage)
-                                       .ToListAsync();
+                purchaseItemHeaders = await(from a in _db.PurcahseItemHeader
+                                         where a.Purchasenumber.ToLower().Contains(purchaseitem.SearchValue.ToLower())
+                                         orderby a.Row descending
+                                         select new PurchaseItemHeaderDisplay
+                                         {
+                                             Purchaseheaderid = a.Purchaseheaderid,
+                                             Purchasenumber = a.Purchasenumber,
+                                             DateCreated = a.DateCreated,
+                                             IsVerified = a.Isverified,
+                                             Dateverified = a.Isverified == true ? a.Dateverified : null,
+                                             AddedbyName = "No Name",
+                                             VerifiedbyName = a.Isverified == true ? "No Name" : null,
+                                             Grandtotal = a.Grandtotal
+                                         }).ToListAsync();
             }
             catch (Exception e)
             {
