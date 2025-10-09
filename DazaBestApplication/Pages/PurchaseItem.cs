@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemBackEnd.EventHandlers;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
 
@@ -46,6 +47,12 @@ namespace DazaBestApplication.Pages
         private async void PurchaseItem_Load(object sender, EventArgs e)
         {
             await GetAllPurchaseItemHeaders();
+            HookEvents();
+        }
+        //Hook Events
+        private void HookEvents()
+        {
+            PurchaseItemEventHandlers.PurchaseItemChanged += GetAllPurchaseItemHeaders;
         }
         //Get Purchase Items
         private async Task GetAllPurchaseItemHeaders()
@@ -75,7 +82,6 @@ namespace DazaBestApplication.Pages
                 row.Cells["VerifiedByCol"].Value = item.VerifiedbyName == null ? "N/A" : item.VerifiedbyName;
             }
         }
-
         //Open purchase item modal
         private void OpenModal()
         {
@@ -102,6 +108,8 @@ namespace DazaBestApplication.Pages
             }
         }
 
+
+        //Event Handlers
         private void BuyProductBTN_Click(object sender, EventArgs e)
         {
             ShowAddItemModal();

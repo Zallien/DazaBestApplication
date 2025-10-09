@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemBackEnd;
+using SystemBackEnd.EventHandlers;
+using SystemBackEnd.Models;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
-using SystemBackEnd.Models;
-using SystemBackEnd;
 
 namespace DazaBestApplication.Modals
 {
@@ -170,6 +171,7 @@ namespace DazaBestApplication.Modals
             bool isadded = await PurchaseitemServices.AddPurchaseItem(_newpurchaseitem);
             if (isadded)
             {
+                await PurchaseItemEventHandlers.InvokePurchaseItemChanged();
                 MessageBox.Show("Purchase Item Added Successfully!");
                 this.Close();
                 this.DialogResult = DialogResult.OK;
