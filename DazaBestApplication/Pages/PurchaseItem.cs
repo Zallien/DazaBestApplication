@@ -39,7 +39,7 @@ namespace DazaBestApplication.Pages
             _purcahseitemmodal = new PurchaseItemModal()
             {
                 Action = "AddItemStock",
-                EditPurchaseDetails = null
+                EditPurchaseItemHeaderId = null
             };
             OpenModal();
         }
@@ -113,6 +113,24 @@ namespace DazaBestApplication.Pages
         private void BuyProductBTN_Click(object sender, EventArgs e)
         {
             ShowAddItemModal();
+        }
+        //Opening Purchase Item Details on Double Click
+        private void AllPurchaseDatagridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                Guid _selectedpurchaseheaderid = Guid.Parse(AllPurchaseDatagridView.Rows[e.RowIndex].Cells["IdCol"].Value.ToString());
+                PurchaseItemHeaderDisplay _selectedpurchaseheader = _allpurchaseitemsheaders.Where(x => x.Purchaseheaderid == _selectedpurchaseheaderid).FirstOrDefault();
+                if (_selectedpurchaseheader != null)
+                {
+                    _purcahseitemmodal = new PurchaseItemModal()
+                    {
+                        Action = "View",
+                        EditPurchaseItemHeaderId = _selectedpurchaseheaderid
+                    };
+                    OpenModal();
+                }
+            }
         }
     }
 }

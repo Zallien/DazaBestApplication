@@ -9,6 +9,6 @@ namespace SystemBackEnd.ServiceModels
     public class PurchaseItemModal
     {
         public string Action { get; set; }
-        public EditProduct? EditPurchaseDetails { get; set; }
+        public Guid? EditPurchaseItemHeaderId { get; set; }
     }
 }

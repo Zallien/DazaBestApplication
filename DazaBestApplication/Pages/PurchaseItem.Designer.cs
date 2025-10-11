@@ -43,17 +43,17 @@
             SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
             BuyProductBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             AllPurchaseDatagridView = new Bunifu.UI.WinForms.BunifuDataGridView();
+            IdCol = new DataGridViewTextBoxColumn();
+            PurchaseNumberCol = new DataGridViewTextBoxColumn();
+            PurchaseDateCol = new DataGridViewTextBoxColumn();
+            AddedByCol = new DataGridViewTextBoxColumn();
+            VerifiedByCol = new DataGridViewTextBoxColumn();
             Pagination = new Panel();
             PaginationLabel = new Label();
             PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
             PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
             TopPanel = new Panel();
             label1 = new Label();
-            IdCol = new DataGridViewTextBoxColumn();
-            PurchaseNumberCol = new DataGridViewTextBoxColumn();
-            PurchaseDateCol = new DataGridViewTextBoxColumn();
-            AddedByCol = new DataGridViewTextBoxColumn();
-            VerifiedByCol = new DataGridViewTextBoxColumn();
             MainContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllPurchaseDatagridView).BeginInit();
             Pagination.SuspendLayout();
@@ -121,7 +121,7 @@
             PurchaseReportBtn.IdleIconLeftImage = null;
             PurchaseReportBtn.IdleIconRightImage = null;
             PurchaseReportBtn.IndicateFocus = false;
-            PurchaseReportBtn.Location = new Point(458, 100);
+            PurchaseReportBtn.Location = new Point(456, 41);
             PurchaseReportBtn.Name = "PurchaseReportBtn";
             PurchaseReportBtn.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             PurchaseReportBtn.OnDisabledState.BorderRadius = 1;
@@ -191,7 +191,7 @@
             SearchBox.IconPadding = 10;
             SearchBox.IconRight = null;
             SearchBox.IconRightCursor = Cursors.IBeam;
-            SearchBox.Location = new Point(614, 100);
+            SearchBox.Location = new Point(612, 41);
             SearchBox.MaxLength = 32767;
             SearchBox.MinimumSize = new Size(1, 1);
             SearchBox.Modified = false;
@@ -285,7 +285,7 @@
             BuyProductBTN.IdleIconLeftImage = null;
             BuyProductBTN.IdleIconRightImage = null;
             BuyProductBTN.IndicateFocus = false;
-            BuyProductBTN.Location = new Point(6, 100);
+            BuyProductBTN.Location = new Point(4, 41);
             BuyProductBTN.Name = "BuyProductBTN";
             BuyProductBTN.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             BuyProductBTN.OnDisabledState.BorderRadius = 1;
@@ -385,15 +385,51 @@
             AllPurchaseDatagridView.HeaderBackColor = Color.Maroon;
             AllPurchaseDatagridView.HeaderBgColor = Color.Empty;
             AllPurchaseDatagridView.HeaderForeColor = Color.White;
-            AllPurchaseDatagridView.Location = new Point(4, 159);
+            AllPurchaseDatagridView.Location = new Point(4, 87);
             AllPurchaseDatagridView.Name = "AllPurchaseDatagridView";
             AllPurchaseDatagridView.ReadOnly = true;
             AllPurchaseDatagridView.RowHeadersVisible = false;
             AllPurchaseDatagridView.RowTemplate.Height = 40;
             AllPurchaseDatagridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            AllPurchaseDatagridView.Size = new Size(890, 392);
+            AllPurchaseDatagridView.Size = new Size(890, 464);
             AllPurchaseDatagridView.TabIndex = 10;
             AllPurchaseDatagridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
+            AllPurchaseDatagridView.CellDoubleClick += AllPurchaseDatagridView_CellDoubleClick;
+            // 
+            // IdCol
+            // 
+            IdCol.HeaderText = "PurchaseId";
+            IdCol.Name = "IdCol";
+            IdCol.ReadOnly = true;
+            IdCol.Visible = false;
+            // 
+            // PurchaseNumberCol
+            // 
+            PurchaseNumberCol.FillWeight = 40F;
+            PurchaseNumberCol.HeaderText = "Purchase No";
+            PurchaseNumberCol.Name = "PurchaseNumberCol";
+            PurchaseNumberCol.ReadOnly = true;
+            // 
+            // PurchaseDateCol
+            // 
+            PurchaseDateCol.FillWeight = 35F;
+            PurchaseDateCol.HeaderText = "Date";
+            PurchaseDateCol.Name = "PurchaseDateCol";
+            PurchaseDateCol.ReadOnly = true;
+            // 
+            // AddedByCol
+            // 
+            AddedByCol.FillWeight = 25F;
+            AddedByCol.HeaderText = "Added By";
+            AddedByCol.Name = "AddedByCol";
+            AddedByCol.ReadOnly = true;
+            // 
+            // VerifiedByCol
+            // 
+            VerifiedByCol.FillWeight = 25F;
+            VerifiedByCol.HeaderText = "Verified By";
+            VerifiedByCol.Name = "VerifiedByCol";
+            VerifiedByCol.ReadOnly = true;
             // 
             // Pagination
             // 
@@ -504,41 +540,6 @@
             label1.TabIndex = 0;
             label1.Text = "Purchase Item";
             label1.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // IdCol
-            // 
-            IdCol.HeaderText = "PurchaseId";
-            IdCol.Name = "IdCol";
-            IdCol.ReadOnly = true;
-            IdCol.Visible = false;
-            // 
-            // PurchaseNumberCol
-            // 
-            PurchaseNumberCol.FillWeight = 40F;
-            PurchaseNumberCol.HeaderText = "Purchase No";
-            PurchaseNumberCol.Name = "PurchaseNumberCol";
-            PurchaseNumberCol.ReadOnly = true;
-            // 
-            // PurchaseDateCol
-            // 
-            PurchaseDateCol.FillWeight = 35F;
-            PurchaseDateCol.HeaderText = "Date";
-            PurchaseDateCol.Name = "PurchaseDateCol";
-            PurchaseDateCol.ReadOnly = true;
-            // 
-            // AddedByCol
-            // 
-            AddedByCol.FillWeight = 25F;
-            AddedByCol.HeaderText = "Added By";
-            AddedByCol.Name = "AddedByCol";
-            AddedByCol.ReadOnly = true;
-            // 
-            // VerifiedByCol
-            // 
-            VerifiedByCol.FillWeight = 25F;
-            VerifiedByCol.HeaderText = "Verified By";
-            VerifiedByCol.Name = "VerifiedByCol";
-            VerifiedByCol.ReadOnly = true;
             // 
             // PurchaseItem
             // 

@@ -80,7 +80,28 @@ namespace DazaBestApplication.Modals
                 MessageBox.Show("Failed to Add Product", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        //Edit Product
+        private async Task EditProduct()
+        {
+            _productservices = new ProductServices(new BackEndDBContext());
+            EditProduct editproduct = new EditProduct()
+            {
+                ProductID = ProducteditID,
+                ProductName = ProductNametxt.Text,
+                ProductPrice = decimal.Parse(Productpricetxt.Text),
+            };
+            bool IsEdited = await _productservices.UpdateProduct(editproduct);
+            if (IsEdited)
+            {
+                Closemodal();
+                await ProductEventHandlers.InvokeProductChanged();
+                MessageBox.Show("Changes Saved Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Failed to Save Changes", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
 
 
@@ -96,6 +117,10 @@ namespace DazaBestApplication.Modals
             if (_productmodal.Action == "AddProduct")
             {
                 AddNewProduct();
+            }
+            else
+            {
+                EditProduct();
             }
         }
     }

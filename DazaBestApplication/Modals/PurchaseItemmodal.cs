@@ -35,6 +35,20 @@ namespace DazaBestApplication.Modals
             InitializeComponent();
             _purchaseitemmodal = purchaseitemmodal;
         }
+        //Checks Modal Action
+        private void CheckModalAction()
+        {
+            if (_purchaseitemmodal.Action == "Add")
+            {
+                this.Text = "Add Purchase Item";
+                AddPurchaseItemButton.Text = "Add Purchase Item";
+            }
+            else if (_purchaseitemmodal.Action == "View")
+            {
+                this.Text = "Edit Purchase Item";
+                AddPurchaseItemButton.Text = "Update Purchase Item";
+            }
+        }
         //Main Load
         private void PurchaseItemmodal_Load(object sender, EventArgs e)
         {
@@ -219,6 +233,10 @@ namespace DazaBestApplication.Modals
         }
         private async void AddPurchaseItemButton_Click(object sender, EventArgs e)
         {
+            if(AllPickedItems.Focused)
+            {
+                AllPickedItems.EndEdit();
+            }
             await AddPurchaseItem();
         }
     }
