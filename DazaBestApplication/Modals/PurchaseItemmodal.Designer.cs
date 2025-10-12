@@ -45,7 +45,7 @@
             bunifuImageButton1 = new Bunifu.UI.WinForms.BunifuImageButton();
             CloseModal = new Bunifu.UI.WinForms.BunifuImageButton();
             Modaltitle = new Label();
-            label1 = new Label();
+            preparedbylabel = new Label();
             footer = new Panel();
             AddPurchaseItemButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             AllPickedItems = new Bunifu.UI.WinForms.BunifuDataGridView();
@@ -55,7 +55,7 @@
             ItemPriceCol = new DataGridViewTextBoxColumn();
             ItemTotalCol = new DataGridViewTextBoxColumn();
             bunifuButton1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            bunifuImageButton2 = new Bunifu.UI.WinForms.BunifuImageButton();
+            removeitempickedbutton = new Bunifu.UI.WinForms.BunifuImageButton();
             AllProductsContainer = new Bunifu.UI.WinForms.BunifuShadowPanel();
             CloseAllPModal = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             label2 = new Label();
@@ -161,25 +161,25 @@
             Modaltitle.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Modaltitle.Location = new Point(0, 0);
             Modaltitle.Name = "Modaltitle";
-            Modaltitle.Size = new Size(185, 40);
+            Modaltitle.Size = new Size(239, 40);
             Modaltitle.TabIndex = 0;
             Modaltitle.Text = "New Purchase Item";
             Modaltitle.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // label1
+            // preparedbylabel
             // 
-            label1.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(3, 2);
-            label1.Name = "label1";
-            label1.Size = new Size(146, 33);
-            label1.TabIndex = 3;
-            label1.Text = "Prepared By: ";
-            label1.TextAlign = ContentAlignment.MiddleLeft;
+            preparedbylabel.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            preparedbylabel.Location = new Point(3, 2);
+            preparedbylabel.Name = "preparedbylabel";
+            preparedbylabel.Size = new Size(146, 33);
+            preparedbylabel.TabIndex = 3;
+            preparedbylabel.Text = "Prepared By: ";
+            preparedbylabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // footer
             // 
             footer.Controls.Add(AddPurchaseItemButton);
-            footer.Controls.Add(label1);
+            footer.Controls.Add(preparedbylabel);
             footer.Dock = DockStyle.Bottom;
             footer.Location = new Point(0, 315);
             footer.Name = "footer";
@@ -464,39 +464,39 @@
             bunifuButton1.UseDefaultRadiusAndThickness = true;
             bunifuButton1.Click += bunifuButton1_Click;
             // 
-            // bunifuImageButton2
+            // removeitempickedbutton
             // 
-            bunifuImageButton2.ActiveImage = null;
-            bunifuImageButton2.AllowAnimations = true;
-            bunifuImageButton2.AllowBuffering = false;
-            bunifuImageButton2.AllowToggling = false;
-            bunifuImageButton2.AllowZooming = true;
-            bunifuImageButton2.AllowZoomingOnFocus = false;
-            bunifuImageButton2.BackColor = Color.FromArgb(255, 128, 128);
-            bunifuImageButton2.DialogResult = DialogResult.None;
-            bunifuImageButton2.ErrorImage = (Image)resources.GetObject("bunifuImageButton2.ErrorImage");
-            bunifuImageButton2.FadeWhenInactive = false;
-            bunifuImageButton2.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            bunifuImageButton2.Image = Properties.Resources.delete16px;
-            bunifuImageButton2.ImageActive = null;
-            bunifuImageButton2.ImageLocation = null;
-            bunifuImageButton2.ImageMargin = 20;
-            bunifuImageButton2.ImageSize = new Size(10, 10);
-            bunifuImageButton2.ImageZoomSize = new Size(30, 30);
-            bunifuImageButton2.InitialImage = (Image)resources.GetObject("bunifuImageButton2.InitialImage");
-            bunifuImageButton2.Location = new Point(553, 101);
-            bunifuImageButton2.Name = "bunifuImageButton2";
-            bunifuImageButton2.Rotation = 0;
-            bunifuImageButton2.ShowActiveImage = true;
-            bunifuImageButton2.ShowCursorChanges = true;
-            bunifuImageButton2.ShowImageBorders = true;
-            bunifuImageButton2.ShowSizeMarkers = false;
-            bunifuImageButton2.Size = new Size(30, 30);
-            bunifuImageButton2.TabIndex = 7;
-            bunifuImageButton2.ToolTipText = "";
-            bunifuImageButton2.WaitOnLoad = false;
-            bunifuImageButton2.Zoom = 20;
-            bunifuImageButton2.ZoomSpeed = 10;
+            removeitempickedbutton.ActiveImage = null;
+            removeitempickedbutton.AllowAnimations = true;
+            removeitempickedbutton.AllowBuffering = false;
+            removeitempickedbutton.AllowToggling = false;
+            removeitempickedbutton.AllowZooming = true;
+            removeitempickedbutton.AllowZoomingOnFocus = false;
+            removeitempickedbutton.BackColor = Color.FromArgb(255, 128, 128);
+            removeitempickedbutton.DialogResult = DialogResult.None;
+            removeitempickedbutton.ErrorImage = (Image)resources.GetObject("removeitempickedbutton.ErrorImage");
+            removeitempickedbutton.FadeWhenInactive = false;
+            removeitempickedbutton.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            removeitempickedbutton.Image = Properties.Resources.delete16px;
+            removeitempickedbutton.ImageActive = null;
+            removeitempickedbutton.ImageLocation = null;
+            removeitempickedbutton.ImageMargin = 20;
+            removeitempickedbutton.ImageSize = new Size(10, 10);
+            removeitempickedbutton.ImageZoomSize = new Size(30, 30);
+            removeitempickedbutton.InitialImage = (Image)resources.GetObject("removeitempickedbutton.InitialImage");
+            removeitempickedbutton.Location = new Point(553, 101);
+            removeitempickedbutton.Name = "removeitempickedbutton";
+            removeitempickedbutton.Rotation = 0;
+            removeitempickedbutton.ShowActiveImage = true;
+            removeitempickedbutton.ShowCursorChanges = true;
+            removeitempickedbutton.ShowImageBorders = true;
+            removeitempickedbutton.ShowSizeMarkers = false;
+            removeitempickedbutton.Size = new Size(30, 30);
+            removeitempickedbutton.TabIndex = 7;
+            removeitempickedbutton.ToolTipText = "";
+            removeitempickedbutton.WaitOnLoad = false;
+            removeitempickedbutton.Zoom = 20;
+            removeitempickedbutton.ZoomSpeed = 10;
             // 
             // AllProductsContainer
             // 
@@ -737,7 +737,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(590, 350);
             Controls.Add(AllProductsContainer);
-            Controls.Add(bunifuImageButton2);
+            Controls.Add(removeitempickedbutton);
             Controls.Add(bunifuButton1);
             Controls.Add(AllPickedItems);
             Controls.Add(footer);
@@ -761,11 +761,11 @@
         private Bunifu.UI.WinForms.BunifuImageButton CloseModal;
         private Label Modaltitle;
         private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton1;
-        private Label label1;
+        private Label preparedbylabel;
         private Panel footer;
         private Bunifu.UI.WinForms.BunifuDataGridView AllPickedItems;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton1;
-        private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton2;
+        private Bunifu.UI.WinForms.BunifuImageButton removeitempickedbutton;
         private Bunifu.UI.WinForms.BunifuShadowPanel AllProductsContainer;
         private Label label2;
         private Bunifu.UI.WinForms.BunifuDataGridView AllItemDatagridview;

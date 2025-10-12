@@ -105,9 +105,38 @@ namespace SystemBackEnd.Services
             return isadded;
 
         }
+        //Get PurchaseItem Details and Header
+        //-- Fix this after adding user table --
+        public async Task<ViewPurchaseItem> GetPurchaseItemDetailsandHeader(Guid PurchaseItemHeaderId)
+        {
+            ViewPurchaseItem _viewpurchaseitem = new ViewPurchaseItem();
+            _viewpurchaseitem._PurcahseItemHeader = new PurchaseItemHeader();
+            _viewpurchaseitem._PurchaseItemDetails = new List<PurchaseItemDetailswithItemName>();
+            try
+            {
+                //For Header
+                _viewpurchaseitem._PurcahseItemHeader = await _db.PurcahseItemHeader.Where(x => x.Purchaseheaderid == PurchaseItemHeaderId).FirstOrDefaultAsync();
 
+                //For Details with Item Name
+                _viewpurchaseitem._PurchaseItemDetails = await (from a in _db.PurchaseItemDetails
+                                                                join b in _db.Items on a.ItemID equals b.ItemID
+                                                                where a.Purchaseheaderid == PurchaseItemHeaderId
+                                                                select new PurchaseItemDetailswithItemName
+                                                                {
+                                                                    Purchasedetailsid = a.Purchasedetailsid,
+                                                                    Purchaseheaderid = a.Purchaseheaderid,
+                                                                    ItemID = a.ItemID,
+                                                                    ItemName = b.ItemName,
+                                                                    Quantity = a.Quantity,
+                                                                    Priceperunit = a.Priceperunit
+                                                                }).ToListAsync();
+            }
+            catch (Exception e)
+            {
 
-
+            }
+            return _viewpurchaseitem;
+        }
 
 
 

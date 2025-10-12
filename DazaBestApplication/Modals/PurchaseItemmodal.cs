@@ -36,24 +36,41 @@ namespace DazaBestApplication.Modals
             _purchaseitemmodal = purchaseitemmodal;
         }
         //Checks Modal Action
-        private void CheckModalAction()
+        private async Task CheckModalAction()
         {
-            if (_purchaseitemmodal.Action == "Add")
+            _allpickeditems = new List<PurcahseItemDisplay>();
+            if (_purchaseitemmodal.Action == "AddItemStock")
             {
                 this.Text = "Add Purchase Item";
                 AddPurchaseItemButton.Text = "Add Purchase Item";
+                removeitempickedbutton.Visible = true;
             }
-            else if (_purchaseitemmodal.Action == "View")
+            else if (_purchaseitemmodal.Action == "ViewPurcahseItem")
             {
                 this.Text = "Edit Purchase Item";
                 AddPurchaseItemButton.Text = "Update Purchase Item";
+                foreach (var item in _purchaseitemmodal.ForViewOnly._PurchaseItemDetails)
+                {
+                    _allpickeditems.Add(new PurcahseItemDisplay()
+                    {
+                        ItemName = item.ItemName,
+                        ItemID = item.ItemID,
+                        Unitprice = item.Priceperunit,
+                        Quantity = item.Quantity,
+                        GrandTotal = item.Priceperunit * item.Quantity
+                    });
+                }
+                await PopulateAllPickedItemsDatagrid();
+                Modaltitle.Text = _purchaseitemmodal.ForViewOnly._PurcahseItemHeader.Purchasenumber;
+                removeitempickedbutton.Visible = false;
             }
         }
         //Main Load
-        private void PurchaseItemmodal_Load(object sender, EventArgs e)
+        private async void PurchaseItemmodal_Load(object sender, EventArgs e)
         {
             AllPickedItems.ColumnHeadersHeight = 30; //Set the height of the column headers to 30 pixels
             AllSelectedProducts = new List<Guid>();
+            await CheckModalAction();
         }
         //OpenAllProductsPanel
         private async Task OpenAllProductsPanel()
@@ -125,13 +142,26 @@ namespace DazaBestApplication.Modals
                 DataGridViewRow row = AllPickedItems.Rows[_rowindex];
                 row.Cells["IdCol"].Value = item.ItemID;
                 row.Cells["ItemNameCol"].Value = item.ItemName;
-                row.Cells["ItemQuantityCol"].Value = 1;
+                row.Cells["ItemQuantityCol"].Value = _purchaseitemmodal.Action == "AddItemStock" ? "1" : item.Quantity.ToString();
                 row.Cells["ItemPriceCol"].Value = item.Unitprice?.ToString("0.00") ?? "0.00";
                 row.Cells["ItemTotalCol"].Value = UpdateTotalAmount(
                     int.Parse(row.Cells["ItemQuantityCol"].Value.ToString() ?? "1"),
                     decimal.Parse(row.Cells["ItemPriceCol"].Value.ToString() ?? "0.00")
-                    ).Result.ToString("0.00"
-                );
+                    ).Result.ToString();
+            }
+            if (_purchaseitemmodal.Action == "ViewPurcahseItem")
+            {
+                AllPickedItems.ReadOnly = true;
+                AllPickedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                AllPickedItems.AllowUserToAddRows = false;
+                AllPickedItems.AllowUserToDeleteRows = false;
+            }
+            else
+            {
+                AllPickedItems.ReadOnly = false;
+                AllPickedItems.SelectionMode = DataGridViewSelectionMode.CellSelect;
+                AllPickedItems.AllowUserToAddRows = false;
+                AllPickedItems.AllowUserToDeleteRows = true;
             }
         }
         //Close AllItems Panel
@@ -226,9 +256,25 @@ namespace DazaBestApplication.Modals
         }
         private async void AllPickedItems_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && AllPickedItems.Columns[e.ColumnIndex].Name == "ItemQuantityCol" && AllProductsContainer.Visible == false)
+            if (e.RowIndex >= 0 && AllProductsContainer.Visible == false && _purchaseitemmodal.Action == "AddItemStock" && 
+                    (AllPickedItems.Columns[e.ColumnIndex].Name == "ItemQuantityCol" || AllPickedItems.Columns[e.ColumnIndex].Name == "ItemPriceCol"))
             {
                 await UpdateTheTotalAmountofSelectedRow(e.RowIndex, e);
+            }
+
+            if (e.RowIndex >= 0 && AllPickedItems.Columns[e.ColumnIndex].Name == "ItemPriceCol")
+            {
+                if (decimal.TryParse(AllPickedItems.Rows[e.RowIndex].Cells["ItemPriceCol"].Value?.ToString(), out decimal value))
+                {
+                    // Round to 2 decimals and display it consistently
+                    value = Math.Round(value, 2, MidpointRounding.AwayFromZero);
+                    AllPickedItems.Rows[e.RowIndex].Cells["ItemPriceCol"].Value = value.ToString("0.00");
+                }
+                else
+                {
+                    // Reset invalid input
+                    AllPickedItems.Rows[e.RowIndex].Cells["ItemPriceCol"].Value = "0.00";
+                }
             }
         }
         private async void AddPurchaseItemButton_Click(object sender, EventArgs e)

@@ -33,13 +33,26 @@ namespace DazaBestApplication.Pages
             }
         }
 
-        //Show Purchase Item Page
+        //Show Purchase Item Page --Add Item--
         private void ShowAddItemModal()
         {
             _purcahseitemmodal = new PurchaseItemModal()
             {
                 Action = "AddItemStock",
-                EditPurchaseItemHeaderId = null
+                EditPurchaseItemHeaderId = null,
+                ForViewOnly = null
+            };
+            OpenModal();
+        }
+        //Show Purcahse Item Page --View--
+        private async Task ShowAddItemModelView(Guid PurcahseItemHeaderId)
+        {
+            PurchaseitemServices _purchaseitemServices = new PurchaseitemServices(new SystemBackEnd.BackEndDBContext());
+            _purcahseitemmodal = new PurchaseItemModal()
+            {
+                Action = "ViewPurcahseItem",
+                EditPurchaseItemHeaderId = PurcahseItemHeaderId,
+                ForViewOnly = await _purchaseitemServices.GetPurchaseItemDetailsandHeader(PurcahseItemHeaderId)
             };
             OpenModal();
         }
@@ -108,7 +121,6 @@ namespace DazaBestApplication.Pages
             }
         }
 
-
         //Event Handlers
         private void BuyProductBTN_Click(object sender, EventArgs e)
         {
@@ -123,12 +135,7 @@ namespace DazaBestApplication.Pages
                 PurchaseItemHeaderDisplay _selectedpurchaseheader = _allpurchaseitemsheaders.Where(x => x.Purchaseheaderid == _selectedpurchaseheaderid).FirstOrDefault();
                 if (_selectedpurchaseheader != null)
                 {
-                    _purcahseitemmodal = new PurchaseItemModal()
-                    {
-                        Action = "View",
-                        EditPurchaseItemHeaderId = _selectedpurchaseheaderid
-                    };
-                    OpenModal();
+                    ShowAddItemModelView(_selectedpurchaseheaderid);
                 }
             }
         }
