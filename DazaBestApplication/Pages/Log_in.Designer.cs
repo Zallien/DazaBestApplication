@@ -52,14 +52,16 @@
             Login_btn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             bunifuTextBox2 = new Bunifu.UI.WinForms.BunifuTextBox();
             bunifuTextBox1 = new Bunifu.UI.WinForms.BunifuTextBox();
+            ShowHidePic = new PictureBox();
             TopNav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logo_Pic).BeginInit();
             background_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ShowHidePic).BeginInit();
             SuspendLayout();
             // 
             // TopNav
             // 
-            TopNav.BackColor = Color.FromArgb(33, 33, 33);
+            TopNav.BackColor = Color.FromArgb(67, 66, 66);
             TopNav.Controls.Add(bunifuIconButton1);
             TopNav.Controls.Add(FormControlBox);
             TopNav.Controls.Add(CompanyName);
@@ -91,7 +93,7 @@
             bunifuIconButton1.CustomizableEdges = borderEdges1;
             bunifuIconButton1.DialogResult = DialogResult.None;
             bunifuIconButton1.Dock = DockStyle.Left;
-            bunifuIconButton1.Image = Properties.Resources._477622848_2102876326812470_7082635694266922336_n;
+            bunifuIconButton1.Image = Properties.Resources.clean;
             bunifuIconButton1.ImageMargin = new Padding(0);
             bunifuIconButton1.Location = new Point(10, 0);
             bunifuIconButton1.Name = "bunifuIconButton1";
@@ -103,7 +105,7 @@
             // 
             // FormControlBox
             // 
-            FormControlBox.BackColor = Color.White;
+            FormControlBox.BackColor = Color.FromArgb(67, 66, 66);
             FormControlBox.BunifuFormDrag = null;
             FormControlBox.CloseBoxOptions.BackColor = Color.Transparent;
             FormControlBox.CloseBoxOptions.BorderRadius = 0;
@@ -171,7 +173,7 @@
             CompanyName.AutoSize = false;
             CompanyName.CursorType = Cursors.Default;
             CompanyName.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            CompanyName.ForeColor = Color.Coral;
+            CompanyName.ForeColor = Color.White;
             CompanyName.Location = new Point(52, 0);
             CompanyName.Name = "CompanyName";
             CompanyName.RightToLeft = RightToLeft.No;
@@ -188,7 +190,7 @@
             logo_Pic.AutoSizeHeight = true;
             logo_Pic.BackColor = Color.FromArgb(251, 205, 119);
             logo_Pic.BorderRadius = 0;
-            logo_Pic.Image = Properties.Resources._477622848_2102876326812470_7082635694266922336_n;
+            logo_Pic.Image = Properties.Resources.clean;
             logo_Pic.IsCircle = false;
             logo_Pic.Location = new Point(36, 189);
             logo_Pic.Name = "logo_Pic";
@@ -251,6 +253,7 @@
             // 
             background_Panel.BackgroundImage = Properties.Resources.backlog__1___1_;
             background_Panel.BackgroundImageLayout = ImageLayout.Stretch;
+            background_Panel.Controls.Add(ShowHidePic);
             background_Panel.Controls.Add(ForgotPass_Btn);
             background_Panel.Controls.Add(Login_btn);
             background_Panel.Controls.Add(greetings_lbl);
@@ -513,6 +516,17 @@
             bunifuTextBox1.UseSystemPasswordChar = false;
             bunifuTextBox1.WordWrap = true;
             // 
+            // ShowHidePic
+            // 
+            ShowHidePic.BackColor = Color.White;
+            ShowHidePic.Image = Properties.Resources.view__1_;
+            ShowHidePic.Location = new Point(905, 384);
+            ShowHidePic.Name = "ShowHidePic";
+            ShowHidePic.Size = new Size(30, 30);
+            ShowHidePic.SizeMode = PictureBoxSizeMode.StretchImage;
+            ShowHidePic.TabIndex = 11;
+            ShowHidePic.TabStop = false;
+            // 
             // Log_in
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -531,6 +545,7 @@
             ((System.ComponentModel.ISupportInitialize)logo_Pic).EndInit();
             background_Panel.ResumeLayout(false);
             background_Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ShowHidePic).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -550,5 +565,6 @@
         private Bunifu.UI.WinForms.BunifuTextBox bunifuTextBox2;
         private Bunifu.UI.WinForms.BunifuTextBox bunifuTextBox1;
         private Bunifu.UI.WinForms.BunifuLabel ForgotPass_Btn;
+        private PictureBox ShowHidePic;
     }
 }
