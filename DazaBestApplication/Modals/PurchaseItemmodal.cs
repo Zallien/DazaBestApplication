@@ -266,13 +266,11 @@ namespace DazaBestApplication.Modals
             {
                 if (decimal.TryParse(AllPickedItems.Rows[e.RowIndex].Cells["ItemPriceCol"].Value?.ToString(), out decimal value))
                 {
-                    // Round to 2 decimals and display it consistently
                     value = Math.Round(value, 2, MidpointRounding.AwayFromZero);
                     AllPickedItems.Rows[e.RowIndex].Cells["ItemPriceCol"].Value = value.ToString("0.00");
                 }
                 else
                 {
-                    // Reset invalid input
                     AllPickedItems.Rows[e.RowIndex].Cells["ItemPriceCol"].Value = "0.00";
                 }
             }
