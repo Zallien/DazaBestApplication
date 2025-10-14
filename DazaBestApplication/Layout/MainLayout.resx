@@ -121,53 +121,54 @@
   <data name="NavButton_PurchaseItem.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAMgAAAAoCAYAAAC7HLUcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA2SURBVHhe7cExAQAAAMKg9U9tBn+gAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAD4DfSgAAVWXEH8AAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA2SURBVHhe7cExAQAAAMKg9U9tBn8gAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAgEsNfSgAAZSeUDEAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="LogOut_btn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAMgAAAAoCAYAAAC7HLUcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD0SURBVHhe7d3LTQMBEERBh+bQnBmZ7SLEx6z8BAF0lTSX
-        vr/z3G7A387zvJ/n+XDO/dz9dyAfA/D0eAnkOI63KMm5mftqoAO5jDAoW8gRBmULOcKgbCFHGJQt5AiD
-        soUcYVC2kCMMyhZyhEHZQo4wKFvIEQZlCznCoGwhRxiULeQIg7KFHGFQtpAjDMoWcoRB2UKOMChbyBEG
-        ZQs5wqBsIUcYlC3kCIOyhRxhULaQIwzKFnKEQdlCjjAoW8gRBmULOcKgbCFHGJQt5AiDsoUcYVC2kCMM
-        yhZyhEHZwvfogY5bv/8e6ACfLoF44unc9Z5PPIH2DljcsxZU5WniAAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEfSURBVHhe7d3BiQJRFERRQzM0M5vMdKypZkRKMIA+B4pu
+        /v6u3wX44vF4XJ+7mdn/rkcef4HkAXi5HXm8Arnf7z/Hv9kpdzQQG0i+xxOcUhpoCgKBkQaagkBgpIGm
+        IBAYaaApCARGGmgKAoGRBpqCQGCkgaYgEBhpoCkIBEYaaAoCgZEGmoJAYKSBpiAQGGmgKQgERhpoCgKB
+        kQaagkBgpIGmIBAYaaApCARGGmgKAoGRBpqCQGCkgaYgEBhpoCkIBEYaaAoCgZEGmoJAYKSBpiAQGGmg
+        KQgERhpoCgKBkQaagkBgpIGmIBAYaaApCARGGmgKAoGRBpqCQGCkgaYgEBhpoCl8CMQBHTv7vh3QAeot
+        EEc8zd73OuIJfHK5/AJY3LMWOi2cigAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="bunifuButton21.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAMgAAAAoCAYAAAC7HLUcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA2SURBVHhe7cExAQAAAMKg9U9tBn+gAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAD4DfSgAAVWXEH8AAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA2SURBVHhe7cExAQAAAMKg9U9tBn8gAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAgEsNfSgAAZSeUDEAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="NavButton_Reports.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAMgAAAAoCAYAAAC7HLUcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA2SURBVHhe7cExAQAAAMKg9U9tBn+gAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAD4DfSgAAVWXEH8AAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA2SURBVHhe7cExAQAAAMKg9U9tBn8gAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAgEsNfSgAAZSeUDEAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="NavButton_Products.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAMgAAAAoCAYAAAC7HLUcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA2SURBVHhe7cExAQAAAMKg9U9tBn+gAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAD4DfSgAAVWXEH8AAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA2SURBVHhe7cExAQAAAMKg9U9tBn8gAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAgEsNfSgAAZSeUDEAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="NavButton_Item.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAMgAAAAoCAYAAAC7HLUcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA2SURBVHhe7cExAQAAAMKg9U9tBn+gAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAD4DfSgAAVWXEH8AAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA2SURBVHhe7cExAQAAAMKg9U9tBn8gAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAgEsNfSgAAZSeUDEAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="NavButton_Home.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAMgAAAAoCAYAAAC7HLUcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA2SURBVHhe7cExAQAAAMKg9U9tBn+gAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAD4DfSgAAVWXEH8AAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA2SURBVHhe7cExAQAAAMKg9U9tBn8gAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAgEsNfSgAAZSeUDEAAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="FormDragFeature.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

@@ -353,6 +353,7 @@
             bunifuButton21.TextMarginLeft = 0;
             bunifuButton21.TextPadding = new Padding(35, 0, 0, 0);
             bunifuButton21.UseDefaultRadiusAndThickness = true;
+            bunifuButton21.Click += bunifuButton21_Click;
             // 
             // NavButton_Reports
             // 

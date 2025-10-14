@@ -88,6 +88,9 @@ namespace SystemBackEnd.Services
                     _totalamount += (item.Quantity * item.Unitprice);
                     await _db.AddAsync(_newdetails);
                     await _db.SaveChangesAsync();
+
+                    //Update Item Stocks
+                    await UpdateItemStocks(item.ItemID, item.Quantity);
                 }
 
                 //Update the Grand Total
@@ -187,6 +190,27 @@ namespace SystemBackEnd.Services
             return _theitem;
 
 
+        }
+        //Update Item Stocks
+        private async Task<bool> UpdateItemStocks(Guid ItemID, int Quantity)
+        {
+            bool isupdated = false;
+            try
+            {
+                Items _theitem = new Items();
+                _theitem = await _db.Items.Where(x => x.ItemID == ItemID).FirstOrDefaultAsync();
+                if (_theitem != null)
+                {
+                    _theitem.BalanceStocks += Quantity;
+                    _db.Items.Update(_theitem);
+                    await _db.SaveChangesAsync();
+                    isupdated = true;
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return isupdated;
         }
     }
 }

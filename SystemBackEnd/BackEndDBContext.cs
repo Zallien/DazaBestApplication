@@ -8,11 +8,22 @@ using SystemBackEnd.Models;
 
 namespace SystemBackEnd
 {
+
     public class BackEndDBContext:DbContext
     {
+        private string DbPath = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+            "DazaBestApplication",
+            "DazaBestApplication.db"
+        );
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source = DazaBestApplication.db");
+            var directory = Path.GetDirectoryName(DbPath);
+            if (!Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
+
+            optionsBuilder.UseSqlite($"Data Source={DbPath}");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

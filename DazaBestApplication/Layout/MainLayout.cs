@@ -74,6 +74,19 @@ namespace DazaBestApplication
             MainContainer.Controls.Add(MainContainerForm);
             MainContainerForm.Show();
         }
+        private void ShowSettingsPage()
+        {
+            if (MainContainerForm != null)
+            {
+                MainContainer.Controls.Remove(MainContainerForm);
+                MainContainerForm = null;
+            }
+            MainContainerForm = new Settings(this);
+            MainContainerForm.TopLevel = false;
+            MainContainerForm.Dock = DockStyle.Fill;
+            MainContainer.Controls.Add(MainContainerForm);
+            MainContainerForm.Show();
+        }
 
         //Open Item Inventory Page
         private void NavButton_Item_Click(object sender, EventArgs e)
@@ -97,6 +110,10 @@ namespace DazaBestApplication
         private void NavButton_PurchaseItem_Click(object sender, EventArgs e)
         {
             ShowPurchaseItemPage();
+        }
+        private void bunifuButton21_Click(object sender, EventArgs e)
+        {
+            ShowSettingsPage();
         }
     }
 }
