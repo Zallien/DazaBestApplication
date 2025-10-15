@@ -151,9 +151,14 @@ namespace DazaBestApplication.Modals
                 await EditItem();
             }
 
-            
+
         }
         private void CloseModal_Click(object sender, EventArgs e)
+        {
+            ClosethisModal();
+        }
+
+        private void bunifuButton2_Click(object sender, EventArgs e)
         {
             ClosethisModal();
         }
