@@ -30,23 +30,33 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PurchaseItemmodal));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             panel1 = new Panel();
+            panel3 = new Panel();
             bunifuImageButton1 = new Bunifu.UI.WinForms.BunifuImageButton();
             CloseModal = new Bunifu.UI.WinForms.BunifuImageButton();
             Modaltitle = new Label();
-            preparedbylabel = new Label();
             footer = new Panel();
+            label4 = new Label();
+            label3 = new Label();
+            label1 = new Label();
+            preparedbylabel = new Label();
+            bunifuButton2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             AddPurchaseItemButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             AllPickedItems = new Bunifu.UI.WinForms.BunifuDataGridView();
             IdCol = new DataGridViewTextBoxColumn();
@@ -64,6 +74,8 @@
             ALLI_ItemCodeCol = new DataGridViewTextBoxColumn();
             ALLI_ItemNameCol = new DataGridViewTextBoxColumn();
             ALLI_ActionCol = new DataGridViewButtonColumn();
+            panel2 = new Panel();
+            bunifuTextBox1 = new Bunifu.UI.WinForms.BunifuTextBox();
             panel1.SuspendLayout();
             footer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllPickedItems).BeginInit();
@@ -73,7 +85,8 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(251, 192, 45);
+            panel1.BackColor = Color.White;
+            panel1.Controls.Add(panel3);
             panel1.Controls.Add(bunifuImageButton1);
             panel1.Controls.Add(CloseModal);
             panel1.Controls.Add(Modaltitle);
@@ -82,6 +95,15 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(590, 40);
             panel1.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.Maroon;
+            panel3.Dock = DockStyle.Bottom;
+            panel3.Location = new Point(0, 35);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(590, 5);
+            panel3.TabIndex = 3;
             // 
             // bunifuImageButton1
             // 
@@ -97,7 +119,7 @@
             bunifuImageButton1.ErrorImage = (Image)resources.GetObject("bunifuImageButton1.ErrorImage");
             bunifuImageButton1.FadeWhenInactive = false;
             bunifuImageButton1.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            bunifuImageButton1.Image = Properties.Resources.logout;
+            bunifuImageButton1.Image = Properties.Resources.close;
             bunifuImageButton1.ImageActive = null;
             bunifuImageButton1.ImageLocation = null;
             bunifuImageButton1.ImageMargin = 20;
@@ -157,34 +179,158 @@
             // Modaltitle
             // 
             Modaltitle.BackColor = Color.Transparent;
-            Modaltitle.Dock = DockStyle.Left;
-            Modaltitle.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Modaltitle.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Modaltitle.Location = new Point(0, 0);
             Modaltitle.Name = "Modaltitle";
-            Modaltitle.Size = new Size(239, 40);
+            Modaltitle.Size = new Size(239, 34);
             Modaltitle.TabIndex = 0;
             Modaltitle.Text = "New Purchase Item";
             Modaltitle.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // footer
+            // 
+            footer.BorderStyle = BorderStyle.FixedSingle;
+            footer.Controls.Add(label4);
+            footer.Controls.Add(label3);
+            footer.Controls.Add(label1);
+            footer.Controls.Add(preparedbylabel);
+            footer.Controls.Add(bunifuButton2);
+            footer.Controls.Add(AddPurchaseItemButton);
+            footer.Dock = DockStyle.Bottom;
+            footer.Location = new Point(0, 264);
+            footer.Name = "footer";
+            footer.Size = new Size(590, 86);
+            footer.TabIndex = 4;
+            // 
+            // label4
+            // 
+            label4.Font = new Font("Courier New", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(104, 3);
+            label4.Name = "label4";
+            label4.Size = new Size(155, 33);
+            label4.TabIndex = 12;
+            label4.Text = "Edwin Germedia";
+            label4.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label3
+            // 
+            label3.Font = new Font("Courier New", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(460, 6);
+            label3.Name = "label3";
+            label3.Size = new Size(127, 33);
+            label3.TabIndex = 11;
+            label3.Text = "₱ 100,000.00";
+            label3.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label1
+            // 
+            label1.Font = new Font("Courier New", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(359, 6);
+            label1.Name = "label1";
+            label1.Size = new Size(95, 33);
+            label1.TabIndex = 10;
+            label1.Text = "Grand Total:";
+            label1.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // preparedbylabel
             // 
-            preparedbylabel.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            preparedbylabel.Location = new Point(3, 2);
+            preparedbylabel.Font = new Font("Courier New", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            preparedbylabel.Location = new Point(3, 3);
             preparedbylabel.Name = "preparedbylabel";
-            preparedbylabel.Size = new Size(146, 33);
-            preparedbylabel.TabIndex = 3;
+            preparedbylabel.Size = new Size(95, 33);
+            preparedbylabel.TabIndex = 9;
             preparedbylabel.Text = "Prepared By: ";
             preparedbylabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // footer
+            // bunifuButton2
             // 
-            footer.Controls.Add(AddPurchaseItemButton);
-            footer.Controls.Add(preparedbylabel);
-            footer.Dock = DockStyle.Bottom;
-            footer.Location = new Point(0, 315);
-            footer.Name = "footer";
-            footer.Size = new Size(590, 35);
-            footer.TabIndex = 4;
+            bunifuButton2.AllowAnimations = true;
+            bunifuButton2.AllowMouseEffects = true;
+            bunifuButton2.AllowToggling = false;
+            bunifuButton2.AnimationSpeed = 200;
+            bunifuButton2.AutoGenerateColors = false;
+            bunifuButton2.AutoRoundBorders = false;
+            bunifuButton2.AutoSizeLeftIcon = true;
+            bunifuButton2.AutoSizeRightIcon = true;
+            bunifuButton2.BackColor = Color.Transparent;
+            bunifuButton2.BackColor1 = Color.FromArgb(51, 122, 183);
+            bunifuButton2.BackgroundImage = (Image)resources.GetObject("bunifuButton2.BackgroundImage");
+            bunifuButton2.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            bunifuButton2.ButtonText = "Cancel";
+            bunifuButton2.ButtonTextMarginLeft = 0;
+            bunifuButton2.ColorContrastOnClick = 45;
+            bunifuButton2.ColorContrastOnHover = 45;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            bunifuButton2.CustomizableEdges = borderEdges1;
+            bunifuButton2.DialogResult = DialogResult.None;
+            bunifuButton2.DisabledBorderColor = Color.FromArgb(191, 191, 191);
+            bunifuButton2.DisabledFillColor = Color.Empty;
+            bunifuButton2.DisabledForecolor = Color.Empty;
+            bunifuButton2.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            bunifuButton2.Font = new Font("Courier New", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bunifuButton2.ForeColor = Color.Black;
+            bunifuButton2.IconLeft = null;
+            bunifuButton2.IconLeftAlign = ContentAlignment.MiddleLeft;
+            bunifuButton2.IconLeftCursor = Cursors.Default;
+            bunifuButton2.IconLeftPadding = new Padding(11, 3, 3, 3);
+            bunifuButton2.IconMarginLeft = 11;
+            bunifuButton2.IconPadding = 10;
+            bunifuButton2.IconRight = null;
+            bunifuButton2.IconRightAlign = ContentAlignment.MiddleRight;
+            bunifuButton2.IconRightCursor = Cursors.Default;
+            bunifuButton2.IconRightPadding = new Padding(3, 3, 7, 3);
+            bunifuButton2.IconSize = 25;
+            bunifuButton2.IdleBorderColor = Color.Empty;
+            bunifuButton2.IdleBorderRadius = 0;
+            bunifuButton2.IdleBorderThickness = 0;
+            bunifuButton2.IdleFillColor = Color.Empty;
+            bunifuButton2.IdleIconLeftImage = null;
+            bunifuButton2.IdleIconRightImage = null;
+            bunifuButton2.IndicateFocus = false;
+            bunifuButton2.Location = new Point(356, 50);
+            bunifuButton2.Name = "bunifuButton2";
+            bunifuButton2.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
+            bunifuButton2.OnDisabledState.BorderRadius = 1;
+            bunifuButton2.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            bunifuButton2.OnDisabledState.BorderThickness = 1;
+            bunifuButton2.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
+            bunifuButton2.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
+            bunifuButton2.OnDisabledState.IconLeftImage = null;
+            bunifuButton2.OnDisabledState.IconRightImage = null;
+            bunifuButton2.onHoverState.BorderColor = Color.Black;
+            bunifuButton2.onHoverState.BorderRadius = 1;
+            bunifuButton2.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            bunifuButton2.onHoverState.BorderThickness = 1;
+            bunifuButton2.onHoverState.FillColor = Color.FromArgb(205, 205, 207);
+            bunifuButton2.onHoverState.ForeColor = Color.Black;
+            bunifuButton2.onHoverState.IconLeftImage = null;
+            bunifuButton2.onHoverState.IconRightImage = null;
+            bunifuButton2.OnIdleState.BorderColor = Color.FromArgb(220, 220, 221);
+            bunifuButton2.OnIdleState.BorderRadius = 1;
+            bunifuButton2.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            bunifuButton2.OnIdleState.BorderThickness = 1;
+            bunifuButton2.OnIdleState.FillColor = Color.FromArgb(220, 220, 221);
+            bunifuButton2.OnIdleState.ForeColor = Color.Black;
+            bunifuButton2.OnIdleState.IconLeftImage = null;
+            bunifuButton2.OnIdleState.IconRightImage = null;
+            bunifuButton2.OnPressedState.BorderColor = Color.FromArgb(40, 96, 144);
+            bunifuButton2.OnPressedState.BorderRadius = 1;
+            bunifuButton2.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            bunifuButton2.OnPressedState.BorderThickness = 1;
+            bunifuButton2.OnPressedState.FillColor = Color.FromArgb(40, 96, 144);
+            bunifuButton2.OnPressedState.ForeColor = Color.White;
+            bunifuButton2.OnPressedState.IconLeftImage = null;
+            bunifuButton2.OnPressedState.IconRightImage = null;
+            bunifuButton2.Size = new Size(100, 24);
+            bunifuButton2.TabIndex = 8;
+            bunifuButton2.TextAlign = ContentAlignment.MiddleCenter;
+            bunifuButton2.TextAlignment = HorizontalAlignment.Center;
+            bunifuButton2.TextMarginLeft = 0;
+            bunifuButton2.TextPadding = new Padding(0);
+            bunifuButton2.UseDefaultRadiusAndThickness = true;
             // 
             // AddPurchaseItemButton
             // 
@@ -200,15 +346,15 @@
             AddPurchaseItemButton.BackColor1 = Color.FromArgb(51, 122, 183);
             AddPurchaseItemButton.BackgroundImage = (Image)resources.GetObject("AddPurchaseItemButton.BackgroundImage");
             AddPurchaseItemButton.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            AddPurchaseItemButton.ButtonText = "Add";
+            AddPurchaseItemButton.ButtonText = "Finalized";
             AddPurchaseItemButton.ButtonTextMarginLeft = 0;
             AddPurchaseItemButton.ColorContrastOnClick = 45;
             AddPurchaseItemButton.ColorContrastOnHover = 45;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            AddPurchaseItemButton.CustomizableEdges = borderEdges1;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            AddPurchaseItemButton.CustomizableEdges = borderEdges2;
             AddPurchaseItemButton.DialogResult = DialogResult.None;
             AddPurchaseItemButton.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             AddPurchaseItemButton.DisabledFillColor = Color.Empty;
@@ -234,7 +380,7 @@
             AddPurchaseItemButton.IdleIconLeftImage = null;
             AddPurchaseItemButton.IdleIconRightImage = null;
             AddPurchaseItemButton.IndicateFocus = false;
-            AddPurchaseItemButton.Location = new Point(480, 6);
+            AddPurchaseItemButton.Location = new Point(464, 50);
             AddPurchaseItemButton.Name = "AddPurchaseItemButton";
             AddPurchaseItemButton.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             AddPurchaseItemButton.OnDisabledState.BorderRadius = 1;
@@ -284,93 +430,99 @@
             AllPickedItems.AllowUserToDeleteRows = false;
             AllPickedItems.AllowUserToResizeColumns = false;
             AllPickedItems.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(255, 232, 191);
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(223, 191, 191);
             dataGridViewCellStyle1.ForeColor = Color.Black;
             AllPickedItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             AllPickedItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            AllPickedItems.BackgroundColor = Color.White;
             AllPickedItems.BorderStyle = BorderStyle.None;
             AllPickedItems.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             AllPickedItems.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.Orange;
+            dataGridViewCellStyle2.BackColor = Color.Maroon;
             dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
             dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(204, 132, 0);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(102, 0, 0);
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             AllPickedItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             AllPickedItems.ColumnHeadersHeight = 40;
             AllPickedItems.Columns.AddRange(new DataGridViewColumn[] { IdCol, ItemNameCol, ItemQuantityCol, ItemPriceCol, ItemTotalCol });
-            AllPickedItems.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(255, 232, 191);
+            AllPickedItems.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
             AllPickedItems.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             AllPickedItems.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
-            AllPickedItems.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(255, 201, 102);
-            AllPickedItems.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.Black;
-            AllPickedItems.CurrentTheme.BackColor = Color.Orange;
-            AllPickedItems.CurrentTheme.GridColor = Color.FromArgb(255, 226, 173);
-            AllPickedItems.CurrentTheme.HeaderStyle.BackColor = Color.Orange;
+            AllPickedItems.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            AllPickedItems.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.White;
+            AllPickedItems.CurrentTheme.BackColor = Color.Maroon;
+            AllPickedItems.CurrentTheme.GridColor = Color.FromArgb(216, 178, 178);
+            AllPickedItems.CurrentTheme.HeaderStyle.BackColor = Color.Maroon;
             AllPickedItems.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
             AllPickedItems.CurrentTheme.HeaderStyle.ForeColor = Color.White;
-            AllPickedItems.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(204, 132, 0);
+            AllPickedItems.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(102, 0, 0);
             AllPickedItems.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
             AllPickedItems.CurrentTheme.Name = null;
-            AllPickedItems.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(255, 237, 204);
+            AllPickedItems.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(229, 204, 204);
             AllPickedItems.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             AllPickedItems.CurrentTheme.RowsStyle.ForeColor = Color.Black;
-            AllPickedItems.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(255, 201, 102);
-            AllPickedItems.CurrentTheme.RowsStyle.SelectionForeColor = Color.Black;
+            AllPickedItems.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            AllPickedItems.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 237, 204);
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(229, 204, 204);
             dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 201, 102);
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             AllPickedItems.DefaultCellStyle = dataGridViewCellStyle3;
             AllPickedItems.EnableHeadersVisualStyles = false;
-            AllPickedItems.GridColor = Color.FromArgb(255, 226, 173);
-            AllPickedItems.HeaderBackColor = Color.Orange;
+            AllPickedItems.GridColor = Color.FromArgb(216, 178, 178);
+            AllPickedItems.HeaderBackColor = Color.Maroon;
             AllPickedItems.HeaderBgColor = Color.Empty;
             AllPickedItems.HeaderForeColor = Color.White;
-            AllPickedItems.Location = new Point(0, 137);
+            AllPickedItems.Location = new Point(0, 82);
             AllPickedItems.Name = "AllPickedItems";
             AllPickedItems.RowHeadersVisible = false;
             AllPickedItems.RowTemplate.Height = 40;
             AllPickedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            AllPickedItems.Size = new Size(590, 171);
+            AllPickedItems.Size = new Size(590, 182);
             AllPickedItems.TabIndex = 5;
-            AllPickedItems.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Orange;
+            AllPickedItems.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             AllPickedItems.CellValueChanged += AllPickedItems_CellValueChanged;
             // 
             // IdCol
             // 
             IdCol.HeaderText = "ProductId";
             IdCol.Name = "IdCol";
+            IdCol.Resizable = DataGridViewTriState.False;
             IdCol.Visible = false;
             // 
             // ItemNameCol
             // 
+            ItemNameCol.FillWeight = 140.99379F;
             ItemNameCol.HeaderText = "Item Name";
             ItemNameCol.Name = "ItemNameCol";
+            ItemNameCol.Resizable = DataGridViewTriState.False;
             // 
             // ItemQuantityCol
             // 
-            ItemQuantityCol.FillWeight = 20F;
+            ItemQuantityCol.FillWeight = 28.1987572F;
             ItemQuantityCol.HeaderText = "Qty";
             ItemQuantityCol.Name = "ItemQuantityCol";
+            ItemQuantityCol.Resizable = DataGridViewTriState.False;
             // 
             // ItemPriceCol
             // 
-            ItemPriceCol.FillWeight = 30F;
+            ItemPriceCol.FillWeight = 42.2981377F;
             ItemPriceCol.HeaderText = "Price";
             ItemPriceCol.Name = "ItemPriceCol";
+            ItemPriceCol.Resizable = DataGridViewTriState.False;
             // 
             // ItemTotalCol
             // 
-            ItemTotalCol.FillWeight = 30F;
+            ItemTotalCol.FillWeight = 42.2981377F;
             ItemTotalCol.HeaderText = "Total";
             ItemTotalCol.Name = "ItemTotalCol";
-            ItemTotalCol.Resizable = DataGridViewTriState.True;
+            ItemTotalCol.Resizable = DataGridViewTriState.False;
             ItemTotalCol.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // bunifuButton1
@@ -387,15 +539,15 @@
             bunifuButton1.BackColor1 = Color.FromArgb(51, 122, 183);
             bunifuButton1.BackgroundImage = (Image)resources.GetObject("bunifuButton1.BackgroundImage");
             bunifuButton1.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            bunifuButton1.ButtonText = "Add Product";
+            bunifuButton1.ButtonText = "Add Item";
             bunifuButton1.ButtonTextMarginLeft = 0;
             bunifuButton1.ColorContrastOnClick = 45;
             bunifuButton1.ColorContrastOnHover = 45;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            bunifuButton1.CustomizableEdges = borderEdges2;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            bunifuButton1.CustomizableEdges = borderEdges3;
             bunifuButton1.DialogResult = DialogResult.None;
             bunifuButton1.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton1.DisabledFillColor = Color.Empty;
@@ -403,7 +555,7 @@
             bunifuButton1.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
             bunifuButton1.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             bunifuButton1.ForeColor = Color.White;
-            bunifuButton1.IconLeft = null;
+            bunifuButton1.IconLeft = Properties.Resources.plus__1_;
             bunifuButton1.IconLeftAlign = ContentAlignment.MiddleLeft;
             bunifuButton1.IconLeftCursor = Cursors.Default;
             bunifuButton1.IconLeftPadding = new Padding(11, 3, 3, 3);
@@ -418,10 +570,10 @@
             bunifuButton1.IdleBorderRadius = 0;
             bunifuButton1.IdleBorderThickness = 0;
             bunifuButton1.IdleFillColor = Color.Empty;
-            bunifuButton1.IdleIconLeftImage = null;
+            bunifuButton1.IdleIconLeftImage = Properties.Resources.plus__1_;
             bunifuButton1.IdleIconRightImage = null;
             bunifuButton1.IndicateFocus = false;
-            bunifuButton1.Location = new Point(6, 101);
+            bunifuButton1.Location = new Point(405, 46);
             bunifuButton1.Name = "bunifuButton1";
             bunifuButton1.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton1.OnDisabledState.BorderRadius = 1;
@@ -445,7 +597,7 @@
             bunifuButton1.OnIdleState.BorderThickness = 1;
             bunifuButton1.OnIdleState.FillColor = Color.DodgerBlue;
             bunifuButton1.OnIdleState.ForeColor = Color.White;
-            bunifuButton1.OnIdleState.IconLeftImage = null;
+            bunifuButton1.OnIdleState.IconLeftImage = Properties.Resources.plus__1_;
             bunifuButton1.OnIdleState.IconRightImage = null;
             bunifuButton1.OnPressedState.BorderColor = Color.FromArgb(40, 96, 144);
             bunifuButton1.OnPressedState.BorderRadius = 1;
@@ -457,10 +609,10 @@
             bunifuButton1.OnPressedState.IconRightImage = null;
             bunifuButton1.Size = new Size(137, 30);
             bunifuButton1.TabIndex = 6;
-            bunifuButton1.TextAlign = ContentAlignment.MiddleCenter;
+            bunifuButton1.TextAlign = ContentAlignment.MiddleLeft;
             bunifuButton1.TextAlignment = HorizontalAlignment.Center;
             bunifuButton1.TextMarginLeft = 0;
-            bunifuButton1.TextPadding = new Padding(0);
+            bunifuButton1.TextPadding = new Padding(35, 0, 0, 0);
             bunifuButton1.UseDefaultRadiusAndThickness = true;
             bunifuButton1.Click += bunifuButton1_Click;
             // 
@@ -472,19 +624,19 @@
             removeitempickedbutton.AllowToggling = false;
             removeitempickedbutton.AllowZooming = true;
             removeitempickedbutton.AllowZoomingOnFocus = false;
-            removeitempickedbutton.BackColor = Color.FromArgb(255, 128, 128);
+            removeitempickedbutton.BackColor = Color.FromArgb(220, 220, 221);
             removeitempickedbutton.DialogResult = DialogResult.None;
             removeitempickedbutton.ErrorImage = (Image)resources.GetObject("removeitempickedbutton.ErrorImage");
             removeitempickedbutton.FadeWhenInactive = false;
             removeitempickedbutton.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            removeitempickedbutton.Image = Properties.Resources.delete16px;
+            removeitempickedbutton.Image = Properties.Resources.trashcan;
             removeitempickedbutton.ImageActive = null;
             removeitempickedbutton.ImageLocation = null;
             removeitempickedbutton.ImageMargin = 20;
             removeitempickedbutton.ImageSize = new Size(10, 10);
             removeitempickedbutton.ImageZoomSize = new Size(30, 30);
             removeitempickedbutton.InitialImage = (Image)resources.GetObject("removeitempickedbutton.InitialImage");
-            removeitempickedbutton.Location = new Point(553, 101);
+            removeitempickedbutton.Location = new Point(553, 46);
             removeitempickedbutton.Name = "removeitempickedbutton";
             removeitempickedbutton.Rotation = 0;
             removeitempickedbutton.ShowActiveImage = true;
@@ -497,6 +649,7 @@
             removeitempickedbutton.WaitOnLoad = false;
             removeitempickedbutton.Zoom = 20;
             removeitempickedbutton.ZoomSpeed = 10;
+            removeitempickedbutton.Click += removeitempickedbutton_Click;
             // 
             // AllProductsContainer
             // 
@@ -504,12 +657,14 @@
             AllProductsContainer.BorderColor = Color.WhiteSmoke;
             AllProductsContainer.BorderRadius = 1;
             AllProductsContainer.BorderThickness = 1;
+            AllProductsContainer.Controls.Add(bunifuTextBox1);
+            AllProductsContainer.Controls.Add(panel2);
             AllProductsContainer.Controls.Add(CloseAllPModal);
             AllProductsContainer.Controls.Add(label2);
             AllProductsContainer.Controls.Add(AllItemDatagridview);
             AllProductsContainer.FillStyle = Bunifu.UI.WinForms.BunifuShadowPanel.FillStyles.Solid;
             AllProductsContainer.GradientMode = Bunifu.UI.WinForms.BunifuShadowPanel.GradientModes.Vertical;
-            AllProductsContainer.Location = new Point(1196, 61);
+            AllProductsContainer.Location = new Point(1154, 61);
             AllProductsContainer.Name = "AllProductsContainer";
             AllProductsContainer.Padding = new Padding(0, 10, 0, 0);
             AllProductsContainer.PanelColor = Color.WhiteSmoke;
@@ -519,7 +674,7 @@
             AllProductsContainer.ShadowDepth = 5;
             AllProductsContainer.ShadowStyle = Bunifu.UI.WinForms.BunifuShadowPanel.ShadowStyles.Surrounded;
             AllProductsContainer.ShadowTopLeftVisible = false;
-            AllProductsContainer.Size = new Size(404, 241);
+            AllProductsContainer.Size = new Size(404, 300);
             AllProductsContainer.Style = Bunifu.UI.WinForms.BunifuShadowPanel.BevelStyles.Flat;
             AllProductsContainer.TabIndex = 8;
             AllProductsContainer.Visible = false;
@@ -542,11 +697,11 @@
             CloseAllPModal.ButtonTextMarginLeft = 0;
             CloseAllPModal.ColorContrastOnClick = 45;
             CloseAllPModal.ColorContrastOnHover = 45;
-            borderEdges3.BottomLeft = true;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = true;
-            borderEdges3.TopRight = true;
-            CloseAllPModal.CustomizableEdges = borderEdges3;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            CloseAllPModal.CustomizableEdges = borderEdges4;
             CloseAllPModal.DialogResult = DialogResult.None;
             CloseAllPModal.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             CloseAllPModal.DisabledFillColor = Color.Empty;
@@ -572,7 +727,7 @@
             CloseAllPModal.IdleIconLeftImage = null;
             CloseAllPModal.IdleIconRightImage = null;
             CloseAllPModal.IndicateFocus = false;
-            CloseAllPModal.Location = new Point(318, 212);
+            CloseAllPModal.Location = new Point(316, 263);
             CloseAllPModal.Name = "CloseAllPModal";
             CloseAllPModal.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             CloseAllPModal.OnDisabledState.BorderRadius = 1;
@@ -622,65 +777,66 @@
             label2.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(0, 10);
             label2.Name = "label2";
+            label2.Padding = new Padding(10, 0, 0, 0);
             label2.Size = new Size(404, 21);
             label2.TabIndex = 1;
             label2.Text = "All Product";
-            label2.TextAlign = ContentAlignment.MiddleCenter;
+            label2.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // AllItemDatagridview
             // 
             AllItemDatagridview.AllowCustomTheming = false;
             AllItemDatagridview.AllowUserToAddRows = false;
             AllItemDatagridview.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(248, 251, 255);
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(223, 191, 191);
             dataGridViewCellStyle4.ForeColor = Color.Black;
             AllItemDatagridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             AllItemDatagridview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            AllItemDatagridview.BorderStyle = BorderStyle.None;
+            AllItemDatagridview.BackgroundColor = Color.White;
             AllItemDatagridview.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             AllItemDatagridview.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.DodgerBlue;
+            dataGridViewCellStyle5.BackColor = Color.Maroon;
             dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
             dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(24, 115, 204);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(102, 0, 0);
             dataGridViewCellStyle5.SelectionForeColor = Color.White;
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
             AllItemDatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             AllItemDatagridview.ColumnHeadersHeight = 40;
             AllItemDatagridview.Columns.AddRange(new DataGridViewColumn[] { ALLI_ItemIdCol, ALLI_ItemCodeCol, ALLI_ItemNameCol, ALLI_ActionCol });
-            AllItemDatagridview.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(248, 251, 255);
+            AllItemDatagridview.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
             AllItemDatagridview.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             AllItemDatagridview.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
-            AllItemDatagridview.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(210, 232, 255);
-            AllItemDatagridview.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.Black;
-            AllItemDatagridview.CurrentTheme.BackColor = Color.White;
-            AllItemDatagridview.CurrentTheme.GridColor = Color.FromArgb(221, 238, 255);
-            AllItemDatagridview.CurrentTheme.HeaderStyle.BackColor = Color.DodgerBlue;
+            AllItemDatagridview.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            AllItemDatagridview.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.White;
+            AllItemDatagridview.CurrentTheme.BackColor = Color.Maroon;
+            AllItemDatagridview.CurrentTheme.GridColor = Color.FromArgb(216, 178, 178);
+            AllItemDatagridview.CurrentTheme.HeaderStyle.BackColor = Color.Maroon;
             AllItemDatagridview.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
             AllItemDatagridview.CurrentTheme.HeaderStyle.ForeColor = Color.White;
-            AllItemDatagridview.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(24, 115, 204);
+            AllItemDatagridview.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(102, 0, 0);
             AllItemDatagridview.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
             AllItemDatagridview.CurrentTheme.Name = null;
-            AllItemDatagridview.CurrentTheme.RowsStyle.BackColor = Color.White;
+            AllItemDatagridview.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(229, 204, 204);
             AllItemDatagridview.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             AllItemDatagridview.CurrentTheme.RowsStyle.ForeColor = Color.Black;
-            AllItemDatagridview.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(210, 232, 255);
-            AllItemDatagridview.CurrentTheme.RowsStyle.SelectionForeColor = Color.Black;
+            AllItemDatagridview.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            AllItemDatagridview.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
             dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.White;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(229, 204, 204);
             dataGridViewCellStyle8.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             dataGridViewCellStyle8.ForeColor = Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(210, 232, 255);
-            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            dataGridViewCellStyle8.SelectionForeColor = Color.White;
             dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
             AllItemDatagridview.DefaultCellStyle = dataGridViewCellStyle8;
             AllItemDatagridview.EnableHeadersVisualStyles = false;
-            AllItemDatagridview.GridColor = Color.FromArgb(221, 238, 255);
-            AllItemDatagridview.HeaderBackColor = Color.DodgerBlue;
+            AllItemDatagridview.GridColor = Color.FromArgb(216, 178, 178);
+            AllItemDatagridview.HeaderBackColor = Color.Maroon;
             AllItemDatagridview.HeaderBgColor = Color.Empty;
             AllItemDatagridview.HeaderForeColor = Color.White;
-            AllItemDatagridview.Location = new Point(3, 61);
+            AllItemDatagridview.Location = new Point(3, 85);
             AllItemDatagridview.Name = "AllItemDatagridview";
             AllItemDatagridview.ReadOnly = true;
             AllItemDatagridview.RowHeadersVisible = false;
@@ -688,9 +844,9 @@
             AllItemDatagridview.RowsDefaultCellStyle = dataGridViewCellStyle9;
             AllItemDatagridview.RowTemplate.Height = 40;
             AllItemDatagridview.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            AllItemDatagridview.Size = new Size(398, 142);
+            AllItemDatagridview.Size = new Size(398, 170);
             AllItemDatagridview.TabIndex = 0;
-            AllItemDatagridview.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            AllItemDatagridview.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             AllItemDatagridview.CellContentClick += AllItemDatagridview_CellContentClick;
             // 
             // ALLI_ItemIdCol
@@ -731,16 +887,99 @@
             ALLI_ActionCol.Text = "Add";
             ALLI_ActionCol.UseColumnTextForButtonValue = true;
             // 
+            // panel2
+            // 
+            panel2.BackColor = Color.Maroon;
+            panel2.Location = new Point(-21, 30);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(500, 5);
+            panel2.TabIndex = 8;
+            // 
+            // bunifuTextBox1
+            // 
+            bunifuTextBox1.AcceptsReturn = false;
+            bunifuTextBox1.AcceptsTab = false;
+            bunifuTextBox1.AnimationSpeed = 200;
+            bunifuTextBox1.AutoCompleteMode = AutoCompleteMode.None;
+            bunifuTextBox1.AutoCompleteSource = AutoCompleteSource.None;
+            bunifuTextBox1.AutoSizeHeight = true;
+            bunifuTextBox1.BackColor = Color.Transparent;
+            bunifuTextBox1.BackgroundImage = (Image)resources.GetObject("bunifuTextBox1.BackgroundImage");
+            bunifuTextBox1.BorderColorActive = Color.DodgerBlue;
+            bunifuTextBox1.BorderColorDisabled = Color.FromArgb(204, 204, 204);
+            bunifuTextBox1.BorderColorHover = Color.FromArgb(105, 181, 255);
+            bunifuTextBox1.BorderColorIdle = Color.Silver;
+            bunifuTextBox1.BorderRadius = 1;
+            bunifuTextBox1.BorderThickness = 1;
+            bunifuTextBox1.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
+            bunifuTextBox1.CharacterCasing = CharacterCasing.Normal;
+            bunifuTextBox1.DefaultFont = new Font("Segoe UI", 9.25F);
+            bunifuTextBox1.DefaultText = "";
+            bunifuTextBox1.FillColor = Color.White;
+            bunifuTextBox1.HideSelection = true;
+            bunifuTextBox1.IconLeft = Properties.Resources.magnifying_glass;
+            bunifuTextBox1.IconLeftCursor = Cursors.IBeam;
+            bunifuTextBox1.IconPadding = 10;
+            bunifuTextBox1.IconRight = null;
+            bunifuTextBox1.IconRightCursor = Cursors.IBeam;
+            bunifuTextBox1.Location = new Point(5, 39);
+            bunifuTextBox1.MaxLength = 32767;
+            bunifuTextBox1.MinimumSize = new Size(1, 1);
+            bunifuTextBox1.Modified = false;
+            bunifuTextBox1.Multiline = false;
+            bunifuTextBox1.Name = "bunifuTextBox1";
+            stateProperties1.BorderColor = Color.DodgerBlue;
+            stateProperties1.FillColor = Color.Empty;
+            stateProperties1.ForeColor = Color.Empty;
+            stateProperties1.PlaceholderForeColor = Color.Empty;
+            bunifuTextBox1.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = Color.FromArgb(204, 204, 204);
+            stateProperties2.FillColor = Color.FromArgb(240, 240, 240);
+            stateProperties2.ForeColor = Color.FromArgb(109, 109, 109);
+            stateProperties2.PlaceholderForeColor = Color.DarkGray;
+            bunifuTextBox1.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = Color.FromArgb(105, 181, 255);
+            stateProperties3.FillColor = Color.Empty;
+            stateProperties3.ForeColor = Color.Empty;
+            stateProperties3.PlaceholderForeColor = Color.Empty;
+            bunifuTextBox1.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = Color.Silver;
+            stateProperties4.FillColor = Color.White;
+            stateProperties4.ForeColor = Color.Empty;
+            stateProperties4.PlaceholderForeColor = Color.Empty;
+            bunifuTextBox1.OnIdleState = stateProperties4;
+            bunifuTextBox1.Padding = new Padding(3);
+            bunifuTextBox1.PasswordChar = '\0';
+            bunifuTextBox1.PlaceholderForeColor = Color.Silver;
+            bunifuTextBox1.PlaceholderText = "Search Item Code or Name";
+            bunifuTextBox1.ReadOnly = false;
+            bunifuTextBox1.ScrollBars = ScrollBars.None;
+            bunifuTextBox1.SelectedText = "";
+            bunifuTextBox1.SelectionLength = 0;
+            bunifuTextBox1.SelectionStart = 0;
+            bunifuTextBox1.ShortcutsEnabled = true;
+            bunifuTextBox1.Size = new Size(390, 39);
+            bunifuTextBox1.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            bunifuTextBox1.TabIndex = 9;
+            bunifuTextBox1.TextAlign = HorizontalAlignment.Left;
+            bunifuTextBox1.TextMarginBottom = 0;
+            bunifuTextBox1.TextMarginLeft = 10;
+            bunifuTextBox1.TextMarginTop = 1;
+            bunifuTextBox1.TextPlaceholder = "Search Item Code or Name";
+            bunifuTextBox1.UseSystemPasswordChar = false;
+            bunifuTextBox1.WordWrap = true;
+            // 
             // PurchaseItemmodal
             // 
             AutoScaleDimensions = new SizeF(8F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(590, 350);
             Controls.Add(AllProductsContainer);
+            Controls.Add(footer);
             Controls.Add(removeitempickedbutton);
             Controls.Add(bunifuButton1);
             Controls.Add(AllPickedItems);
-            Controls.Add(footer);
             Controls.Add(panel1);
             Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
@@ -761,7 +1000,6 @@
         private Bunifu.UI.WinForms.BunifuImageButton CloseModal;
         private Label Modaltitle;
         private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton1;
-        private Label preparedbylabel;
         private Panel footer;
         private Bunifu.UI.WinForms.BunifuDataGridView AllPickedItems;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton1;
@@ -774,11 +1012,19 @@
         private DataGridViewTextBoxColumn ALLI_ItemCodeCol;
         private DataGridViewTextBoxColumn ALLI_ItemNameCol;
         private DataGridViewButtonColumn ALLI_ActionCol;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton AddPurchaseItemButton;
         private DataGridViewTextBoxColumn IdCol;
         private DataGridViewTextBoxColumn ItemNameCol;
         private DataGridViewTextBoxColumn ItemQuantityCol;
         private DataGridViewTextBoxColumn ItemPriceCol;
         private DataGridViewTextBoxColumn ItemTotalCol;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton AddPurchaseItemButton;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton2;
+        private Label preparedbylabel;
+        private Panel panel3;
+        private Label label3;
+        private Label label1;
+        private Label label4;
+        private Bunifu.UI.WinForms.BunifuTextBox bunifuTextBox1;
+        private Panel panel2;
     }
 }

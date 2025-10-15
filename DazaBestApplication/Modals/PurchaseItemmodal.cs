@@ -256,7 +256,7 @@ namespace DazaBestApplication.Modals
         }
         private async void AllPickedItems_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && AllProductsContainer.Visible == false && _purchaseitemmodal.Action == "AddItemStock" && 
+            if (e.RowIndex >= 0 && AllProductsContainer.Visible == false && _purchaseitemmodal.Action == "AddItemStock" &&
                     (AllPickedItems.Columns[e.ColumnIndex].Name == "ItemQuantityCol" || AllPickedItems.Columns[e.ColumnIndex].Name == "ItemPriceCol"))
             {
                 await UpdateTheTotalAmountofSelectedRow(e.RowIndex, e);
@@ -277,11 +277,16 @@ namespace DazaBestApplication.Modals
         }
         private async void AddPurchaseItemButton_Click(object sender, EventArgs e)
         {
-            if(AllPickedItems.Focused)
+            if (AllPickedItems.Focused)
             {
                 AllPickedItems.EndEdit();
             }
             await AddPurchaseItem();
+        }
+
+        private void removeitempickedbutton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

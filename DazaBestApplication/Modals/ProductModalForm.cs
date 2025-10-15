@@ -123,5 +123,35 @@ namespace DazaBestApplication.Modals
                 EditProduct();
             }
         }
+
+        private void bunifuButton2_Click(object sender, EventArgs e)
+        {
+            Closemodal();
+        }
+
+        private void AddProductBtn_Click(object sender, EventArgs e)
+        {
+            byte[] Pic = null;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+                openFileDialog.Title = "Select an Image File";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        Pic = File.ReadAllBytes(openFileDialog.FileName);
+                        AddProductPic.Image = Image.FromStream(new MemoryStream(Pic));
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error loading image: {ex.Message}");
+                        Pic = null;
+                    }
+                }
+            }
+        }
     }
 }
