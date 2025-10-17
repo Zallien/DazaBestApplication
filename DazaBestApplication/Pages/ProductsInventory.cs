@@ -260,7 +260,7 @@ namespace DazaBestApplication.Pages
             }
         }
         //Edit Product
-        private void EditProduct()
+        private async void EditProduct()
         {
             EditProduct _editproduct = new EditProduct();
             if (AllProductDatagridView.SelectedRows.Count == 1)
@@ -269,6 +269,8 @@ namespace DazaBestApplication.Pages
                 _editproduct.ProductPrice = decimal.Parse(selectedRow.Cells["PriceCol"].Value.ToString());
                 _editproduct.ProductName = selectedRow.Cells["ProductNameCol"].Value.ToString();
                 _editproduct.ProductID = Guid.Parse(selectedRow.Cells["IdCol"].Value.ToString());
+                _editproduct.ProductImage = await new ProductServices(new BackEndDBContext())
+                                            .GetProductImageByID(_editproduct.ProductID);
                 _productmodal = new ProductModal()
                 {
                     Action = "EditProduct",

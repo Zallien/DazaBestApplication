@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges10 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState25 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
+            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState26 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
+            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState27 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
+            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState28 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
+            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState29 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
+            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState30 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState1 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
-            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState2 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
-            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState3 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
-            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState4 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
-            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState5 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
-            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState6 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges9 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             TopPanel = new Panel();
             label1 = new Label();
             MainContainer = new Panel();
@@ -96,7 +96,6 @@
             label1.TabIndex = 0;
             label1.Text = "Settings";
             label1.TextAlign = ContentAlignment.MiddleLeft;
-            label1.Click += label1_Click;
             // 
             // MainContainer
             // 
@@ -126,7 +125,7 @@
             DatabaseSettingsPanel.Dock = DockStyle.Top;
             DatabaseSettingsPanel.Location = new Point(30, 406);
             DatabaseSettingsPanel.Name = "DatabaseSettingsPanel";
-            DatabaseSettingsPanel.Size = new Size(870, 194);
+            DatabaseSettingsPanel.Size = new Size(853, 207);
             DatabaseSettingsPanel.TabIndex = 2;
             // 
             // bunifuDropdown1
@@ -191,11 +190,11 @@
             bunifuButton2.ButtonTextMarginLeft = 0;
             bunifuButton2.ColorContrastOnClick = 45;
             bunifuButton2.ColorContrastOnHover = 45;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            bunifuButton2.CustomizableEdges = borderEdges1;
+            borderEdges10.BottomLeft = true;
+            borderEdges10.BottomRight = true;
+            borderEdges10.TopLeft = true;
+            borderEdges10.TopRight = true;
+            bunifuButton2.CustomizableEdges = borderEdges10;
             bunifuButton2.DialogResult = DialogResult.None;
             bunifuButton2.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton2.DisabledFillColor = Color.Empty;
@@ -277,33 +276,33 @@
             bunifuToggleSwitch2.Size = new Size(54, 28);
             bunifuToggleSwitch2.TabIndex = 13;
             bunifuToggleSwitch2.ThumbMargin = 3;
-            toggleState1.BackColor = Color.DarkGray;
-            toggleState1.BackColorInner = Color.White;
-            toggleState1.BorderColor = Color.DarkGray;
-            toggleState1.BorderColorInner = Color.White;
-            toggleState1.BorderRadius = 17;
-            toggleState1.BorderRadiusInner = 11;
-            toggleState1.BorderThickness = 1;
-            toggleState1.BorderThicknessInner = 1;
-            bunifuToggleSwitch2.ToggleStateDisabled = toggleState1;
-            toggleState2.BackColor = Color.Empty;
-            toggleState2.BackColorInner = Color.Empty;
-            toggleState2.BorderColor = Color.FromArgb(236, 0, 140);
-            toggleState2.BorderColorInner = Color.Empty;
-            toggleState2.BorderRadius = 1;
-            toggleState2.BorderRadiusInner = 1;
-            toggleState2.BorderThickness = 1;
-            toggleState2.BorderThicknessInner = 1;
-            bunifuToggleSwitch2.ToggleStateOff = toggleState2;
-            toggleState3.BackColor = Color.DodgerBlue;
-            toggleState3.BackColorInner = Color.White;
-            toggleState3.BorderColor = Color.DodgerBlue;
-            toggleState3.BorderColorInner = Color.White;
-            toggleState3.BorderRadius = 15;
-            toggleState3.BorderRadiusInner = 9;
-            toggleState3.BorderThickness = 1;
-            toggleState3.BorderThicknessInner = 1;
-            bunifuToggleSwitch2.ToggleStateOn = toggleState3;
+            toggleState25.BackColor = Color.DarkGray;
+            toggleState25.BackColorInner = Color.White;
+            toggleState25.BorderColor = Color.DarkGray;
+            toggleState25.BorderColorInner = Color.White;
+            toggleState25.BorderRadius = 17;
+            toggleState25.BorderRadiusInner = 11;
+            toggleState25.BorderThickness = 1;
+            toggleState25.BorderThicknessInner = 1;
+            bunifuToggleSwitch2.ToggleStateDisabled = toggleState25;
+            toggleState26.BackColor = Color.Empty;
+            toggleState26.BackColorInner = Color.Empty;
+            toggleState26.BorderColor = Color.FromArgb(236, 0, 140);
+            toggleState26.BorderColorInner = Color.Empty;
+            toggleState26.BorderRadius = 1;
+            toggleState26.BorderRadiusInner = 1;
+            toggleState26.BorderThickness = 1;
+            toggleState26.BorderThicknessInner = 1;
+            bunifuToggleSwitch2.ToggleStateOff = toggleState26;
+            toggleState27.BackColor = Color.DodgerBlue;
+            toggleState27.BackColorInner = Color.White;
+            toggleState27.BorderColor = Color.DodgerBlue;
+            toggleState27.BorderColorInner = Color.White;
+            toggleState27.BorderRadius = 15;
+            toggleState27.BorderRadiusInner = 9;
+            toggleState27.BorderThickness = 1;
+            toggleState27.BorderThicknessInner = 1;
+            bunifuToggleSwitch2.ToggleStateOn = toggleState27;
             bunifuToggleSwitch2.Value = true;
             // 
             // textBox7
@@ -378,7 +377,7 @@
             POSInventorySettingsPanel.Dock = DockStyle.Top;
             POSInventorySettingsPanel.Location = new Point(30, 195);
             POSInventorySettingsPanel.Name = "POSInventorySettingsPanel";
-            POSInventorySettingsPanel.Size = new Size(870, 211);
+            POSInventorySettingsPanel.Size = new Size(853, 211);
             POSInventorySettingsPanel.TabIndex = 1;
             // 
             // bunifuToggleSwitch1
@@ -395,33 +394,33 @@
             bunifuToggleSwitch1.Size = new Size(54, 28);
             bunifuToggleSwitch1.TabIndex = 8;
             bunifuToggleSwitch1.ThumbMargin = 3;
-            toggleState4.BackColor = Color.DarkGray;
-            toggleState4.BackColorInner = Color.White;
-            toggleState4.BorderColor = Color.DarkGray;
-            toggleState4.BorderColorInner = Color.White;
-            toggleState4.BorderRadius = 17;
-            toggleState4.BorderRadiusInner = 11;
-            toggleState4.BorderThickness = 1;
-            toggleState4.BorderThicknessInner = 1;
-            bunifuToggleSwitch1.ToggleStateDisabled = toggleState4;
-            toggleState5.BackColor = Color.Empty;
-            toggleState5.BackColorInner = Color.Empty;
-            toggleState5.BorderColor = Color.FromArgb(236, 0, 140);
-            toggleState5.BorderColorInner = Color.Empty;
-            toggleState5.BorderRadius = 1;
-            toggleState5.BorderRadiusInner = 1;
-            toggleState5.BorderThickness = 1;
-            toggleState5.BorderThicknessInner = 1;
-            bunifuToggleSwitch1.ToggleStateOff = toggleState5;
-            toggleState6.BackColor = Color.DodgerBlue;
-            toggleState6.BackColorInner = Color.White;
-            toggleState6.BorderColor = Color.DodgerBlue;
-            toggleState6.BorderColorInner = Color.White;
-            toggleState6.BorderRadius = 15;
-            toggleState6.BorderRadiusInner = 9;
-            toggleState6.BorderThickness = 1;
-            toggleState6.BorderThicknessInner = 1;
-            bunifuToggleSwitch1.ToggleStateOn = toggleState6;
+            toggleState28.BackColor = Color.DarkGray;
+            toggleState28.BackColorInner = Color.White;
+            toggleState28.BorderColor = Color.DarkGray;
+            toggleState28.BorderColorInner = Color.White;
+            toggleState28.BorderRadius = 17;
+            toggleState28.BorderRadiusInner = 11;
+            toggleState28.BorderThickness = 1;
+            toggleState28.BorderThicknessInner = 1;
+            bunifuToggleSwitch1.ToggleStateDisabled = toggleState28;
+            toggleState29.BackColor = Color.Empty;
+            toggleState29.BackColorInner = Color.Empty;
+            toggleState29.BorderColor = Color.FromArgb(236, 0, 140);
+            toggleState29.BorderColorInner = Color.Empty;
+            toggleState29.BorderRadius = 1;
+            toggleState29.BorderRadiusInner = 1;
+            toggleState29.BorderThickness = 1;
+            toggleState29.BorderThicknessInner = 1;
+            bunifuToggleSwitch1.ToggleStateOff = toggleState29;
+            toggleState30.BackColor = Color.DodgerBlue;
+            toggleState30.BackColorInner = Color.White;
+            toggleState30.BorderColor = Color.DodgerBlue;
+            toggleState30.BorderColorInner = Color.White;
+            toggleState30.BorderRadius = 15;
+            toggleState30.BorderRadiusInner = 9;
+            toggleState30.BorderThickness = 1;
+            toggleState30.BorderThicknessInner = 1;
+            bunifuToggleSwitch1.ToggleStateOn = toggleState30;
             bunifuToggleSwitch1.Value = true;
             // 
             // textBox5
@@ -505,7 +504,7 @@
             GeneralSettingsPanel.Dock = DockStyle.Top;
             GeneralSettingsPanel.Location = new Point(30, 10);
             GeneralSettingsPanel.Name = "GeneralSettingsPanel";
-            GeneralSettingsPanel.Size = new Size(870, 185);
+            GeneralSettingsPanel.Size = new Size(853, 185);
             GeneralSettingsPanel.TabIndex = 0;
             // 
             // bunifuButton1
@@ -526,11 +525,11 @@
             bunifuButton1.ButtonTextMarginLeft = 0;
             bunifuButton1.ColorContrastOnClick = 45;
             bunifuButton1.ColorContrastOnHover = 45;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            bunifuButton1.CustomizableEdges = borderEdges2;
+            borderEdges9.BottomLeft = true;
+            borderEdges9.BottomRight = true;
+            borderEdges9.TopLeft = true;
+            borderEdges9.TopRight = true;
+            bunifuButton1.CustomizableEdges = borderEdges9;
             bunifuButton1.DialogResult = DialogResult.None;
             bunifuButton1.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton1.DisabledFillColor = Color.Empty;
@@ -651,7 +650,6 @@
             label4.TabIndex = 2;
             label4.Text = "Contact Info :";
             label4.TextAlign = ContentAlignment.MiddleLeft;
-            label4.Click += label4_Click;
             // 
             // label3
             // 

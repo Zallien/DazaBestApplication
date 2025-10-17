@@ -83,5 +83,25 @@ namespace DazaBestApplication.Models_and_Helpers
             string json = JsonSerializer.Serialize(config, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(ConfigFilePath, json);
         }
+
+        public static void SaveUpdatedConfig(ConfigurationModel config)
+        {
+            var option = new JsonSerializerOptions { WriteIndented = true };
+            string json = JsonSerializer.Serialize(config, option);
+            File.WriteAllText(ConfigFilePath, json);
+        }
+
+        public static ConfigurationModel LoadConfig()
+        {
+            string jsonstring = File.ReadAllText(ConfigFilePath);
+            return JsonSerializer.Deserialize<ConfigurationModel>(jsonstring) ?? new ConfigurationModel();
+        }
+
+        public static void UpdateConfig(Action<ConfigurationModel> UpdateAction)
+        {
+            var config = LoadConfig();
+            UpdateAction(config);
+            SaveUpdatedConfig(config);
+        }
     }
 }

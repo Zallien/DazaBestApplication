@@ -21,6 +21,7 @@ namespace DazaBestApplication.Modals
         private ProductModal _productmodal;
         private ProductServices _productservices = new ProductServices(new BackEndDBContext());
         private Guid ProducteditID;
+        private byte[]? Pic = null;
 
 
         //Constructor
@@ -56,6 +57,10 @@ namespace DazaBestApplication.Modals
                 ProducteditID = _productmodal.EditItem.ProductID;
                 ProductNametxt.Text = _productmodal.EditItem.ProductName;
                 Productpricetxt.Text = _productmodal.EditItem.ProductPrice.ToString("#.##0");
+                if (_productmodal.EditItem.ProductImage != null)
+                {
+                    AddProductPic.Image = Image.FromStream(new MemoryStream(_productmodal.EditItem.ProductImage)!);
+                }
             }
         }
         //Add Product
@@ -66,6 +71,7 @@ namespace DazaBestApplication.Modals
             {
                 ProductName = ProductNametxt.Text,
                 ProductPrice = decimal.Parse(Productpricetxt.Text),
+                ProductPicture = Pic
             };
             bool IsAdded = await _productservices.AddProduct(newproduct);
             if (IsAdded)
@@ -73,7 +79,6 @@ namespace DazaBestApplication.Modals
                 Closemodal();
                 await ProductEventHandlers.InvokeProductChanged();
                 MessageBox.Show("Added Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
             else
             {
@@ -131,7 +136,7 @@ namespace DazaBestApplication.Modals
 
         private void AddProductBtn_Click(object sender, EventArgs e)
         {
-            byte[] Pic = null;
+            
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";

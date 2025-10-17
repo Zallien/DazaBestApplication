@@ -38,5 +38,6 @@ namespace DazaBestApplication
             Application.Run(new MainPage());
         }
 
+
     }
 }

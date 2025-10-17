@@ -112,7 +112,8 @@ namespace SystemBackEnd.Services
                     DateCreated = DateTime.Now,
                     Quantity = 0,
                     Price = product.ProductPrice,
-                    IsAvailable = false
+                    IsAvailable = false,
+                    ProductImage = product.ProductPicture
                 };
                 await _db.Products.AddAsync(_theaddedproduct);
                 await _db.SaveChangesAsync();
@@ -173,6 +174,25 @@ namespace SystemBackEnd.Services
             }
             return _issuccess;
         }
+        //Get Product Image By ID
+        public async Task<byte[]?> GetProductImageByID(Guid _productid)
+        {
+            byte[]? _theimage = null;
+            try
+            {
+                Products _theproduct = await _db.Products.FirstOrDefaultAsync(x => x.ProductID == _productid);
+                if (_theproduct != null)
+                {
+                    _theimage = _theproduct.ProductImage;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return _theimage;
+        }
+
 
     }
 }
