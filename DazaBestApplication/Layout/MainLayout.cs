@@ -1,4 +1,5 @@
 using Bunifu.UI.WinForms;
+using DazaBestApplication.Layout;
 using DazaBestApplication.Pages;
 using System.Windows.Forms;
 
@@ -114,6 +115,13 @@ namespace DazaBestApplication
         private void bunifuButton21_Click(object sender, EventArgs e)
         {
             ShowSettingsPage();
+        }
+
+        private void POSButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            PointofSaleForm posForm = new PointofSaleForm();
+            posForm.Show();
         }
     }
 }
