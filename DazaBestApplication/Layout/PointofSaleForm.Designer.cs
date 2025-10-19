@@ -32,23 +32,24 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PointofSaleForm));
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Bottomnavbar = new Panel();
             Sidebar = new Panel();
             label1 = new Label();
             label2 = new Label();
             ProductOrdersDatagrid = new Bunifu.UI.WinForms.BunifuDataGridView();
-            Searchbox = new Bunifu.UI.WinForms.BunifuTextBox();
-            MainDisplay = new FlowLayoutPanel();
             ProductIdCol = new DataGridViewTextBoxColumn();
             ProductNameCol = new DataGridViewTextBoxColumn();
             QuantityCol = new DataGridViewTextBoxColumn();
             PriceCol = new DataGridViewTextBoxColumn();
+            ActionCol = new DataGridViewButtonColumn();
+            Searchbox = new Bunifu.UI.WinForms.BunifuTextBox();
+            MainDisplay = new FlowLayoutPanel();
             Sidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ProductOrdersDatagrid).BeginInit();
             SuspendLayout();
@@ -96,6 +97,8 @@
             ProductOrdersDatagrid.AllowCustomTheming = false;
             ProductOrdersDatagrid.AllowUserToAddRows = false;
             ProductOrdersDatagrid.AllowUserToDeleteRows = false;
+            ProductOrdersDatagrid.AllowUserToResizeColumns = false;
+            ProductOrdersDatagrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(248, 251, 255);
             dataGridViewCellStyle1.ForeColor = Color.Black;
             ProductOrdersDatagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -114,7 +117,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             ProductOrdersDatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             ProductOrdersDatagrid.ColumnHeadersHeight = 40;
-            ProductOrdersDatagrid.Columns.AddRange(new DataGridViewColumn[] { ProductIdCol, ProductNameCol, QuantityCol, PriceCol });
+            ProductOrdersDatagrid.Columns.AddRange(new DataGridViewColumn[] { ProductIdCol, ProductNameCol, QuantityCol, PriceCol, ActionCol });
             ProductOrdersDatagrid.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(248, 251, 255);
             ProductOrdersDatagrid.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             ProductOrdersDatagrid.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
@@ -147,17 +150,56 @@
             ProductOrdersDatagrid.HeaderBgColor = Color.Empty;
             ProductOrdersDatagrid.HeaderForeColor = Color.White;
             ProductOrdersDatagrid.Location = new Point(10, 117);
+            ProductOrdersDatagrid.MultiSelect = false;
             ProductOrdersDatagrid.Name = "ProductOrdersDatagrid";
             ProductOrdersDatagrid.RowHeadersVisible = false;
+            ProductOrdersDatagrid.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle5.Font = new Font("Cambria", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle5.ForeColor = Color.Black;
             ProductOrdersDatagrid.RowsDefaultCellStyle = dataGridViewCellStyle5;
             ProductOrdersDatagrid.RowTemplate.Height = 40;
             ProductOrdersDatagrid.ScrollBars = ScrollBars.Vertical;
             ProductOrdersDatagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            ProductOrdersDatagrid.Size = new Size(282, 146);
+            ProductOrdersDatagrid.Size = new Size(282, 150);
             ProductOrdersDatagrid.TabIndex = 2;
             ProductOrdersDatagrid.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            ProductOrdersDatagrid.CellFormatting += ProductOrdersDatagrid_CellFormatting;
+            // 
+            // ProductIdCol
+            // 
+            ProductIdCol.HeaderText = "id";
+            ProductIdCol.Name = "ProductIdCol";
+            ProductIdCol.Visible = false;
+            // 
+            // ProductNameCol
+            // 
+            dataGridViewCellStyle3.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ProductNameCol.DefaultCellStyle = dataGridViewCellStyle3;
+            ProductNameCol.FillWeight = 50F;
+            ProductNameCol.HeaderText = "Product";
+            ProductNameCol.Name = "ProductNameCol";
+            ProductNameCol.ReadOnly = true;
+            // 
+            // QuantityCol
+            // 
+            QuantityCol.FillWeight = 15F;
+            QuantityCol.HeaderText = "Qty";
+            QuantityCol.Name = "QuantityCol";
+            // 
+            // PriceCol
+            // 
+            PriceCol.FillWeight = 25F;
+            PriceCol.HeaderText = "Price";
+            PriceCol.Name = "PriceCol";
+            // 
+            // ActionCol
+            // 
+            ActionCol.FillWeight = 10F;
+            ActionCol.HeaderText = "";
+            ActionCol.Name = "ActionCol";
+            ActionCol.Text = "-";
+            ActionCol.ToolTipText = "Delete";
+            ActionCol.UseColumnTextForButtonValue = true;
             // 
             // Searchbox
             // 
@@ -243,33 +285,6 @@
             MainDisplay.Size = new Size(720, 580);
             MainDisplay.TabIndex = 2;
             // 
-            // ProductIdCol
-            // 
-            ProductIdCol.HeaderText = "id";
-            ProductIdCol.Name = "ProductIdCol";
-            ProductIdCol.Visible = false;
-            // 
-            // ProductNameCol
-            // 
-            dataGridViewCellStyle3.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ProductNameCol.DefaultCellStyle = dataGridViewCellStyle3;
-            ProductNameCol.FillWeight = 60F;
-            ProductNameCol.HeaderText = "Product";
-            ProductNameCol.Name = "ProductNameCol";
-            ProductNameCol.ReadOnly = true;
-            // 
-            // QuantityCol
-            // 
-            QuantityCol.FillWeight = 15F;
-            QuantityCol.HeaderText = "Qty";
-            QuantityCol.Name = "QuantityCol";
-            // 
-            // PriceCol
-            // 
-            PriceCol.FillWeight = 25F;
-            PriceCol.HeaderText = "Price";
-            PriceCol.Name = "PriceCol";
-            // 
             // PointofSaleForm
             // 
             AutoScaleDimensions = new SizeF(7F, 14F);
@@ -301,5 +316,6 @@
         private DataGridViewTextBoxColumn ProductNameCol;
         private DataGridViewTextBoxColumn QuantityCol;
         private DataGridViewTextBoxColumn PriceCol;
+        private DataGridViewButtonColumn ActionCol;
     }
 }

@@ -117,8 +117,9 @@ namespace DazaBestApplication.Layout
         private void SearchOrderedProductInDatagrid(ProductInformation product)
         {
             bool productExists = IsProductInCurrentOrders(product.ProductID);
-            if(productExists)
+            if (productExists)
             {
+                //Update Quantity in Datagrid
                 foreach (DataGridViewRow row in ProductOrdersDatagrid.Rows)
                 {
                     if (row.Cells["ProductIdCol"].Value != null && (Guid)row.Cells["ProductIdCol"].Value == product.ProductID)
@@ -136,6 +137,7 @@ namespace DazaBestApplication.Layout
             }
             else
             {
+                //Add New Product to Datagrid
                 int rowIndex = ProductOrdersDatagrid.Rows.Add();
                 DataGridViewRow row = ProductOrdersDatagrid.Rows[rowIndex];
                 row.Cells["ProductIdCol"].Value = product.ProductID;
@@ -150,7 +152,7 @@ namespace DazaBestApplication.Layout
                     ProductPrice = product.ProductPrice
                 });
             }
-            
+
         }
         //Get All Avaiable Products from Database
         private async Task GetAllAvailableProducts()
@@ -167,6 +169,7 @@ namespace DazaBestApplication.Layout
         {
             await GetAllAvailableProducts();
             ProductOrdersDatagrid.ColumnHeadersHeight = 24;
+            ProductOrdersDatagrid.RowTemplate.Height = 20;
         }
 
 
@@ -178,6 +181,19 @@ namespace DazaBestApplication.Layout
             Panel clickedPanel = GetParentPanel((Control)sender);
             ProductInformation productInfo = (ProductInformation)clickedPanel.Tag;
             SearchOrderedProductInDatagrid(productInfo);
+        }
+        //Handle Cell Formatting for Datagrid
+        private void ProductOrdersDatagrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (ProductOrdersDatagrid.Columns[e.ColumnIndex].Name == "ActionCol" && e.RowIndex >= 0)
+            {
+                DataGridViewButtonCell buttonCell = ProductOrdersDatagrid.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewButtonCell;
+                buttonCell.Style.BackColor = Color.Red;
+                buttonCell.Style.ForeColor = Color.White;
+                buttonCell.Style.SelectionBackColor = Color.DarkRed;
+                buttonCell.Style.SelectionForeColor = Color.White;
+                buttonCell.FlatStyle = FlatStyle.Flat;
+            }
         }
     }
 
