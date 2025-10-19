@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SystemBackEnd.Models;
+using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
+using static TheArtOfDev.HtmlRenderer.Adapters.RGraphicsPath;
 
 namespace DazaBestApplication.Layout
 {
@@ -16,7 +18,7 @@ namespace DazaBestApplication.Layout
     {
 
         private List<Products> AllavailableProducts;
-
+        private List<POSProductOrders> CurrentOrders = new List<POSProductOrders>();
 
         public PointofSaleForm()
         {
@@ -32,7 +34,7 @@ namespace DazaBestApplication.Layout
             this.Size = screensize.Size;
             this.Location = screensize.Location;
         }
-
+        //Populate POS Items
         private void PopulatePOSItems()
         {
             int itemCount = 20; // Example item count
@@ -51,7 +53,8 @@ namespace DazaBestApplication.Layout
                     {
                         ProductCode = product.ProductCode,
                         ProductID = product.ProductID,
-                        ProductPrice = product.Price
+                        ProductPrice = product.Price,
+                        ProductName = product.ProductName
                     }
                 };
                 PictureBox pictureBox = new PictureBox
@@ -96,13 +99,7 @@ namespace DazaBestApplication.Layout
             }
 
         }
-
-        private void OrderClicked(object sender, EventArgs e)
-        {
-            Panel clickedPanel = GetParentPanel((Control)sender);
-            ProductInformation productInfo = (ProductInformation)clickedPanel.Tag;
-            MessageBox.Show($"Product Clicked: {productInfo.ProductCode} - Price: {productInfo.ProductPrice}");
-        }
+        //Get Parent Panel
         private Panel GetParentPanel(Control control)
         {
             while (control != null && !(control is Panel))
@@ -111,8 +108,50 @@ namespace DazaBestApplication.Layout
             }
             return control as Panel;
         }
-
-
+        //Check if Product Exists in Current Orders
+        private bool IsProductInCurrentOrders(Guid productId)
+        {
+            return CurrentOrders.Any(o => o.ProductID == productId);
+        }
+        //Search Ordered Product in Datagrid
+        private void SearchOrderedProductInDatagrid(ProductInformation product)
+        {
+            bool productExists = IsProductInCurrentOrders(product.ProductID);
+            if(productExists)
+            {
+                foreach (DataGridViewRow row in ProductOrdersDatagrid.Rows)
+                {
+                    if (row.Cells["ProductIdCol"].Value != null && (Guid)row.Cells["ProductIdCol"].Value == product.ProductID)
+                    {
+                        int currentQuantity = Convert.ToInt32(row.Cells["QuantityCol"].Value);
+                        row.Cells["QuantityCol"].Value = currentQuantity + 1;
+                        POSProductOrders theOrder = CurrentOrders.FirstOrDefault(o => o.ProductID == product.ProductID);
+                        if (theOrder != null)
+                        {
+                            theOrder.Quantity += 1;
+                        }
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                int rowIndex = ProductOrdersDatagrid.Rows.Add();
+                DataGridViewRow row = ProductOrdersDatagrid.Rows[rowIndex];
+                row.Cells["ProductIdCol"].Value = product.ProductID;
+                row.Cells["ProductNameCol"].Value = product.ProductName;
+                row.Cells["QuantityCol"].Value = 1;
+                row.Cells["PriceCol"].Value = product.ProductPrice;
+                CurrentOrders.Add(new POSProductOrders
+                {
+                    ProductID = product.ProductID,
+                    ProductName = product.ProductName,
+                    Quantity = 1,
+                    ProductPrice = product.ProductPrice
+                });
+            }
+            
+        }
         //Get All Avaiable Products from Database
         private async Task GetAllAvailableProducts()
         {
@@ -122,9 +161,23 @@ namespace DazaBestApplication.Layout
             PopulatePOSItems();
         }
 
+
+        //Main Load
         private async void PointofSaleForm_Load(object sender, EventArgs e)
         {
             await GetAllAvailableProducts();
+            ProductOrdersDatagrid.ColumnHeadersHeight = 24;
+        }
+
+
+        //Envents
+
+        //Handle Order Clicked
+        private async void OrderClicked(object sender, EventArgs e)
+        {
+            Panel clickedPanel = GetParentPanel((Control)sender);
+            ProductInformation productInfo = (ProductInformation)clickedPanel.Tag;
+            SearchOrderedProductInDatagrid(productInfo);
         }
     }
 
@@ -132,6 +185,7 @@ namespace DazaBestApplication.Layout
     {
         public Guid ProductID { get; set; }
         public string ProductCode { get; set; }
+        public string ProductName { get; set; }
         public decimal ProductPrice { get; set; }
     }
 }
