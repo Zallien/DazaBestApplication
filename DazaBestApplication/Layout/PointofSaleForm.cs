@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Bunifu.UI.WinForms;
+using DazaBestApplication.Modals;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +21,8 @@ namespace DazaBestApplication.Layout
 
         private List<Products> AllavailableProducts;
         private List<POSProductOrders> CurrentOrders = new List<POSProductOrders>();
+        private decimal Total;
+        private decimal discountPercentage = 0; // No discount by default
 
         public PointofSaleForm()
         {
@@ -43,19 +47,23 @@ namespace DazaBestApplication.Layout
             int panelWidth = maindisplaysize.Width / cols;
             foreach (Products product in AllavailableProducts)
             {
-                Panel itemPanel = new Panel
+                BunifuGradientPanel itemPanel = new BunifuGradientPanel
                 {
                     Width = panelWidth - 10,
                     Height = 100,
                     Margin = new Padding(5),
-                    BackColor = Color.LightGray,
                     Tag = new ProductInformation
                     {
                         ProductCode = product.ProductCode,
                         ProductID = product.ProductID,
                         ProductPrice = product.Price,
                         ProductName = product.ProductName
-                    }
+                    },
+                    GradientBottomLeft = ColorTranslator.FromHtml("#FF6A00"),
+                    GradientBottomRight = ColorTranslator.FromHtml("#D00000"),
+                    GradientTopLeft = ColorTranslator.FromHtml("#FFF5CC"),
+                    GradientTopRight = ColorTranslator.FromHtml("#FFD93D"),
+                    Padding = new Padding(3)
                 };
                 PictureBox pictureBox = new PictureBox
                 {
@@ -80,10 +88,11 @@ namespace DazaBestApplication.Layout
                 Label nameLabel = new Label
                 {
                     Text = product.ProductName,
-                    Dock = DockStyle.Fill, // <-- Fill the remaining space
+                    Dock = DockStyle.Top, // <-- Fill the remaining space
                     TextAlign = ContentAlignment.MiddleLeft,
                     Font = new Font("Segoe UI", 10, FontStyle.Bold),
-                    Padding = new Padding(10, 0, 0, 0)
+                    Padding = new Padding(10, 0, 5, 0),
+                    ForeColor = Color.White
                 };
 
                 // Add controls in correct order (IMPORTANT)
@@ -100,13 +109,13 @@ namespace DazaBestApplication.Layout
 
         }
         //Get Parent Panel
-        private Panel GetParentPanel(Control control)
+        private BunifuGradientPanel GetParentPanel(Control control)
         {
-            while (control != null && !(control is Panel))
+            while (control != null && !(control is BunifuGradientPanel))
             {
                 control = control.Parent;
             }
-            return control as Panel;
+            return control as BunifuGradientPanel;
         }
         //Check if Product Exists in Current Orders
         private bool IsProductInCurrentOrders(Guid productId)
@@ -162,6 +171,50 @@ namespace DazaBestApplication.Layout
             AllavailableProducts = await posService.GetAllAvailableProducts();
             PopulatePOSItems();
         }
+        //Back from Inventory Form --To be Fixed Later--
+        private void BackFromInventoryForm()
+        {
+            //Add Logic Here Later
+            //Checks if the User has access to Inventory Form
+            this.Hide();
+            MainPage mainLayout = new MainPage();
+            mainLayout.Show();
+        }
+        //cALculate Subtotal
+        private async Task CalculateSubtotal()
+        {
+            decimal subtotal = 0;
+            foreach (var order in CurrentOrders)
+            {
+                subtotal += order.ProductPrice * order.Quantity;
+            }
+            Subtotalvalue.Text = subtotal.ToString("C2");
+            await CalculateTotal();
+        }
+        //Update Quantity and Price of CurrentOrders
+        private async Task UpdateCurrentOrders(Guid productId, int newQuantity, decimal newPrice)
+        {
+            POSProductOrders orderToUpdate = CurrentOrders.FirstOrDefault(o => o.ProductID == productId);
+            if (orderToUpdate != null)
+            {
+                orderToUpdate.Quantity = newQuantity;
+                orderToUpdate.ProductPrice = newPrice;
+                await CalculateSubtotal();
+            }
+        }
+        //Calculate Total with or without Discount
+        private async Task CalculateTotal()
+        {
+            decimal subtotal = 0;
+            foreach (var order in CurrentOrders)
+            {
+                subtotal += order.ProductPrice * order.Quantity;
+            }
+            decimal discountAmount = subtotal * (discountPercentage / 100);
+            Total = subtotal - discountAmount;
+            TotalValue.Text = Total.ToString("C2");
+        }
+        
 
 
         //Main Load
@@ -169,11 +222,9 @@ namespace DazaBestApplication.Layout
         {
             await GetAllAvailableProducts();
             ProductOrdersDatagrid.ColumnHeadersHeight = 24;
-            ProductOrdersDatagrid.RowTemplate.Height = 20;
+            ProductOrdersDatagrid.RowTemplate.Height = 24;
         }
 
-
-        //Envents
 
         //Handle Order Clicked
         private async void OrderClicked(object sender, EventArgs e)
@@ -181,6 +232,7 @@ namespace DazaBestApplication.Layout
             Panel clickedPanel = GetParentPanel((Control)sender);
             ProductInformation productInfo = (ProductInformation)clickedPanel.Tag;
             SearchOrderedProductInDatagrid(productInfo);
+            await CalculateSubtotal();
         }
         //Handle Cell Formatting for Datagrid
         private void ProductOrdersDatagrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -193,6 +245,39 @@ namespace DazaBestApplication.Layout
                 buttonCell.Style.SelectionBackColor = Color.DarkRed;
                 buttonCell.Style.SelectionForeColor = Color.White;
                 buttonCell.FlatStyle = FlatStyle.Flat;
+            }
+        }
+        //Delete Order from Datagrid
+        private async void ProductOrdersDatagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && ProductOrdersDatagrid.Columns[e.ColumnIndex].Name == "ActionCol")
+            {
+                Guid productId = (Guid)ProductOrdersDatagrid.Rows[e.RowIndex].Cells["ProductIdCol"].Value;
+                ProductOrdersDatagrid.Rows.RemoveAt(e.RowIndex);
+                POSProductOrders orderToRemove = CurrentOrders.FirstOrDefault(o => o.ProductID == productId);
+                if (orderToRemove != null)
+                {
+                    CurrentOrders.Remove(orderToRemove);
+                }
+                await CalculateSubtotal();
+            }
+        }
+        //Logout or Go back to InventoryForm
+        private void bunifuImageButton4_Click(object sender, EventArgs e)
+        {
+            BackFromInventoryForm();
+        }
+        //Handle Cell Value Changed in Datagrid
+        private async void ProductOrdersDatagrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 
+                    && (ProductOrdersDatagrid.Columns[e.ColumnIndex].Name == "QuantityCol" || ProductOrdersDatagrid.Columns[e.ColumnIndex].Name == "PriceCol"))
+            {
+                await UpdateCurrentOrders(
+                    (Guid)ProductOrdersDatagrid.Rows[e.RowIndex].Cells["ProductIdCol"].Value,
+                    Convert.ToInt32(ProductOrdersDatagrid.Rows[e.RowIndex].Cells["QuantityCol"].Value),
+                    Convert.ToDecimal(ProductOrdersDatagrid.Rows[e.RowIndex].Cells["PriceCol"].Value)
+                );
             }
         }
     }

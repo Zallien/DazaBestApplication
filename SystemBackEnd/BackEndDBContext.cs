@@ -32,6 +32,10 @@ namespace SystemBackEnd
             modelBuilder.Entity<IngredientsByProduct>().ToTable("IngredientsByProduct");
             modelBuilder.Entity<PurchaseitemDetails>().ToTable("PurchaseItemDetails");
             modelBuilder.Entity<PurchaseItemHeader>().ToTable("PurcahseItemHeader");
+            modelBuilder.Entity<POSTransactionHeader>().ToTable("POSTransactionHeader");
+            modelBuilder.Entity<POSTransactionDetails>().ToTable("POSTransactionDetails");
+            modelBuilder.Entity<POSPaymentTransaction>().ToTable("POSPaymentTransaction");
+            modelBuilder.Entity<POSTransactionHistory>().ToTable("POSTransactionHistory");
 
         }
 
@@ -40,5 +44,9 @@ namespace SystemBackEnd
         public DbSet<IngredientsByProduct> Ingredients { get; set; }
         public DbSet<PurchaseItemHeader> PurcahseItemHeader { get; set; }
         public DbSet<PurchaseitemDetails> PurchaseItemDetails { get; set; }
+        public DbSet<POSTransactionHeader> TransactionHeader { get; set; }
+        public DbSet<POSTransactionDetails> TransactionDetails { get; set; }
+        public DbSet<POSPaymentTransaction> PaymentTransaction { get; set; }
+        public DbSet<POSTransactionHistory> MyProperty { get; set; }
     }
 }
