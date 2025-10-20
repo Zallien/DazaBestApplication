@@ -490,7 +490,7 @@
   <data name="bunifuImageButton1.ErrorImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAAABl0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC4yMfEgaZUAABtUSURBVHhe7d1L
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC4yMfEgaZUAABtUSURBVHhe7d1L
         cuRGkoBhHUJ36QPogNI1atdlJtOid3WCWfdpetzJTBYLzAeAxCMi/PvNfrOZFpkEgkCEu4cH6zcAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACg
         aX78+PF7+Me7//z148e37/PMr71+34/fLx8HAABaJBfrXxf7v/8v/v//vWZ+xi9BgYAAAIAWyEX5fYHe
@@ -610,7 +610,7 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAABAE/z22/8D7PeeJN72OGoAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="bunifuButton1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="PaymentButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAARoAAAAnCAYAAADQIId9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACpSURBVHhe7dShAYAwAMCwXbKX4b+dgR9wAJK6iKj6jnnu

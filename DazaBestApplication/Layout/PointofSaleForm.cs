@@ -23,6 +23,8 @@ namespace DazaBestApplication.Layout
         private List<POSProductOrders> CurrentOrders = new List<POSProductOrders>();
         private decimal Total;
         private decimal discountPercentage = 0; // No discount by default
+        private POSTransactionDone POSTransactionDone = new POSTransactionDone();
+
 
         public PointofSaleForm()
         {
@@ -140,6 +142,12 @@ namespace DazaBestApplication.Layout
                         {
                             theOrder.Quantity += 1;
                         }
+                        //Update POSTransactionDone Transaction Details
+                        POSTransactionDetailsDone transactionDetail = POSTransactionDone.TransactionDetails.FirstOrDefault(td => td.ProductId == product.ProductID);
+                        if (transactionDetail != null)
+                        {
+                            transactionDetail.Quantity += 1;
+                        }
                         break;
                     }
                 }
@@ -160,7 +168,19 @@ namespace DazaBestApplication.Layout
                     Quantity = 1,
                     ProductPrice = product.ProductPrice
                 });
+                //Add to POSTransactionDone Transaction Details
+                POSTransactionDone.TransactionDetails.Add(new POSTransactionDetailsDone
+                {
+                    ProductId = product.ProductID,
+                    Quantity = 1,
+                    UnitPrice = product.ProductPrice,
+                });
+
+
+
             }
+
+
 
         }
         //Get All Avaiable Products from Database
@@ -190,6 +210,11 @@ namespace DazaBestApplication.Layout
             }
             Subtotalvalue.Text = subtotal.ToString("C2");
             await CalculateTotal();
+
+            //Update POSTransactionDone Payment Details
+            POSTransactionDone.Subtotal = subtotal;
+            POSTransactionDone.Discount = subtotal * (discountPercentage / 100);
+            POSTransactionDone.Total = Total;
         }
         //Update Quantity and Price of CurrentOrders
         private async Task UpdateCurrentOrders(Guid productId, int newQuantity, decimal newPrice)
@@ -201,6 +226,14 @@ namespace DazaBestApplication.Layout
                 orderToUpdate.ProductPrice = newPrice;
                 await CalculateSubtotal();
             }
+            //Update POSTransactionDone Transaction Details
+            POSTransactionDetailsDone transactionDetail = POSTransactionDone.TransactionDetails.FirstOrDefault(td => td.ProductId == productId);
+            if (transactionDetail != null)
+            {
+                transactionDetail.Quantity = newQuantity;
+                transactionDetail.UnitPrice = newPrice;
+            }
+
         }
         //Calculate Total with or without Discount
         private async Task CalculateTotal()
@@ -214,7 +247,30 @@ namespace DazaBestApplication.Layout
             Total = subtotal - discountAmount;
             TotalValue.Text = Total.ToString("C2");
         }
-        
+        //Show Payment Modal
+        private async Task ShowPaymentModal()
+        {
+            Form Backgroundmodal = new Form();
+            using (POSPaymentModal modalcontent = new POSPaymentModal(POSTransactionDone))
+            {
+                var mainbounds = this.Bounds;
+
+                Backgroundmodal.StartPosition = FormStartPosition.Manual;
+                Backgroundmodal.FormBorderStyle = FormBorderStyle.None;
+                Backgroundmodal.Opacity = .60d;
+                Backgroundmodal.BackColor = Color.Black;
+                Backgroundmodal.Bounds = mainbounds;
+                Backgroundmodal.Size = this.Size;
+                Backgroundmodal.Location = this.Location;
+                Backgroundmodal.ShowInTaskbar = false;
+                Backgroundmodal.Show(this);
+
+                modalcontent.Owner = Backgroundmodal;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+                modalcontent.ShowDialog();
+                Backgroundmodal.Dispose();
+            }
+        }
 
 
         //Main Load
@@ -223,6 +279,9 @@ namespace DazaBestApplication.Layout
             await GetAllAvailableProducts();
             ProductOrdersDatagrid.ColumnHeadersHeight = 24;
             ProductOrdersDatagrid.RowTemplate.Height = 24;
+
+            //Initialize POSTransactionDone
+            POSTransactionDone.TransactionBy = Guid.NewGuid(); // Replace with actual user ID
         }
 
 
@@ -270,7 +329,7 @@ namespace DazaBestApplication.Layout
         //Handle Cell Value Changed in Datagrid
         private async void ProductOrdersDatagrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 
+            if (e.RowIndex >= 0
                     && (ProductOrdersDatagrid.Columns[e.ColumnIndex].Name == "QuantityCol" || ProductOrdersDatagrid.Columns[e.ColumnIndex].Name == "PriceCol"))
             {
                 await UpdateCurrentOrders(
@@ -279,6 +338,11 @@ namespace DazaBestApplication.Layout
                     Convert.ToDecimal(ProductOrdersDatagrid.Rows[e.RowIndex].Cells["PriceCol"].Value)
                 );
             }
+        }
+        //Handle Payment Button Click
+        private async void PaymentButton_Click(object sender, EventArgs e)
+        {
+            await ShowPaymentModal();
         }
     }
 

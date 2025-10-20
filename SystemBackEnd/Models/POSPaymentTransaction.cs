@@ -17,6 +17,6 @@ namespace SystemBackEnd.Models
         public decimal Discount { get; set; }
         public decimal Total { get; set; }
         public decimal PaymentAmount { get; set; }
-        public string PaymentMethod { get; set; }
+        public string? PaymentMethod { get; set; }
     }
 }
