@@ -288,5 +288,11 @@ namespace DazaBestApplication.Modals
         {
 
         }
+
+        private void bunifuButton2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            this.DialogResult = DialogResult.OK;
+        }
     }
 }

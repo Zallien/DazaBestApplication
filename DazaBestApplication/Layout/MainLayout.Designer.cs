@@ -56,6 +56,7 @@
             // 
             // SideNav
             // 
+            SideNav.BackColor = Color.FromArgb(251, 205, 119);
             SideNav.BackColor = Color.FromArgb(67, 66, 66);
             SideNav.Controls.Add(POSButton);
             SideNav.Controls.Add(NavButton_PurchaseItem);
@@ -103,7 +104,7 @@
             NavButton_PurchaseItem.DisabledForecolor = Color.FromArgb(168, 160, 168);
             NavButton_PurchaseItem.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
             NavButton_PurchaseItem.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            NavButton_PurchaseItem.ForeColor = Color.White;
+            NavButton_PurchaseItem.ForeColor = Color.Black;
             NavButton_PurchaseItem.IconLeftAlign = ContentAlignment.MiddleLeft;
             NavButton_PurchaseItem.IconLeftCursor = Cursors.Default;
             NavButton_PurchaseItem.IconLeftPadding = new Padding(11, 3, 3, 3);
@@ -117,7 +118,7 @@
             NavButton_PurchaseItem.IdleBorderRadius = 1;
             NavButton_PurchaseItem.IdleBorderThickness = 2;
             NavButton_PurchaseItem.IdleFillColor = Color.Transparent;
-            NavButton_PurchaseItem.IdleIconLeftImage = Properties.Resources.logistics__1_;
+            NavButton_PurchaseItem.IdleIconLeftImage = Properties.Resources.logistics;
             NavButton_PurchaseItem.IdleIconRightImage = null;
             NavButton_PurchaseItem.IndicateFocus = false;
             NavButton_PurchaseItem.Location = new Point(0, 308);
@@ -143,8 +144,8 @@
             NavButton_PurchaseItem.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             NavButton_PurchaseItem.OnIdleState.BorderThickness = 2;
             NavButton_PurchaseItem.OnIdleState.FillColor = Color.Transparent;
-            NavButton_PurchaseItem.OnIdleState.ForeColor = Color.White;
-            NavButton_PurchaseItem.OnIdleState.IconLeftImage = Properties.Resources.logistics__1_;
+            NavButton_PurchaseItem.OnIdleState.ForeColor = Color.Black;
+            NavButton_PurchaseItem.OnIdleState.IconLeftImage = Properties.Resources.logistics;
             NavButton_PurchaseItem.OnIdleState.IconRightImage = null;
             NavButton_PurchaseItem.OnPressedState.BorderColor = Color.Black;
             NavButton_PurchaseItem.OnPressedState.BorderRadius = 1;
@@ -209,7 +210,7 @@
             LogOut_btn.Dock = DockStyle.Bottom;
             LogOut_btn.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
             LogOut_btn.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            LogOut_btn.ForeColor = Color.White;
+            LogOut_btn.ForeColor = Color.Black;
             LogOut_btn.IconLeftAlign = ContentAlignment.MiddleLeft;
             LogOut_btn.IconLeftCursor = Cursors.Default;
             LogOut_btn.IconLeftPadding = new Padding(11, 3, 3, 3);
@@ -219,7 +220,7 @@
             LogOut_btn.IconRightCursor = Cursors.Default;
             LogOut_btn.IconRightPadding = new Padding(3, 3, 7, 3);
             LogOut_btn.IconSize = 25;
-            LogOut_btn.IdleBorderColor = Color.White;
+            LogOut_btn.IdleBorderColor = Color.Transparent;
             LogOut_btn.IdleBorderRadius = 1;
             LogOut_btn.IdleBorderThickness = 2;
             LogOut_btn.IdleFillColor = Color.Transparent;
@@ -244,12 +245,12 @@
             LogOut_btn.onHoverState.ForeColor = Color.Black;
             LogOut_btn.onHoverState.IconLeftImage = null;
             LogOut_btn.onHoverState.IconRightImage = null;
-            LogOut_btn.OnIdleState.BorderColor = Color.White;
+            LogOut_btn.OnIdleState.BorderColor = Color.Transparent;
             LogOut_btn.OnIdleState.BorderRadius = 1;
             LogOut_btn.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             LogOut_btn.OnIdleState.BorderThickness = 2;
             LogOut_btn.OnIdleState.FillColor = Color.Transparent;
-            LogOut_btn.OnIdleState.ForeColor = Color.White;
+            LogOut_btn.OnIdleState.ForeColor = Color.Black;
             LogOut_btn.OnIdleState.IconLeftImage = null;
             LogOut_btn.OnIdleState.IconRightImage = null;
             LogOut_btn.OnPressedState.BorderColor = Color.Black;
@@ -298,7 +299,7 @@
             bunifuButton21.DisabledForecolor = Color.FromArgb(168, 160, 168);
             bunifuButton21.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
             bunifuButton21.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            bunifuButton21.ForeColor = Color.White;
+            bunifuButton21.ForeColor = Color.Black;
             bunifuButton21.IconLeftAlign = ContentAlignment.MiddleLeft;
             bunifuButton21.IconLeftCursor = Cursors.Default;
             bunifuButton21.IconLeftPadding = new Padding(11, 3, 3, 3);
@@ -312,7 +313,7 @@
             bunifuButton21.IdleBorderRadius = 1;
             bunifuButton21.IdleBorderThickness = 2;
             bunifuButton21.IdleFillColor = Color.Transparent;
-            bunifuButton21.IdleIconLeftImage = Properties.Resources.settings__1_;
+            bunifuButton21.IdleIconLeftImage = Properties.Resources.gear;
             bunifuButton21.IdleIconRightImage = null;
             bunifuButton21.IndicateFocus = false;
             bunifuButton21.Location = new Point(-1, 429);
@@ -338,8 +339,8 @@
             bunifuButton21.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             bunifuButton21.OnIdleState.BorderThickness = 2;
             bunifuButton21.OnIdleState.FillColor = Color.Transparent;
-            bunifuButton21.OnIdleState.ForeColor = Color.White;
-            bunifuButton21.OnIdleState.IconLeftImage = Properties.Resources.settings__1_;
+            bunifuButton21.OnIdleState.ForeColor = Color.Black;
+            bunifuButton21.OnIdleState.IconLeftImage = Properties.Resources.gear;
             bunifuButton21.OnIdleState.IconRightImage = null;
             bunifuButton21.OnPressedState.BorderColor = Color.Black;
             bunifuButton21.OnPressedState.BorderRadius = 1;
@@ -387,7 +388,7 @@
             NavButton_Reports.DisabledForecolor = Color.FromArgb(168, 160, 168);
             NavButton_Reports.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
             NavButton_Reports.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            NavButton_Reports.ForeColor = Color.White;
+            NavButton_Reports.ForeColor = Color.Black;
             NavButton_Reports.IconLeftAlign = ContentAlignment.MiddleLeft;
             NavButton_Reports.IconLeftCursor = Cursors.Default;
             NavButton_Reports.IconLeftPadding = new Padding(11, 3, 3, 3);
@@ -401,7 +402,7 @@
             NavButton_Reports.IdleBorderRadius = 1;
             NavButton_Reports.IdleBorderThickness = 2;
             NavButton_Reports.IdleFillColor = Color.Transparent;
-            NavButton_Reports.IdleIconLeftImage = Properties.Resources.folder__1_;
+            NavButton_Reports.IdleIconLeftImage = Properties.Resources.folder;
             NavButton_Reports.IdleIconRightImage = null;
             NavButton_Reports.IndicateFocus = false;
             NavButton_Reports.Location = new Point(0, 389);
@@ -427,8 +428,8 @@
             NavButton_Reports.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             NavButton_Reports.OnIdleState.BorderThickness = 2;
             NavButton_Reports.OnIdleState.FillColor = Color.Transparent;
-            NavButton_Reports.OnIdleState.ForeColor = Color.White;
-            NavButton_Reports.OnIdleState.IconLeftImage = Properties.Resources.folder__1_;
+            NavButton_Reports.OnIdleState.ForeColor = Color.Black;
+            NavButton_Reports.OnIdleState.IconLeftImage = Properties.Resources.folder;
             NavButton_Reports.OnIdleState.IconRightImage = null;
             NavButton_Reports.OnPressedState.BorderColor = Color.Black;
             NavButton_Reports.OnPressedState.BorderRadius = 1;
@@ -475,7 +476,7 @@
             NavButton_Products.DisabledForecolor = Color.FromArgb(168, 160, 168);
             NavButton_Products.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
             NavButton_Products.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            NavButton_Products.ForeColor = Color.White;
+            NavButton_Products.ForeColor = Color.Black;
             NavButton_Products.IconLeftAlign = ContentAlignment.MiddleLeft;
             NavButton_Products.IconLeftCursor = Cursors.NoMoveHoriz;
             NavButton_Products.IconLeftPadding = new Padding(11, 3, 3, 3);
@@ -489,7 +490,7 @@
             NavButton_Products.IdleBorderRadius = 1;
             NavButton_Products.IdleBorderThickness = 2;
             NavButton_Products.IdleFillColor = Color.Transparent;
-            NavButton_Products.IdleIconLeftImage = Properties.Resources.clipboard__1_;
+            NavButton_Products.IdleIconLeftImage = Properties.Resources.clipboard;
             NavButton_Products.IdleIconRightImage = null;
             NavButton_Products.IndicateFocus = false;
             NavButton_Products.Location = new Point(0, 349);
@@ -515,8 +516,8 @@
             NavButton_Products.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             NavButton_Products.OnIdleState.BorderThickness = 2;
             NavButton_Products.OnIdleState.FillColor = Color.Transparent;
-            NavButton_Products.OnIdleState.ForeColor = Color.White;
-            NavButton_Products.OnIdleState.IconLeftImage = Properties.Resources.clipboard__1_;
+            NavButton_Products.OnIdleState.ForeColor = Color.Black;
+            NavButton_Products.OnIdleState.IconLeftImage = Properties.Resources.clipboard;
             NavButton_Products.OnIdleState.IconRightImage = null;
             NavButton_Products.OnPressedState.BorderColor = Color.Black;
             NavButton_Products.OnPressedState.BorderRadius = 1;
@@ -564,7 +565,7 @@
             NavButton_Item.DisabledForecolor = Color.FromArgb(168, 160, 168);
             NavButton_Item.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
             NavButton_Item.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            NavButton_Item.ForeColor = Color.White;
+            NavButton_Item.ForeColor = Color.Black;
             NavButton_Item.IconLeftAlign = ContentAlignment.MiddleLeft;
             NavButton_Item.IconLeftCursor = Cursors.Default;
             NavButton_Item.IconLeftPadding = new Padding(11, 3, 3, 3);
@@ -578,7 +579,7 @@
             NavButton_Item.IdleBorderRadius = 1;
             NavButton_Item.IdleBorderThickness = 2;
             NavButton_Item.IdleFillColor = Color.Transparent;
-            NavButton_Item.IdleIconLeftImage = Properties.Resources.clipboard__1_;
+            NavButton_Item.IdleIconLeftImage = Properties.Resources.clipboard;
             NavButton_Item.IdleIconRightImage = null;
             NavButton_Item.IndicateFocus = false;
             NavButton_Item.Location = new Point(0, 267);
@@ -604,8 +605,8 @@
             NavButton_Item.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             NavButton_Item.OnIdleState.BorderThickness = 2;
             NavButton_Item.OnIdleState.FillColor = Color.Transparent;
-            NavButton_Item.OnIdleState.ForeColor = Color.White;
-            NavButton_Item.OnIdleState.IconLeftImage = Properties.Resources.clipboard__1_;
+            NavButton_Item.OnIdleState.ForeColor = Color.Black;
+            NavButton_Item.OnIdleState.IconLeftImage = Properties.Resources.clipboard;
             NavButton_Item.OnIdleState.IconRightImage = null;
             NavButton_Item.OnPressedState.BorderColor = Color.Black;
             NavButton_Item.OnPressedState.BorderRadius = 1;
@@ -653,7 +654,7 @@
             NavButton_Home.DisabledForecolor = Color.FromArgb(168, 160, 168);
             NavButton_Home.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
             NavButton_Home.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            NavButton_Home.ForeColor = Color.White;
+            NavButton_Home.ForeColor = Color.Black;
             NavButton_Home.IconLeftAlign = ContentAlignment.MiddleLeft;
             NavButton_Home.IconLeftCursor = Cursors.Default;
             NavButton_Home.IconLeftPadding = new Padding(11, 3, 3, 3);
@@ -667,7 +668,7 @@
             NavButton_Home.IdleBorderRadius = 1;
             NavButton_Home.IdleBorderThickness = 2;
             NavButton_Home.IdleFillColor = Color.Transparent;
-            NavButton_Home.IdleIconLeftImage = Properties.Resources.speedometer__1___1_;
+            NavButton_Home.IdleIconLeftImage = Properties.Resources.speedometer__1_;
             NavButton_Home.IdleIconRightImage = null;
             NavButton_Home.IndicateFocus = false;
             NavButton_Home.Location = new Point(0, 227);
@@ -693,8 +694,8 @@
             NavButton_Home.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             NavButton_Home.OnIdleState.BorderThickness = 2;
             NavButton_Home.OnIdleState.FillColor = Color.Transparent;
-            NavButton_Home.OnIdleState.ForeColor = Color.White;
-            NavButton_Home.OnIdleState.IconLeftImage = Properties.Resources.speedometer__1___1_;
+            NavButton_Home.OnIdleState.ForeColor = Color.Black;
+            NavButton_Home.OnIdleState.IconLeftImage = Properties.Resources.speedometer__1_;
             NavButton_Home.OnIdleState.IconRightImage = null;
             NavButton_Home.OnPressedState.BorderColor = Color.Black;
             NavButton_Home.OnPressedState.BorderRadius = 1;
