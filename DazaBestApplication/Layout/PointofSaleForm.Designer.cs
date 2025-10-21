@@ -216,7 +216,6 @@
             CancelResetOrderButton.WaitOnLoad = false;
             CancelResetOrderButton.Zoom = 10;
             CancelResetOrderButton.ZoomSpeed = 10;
-            CancelResetOrderButton.Click += CancelResetOrderButton_Click;
             // 
             // Sidebar
             // 
