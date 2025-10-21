@@ -30,7 +30,7 @@ namespace DazaBestApplication.Pages
         private int _totalitems = 0;
         private int _maxpagenumber;
         private bool DesicionResult;
-        
+
         //Constructor
         public ItemInventory(Form _MainForm)
         {
@@ -82,7 +82,7 @@ namespace DazaBestApplication.Pages
                 ItemperPage = _itemperpage
             };
             _totalitems = await itemservices.GetItemsCount(Bypage);
-            _maxpagenumber = _totalitems % _itemperpage != 0 ? (_totalitems / _itemperpage) + 1 
+            _maxpagenumber = _totalitems % _itemperpage != 0 ? (_totalitems / _itemperpage) + 1
                                                         : _totalitems / _itemperpage;
             await CheckPageNumber();
         }
@@ -121,7 +121,7 @@ namespace DazaBestApplication.Pages
                 await CheckPageNumber();
                 await GetData();
                 PaginationLabel.Text = $"{_pagenumber}";//Pagination Label
-                
+
             }
         }
         //Check Page Number
@@ -379,5 +379,57 @@ namespace DazaBestApplication.Pages
                 }
             }
         }//Delete using Del Toolstrip
+
+        private async void bunifuButton21_Click(object sender, EventArgs e)
+        {
+            _decision = new DecisionModel()
+            {
+                DecisionTitle = "Delete Item(s)",
+                DecisionQuestion = "Are you sure you want to delete the selected item(s)?"
+            };
+
+            var decision = OpenDecisionModal();
+
+            if (decision)
+            {
+                List<ItemID> AllSelectedID = new List<ItemID>();
+                foreach (DataGridViewRow row in AllItemsDatagrid.SelectedRows)
+                {
+                    if (row.Cells["IdCol"].Value != null)
+                    {
+                        Guid id = Guid.Parse(row.Cells["IdCol"].Value.ToString());
+                        AllSelectedID.Add(new ItemID { ID = id });
+                    }
+                }
+
+                if (await DeleteItems(AllSelectedID))
+                {
+                    MessageBox.Show("Deleted Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Deleted Unsuccessfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void bunifuButton23_Click(object sender, EventArgs e)
+        {
+            if (AllItemsDatagrid.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedrow = AllItemsDatagrid.SelectedRows[0];
+                _itemmodal = new ItemModal()
+                {
+                    Action = "EditItem",
+                    EditItem = new EditItem()
+                    {
+                        ItemID = Guid.Parse(selectedrow.Cells["IdCol"].Value.ToString()),
+                        ItemName = selectedrow.Cells["ItemNameCol"].Value.ToString(),
+                        ItemPrice = decimal.Parse(selectedrow.Cells["PriceCol"].Value.ToString())
+                    }
+                };
+                OpenModal();
+            }
+        }
     }
 }

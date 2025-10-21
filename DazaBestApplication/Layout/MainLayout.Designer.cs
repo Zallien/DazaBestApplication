@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
@@ -35,9 +37,8 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges6 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges7 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges8 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             SideNav = new Panel();
+            POSButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             NavButton_PurchaseItem = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             bunifuPictureBox1 = new Bunifu.UI.WinForms.BunifuPictureBox();
             LogOut_btn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
@@ -49,7 +50,6 @@
             MainContainer = new Panel();
             FormDragFeature = new Bunifu.UI.WinForms.BunifuFormDrag();
             sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
-            POSButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             SideNav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bunifuPictureBox1).BeginInit();
             SuspendLayout();
@@ -57,7 +57,6 @@
             // SideNav
             // 
             SideNav.BackColor = Color.FromArgb(251, 205, 119);
-            SideNav.BackColor = Color.FromArgb(67, 66, 66);
             SideNav.Controls.Add(POSButton);
             SideNav.Controls.Add(NavButton_PurchaseItem);
             SideNav.Controls.Add(bunifuPictureBox1);
@@ -74,6 +73,95 @@
             SideNav.Padding = new Padding(0, 20, 0, 10);
             SideNav.Size = new Size(200, 700);
             SideNav.TabIndex = 3;
+            // 
+            // POSButton
+            // 
+            POSButton.AllowAnimations = true;
+            POSButton.AllowMouseEffects = true;
+            POSButton.AllowToggling = false;
+            POSButton.AnimationSpeed = 200;
+            POSButton.AutoGenerateColors = false;
+            POSButton.AutoRoundBorders = false;
+            POSButton.AutoSizeLeftIcon = true;
+            POSButton.AutoSizeRightIcon = true;
+            POSButton.BackColor = Color.Transparent;
+            POSButton.BackColor1 = Color.Transparent;
+            POSButton.BackgroundImage = (Image)resources.GetObject("POSButton.BackgroundImage");
+            POSButton.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            POSButton.ButtonText = "POS";
+            POSButton.ButtonTextMarginLeft = 0;
+            POSButton.ColorContrastOnClick = 45;
+            POSButton.ColorContrastOnHover = 45;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            POSButton.CustomizableEdges = borderEdges1;
+            POSButton.DialogResult = DialogResult.None;
+            POSButton.DisabledBorderColor = Color.FromArgb(191, 191, 191);
+            POSButton.DisabledFillColor = Color.FromArgb(204, 204, 204);
+            POSButton.DisabledForecolor = Color.FromArgb(168, 160, 168);
+            POSButton.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            POSButton.Font = new Font("Courier New", 12F, FontStyle.Bold);
+            POSButton.ForeColor = Color.White;
+            POSButton.IconLeftAlign = ContentAlignment.MiddleLeft;
+            POSButton.IconLeftCursor = Cursors.Default;
+            POSButton.IconLeftPadding = new Padding(11, 3, 3, 3);
+            POSButton.IconMarginLeft = 11;
+            POSButton.IconPadding = 10;
+            POSButton.IconRightAlign = ContentAlignment.MiddleRight;
+            POSButton.IconRightCursor = Cursors.Default;
+            POSButton.IconRightPadding = new Padding(3, 3, 7, 3);
+            POSButton.IconSize = 25;
+            POSButton.IdleBorderColor = Color.Transparent;
+            POSButton.IdleBorderRadius = 1;
+            POSButton.IdleBorderThickness = 2;
+            POSButton.IdleFillColor = Color.Transparent;
+            POSButton.IdleIconLeftImage = Properties.Resources.settings__1_;
+            POSButton.IdleIconRightImage = null;
+            POSButton.IndicateFocus = false;
+            POSButton.Location = new Point(0, 470);
+            POSButton.Name = "POSButton";
+            POSButton.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
+            POSButton.OnDisabledState.BorderRadius = 1;
+            POSButton.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            POSButton.OnDisabledState.BorderThickness = 2;
+            POSButton.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
+            POSButton.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
+            POSButton.OnDisabledState.IconLeftImage = null;
+            POSButton.OnDisabledState.IconRightImage = null;
+            POSButton.onHoverState.BorderColor = Color.Black;
+            POSButton.onHoverState.BorderRadius = 1;
+            POSButton.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            POSButton.onHoverState.BorderThickness = 2;
+            POSButton.onHoverState.FillColor = Color.FromArgb(255, 240, 221);
+            POSButton.onHoverState.ForeColor = Color.Black;
+            POSButton.onHoverState.IconLeftImage = Properties.Resources.gear;
+            POSButton.onHoverState.IconRightImage = null;
+            POSButton.OnIdleState.BorderColor = Color.Transparent;
+            POSButton.OnIdleState.BorderRadius = 1;
+            POSButton.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            POSButton.OnIdleState.BorderThickness = 2;
+            POSButton.OnIdleState.FillColor = Color.Transparent;
+            POSButton.OnIdleState.ForeColor = Color.White;
+            POSButton.OnIdleState.IconLeftImage = Properties.Resources.settings__1_;
+            POSButton.OnIdleState.IconRightImage = null;
+            POSButton.OnPressedState.BorderColor = Color.Black;
+            POSButton.OnPressedState.BorderRadius = 1;
+            POSButton.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            POSButton.OnPressedState.BorderThickness = 2;
+            POSButton.OnPressedState.FillColor = Color.FromArgb(198, 40, 40);
+            POSButton.OnPressedState.ForeColor = Color.White;
+            POSButton.OnPressedState.IconLeftImage = Properties.Resources.settings__1_;
+            POSButton.OnPressedState.IconRightImage = null;
+            POSButton.Size = new Size(200, 40);
+            POSButton.TabIndex = 8;
+            POSButton.TextAlign = ContentAlignment.MiddleLeft;
+            POSButton.TextAlignment = HorizontalAlignment.Center;
+            POSButton.TextMarginLeft = 0;
+            POSButton.TextPadding = new Padding(35, 0, 0, 0);
+            POSButton.UseDefaultRadiusAndThickness = true;
+            POSButton.Click += POSButton_Click;
             // 
             // NavButton_PurchaseItem
             // 
@@ -754,95 +842,6 @@
             sqliteCommand1.Connection = null;
             sqliteCommand1.Transaction = null;
             sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
-            // 
-            // POSButton
-            // 
-            POSButton.AllowAnimations = true;
-            POSButton.AllowMouseEffects = true;
-            POSButton.AllowToggling = false;
-            POSButton.AnimationSpeed = 200;
-            POSButton.AutoGenerateColors = false;
-            POSButton.AutoRoundBorders = false;
-            POSButton.AutoSizeLeftIcon = true;
-            POSButton.AutoSizeRightIcon = true;
-            POSButton.BackColor = Color.Transparent;
-            POSButton.BackColor1 = Color.Transparent;
-            POSButton.BackgroundImage = (Image)resources.GetObject("POSButton.BackgroundImage");
-            POSButton.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            POSButton.ButtonText = "POS";
-            POSButton.ButtonTextMarginLeft = 0;
-            POSButton.ColorContrastOnClick = 45;
-            POSButton.ColorContrastOnHover = 45;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            POSButton.CustomizableEdges = borderEdges1;
-            POSButton.DialogResult = DialogResult.None;
-            POSButton.DisabledBorderColor = Color.FromArgb(191, 191, 191);
-            POSButton.DisabledFillColor = Color.FromArgb(204, 204, 204);
-            POSButton.DisabledForecolor = Color.FromArgb(168, 160, 168);
-            POSButton.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            POSButton.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            POSButton.ForeColor = Color.White;
-            POSButton.IconLeftAlign = ContentAlignment.MiddleLeft;
-            POSButton.IconLeftCursor = Cursors.Default;
-            POSButton.IconLeftPadding = new Padding(11, 3, 3, 3);
-            POSButton.IconMarginLeft = 11;
-            POSButton.IconPadding = 10;
-            POSButton.IconRightAlign = ContentAlignment.MiddleRight;
-            POSButton.IconRightCursor = Cursors.Default;
-            POSButton.IconRightPadding = new Padding(3, 3, 7, 3);
-            POSButton.IconSize = 25;
-            POSButton.IdleBorderColor = Color.Transparent;
-            POSButton.IdleBorderRadius = 1;
-            POSButton.IdleBorderThickness = 2;
-            POSButton.IdleFillColor = Color.Transparent;
-            POSButton.IdleIconLeftImage = Properties.Resources.settings__1_;
-            POSButton.IdleIconRightImage = null;
-            POSButton.IndicateFocus = false;
-            POSButton.Location = new Point(0, 470);
-            POSButton.Name = "POSButton";
-            POSButton.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
-            POSButton.OnDisabledState.BorderRadius = 1;
-            POSButton.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            POSButton.OnDisabledState.BorderThickness = 2;
-            POSButton.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
-            POSButton.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
-            POSButton.OnDisabledState.IconLeftImage = null;
-            POSButton.OnDisabledState.IconRightImage = null;
-            POSButton.onHoverState.BorderColor = Color.Black;
-            POSButton.onHoverState.BorderRadius = 1;
-            POSButton.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            POSButton.onHoverState.BorderThickness = 2;
-            POSButton.onHoverState.FillColor = Color.FromArgb(255, 240, 221);
-            POSButton.onHoverState.ForeColor = Color.Black;
-            POSButton.onHoverState.IconLeftImage = Properties.Resources.gear;
-            POSButton.onHoverState.IconRightImage = null;
-            POSButton.OnIdleState.BorderColor = Color.Transparent;
-            POSButton.OnIdleState.BorderRadius = 1;
-            POSButton.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            POSButton.OnIdleState.BorderThickness = 2;
-            POSButton.OnIdleState.FillColor = Color.Transparent;
-            POSButton.OnIdleState.ForeColor = Color.White;
-            POSButton.OnIdleState.IconLeftImage = Properties.Resources.settings__1_;
-            POSButton.OnIdleState.IconRightImage = null;
-            POSButton.OnPressedState.BorderColor = Color.Black;
-            POSButton.OnPressedState.BorderRadius = 1;
-            POSButton.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            POSButton.OnPressedState.BorderThickness = 2;
-            POSButton.OnPressedState.FillColor = Color.FromArgb(198, 40, 40);
-            POSButton.OnPressedState.ForeColor = Color.White;
-            POSButton.OnPressedState.IconLeftImage = Properties.Resources.settings__1_;
-            POSButton.OnPressedState.IconRightImage = null;
-            POSButton.Size = new Size(200, 40);
-            POSButton.TabIndex = 8;
-            POSButton.TextAlign = ContentAlignment.MiddleLeft;
-            POSButton.TextAlignment = HorizontalAlignment.Center;
-            POSButton.TextMarginLeft = 0;
-            POSButton.TextPadding = new Padding(35, 0, 0, 0);
-            POSButton.UseDefaultRadiusAndThickness = true;
-            POSButton.Click += POSButton_Click;
             // 
             // MainPage
             // 

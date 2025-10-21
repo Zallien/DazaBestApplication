@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using SystemBackEnd.Models;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
-using SystemBackEnd.EventHandlers;
+using static TheArtOfDev.HtmlRenderer.Adapters.RGraphicsPath;
 
 namespace DazaBestApplication.Layout
 {
@@ -271,22 +271,6 @@ namespace DazaBestApplication.Layout
                 Backgroundmodal.Dispose();
             }
         }
-        //Reset or New Transaction
-        private async Task NewTransaction()
-        {
-            CurrentOrders.Clear();
-            ProductOrdersDatagrid.Rows.Clear();
-            discountPercentage = 0;
-            Subtotalvalue.Text = "$0.00";
-            TotalValue.Text = "$0.00";
-            Total = 0;
-
-            //Reset POSTransactionDone
-            POSTransactionDone = new POSTransactionDone
-            {
-                TransactionBy = Guid.NewGuid() // Replace with actual user ID
-            };
-        }
 
 
         //Main Load
@@ -298,12 +282,6 @@ namespace DazaBestApplication.Layout
 
             //Initialize POSTransactionDone
             POSTransactionDone.TransactionBy = Guid.NewGuid(); // Replace with actual user ID
-
-            //Hook Payment Event Handler
-            POSEventHandler.PaymentTransactionSuccess += async () =>
-            {
-                await NewTransaction();
-            };
         }
 
 
@@ -366,13 +344,10 @@ namespace DazaBestApplication.Layout
         {
             await ShowPaymentModal();
         }
-        //Handle Cancel or Reset Order Button Click
-        private async void CancelResetOrderButton_Click(object sender, EventArgs e)
+
+        private void MainDisplay_Paint(object sender, PaintEventArgs e)
         {
-            if(MessageBox.Show("Are you sure you want to cancel the current order?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                await NewTransaction();
-            }
+
         }
     }
 
