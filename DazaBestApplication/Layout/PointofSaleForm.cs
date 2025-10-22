@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemBackEnd.EventHandlers;
 using SystemBackEnd.Models;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
@@ -271,6 +272,19 @@ namespace DazaBestApplication.Layout
                 Backgroundmodal.Dispose();
             }
         }
+        //Cancel or Reset Order
+        private async Task CancelResetOrder()
+        {
+            CurrentOrders.Clear();
+            ProductOrdersDatagrid.Rows.Clear();
+            await CalculateSubtotal();
+            //Reset POSTransactionDone
+            POSTransactionDone = new POSTransactionDone
+            {
+                TransactionBy = POSTransactionDone.TransactionBy // Retain the TransactionBy
+            };
+        }
+
 
 
         //Main Load
@@ -282,6 +296,11 @@ namespace DazaBestApplication.Layout
 
             //Initialize POSTransactionDone
             POSTransactionDone.TransactionBy = Guid.NewGuid(); // Replace with actual user ID
+
+            POSEventHandler.PaymentTransactionSuccess += async () =>
+            {
+                await CancelResetOrder();
+            };
         }
 
 
@@ -344,10 +363,21 @@ namespace DazaBestApplication.Layout
         {
             await ShowPaymentModal();
         }
-
-        private void MainDisplay_Paint(object sender, PaintEventArgs e)
+        //Handle Cancel/Reset Order Button Click
+        private async void CancelResetOrderButton_Click(object sender, EventArgs e)
         {
-
+            if (CurrentOrders.Count != 0)
+            {
+                if (MessageBox.Show("Are you sure you want to cancel/reset the current order?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    await CancelResetOrder();
+                }
+            }
+            else
+            {
+                MessageBox.Show("There are no current orders to cancel/reset.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
         }
     }
 
