@@ -103,7 +103,7 @@
             POSButton.DisabledForecolor = Color.FromArgb(168, 160, 168);
             POSButton.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
             POSButton.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            POSButton.ForeColor = Color.White;
+            POSButton.ForeColor = Color.Black;
             POSButton.IconLeftAlign = ContentAlignment.MiddleLeft;
             POSButton.IconLeftCursor = Cursors.Default;
             POSButton.IconLeftPadding = new Padding(11, 3, 3, 3);
@@ -117,7 +117,7 @@
             POSButton.IdleBorderRadius = 1;
             POSButton.IdleBorderThickness = 2;
             POSButton.IdleFillColor = Color.Transparent;
-            POSButton.IdleIconLeftImage = Properties.Resources.settings__1_;
+            POSButton.IdleIconLeftImage = Properties.Resources.payment_terminal;
             POSButton.IdleIconRightImage = null;
             POSButton.IndicateFocus = false;
             POSButton.Location = new Point(0, 470);
@@ -143,8 +143,8 @@
             POSButton.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             POSButton.OnIdleState.BorderThickness = 2;
             POSButton.OnIdleState.FillColor = Color.Transparent;
-            POSButton.OnIdleState.ForeColor = Color.White;
-            POSButton.OnIdleState.IconLeftImage = Properties.Resources.settings__1_;
+            POSButton.OnIdleState.ForeColor = Color.Black;
+            POSButton.OnIdleState.IconLeftImage = Properties.Resources.payment_terminal;
             POSButton.OnIdleState.IconRightImage = null;
             POSButton.OnPressedState.BorderColor = Color.Black;
             POSButton.OnPressedState.BorderRadius = 1;

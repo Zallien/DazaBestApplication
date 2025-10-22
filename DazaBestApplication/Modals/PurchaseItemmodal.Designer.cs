@@ -633,8 +633,8 @@
             removeitempickedbutton.Image = Properties.Resources.trashcan;
             removeitempickedbutton.ImageActive = null;
             removeitempickedbutton.ImageLocation = null;
-            removeitempickedbutton.ImageMargin = 20;
-            removeitempickedbutton.ImageSize = new Size(10, 10);
+            removeitempickedbutton.ImageMargin = 10;
+            removeitempickedbutton.ImageSize = new Size(20, 20);
             removeitempickedbutton.ImageZoomSize = new Size(30, 30);
             removeitempickedbutton.InitialImage = (Image)resources.GetObject("removeitempickedbutton.InitialImage");
             removeitempickedbutton.Location = new Point(553, 46);
@@ -648,7 +648,7 @@
             removeitempickedbutton.TabIndex = 7;
             removeitempickedbutton.ToolTipText = "";
             removeitempickedbutton.WaitOnLoad = false;
-            removeitempickedbutton.Zoom = 20;
+            removeitempickedbutton.Zoom = 10;
             removeitempickedbutton.ZoomSpeed = 10;
             removeitempickedbutton.Click += removeitempickedbutton_Click;
             // 

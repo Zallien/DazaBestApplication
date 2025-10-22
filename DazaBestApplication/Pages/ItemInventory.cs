@@ -40,7 +40,6 @@ namespace DazaBestApplication.Pages
                 Mainform = _MainForm;
             }
         }
-
         //ShowAddItemModal
         private void ShowAddItemModal()
         {
@@ -52,6 +51,8 @@ namespace DazaBestApplication.Pages
             OpenModal();
         }
 
+
+
         //Main Load
         private async void ItemInventory_Load(object sender, EventArgs e)
         {
@@ -61,6 +62,8 @@ namespace DazaBestApplication.Pages
             PaginationLabel.Text = $"{_pagenumber}";//Pagination Label
             CheckPageNumber();
         }
+
+
 
         //Hook Events
         private void HookEvents()
@@ -379,7 +382,6 @@ namespace DazaBestApplication.Pages
                 }
             }
         }//Delete using Del Toolstrip
-
         private async void bunifuButton21_Click(object sender, EventArgs e)
         {
             _decision = new DecisionModel()
@@ -430,6 +432,11 @@ namespace DazaBestApplication.Pages
                 };
                 OpenModal();
             }
+        }
+
+        private void AllItemsDatagrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
         }
     }
 }

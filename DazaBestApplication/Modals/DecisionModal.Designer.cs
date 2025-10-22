@@ -56,7 +56,7 @@
             TitleLabel.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             TitleLabel.Location = new Point(10, 0);
             TitleLabel.Name = "TitleLabel";
-            TitleLabel.Size = new Size(168, 40);
+            TitleLabel.Size = new Size(256, 40);
             TitleLabel.TabIndex = 0;
             TitleLabel.Text = "System";
             TitleLabel.TextAlign = ContentAlignment.MiddleLeft;

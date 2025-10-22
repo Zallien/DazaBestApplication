@@ -158,7 +158,7 @@
             EditButton.IdleIconLeftImage = Properties.Resources.compose;
             EditButton.IdleIconRightImage = null;
             EditButton.IndicateFocus = false;
-            EditButton.Location = new Point(346, 20);
+            EditButton.Location = new Point(353, 19);
             EditButton.Name = "EditButton";
             EditButton.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             EditButton.OnDisabledState.BorderRadius = 1;
@@ -704,6 +704,7 @@
             AllProductDatagridView.TabIndex = 1;
             AllProductDatagridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             AllProductDatagridView.CellContentClick += AllProductDatagridView_CellContentClick;
+            AllProductDatagridView.CellFormatting += AllProductDatagridView_CellFormatting;
             AllProductDatagridView.MouseClick += AllItemsDatagrid_MouseClick;
             // 
             // IdCol

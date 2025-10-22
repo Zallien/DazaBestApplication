@@ -54,16 +54,16 @@
             PrintItemBtn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             SearchBoxTextBox = new Bunifu.UI.WinForms.BunifuTextBox();
             AllItemsDatagrid = new Bunifu.UI.WinForms.BunifuDataGridView();
+            MenustripforItems = new ContextMenuStrip(components);
+            edittoolstrip = new ToolStripMenuItem();
+            sep1 = new ToolStripSeparator();
+            deletetoolstrip = new ToolStripMenuItem();
             IdCol = new DataGridViewTextBoxColumn();
             RowCol = new DataGridViewTextBoxColumn();
             ItemCodeCol = new DataGridViewTextBoxColumn();
             ItemNameCol = new DataGridViewTextBoxColumn();
             StocksCol = new DataGridViewTextBoxColumn();
             PriceCol = new DataGridViewTextBoxColumn();
-            MenustripforItems = new ContextMenuStrip(components);
-            edittoolstrip = new ToolStripMenuItem();
-            sep1 = new ToolStripSeparator();
-            deletetoolstrip = new ToolStripMenuItem();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             Pagination.SuspendLayout();
@@ -700,8 +700,38 @@
             AllItemsDatagrid.Size = new Size(890, 484);
             AllItemsDatagrid.TabIndex = 0;
             AllItemsDatagrid.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
+            AllItemsDatagrid.CellFormatting += AllItemsDatagrid_CellFormatting;
             AllItemsDatagrid.KeyDown += AllItemsDatagrid_KeyDown;
             AllItemsDatagrid.MouseClick += AllItemsDatagrid_MouseClick;
+            // 
+            // MenustripforItems
+            // 
+            MenustripforItems.BackColor = Color.White;
+            MenustripforItems.Items.AddRange(new ToolStripItem[] { edittoolstrip, sep1, deletetoolstrip });
+            MenustripforItems.Name = "MenustripforItems";
+            MenustripforItems.Size = new Size(121, 54);
+            MenustripforItems.Text = "Actions";
+            // 
+            // edittoolstrip
+            // 
+            edittoolstrip.Font = new Font("Cambria", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            edittoolstrip.Name = "edittoolstrip";
+            edittoolstrip.Size = new Size(120, 22);
+            edittoolstrip.Text = "Edit";
+            edittoolstrip.ToolTipText = "Edit the Selected Item";
+            // 
+            // sep1
+            // 
+            sep1.Name = "sep1";
+            sep1.Size = new Size(117, 6);
+            // 
+            // deletetoolstrip
+            // 
+            deletetoolstrip.Font = new Font("Cambria", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            deletetoolstrip.Name = "deletetoolstrip";
+            deletetoolstrip.Size = new Size(120, 22);
+            deletetoolstrip.Text = "Delete";
+            deletetoolstrip.ToolTipText = "Delete the Selected Item";
             // 
             // IdCol
             // 
@@ -716,6 +746,7 @@
             RowCol.HeaderText = "No";
             RowCol.Name = "RowCol";
             RowCol.ReadOnly = true;
+            RowCol.Visible = false;
             // 
             // ItemCodeCol
             // 
@@ -749,35 +780,6 @@
             PriceCol.Name = "PriceCol";
             PriceCol.ReadOnly = true;
             PriceCol.Width = 69;
-            // 
-            // MenustripforItems
-            // 
-            MenustripforItems.BackColor = Color.White;
-            MenustripforItems.Items.AddRange(new ToolStripItem[] { edittoolstrip, sep1, deletetoolstrip });
-            MenustripforItems.Name = "MenustripforItems";
-            MenustripforItems.Size = new Size(121, 54);
-            MenustripforItems.Text = "Actions";
-            // 
-            // edittoolstrip
-            // 
-            edittoolstrip.Font = new Font("Cambria", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            edittoolstrip.Name = "edittoolstrip";
-            edittoolstrip.Size = new Size(120, 22);
-            edittoolstrip.Text = "Edit";
-            edittoolstrip.ToolTipText = "Edit the Selected Item";
-            // 
-            // sep1
-            // 
-            sep1.Name = "sep1";
-            sep1.Size = new Size(117, 6);
-            // 
-            // deletetoolstrip
-            // 
-            deletetoolstrip.Font = new Font("Cambria", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            deletetoolstrip.Name = "deletetoolstrip";
-            deletetoolstrip.Size = new Size(120, 22);
-            deletetoolstrip.Text = "Delete";
-            deletetoolstrip.ToolTipText = "Delete the Selected Item";
             // 
             // ItemInventory
             // 

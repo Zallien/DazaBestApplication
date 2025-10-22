@@ -284,7 +284,56 @@ namespace DazaBestApplication.Layout
                 TransactionBy = POSTransactionDone.TransactionBy // Retain the TransactionBy
             };
         }
+        //Cancel or Reset Order Validation
+        private async Task CancelResetOrderValidation()
+        {
+            if (CurrentOrders.Count != 0)
+            {
+                DecisionModel decisionModel = new DecisionModel
+                {
+                    DecisionTitle = "Cancel/New Order",
+                    DecisionQuestion = "Are you sure you want to cancel/new order?"
+                };
+                bool userConfirmed = OpenDecisionModal(decisionModel);
+                if (userConfirmed)
+                {
+                    await CancelResetOrder();
+                }
+            }
+            else
+            {
+                MessageBox.Show("There are no current orders to cancel/reset.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        //Open Decision Modal
+        private bool OpenDecisionModal(DecisionModel _decision)
+        {
+            Form ModalBackgorund = new();
+            using (DecisionModal modalcontent = new(_decision))
+            {
+                var mainBounds = this.Bounds;
 
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = this.Size;
+                ModalBackgorund.Location = this.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(this);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+
+                var result = modalcontent.ShowDialog();
+
+                ModalBackgorund.Dispose();
+
+                return result == DialogResult.Yes;
+            }
+        }
 
 
         //Main Load
@@ -366,18 +415,8 @@ namespace DazaBestApplication.Layout
         //Handle Cancel/Reset Order Button Click
         private async void CancelResetOrderButton_Click(object sender, EventArgs e)
         {
-            if (CurrentOrders.Count != 0)
-            {
-                if (MessageBox.Show("Are you sure you want to cancel/reset the current order?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    await CancelResetOrder();
-                }
-            }
-            else
-            {
-                MessageBox.Show("There are no current orders to cancel/reset.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
             
+            await CancelResetOrderValidation();
         }
     }
 

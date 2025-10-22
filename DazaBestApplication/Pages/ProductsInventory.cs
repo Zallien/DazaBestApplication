@@ -397,6 +397,18 @@ namespace DazaBestApplication.Pages
             EditProduct();
         }
 
-
+        private void AllProductDatagridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Customize Action Button Style
+            if (AllProductDatagridView.Columns[e.ColumnIndex].Name == "ActionCol" && e.RowIndex >= 0)
+            {
+                DataGridViewButtonCell buttonCell = AllProductDatagridView.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewButtonCell;
+                buttonCell.Style.BackColor = Color.DarkGreen;
+                buttonCell.Style.ForeColor = Color.White;
+                buttonCell.Style.SelectionBackColor = Color.Green;
+                buttonCell.Style.SelectionForeColor = Color.White;
+                buttonCell.FlatStyle = FlatStyle.Flat;
+            }
+        }
     }
 }
