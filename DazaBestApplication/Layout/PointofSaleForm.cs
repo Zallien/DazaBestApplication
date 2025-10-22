@@ -53,7 +53,7 @@ namespace DazaBestApplication.Layout
                 BunifuGradientPanel itemPanel = new BunifuGradientPanel
                 {
                     Width = panelWidth - 10,
-                    Height = 100,
+                    Height = 150,
                     Margin = new Padding(5),
                     Tag = new ProductInformation
                     {
@@ -62,17 +62,20 @@ namespace DazaBestApplication.Layout
                         ProductPrice = product.Price,
                         ProductName = product.ProductName
                     },
-                    GradientBottomLeft = ColorTranslator.FromHtml("#FF6A00"),
-                    GradientBottomRight = ColorTranslator.FromHtml("#D00000"),
-                    GradientTopLeft = ColorTranslator.FromHtml("#FFF5CC"),
-                    GradientTopRight = ColorTranslator.FromHtml("#FFD93D"),
-                    Padding = new Padding(3)
+                    GradientBottomLeft = ColorTranslator.FromHtml("#ffffff"),
+                    GradientBottomRight = ColorTranslator.FromHtml("#ffffff"),
+                    GradientTopLeft = ColorTranslator.FromHtml("#ffffff"),
+                    GradientTopRight = ColorTranslator.FromHtml("#ffffff"),
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Padding = new Padding(15)
                 };
                 PictureBox pictureBox = new PictureBox
                 {
-                    Dock = DockStyle.Left,
+                    Dock = DockStyle.Top,
                     Width = 100,
+                    Height = 60,
                     SizeMode = PictureBoxSizeMode.Zoom,
+                    BackColor = Color.White,
                     Margin = new Padding(0)
                 };
 
@@ -88,6 +91,16 @@ namespace DazaBestApplication.Layout
                     pictureBox.Image = Properties.Resources.chicken_leg; // Default image
                 }
 
+                Label priceLabel = new Label
+                {
+                    Text = product.Price.ToString("C2"),
+                    Dock = DockStyle.Top, // <-- Fill the remaining space
+                    TextAlign = ContentAlignment.MiddleLeft,
+                    Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                    Padding = new Padding(10, 0, 5, 0),
+                    ForeColor = Color.Black
+                };
+
                 Label nameLabel = new Label
                 {
                     Text = product.ProductName,
@@ -95,10 +108,13 @@ namespace DazaBestApplication.Layout
                     TextAlign = ContentAlignment.MiddleLeft,
                     Font = new Font("Segoe UI", 10, FontStyle.Bold),
                     Padding = new Padding(10, 0, 5, 0),
-                    ForeColor = Color.White
+                    ForeColor = Color.Black
                 };
 
+
+
                 // Add controls in correct order (IMPORTANT)
+                itemPanel.Controls.Add(priceLabel);
                 itemPanel.Controls.Add(nameLabel);
                 itemPanel.Controls.Add(pictureBox);
 
@@ -106,6 +122,7 @@ namespace DazaBestApplication.Layout
                 itemPanel.Click += OrderClicked;
                 nameLabel.Click += OrderClicked;
                 pictureBox.Click += OrderClicked;
+                priceLabel.Click += OrderClicked;
 
                 MainDisplay.Controls.Add(itemPanel); // <-- Add to parent here
             }
