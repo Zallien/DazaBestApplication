@@ -1362,11 +1362,12 @@
   </data>
   <data name="bunifuTextBox1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAYYAAAAnCAYAAAALt+8aAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC7SURBVHhe7dVBCUMxAETB719VQmRURgW05NDAq4XMwF7W
-        wHseAPi31nqNMT5mZnbvdgtOGPYBwN12C4QBgEMYAAhhACCEAYAQBgBCGAAIYQAghAGAEAYAQhgACGEA
-        IIQBgBAGAEIYAAhhACCEAYAQBgBCGAAIYQAghAGAEAYAQhgACGEAIIQBgBAGAEIYAAhhACCEAYAQBgBC
-        GAAIYQAghAGAEAYAQhgAiIRhzvneh5mZ3bvdghMGAPj5AoqOC8Y4An5uAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAAYEAAAAnCAYAAADpa/RjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADCSURBVHhe7dVBDcRADATB8Ee1q4VxMAIgkT+RDkNXSfMx
+        APd1AdB2zvmttR4zM2ts/v4XgTkA0DF/XwQAokQAIEwEAMJEACBMBADCRAAgTAQAwkQAIEwEAMJEACBM
+        BADCRAAgTAQAwkQAIEwEAMJEACBMBADCRAAgTAQAwkQAIEwEAMJEACBMBADCRAAgTAQAwkQAIEwEAMJE
+        ACBMBADCRAAgTAQAwkQAIEwEAMJEACDsLwJ773sOZmbW2Pz9LwIANL1ESzHfwk22CAAAAABJRU5ErkJg
+        gg==
 </value>
   </data>
   <data name="CloseAllPModal.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

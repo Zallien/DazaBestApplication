@@ -413,7 +413,7 @@
             ItemNametxt.Padding = new Padding(3);
             ItemNametxt.PasswordChar = '\0';
             ItemNametxt.PlaceholderForeColor = Color.Silver;
-            ItemNametxt.PlaceholderText = "Item name";
+            ItemNametxt.PlaceholderText = "";
             ItemNametxt.ReadOnly = false;
             ItemNametxt.ScrollBars = ScrollBars.None;
             ItemNametxt.SelectedText = "";
@@ -427,9 +427,10 @@
             ItemNametxt.TextMarginBottom = 0;
             ItemNametxt.TextMarginLeft = 3;
             ItemNametxt.TextMarginTop = 1;
-            ItemNametxt.TextPlaceholder = "Item name";
+            ItemNametxt.TextPlaceholder = "";
             ItemNametxt.UseSystemPasswordChar = false;
             ItemNametxt.WordWrap = true;
+            ItemNametxt.KeyPress += ItemNametxt_KeyPress;
             // 
             // ItemPricetxt
             // 
@@ -459,7 +460,7 @@
             ItemPricetxt.IconRight = null;
             ItemPricetxt.IconRightCursor = Cursors.IBeam;
             ItemPricetxt.Location = new Point(147, 102);
-            ItemPricetxt.MaxLength = 32767;
+            ItemPricetxt.MaxLength = 5;
             ItemPricetxt.MinimumSize = new Size(1, 1);
             ItemPricetxt.Modified = false;
             ItemPricetxt.Multiline = false;
@@ -487,7 +488,7 @@
             ItemPricetxt.Padding = new Padding(3);
             ItemPricetxt.PasswordChar = '\0';
             ItemPricetxt.PlaceholderForeColor = Color.Silver;
-            ItemPricetxt.PlaceholderText = "Item Price";
+            ItemPricetxt.PlaceholderText = "";
             ItemPricetxt.ReadOnly = false;
             ItemPricetxt.ScrollBars = ScrollBars.None;
             ItemPricetxt.SelectedText = "";
@@ -501,9 +502,10 @@
             ItemPricetxt.TextMarginBottom = 0;
             ItemPricetxt.TextMarginLeft = 3;
             ItemPricetxt.TextMarginTop = 1;
-            ItemPricetxt.TextPlaceholder = "Item Price";
+            ItemPricetxt.TextPlaceholder = "";
             ItemPricetxt.UseSystemPasswordChar = false;
             ItemPricetxt.WordWrap = true;
+            ItemPricetxt.KeyPress += ItemPricetxt_KeyPress;
             // 
             // ItemModalForm
             // 

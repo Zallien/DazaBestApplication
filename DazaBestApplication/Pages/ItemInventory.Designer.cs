@@ -196,6 +196,7 @@
             bunifuButton23.TextMarginLeft = 0;
             bunifuButton23.TextPadding = new Padding(35, 0, 0, 0);
             bunifuButton23.UseDefaultRadiusAndThickness = true;
+            bunifuButton23.Click += bunifuButton23_Click;
             // 
             // bunifuButton21
             // 
@@ -285,6 +286,7 @@
             bunifuButton21.TextMarginLeft = 0;
             bunifuButton21.TextPadding = new Padding(35, 0, 0, 0);
             bunifuButton21.UseDefaultRadiusAndThickness = true;
+            bunifuButton21.Click += bunifuButton21_Click;
             // 
             // AddItemButton
             // 

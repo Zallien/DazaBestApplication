@@ -216,7 +216,6 @@
             CancelResetOrderButton.WaitOnLoad = false;
             CancelResetOrderButton.Zoom = 10;
             CancelResetOrderButton.ZoomSpeed = 10;
-            CancelResetOrderButton.Click += CancelResetOrderButton_Click;
             // 
             // Sidebar
             // 
@@ -605,6 +604,7 @@
             MainDisplay.Name = "MainDisplay";
             MainDisplay.Size = new Size(720, 580);
             MainDisplay.TabIndex = 2;
+            MainDisplay.Paint += MainDisplay_Paint;
             // 
             // PointofSaleForm
             // 
