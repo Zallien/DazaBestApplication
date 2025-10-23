@@ -39,11 +39,11 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Bottomnavbar = new Panel();
             bunifuImageButton4 = new Bunifu.UI.WinForms.BunifuImageButton();
             bunifuImageButton3 = new Bunifu.UI.WinForms.BunifuImageButton();
@@ -62,16 +62,16 @@
             label3 = new Label();
             label2 = new Label();
             ProductOrdersDatagrid = new Bunifu.UI.WinForms.BunifuDataGridView();
-            ProductIdCol = new DataGridViewTextBoxColumn();
-            ProductNameCol = new DataGridViewTextBoxColumn();
-            QuantityCol = new DataGridViewTextBoxColumn();
-            PriceCol = new DataGridViewTextBoxColumn();
-            ActionCol = new DataGridViewButtonColumn();
             MainDisplay = new FlowLayoutPanel();
             bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
             Searchbox = new Bunifu.UI.WinForms.BunifuTextBox();
             label1 = new Label();
             label6 = new Label();
+            ProductIdCol = new DataGridViewTextBoxColumn();
+            ProductNameCol = new DataGridViewTextBoxColumn();
+            QuantityCol = new DataGridViewTextBoxColumn();
+            PriceCol = new DataGridViewTextBoxColumn();
+            ActionCol = new DataGridViewButtonColumn();
             Bottomnavbar.SuspendLayout();
             Sidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ProductOrdersDatagrid).BeginInit();
@@ -80,6 +80,7 @@
             // 
             // Bottomnavbar
             // 
+            Bottomnavbar.BorderStyle = BorderStyle.FixedSingle;
             Bottomnavbar.Controls.Add(bunifuImageButton4);
             Bottomnavbar.Controls.Add(bunifuImageButton3);
             Bottomnavbar.Controls.Add(bunifuImageButton2);
@@ -111,7 +112,7 @@
             bunifuImageButton4.ImageSize = new Size(40, 40);
             bunifuImageButton4.ImageZoomSize = new Size(50, 50);
             bunifuImageButton4.InitialImage = Properties.Resources.logout;
-            bunifuImageButton4.Location = new Point(958, 8);
+            bunifuImageButton4.Location = new Point(956, 6);
             bunifuImageButton4.Name = "bunifuImageButton4";
             bunifuImageButton4.Rotation = 0;
             bunifuImageButton4.ShowActiveImage = true;
@@ -598,6 +599,7 @@
             ProductOrdersDatagrid.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             ProductOrdersDatagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ProductOrdersDatagrid.BackgroundColor = Color.White;
+            ProductOrdersDatagrid.BorderStyle = BorderStyle.None;
             ProductOrdersDatagrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             ProductOrdersDatagrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -658,46 +660,8 @@
             ProductOrdersDatagrid.CellContentClick += ProductOrdersDatagrid_CellContentClick;
             ProductOrdersDatagrid.CellFormatting += ProductOrdersDatagrid_CellFormatting;
             ProductOrdersDatagrid.CellValueChanged += ProductOrdersDatagrid_CellValueChanged;
-            // 
-            // ProductIdCol
-            // 
-            ProductIdCol.HeaderText = "id";
-            ProductIdCol.Name = "ProductIdCol";
-            ProductIdCol.Visible = false;
-            // 
-            // ProductNameCol
-            // 
-            dataGridViewCellStyle3.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ProductNameCol.DefaultCellStyle = dataGridViewCellStyle3;
-            ProductNameCol.FillWeight = 50F;
-            ProductNameCol.HeaderText = "Product";
-            ProductNameCol.Name = "ProductNameCol";
-            ProductNameCol.ReadOnly = true;
-            ProductNameCol.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // QuantityCol
-            // 
-            QuantityCol.FillWeight = 15F;
-            QuantityCol.HeaderText = "Qty";
-            QuantityCol.Name = "QuantityCol";
-            QuantityCol.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // PriceCol
-            // 
-            PriceCol.FillWeight = 25F;
-            PriceCol.HeaderText = "Price";
-            PriceCol.Name = "PriceCol";
-            PriceCol.ReadOnly = true;
-            PriceCol.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ActionCol
-            // 
-            ActionCol.FillWeight = 10F;
-            ActionCol.HeaderText = "";
-            ActionCol.Name = "ActionCol";
-            ActionCol.Text = "-";
-            ActionCol.ToolTipText = "Delete";
-            ActionCol.UseColumnTextForButtonValue = true;
+            ProductOrdersDatagrid.EditingControlShowing += ProductOrdersDatagrid_EditingControlShowing;
+            ProductOrdersDatagrid.KeyPress += ProductOrdersDatagrid_KeyPress;
             // 
             // MainDisplay
             // 
@@ -707,7 +671,6 @@
             MainDisplay.Name = "MainDisplay";
             MainDisplay.Size = new Size(720, 580);
             MainDisplay.TabIndex = 2;
-
             // 
             // bunifuPanel1
             // 
@@ -824,6 +787,47 @@
             label6.TabIndex = 0;
             label6.Text = "Products";
             // 
+            // ProductIdCol
+            // 
+            ProductIdCol.HeaderText = "id";
+            ProductIdCol.Name = "ProductIdCol";
+            ProductIdCol.Visible = false;
+            // 
+            // ProductNameCol
+            // 
+            dataGridViewCellStyle3.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ProductNameCol.DefaultCellStyle = dataGridViewCellStyle3;
+            ProductNameCol.FillWeight = 50F;
+            ProductNameCol.HeaderText = "Product";
+            ProductNameCol.Name = "ProductNameCol";
+            ProductNameCol.ReadOnly = true;
+            ProductNameCol.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // QuantityCol
+            // 
+            QuantityCol.FillWeight = 15F;
+            QuantityCol.HeaderText = "Qty";
+            QuantityCol.MaxInputLength = 3;
+            QuantityCol.Name = "QuantityCol";
+            QuantityCol.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // PriceCol
+            // 
+            PriceCol.FillWeight = 25F;
+            PriceCol.HeaderText = "Price";
+            PriceCol.Name = "PriceCol";
+            PriceCol.ReadOnly = true;
+            PriceCol.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ActionCol
+            // 
+            ActionCol.FillWeight = 10F;
+            ActionCol.HeaderText = "";
+            ActionCol.Name = "ActionCol";
+            ActionCol.Text = "-";
+            ActionCol.ToolTipText = "Delete";
+            ActionCol.UseColumnTextForButtonValue = true;
+            // 
             // PointofSaleForm
             // 
             AutoScaleDimensions = new SizeF(7F, 14F);
@@ -859,11 +863,6 @@
         private Label DiscountValue;
         private Label Subtotalvalue;
         private Label label5;
-        private DataGridViewTextBoxColumn ProductIdCol;
-        private DataGridViewTextBoxColumn ProductNameCol;
-        private DataGridViewTextBoxColumn QuantityCol;
-        private DataGridViewTextBoxColumn PriceCol;
-        private DataGridViewButtonColumn ActionCol;
         private Bunifu.UI.WinForms.BunifuImageButton CancelResetOrderButton;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton PaymentButton;
         private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton2;
@@ -876,5 +875,10 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton1;
         private Bunifu.UI.WinForms.BunifuTextBox bunifuTextBox1;
         private Label label7;
+        private DataGridViewTextBoxColumn ProductIdCol;
+        private DataGridViewTextBoxColumn ProductNameCol;
+        private DataGridViewTextBoxColumn QuantityCol;
+        private DataGridViewTextBoxColumn PriceCol;
+        private DataGridViewButtonColumn ActionCol;
     }
 }

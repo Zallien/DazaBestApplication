@@ -432,8 +432,40 @@ namespace DazaBestApplication.Layout
         //Handle Cancel/Reset Order Button Click
         private async void CancelResetOrderButton_Click(object sender, EventArgs e)
         {
-            
+
             await CancelResetOrderValidation();
+        }
+
+        private void ProductOrdersDatagrid_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        //Para sa number lang yung mailagay sa datagridview
+        private void NumbersOnly_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void ProductOrdersDatagrid_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            const int NUMBER_COLUMN_INDEX = 2;
+
+            if (ProductOrdersDatagrid.CurrentCell.ColumnIndex == NUMBER_COLUMN_INDEX)
+            {
+                TextBox textBox = e.Control as TextBox;
+
+                if (textBox != null)
+                {
+                    textBox.KeyPress -= new KeyPressEventHandler(NumbersOnly_KeyPress);
+                    textBox.KeyPress += new KeyPressEventHandler(NumbersOnly_KeyPress);
+                }
+            }
         }
     }
 
