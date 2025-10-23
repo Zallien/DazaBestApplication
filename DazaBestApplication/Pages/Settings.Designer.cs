@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges10 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState25 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
-            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState26 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
-            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState27 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
-            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState28 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
-            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState29 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
-            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState30 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState7 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
+            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState8 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
+            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState9 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
+            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState10 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
+            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState11 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
+            Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState toggleState12 = new Bunifu.UI.WinForms.BunifuToggleSwitch.ToggleState();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges9 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             TopPanel = new Panel();
             label1 = new Label();
             MainContainer = new Panel();
@@ -61,9 +61,9 @@
             label7 = new Label();
             GeneralSettingsPanel = new Panel();
             bunifuButton1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            HeaderMessage = new TextBox();
+            ContactInfo = new TextBox();
+            BusinessName = new TextBox();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
@@ -166,7 +166,7 @@
             bunifuDropdown1.ItemTopMargin = 3;
             bunifuDropdown1.Location = new Point(268, 113);
             bunifuDropdown1.Name = "bunifuDropdown1";
-            bunifuDropdown1.Size = new Size(260, 26);
+            bunifuDropdown1.Size = new Size(277, 26);
             bunifuDropdown1.TabIndex = 14;
             bunifuDropdown1.Text = null;
             bunifuDropdown1.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
@@ -190,11 +190,11 @@
             bunifuButton2.ButtonTextMarginLeft = 0;
             bunifuButton2.ColorContrastOnClick = 45;
             bunifuButton2.ColorContrastOnHover = 45;
-            borderEdges10.BottomLeft = true;
-            borderEdges10.BottomRight = true;
-            borderEdges10.TopLeft = true;
-            borderEdges10.TopRight = true;
-            bunifuButton2.CustomizableEdges = borderEdges10;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            bunifuButton2.CustomizableEdges = borderEdges4;
             bunifuButton2.DialogResult = DialogResult.None;
             bunifuButton2.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton2.DisabledFillColor = Color.Empty;
@@ -276,33 +276,33 @@
             bunifuToggleSwitch2.Size = new Size(54, 28);
             bunifuToggleSwitch2.TabIndex = 13;
             bunifuToggleSwitch2.ThumbMargin = 3;
-            toggleState25.BackColor = Color.DarkGray;
-            toggleState25.BackColorInner = Color.White;
-            toggleState25.BorderColor = Color.DarkGray;
-            toggleState25.BorderColorInner = Color.White;
-            toggleState25.BorderRadius = 17;
-            toggleState25.BorderRadiusInner = 11;
-            toggleState25.BorderThickness = 1;
-            toggleState25.BorderThicknessInner = 1;
-            bunifuToggleSwitch2.ToggleStateDisabled = toggleState25;
-            toggleState26.BackColor = Color.Empty;
-            toggleState26.BackColorInner = Color.Empty;
-            toggleState26.BorderColor = Color.FromArgb(236, 0, 140);
-            toggleState26.BorderColorInner = Color.Empty;
-            toggleState26.BorderRadius = 1;
-            toggleState26.BorderRadiusInner = 1;
-            toggleState26.BorderThickness = 1;
-            toggleState26.BorderThicknessInner = 1;
-            bunifuToggleSwitch2.ToggleStateOff = toggleState26;
-            toggleState27.BackColor = Color.DodgerBlue;
-            toggleState27.BackColorInner = Color.White;
-            toggleState27.BorderColor = Color.DodgerBlue;
-            toggleState27.BorderColorInner = Color.White;
-            toggleState27.BorderRadius = 15;
-            toggleState27.BorderRadiusInner = 9;
-            toggleState27.BorderThickness = 1;
-            toggleState27.BorderThicknessInner = 1;
-            bunifuToggleSwitch2.ToggleStateOn = toggleState27;
+            toggleState7.BackColor = Color.DarkGray;
+            toggleState7.BackColorInner = Color.White;
+            toggleState7.BorderColor = Color.DarkGray;
+            toggleState7.BorderColorInner = Color.White;
+            toggleState7.BorderRadius = 17;
+            toggleState7.BorderRadiusInner = 11;
+            toggleState7.BorderThickness = 1;
+            toggleState7.BorderThicknessInner = 1;
+            bunifuToggleSwitch2.ToggleStateDisabled = toggleState7;
+            toggleState8.BackColor = Color.Empty;
+            toggleState8.BackColorInner = Color.Empty;
+            toggleState8.BorderColor = Color.FromArgb(236, 0, 140);
+            toggleState8.BorderColorInner = Color.Empty;
+            toggleState8.BorderRadius = 1;
+            toggleState8.BorderRadiusInner = 1;
+            toggleState8.BorderThickness = 1;
+            toggleState8.BorderThicknessInner = 1;
+            bunifuToggleSwitch2.ToggleStateOff = toggleState8;
+            toggleState9.BackColor = Color.DodgerBlue;
+            toggleState9.BackColorInner = Color.White;
+            toggleState9.BorderColor = Color.DodgerBlue;
+            toggleState9.BorderColorInner = Color.White;
+            toggleState9.BorderRadius = 15;
+            toggleState9.BorderRadiusInner = 9;
+            toggleState9.BorderThickness = 1;
+            toggleState9.BorderThicknessInner = 1;
+            bunifuToggleSwitch2.ToggleStateOn = toggleState9;
             bunifuToggleSwitch2.Value = true;
             // 
             // textBox7
@@ -310,7 +310,7 @@
             textBox7.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox7.Location = new Point(231, 43);
             textBox7.Name = "textBox7";
-            textBox7.Size = new Size(348, 26);
+            textBox7.Size = new Size(314, 26);
             textBox7.TabIndex = 12;
             // 
             // label17
@@ -394,33 +394,33 @@
             bunifuToggleSwitch1.Size = new Size(54, 28);
             bunifuToggleSwitch1.TabIndex = 8;
             bunifuToggleSwitch1.ThumbMargin = 3;
-            toggleState28.BackColor = Color.DarkGray;
-            toggleState28.BackColorInner = Color.White;
-            toggleState28.BorderColor = Color.DarkGray;
-            toggleState28.BorderColorInner = Color.White;
-            toggleState28.BorderRadius = 17;
-            toggleState28.BorderRadiusInner = 11;
-            toggleState28.BorderThickness = 1;
-            toggleState28.BorderThicknessInner = 1;
-            bunifuToggleSwitch1.ToggleStateDisabled = toggleState28;
-            toggleState29.BackColor = Color.Empty;
-            toggleState29.BackColorInner = Color.Empty;
-            toggleState29.BorderColor = Color.FromArgb(236, 0, 140);
-            toggleState29.BorderColorInner = Color.Empty;
-            toggleState29.BorderRadius = 1;
-            toggleState29.BorderRadiusInner = 1;
-            toggleState29.BorderThickness = 1;
-            toggleState29.BorderThicknessInner = 1;
-            bunifuToggleSwitch1.ToggleStateOff = toggleState29;
-            toggleState30.BackColor = Color.DodgerBlue;
-            toggleState30.BackColorInner = Color.White;
-            toggleState30.BorderColor = Color.DodgerBlue;
-            toggleState30.BorderColorInner = Color.White;
-            toggleState30.BorderRadius = 15;
-            toggleState30.BorderRadiusInner = 9;
-            toggleState30.BorderThickness = 1;
-            toggleState30.BorderThicknessInner = 1;
-            bunifuToggleSwitch1.ToggleStateOn = toggleState30;
+            toggleState10.BackColor = Color.DarkGray;
+            toggleState10.BackColorInner = Color.White;
+            toggleState10.BorderColor = Color.DarkGray;
+            toggleState10.BorderColorInner = Color.White;
+            toggleState10.BorderRadius = 17;
+            toggleState10.BorderRadiusInner = 11;
+            toggleState10.BorderThickness = 1;
+            toggleState10.BorderThicknessInner = 1;
+            bunifuToggleSwitch1.ToggleStateDisabled = toggleState10;
+            toggleState11.BackColor = Color.Empty;
+            toggleState11.BackColorInner = Color.Empty;
+            toggleState11.BorderColor = Color.FromArgb(236, 0, 140);
+            toggleState11.BorderColorInner = Color.Empty;
+            toggleState11.BorderRadius = 1;
+            toggleState11.BorderRadiusInner = 1;
+            toggleState11.BorderThickness = 1;
+            toggleState11.BorderThicknessInner = 1;
+            bunifuToggleSwitch1.ToggleStateOff = toggleState11;
+            toggleState12.BackColor = Color.DodgerBlue;
+            toggleState12.BackColorInner = Color.White;
+            toggleState12.BorderColor = Color.DodgerBlue;
+            toggleState12.BorderColorInner = Color.White;
+            toggleState12.BorderRadius = 15;
+            toggleState12.BorderRadiusInner = 9;
+            toggleState12.BorderThickness = 1;
+            toggleState12.BorderThicknessInner = 1;
+            bunifuToggleSwitch1.ToggleStateOn = toggleState12;
             bunifuToggleSwitch1.Value = true;
             // 
             // textBox5
@@ -428,7 +428,7 @@
             textBox5.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox5.Location = new Point(231, 170);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(329, 26);
+            textBox5.Size = new Size(314, 26);
             textBox5.TabIndex = 7;
             // 
             // textBox4
@@ -436,7 +436,7 @@
             textBox4.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox4.Location = new Point(231, 45);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(329, 26);
+            textBox4.Size = new Size(314, 26);
             textBox4.TabIndex = 6;
             // 
             // label11
@@ -493,9 +493,9 @@
             // 
             GeneralSettingsPanel.BackColor = Color.Transparent;
             GeneralSettingsPanel.Controls.Add(bunifuButton1);
-            GeneralSettingsPanel.Controls.Add(textBox3);
-            GeneralSettingsPanel.Controls.Add(textBox2);
-            GeneralSettingsPanel.Controls.Add(textBox1);
+            GeneralSettingsPanel.Controls.Add(HeaderMessage);
+            GeneralSettingsPanel.Controls.Add(ContactInfo);
+            GeneralSettingsPanel.Controls.Add(BusinessName);
             GeneralSettingsPanel.Controls.Add(label6);
             GeneralSettingsPanel.Controls.Add(label5);
             GeneralSettingsPanel.Controls.Add(label4);
@@ -525,11 +525,11 @@
             bunifuButton1.ButtonTextMarginLeft = 0;
             bunifuButton1.ColorContrastOnClick = 45;
             bunifuButton1.ColorContrastOnHover = 45;
-            borderEdges9.BottomLeft = true;
-            borderEdges9.BottomRight = true;
-            borderEdges9.TopLeft = true;
-            borderEdges9.TopRight = true;
-            bunifuButton1.CustomizableEdges = borderEdges9;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            bunifuButton1.CustomizableEdges = borderEdges3;
             bunifuButton1.DialogResult = DialogResult.None;
             bunifuButton1.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton1.DisabledFillColor = Color.Empty;
@@ -597,29 +597,32 @@
             bunifuButton1.TextPadding = new Padding(0);
             bunifuButton1.UseDefaultRadiusAndThickness = true;
             // 
-            // textBox3
+            // HeaderMessage
             // 
-            textBox3.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox3.Location = new Point(216, 140);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(329, 26);
-            textBox3.TabIndex = 7;
+            HeaderMessage.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            HeaderMessage.Location = new Point(216, 140);
+            HeaderMessage.Name = "HeaderMessage";
+            HeaderMessage.Size = new Size(329, 26);
+            HeaderMessage.TabIndex = 7;
+            HeaderMessage.Tag = "GeneralSettings_Headermessage";
             // 
-            // textBox2
+            // ContactInfo
             // 
-            textBox2.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(216, 70);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(329, 26);
-            textBox2.TabIndex = 6;
+            ContactInfo.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ContactInfo.Location = new Point(216, 70);
+            ContactInfo.Name = "ContactInfo";
+            ContactInfo.Size = new Size(329, 26);
+            ContactInfo.TabIndex = 6;
+            ContactInfo.Tag = "GeneralSettings_Contactinfo";
             // 
-            // textBox1
+            // BusinessName
             // 
-            textBox1.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(216, 35);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(329, 26);
-            textBox1.TabIndex = 5;
+            BusinessName.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BusinessName.Location = new Point(216, 35);
+            BusinessName.Name = "BusinessName";
+            BusinessName.Size = new Size(329, 26);
+            BusinessName.TabIndex = 5;
+            BusinessName.Tag = "GeneralSettings_BussinessName";
             // 
             // label6
             // 
@@ -682,6 +685,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "Settings";
             Text = "Settings";
+            Load += Settings_Load;
             TopPanel.ResumeLayout(false);
             MainContainer.ResumeLayout(false);
             DatabaseSettingsPanel.ResumeLayout(false);
@@ -716,12 +720,12 @@
         private Label label11;
         private Label label10;
         private Label label17;
-        private TextBox textBox1;
+        private TextBox BusinessName;
         private TextBox textBox7;
         private TextBox textBox5;
         private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
+        private TextBox HeaderMessage;
+        private TextBox ContactInfo;
         private Bunifu.UI.WinForms.BunifuToggleSwitch bunifuToggleSwitch2;
         private Bunifu.UI.WinForms.BunifuToggleSwitch bunifuToggleSwitch1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton2;

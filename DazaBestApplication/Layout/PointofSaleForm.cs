@@ -46,6 +46,7 @@ namespace DazaBestApplication.Layout
         {
             int itemCount = 20; // Example item count
             int cols = 4; // Number of columns in the grid
+            int fontsize = 10;
             Size maindisplaysize = MainDisplay.Size;
             int panelWidth = maindisplaysize.Width / cols;
             foreach (Products product in AllavailableProducts)
@@ -53,7 +54,7 @@ namespace DazaBestApplication.Layout
                 BunifuGradientPanel itemPanel = new BunifuGradientPanel
                 {
                     Width = panelWidth - 10,
-                    Height = 100,
+                    Height = panelWidth / 2,
                     Margin = new Padding(5),
                     Tag = new ProductInformation
                     {
@@ -62,18 +63,21 @@ namespace DazaBestApplication.Layout
                         ProductPrice = product.Price,
                         ProductName = product.ProductName
                     },
-                    GradientBottomLeft = ColorTranslator.FromHtml("#FF6A00"),
-                    GradientBottomRight = ColorTranslator.FromHtml("#D00000"),
-                    GradientTopLeft = ColorTranslator.FromHtml("#FFF5CC"),
-                    GradientTopRight = ColorTranslator.FromHtml("#FFD93D"),
-                    Padding = new Padding(3)
+                    GradientBottomLeft = Color.White,
+                    GradientBottomRight = Color.White,
+                    GradientTopLeft = Color.White,
+                    GradientTopRight = Color.White,
+                    Padding = new Padding(0),
+                    BorderRadius = 10,
+                    BorderStyle = BorderStyle.FixedSingle
                 };
                 PictureBox pictureBox = new PictureBox
                 {
-                    Dock = DockStyle.Left,
-                    Width = 100,
-                    SizeMode = PictureBoxSizeMode.Zoom,
-                    Margin = new Padding(0)
+                    Dock = DockStyle.Top,
+                    Height = itemPanel.Height - (fontsize * 4), // Leave space for label
+                    SizeMode = PictureBoxSizeMode.StretchImage,
+                    Margin = new Padding(0),
+                    Parent = itemPanel
                 };
 
                 if (product.ProductImage != null)
@@ -93,15 +97,24 @@ namespace DazaBestApplication.Layout
                     Text = product.ProductName,
                     Dock = DockStyle.Top, // <-- Fill the remaining space
                     TextAlign = ContentAlignment.MiddleLeft,
-                    Font = new Font("Segoe UI", 10, FontStyle.Bold),
-                    Padding = new Padding(10, 0, 5, 0),
-                    ForeColor = Color.White
+                    Font = new Font("Cambria", fontsize, FontStyle.Bold),
+                    Padding = new Padding(10, 0, 0, 0),
+                    ForeColor = Color.Black
+                };
+                Label pricelabel = new Label
+                {
+                    Text = product.Price.ToString("C2"),
+                    Dock = DockStyle.Top,
+                    TextAlign = ContentAlignment.MiddleLeft,
+                    Font = new Font("Cambria", fontsize, FontStyle.Regular),
+                    Padding = new Padding(10, 0, 0, 0),
+                    ForeColor = Color.Black
                 };
 
                 // Add controls in correct order (IMPORTANT)
+                itemPanel.Controls.Add(pricelabel);
                 itemPanel.Controls.Add(nameLabel);
                 itemPanel.Controls.Add(pictureBox);
-
                 // Add click handlers
                 itemPanel.Click += OrderClicked;
                 nameLabel.Click += OrderClicked;

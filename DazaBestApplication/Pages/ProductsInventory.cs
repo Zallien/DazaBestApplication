@@ -28,6 +28,7 @@ namespace DazaBestApplication.Pages
         private int _maxpages;
         private DecisionModel _decision;
 
+
         //Constructor
         public ProductsInventory(Form _MainForm)
         {

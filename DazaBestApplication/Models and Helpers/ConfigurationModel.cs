@@ -23,9 +23,9 @@ namespace DazaBestApplication.Models
 
     public class GeneralSettings
     {
-        public string? CompanyName { get; set; }
+        public string? HeaderMessage { get; set; }
         public string? BusinessName { get; set; }
-        public List<string>? ContactInfo { get; set; } = new();
+        public string? ContactInfo { get; set; }
         public byte[]? BusinessLogo { get; set; }
     }
 

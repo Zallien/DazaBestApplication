@@ -48,9 +48,9 @@ namespace DazaBestApplication.Models_and_Helpers
                         },
                         GeneralSettings = new GeneralSettings
                         {
-                            CompanyName = "My Company",
+                            HeaderMessage = "Hello Customer",
                             BusinessName = "My Business",
-                            ContactInfo = new List<string>(),
+                            ContactInfo = "",
                             BusinessLogo = null
                         },
                         POSInventorySettings = new POSInventorySettings

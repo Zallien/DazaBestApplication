@@ -49,7 +49,6 @@
             NavButton_Home = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             MainContainer = new Panel();
             FormDragFeature = new Bunifu.UI.WinForms.BunifuFormDrag();
-            sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
             SideNav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bunifuPictureBox1).BeginInit();
             SuspendLayout();
@@ -836,13 +835,6 @@
             FormDragFeature.TitleBarOptions.TitleBarControl = null;
             FormDragFeature.TitleBarOptions.UseBackColorOnDockingIndicators = false;
             // 
-            // sqliteCommand1
-            // 
-            sqliteCommand1.CommandTimeout = 30;
-            sqliteCommand1.Connection = null;
-            sqliteCommand1.Transaction = null;
-            sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
-            // 
             // MainPage
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
@@ -874,7 +866,6 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton21;
         private Bunifu.UI.WinForms.BunifuFormDrag FormDragFeature;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 LogOut_btn;
-        private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
         private Bunifu.UI.WinForms.BunifuPictureBox bunifuPictureBox1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 NavButton_PurchaseItem;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 POSButton;
