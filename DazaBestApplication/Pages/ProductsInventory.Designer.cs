@@ -56,6 +56,10 @@
             SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
             AddProductBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             AllProductDatagridView = new Bunifu.UI.WinForms.BunifuDataGridView();
+            ProductMenuStrip = new ContextMenuStrip(components);
+            Edittoolstrip = new ToolStripMenuItem();
+            sep1 = new ToolStripSeparator();
+            Deletetoolstrip = new ToolStripMenuItem();
             IdCol = new DataGridViewTextBoxColumn();
             AvailabilityCol = new DataGridViewImageColumn();
             ProductCodeCol = new DataGridViewTextBoxColumn();
@@ -63,10 +67,6 @@
             QuantityCol = new DataGridViewTextBoxColumn();
             PriceCol = new DataGridViewTextBoxColumn();
             ActionCol = new DataGridViewButtonColumn();
-            ProductMenuStrip = new ContextMenuStrip(components);
-            Edittoolstrip = new ToolStripMenuItem();
-            sep1 = new ToolStripSeparator();
-            Deletetoolstrip = new ToolStripMenuItem();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             Pagination.SuspendLayout();
@@ -698,6 +698,8 @@
             AllProductDatagridView.Name = "AllProductDatagridView";
             AllProductDatagridView.ReadOnly = true;
             AllProductDatagridView.RowHeadersVisible = false;
+            AllProductDatagridView.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            AllProductDatagridView.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64);
             AllProductDatagridView.RowTemplate.Height = 40;
             AllProductDatagridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             AllProductDatagridView.Size = new Size(890, 481);
@@ -706,6 +708,30 @@
             AllProductDatagridView.CellContentClick += AllProductDatagridView_CellContentClick;
             AllProductDatagridView.CellFormatting += AllProductDatagridView_CellFormatting;
             AllProductDatagridView.MouseClick += AllItemsDatagrid_MouseClick;
+            // 
+            // ProductMenuStrip
+            // 
+            ProductMenuStrip.Items.AddRange(new ToolStripItem[] { Edittoolstrip, sep1, Deletetoolstrip });
+            ProductMenuStrip.Name = "ProductMenuStrip";
+            ProductMenuStrip.Size = new Size(150, 54);
+            // 
+            // Edittoolstrip
+            // 
+            Edittoolstrip.Name = "Edittoolstrip";
+            Edittoolstrip.Size = new Size(149, 22);
+            Edittoolstrip.Text = "Edit";
+            Edittoolstrip.Click += Edittoolstrip_Click;
+            // 
+            // sep1
+            // 
+            sep1.Name = "sep1";
+            sep1.Size = new Size(146, 6);
+            // 
+            // Deletetoolstrip
+            // 
+            Deletetoolstrip.Name = "Deletetoolstrip";
+            Deletetoolstrip.Size = new Size(149, 22);
+            Deletetoolstrip.Text = "Remove Items";
             // 
             // IdCol
             // 
@@ -771,7 +797,6 @@
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.Font = new Font("Cambria", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle4.ForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle4.Padding = new Padding(5, 2, 5, 2);
             ActionCol.DefaultCellStyle = dataGridViewCellStyle4;
             ActionCol.FillWeight = 2.63739681F;
             ActionCol.FlatStyle = FlatStyle.Flat;
@@ -780,30 +805,6 @@
             ActionCol.ReadOnly = true;
             ActionCol.Text = "Change Status";
             ActionCol.UseColumnTextForButtonValue = true;
-            // 
-            // ProductMenuStrip
-            // 
-            ProductMenuStrip.Items.AddRange(new ToolStripItem[] { Edittoolstrip, sep1, Deletetoolstrip });
-            ProductMenuStrip.Name = "ProductMenuStrip";
-            ProductMenuStrip.Size = new Size(150, 54);
-            // 
-            // Edittoolstrip
-            // 
-            Edittoolstrip.Name = "Edittoolstrip";
-            Edittoolstrip.Size = new Size(149, 22);
-            Edittoolstrip.Text = "Edit";
-            Edittoolstrip.Click += Edittoolstrip_Click;
-            // 
-            // sep1
-            // 
-            sep1.Name = "sep1";
-            sep1.Size = new Size(146, 6);
-            // 
-            // Deletetoolstrip
-            // 
-            Deletetoolstrip.Name = "Deletetoolstrip";
-            Deletetoolstrip.Size = new Size(149, 22);
-            Deletetoolstrip.Text = "Remove Items";
             // 
             // ProductsInventory
             // 

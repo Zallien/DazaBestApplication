@@ -22,6 +22,9 @@ namespace DazaBestApplication.Modals
         private GetAvailableItemswithpagination _getavailableitemswithpagination;
         private List<Guid> AllSelectedProducts;
         private List<PurcahseItemDisplay> _allpickeditems = new List<PurcahseItemDisplay>();
+        private bool AllowCalculating = true;
+        private decimal? _Grandtotal = 0;
+
 
         //for Products Pagination
         private int Productcurrentpage = 1;
@@ -71,6 +74,7 @@ namespace DazaBestApplication.Modals
             AllPickedItems.ColumnHeadersHeight = 30; //Set the height of the column headers to 30 pixels
             AllSelectedProducts = new List<Guid>();
             await CheckModalAction();
+            Grandtotalvaluelabel.Text = _Grandtotal.ToString();
         }
         //OpenAllProductsPanel
         private async Task OpenAllProductsPanel()
@@ -159,10 +163,11 @@ namespace DazaBestApplication.Modals
             else
             {
                 AllPickedItems.ReadOnly = false;
-                AllPickedItems.SelectionMode = DataGridViewSelectionMode.CellSelect;
+                AllPickedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 AllPickedItems.AllowUserToAddRows = false;
                 AllPickedItems.AllowUserToDeleteRows = true;
             }
+            await CalculateGrandtotal();
         }
         //Close AllItems Panel
         private void CloseAllItemsPanel()
@@ -181,10 +186,20 @@ namespace DazaBestApplication.Modals
         {
             try
             {
-                AllPickedItems.Rows[e.RowIndex].Cells["ItemTotalCol"].Value = UpdateTotalAmount(
+                if (AllPickedItems.Rows.Count > 0 && AllowCalculating == true)
+                {
+                    AllPickedItems.Rows[e.RowIndex].Cells["ItemTotalCol"].Value = UpdateTotalAmount(
                     int.Parse(AllPickedItems.Rows[e.RowIndex].Cells["ItemQuantityCol"].Value.ToString() ?? "1"),
                     decimal.Parse(AllPickedItems.Rows[e.RowIndex].Cells["ItemPriceCol"].Value.ToString() ?? "0.00")
                     ).Result.ToString("0.00");
+
+                    //Update quantiy and priceperunit
+                    Guid ItemId = Guid.Parse(AllPickedItems.Rows[e.RowIndex].Cells["IdCol"].Value.ToString());
+                    var item = _allpickeditems.FirstOrDefault(e => e.ItemID ==  ItemId);
+                    item.Quantity = int.Parse(AllPickedItems.Rows[e.RowIndex].Cells["ItemQuantityCol"].Value.ToString() ?? "1");
+                    item.Unitprice = decimal.Parse(AllPickedItems.Rows[e.RowIndex].Cells["ItemPriceCol"].Value.ToString() ?? "0.00");
+                    await CalculateGrandtotal();
+                }
             }
             catch (Exception ex)
             {
@@ -227,7 +242,59 @@ namespace DazaBestApplication.Modals
 
 
         }
+        //Remove Item from PickedItems
+        private async Task<bool> RemoveItemfrompickeditems(List<Guid> AllselecteditemsId)
+        {
+            try
+            {
+                var selectedidset = new HashSet<Guid>(AllselecteditemsId);
+                _allpickeditems.RemoveAll(picked => selectedidset.Contains(picked.ItemID));
+                await PopulateAllPickedItemsDatagrid();
+                CalculateGrandtotal();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        //Remove Function
+        private async Task RemoveItem()
+        {
+            List<Guid> allselecteditems = new();
+            foreach (DataGridViewRow _row in AllPickedItems.SelectedRows)
+            {
+                if (_row.Cells["IdCol"].Value != null)
+                {
+                    allselecteditems.Add(Guid.Parse(_row.Cells["IdCol"].Value.ToString()));
+                }
+            }
+            bool isRemoveSuccess = await RemoveItemfrompickeditems(allselecteditems);
+            if (isRemoveSuccess)
+            {
+                MessageBox.Show("Successfully Removed", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error Occured", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
+            if (!AllowCalculating)
+            {
+                AllowCalculating = true;
+            }
+        }
+        //Calculate GrandTotal
+        private async Task CalculateGrandtotal()
+        {
+            _Grandtotal = 0;
+            foreach (var item in _allpickeditems)
+            {
+                decimal? totalperitem = item.Quantity * item.Unitprice;
+                _Grandtotal += totalperitem;
+            } 
+            Grandtotalvaluelabel.Text = _Grandtotal.ToString();
+        }
 
 
 
@@ -283,12 +350,14 @@ namespace DazaBestApplication.Modals
             }
             await AddPurchaseItem();
         }
-
-        private void removeitempickedbutton_Click(object sender, EventArgs e)
+        private async void removeitempickedbutton_Click(object sender, EventArgs e)
         {
-
+            if (MessageBox.Show("Do you want to Delete All Selected Item/s?", "System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                AllowCalculating = false;
+                await RemoveItem();
+            }
         }
-
         private void bunifuButton2_Click(object sender, EventArgs e)
         {
             this.Close();
