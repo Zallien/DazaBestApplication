@@ -432,7 +432,90 @@ namespace DazaBestApplication.Layout
         //Handle Cancel/Reset Order Button Click
         private async void CancelResetOrderButton_Click(object sender, EventArgs e)
         {
-            
+
+            await CancelResetOrderValidation();
+        }
+
+        private void ProductOrdersDatagrid_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        //Para sa number lang yung mailagay sa datagridview
+        private void NumbersOnly_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void ProductOrdersDatagrid_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            const int NUMBER_COLUMN_INDEX = 2;
+
+            if (ProductOrdersDatagrid.CurrentCell.ColumnIndex == NUMBER_COLUMN_INDEX)
+            {
+                TextBox textBox = e.Control as TextBox;
+
+                if (textBox != null)
+                {
+                    textBox.KeyPress -= new KeyPressEventHandler(NumbersOnly_KeyPress);
+                    textBox.KeyPress += new KeyPressEventHandler(NumbersOnly_KeyPress);
+                }
+            }
+        }
+
+        private void bunifuTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+
+
+        ///datagrid ulit
+        private async void ProductOrdersDatagrid_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && ProductOrdersDatagrid.Columns[e.ColumnIndex].Name == "ActionCol")
+            {
+                Guid productId = (Guid)ProductOrdersDatagrid.Rows[e.RowIndex].Cells["ProductIdCol"].Value;
+                ProductOrdersDatagrid.Rows.RemoveAt(e.RowIndex);
+                POSProductOrders orderToRemove = CurrentOrders.FirstOrDefault(o => o.ProductID == productId);
+                if (orderToRemove != null)
+                {
+                    CurrentOrders.Remove(orderToRemove);
+                }
+                await CalculateSubtotal();
+            }
+        }
+        private void ProductOrdersDatagrid_EditingControlShowing_1(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            const int NUMBER_COLUMN_INDEX = 2;
+
+            if (ProductOrdersDatagrid.CurrentCell.ColumnIndex == NUMBER_COLUMN_INDEX)
+            {
+                TextBox textBox = e.Control as TextBox;
+
+                if (textBox != null)
+                {
+                    textBox.KeyPress -= new KeyPressEventHandler(NumbersOnly_KeyPress);
+                    textBox.KeyPress += new KeyPressEventHandler(NumbersOnly_KeyPress);
+                }
+            }
+        }
+
+        private async void PaymentButton_Click_1(object sender, EventArgs e)
+        {
+            await ShowPaymentModal();
+        }
+
+        private async void bunifuButton1_Click(object sender, EventArgs e)
+        {
             await CancelResetOrderValidation();
         }
     }
