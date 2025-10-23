@@ -11,8 +11,6 @@ namespace DazaBestApplication
         Form MainContainerForm = null;
         private BunifuTransition BunifuTransition = new();
 
-
-
         public MainPage()
         {
             InitializeComponent();

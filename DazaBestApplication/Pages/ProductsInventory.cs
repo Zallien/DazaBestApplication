@@ -44,6 +44,8 @@ namespace DazaBestApplication.Pages
             await CheckAllProductsCount();
             await LoadProducts();
             HookEvents();
+
+            
         }
 
         //Hook Events

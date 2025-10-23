@@ -94,6 +94,7 @@ namespace DazaBestApplication.Modals
                 ProductID = ProducteditID,
                 ProductName = ProductNametxt.Text,
                 ProductPrice = decimal.Parse(Productpricetxt.Text),
+                ProductImage = Pic
             };
             bool IsEdited = await _productservices.UpdateProduct(editproduct);
             if (IsEdited)

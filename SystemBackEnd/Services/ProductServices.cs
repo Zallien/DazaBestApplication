@@ -163,6 +163,7 @@ namespace SystemBackEnd.Services
                 {
                     _theproduct.ProductName = _editedproduct.ProductName;
                     _theproduct.Price = _editedproduct.ProductPrice;
+                    _theproduct.ProductImage = _editedproduct.ProductImage;
                     _db.Update(_theproduct);
                     await _db.SaveChangesAsync();
                     _issuccess = true;
