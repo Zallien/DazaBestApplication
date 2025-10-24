@@ -15,6 +15,32 @@ namespace DazaBestApplication
         {
             InitializeComponent();
             MaximizeSystem();
+
+
+            panel1.Visible = false;
+            panel2.Visible = false;
+            NavButton_Reports.MouseEnter += ShowDropdown;
+            NavButton_Reports.MouseLeave += HideDropdown_Check;
+            NavButton_PurchaseItem.MouseEnter += ShowDropdown1;
+            NavButton_PurchaseItem.MouseLeave += HideDropdown_Check1;
+            panel1.MouseEnter += ShowDropdown;
+            panel1.MouseLeave += HideDropdown_Check;
+            panel2.MouseEnter += ShowDropdown1;
+            panel2.MouseLeave += HideDropdown_Check1;
+
+            foreach (Control ctrl in panel1.Controls)
+            {
+                ctrl.MouseEnter += ShowDropdown;
+                ctrl.MouseLeave += HideDropdown_Check;
+                ctrl.Click += (s, e) => { panel1.Visible = false; };
+            }
+
+            foreach (Control ctrl in panel2.Controls)
+            {
+                ctrl.MouseEnter += ShowDropdown1;
+                ctrl.MouseLeave += HideDropdown_Check1;
+                ctrl.Click += (s, e) => { panel2.Visible = false; };
+            }
         }
 
         private void MainPage_Load(object sender, EventArgs e)
@@ -120,6 +146,52 @@ namespace DazaBestApplication
             this.Hide();
             PointofSaleForm posForm = new PointofSaleForm();
             posForm.Show();
+        }
+
+        private void MainContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ShowDropdown(object sender, EventArgs e)
+        {
+            panel1.Visible = true;
+        }
+
+        private async void HideDropdown_Check(object sender, EventArgs e)
+        {
+            await Task.Delay(100);
+            if (this.IsDisposed || panel1.IsDisposed || NavButton_Reports.IsDisposed)
+                return;
+
+            if (!NavButton_Reports.Bounds.Contains(PointToClient(Cursor.Position)) &&
+                !panel1.Bounds.Contains(PointToClient(Cursor.Position)))
+            {
+                panel1.Visible = false;
+            }
+        }
+
+        private void ShowDropdown1(object sender, EventArgs e)
+        {
+            panel2.Visible = true;
+        }
+
+        private async void HideDropdown_Check1(object sender, EventArgs e)
+        {
+            await Task.Delay(100);
+            if (this.IsDisposed || panel2.IsDisposed || NavButton_PurchaseItem.IsDisposed)
+                return;
+
+            if (!NavButton_PurchaseItem.Bounds.Contains(PointToClient(Cursor.Position)) &&
+                !panel2.Bounds.Contains(PointToClient(Cursor.Position)))
+            {
+                panel2.Visible = false;
+            }
+        }
+
+        private void bunifuButton22_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

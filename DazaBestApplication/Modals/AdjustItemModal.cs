@@ -58,7 +58,8 @@ namespace DazaBestApplication.Modals
                         textBox1.KeyPress += new KeyPressEventHandler(letters_KeyPress);
                     }
                 }
-            
+
+            }
         }
     }
 }
