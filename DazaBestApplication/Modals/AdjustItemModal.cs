@@ -20,6 +20,8 @@ namespace DazaBestApplication.Modals
         private GetAvailableItemswithpagination _getavailableitemswithpagination;
         private PurchaseitemServices PurchaseitemServices;
         private List<Guid> AllSelectedProducts;
+        private AdjustItemModalViewModel adjustItemModalViewModel;
+
 
         //for Products Pagination
         private int Productcurrentpage = 1;
@@ -29,9 +31,10 @@ namespace DazaBestApplication.Modals
 
 
         //Constructor
-        public AdjustItemModal()
+        public AdjustItemModal(AdjustItemModalViewModel _AdjustItemModalViewModel)
         {
             InitializeComponent();
+            adjustItemModalViewModel = _AdjustItemModalViewModel;
         }
         //Open All Product Panel
         private async Task OpenAllProductsPanel()

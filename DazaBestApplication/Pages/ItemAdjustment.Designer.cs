@@ -43,16 +43,16 @@
             MainContainer = new Panel();
             PurchaseReportBtn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
-            BuyProductBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            AdjustItemBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             AllPurchaseDatagridView = new Bunifu.UI.WinForms.BunifuDataGridView();
-            Pagination = new Panel();
-            PaginationLabel = new Label();
-            PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
-            PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
             IdCol = new DataGridViewTextBoxColumn();
             ReferenceNoCol = new DataGridViewTextBoxColumn();
             PurchaseDateCol = new DataGridViewTextBoxColumn();
             AdjustedByCol = new DataGridViewTextBoxColumn();
+            Pagination = new Panel();
+            PaginationLabel = new Label();
+            PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
+            PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllPurchaseDatagridView).BeginInit();
@@ -84,7 +84,7 @@
             // 
             MainContainer.Controls.Add(PurchaseReportBtn);
             MainContainer.Controls.Add(SearchBox);
-            MainContainer.Controls.Add(BuyProductBTN);
+            MainContainer.Controls.Add(AdjustItemBTN);
             MainContainer.Controls.Add(AllPurchaseDatagridView);
             MainContainer.Controls.Add(Pagination);
             MainContainer.Dock = DockStyle.Fill;
@@ -258,94 +258,95 @@
             SearchBox.UseSystemPasswordChar = false;
             SearchBox.WordWrap = true;
             // 
-            // BuyProductBTN
+            // AdjustItemBTN
             // 
-            BuyProductBTN.AllowAnimations = true;
-            BuyProductBTN.AllowMouseEffects = true;
-            BuyProductBTN.AllowToggling = false;
-            BuyProductBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            BuyProductBTN.AnimationSpeed = 200;
-            BuyProductBTN.AutoGenerateColors = false;
-            BuyProductBTN.AutoRoundBorders = false;
-            BuyProductBTN.AutoSizeLeftIcon = true;
-            BuyProductBTN.AutoSizeRightIcon = true;
-            BuyProductBTN.BackColor = Color.Transparent;
-            BuyProductBTN.BackColor1 = Color.FromArgb(78, 160, 21);
-            BuyProductBTN.BackgroundImage = (Image)resources.GetObject("BuyProductBTN.BackgroundImage");
-            BuyProductBTN.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            BuyProductBTN.ButtonText = "Adjust New Item";
-            BuyProductBTN.ButtonTextMarginLeft = 0;
-            BuyProductBTN.ColorContrastOnClick = 45;
-            BuyProductBTN.ColorContrastOnHover = 45;
+            AdjustItemBTN.AllowAnimations = true;
+            AdjustItemBTN.AllowMouseEffects = true;
+            AdjustItemBTN.AllowToggling = false;
+            AdjustItemBTN.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            AdjustItemBTN.AnimationSpeed = 200;
+            AdjustItemBTN.AutoGenerateColors = false;
+            AdjustItemBTN.AutoRoundBorders = false;
+            AdjustItemBTN.AutoSizeLeftIcon = true;
+            AdjustItemBTN.AutoSizeRightIcon = true;
+            AdjustItemBTN.BackColor = Color.Transparent;
+            AdjustItemBTN.BackColor1 = Color.FromArgb(78, 160, 21);
+            AdjustItemBTN.BackgroundImage = (Image)resources.GetObject("AdjustItemBTN.BackgroundImage");
+            AdjustItemBTN.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            AdjustItemBTN.ButtonText = "Adjust New Item";
+            AdjustItemBTN.ButtonTextMarginLeft = 0;
+            AdjustItemBTN.ColorContrastOnClick = 45;
+            AdjustItemBTN.ColorContrastOnHover = 45;
             borderEdges2.BottomLeft = true;
             borderEdges2.BottomRight = true;
             borderEdges2.TopLeft = true;
             borderEdges2.TopRight = true;
-            BuyProductBTN.CustomizableEdges = borderEdges2;
-            BuyProductBTN.DialogResult = DialogResult.None;
-            BuyProductBTN.DisabledBorderColor = Color.FromArgb(191, 191, 191);
-            BuyProductBTN.DisabledFillColor = Color.FromArgb(204, 204, 204);
-            BuyProductBTN.DisabledForecolor = Color.FromArgb(168, 160, 168);
-            BuyProductBTN.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            BuyProductBTN.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BuyProductBTN.ForeColor = Color.White;
-            BuyProductBTN.IconLeftAlign = ContentAlignment.MiddleLeft;
-            BuyProductBTN.IconLeftCursor = Cursors.Default;
-            BuyProductBTN.IconLeftPadding = new Padding(11, 3, 3, 3);
-            BuyProductBTN.IconMarginLeft = 11;
-            BuyProductBTN.IconPadding = 10;
-            BuyProductBTN.IconRightAlign = ContentAlignment.MiddleRight;
-            BuyProductBTN.IconRightCursor = Cursors.Default;
-            BuyProductBTN.IconRightPadding = new Padding(3, 3, 7, 3);
-            BuyProductBTN.IconSize = 25;
-            BuyProductBTN.IdleBorderColor = Color.FromArgb(78, 160, 21);
-            BuyProductBTN.IdleBorderRadius = 1;
-            BuyProductBTN.IdleBorderThickness = 1;
-            BuyProductBTN.IdleFillColor = Color.FromArgb(78, 160, 21);
-            BuyProductBTN.IdleIconLeftImage = Properties.Resources.plus__1_;
-            BuyProductBTN.IdleIconRightImage = null;
-            BuyProductBTN.IndicateFocus = false;
-            BuyProductBTN.Location = new Point(11, 13);
-            BuyProductBTN.Name = "BuyProductBTN";
-            BuyProductBTN.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
-            BuyProductBTN.OnDisabledState.BorderRadius = 1;
-            BuyProductBTN.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            BuyProductBTN.OnDisabledState.BorderThickness = 1;
-            BuyProductBTN.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
-            BuyProductBTN.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
-            BuyProductBTN.OnDisabledState.IconLeftImage = null;
-            BuyProductBTN.OnDisabledState.IconRightImage = null;
-            BuyProductBTN.onHoverState.BorderColor = Color.FromArgb(50, 110, 5);
-            BuyProductBTN.onHoverState.BorderRadius = 1;
-            BuyProductBTN.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            BuyProductBTN.onHoverState.BorderThickness = 1;
-            BuyProductBTN.onHoverState.FillColor = Color.FromArgb(50, 110, 5);
-            BuyProductBTN.onHoverState.ForeColor = Color.White;
-            BuyProductBTN.onHoverState.IconLeftImage = Properties.Resources.plus__1_;
-            BuyProductBTN.onHoverState.IconRightImage = null;
-            BuyProductBTN.OnIdleState.BorderColor = Color.FromArgb(78, 160, 21);
-            BuyProductBTN.OnIdleState.BorderRadius = 1;
-            BuyProductBTN.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            BuyProductBTN.OnIdleState.BorderThickness = 1;
-            BuyProductBTN.OnIdleState.FillColor = Color.FromArgb(78, 160, 21);
-            BuyProductBTN.OnIdleState.ForeColor = Color.White;
-            BuyProductBTN.OnIdleState.IconLeftImage = Properties.Resources.plus__1_;
-            BuyProductBTN.OnIdleState.IconRightImage = null;
-            BuyProductBTN.OnPressedState.BorderColor = Color.FromArgb(40, 96, 144);
-            BuyProductBTN.OnPressedState.BorderRadius = 1;
-            BuyProductBTN.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            BuyProductBTN.OnPressedState.BorderThickness = 1;
-            BuyProductBTN.OnPressedState.FillColor = Color.FromArgb(192, 64, 0);
-            BuyProductBTN.OnPressedState.ForeColor = Color.White;
-            BuyProductBTN.OnPressedState.IconLeftImage = null;
-            BuyProductBTN.OnPressedState.IconRightImage = null;
-            BuyProductBTN.Size = new Size(161, 40);
-            BuyProductBTN.TabIndex = 11;
-            BuyProductBTN.TextAlign = ContentAlignment.MiddleLeft;
-            BuyProductBTN.TextAlignment = HorizontalAlignment.Center;
-            BuyProductBTN.TextMarginLeft = 0;
-            BuyProductBTN.TextPadding = new Padding(35, 0, 0, 0);
-            BuyProductBTN.UseDefaultRadiusAndThickness = true;
+            AdjustItemBTN.CustomizableEdges = borderEdges2;
+            AdjustItemBTN.DialogResult = DialogResult.None;
+            AdjustItemBTN.DisabledBorderColor = Color.FromArgb(191, 191, 191);
+            AdjustItemBTN.DisabledFillColor = Color.FromArgb(204, 204, 204);
+            AdjustItemBTN.DisabledForecolor = Color.FromArgb(168, 160, 168);
+            AdjustItemBTN.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            AdjustItemBTN.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AdjustItemBTN.ForeColor = Color.White;
+            AdjustItemBTN.IconLeftAlign = ContentAlignment.MiddleLeft;
+            AdjustItemBTN.IconLeftCursor = Cursors.Default;
+            AdjustItemBTN.IconLeftPadding = new Padding(11, 3, 3, 3);
+            AdjustItemBTN.IconMarginLeft = 11;
+            AdjustItemBTN.IconPadding = 10;
+            AdjustItemBTN.IconRightAlign = ContentAlignment.MiddleRight;
+            AdjustItemBTN.IconRightCursor = Cursors.Default;
+            AdjustItemBTN.IconRightPadding = new Padding(3, 3, 7, 3);
+            AdjustItemBTN.IconSize = 25;
+            AdjustItemBTN.IdleBorderColor = Color.FromArgb(78, 160, 21);
+            AdjustItemBTN.IdleBorderRadius = 1;
+            AdjustItemBTN.IdleBorderThickness = 1;
+            AdjustItemBTN.IdleFillColor = Color.FromArgb(78, 160, 21);
+            AdjustItemBTN.IdleIconLeftImage = Properties.Resources.plus__1_;
+            AdjustItemBTN.IdleIconRightImage = null;
+            AdjustItemBTN.IndicateFocus = false;
+            AdjustItemBTN.Location = new Point(11, 13);
+            AdjustItemBTN.Name = "AdjustItemBTN";
+            AdjustItemBTN.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
+            AdjustItemBTN.OnDisabledState.BorderRadius = 1;
+            AdjustItemBTN.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            AdjustItemBTN.OnDisabledState.BorderThickness = 1;
+            AdjustItemBTN.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
+            AdjustItemBTN.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
+            AdjustItemBTN.OnDisabledState.IconLeftImage = null;
+            AdjustItemBTN.OnDisabledState.IconRightImage = null;
+            AdjustItemBTN.onHoverState.BorderColor = Color.FromArgb(50, 110, 5);
+            AdjustItemBTN.onHoverState.BorderRadius = 1;
+            AdjustItemBTN.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            AdjustItemBTN.onHoverState.BorderThickness = 1;
+            AdjustItemBTN.onHoverState.FillColor = Color.FromArgb(50, 110, 5);
+            AdjustItemBTN.onHoverState.ForeColor = Color.White;
+            AdjustItemBTN.onHoverState.IconLeftImage = Properties.Resources.plus__1_;
+            AdjustItemBTN.onHoverState.IconRightImage = null;
+            AdjustItemBTN.OnIdleState.BorderColor = Color.FromArgb(78, 160, 21);
+            AdjustItemBTN.OnIdleState.BorderRadius = 1;
+            AdjustItemBTN.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            AdjustItemBTN.OnIdleState.BorderThickness = 1;
+            AdjustItemBTN.OnIdleState.FillColor = Color.FromArgb(78, 160, 21);
+            AdjustItemBTN.OnIdleState.ForeColor = Color.White;
+            AdjustItemBTN.OnIdleState.IconLeftImage = Properties.Resources.plus__1_;
+            AdjustItemBTN.OnIdleState.IconRightImage = null;
+            AdjustItemBTN.OnPressedState.BorderColor = Color.FromArgb(40, 96, 144);
+            AdjustItemBTN.OnPressedState.BorderRadius = 1;
+            AdjustItemBTN.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            AdjustItemBTN.OnPressedState.BorderThickness = 1;
+            AdjustItemBTN.OnPressedState.FillColor = Color.FromArgb(192, 64, 0);
+            AdjustItemBTN.OnPressedState.ForeColor = Color.White;
+            AdjustItemBTN.OnPressedState.IconLeftImage = null;
+            AdjustItemBTN.OnPressedState.IconRightImage = null;
+            AdjustItemBTN.Size = new Size(161, 40);
+            AdjustItemBTN.TabIndex = 11;
+            AdjustItemBTN.TextAlign = ContentAlignment.MiddleLeft;
+            AdjustItemBTN.TextAlignment = HorizontalAlignment.Center;
+            AdjustItemBTN.TextMarginLeft = 0;
+            AdjustItemBTN.TextPadding = new Padding(35, 0, 0, 0);
+            AdjustItemBTN.UseDefaultRadiusAndThickness = true;
+            AdjustItemBTN.Click += AdjustItemBTN_Click;
             // 
             // AllPurchaseDatagridView
             // 
@@ -360,6 +361,7 @@
             AllPurchaseDatagridView.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AllPurchaseDatagridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             AllPurchaseDatagridView.BackgroundColor = Color.White;
+            AllPurchaseDatagridView.BorderStyle = BorderStyle.None;
             AllPurchaseDatagridView.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             AllPurchaseDatagridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -412,6 +414,34 @@
             AllPurchaseDatagridView.Size = new Size(878, 464);
             AllPurchaseDatagridView.TabIndex = 10;
             AllPurchaseDatagridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
+            // 
+            // IdCol
+            // 
+            IdCol.HeaderText = "PurchaseId";
+            IdCol.Name = "IdCol";
+            IdCol.ReadOnly = true;
+            IdCol.Visible = false;
+            // 
+            // ReferenceNoCol
+            // 
+            ReferenceNoCol.FillWeight = 40F;
+            ReferenceNoCol.HeaderText = "Reference No";
+            ReferenceNoCol.Name = "ReferenceNoCol";
+            ReferenceNoCol.ReadOnly = true;
+            // 
+            // PurchaseDateCol
+            // 
+            PurchaseDateCol.FillWeight = 35F;
+            PurchaseDateCol.HeaderText = "Date";
+            PurchaseDateCol.Name = "PurchaseDateCol";
+            PurchaseDateCol.ReadOnly = true;
+            // 
+            // AdjustedByCol
+            // 
+            AdjustedByCol.FillWeight = 25F;
+            AdjustedByCol.HeaderText = "Adjusted By";
+            AdjustedByCol.Name = "AdjustedByCol";
+            AdjustedByCol.ReadOnly = true;
             // 
             // Pagination
             // 
@@ -502,34 +532,6 @@
             PaginationNext.Zoom = 20;
             PaginationNext.ZoomSpeed = 10;
             // 
-            // IdCol
-            // 
-            IdCol.HeaderText = "PurchaseId";
-            IdCol.Name = "IdCol";
-            IdCol.ReadOnly = true;
-            IdCol.Visible = false;
-            // 
-            // ReferenceNoCol
-            // 
-            ReferenceNoCol.FillWeight = 40F;
-            ReferenceNoCol.HeaderText = "Reference No";
-            ReferenceNoCol.Name = "ReferenceNoCol";
-            ReferenceNoCol.ReadOnly = true;
-            // 
-            // PurchaseDateCol
-            // 
-            PurchaseDateCol.FillWeight = 35F;
-            PurchaseDateCol.HeaderText = "Date";
-            PurchaseDateCol.Name = "PurchaseDateCol";
-            PurchaseDateCol.ReadOnly = true;
-            // 
-            // AdjustedByCol
-            // 
-            AdjustedByCol.FillWeight = 25F;
-            AdjustedByCol.HeaderText = "Adjusted By";
-            AdjustedByCol.Name = "AdjustedByCol";
-            AdjustedByCol.ReadOnly = true;
-            // 
             // ItemAdjustment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -541,6 +543,7 @@
             Name = "ItemAdjustment";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ItemAdjustment";
+            Load += ItemAdjustment_Load;
             TopPanel.ResumeLayout(false);
             MainContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)AllPurchaseDatagridView).EndInit();
@@ -555,7 +558,7 @@
         private Panel MainContainer;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 PurchaseReportBtn;
         private Bunifu.UI.WinForms.BunifuTextBox SearchBox;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 BuyProductBTN;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 AdjustItemBTN;
         private Bunifu.UI.WinForms.BunifuDataGridView AllPurchaseDatagridView;
         private Panel Pagination;
         private Label PaginationLabel;

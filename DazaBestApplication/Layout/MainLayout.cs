@@ -99,6 +99,19 @@ namespace DazaBestApplication
             MainContainer.Controls.Add(MainContainerForm);
             MainContainerForm.Show();
         }
+        private void ShowAdjustItemPage()
+        {
+            if (MainContainerForm != null)
+            {
+                MainContainer.Controls.Remove(MainContainerForm);
+                MainContainerForm = null;
+            }
+            MainContainerForm = new ItemAdjustment(this);
+            MainContainerForm.TopLevel = false;
+            MainContainerForm.Dock = DockStyle.Fill;
+            MainContainer.Controls.Add(MainContainerForm);
+            MainContainerForm.Show();
+        }
         private void ShowSettingsPage()
         {
             if (MainContainerForm != null)
@@ -112,6 +125,8 @@ namespace DazaBestApplication
             MainContainer.Controls.Add(MainContainerForm);
             MainContainerForm.Show();
         }
+
+
 
         //Open Item Inventory Page
         private void NavButton_Item_Click(object sender, EventArgs e)
@@ -134,30 +149,26 @@ namespace DazaBestApplication
         }
         private void NavButton_PurchaseItem_Click(object sender, EventArgs e)
         {
-            ShowPurchaseItemPage();
+
         }
         private void bunifuButton21_Click(object sender, EventArgs e)
         {
             ShowSettingsPage();
         }
-
         private void POSButton_Click(object sender, EventArgs e)
         {
             this.Hide();
             PointofSaleForm posForm = new PointofSaleForm();
             posForm.Show();
         }
-
         private void MainContainer_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private void ShowDropdown(object sender, EventArgs e)
         {
             panel1.Visible = true;
         }
-
         private async void HideDropdown_Check(object sender, EventArgs e)
         {
             await Task.Delay(100);
@@ -170,12 +181,10 @@ namespace DazaBestApplication
                 panel1.Visible = false;
             }
         }
-
         private void ShowDropdown1(object sender, EventArgs e)
         {
             panel2.Visible = true;
         }
-
         private async void HideDropdown_Check1(object sender, EventArgs e)
         {
             await Task.Delay(100);
@@ -188,10 +197,17 @@ namespace DazaBestApplication
                 panel2.Visible = false;
             }
         }
-
         private void bunifuButton22_Click(object sender, EventArgs e)
         {
-            
+
+        }
+        private void AdjustStockBTN_Click(object sender, EventArgs e)
+        {
+            ShowAdjustItemPage();
+        }
+        private void PurchaseItemBTN_Click(object sender, EventArgs e)
+        {
+            ShowPurchaseItemPage();
         }
     }
 }
