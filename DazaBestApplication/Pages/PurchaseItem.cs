@@ -120,6 +120,32 @@ namespace DazaBestApplication.Pages
                 ModalBackgorund.Dispose();
             }
         }
+        //Open Adjust Item Modal
+        private void OpenAdjustItemModal()
+        {
+            Form ModalBackgorund = new();
+            using (AdjustItemModal modalcontent = new())
+            {
+                var mainBounds = Mainform.Bounds;
+
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = Mainform.Size;
+                ModalBackgorund.Location = Mainform.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(Mainform);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+                modalcontent.ShowDialog();
+                ModalBackgorund.Dispose();
+            }
+        }
+
 
         //Event Handlers
         private void BuyProductBTN_Click(object sender, EventArgs e)
@@ -138,6 +164,11 @@ namespace DazaBestApplication.Pages
                     ShowAddItemModelView(_selectedpurchaseheaderid);
                 }
             }
+        }
+        //Open Adjust Item Modal Button
+        private void AdjustProductBTN_Click(object sender, EventArgs e)
+        {
+            OpenAdjustItemModal();
         }
     }
 }

@@ -7,15 +7,86 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemBackEnd;
+using SystemBackEnd.Models;
+using SystemBackEnd.ServiceModels;
+using SystemBackEnd.Services;
 
 namespace DazaBestApplication.Modals
 {
     public partial class AdjustItemModal : Form
     {
+        private List<AdjustItemDisplay> _pickedItems = new List<AdjustItemDisplay>();
+        private GetAvailableItemswithpagination _getavailableitemswithpagination;
+        private PurchaseitemServices PurchaseitemServices;
+        private List<Guid> AllSelectedProducts;
+
+        //for Products Pagination
+        private int Productcurrentpage = 1;
+        private int Productitemperpage = 12;
+        private int Producttotalpage = 0;
+        private int Producttotalitem = 0;
+
+
+        //Constructor
         public AdjustItemModal()
         {
             InitializeComponent();
         }
+        //Open All Product Panel
+        private async Task OpenAllProductsPanel()
+        {
+            await PopulatAllItemDataGrid();
+
+            //Set Datagrid Properties
+            AllItemDatagridview.ColumnHeadersHeight = 24;
+            Size _allppanelsize = AllProductsContainer.Size;
+            var _allproductlocation = new Point((this.Width - _allppanelsize.Width) / 2, (this.Height - _allppanelsize.Height) / 2);
+            AllProductsContainer.Location = _allproductlocation;
+            AllProductsContainer.Visible = true;
+
+        }
+        //Populate All Item DataGrid
+        private async Task PopulatAllItemDataGrid()
+        {
+            //Load All Available Products
+            List<Items> _allproducts = await GetAllAvailableProducts();
+
+            AllItemDatagridview.Rows.Clear();
+            foreach (var item in _allproducts)
+            {
+                int rowindex = AllItemDatagridview.Rows.Add();
+                DataGridViewRow row = AllItemDatagridview.Rows[rowindex];
+                row.Cells["ALLI_ItemIdCol"].Value = item.ItemID;
+                row.Cells["ALLI_ItemNameCol"].Value = item.ItemName;
+                row.Cells["ALLI_ItemCodeCol"].Value = item.ItemCode;
+            }
+        }
+        //Get All Available Products
+        private async Task<List<Items>> GetAllAvailableProducts()
+        {
+            _getavailableitemswithpagination = new GetAvailableItemswithpagination()
+            {
+                Pagenumber = Productcurrentpage,
+                Itemperpage = Productitemperpage,
+                Searchvalue = "",
+                AllSelectedItem = AllSelectedProducts
+            };
+
+
+            PurchaseitemServices = new PurchaseitemServices(new BackEndDBContext());
+            var _allproducts = await PurchaseitemServices.GetAllActiveProducts(_getavailableitemswithpagination);
+            return _allproducts;
+        }
+
+
+
+        //Main Load
+        private void AdjustItemModal_Load(object sender, EventArgs e)
+        {
+            AllPickedItems.RowTemplate.Height = 24;
+        }
+
 
         private void AllPickedItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -58,7 +129,12 @@ namespace DazaBestApplication.Modals
                         textBox1.KeyPress += new KeyPressEventHandler(letters_KeyPress);
                     }
                 }
-            
+            }
+        }
+
+        private async void bunifuButton1_Click(object sender, EventArgs e)
+        {
+            await OpenAllProductsPanel();
         }
     }
 }

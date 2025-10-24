@@ -24,6 +24,7 @@ namespace DazaBestApplication.Modals
         private List<PurcahseItemDisplay> _allpickeditems = new List<PurcahseItemDisplay>();
         private bool AllowCalculating = true;
         private decimal? _Grandtotal = 0;
+        private Panel overlay;
 
 
         //for Products Pagination
@@ -80,6 +81,13 @@ namespace DazaBestApplication.Modals
         private async Task OpenAllProductsPanel()
         {
             await PopulatAllItemDataGrid();
+            //Generate a Overlay Panel
+            overlay = new Panel();
+            overlay.Location = new Point(0, 0);
+            overlay.Parent = this;
+            overlay.Size = this.Size;
+            overlay.BackColor = Color.FromArgb(77, 0, 0, 0);
+            overlay.BringToFront();
 
             //Set Datagrid Properties
             AllItemDatagridview.ColumnHeadersHeight = 24;
@@ -87,6 +95,9 @@ namespace DazaBestApplication.Modals
             var _allproductlocation = new Point((this.Width - _allppanelsize.Width) / 2, (this.Height - _allppanelsize.Height) / 2);
             AllProductsContainer.Location = _allproductlocation;
             AllProductsContainer.Visible = true;
+            AllProductsContainer.BringToFront();
+
+
 
         }
         //Populate All Item DataGrid
@@ -173,7 +184,10 @@ namespace DazaBestApplication.Modals
         private void CloseAllItemsPanel()
         {
             AllProductsContainer.Visible = false;
-
+            if (overlay != null)
+            {
+                overlay.Dispose();
+            }
         }
         //Update The Total Amount for each Picked Item --First Time Load or when the datagridview value changed
         private async Task<decimal> UpdateTotalAmount(int quantity, decimal unitprice)

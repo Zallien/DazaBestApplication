@@ -59,9 +59,11 @@
             removeitempickedbutton = new Bunifu.UI.WinForms.BunifuImageButton();
             bunifuButton1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             AllPickedItems = new Bunifu.UI.WinForms.BunifuDataGridView();
+            IdCol = new DataGridViewTextBoxColumn();
+            ItemNameCol = new DataGridViewTextBoxColumn();
+            ItemQuantityCol = new DataGridViewTextBoxColumn();
+            ItemReason = new DataGridViewTextBoxColumn();
             label4 = new Label();
-            Grandtotalvaluelabel = new Label();
-            label1 = new Label();
             preparedbylabel = new Label();
             bunifuButton2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             AddPurchaseItemButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -71,10 +73,6 @@
             CloseModal = new Bunifu.UI.WinForms.BunifuImageButton();
             Modaltitle = new Label();
             panel1 = new Panel();
-            IdCol = new DataGridViewTextBoxColumn();
-            ItemNameCol = new DataGridViewTextBoxColumn();
-            ItemQuantityCol = new DataGridViewTextBoxColumn();
-            ItemReason = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)AllItemDatagridview).BeginInit();
             AllProductsContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllPickedItems).BeginInit();
@@ -522,6 +520,7 @@
             bunifuButton1.TextMarginLeft = 0;
             bunifuButton1.TextPadding = new Padding(35, 0, 0, 0);
             bunifuButton1.UseDefaultRadiusAndThickness = true;
+            bunifuButton1.Click += bunifuButton1_Click;
             // 
             // AllPickedItems
             // 
@@ -592,6 +591,35 @@
             AllPickedItems.CellContentClick += AllPickedItems_CellContentClick;
             AllPickedItems.EditingControlShowing += AllPickedItems_EditingControlShowing;
             // 
+            // IdCol
+            // 
+            IdCol.HeaderText = "ProductId";
+            IdCol.Name = "IdCol";
+            IdCol.Resizable = DataGridViewTriState.False;
+            IdCol.Visible = false;
+            // 
+            // ItemNameCol
+            // 
+            ItemNameCol.FillWeight = 140.99379F;
+            ItemNameCol.HeaderText = "Item Name";
+            ItemNameCol.Name = "ItemNameCol";
+            ItemNameCol.ReadOnly = true;
+            ItemNameCol.Resizable = DataGridViewTriState.False;
+            // 
+            // ItemQuantityCol
+            // 
+            ItemQuantityCol.FillWeight = 28.1987572F;
+            ItemQuantityCol.HeaderText = "Qty";
+            ItemQuantityCol.Name = "ItemQuantityCol";
+            ItemQuantityCol.Resizable = DataGridViewTriState.False;
+            // 
+            // ItemReason
+            // 
+            ItemReason.FillWeight = 42.2981377F;
+            ItemReason.HeaderText = "Reason";
+            ItemReason.Name = "ItemReason";
+            ItemReason.Resizable = DataGridViewTriState.False;
+            // 
             // label4
             // 
             label4.Font = new Font("Courier New", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -601,26 +629,6 @@
             label4.TabIndex = 12;
             label4.Text = "Edwin Germedia";
             label4.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // Grandtotalvaluelabel
-            // 
-            Grandtotalvaluelabel.Font = new Font("Courier New", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Grandtotalvaluelabel.Location = new Point(458, 3);
-            Grandtotalvaluelabel.Name = "Grandtotalvaluelabel";
-            Grandtotalvaluelabel.Size = new Size(127, 30);
-            Grandtotalvaluelabel.TabIndex = 11;
-            Grandtotalvaluelabel.Text = "12345";
-            Grandtotalvaluelabel.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label1
-            // 
-            label1.Font = new Font("Courier New", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(323, 3);
-            label1.Name = "label1";
-            label1.Size = new Size(128, 30);
-            label1.TabIndex = 10;
-            label1.Text = "Reference Number:";
-            label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // preparedbylabel
             // 
@@ -816,13 +824,11 @@
             // 
             footer.BorderStyle = BorderStyle.FixedSingle;
             footer.Controls.Add(label4);
-            footer.Controls.Add(Grandtotalvaluelabel);
-            footer.Controls.Add(label1);
             footer.Controls.Add(preparedbylabel);
             footer.Controls.Add(bunifuButton2);
             footer.Controls.Add(AddPurchaseItemButton);
             footer.Dock = DockStyle.Bottom;
-            footer.Location = new Point(0, 264);
+            footer.Location = new Point(0, 275);
             footer.Name = "footer";
             footer.Size = new Size(590, 86);
             footer.TabIndex = 10;
@@ -930,40 +936,11 @@
             panel1.Size = new Size(590, 40);
             panel1.TabIndex = 9;
             // 
-            // IdCol
-            // 
-            IdCol.HeaderText = "ProductId";
-            IdCol.Name = "IdCol";
-            IdCol.Resizable = DataGridViewTriState.False;
-            IdCol.Visible = false;
-            // 
-            // ItemNameCol
-            // 
-            ItemNameCol.FillWeight = 140.99379F;
-            ItemNameCol.HeaderText = "Item Name";
-            ItemNameCol.Name = "ItemNameCol";
-            ItemNameCol.ReadOnly = true;
-            ItemNameCol.Resizable = DataGridViewTriState.False;
-            // 
-            // ItemQuantityCol
-            // 
-            ItemQuantityCol.FillWeight = 28.1987572F;
-            ItemQuantityCol.HeaderText = "Qty";
-            ItemQuantityCol.Name = "ItemQuantityCol";
-            ItemQuantityCol.Resizable = DataGridViewTriState.False;
-            // 
-            // ItemReason
-            // 
-            ItemReason.FillWeight = 42.2981377F;
-            ItemReason.HeaderText = "Reason";
-            ItemReason.Name = "ItemReason";
-            ItemReason.Resizable = DataGridViewTriState.False;
-            // 
             // AdjustItemModal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(590, 350);
+            ClientSize = new Size(590, 361);
             Controls.Add(AllProductsContainer);
             Controls.Add(removeitempickedbutton);
             Controls.Add(bunifuButton1);
@@ -974,6 +951,7 @@
             Name = "AdjustItemModal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AdjustItemModal";
+            Load += AdjustItemModal_Load;
             ((System.ComponentModel.ISupportInitialize)AllItemDatagridview).EndInit();
             AllProductsContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)AllPickedItems).EndInit();
@@ -998,8 +976,6 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton1;
         private Bunifu.UI.WinForms.BunifuDataGridView AllPickedItems;
         private Label label4;
-        private Label Grandtotalvaluelabel;
-        private Label label1;
         private Label preparedbylabel;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton2;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton AddPurchaseItemButton;
