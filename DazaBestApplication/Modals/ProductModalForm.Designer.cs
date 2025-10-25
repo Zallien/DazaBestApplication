@@ -310,6 +310,7 @@
             ProductNametxt.TextPlaceholder = "Enter Product Name";
             ProductNametxt.UseSystemPasswordChar = false;
             ProductNametxt.WordWrap = true;
+            ProductNametxt.KeyPress += ProductNametxt_KeyPress;
             // 
             // Productpricetxt
             // 
@@ -384,6 +385,7 @@
             Productpricetxt.TextPlaceholder = "Enter Product Price";
             Productpricetxt.UseSystemPasswordChar = false;
             Productpricetxt.WordWrap = true;
+            Productpricetxt.KeyPress += Productpricetxt_KeyPress;
             // 
             // label3
             // 

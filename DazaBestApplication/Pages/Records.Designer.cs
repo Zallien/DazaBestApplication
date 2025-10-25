@@ -37,6 +37,7 @@
             ClientSize = new Size(900, 662);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Records";
+            SizeGripStyle = SizeGripStyle.Hide;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Records";
             ResumeLayout(false);

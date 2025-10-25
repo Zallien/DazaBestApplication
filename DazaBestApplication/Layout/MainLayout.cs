@@ -73,6 +73,7 @@ namespace DazaBestApplication
             MainContainer.Controls.Add(MainContainerForm);
             MainContainerForm.Show();
         }
+
         private void ShowProductPage()
         {
             if (MainContainerForm != null)

@@ -144,7 +144,16 @@ namespace DazaBestApplication.Modals
         {
             if (_actionbutton == "AddItem")
             {
-                await Additem();
+                if (string.IsNullOrWhiteSpace(ItemNametxt.Text) || string.IsNullOrWhiteSpace(ItemPricetxt.Text))
+                {
+                    MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    await Additem();
+                }
+                    
             }
             else
             {

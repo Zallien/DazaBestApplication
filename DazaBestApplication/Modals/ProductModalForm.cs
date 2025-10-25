@@ -122,7 +122,16 @@ namespace DazaBestApplication.Modals
         {
             if (_productmodal.Action == "AddProduct")
             {
-                AddNewProduct();
+                if(string.IsNullOrWhiteSpace(ProductNametxt.Text) || string.IsNullOrWhiteSpace(Productpricetxt.Text) || AddProductPic.Image is null)
+                {
+                    MessageBox.Show("Please fill in all required fields.", "System", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    AddNewProduct();
+                }
+                
             }
             else
             {
@@ -137,7 +146,7 @@ namespace DazaBestApplication.Modals
 
         private void AddProductBtn_Click(object sender, EventArgs e)
         {
-            
+
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
@@ -157,6 +166,22 @@ namespace DazaBestApplication.Modals
                         Pic = null;
                     }
                 }
+            }
+        }
+
+        private void ProductNametxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Productpricetxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }
