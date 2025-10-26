@@ -27,6 +27,7 @@ namespace SystemBackEnd
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Accounts>().ToTable("Accounts");
             modelBuilder.Entity<Items>().ToTable("Items");
             modelBuilder.Entity<Products>().ToTable("Products");
             modelBuilder.Entity<IngredientsByProduct>().ToTable("IngredientsByProduct");
@@ -36,9 +37,11 @@ namespace SystemBackEnd
             modelBuilder.Entity<POSTransactionDetails>().ToTable("POSTransactionDetails");
             modelBuilder.Entity<POSPaymentTransaction>().ToTable("POSPaymentTransaction");
             modelBuilder.Entity<POSTransactionHistory>().ToTable("POSTransactionHistory");
-
+            modelBuilder.Entity<ItemAdjustmentHeader>().ToTable("ItemAdjustmentHeader");
+            modelBuilder.Entity<ItemAdjustmentDetails>().ToTable("ItemAdjustmentDetails");
         }
 
+        public DbSet<Accounts> Accounts { get; set; }
         public DbSet<Items> Items { get; set; }
         public DbSet<Products> Products { get; set; }
         public DbSet<IngredientsByProduct> Ingredients { get; set; }
@@ -48,5 +51,8 @@ namespace SystemBackEnd
         public DbSet<POSTransactionDetails> TransactionDetails { get; set; }
         public DbSet<POSPaymentTransaction> PaymentTransaction { get; set; }
         public DbSet<POSTransactionHistory> MyProperty { get; set; }
+        public DbSet<ItemAdjustmentHeader> ItemAdjustmentHeader { get; set; }
+        public DbSet<ItemAdjustmentDetails> ItemAdjustmentDetails { get; set; }
+        
     }
 }
