@@ -19,9 +19,10 @@ namespace DazaBestApplication.Modals
         private List<AdjustItemDisplay> _pickedItems = new List<AdjustItemDisplay>();
         private GetAvailableItemswithpagination _getavailableitemswithpagination;
         private PurchaseitemServices PurchaseitemServices;
-        private List<Guid> AllSelectedProducts;
+        private List<Guid> AllSelectedProducts = new();
         private AdjustItemModalViewModel adjustItemModalViewModel;
-        private List<AdjustmentInformations> AllpickedItemswithReason;
+        private List<AdjustmentInformations> AllpickedItemswithReason = new List<AdjustmentInformations>();
+        private Panel OverlayPanel;
 
         //for Products Pagination
         private int Productcurrentpage = 1;
@@ -40,6 +41,12 @@ namespace DazaBestApplication.Modals
         private async Task OpenAllProductsPanel()
         {
             await PopulatAllItemDataGrid();
+            OverlayPanel = new Panel();
+            OverlayPanel.Location = new Point(0, 0);
+            OverlayPanel.Parent = this;
+            OverlayPanel.Size = this.Size;
+            OverlayPanel.BackColor = Color.FromArgb(77, 0, 0, 0);
+            OverlayPanel.BringToFront();
 
             //Set Datagrid Properties
             AllItemDatagridview.ColumnHeadersHeight = 24;
@@ -48,7 +55,9 @@ namespace DazaBestApplication.Modals
             var _allproductlocation = new Point((this.Width - _allppanelsize.Width) / 2, (this.Height - _allppanelsize.Height) / 2);
             AllProductsContainer.Location = _allproductlocation;
             AllProductsContainer.Visible = true;
+            AllProductsContainer.BringToFront();
 
+            RemovedQuantityTxtbox.Text = "1";
         }
         //Populate All Item DataGrid
         private async Task PopulatAllItemDataGrid()
@@ -64,6 +73,8 @@ namespace DazaBestApplication.Modals
                 row.Cells["ALLI_ItemIdCol"].Value = item.ItemID;
                 row.Cells["ALLI_ItemNameCol"].Value = item.ItemName;
                 row.Cells["ALLI_ItemCodeCol"].Value = item.ItemCode;
+                row.Height = 21;
+                row.Resizable = DataGridViewTriState.False;
             }
         }
         //Get All Available Products
@@ -86,6 +97,7 @@ namespace DazaBestApplication.Modals
         private void CloseAddAdjustmentPanel()
         {
             AllProductsContainer.Visible = false;
+            OverlayPanel.Dispose();
         }
         //Close Modal
         private void CloseAdjustItemModal()
@@ -97,16 +109,23 @@ namespace DazaBestApplication.Modals
         private async Task<AdjustmentInformations> GetAdjustmentInfos()
         {
             AdjustmentInformations adjustmentInformations = new AdjustmentInformations();
-            if (AllProductsContainer.Visible == true && AllItemDatagridview.SelectedRows.Count > 0)
+            try
             {
-                foreach (DataGridViewRow row in AllItemDatagridview.SelectedRows)
+                if (AllProductsContainer.Visible == true && AllItemDatagridview.SelectedRows.Count > 0)
                 {
-                    adjustmentInformations.ItemId = Guid.Parse(row.Cells["IdCol"].Value.ToString());
-                    adjustmentInformations.ItemName = row.Cells["ALLI_ItemNameCol"].Value.ToString();
+                    foreach (DataGridViewRow row in AllItemDatagridview.SelectedRows)
+                    {
+                        adjustmentInformations.ItemId = Guid.Parse(row.Cells["ALLI_ItemIdCol"].Value.ToString());
+                        adjustmentInformations.ItemName = row.Cells["ALLI_ItemNameCol"].Value.ToString();
+                    }
+                    adjustmentInformations.Reason = ReasonTxtbox.Text;
+                    adjustmentInformations.ItemQuantity = int.Parse(RemovedQuantityTxtbox.Text);
                 }
-                adjustmentInformations.Reason = ReasonTxtbox.Text;
-                adjustmentInformations.ItemQuantity = int.Parse(RemovedQuantityTxtbox.Text);
-                AllpickedItemswithReason.Add(adjustmentInformations);
+            }
+            catch (Exception e)
+            {
+
+                throw;
             }
 
             return adjustmentInformations;
@@ -114,38 +133,68 @@ namespace DazaBestApplication.Modals
         //Add AdjustmentInfo in MainDisplay
         private async Task AddAdjustmentInfo()
         {
-            AdjustmentInformations theinfo = await GetAdjustmentInfos();
-            if (theinfo != null)
+            try
             {
-                bool isExistalready = AllSelectedProducts.Contains(theinfo.ItemId);
-                if (!isExistalready)
+                AdjustmentInformations theinfo = await GetAdjustmentInfos();
+                if (theinfo != null)
                 {
-                    AllSelectedProducts.Add(theinfo.ItemId);
-                    int rowindex = AllPickedItems.Rows.Add();
-                    DataGridViewRow row = AllPickedItems.Rows[rowindex];
-                    row.Cells["IdCol"].Value = theinfo.ItemId;
-                    row.Cells["ItemNameCol"].Value = theinfo.ItemName;
-                    row.Cells["QuantityCol"].Value = theinfo.ItemQuantity;
-                    row.Cells["ReasonCol"].Value = theinfo.Reason;
+                    bool isExistalready = AllSelectedProducts.Contains(theinfo.ItemId);
+                    if (!isExistalready)
+                    {
+                        AllSelectedProducts.Add(theinfo.ItemId);
+                        int rowindex = AllPickedItems.Rows.Add();
+                        DataGridViewRow row = AllPickedItems.Rows[rowindex];
+                        row.Cells["IdCol"].Value = theinfo.ItemId;
+                        row.Cells["ItemNameCol"].Value = theinfo.ItemName;
+                        row.Cells["ItemQuantityCol"].Value = theinfo.ItemQuantity;
+                        row.Cells["ReasonCol"].Value = theinfo.Reason;
+                        AllpickedItemswithReason.Add(theinfo);
+                    }
+                    else
+                    {
+                        var theitem = AllpickedItemswithReason.FirstOrDefault(eg => eg.ItemId == theinfo.ItemId);
+                        theitem.ItemQuantity = theinfo.ItemQuantity;
+                    }
+                    ReasonTxtbox.Text = "";
+                    RemovedQuantityTxtbox.Text = "1";
+                    CloseAddAdjustmentPanel();
                 }
-                else
-                {
-                    var theitem = AllpickedItemswithReason.FirstOrDefault(eg => eg.ItemId == theinfo.ItemId);
-                    theitem.ItemQuantity = theinfo.ItemQuantity;
-                }
-                ReasonTxtbox.Text = "";
-                RemovedQuantityTxtbox.Text = "0";
+            }
+            catch (Exception e)
+            {
+
+                throw;
             }
 
 
 
         }
+        //Add Adjust Item Informations to Database
+        private async Task<bool> DoneAdjustments()
+        {
+            bool isSuccess = false;
+            try
+            {
+                AdjustmentItemFullInformation adjustmentItemFullInformation = new();
+
+
+
+            }
+            catch (Exception e)
+            {
+
+            }
+            return isSuccess;
+        }
+
+
 
 
         //Main Load
         private void AdjustItemModal_Load(object sender, EventArgs e)
         {
             AllPickedItems.RowTemplate.Height = 24;
+            AllPickedItems.Height = 26;
         }
 
 
@@ -200,12 +249,10 @@ namespace DazaBestApplication.Modals
         {
             CloseAddAdjustmentPanel();
         }
-
         private void bunifuButton2_Click(object sender, EventArgs e)
         {
             CloseAdjustItemModal();
         }
-
         private void AddInfoBTN_Click(object sender, EventArgs e)
         {
             AddAdjustmentInfo();

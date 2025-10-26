@@ -66,7 +66,7 @@
             IdCol = new DataGridViewTextBoxColumn();
             ItemNameCol = new DataGridViewTextBoxColumn();
             ItemQuantityCol = new DataGridViewTextBoxColumn();
-            ItemReason = new DataGridViewTextBoxColumn();
+            ReasonCol = new DataGridViewTextBoxColumn();
             label4 = new Label();
             preparedbylabel = new Label();
             bunifuButton2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -331,7 +331,7 @@
             dataGridViewCellStyle5.Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             AllItemDatagridview.RowsDefaultCellStyle = dataGridViewCellStyle5;
             AllItemDatagridview.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            AllItemDatagridview.RowTemplate.DefaultCellStyle.ForeColor = Color.DimGray;
+            AllItemDatagridview.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             AllItemDatagridview.RowTemplate.Height = 40;
             AllItemDatagridview.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             AllItemDatagridview.Size = new Size(293, 170);
@@ -377,7 +377,7 @@
             AllProductsContainer.Controls.Add(AllItemDatagridview);
             AllProductsContainer.FillStyle = Bunifu.UI.WinForms.BunifuShadowPanel.FillStyles.Solid;
             AllProductsContainer.GradientMode = Bunifu.UI.WinForms.BunifuShadowPanel.GradientModes.Vertical;
-            AllProductsContainer.Location = new Point(50, 56);
+            AllProductsContainer.Location = new Point(850, 56);
             AllProductsContainer.Name = "AllProductsContainer";
             AllProductsContainer.Padding = new Padding(0, 10, 0, 0);
             AllProductsContainer.PanelColor = Color.WhiteSmoke;
@@ -671,7 +671,7 @@
             dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
             AllPickedItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             AllPickedItems.ColumnHeadersHeight = 40;
-            AllPickedItems.Columns.AddRange(new DataGridViewColumn[] { IdCol, ItemNameCol, ItemQuantityCol, ItemReason });
+            AllPickedItems.Columns.AddRange(new DataGridViewColumn[] { IdCol, ItemNameCol, ItemQuantityCol, ReasonCol });
             AllPickedItems.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
             AllPickedItems.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             AllPickedItems.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
@@ -738,12 +738,12 @@
             ItemQuantityCol.Name = "ItemQuantityCol";
             ItemQuantityCol.Resizable = DataGridViewTriState.False;
             // 
-            // ItemReason
+            // ReasonCol
             // 
-            ItemReason.FillWeight = 42.2981377F;
-            ItemReason.HeaderText = "Reason";
-            ItemReason.Name = "ItemReason";
-            ItemReason.Resizable = DataGridViewTriState.False;
+            ReasonCol.FillWeight = 42.2981377F;
+            ReasonCol.HeaderText = "Reason";
+            ReasonCol.Name = "ReasonCol";
+            ReasonCol.Resizable = DataGridViewTriState.False;
             // 
             // label4
             // 
@@ -1113,11 +1113,11 @@
         private DataGridViewTextBoxColumn ALLI_ItemIdCol;
         private DataGridViewTextBoxColumn ALLI_ItemCodeCol;
         private DataGridViewTextBoxColumn ALLI_ItemNameCol;
+        private Label label3;
+        private TextBox RemovedQuantityTxtbox;
         private DataGridViewTextBoxColumn IdCol;
         private DataGridViewTextBoxColumn ItemNameCol;
         private DataGridViewTextBoxColumn ItemQuantityCol;
-        private DataGridViewTextBoxColumn ItemReason;
-        private Label label3;
-        private TextBox RemovedQuantityTxtbox;
+        private DataGridViewTextBoxColumn ReasonCol;
     }
 }
