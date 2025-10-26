@@ -22,6 +22,7 @@ namespace DazaBestApplication.Modals
         private List<Guid> AllSelectedProducts = new();
         private AdjustItemModalViewModel adjustItemModalViewModel;
         private List<AdjustmentInformations> AllpickedItemswithReason = new List<AdjustmentInformations>();
+        private AdjustmentItemFullInformation adjustmentItemFullInformation = new AdjustmentItemFullInformation();
         private Panel OverlayPanel;
 
         //for Products Pagination
@@ -175,17 +176,52 @@ namespace DazaBestApplication.Modals
             bool isSuccess = false;
             try
             {
-                AdjustmentItemFullInformation adjustmentItemFullInformation = new();
+                adjustmentItemFullInformation = new AdjustmentItemFullInformation();
+                adjustmentItemFullInformation.AllAdjustments = new List<AdjustItemDetailsInformations>();
+                adjustmentItemFullInformation.OperatedBy = Guid.NewGuid();
+                foreach (var item in AllpickedItemswithReason)
+                {
 
+                    AdjustItemDetailsInformations adjustItemDetailsInformations = new AdjustItemDetailsInformations()
+                    {
+                        ItemId = item.ItemId,
+                        ItemQuantity = item.ItemQuantity,
+                        Reason = item.Reason,
+                    };
 
-
+                    adjustmentItemFullInformation.AllAdjustments.Add(adjustItemDetailsInformations);
+                }
+                AdjustItemServices adjustitemservice = new(new BackEndDBContext());
+                isSuccess = await adjustitemservice.InsertNewItemAdjustmentInformation(adjustmentItemFullInformation);
             }
             catch (Exception e)
             {
-
+                return isSuccess;
             }
             return isSuccess;
         }
+        private async Task AddAdjustmentBTN()
+        {
+
+            try
+            {
+                bool success = await DoneAdjustments();
+                if (success)
+                {
+                    MessageBox.Show("Successfully Added", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CloseAdjustItemModal();
+                }
+                else
+                {
+                    MessageBox.Show("Unsuccessfully Action An Error Occured", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception e)
+            {
+                return;
+            }
+        }
+
 
 
 
@@ -194,7 +230,6 @@ namespace DazaBestApplication.Modals
         private void AdjustItemModal_Load(object sender, EventArgs e)
         {
             AllPickedItems.RowTemplate.Height = 24;
-            AllPickedItems.Height = 26;
         }
 
 
@@ -256,6 +291,13 @@ namespace DazaBestApplication.Modals
         private void AddInfoBTN_Click(object sender, EventArgs e)
         {
             AddAdjustmentInfo();
+        }
+        private void AddAdjustmentItemInformationsBTN_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you want to Proceed? ", "System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                AddAdjustmentBTN();
+            }
         }
     }
 
