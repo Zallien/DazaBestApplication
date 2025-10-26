@@ -21,7 +21,7 @@ namespace DazaBestApplication.Modals
         private PurchaseitemServices PurchaseitemServices;
         private List<Guid> AllSelectedProducts;
         private AdjustItemModalViewModel adjustItemModalViewModel;
-
+        private List<AdjustmentInformations> AllpickedItemswithReason;
 
         //for Products Pagination
         private int Productcurrentpage = 1;
@@ -43,6 +43,7 @@ namespace DazaBestApplication.Modals
 
             //Set Datagrid Properties
             AllItemDatagridview.ColumnHeadersHeight = 24;
+            AllItemDatagridview.RowTemplate.Height = 20;
             Size _allppanelsize = AllProductsContainer.Size;
             var _allproductlocation = new Point((this.Width - _allppanelsize.Width) / 2, (this.Height - _allppanelsize.Height) / 2);
             AllProductsContainer.Location = _allproductlocation;
@@ -81,7 +82,64 @@ namespace DazaBestApplication.Modals
             var _allproducts = await PurchaseitemServices.GetAllActiveProducts(_getavailableitemswithpagination);
             return _allproducts;
         }
+        //Close Panel
+        private void CloseAddAdjustmentPanel()
+        {
+            AllProductsContainer.Visible = false;
+        }
+        //Close Modal
+        private void CloseAdjustItemModal()
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+        //Get AdjusmentInformation from User
+        private async Task<AdjustmentInformations> GetAdjustmentInfos()
+        {
+            AdjustmentInformations adjustmentInformations = new AdjustmentInformations();
+            if (AllProductsContainer.Visible == true && AllItemDatagridview.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow row in AllItemDatagridview.SelectedRows)
+                {
+                    adjustmentInformations.ItemId = Guid.Parse(row.Cells["IdCol"].Value.ToString());
+                    adjustmentInformations.ItemName = row.Cells["ALLI_ItemNameCol"].Value.ToString();
+                }
+                adjustmentInformations.Reason = ReasonTxtbox.Text;
+                adjustmentInformations.ItemQuantity = int.Parse(RemovedQuantityTxtbox.Text);
+                AllpickedItemswithReason.Add(adjustmentInformations);
+            }
 
+            return adjustmentInformations;
+        }
+        //Add AdjustmentInfo in MainDisplay
+        private async Task AddAdjustmentInfo()
+        {
+            AdjustmentInformations theinfo = await GetAdjustmentInfos();
+            if (theinfo != null)
+            {
+                bool isExistalready = AllSelectedProducts.Contains(theinfo.ItemId);
+                if (!isExistalready)
+                {
+                    AllSelectedProducts.Add(theinfo.ItemId);
+                    int rowindex = AllPickedItems.Rows.Add();
+                    DataGridViewRow row = AllPickedItems.Rows[rowindex];
+                    row.Cells["IdCol"].Value = theinfo.ItemId;
+                    row.Cells["ItemNameCol"].Value = theinfo.ItemName;
+                    row.Cells["QuantityCol"].Value = theinfo.ItemQuantity;
+                    row.Cells["ReasonCol"].Value = theinfo.Reason;
+                }
+                else
+                {
+                    var theitem = AllpickedItemswithReason.FirstOrDefault(eg => eg.ItemId == theinfo.ItemId);
+                    theitem.ItemQuantity = theinfo.ItemQuantity;
+                }
+                ReasonTxtbox.Text = "";
+                RemovedQuantityTxtbox.Text = "0";
+            }
+
+
+
+        }
 
 
         //Main Load
@@ -134,10 +192,25 @@ namespace DazaBestApplication.Modals
                 }
             }
         }
-
         private async void bunifuButton1_Click(object sender, EventArgs e)
         {
             await OpenAllProductsPanel();
         }
+        private void CloseAllPModal_Click(object sender, EventArgs e)
+        {
+            CloseAddAdjustmentPanel();
+        }
+
+        private void bunifuButton2_Click(object sender, EventArgs e)
+        {
+            CloseAdjustItemModal();
+        }
+
+        private void AddInfoBTN_Click(object sender, EventArgs e)
+        {
+            AddAdjustmentInfo();
+        }
     }
+
+
 }
