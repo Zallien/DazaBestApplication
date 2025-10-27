@@ -12,10 +12,11 @@ namespace DazaBestApplication.Pages
 {
     public partial class SalesRecord : Form
     {
-        public SalesRecord()
+        private Form MainForm;
+        public SalesRecord(Form mainForm)
         {
             InitializeComponent();
-
+            mainForm = mainForm;
             PrintPanel.Visible = false;
             PrintBtn.MouseEnter += ShowDropdown;
             PrintBtn.MouseLeave += HideDropdown_Check;
@@ -27,6 +28,8 @@ namespace DazaBestApplication.Pages
                 ctrl.MouseLeave += HideDropdown_Check;
                 ctrl.Click += (s, e) => { PrintPanel.Visible = false; };
             }
+
+            MainForm = mainForm;
         }
         private void ShowDropdown(object sender, EventArgs e)
         {

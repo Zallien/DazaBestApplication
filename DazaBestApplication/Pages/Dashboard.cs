@@ -12,9 +12,12 @@ namespace DazaBestApplication.Pages
 {
     public partial class Dashboard : Form
     {
-        public Dashboard()
+        private Form MainForm;
+
+        public Dashboard(Form mainForm)
         {
             InitializeComponent();
+            MainForm = mainForm;
         }
 
         private void bunifuLabel2_Click(object sender, EventArgs e)

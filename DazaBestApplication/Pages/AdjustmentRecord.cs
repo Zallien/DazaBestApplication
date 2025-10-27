@@ -12,7 +12,8 @@ namespace DazaBestApplication.Pages
 {
     public partial class AdjustmentRecord : Form
     {
-        public AdjustmentRecord()
+        private Form MainForm;
+        public AdjustmentRecord(Form mainForm)
         {
             InitializeComponent();
 
@@ -27,6 +28,8 @@ namespace DazaBestApplication.Pages
                 ctrl.MouseLeave += HideDropdown_Check;
                 ctrl.Click += (s, e) => { PrintPanel.Visible = false; };
             }
+
+            MainForm = mainForm;
         }
         private void ShowDropdown(object sender, EventArgs e)
         {

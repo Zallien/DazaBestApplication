@@ -996,6 +996,7 @@
             bunifuButton25.TextMarginLeft = 0;
             bunifuButton25.TextPadding = new Padding(35, 0, 0, 0);
             bunifuButton25.UseDefaultRadiusAndThickness = true;
+            bunifuButton25.Click += bunifuButton25_Click;
             // 
             // bunifuButton24
             // 
@@ -1086,6 +1087,7 @@
             bunifuButton24.TextMarginLeft = 0;
             bunifuButton24.TextPadding = new Padding(35, 0, 0, 0);
             bunifuButton24.UseDefaultRadiusAndThickness = true;
+            bunifuButton24.Click += bunifuButton24_Click;
             // 
             // bunifuButton23
             // 
@@ -1176,6 +1178,7 @@
             bunifuButton23.TextMarginLeft = 0;
             bunifuButton23.TextPadding = new Padding(35, 0, 0, 0);
             bunifuButton23.UseDefaultRadiusAndThickness = true;
+            bunifuButton23.Click += bunifuButton23_Click;
             // 
             // bunifuButton22
             // 
