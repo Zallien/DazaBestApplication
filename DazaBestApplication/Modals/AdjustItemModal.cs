@@ -65,8 +65,6 @@ namespace DazaBestApplication.Modals
             AllProductsContainer.Location = _allproductlocation;
             AllProductsContainer.Visible = true;
             AllProductsContainer.BringToFront();
-
-            RemovedQuantityTxtbox.Text = "1";
         }
         //Populate All Item DataGrid
         private async Task PopulatAllItemDataGrid()
@@ -122,13 +120,14 @@ namespace DazaBestApplication.Modals
             {
                 if (AllProductsContainer.Visible == true && AllItemDatagridview.SelectedRows.Count > 0)
                 {
+                    adjustmentInformations.Reason = "No Reason Yet";
+                    adjustmentInformations.ItemQuantity = 1;
                     foreach (DataGridViewRow row in AllItemDatagridview.SelectedRows)
                     {
                         adjustmentInformations.ItemId = Guid.Parse(row.Cells["ALLI_ItemIdCol"].Value.ToString());
                         adjustmentInformations.ItemName = row.Cells["ALLI_ItemNameCol"].Value.ToString();
                     }
-                    adjustmentInformations.Reason = ReasonTxtbox.Text;
-                    adjustmentInformations.ItemQuantity = int.Parse(RemovedQuantityTxtbox.Text);
+                    
                 }
             }
             catch (Exception e)
@@ -164,8 +163,6 @@ namespace DazaBestApplication.Modals
                         var theitem = AllpickedItemswithReason.FirstOrDefault(eg => eg.ItemId == theinfo.ItemId);
                         theitem.ItemQuantity = theinfo.ItemQuantity;
                     }
-                    ReasonTxtbox.Text = "";
-                    RemovedQuantityTxtbox.Text = "1";
                     CloseAddAdjustmentPanel();
                 }
             }

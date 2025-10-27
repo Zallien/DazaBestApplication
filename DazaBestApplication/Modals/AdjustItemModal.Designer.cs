@@ -55,11 +55,7 @@
             ALLI_ItemCodeCol = new DataGridViewTextBoxColumn();
             ALLI_ItemNameCol = new DataGridViewTextBoxColumn();
             AllProductsContainer = new Bunifu.UI.WinForms.BunifuShadowPanel();
-            RemovedQuantityTxtbox = new TextBox();
-            label3 = new Label();
             AddInfoBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            ReasonTxtbox = new TextBox();
-            label1 = new Label();
             removeitempickedbutton = new Bunifu.UI.WinForms.BunifuImageButton();
             bunifuButton1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             AllPickedItems = new Bunifu.UI.WinForms.BunifuDataGridView();
@@ -111,7 +107,7 @@
             bunifuTextBox1.IconPadding = 10;
             bunifuTextBox1.IconRight = null;
             bunifuTextBox1.IconRightCursor = Cursors.IBeam;
-            bunifuTextBox1.Location = new Point(10, 40);
+            bunifuTextBox1.Location = new Point(12, 40);
             bunifuTextBox1.MaxLength = 32767;
             bunifuTextBox1.MinimumSize = new Size(1, 1);
             bunifuTextBox1.Modified = false;
@@ -147,7 +143,7 @@
             bunifuTextBox1.SelectionLength = 0;
             bunifuTextBox1.SelectionStart = 0;
             bunifuTextBox1.ShortcutsEnabled = true;
-            bunifuTextBox1.Size = new Size(293, 39);
+            bunifuTextBox1.Size = new Size(407, 39);
             bunifuTextBox1.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             bunifuTextBox1.TabIndex = 9;
             bunifuTextBox1.TextAlign = HorizontalAlignment.Left;
@@ -214,7 +210,7 @@
             CloseAllPModal.IdleIconLeftImage = null;
             CloseAllPModal.IdleIconRightImage = null;
             CloseAllPModal.IndicateFocus = false;
-            CloseAllPModal.Location = new Point(312, 263);
+            CloseAllPModal.Location = new Point(226, 261);
             CloseAllPModal.Name = "CloseAllPModal";
             CloseAllPModal.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             CloseAllPModal.OnDisabledState.BorderRadius = 1;
@@ -265,7 +261,7 @@
             label2.Location = new Point(0, 10);
             label2.Name = "label2";
             label2.Padding = new Padding(10, 0, 0, 0);
-            label2.Size = new Size(515, 25);
+            label2.Size = new Size(432, 25);
             label2.TabIndex = 1;
             label2.Text = "All Product";
             label2.TextAlign = ContentAlignment.MiddleLeft;
@@ -324,7 +320,7 @@
             AllItemDatagridview.HeaderBackColor = Color.Maroon;
             AllItemDatagridview.HeaderBgColor = Color.Empty;
             AllItemDatagridview.HeaderForeColor = Color.White;
-            AllItemDatagridview.Location = new Point(10, 85);
+            AllItemDatagridview.Location = new Point(12, 85);
             AllItemDatagridview.MultiSelect = false;
             AllItemDatagridview.Name = "AllItemDatagridview";
             AllItemDatagridview.ReadOnly = true;
@@ -335,7 +331,7 @@
             AllItemDatagridview.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             AllItemDatagridview.RowTemplate.Height = 40;
             AllItemDatagridview.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            AllItemDatagridview.Size = new Size(293, 170);
+            AllItemDatagridview.Size = new Size(407, 170);
             AllItemDatagridview.TabIndex = 0;
             AllItemDatagridview.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             // 
@@ -369,11 +365,7 @@
             AllProductsContainer.BorderColor = Color.Black;
             AllProductsContainer.BorderRadius = 1;
             AllProductsContainer.BorderThickness = 1;
-            AllProductsContainer.Controls.Add(RemovedQuantityTxtbox);
-            AllProductsContainer.Controls.Add(label3);
             AllProductsContainer.Controls.Add(AddInfoBTN);
-            AllProductsContainer.Controls.Add(ReasonTxtbox);
-            AllProductsContainer.Controls.Add(label1);
             AllProductsContainer.Controls.Add(bunifuTextBox1);
             AllProductsContainer.Controls.Add(panel2);
             AllProductsContainer.Controls.Add(CloseAllPModal);
@@ -381,7 +373,7 @@
             AllProductsContainer.Controls.Add(AllItemDatagridview);
             AllProductsContainer.FillStyle = Bunifu.UI.WinForms.BunifuShadowPanel.FillStyles.Solid;
             AllProductsContainer.GradientMode = Bunifu.UI.WinForms.BunifuShadowPanel.GradientModes.Vertical;
-            AllProductsContainer.Location = new Point(850, 56);
+            AllProductsContainer.Location = new Point(50, 56);
             AllProductsContainer.Name = "AllProductsContainer";
             AllProductsContainer.Padding = new Padding(0, 10, 0, 0);
             AllProductsContainer.PanelColor = Color.WhiteSmoke;
@@ -391,29 +383,10 @@
             AllProductsContainer.ShadowDepth = 5;
             AllProductsContainer.ShadowStyle = Bunifu.UI.WinForms.BunifuShadowPanel.ShadowStyles.Surrounded;
             AllProductsContainer.ShadowTopLeftVisible = false;
-            AllProductsContainer.Size = new Size(515, 293);
+            AllProductsContainer.Size = new Size(432, 293);
             AllProductsContainer.Style = Bunifu.UI.WinForms.BunifuShadowPanel.BevelStyles.Flat;
             AllProductsContainer.TabIndex = 14;
             AllProductsContainer.Visible = false;
-            // 
-            // RemovedQuantityTxtbox
-            // 
-            RemovedQuantityTxtbox.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            RemovedQuantityTxtbox.Location = new Point(312, 232);
-            RemovedQuantityTxtbox.Name = "RemovedQuantityTxtbox";
-            RemovedQuantityTxtbox.Size = new Size(188, 23);
-            RemovedQuantityTxtbox.TabIndex = 14;
-            // 
-            // label3
-            // 
-            label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label3.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(312, 206);
-            label3.Name = "label3";
-            label3.Size = new Size(191, 23);
-            label3.TabIndex = 13;
-            label3.Text = "Removed Quantity :";
-            label3.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // AddInfoBTN
             // 
@@ -463,7 +436,7 @@
             AddInfoBTN.IdleIconLeftImage = null;
             AddInfoBTN.IdleIconRightImage = null;
             AddInfoBTN.IndicateFocus = false;
-            AddInfoBTN.Location = new Point(425, 263);
+            AddInfoBTN.Location = new Point(339, 261);
             AddInfoBTN.Name = "AddInfoBTN";
             AddInfoBTN.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             AddInfoBTN.OnDisabledState.BorderRadius = 1;
@@ -505,26 +478,6 @@
             AddInfoBTN.TextPadding = new Padding(0);
             AddInfoBTN.UseDefaultRadiusAndThickness = true;
             AddInfoBTN.Click += AddInfoBTN_Click;
-            // 
-            // ReasonTxtbox
-            // 
-            ReasonTxtbox.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ReasonTxtbox.Location = new Point(312, 66);
-            ReasonTxtbox.Multiline = true;
-            ReasonTxtbox.Name = "ReasonTxtbox";
-            ReasonTxtbox.Size = new Size(188, 137);
-            ReasonTxtbox.TabIndex = 11;
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label1.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(309, 40);
-            label1.Name = "label1";
-            label1.Size = new Size(100, 23);
-            label1.TabIndex = 10;
-            label1.Text = "Reason:";
-            label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // removeitempickedbutton
             // 
@@ -1086,7 +1039,6 @@
             Load += AdjustItemModal_Load;
             ((System.ComponentModel.ISupportInitialize)AllItemDatagridview).EndInit();
             AllProductsContainer.ResumeLayout(false);
-            AllProductsContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)AllPickedItems).EndInit();
             footer.ResumeLayout(false);
             panel1.ResumeLayout(false);
@@ -1113,14 +1065,10 @@
         private Bunifu.UI.WinForms.BunifuImageButton CloseModal;
         private Label Modaltitle;
         private Panel panel1;
-        private TextBox ReasonTxtbox;
-        private Label label1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton AddInfoBTN;
         private DataGridViewTextBoxColumn ALLI_ItemIdCol;
         private DataGridViewTextBoxColumn ALLI_ItemCodeCol;
         private DataGridViewTextBoxColumn ALLI_ItemNameCol;
-        private Label label3;
-        private TextBox RemovedQuantityTxtbox;
         private DataGridViewTextBoxColumn IdCol;
         private DataGridViewTextBoxColumn ItemNameCol;
         private DataGridViewTextBoxColumn ItemQuantityCol;
