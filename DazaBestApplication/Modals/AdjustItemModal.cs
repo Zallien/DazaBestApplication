@@ -295,6 +295,9 @@ namespace DazaBestApplication.Modals
                 bunifuButton1.Visible = false;
                 removeitempickedbutton.Visible = false;
                 AddAdjustmentItemInformationsBTN.Text = "Ok";
+                Point point = AddAdjustmentItemInformationsBTN.Location;
+                AddAdjustmentItemInformationsBTN.Visible = false;
+                bunifuButton2.Location = point;
             }
         }
         //Populate to Selected Item DatagridView

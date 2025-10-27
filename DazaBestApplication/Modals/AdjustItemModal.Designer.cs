@@ -286,7 +286,7 @@
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             AllItemDatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            AllItemDatagridview.ColumnHeadersHeight = 34;
+            AllItemDatagridview.ColumnHeadersHeight = 40;
             AllItemDatagridview.Columns.AddRange(new DataGridViewColumn[] { ALLI_ItemIdCol, ALLI_ItemCodeCol, ALLI_ItemNameCol, ItemActionCol });
             AllItemDatagridview.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
             AllItemDatagridview.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
@@ -328,7 +328,7 @@
             AllItemDatagridview.RowsDefaultCellStyle = dataGridViewCellStyle5;
             AllItemDatagridview.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             AllItemDatagridview.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            AllItemDatagridview.RowTemplate.Height = 30;
+            AllItemDatagridview.RowTemplate.Height = 40;
             AllItemDatagridview.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             AllItemDatagridview.Size = new Size(407, 170);
             AllItemDatagridview.TabIndex = 0;
@@ -547,7 +547,7 @@
             dataGridViewCellStyle7.SelectionForeColor = Color.White;
             dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
             AllPickedItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            AllPickedItems.ColumnHeadersHeight = 34;
+            AllPickedItems.ColumnHeadersHeight = 40;
             AllPickedItems.Columns.AddRange(new DataGridViewColumn[] { IdCol, ItemNameCol, ItemQuantityCol, ReasonCol });
             AllPickedItems.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
             AllPickedItems.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
@@ -585,7 +585,7 @@
             AllPickedItems.RowHeadersVisible = false;
             AllPickedItems.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             AllPickedItems.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            AllPickedItems.RowTemplate.Height = 30;
+            AllPickedItems.RowTemplate.Height = 40;
             AllPickedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             AllPickedItems.Size = new Size(661, 247);
             AllPickedItems.TabIndex = 11;
