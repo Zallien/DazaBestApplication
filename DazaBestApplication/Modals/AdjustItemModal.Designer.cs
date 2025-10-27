@@ -592,6 +592,7 @@
             AllPickedItems.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             AllPickedItems.CellContentClick += AllPickedItems_CellContentClick;
             AllPickedItems.CellValueChanged += AllPickedItems_CellValueChanged;
+            AllPickedItems.EditingControlShowing += AllPickedItems_EditingControlShowing_1;
             // 
             // IdCol
             // 

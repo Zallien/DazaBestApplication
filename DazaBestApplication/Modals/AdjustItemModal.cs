@@ -348,14 +348,14 @@ namespace DazaBestApplication.Modals
         }
         private void NumbersOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '.')
             {
                 e.Handled = true;
             }
         }
         private void letters_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
             {
                 e.Handled = true;
             }
@@ -424,6 +424,7 @@ namespace DazaBestApplication.Modals
 
         private void AllPickedItems_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+
             try
             {
                 if (e.RowIndex >= 0 &&
@@ -435,10 +436,10 @@ namespace DazaBestApplication.Modals
                     var row = AllPickedItems.Rows[e.RowIndex];
 
                     if (row.Cells["IdCol"].Value == null)
-                        return; 
+                        return;
 
                     if (!Guid.TryParse(row.Cells["IdCol"].Value?.ToString(), out Guid theId))
-                        return; 
+                        return;
 
                     string reason = row.Cells["ReasonCol"].Value?.ToString();
                     if (string.IsNullOrWhiteSpace(reason))
@@ -462,6 +463,47 @@ namespace DazaBestApplication.Modals
                 MessageBox.Show($"Unexpected error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void AllPickedItems_EditingControlShowing_1(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            const int NUMBER_COLUMN_INDEX = 2;
+            const int LETTER_COLUMN_INDEX = 3;
+
+            /*if (AllPickedItems.CurrentCell.ColumnIndex == NUMBER_COLUMN_INDEX)
+            {
+                TextBox textBox = e.Control as TextBox; 
+
+                if (textBox != null)
+                {
+                    textBox.KeyPress -= new KeyPressEventHandler(NumbersOnly_KeyPress);
+                    textBox.KeyPress += new KeyPressEventHandler(NumbersOnly_KeyPress);
+                }
+            }
+            else if (AllPickedItems.CurrentCell.ColumnIndex == LETTER_COLUMN_INDEX)
+            {
+                TextBox textBox1 = e.Control as TextBox;
+                if (textBox1 != null)
+                {
+                    textBox1.KeyPress -= new KeyPressEventHandler(letters_KeyPress);
+                    textBox1.KeyPress += new KeyPressEventHandler(letters_KeyPress);
+                }
+            }*/
+            TextBox textBox = e.Control as TextBox;
+
+            if (textBox != null)
+            {
+                textBox.KeyPress -= new KeyPressEventHandler(NumbersOnly_KeyPress);
+                textBox.KeyPress -= new KeyPressEventHandler(letters_KeyPress);
+                if (AllPickedItems.CurrentCell.ColumnIndex == NUMBER_COLUMN_INDEX)
+                {
+                    textBox.KeyPress += new KeyPressEventHandler(NumbersOnly_KeyPress);
+                }
+                else if (AllPickedItems.CurrentCell.ColumnIndex == LETTER_COLUMN_INDEX)
+                {
+                    textBox.KeyPress += new KeyPressEventHandler(letters_KeyPress);
+                }
+            }
         }
     }
 

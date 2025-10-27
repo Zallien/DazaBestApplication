@@ -415,6 +415,7 @@
             AllAdjustmentItemsDatagrid.TabIndex = 10;
             AllAdjustmentItemsDatagrid.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             AllAdjustmentItemsDatagrid.CellDoubleClick += AllAdjustmentItemsDatagrid_CellDoubleClick;
+            AllAdjustmentItemsDatagrid.EditingControlShowing += AllAdjustmentItemsDatagrid_EditingControlShowing;
             // 
             // IdCol
             // 
