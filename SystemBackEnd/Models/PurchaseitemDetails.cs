@@ -14,7 +14,7 @@ namespace SystemBackEnd.Models
         public Guid Purchaseheaderid { get; set; }
         public Guid Purchasedetailsid { get; set; }
         public Guid ItemID { get; set; }
-        public int Quantity { get; set; }
+        public decimal Quantity { get; set; }
         public decimal Priceperunit { get; set; }
     }
 }

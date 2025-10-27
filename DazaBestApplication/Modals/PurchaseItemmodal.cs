@@ -192,7 +192,7 @@ namespace DazaBestApplication.Modals
             }
         }
         //Update The Total Amount for each Picked Item --First Time Load or when the datagridview value changed
-        private async Task<decimal> UpdateTotalAmount(int quantity, decimal unitprice)
+        private async Task<decimal> UpdateTotalAmount(decimal quantity, decimal unitprice)
         {
             decimal _thetotal = quantity * unitprice;
             return _thetotal;
@@ -205,14 +205,14 @@ namespace DazaBestApplication.Modals
                 if (AllPickedItems.Rows.Count > 0 && AllowCalculating == true)
                 {
                     AllPickedItems.Rows[e.RowIndex].Cells["ItemTotalCol"].Value = UpdateTotalAmount(
-                    int.Parse(AllPickedItems.Rows[e.RowIndex].Cells["ItemQuantityCol"].Value.ToString() ?? "1"),
+                    decimal.Parse(AllPickedItems.Rows[e.RowIndex].Cells["ItemQuantityCol"].Value.ToString() ?? "1"),
                     decimal.Parse(AllPickedItems.Rows[e.RowIndex].Cells["ItemPriceCol"].Value.ToString() ?? "0.00")
                     ).Result.ToString("0.00");
 
                     //Update quantiy and priceperunit
                     Guid ItemId = Guid.Parse(AllPickedItems.Rows[e.RowIndex].Cells["IdCol"].Value.ToString());
                     var item = _allpickeditems.FirstOrDefault(e => e.ItemID ==  ItemId);
-                    item.Quantity = int.Parse(AllPickedItems.Rows[e.RowIndex].Cells["ItemQuantityCol"].Value.ToString() ?? "1");
+                    item.Quantity = decimal.Parse(AllPickedItems.Rows[e.RowIndex].Cells["ItemQuantityCol"].Value.ToString() ?? "1");
                     item.Unitprice = decimal.Parse(AllPickedItems.Rows[e.RowIndex].Cells["ItemPriceCol"].Value.ToString() ?? "0.00");
                     await CalculateGrandtotal();
                 }
@@ -230,11 +230,9 @@ namespace DazaBestApplication.Modals
                                    select new InsertPurchaseItem_Details()
                                    {
                                        ItemID = Guid.Parse(row.Cells["IdCol"].Value.ToString()),
-                                       Quantity = int.Parse(row.Cells["ItemQuantityCol"].Value.ToString()),
+                                       Quantity = decimal.Parse(row.Cells["ItemQuantityCol"].Value.ToString()),
                                        Unitprice = decimal.Parse(row.Cells["ItemPriceCol"].Value.ToString())
                                    }).ToList();
-
-
             InsertPurchaseItem _newpurchaseitem = new InsertPurchaseItem()
             {
                 Addedby = Guid.NewGuid(), //Replace with actual user ID

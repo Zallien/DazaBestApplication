@@ -10,7 +10,7 @@ namespace SystemBackEnd.ServiceModels
     {
         public Guid ItemID { get; set; }
         public string? ItemName { get; set; }
-        public int Quantity { get; set; }
+        public decimal Quantity { get; set; }
         public decimal? Unitprice { get; set; }
         public decimal? GrandTotal { get; set; }
     }

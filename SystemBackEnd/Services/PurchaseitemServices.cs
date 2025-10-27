@@ -192,7 +192,7 @@ namespace SystemBackEnd.Services
 
         }
         //Update Item Stocks
-        private async Task<bool> UpdateItemStocks(Guid ItemID, int Quantity)
+        private async Task<bool> UpdateItemStocks(Guid ItemID, decimal Quantity)
         {
             bool isupdated = false;
             try

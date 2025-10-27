@@ -9,7 +9,7 @@ namespace SystemBackEnd.ServiceModels
     public class InsertPurchaseItem_Details
     {
         public Guid ItemID { get; set; }
-        public int Quantity { get; set; }
+        public decimal Quantity { get; set; }
         public decimal Unitprice { get; set; }
     }
 }

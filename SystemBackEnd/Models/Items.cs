@@ -15,7 +15,7 @@ namespace SystemBackEnd.Models
         public Guid ItemID { get; set; }
         public string? ItemCode { get; set; }
         public decimal? ItemPrice { get; set; }
-        public int? BalanceStocks { get; set; }
+        public decimal? BalanceStocks { get; set; }
         public DateTime? DateCreated { get; set; }
         public bool? IsActive { get; set; }
         public byte[]? ItemImage { get; set; }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SystemBackEnd;
 
@@ -10,9 +11,11 @@ using SystemBackEnd;
 namespace SystemBackEnd.Migrations
 {
     [DbContext(typeof(BackEndDBContext))]
-    partial class DbcontextModelSnapshot : ModelSnapshot
+    [Migration("20251027124612_Add-Migration UpdateItemTable -Project SystemBackEnd")]
+    partial class AddMigrationUpdateItemTableProjectSystemBackEnd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.9");
@@ -370,8 +373,8 @@ namespace SystemBackEnd.Migrations
                     b.Property<Guid>("Purchaseheaderid")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Quantity")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Row");
 
