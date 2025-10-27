@@ -28,7 +28,7 @@ namespace DazaBestApplication.Modals
             ProcessTransaction = _paymentprocess;
         }
 
-        
+
         //Load Event
         private void POSPaymentModal_Load(object sender, EventArgs e)
         {
@@ -36,7 +36,7 @@ namespace DazaBestApplication.Modals
             PaymentRecievedtextbox.Focus();
             PaymentRecievedtextbox.Text = AmountRecieved.ToString("N2");
         }
-        
+
         //Process Transaction
         private async Task<bool> PayingTransaction()
         {
@@ -146,6 +146,11 @@ namespace DazaBestApplication.Modals
         {
             decimal.TryParse(PaymentRecievedtextbox.Text, out AmountRecieved);
             CalculateChangeAmount();
+        }
+
+        private void cancelbtn1_Click(object sender, EventArgs e)
+        {
+            CloseModal();
         }
     }
 }

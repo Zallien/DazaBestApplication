@@ -385,7 +385,7 @@
             ItemNametxt.IconRight = null;
             ItemNametxt.IconRightCursor = Cursors.IBeam;
             ItemNametxt.Location = new Point(147, 53);
-            ItemNametxt.MaxLength = 32767;
+            ItemNametxt.MaxLength = 20;
             ItemNametxt.MinimumSize = new Size(1, 1);
             ItemNametxt.Modified = false;
             ItemNametxt.Multiline = false;
@@ -505,6 +505,7 @@
             ItemPricetxt.TextPlaceholder = "";
             ItemPricetxt.UseSystemPasswordChar = false;
             ItemPricetxt.WordWrap = true;
+            ItemPricetxt.TextChanged += ItemPricetxt_TextChanged;
             ItemPricetxt.KeyPress += ItemPricetxt_KeyPress;
             // 
             // ItemModalForm

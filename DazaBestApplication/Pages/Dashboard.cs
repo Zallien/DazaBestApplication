@@ -26,5 +26,37 @@ namespace DazaBestApplication.Pages
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            color1.BackColor = Color.Maroon;
+            color2.BackColor = Color.White;
+            color3.BackColor = Color.White;
+            color4.BackColor = Color.White;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            color1.BackColor = Color.White;
+            color2.BackColor = Color.Maroon;
+            color3.BackColor = Color.White;
+            color4.BackColor = Color.White;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            color1.BackColor = Color.White;
+            color2.BackColor = Color.White;
+            color3.BackColor = Color.Maroon;
+            color4.BackColor = Color.White;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            color1.BackColor = Color.White;
+            color2.BackColor = Color.White;
+            color3.BackColor = Color.White;
+            color4.BackColor = Color.Maroon;
+        }
     }
 }

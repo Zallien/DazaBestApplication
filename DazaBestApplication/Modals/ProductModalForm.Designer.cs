@@ -265,7 +265,7 @@
             ProductNametxt.IconRight = null;
             ProductNametxt.IconRightCursor = Cursors.IBeam;
             ProductNametxt.Location = new Point(146, 76);
-            ProductNametxt.MaxLength = 32767;
+            ProductNametxt.MaxLength = 20;
             ProductNametxt.MinimumSize = new Size(1, 1);
             ProductNametxt.Modified = false;
             ProductNametxt.Multiline = false;
@@ -293,7 +293,7 @@
             ProductNametxt.Padding = new Padding(3);
             ProductNametxt.PasswordChar = '\0';
             ProductNametxt.PlaceholderForeColor = Color.Silver;
-            ProductNametxt.PlaceholderText = "Enter Product Name";
+            ProductNametxt.PlaceholderText = "";
             ProductNametxt.ReadOnly = false;
             ProductNametxt.ScrollBars = ScrollBars.None;
             ProductNametxt.SelectedText = "";
@@ -307,7 +307,7 @@
             ProductNametxt.TextMarginBottom = 0;
             ProductNametxt.TextMarginLeft = 3;
             ProductNametxt.TextMarginTop = 1;
-            ProductNametxt.TextPlaceholder = "Enter Product Name";
+            ProductNametxt.TextPlaceholder = "";
             ProductNametxt.UseSystemPasswordChar = false;
             ProductNametxt.WordWrap = true;
             ProductNametxt.KeyPress += ProductNametxt_KeyPress;
@@ -340,7 +340,7 @@
             Productpricetxt.IconRight = null;
             Productpricetxt.IconRightCursor = Cursors.IBeam;
             Productpricetxt.Location = new Point(146, 150);
-            Productpricetxt.MaxLength = 32767;
+            Productpricetxt.MaxLength = 5;
             Productpricetxt.MinimumSize = new Size(1, 1);
             Productpricetxt.Modified = false;
             Productpricetxt.Multiline = false;
@@ -368,7 +368,7 @@
             Productpricetxt.Padding = new Padding(3);
             Productpricetxt.PasswordChar = '\0';
             Productpricetxt.PlaceholderForeColor = Color.Silver;
-            Productpricetxt.PlaceholderText = "Enter Product Price";
+            Productpricetxt.PlaceholderText = "";
             Productpricetxt.ReadOnly = false;
             Productpricetxt.ScrollBars = ScrollBars.None;
             Productpricetxt.SelectedText = "";
@@ -382,7 +382,7 @@
             Productpricetxt.TextMarginBottom = 0;
             Productpricetxt.TextMarginLeft = 3;
             Productpricetxt.TextMarginTop = 1;
-            Productpricetxt.TextPlaceholder = "Enter Product Price";
+            Productpricetxt.TextPlaceholder = "";
             Productpricetxt.UseSystemPasswordChar = false;
             Productpricetxt.WordWrap = true;
             Productpricetxt.KeyPress += Productpricetxt_KeyPress;

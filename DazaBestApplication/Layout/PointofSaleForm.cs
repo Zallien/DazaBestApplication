@@ -518,6 +518,14 @@ namespace DazaBestApplication.Layout
         {
             await CancelResetOrderValidation();
         }
+
+        private void bunifuTextBox1_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+        }
     }
 
     public class ProductInformation
