@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Security;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,8 +59,8 @@ namespace DazaBestApplication.Modals
             OverlayPanel.BringToFront();
 
             //Set Datagrid Properties
-            AllItemDatagridview.ColumnHeadersHeight = 24;
-            AllItemDatagridview.RowTemplate.Height = 20;
+            AllItemDatagridview.ColumnHeadersHeight = 32;
+            AllItemDatagridview.RowTemplate.Height = 30;
             Size _allppanelsize = AllProductsContainer.Size;
             var _allproductlocation = new Point((this.Width - _allppanelsize.Width) / 2, (this.Height - _allppanelsize.Height) / 2);
             AllProductsContainer.Location = _allproductlocation;
@@ -95,7 +96,6 @@ namespace DazaBestApplication.Modals
                 AllSelectedItem = AllSelectedProducts
             };
 
-
             PurchaseitemServices = new PurchaseitemServices(new BackEndDBContext());
             var _allproducts = await PurchaseitemServices.GetAllActiveProducts(_getavailableitemswithpagination);
             return _allproducts;
@@ -113,7 +113,7 @@ namespace DazaBestApplication.Modals
             this.Close();
         }
         //Get AdjusmentInformation from User
-        private async Task<AdjustmentInformations> GetAdjustmentInfos()
+        private async Task<AdjustmentInformations> GetAdjustmentInfos(Guid theid, string itemname)
         {
             AdjustmentInformations adjustmentInformations = new AdjustmentInformations();
             try
@@ -122,12 +122,9 @@ namespace DazaBestApplication.Modals
                 {
                     adjustmentInformations.Reason = "No Reason Yet";
                     adjustmentInformations.ItemQuantity = 1;
-                    foreach (DataGridViewRow row in AllItemDatagridview.SelectedRows)
-                    {
-                        adjustmentInformations.ItemId = Guid.Parse(row.Cells["ALLI_ItemIdCol"].Value.ToString());
-                        adjustmentInformations.ItemName = row.Cells["ALLI_ItemNameCol"].Value.ToString();
-                    }
-                    
+                    adjustmentInformations.ItemId = theid;
+                    adjustmentInformations.ItemName = itemname;
+
                 }
             }
             catch (Exception e)
@@ -139,11 +136,11 @@ namespace DazaBestApplication.Modals
             return adjustmentInformations;
         }
         //Add AdjustmentInfo in MainDisplay
-        private async Task AddAdjustmentInfo()
+        private async Task AddAdjustmentInfo(Guid theid, string itemname)
         {
             try
             {
-                AdjustmentInformations theinfo = await GetAdjustmentInfos();
+                AdjustmentInformations theinfo = await GetAdjustmentInfos(theid, itemname);
                 if (theinfo != null)
                 {
                     bool isExistalready = AllSelectedProducts.Contains(theinfo.ItemId);
@@ -163,7 +160,7 @@ namespace DazaBestApplication.Modals
                         var theitem = AllpickedItemswithReason.FirstOrDefault(eg => eg.ItemId == theinfo.ItemId);
                         theitem.ItemQuantity = theinfo.ItemQuantity;
                     }
-                    CloseAddAdjustmentPanel();
+                    await PopulatAllItemDataGrid();
                 }
             }
             catch (Exception e)
@@ -235,7 +232,7 @@ namespace DazaBestApplication.Modals
             {
                 if (AllPickedItems.SelectedRows.Count > 0)
                 {
-                    foreach(DataGridViewRow row in AllPickedItems.SelectedRows)
+                    foreach (DataGridViewRow row in AllPickedItems.SelectedRows)
                     {
                         //int index = row.Index;
                         Guid Id = Guid.Parse(row.Cells["IdCol"].Value.ToString());
@@ -247,7 +244,7 @@ namespace DazaBestApplication.Modals
                         {
                             AllpickedItemswithReason.Remove(theadjusteditem);
                         }
-                        
+
                     }
                     isDeletedSuccessfully = true;
                 }
@@ -320,13 +317,23 @@ namespace DazaBestApplication.Modals
                 MessageBox.Show(e.Message);
             }
         }
+        //Update Values
+        private async Task UpdateValuesfromSelectedItems(Guid theid, string updatedReason, int updatedQuantity)
+        {
+            var tobeupdated = AllpickedItemswithReason.FirstOrDefault(x => x.ItemId == theid);
+            if (tobeupdated != null)
+            {
+                tobeupdated.Reason = updatedReason;
+                tobeupdated.ItemQuantity = updatedQuantity;
+            }
+        }
 
 
 
         //Main Load
         private void AdjustItemModal_Load(object sender, EventArgs e)
         {
-            AllPickedItems.RowTemplate.Height = 24;
+            AllPickedItems.RowTemplate.Height = 32;
         }
 
 
@@ -350,6 +357,7 @@ namespace DazaBestApplication.Modals
                 e.Handled = true;
             }
         }
+        //Patanggal 
         private void AllPickedItems_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             const int NUMBER_COLUMN_INDEX = 2;
@@ -387,10 +395,6 @@ namespace DazaBestApplication.Modals
         {
             CloseAdjustItemModal();
         }
-        private void AddInfoBTN_Click(object sender, EventArgs e)
-        {
-            AddAdjustmentInfo();
-        }
         private void AddAdjustmentItemInformationsBTN_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Do you want to Proceed? ", "System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -405,8 +409,57 @@ namespace DazaBestApplication.Modals
                 RemoveSelectedItemBTN();
             }
         }
+        private void AllItemDatagridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && AllItemDatagridview.Columns[e.ColumnIndex].Name == "ItemActionCol")
+            {
+                Guid theId = Guid.Parse(AllItemDatagridview.Rows[e.RowIndex].Cells["ALLI_ItemIdCol"].Value.ToString());
+                string itemname = AllItemDatagridview.Rows[e.RowIndex].Cells["ALLI_ItemNameCol"].Value.ToString();
+                AddAdjustmentInfo(theId, itemname);
+            }
+        }
 
-        
+        private void AllPickedItems_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0 &&
+                    !AllProductsContainer.Visible &&
+                    adjustItemModalViewModel.Action == "AdjustItem" &&
+                    (AllPickedItems.Columns[e.ColumnIndex].Name == "ItemQuantityCol" ||
+                     AllPickedItems.Columns[e.ColumnIndex].Name == "ReasonCol"))
+                {
+                    var row = AllPickedItems.Rows[e.RowIndex];
+
+                    if (row.Cells["IdCol"].Value == null)
+                        return; 
+
+                    if (!Guid.TryParse(row.Cells["IdCol"].Value?.ToString(), out Guid theId))
+                        return; 
+
+                    string reason = row.Cells["ReasonCol"].Value?.ToString();
+                    if (string.IsNullOrWhiteSpace(reason))
+                    {
+                        reason = "No Reason Yet";
+                        row.Cells["ReasonCol"].Value = reason;
+                    }
+
+                    int qty = 1;
+                    string qtyValue = row.Cells["ItemQuantityCol"].Value?.ToString();
+                    if (!int.TryParse(qtyValue, out qty) || qty <= 0)
+                    {
+                        qty = 1;
+                        row.Cells["ItemQuantityCol"].Value = qty;
+                    }
+                    UpdateValuesfromSelectedItems(theId, reason, qty);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 
 
