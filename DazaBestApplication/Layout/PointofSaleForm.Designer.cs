@@ -404,7 +404,7 @@
             bunifuTextBox1.IconRight = null;
             bunifuTextBox1.IconRightCursor = Cursors.IBeam;
             bunifuTextBox1.Location = new Point(8, 32);
-            bunifuTextBox1.MaxLength = 32767;
+            bunifuTextBox1.MaxLength = 5;
             bunifuTextBox1.MinimumSize = new Size(1, 1);
             bunifuTextBox1.Modified = false;
             bunifuTextBox1.Multiline = false;
@@ -432,7 +432,7 @@
             bunifuTextBox1.Padding = new Padding(3);
             bunifuTextBox1.PasswordChar = '\0';
             bunifuTextBox1.PlaceholderForeColor = Color.Silver;
-            bunifuTextBox1.PlaceholderText = "Add Discount";
+            bunifuTextBox1.PlaceholderText = "";
             bunifuTextBox1.ReadOnly = false;
             bunifuTextBox1.ScrollBars = ScrollBars.None;
             bunifuTextBox1.SelectedText = "";
@@ -446,9 +446,10 @@
             bunifuTextBox1.TextMarginBottom = 0;
             bunifuTextBox1.TextMarginLeft = 3;
             bunifuTextBox1.TextMarginTop = 1;
-            bunifuTextBox1.TextPlaceholder = "Add Discount";
+            bunifuTextBox1.TextPlaceholder = "";
             bunifuTextBox1.UseSystemPasswordChar = false;
             bunifuTextBox1.WordWrap = true;
+            bunifuTextBox1.KeyPress += bunifuTextBox1_KeyPress_1;
             // 
             // label7
             // 
@@ -456,9 +457,9 @@
             label7.Font = new Font("Courier New", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.Location = new Point(11, 14);
             label7.Name = "label7";
-            label7.Size = new Size(63, 16);
+            label7.Size = new Size(70, 16);
             label7.TabIndex = 23;
-            label7.Text = "Discount";
+            label7.Text = "Discount:";
             // 
             // bunifuButton1
             // 

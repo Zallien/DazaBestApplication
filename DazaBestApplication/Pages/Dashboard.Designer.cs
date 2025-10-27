@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            DataGridViewCellStyle dataGridViewCellStyle19 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle20 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle21 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle22 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle23 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle24 = new DataGridViewCellStyle();
             TopPanel = new Panel();
             panel4 = new Panel();
             label1 = new Label();
@@ -80,21 +80,21 @@
             panel13 = new Panel();
             bunifuLabel7 = new Bunifu.UI.WinForms.BunifuLabel();
             label8 = new Label();
+            panel14 = new Panel();
+            bunifuLabel9 = new Bunifu.UI.WinForms.BunifuLabel();
+            label9 = new Label();
             panel15 = new Panel();
             panel16 = new Panel();
-            panel19 = new Panel();
-            label10 = new Label();
             bunifuDataGridView1 = new Bunifu.UI.WinForms.BunifuDataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            label10 = new Label();
+            panel19 = new Panel();
             bunifuDataGridView2 = new Bunifu.UI.WinForms.BunifuDataGridView();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             label11 = new Label();
-            label9 = new Label();
-            panel14 = new Panel();
             bunifuLabel8 = new Bunifu.UI.WinForms.BunifuLabel();
-            bunifuLabel9 = new Bunifu.UI.WinForms.BunifuLabel();
             TopPanel.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -113,12 +113,12 @@
             panel11.SuspendLayout();
             panel12.SuspendLayout();
             panel13.SuspendLayout();
+            panel14.SuspendLayout();
             panel15.SuspendLayout();
             panel16.SuspendLayout();
-            panel19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bunifuDataGridView1).BeginInit();
+            panel19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bunifuDataGridView2).BeginInit();
-            panel14.SuspendLayout();
             SuspendLayout();
             // 
             // TopPanel
@@ -201,6 +201,7 @@
             button4.TabIndex = 0;
             button4.Text = "Annually";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // panelbtn3
             // 
@@ -232,6 +233,7 @@
             button3.TabIndex = 0;
             button3.Text = "Monthly";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // panelbtn2
             // 
@@ -263,6 +265,7 @@
             button2.TabIndex = 0;
             button2.Text = "Weekly";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // panelbutton
             // 
@@ -275,6 +278,7 @@
             // 
             // color1
             // 
+            color1.BackColor = Color.Maroon;
             color1.Dock = DockStyle.Bottom;
             color1.Location = new Point(0, 38);
             color1.Name = "color1";
@@ -294,6 +298,7 @@
             button1.TabIndex = 0;
             button1.Text = "Daily";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // panel3
             // 
@@ -473,17 +478,17 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea1);
+            chartArea4.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea4);
             chart1.Dock = DockStyle.Fill;
-            legend1.Name = "Legend1";
-            chart1.Legends.Add(legend1);
+            legend4.Name = "Legend1";
+            chart1.Legends.Add(legend4);
             chart1.Location = new Point(15, 15);
             chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chart1.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            chart1.Series.Add(series4);
             chart1.Size = new Size(870, 243);
             chart1.TabIndex = 0;
             chart1.Text = "chart1";
@@ -614,6 +619,44 @@
             label8.TabIndex = 1;
             label8.Text = "Out of Stock Items";
             // 
+            // panel14
+            // 
+            panel14.BackColor = Color.White;
+            panel14.Controls.Add(bunifuLabel9);
+            panel14.Controls.Add(label9);
+            panel14.Font = new Font("Courier New", 12F, FontStyle.Bold);
+            panel14.Location = new Point(23, 4);
+            panel14.Name = "panel14";
+            panel14.Padding = new Padding(15, 15, 0, 0);
+            panel14.Size = new Size(199, 104);
+            panel14.TabIndex = 0;
+            // 
+            // bunifuLabel9
+            // 
+            bunifuLabel9.AllowParentOverrides = false;
+            bunifuLabel9.AutoEllipsis = false;
+            bunifuLabel9.AutoSize = false;
+            bunifuLabel9.CursorType = Cursors.Default;
+            bunifuLabel9.Dock = DockStyle.Fill;
+            bunifuLabel9.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
+            bunifuLabel9.Location = new Point(15, 33);
+            bunifuLabel9.Name = "bunifuLabel9";
+            bunifuLabel9.RightToLeft = RightToLeft.No;
+            bunifuLabel9.Size = new Size(184, 71);
+            bunifuLabel9.TabIndex = 4;
+            bunifuLabel9.Text = "10";
+            bunifuLabel9.TextAlignment = ContentAlignment.MiddleCenter;
+            bunifuLabel9.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // label9
+            // 
+            label9.Dock = DockStyle.Top;
+            label9.Location = new Point(15, 15);
+            label9.Name = "label9";
+            label9.Size = new Size(184, 18);
+            label9.TabIndex = 0;
+            label9.Text = "No of Items";
+            // 
             // panel15
             // 
             panel15.Controls.Add(panel16);
@@ -636,29 +679,6 @@
             panel16.Size = new Size(450, 144);
             panel16.TabIndex = 3;
             // 
-            // panel19
-            // 
-            panel19.BackColor = Color.White;
-            panel19.Controls.Add(bunifuDataGridView2);
-            panel19.Controls.Add(label11);
-            panel19.Dock = DockStyle.Left;
-            panel19.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel19.Location = new Point(0, 0);
-            panel19.Name = "panel19";
-            panel19.Size = new Size(450, 144);
-            panel19.TabIndex = 0;
-            // 
-            // label10
-            // 
-            label10.BorderStyle = BorderStyle.FixedSingle;
-            label10.Dock = DockStyle.Top;
-            label10.Location = new Point(0, 0);
-            label10.Name = "label10";
-            label10.Size = new Size(450, 23);
-            label10.TabIndex = 0;
-            label10.Text = "Least Selling Item";
-            label10.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // bunifuDataGridView1
             // 
             bunifuDataGridView1.AllowCustomTheming = false;
@@ -666,21 +686,22 @@
             bunifuDataGridView1.AllowUserToDeleteRows = false;
             bunifuDataGridView1.AllowUserToResizeColumns = false;
             bunifuDataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(223, 191, 191);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            bunifuDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.BackColor = Color.FromArgb(223, 191, 191);
+            dataGridViewCellStyle19.ForeColor = Color.Black;
+            bunifuDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
             bunifuDataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             bunifuDataGridView1.BackgroundColor = Color.White;
+            bunifuDataGridView1.BorderStyle = BorderStyle.None;
             bunifuDataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             bunifuDataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.Maroon;
-            dataGridViewCellStyle2.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(102, 0, 0);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            bunifuDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle20.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = Color.Maroon;
+            dataGridViewCellStyle20.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            dataGridViewCellStyle20.ForeColor = Color.White;
+            dataGridViewCellStyle20.SelectionBackColor = Color.FromArgb(102, 0, 0);
+            dataGridViewCellStyle20.SelectionForeColor = Color.White;
+            dataGridViewCellStyle20.WrapMode = DataGridViewTriState.True;
+            bunifuDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
             bunifuDataGridView1.ColumnHeadersHeight = 40;
             bunifuDataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2 });
             bunifuDataGridView1.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
@@ -701,14 +722,14 @@
             bunifuDataGridView1.CurrentTheme.RowsStyle.ForeColor = Color.Black;
             bunifuDataGridView1.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
             bunifuDataGridView1.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(229, 204, 204);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            bunifuDataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = Color.FromArgb(229, 204, 204);
+            dataGridViewCellStyle21.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewCellStyle21.ForeColor = Color.Black;
+            dataGridViewCellStyle21.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            dataGridViewCellStyle21.SelectionForeColor = Color.White;
+            dataGridViewCellStyle21.WrapMode = DataGridViewTriState.False;
+            bunifuDataGridView1.DefaultCellStyle = dataGridViewCellStyle21;
             bunifuDataGridView1.Dock = DockStyle.Fill;
             bunifuDataGridView1.EnableHeadersVisualStyles = false;
             bunifuDataGridView1.GridColor = Color.FromArgb(216, 178, 178);
@@ -739,6 +760,29 @@
             dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
+            // label10
+            // 
+            label10.BorderStyle = BorderStyle.FixedSingle;
+            label10.Dock = DockStyle.Top;
+            label10.Location = new Point(0, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(450, 23);
+            label10.TabIndex = 0;
+            label10.Text = "Least Selling Item";
+            label10.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel19
+            // 
+            panel19.BackColor = Color.White;
+            panel19.Controls.Add(bunifuDataGridView2);
+            panel19.Controls.Add(label11);
+            panel19.Dock = DockStyle.Left;
+            panel19.Font = new Font("Courier New", 12F, FontStyle.Bold);
+            panel19.Location = new Point(0, 0);
+            panel19.Name = "panel19";
+            panel19.Size = new Size(450, 144);
+            panel19.TabIndex = 0;
+            // 
             // bunifuDataGridView2
             // 
             bunifuDataGridView2.AllowCustomTheming = false;
@@ -746,21 +790,22 @@
             bunifuDataGridView2.AllowUserToDeleteRows = false;
             bunifuDataGridView2.AllowUserToResizeColumns = false;
             bunifuDataGridView2.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(223, 191, 191);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            bunifuDataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle22.BackColor = Color.FromArgb(223, 191, 191);
+            dataGridViewCellStyle22.ForeColor = Color.Black;
+            bunifuDataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
             bunifuDataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             bunifuDataGridView2.BackgroundColor = Color.White;
+            bunifuDataGridView2.BorderStyle = BorderStyle.None;
             bunifuDataGridView2.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             bunifuDataGridView2.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.Maroon;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(102, 0, 0);
-            dataGridViewCellStyle5.SelectionForeColor = Color.White;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            bunifuDataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle23.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = Color.Maroon;
+            dataGridViewCellStyle23.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            dataGridViewCellStyle23.ForeColor = Color.White;
+            dataGridViewCellStyle23.SelectionBackColor = Color.FromArgb(102, 0, 0);
+            dataGridViewCellStyle23.SelectionForeColor = Color.White;
+            dataGridViewCellStyle23.WrapMode = DataGridViewTriState.True;
+            bunifuDataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
             bunifuDataGridView2.ColumnHeadersHeight = 40;
             bunifuDataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4 });
             bunifuDataGridView2.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
@@ -781,14 +826,14 @@
             bunifuDataGridView2.CurrentTheme.RowsStyle.ForeColor = Color.Black;
             bunifuDataGridView2.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
             bunifuDataGridView2.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(229, 204, 204);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            dataGridViewCellStyle6.ForeColor = Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            dataGridViewCellStyle6.SelectionForeColor = Color.White;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            bunifuDataGridView2.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle24.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = Color.FromArgb(229, 204, 204);
+            dataGridViewCellStyle24.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewCellStyle24.ForeColor = Color.Black;
+            dataGridViewCellStyle24.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            dataGridViewCellStyle24.SelectionForeColor = Color.White;
+            dataGridViewCellStyle24.WrapMode = DataGridViewTriState.False;
+            bunifuDataGridView2.DefaultCellStyle = dataGridViewCellStyle24;
             bunifuDataGridView2.Dock = DockStyle.Fill;
             bunifuDataGridView2.EnableHeadersVisualStyles = false;
             bunifuDataGridView2.GridColor = Color.FromArgb(216, 178, 178);
@@ -830,27 +875,6 @@
             label11.Text = "Top Selling Item";
             label11.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label9
-            // 
-            label9.Dock = DockStyle.Top;
-            label9.Location = new Point(15, 15);
-            label9.Name = "label9";
-            label9.Size = new Size(184, 18);
-            label9.TabIndex = 0;
-            label9.Text = "No of Items";
-            // 
-            // panel14
-            // 
-            panel14.BackColor = Color.White;
-            panel14.Controls.Add(bunifuLabel9);
-            panel14.Controls.Add(label9);
-            panel14.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel14.Location = new Point(23, 4);
-            panel14.Name = "panel14";
-            panel14.Padding = new Padding(15, 15, 0, 0);
-            panel14.Size = new Size(199, 104);
-            panel14.TabIndex = 0;
-            // 
             // bunifuLabel8
             // 
             bunifuLabel8.AllowParentOverrides = false;
@@ -867,23 +891,6 @@
             bunifuLabel8.Text = "₱ 5,000.00";
             bunifuLabel8.TextAlignment = ContentAlignment.MiddleCenter;
             bunifuLabel8.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // bunifuLabel9
-            // 
-            bunifuLabel9.AllowParentOverrides = false;
-            bunifuLabel9.AutoEllipsis = false;
-            bunifuLabel9.AutoSize = false;
-            bunifuLabel9.CursorType = Cursors.Default;
-            bunifuLabel9.Dock = DockStyle.Fill;
-            bunifuLabel9.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
-            bunifuLabel9.Location = new Point(15, 33);
-            bunifuLabel9.Name = "bunifuLabel9";
-            bunifuLabel9.RightToLeft = RightToLeft.No;
-            bunifuLabel9.Size = new Size(184, 71);
-            bunifuLabel9.TabIndex = 4;
-            bunifuLabel9.Text = "10";
-            bunifuLabel9.TextAlignment = ContentAlignment.MiddleCenter;
-            bunifuLabel9.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // Dashboard
             // 
@@ -918,12 +925,12 @@
             panel11.ResumeLayout(false);
             panel12.ResumeLayout(false);
             panel13.ResumeLayout(false);
+            panel14.ResumeLayout(false);
             panel15.ResumeLayout(false);
             panel16.ResumeLayout(false);
-            panel19.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)bunifuDataGridView1).EndInit();
+            panel19.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)bunifuDataGridView2).EndInit();
-            panel14.ResumeLayout(false);
             ResumeLayout(false);
         }
 

@@ -34,6 +34,7 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Toppanel = new Panel();
             label1 = new Label();
             label2 = new Label();
@@ -44,12 +45,13 @@
             Changelabel = new Label();
             PaymentOkButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             bunifuImageButton1 = new Bunifu.UI.WinForms.BunifuImageButton();
+            cancelbtn1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             Toppanel.SuspendLayout();
             SuspendLayout();
             // 
             // Toppanel
             // 
-            Toppanel.BackColor = Color.FromArgb(255, 128, 0);
+            Toppanel.BackColor = Color.Maroon;
             Toppanel.Controls.Add(label1);
             Toppanel.Dock = DockStyle.Top;
             Toppanel.Location = new Point(0, 0);
@@ -171,7 +173,7 @@
             PaymentRecievedtextbox.SelectionLength = 0;
             PaymentRecievedtextbox.SelectionStart = 0;
             PaymentRecievedtextbox.ShortcutsEnabled = true;
-            PaymentRecievedtextbox.Size = new Size(209, 27);
+            PaymentRecievedtextbox.Size = new Size(209, 39);
             PaymentRecievedtextbox.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             PaymentRecievedtextbox.TabIndex = 5;
             PaymentRecievedtextbox.TextAlign = HorizontalAlignment.Left;
@@ -243,7 +245,7 @@
             PaymentOkButton.IdleIconLeftImage = null;
             PaymentOkButton.IdleIconRightImage = null;
             PaymentOkButton.IndicateFocus = false;
-            PaymentOkButton.Location = new Point(56, 178);
+            PaymentOkButton.Location = new Point(186, 178);
             PaymentOkButton.Name = "PaymentOkButton";
             PaymentOkButton.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             PaymentOkButton.OnDisabledState.BorderRadius = 1;
@@ -277,7 +279,7 @@
             PaymentOkButton.OnPressedState.ForeColor = Color.White;
             PaymentOkButton.OnPressedState.IconLeftImage = null;
             PaymentOkButton.OnPressedState.IconRightImage = null;
-            PaymentOkButton.Size = new Size(302, 30);
+            PaymentOkButton.Size = new Size(172, 30);
             PaymentOkButton.TabIndex = 7;
             PaymentOkButton.TextAlign = ContentAlignment.MiddleCenter;
             PaymentOkButton.TextAlignment = HorizontalAlignment.Center;
@@ -321,11 +323,104 @@
             bunifuImageButton1.ZoomSpeed = 10;
             bunifuImageButton1.Click += bunifuImageButton1_Click;
             // 
+            // cancelbtn1
+            // 
+            cancelbtn1.AllowAnimations = true;
+            cancelbtn1.AllowMouseEffects = true;
+            cancelbtn1.AllowToggling = false;
+            cancelbtn1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            cancelbtn1.AnimationSpeed = 200;
+            cancelbtn1.AutoGenerateColors = false;
+            cancelbtn1.AutoRoundBorders = false;
+            cancelbtn1.AutoSizeLeftIcon = true;
+            cancelbtn1.AutoSizeRightIcon = true;
+            cancelbtn1.BackColor = Color.Transparent;
+            cancelbtn1.BackColor1 = Color.FromArgb(51, 122, 183);
+            cancelbtn1.BackgroundImage = (Image)resources.GetObject("cancelbtn1.BackgroundImage");
+            cancelbtn1.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            cancelbtn1.ButtonText = "Cancel";
+            cancelbtn1.ButtonTextMarginLeft = 0;
+            cancelbtn1.ColorContrastOnClick = 45;
+            cancelbtn1.ColorContrastOnHover = 45;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            cancelbtn1.CustomizableEdges = borderEdges2;
+            cancelbtn1.DialogResult = DialogResult.None;
+            cancelbtn1.DisabledBorderColor = Color.FromArgb(191, 191, 191);
+            cancelbtn1.DisabledFillColor = Color.Empty;
+            cancelbtn1.DisabledForecolor = Color.Empty;
+            cancelbtn1.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            cancelbtn1.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cancelbtn1.ForeColor = Color.Black;
+            cancelbtn1.IconLeft = null;
+            cancelbtn1.IconLeftAlign = ContentAlignment.MiddleLeft;
+            cancelbtn1.IconLeftCursor = Cursors.Default;
+            cancelbtn1.IconLeftPadding = new Padding(11, 3, 3, 3);
+            cancelbtn1.IconMarginLeft = 11;
+            cancelbtn1.IconPadding = 10;
+            cancelbtn1.IconRight = null;
+            cancelbtn1.IconRightAlign = ContentAlignment.MiddleRight;
+            cancelbtn1.IconRightCursor = Cursors.Default;
+            cancelbtn1.IconRightPadding = new Padding(3, 3, 7, 3);
+            cancelbtn1.IconSize = 25;
+            cancelbtn1.IdleBorderColor = Color.Empty;
+            cancelbtn1.IdleBorderRadius = 0;
+            cancelbtn1.IdleBorderThickness = 0;
+            cancelbtn1.IdleFillColor = Color.Empty;
+            cancelbtn1.IdleIconLeftImage = null;
+            cancelbtn1.IdleIconRightImage = null;
+            cancelbtn1.IndicateFocus = false;
+            cancelbtn1.Location = new Point(12, 178);
+            cancelbtn1.Name = "cancelbtn1";
+            cancelbtn1.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
+            cancelbtn1.OnDisabledState.BorderRadius = 1;
+            cancelbtn1.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            cancelbtn1.OnDisabledState.BorderThickness = 1;
+            cancelbtn1.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
+            cancelbtn1.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
+            cancelbtn1.OnDisabledState.IconLeftImage = null;
+            cancelbtn1.OnDisabledState.IconRightImage = null;
+            cancelbtn1.onHoverState.BorderColor = Color.Black;
+            cancelbtn1.onHoverState.BorderRadius = 1;
+            cancelbtn1.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            cancelbtn1.onHoverState.BorderThickness = 1;
+            cancelbtn1.onHoverState.FillColor = Color.FromArgb(205, 205, 207);
+            cancelbtn1.onHoverState.ForeColor = Color.Black;
+            cancelbtn1.onHoverState.IconLeftImage = null;
+            cancelbtn1.onHoverState.IconRightImage = null;
+            cancelbtn1.OnIdleState.BorderColor = Color.FromArgb(220, 220, 221);
+            cancelbtn1.OnIdleState.BorderRadius = 1;
+            cancelbtn1.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            cancelbtn1.OnIdleState.BorderThickness = 1;
+            cancelbtn1.OnIdleState.FillColor = Color.FromArgb(220, 220, 221);
+            cancelbtn1.OnIdleState.ForeColor = Color.Black;
+            cancelbtn1.OnIdleState.IconLeftImage = null;
+            cancelbtn1.OnIdleState.IconRightImage = null;
+            cancelbtn1.OnPressedState.BorderColor = Color.FromArgb(40, 96, 144);
+            cancelbtn1.OnPressedState.BorderRadius = 1;
+            cancelbtn1.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            cancelbtn1.OnPressedState.BorderThickness = 1;
+            cancelbtn1.OnPressedState.FillColor = Color.FromArgb(40, 96, 144);
+            cancelbtn1.OnPressedState.ForeColor = Color.White;
+            cancelbtn1.OnPressedState.IconLeftImage = null;
+            cancelbtn1.OnPressedState.IconRightImage = null;
+            cancelbtn1.Size = new Size(168, 30);
+            cancelbtn1.TabIndex = 9;
+            cancelbtn1.TextAlign = ContentAlignment.MiddleCenter;
+            cancelbtn1.TextAlignment = HorizontalAlignment.Center;
+            cancelbtn1.TextMarginLeft = 0;
+            cancelbtn1.TextPadding = new Padding(0);
+            cancelbtn1.UseDefaultRadiusAndThickness = true;
+            cancelbtn1.Click += cancelbtn1_Click;
+            // 
             // POSPaymentModal
             // 
             AutoScaleDimensions = new SizeF(7F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(370, 220);
+            Controls.Add(cancelbtn1);
             Controls.Add(bunifuImageButton1);
             Controls.Add(PaymentOkButton);
             Controls.Add(Changelabel);
@@ -357,5 +452,6 @@
         private Label Changelabel;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton PaymentOkButton;
         private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton1;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton cancelbtn1;
     }
 }
