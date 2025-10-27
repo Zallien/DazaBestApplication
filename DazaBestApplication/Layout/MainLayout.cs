@@ -15,7 +15,7 @@ namespace DazaBestApplication
         {
             InitializeComponent();
             MaximizeSystem();
-
+            ShowDashboardmPage();
 
             panel1.Visible = false;
             panel2.Visible = false;
@@ -126,8 +126,71 @@ namespace DazaBestApplication
             MainContainer.Controls.Add(MainContainerForm);
             MainContainerForm.Show();
         }
-
-
+        private void ShowDashboardmPage()
+        {
+            if (MainContainerForm != null)
+            {
+                MainContainer.Controls.Remove(MainContainerForm);
+                MainContainerForm = null;
+            }
+            MainContainerForm = new Dashboard(this);
+            MainContainerForm.TopLevel = false;
+            MainContainerForm.Dock = DockStyle.Fill;
+            MainContainer.Controls.Add(MainContainerForm);
+            MainContainerForm.Show();
+        }
+        private void ShowAdjustRecordmPage()
+        {
+            if (MainContainerForm != null)
+            {
+                MainContainer.Controls.Remove(MainContainerForm);
+                MainContainerForm = null;
+            }
+            MainContainerForm = new AdjustmentRecord(this);
+            MainContainerForm.TopLevel = false;
+            MainContainerForm.Dock = DockStyle.Fill;
+            MainContainer.Controls.Add(MainContainerForm);
+            MainContainerForm.Show();
+        }
+        private void ShowInventoryRecordmPage()
+        {
+            if (MainContainerForm != null)
+            {
+                MainContainer.Controls.Remove(MainContainerForm);
+                MainContainerForm = null;
+            }
+            MainContainerForm = new InventoryRecord(this);
+            MainContainerForm.TopLevel = false;
+            MainContainerForm.Dock = DockStyle.Fill;
+            MainContainer.Controls.Add(MainContainerForm);
+            MainContainerForm.Show();
+        }
+        private void StockInRecordmPage()
+        {
+            if (MainContainerForm != null)
+            {
+                MainContainer.Controls.Remove(MainContainerForm);
+                MainContainerForm = null;
+            }
+            MainContainerForm = new StockRecord(this);
+            MainContainerForm.TopLevel = false;
+            MainContainerForm.Dock = DockStyle.Fill;
+            MainContainer.Controls.Add(MainContainerForm);
+            MainContainerForm.Show();
+        }
+        private void ShowSalesRecordmPage()
+        {
+            if (MainContainerForm != null)
+            {
+                MainContainer.Controls.Remove(MainContainerForm);
+                MainContainerForm = null;
+            }
+            MainContainerForm = new SalesRecord(this);
+            MainContainerForm.TopLevel = false;
+            MainContainerForm.Dock = DockStyle.Fill;
+            MainContainer.Controls.Add(MainContainerForm);
+            MainContainerForm.Show();
+        }
 
         //Open Item Inventory Page
         private void NavButton_Item_Click(object sender, EventArgs e)
@@ -144,8 +207,8 @@ namespace DazaBestApplication
         }
         private void NavButton_Home_Click(object sender, EventArgs e)
         {
-            NavButton_Home.BackColor = System.Drawing.Color.Maroon;
-            NavButton_Home.ForeColor = System.Drawing.Color.White;
+            ShowDashboardmPage();
+
 
         }
         private void NavButton_PurchaseItem_Click(object sender, EventArgs e)
@@ -200,7 +263,8 @@ namespace DazaBestApplication
         }
         private void bunifuButton22_Click(object sender, EventArgs e)
         {
-
+            //sales
+            ShowSalesRecordmPage();
         }
         private void AdjustStockBTN_Click(object sender, EventArgs e)
         {
@@ -209,6 +273,24 @@ namespace DazaBestApplication
         private void PurchaseItemBTN_Click(object sender, EventArgs e)
         {
             ShowPurchaseItemPage();
+        }
+
+        private void bunifuButton23_Click(object sender, EventArgs e)
+        {
+            //stock adjustment record
+            ShowAdjustRecordmPage();
+        }
+
+        private void bunifuButton24_Click(object sender, EventArgs e)
+        {
+            //stock in record
+            StockInRecordmPage();
+        }
+
+        private void bunifuButton25_Click(object sender, EventArgs e)
+        {
+            //inventory record
+            ShowInventoryRecordmPage();
         }
     }
 }

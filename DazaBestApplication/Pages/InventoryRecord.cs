@@ -12,9 +12,16 @@ namespace DazaBestApplication.Pages
 {
     public partial class InventoryRecord : Form
     {
-        public InventoryRecord()
+        private Form MainForm;
+        public InventoryRecord(Form mainForm)
         {
             InitializeComponent();
+            MainForm = mainForm;
+        }
+
+        private void PrintBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
