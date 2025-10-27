@@ -33,6 +33,8 @@ namespace DazaBestApplication.Modals
         private int Producttotalpage = 0;
         private int Producttotalitem = 0;
 
+
+
         //Constructor
         public PurchaseItemmodal(PurchaseItemModal purchaseitemmodal)
         {

@@ -221,6 +221,49 @@ namespace DazaBestApplication.Modals
                 return;
             }
         }
+        //Remove SelectedRow from Picked Items
+        private async Task<bool> RemovedSelectedItem()
+        {
+            bool isDeletedSuccessfully = false;
+            try
+            {
+                if (AllPickedItems.SelectedRows.Count > 0)
+                {
+                    foreach(DataGridViewRow row in AllPickedItems.SelectedRows)
+                    {
+                        //int index = row.Index;
+                        Guid Id = Guid.Parse(row.Cells["IdCol"].Value.ToString());
+                        AllPickedItems.Rows.Remove(row);
+                        AllSelectedProducts.Remove(Id);
+
+                        var theadjusteditem = AllpickedItemswithReason.Where(x => x.ItemId == Id).FirstOrDefault();
+                        if (theadjusteditem != null)
+                        {
+                            AllpickedItemswithReason.Remove(theadjusteditem);
+                        }
+                        
+                    }
+                    isDeletedSuccessfully = true;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return isDeletedSuccessfully;
+        }
+        private async Task RemoveSelectedItemBTN()
+        {
+            bool isDeletedSuccessfully = await RemovedSelectedItem();
+            if (isDeletedSuccessfully == true)
+            {
+                MessageBox.Show("Removed Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error Occured", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
 
 
@@ -231,6 +274,8 @@ namespace DazaBestApplication.Modals
         {
             AllPickedItems.RowTemplate.Height = 24;
         }
+
+
 
 
         private void AllPickedItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -299,6 +344,15 @@ namespace DazaBestApplication.Modals
                 AddAdjustmentBTN();
             }
         }
+        private void removeitempickedbutton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you want to Removed It?", "System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                RemoveSelectedItemBTN();
+            }
+        }
+
+        
     }
 
 

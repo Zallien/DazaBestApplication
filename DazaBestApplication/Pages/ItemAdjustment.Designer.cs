@@ -44,18 +44,18 @@
             PurchaseReportBtn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
             AdjustItemBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            AllPurchaseDatagridView = new Bunifu.UI.WinForms.BunifuDataGridView();
-            IdCol = new DataGridViewTextBoxColumn();
-            ReferenceNoCol = new DataGridViewTextBoxColumn();
-            PurchaseDateCol = new DataGridViewTextBoxColumn();
-            AdjustedByCol = new DataGridViewTextBoxColumn();
+            AllAdjustmentItemsDatagrid = new Bunifu.UI.WinForms.BunifuDataGridView();
             Pagination = new Panel();
             PaginationLabel = new Label();
             PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
             PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
+            IdCol = new DataGridViewTextBoxColumn();
+            ReferenceNoCol = new DataGridViewTextBoxColumn();
+            OperatedDateCol = new DataGridViewTextBoxColumn();
+            AdjustedByCol = new DataGridViewTextBoxColumn();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)AllPurchaseDatagridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AllAdjustmentItemsDatagrid).BeginInit();
             Pagination.SuspendLayout();
             SuspendLayout();
             // 
@@ -85,7 +85,7 @@
             MainContainer.Controls.Add(PurchaseReportBtn);
             MainContainer.Controls.Add(SearchBox);
             MainContainer.Controls.Add(AdjustItemBTN);
-            MainContainer.Controls.Add(AllPurchaseDatagridView);
+            MainContainer.Controls.Add(AllAdjustmentItemsDatagrid);
             MainContainer.Controls.Add(Pagination);
             MainContainer.Dock = DockStyle.Fill;
             MainContainer.Location = new Point(0, 50);
@@ -348,22 +348,22 @@
             AdjustItemBTN.UseDefaultRadiusAndThickness = true;
             AdjustItemBTN.Click += AdjustItemBTN_Click;
             // 
-            // AllPurchaseDatagridView
+            // AllAdjustmentItemsDatagrid
             // 
-            AllPurchaseDatagridView.AllowCustomTheming = false;
-            AllPurchaseDatagridView.AllowUserToAddRows = false;
-            AllPurchaseDatagridView.AllowUserToDeleteRows = false;
-            AllPurchaseDatagridView.AllowUserToResizeColumns = false;
-            AllPurchaseDatagridView.AllowUserToResizeRows = false;
+            AllAdjustmentItemsDatagrid.AllowCustomTheming = false;
+            AllAdjustmentItemsDatagrid.AllowUserToAddRows = false;
+            AllAdjustmentItemsDatagrid.AllowUserToDeleteRows = false;
+            AllAdjustmentItemsDatagrid.AllowUserToResizeColumns = false;
+            AllAdjustmentItemsDatagrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(223, 191, 191);
             dataGridViewCellStyle1.ForeColor = Color.Black;
-            AllPurchaseDatagridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            AllPurchaseDatagridView.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AllPurchaseDatagridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            AllPurchaseDatagridView.BackgroundColor = Color.White;
-            AllPurchaseDatagridView.BorderStyle = BorderStyle.None;
-            AllPurchaseDatagridView.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            AllPurchaseDatagridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            AllAdjustmentItemsDatagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            AllAdjustmentItemsDatagrid.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            AllAdjustmentItemsDatagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            AllAdjustmentItemsDatagrid.BackgroundColor = Color.White;
+            AllAdjustmentItemsDatagrid.BorderStyle = BorderStyle.None;
+            AllAdjustmentItemsDatagrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            AllAdjustmentItemsDatagrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.Maroon;
             dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
@@ -371,27 +371,27 @@
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(102, 0, 0);
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            AllPurchaseDatagridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            AllPurchaseDatagridView.ColumnHeadersHeight = 40;
-            AllPurchaseDatagridView.Columns.AddRange(new DataGridViewColumn[] { IdCol, ReferenceNoCol, PurchaseDateCol, AdjustedByCol });
-            AllPurchaseDatagridView.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
-            AllPurchaseDatagridView.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            AllPurchaseDatagridView.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
-            AllPurchaseDatagridView.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            AllPurchaseDatagridView.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.White;
-            AllPurchaseDatagridView.CurrentTheme.BackColor = Color.Maroon;
-            AllPurchaseDatagridView.CurrentTheme.GridColor = Color.FromArgb(216, 178, 178);
-            AllPurchaseDatagridView.CurrentTheme.HeaderStyle.BackColor = Color.Maroon;
-            AllPurchaseDatagridView.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
-            AllPurchaseDatagridView.CurrentTheme.HeaderStyle.ForeColor = Color.White;
-            AllPurchaseDatagridView.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(102, 0, 0);
-            AllPurchaseDatagridView.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
-            AllPurchaseDatagridView.CurrentTheme.Name = null;
-            AllPurchaseDatagridView.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(229, 204, 204);
-            AllPurchaseDatagridView.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            AllPurchaseDatagridView.CurrentTheme.RowsStyle.ForeColor = Color.Black;
-            AllPurchaseDatagridView.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            AllPurchaseDatagridView.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
+            AllAdjustmentItemsDatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            AllAdjustmentItemsDatagrid.ColumnHeadersHeight = 40;
+            AllAdjustmentItemsDatagrid.Columns.AddRange(new DataGridViewColumn[] { IdCol, ReferenceNoCol, OperatedDateCol, AdjustedByCol });
+            AllAdjustmentItemsDatagrid.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
+            AllAdjustmentItemsDatagrid.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            AllAdjustmentItemsDatagrid.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
+            AllAdjustmentItemsDatagrid.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            AllAdjustmentItemsDatagrid.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.White;
+            AllAdjustmentItemsDatagrid.CurrentTheme.BackColor = Color.Maroon;
+            AllAdjustmentItemsDatagrid.CurrentTheme.GridColor = Color.FromArgb(216, 178, 178);
+            AllAdjustmentItemsDatagrid.CurrentTheme.HeaderStyle.BackColor = Color.Maroon;
+            AllAdjustmentItemsDatagrid.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            AllAdjustmentItemsDatagrid.CurrentTheme.HeaderStyle.ForeColor = Color.White;
+            AllAdjustmentItemsDatagrid.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(102, 0, 0);
+            AllAdjustmentItemsDatagrid.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
+            AllAdjustmentItemsDatagrid.CurrentTheme.Name = null;
+            AllAdjustmentItemsDatagrid.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(229, 204, 204);
+            AllAdjustmentItemsDatagrid.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            AllAdjustmentItemsDatagrid.CurrentTheme.RowsStyle.ForeColor = Color.Black;
+            AllAdjustmentItemsDatagrid.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            AllAdjustmentItemsDatagrid.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(229, 204, 204);
             dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
@@ -399,49 +399,21 @@
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(178, 102, 102);
             dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            AllPurchaseDatagridView.DefaultCellStyle = dataGridViewCellStyle3;
-            AllPurchaseDatagridView.EnableHeadersVisualStyles = false;
-            AllPurchaseDatagridView.GridColor = Color.FromArgb(216, 178, 178);
-            AllPurchaseDatagridView.HeaderBackColor = Color.Maroon;
-            AllPurchaseDatagridView.HeaderBgColor = Color.Empty;
-            AllPurchaseDatagridView.HeaderForeColor = Color.White;
-            AllPurchaseDatagridView.Location = new Point(10, 68);
-            AllPurchaseDatagridView.Name = "AllPurchaseDatagridView";
-            AllPurchaseDatagridView.ReadOnly = true;
-            AllPurchaseDatagridView.RowHeadersVisible = false;
-            AllPurchaseDatagridView.RowTemplate.Height = 40;
-            AllPurchaseDatagridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            AllPurchaseDatagridView.Size = new Size(878, 464);
-            AllPurchaseDatagridView.TabIndex = 10;
-            AllPurchaseDatagridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
-            // 
-            // IdCol
-            // 
-            IdCol.HeaderText = "PurchaseId";
-            IdCol.Name = "IdCol";
-            IdCol.ReadOnly = true;
-            IdCol.Visible = false;
-            // 
-            // ReferenceNoCol
-            // 
-            ReferenceNoCol.FillWeight = 40F;
-            ReferenceNoCol.HeaderText = "Reference No";
-            ReferenceNoCol.Name = "ReferenceNoCol";
-            ReferenceNoCol.ReadOnly = true;
-            // 
-            // PurchaseDateCol
-            // 
-            PurchaseDateCol.FillWeight = 35F;
-            PurchaseDateCol.HeaderText = "Date";
-            PurchaseDateCol.Name = "PurchaseDateCol";
-            PurchaseDateCol.ReadOnly = true;
-            // 
-            // AdjustedByCol
-            // 
-            AdjustedByCol.FillWeight = 25F;
-            AdjustedByCol.HeaderText = "Adjusted By";
-            AdjustedByCol.Name = "AdjustedByCol";
-            AdjustedByCol.ReadOnly = true;
+            AllAdjustmentItemsDatagrid.DefaultCellStyle = dataGridViewCellStyle3;
+            AllAdjustmentItemsDatagrid.EnableHeadersVisualStyles = false;
+            AllAdjustmentItemsDatagrid.GridColor = Color.FromArgb(216, 178, 178);
+            AllAdjustmentItemsDatagrid.HeaderBackColor = Color.Maroon;
+            AllAdjustmentItemsDatagrid.HeaderBgColor = Color.Empty;
+            AllAdjustmentItemsDatagrid.HeaderForeColor = Color.White;
+            AllAdjustmentItemsDatagrid.Location = new Point(10, 68);
+            AllAdjustmentItemsDatagrid.Name = "AllAdjustmentItemsDatagrid";
+            AllAdjustmentItemsDatagrid.ReadOnly = true;
+            AllAdjustmentItemsDatagrid.RowHeadersVisible = false;
+            AllAdjustmentItemsDatagrid.RowTemplate.Height = 40;
+            AllAdjustmentItemsDatagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            AllAdjustmentItemsDatagrid.Size = new Size(878, 464);
+            AllAdjustmentItemsDatagrid.TabIndex = 10;
+            AllAdjustmentItemsDatagrid.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             // 
             // Pagination
             // 
@@ -532,6 +504,34 @@
             PaginationNext.Zoom = 20;
             PaginationNext.ZoomSpeed = 10;
             // 
+            // IdCol
+            // 
+            IdCol.HeaderText = "PurchaseId";
+            IdCol.Name = "IdCol";
+            IdCol.ReadOnly = true;
+            IdCol.Visible = false;
+            // 
+            // ReferenceNoCol
+            // 
+            ReferenceNoCol.FillWeight = 40F;
+            ReferenceNoCol.HeaderText = "Reference No";
+            ReferenceNoCol.Name = "ReferenceNoCol";
+            ReferenceNoCol.ReadOnly = true;
+            // 
+            // OperatedDateCol
+            // 
+            OperatedDateCol.FillWeight = 35F;
+            OperatedDateCol.HeaderText = "Date";
+            OperatedDateCol.Name = "OperatedDateCol";
+            OperatedDateCol.ReadOnly = true;
+            // 
+            // AdjustedByCol
+            // 
+            AdjustedByCol.FillWeight = 25F;
+            AdjustedByCol.HeaderText = "Adjusted By";
+            AdjustedByCol.Name = "AdjustedByCol";
+            AdjustedByCol.ReadOnly = true;
+            // 
             // ItemAdjustment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -546,7 +546,7 @@
             Load += ItemAdjustment_Load;
             TopPanel.ResumeLayout(false);
             MainContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)AllPurchaseDatagridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AllAdjustmentItemsDatagrid).EndInit();
             Pagination.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -559,14 +559,14 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 PurchaseReportBtn;
         private Bunifu.UI.WinForms.BunifuTextBox SearchBox;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 AdjustItemBTN;
-        private Bunifu.UI.WinForms.BunifuDataGridView AllPurchaseDatagridView;
+        private Bunifu.UI.WinForms.BunifuDataGridView AllAdjustmentItemsDatagrid;
         private Panel Pagination;
         private Label PaginationLabel;
         private Bunifu.UI.WinForms.BunifuImageButton PaginationPREV;
         private Bunifu.UI.WinForms.BunifuImageButton PaginationNext;
         private DataGridViewTextBoxColumn IdCol;
         private DataGridViewTextBoxColumn ReferenceNoCol;
-        private DataGridViewTextBoxColumn PurchaseDateCol;
+        private DataGridViewTextBoxColumn OperatedDateCol;
         private DataGridViewTextBoxColumn AdjustedByCol;
     }
 }

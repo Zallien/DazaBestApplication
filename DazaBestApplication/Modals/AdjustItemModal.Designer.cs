@@ -327,6 +327,7 @@
             AllItemDatagridview.Location = new Point(10, 85);
             AllItemDatagridview.MultiSelect = false;
             AllItemDatagridview.Name = "AllItemDatagridview";
+            AllItemDatagridview.ReadOnly = true;
             AllItemDatagridview.RowHeadersVisible = false;
             dataGridViewCellStyle5.Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             AllItemDatagridview.RowsDefaultCellStyle = dataGridViewCellStyle5;
@@ -343,6 +344,7 @@
             ALLI_ItemIdCol.FillWeight = 10F;
             ALLI_ItemIdCol.HeaderText = "Id";
             ALLI_ItemIdCol.Name = "ALLI_ItemIdCol";
+            ALLI_ItemIdCol.ReadOnly = true;
             ALLI_ItemIdCol.Visible = false;
             // 
             // ALLI_ItemCodeCol
@@ -350,6 +352,7 @@
             ALLI_ItemCodeCol.FillWeight = 30F;
             ALLI_ItemCodeCol.HeaderText = "Code";
             ALLI_ItemCodeCol.Name = "ALLI_ItemCodeCol";
+            ALLI_ItemCodeCol.ReadOnly = true;
             // 
             // ALLI_ItemNameCol
             // 
@@ -358,6 +361,7 @@
             ALLI_ItemNameCol.FillWeight = 70F;
             ALLI_ItemNameCol.HeaderText = "Item Name";
             ALLI_ItemNameCol.Name = "ALLI_ItemNameCol";
+            ALLI_ItemNameCol.ReadOnly = true;
             // 
             // AllProductsContainer
             // 
@@ -555,6 +559,7 @@
             removeitempickedbutton.WaitOnLoad = false;
             removeitempickedbutton.Zoom = 10;
             removeitempickedbutton.ZoomSpeed = 10;
+            removeitempickedbutton.Click += removeitempickedbutton_Click;
             // 
             // bunifuButton1
             // 

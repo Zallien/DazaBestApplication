@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SystemBackEnd.ServiceModels;
+using SystemBackEnd.Services;
+using SystemBackEnd;
 
 namespace DazaBestApplication.Pages
 {
@@ -16,6 +19,12 @@ namespace DazaBestApplication.Pages
     {
         private Form MainForm;
         private AdjustItemModalViewModel adjustItemModalViewModel = new();
+        private List<AdjustItemHeaderwithOperatedName> _theadjustitemheaderlist = new();
+
+        //for Products Pagination
+        private int pagenumber = 1;
+        private int itemperpage = 12;
+        private int maxpagenumber = 0;
 
         //Constructor
         public ItemAdjustment(Form mainForm)
@@ -23,11 +32,56 @@ namespace DazaBestApplication.Pages
             InitializeComponent();
             MainForm = mainForm;
         }
+        //Get AdjustItemHeader
+        private async Task<List<AdjustItemHeaderwithOperatedName>> GetAdjustItemHeader()
+        {
+            List<AdjustItemHeaderwithOperatedName> thelist = new();
+            try
+            {
+                SearchItem _info = new SearchItem()
+                {
+                    ItemperPage = itemperpage,
+                    PageNumber = pagenumber,
+                    SearchValue = ""
+                };
+                AdjustItemServices service = new AdjustItemServices(new BackEndDBContext());
+                thelist = await service.GetAdjustItemHeader(_info);
+            }
+            catch (Exception e)
+            {
+                
+            }
+            return thelist;
+        }
+        //Popolate the DatagridHeader
+        private async Task PopulateHeaderDatagridview()
+        {
+            try
+            {
+                _theadjustitemheaderlist = await GetAdjustItemHeader();
+                AllAdjustmentItemsDatagrid.Rows.Clear();
+                foreach (var item in _theadjustitemheaderlist)
+                {
+                    int index = AllAdjustmentItemsDatagrid.Rows.Add();
+                    DataGridViewRow row = AllAdjustmentItemsDatagrid.Rows[index];
+                    row.Cells["IdCol"].Value = item.ReferenceHeaderId;
+                    row.Cells["ReferenceNoCol"].Value = item.ReferenceNumber;
+                    row.Cells["OperatedDateCol"].Value = item.DateCreated;
+                    row.Cells["AdjustedByCol"].Value = item.OperatedByName;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+
 
         //Main Load
-        private void ItemAdjustment_Load(object sender, EventArgs e)
+        private async void ItemAdjustment_Load(object sender, EventArgs e)
         {
-
+            await PopulateHeaderDatagridview();
         }
 
         //Show Adjust Item Modal

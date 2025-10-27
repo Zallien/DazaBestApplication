@@ -69,5 +69,33 @@ namespace SystemBackEnd.Services
             }
             return isAdded; 
         }
+        //Get Header List
+        public async Task<List<AdjustItemHeaderwithOperatedName>> GetAdjustItemHeader(SearchItem searchvalue)
+        {
+            List<AdjustItemHeaderwithOperatedName> _thelist = new();
+            try
+            {
+                //TO BE FIX WHEN ACCOUNT IS FIXED
+                _thelist = await ( from a in _db.ItemAdjustmentHeader
+                                   //join b in _db.Accounts
+                                   //on a.OperatedBy equals b.AccountId
+                                   orderby a.DateOperated descending
+                                   select new AdjustItemHeaderwithOperatedName
+                                   {
+                                       DateCreated = a.DateOperated,
+                                       OperatedByName = "No Account Yet",
+                                       ReferenceHeaderId = a.ReferenceHeaderId,
+                                       ReferenceNumber = a.ReferenceNumber
+                                   }).Skip((searchvalue.PageNumber - 1) * searchvalue.ItemperPage)
+                                   .Take(searchvalue.ItemperPage)
+                                   .ToListAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return _thelist;
+        }
     }
 }
