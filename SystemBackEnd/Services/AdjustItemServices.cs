@@ -97,5 +97,45 @@ namespace SystemBackEnd.Services
             }
             return _thelist;
         }
+        //Get ViewAdjustItem Details
+        public async Task<ViewAdjustItem> GetViewAdjustItem(Guid theHeaderId)
+        {
+            ViewAdjustItem viewAdjustItem = new ViewAdjustItem();
+            try
+            {
+
+                var theheader = await _db.ItemAdjustmentHeader.Where(x => x.ReferenceHeaderId == theHeaderId).FirstOrDefaultAsync();
+                var theitems = await (from a in _db.ItemAdjustmentDetails
+                                                                  join b in _db.Items
+                                                                  on a.ItemId equals b.ItemID
+                                                                  where a.ReferenceHeaderId == theHeaderId
+                                                                  select new AdjustItemDetailswithItemName
+                                                                  {
+                                                                      ItemId = a.ItemId,
+                                                                      ItemName = b.ItemName,
+                                                                      ReferenceDetailsId = a.ReferenceDetailsId,
+                                                                      Reason = a.Reason,
+                                                                      ReferenceHeaderId = a.ReferenceHeaderId,
+                                                                      RemovedQuantity = a.RemovedQuantity,
+                                                                  }).ToListAsync();
+                if (theitems != null)
+                {
+                    viewAdjustItem.AdjustItemDetailswithName = theitems;
+                }
+                if (theheader != null)
+                {
+                    viewAdjustItem.AdjustItemHeader = theheader;
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return viewAdjustItem;
+        }
+
+
+
     }
 }

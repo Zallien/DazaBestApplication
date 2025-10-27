@@ -1050,7 +1050,7 @@
             Modaltitle.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Modaltitle.Location = new Point(0, 0);
             Modaltitle.Name = "Modaltitle";
-            Modaltitle.Size = new Size(239, 34);
+            Modaltitle.Size = new Size(351, 34);
             Modaltitle.TabIndex = 0;
             Modaltitle.Text = "Adjust Items";
             Modaltitle.TextAlign = ContentAlignment.MiddleLeft;

@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SystemBackEnd;
+using SystemBackEnd.EventHandlers;
 using SystemBackEnd.Models;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
@@ -25,6 +27,11 @@ namespace DazaBestApplication.Modals
         private AdjustmentItemFullInformation adjustmentItemFullInformation = new AdjustmentItemFullInformation();
         private Panel OverlayPanel;
 
+        //ForViewOnly
+        private Guid? AdjustItemHeaderId;
+        private string AdjustItemReferenceNumber;
+
+
         //for Products Pagination
         private int Productcurrentpage = 1;
         private int Productitemperpage = 12;
@@ -37,6 +44,7 @@ namespace DazaBestApplication.Modals
         {
             InitializeComponent();
             adjustItemModalViewModel = _AdjustItemModalViewModel;
+            CheckModalAction();
         }
         //Open All Product Panel
         private async Task OpenAllProductsPanel()
@@ -208,6 +216,7 @@ namespace DazaBestApplication.Modals
                 bool success = await DoneAdjustments();
                 if (success)
                 {
+                    await AdjustItemEventHandler.InvokeAdjustItemNotifier();
                     MessageBox.Show("Successfully Added", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CloseAdjustItemModal();
                 }
@@ -264,8 +273,56 @@ namespace DazaBestApplication.Modals
                 MessageBox.Show("Error Occured", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //Check ModalAction
+        private async Task CheckModalAction()
+        {
+            //adjustItemModalViewModel
+            if (adjustItemModalViewModel.Action == "ViewItems")
+            {
+                AdjustItemHeaderId = adjustItemModalViewModel.EditPurchaseItemHeaderId;
+                AdjustItemReferenceNumber = adjustItemModalViewModel.ForViewOnly.AdjustItemHeader.ReferenceNumber;
 
+                //AllpickedItemswithReason
+                foreach (var item in adjustItemModalViewModel.ForViewOnly.AdjustItemDetailswithName)
+                {
+                    AdjustmentInformations _new = new AdjustmentInformations()
+                    {
+                        ItemId = item.ItemId,
+                        ItemName = item.ItemName,
+                        ItemQuantity = item.RemovedQuantity,
+                        Reason = item.Reason
+                    };
+                    AllpickedItemswithReason.Add(_new);
+                    AllSelectedProducts.Add(item.ItemId);
+                }
 
+                await PopulateAllPickedItems();
+                Modaltitle.Text = AdjustItemReferenceNumber;
+                bunifuButton1.Visible = false;
+                removeitempickedbutton.Visible = false;
+                AddAdjustmentItemInformationsBTN.Text = "Ok";
+            }
+        }
+        //Populate to Selected Item DatagridView
+        private async Task PopulateAllPickedItems()
+        {
+            try
+            {
+                foreach (var item in AllpickedItemswithReason)
+                {
+                    int index = AllPickedItems.Rows.Add();
+                    DataGridViewRow row = AllPickedItems.Rows[index];
+                    row.Cells["IdCol"].Value = item.ItemId;
+                    row.Cells["ItemNameCol"].Value = item.ItemName;
+                    row.Cells["ItemQuantityCol"].Value = item.ItemQuantity;
+                    row.Cells["ReasonCol"].Value = item.Reason;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
 
 
 

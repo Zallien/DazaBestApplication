@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
 using SystemBackEnd;
+using SystemBackEnd.EventHandlers;
 
 namespace DazaBestApplication.Pages
 {
@@ -49,7 +50,7 @@ namespace DazaBestApplication.Pages
             }
             catch (Exception e)
             {
-                
+
             }
             return thelist;
         }
@@ -75,6 +76,20 @@ namespace DazaBestApplication.Pages
                 MessageBox.Show(e.Message);
             }
         }
+        //View Adjustment Details
+        private async Task ViewAdjustmentItemDetails(Guid theheaderId)
+        {
+            AdjustItemServices service = new AdjustItemServices(new BackEndDBContext());
+            ViewAdjustItem viewAdjustItem = await service.GetViewAdjustItem(theheaderId);
+            adjustItemModalViewModel = new AdjustItemModalViewModel()
+            {
+                Action = "ViewItems",
+                EditPurchaseItemHeaderId = theheaderId,
+                ForViewOnly = viewAdjustItem
+            };
+            await ShowItemAdjustmentModal();
+
+        }
 
 
 
@@ -82,6 +97,7 @@ namespace DazaBestApplication.Pages
         private async void ItemAdjustment_Load(object sender, EventArgs e)
         {
             await PopulateHeaderDatagridview();
+            AdjustItemEventHandler.AdjustItemNotifier += PopulateHeaderDatagridview;
         }
 
         //Show Adjust Item Modal
@@ -112,10 +128,6 @@ namespace DazaBestApplication.Pages
 
 
 
-
-
-
-
         //---Events---
         private async void AdjustItemBTN_Click(object sender, EventArgs e)
         {
@@ -126,6 +138,15 @@ namespace DazaBestApplication.Pages
                 ForViewOnly = null
             };
             await ShowItemAdjustmentModal();
+        }
+
+        private void AllAdjustmentItemsDatagrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                Guid _selectedpurchaseheaderid = Guid.Parse(AllAdjustmentItemsDatagrid.Rows[e.RowIndex].Cells["IdCol"].Value.ToString());
+                ViewAdjustmentItemDetails(_selectedpurchaseheaderid);
+            }
         }
     }
 }

@@ -45,14 +45,14 @@
             SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
             AdjustItemBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             AllAdjustmentItemsDatagrid = new Bunifu.UI.WinForms.BunifuDataGridView();
-            Pagination = new Panel();
-            PaginationLabel = new Label();
-            PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
-            PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
             IdCol = new DataGridViewTextBoxColumn();
             ReferenceNoCol = new DataGridViewTextBoxColumn();
             OperatedDateCol = new DataGridViewTextBoxColumn();
             AdjustedByCol = new DataGridViewTextBoxColumn();
+            Pagination = new Panel();
+            PaginationLabel = new Label();
+            PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
+            PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllAdjustmentItemsDatagrid).BeginInit();
@@ -414,6 +414,35 @@
             AllAdjustmentItemsDatagrid.Size = new Size(878, 464);
             AllAdjustmentItemsDatagrid.TabIndex = 10;
             AllAdjustmentItemsDatagrid.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
+            AllAdjustmentItemsDatagrid.CellDoubleClick += AllAdjustmentItemsDatagrid_CellDoubleClick;
+            // 
+            // IdCol
+            // 
+            IdCol.HeaderText = "PurchaseId";
+            IdCol.Name = "IdCol";
+            IdCol.ReadOnly = true;
+            IdCol.Visible = false;
+            // 
+            // ReferenceNoCol
+            // 
+            ReferenceNoCol.FillWeight = 40F;
+            ReferenceNoCol.HeaderText = "Reference No";
+            ReferenceNoCol.Name = "ReferenceNoCol";
+            ReferenceNoCol.ReadOnly = true;
+            // 
+            // OperatedDateCol
+            // 
+            OperatedDateCol.FillWeight = 35F;
+            OperatedDateCol.HeaderText = "Date";
+            OperatedDateCol.Name = "OperatedDateCol";
+            OperatedDateCol.ReadOnly = true;
+            // 
+            // AdjustedByCol
+            // 
+            AdjustedByCol.FillWeight = 25F;
+            AdjustedByCol.HeaderText = "Adjusted By";
+            AdjustedByCol.Name = "AdjustedByCol";
+            AdjustedByCol.ReadOnly = true;
             // 
             // Pagination
             // 
@@ -503,34 +532,6 @@
             PaginationNext.WaitOnLoad = false;
             PaginationNext.Zoom = 20;
             PaginationNext.ZoomSpeed = 10;
-            // 
-            // IdCol
-            // 
-            IdCol.HeaderText = "PurchaseId";
-            IdCol.Name = "IdCol";
-            IdCol.ReadOnly = true;
-            IdCol.Visible = false;
-            // 
-            // ReferenceNoCol
-            // 
-            ReferenceNoCol.FillWeight = 40F;
-            ReferenceNoCol.HeaderText = "Reference No";
-            ReferenceNoCol.Name = "ReferenceNoCol";
-            ReferenceNoCol.ReadOnly = true;
-            // 
-            // OperatedDateCol
-            // 
-            OperatedDateCol.FillWeight = 35F;
-            OperatedDateCol.HeaderText = "Date";
-            OperatedDateCol.Name = "OperatedDateCol";
-            OperatedDateCol.ReadOnly = true;
-            // 
-            // AdjustedByCol
-            // 
-            AdjustedByCol.FillWeight = 25F;
-            AdjustedByCol.HeaderText = "Adjusted By";
-            AdjustedByCol.Name = "AdjustedByCol";
-            AdjustedByCol.ReadOnly = true;
             // 
             // ItemAdjustment
             // 
