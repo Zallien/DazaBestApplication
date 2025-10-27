@@ -148,5 +148,36 @@ namespace DazaBestApplication.Pages
                 ViewAdjustmentItemDetails(_selectedpurchaseheaderid);
             }
         }
+
+        private void AllAdjustmentItemsDatagrid_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            const int NumberOnlyCol = 0;
+            const int LetterOnlyCol = 0;
+            if (AllAdjustmentItemsDatagrid.CurrentCell.ColumnIndex == NumberOnlyCol)
+            {
+                e.Control.KeyPress -= new KeyPressEventHandler(DataGridView_NumberOnly_KeyPress);
+                e.Control.KeyPress += new KeyPressEventHandler(DataGridView_NumberOnly_KeyPress);
+            }
+            else if (AllAdjustmentItemsDatagrid.CurrentCell.ColumnIndex == LetterOnlyCol)
+            {
+                e.Control.KeyPress -= new KeyPressEventHandler(DataGridView_LettersOnly_KeyPress);
+                e.Control.KeyPress += new KeyPressEventHandler(DataGridView_LettersOnly_KeyPress);
+            }
+
+        }
+        private void DataGridView_NumberOnly_KeyPress(object? sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void DataGridView_LettersOnly_KeyPress(object? sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
