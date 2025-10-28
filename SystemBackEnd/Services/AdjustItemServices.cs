@@ -144,7 +144,7 @@ namespace SystemBackEnd.Services
                 var item = await _db.Items.FirstOrDefaultAsync(x => x.ItemID ==  ItemId);
                 if (item != null)
                 {
-                    bool acceptable = item.BalanceStocks > stockInput? true : false;
+                    bool acceptable = item.BalanceStocks >= stockInput? true : false;
                     isStockAcceptable = acceptable;
                     return isStockAcceptable;
                 }
