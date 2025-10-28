@@ -360,7 +360,7 @@ namespace DazaBestApplication.Modals
                 e.Handled = true;
             }
         }
-        //Patanggal 
+        //Patanggal
         private void AllPickedItems_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             const int NUMBER_COLUMN_INDEX = 2;
@@ -421,8 +421,7 @@ namespace DazaBestApplication.Modals
                 AddAdjustmentInfo(theId, itemname);
             }
         }
-
-        private void AllPickedItems_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private async void AllPickedItems_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
 
             try
@@ -450,7 +449,9 @@ namespace DazaBestApplication.Modals
 
                     decimal qty = 1;
                     string qtyValue = row.Cells["ItemQuantityCol"].Value?.ToString();
-                    if (!decimal.TryParse(qtyValue, out qty) || qty <= 0)
+                    AdjustItemServices service = new AdjustItemServices(new BackEndDBContext());
+                    bool acceptable = await service.CheckItemStock(theId, decimal.Parse(qtyValue));
+                    if ((!decimal.TryParse(qtyValue, out qty) || qty <= 0) || !acceptable)
                     {
                         qty = 1;
                         row.Cells["ItemQuantityCol"].Value = qty;
@@ -464,7 +465,6 @@ namespace DazaBestApplication.Modals
             }
 
         }
-
         private void AllPickedItems_EditingControlShowing_1(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             const int NUMBER_COLUMN_INDEX = 2;

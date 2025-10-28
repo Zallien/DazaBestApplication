@@ -46,6 +46,7 @@ namespace SystemBackEnd.Services
                         RemovedQuantity = item.ItemQuantity,
                         Reason = item.Reason,
                     };
+                    await UpdateBalanceStock(item.ItemId, item.ItemQuantity);
                     await _db.AddAsync(details);
                 }
                 await _db.SaveChangesAsync();
@@ -134,8 +135,44 @@ namespace SystemBackEnd.Services
 
             return viewAdjustItem;
         }
+        //Check ItemStock
+        public async Task<bool> CheckItemStock(Guid ItemId, decimal stockInput)
+        {
+            bool isStockAcceptable = false;
+            try
+            {
+                var item = await _db.Items.FirstOrDefaultAsync(x => x.ItemID ==  ItemId);
+                if (item != null)
+                {
+                    bool acceptable = item.BalanceStocks > stockInput? true : false;
+                    isStockAcceptable = acceptable;
+                    return isStockAcceptable;
+                }
 
+            }
+            catch (Exception)
+            {
+                
+            }
+            return isStockAcceptable;
+        }
 
+        //Update Inventory Stocks
+        private async Task UpdateBalanceStock(Guid itemId, decimal stockremoved)
+        {
+            try
+            {
+                var item = await _db.Items.FirstOrDefaultAsync(x => x.ItemID == itemId);
+                if (item != null)
+                {
+                    item.BalanceStocks -= stockremoved;
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
 
     }
 }
