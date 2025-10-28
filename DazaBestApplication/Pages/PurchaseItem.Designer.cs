@@ -487,6 +487,7 @@
             AllPurchaseDatagridView.Size = new Size(890, 464);
             AllPurchaseDatagridView.TabIndex = 10;
             AllPurchaseDatagridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
+            AllPurchaseDatagridView.CellContentClick += AllPurchaseDatagridView_CellContentClick;
             AllPurchaseDatagridView.CellDoubleClick += AllPurchaseDatagridView_CellDoubleClick;
             // 
             // IdCol
