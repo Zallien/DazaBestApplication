@@ -15,6 +15,6 @@ namespace SystemBackEnd.Models
         public Guid ReferenceHeaderId { get; set; }
         public Guid ItemId { get; set; }
         public string? Reason { get; set; }
-        public int RemovedQuantity { get; set; }
+        public decimal RemovedQuantity { get; set; }
     }
 }

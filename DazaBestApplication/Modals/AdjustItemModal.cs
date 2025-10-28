@@ -321,7 +321,7 @@ namespace DazaBestApplication.Modals
             }
         }
         //Update Values
-        private async Task UpdateValuesfromSelectedItems(Guid theid, string updatedReason, int updatedQuantity)
+        private async Task UpdateValuesfromSelectedItems(Guid theid, string updatedReason, decimal updatedQuantity)
         {
             var tobeupdated = AllpickedItemswithReason.FirstOrDefault(x => x.ItemId == theid);
             if (tobeupdated != null)
@@ -448,9 +448,9 @@ namespace DazaBestApplication.Modals
                         row.Cells["ReasonCol"].Value = reason;
                     }
 
-                    int qty = 1;
+                    decimal qty = 1;
                     string qtyValue = row.Cells["ItemQuantityCol"].Value?.ToString();
-                    if (!int.TryParse(qtyValue, out qty) || qty <= 0)
+                    if (!decimal.TryParse(qtyValue, out qty) || qty <= 0)
                     {
                         qty = 1;
                         row.Cells["ItemQuantityCol"].Value = qty;

@@ -11,6 +11,6 @@ namespace SystemBackEnd.ServiceModels
         public Guid ItemId { get; set; }
         public string ItemName { get; set; }
         public string Reason { get; set; }
-        public int ItemQuantity { get; set; }
+        public decimal ItemQuantity { get; set; }
     }
 }
