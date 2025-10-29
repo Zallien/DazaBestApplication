@@ -144,7 +144,12 @@ namespace DazaBestApplication.Pages
         //Open Adjust Item Modal Button
         private void AdjustProductBTN_Click(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void AllPurchaseDatagridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

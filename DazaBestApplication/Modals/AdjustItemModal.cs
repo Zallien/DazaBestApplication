@@ -389,6 +389,7 @@ namespace DazaBestApplication.Modals
         private async void bunifuButton1_Click(object sender, EventArgs e)
         {
             await OpenAllProductsPanel();
+            
         }
         private void CloseAllPModal_Click(object sender, EventArgs e)
         {

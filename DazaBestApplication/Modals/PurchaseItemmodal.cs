@@ -162,7 +162,7 @@ namespace DazaBestApplication.Modals
                 row.Cells["ItemQuantityCol"].Value = _purchaseitemmodal.Action == "AddItemStock" ? "1" : item.Quantity.ToString();
                 row.Cells["ItemPriceCol"].Value = item.Unitprice?.ToString("0.00") ?? "0.00";
                 row.Cells["ItemTotalCol"].Value = UpdateTotalAmount(
-                    int.Parse(row.Cells["ItemQuantityCol"].Value.ToString() ?? "1"),
+                    decimal.Parse(row.Cells["ItemQuantityCol"].Value.ToString() ?? "1"),
                     decimal.Parse(row.Cells["ItemPriceCol"].Value.ToString() ?? "0.00")
                     ).Result.ToString();
             }
