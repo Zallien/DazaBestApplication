@@ -31,9 +31,9 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(accountPage));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -49,7 +49,6 @@
             UsernameCol = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
             panel4 = new Panel();
-            tableLayoutPanel1 = new TableLayoutPanel();
             EditButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             RemoveButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             AddProductBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
@@ -66,7 +65,6 @@
             ((System.ComponentModel.ISupportInitialize)AllAccountsDatagridView).BeginInit();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             Pagination.SuspendLayout();
@@ -204,31 +202,14 @@
             // 
             // panel4
             // 
-            panel4.Controls.Add(tableLayoutPanel1);
+            panel4.Controls.Add(RemoveButton);
+            panel4.Controls.Add(EditButton);
+            panel4.Controls.Add(AddProductBTN);
             panel4.Dock = DockStyle.Fill;
             panel4.Location = new Point(10, 0);
             panel4.Name = "panel4";
             panel4.Size = new Size(519, 60);
             panel4.TabIndex = 15;
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 4;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 29.4117641F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 29.4117641F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 29.4117641F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.7647057F));
-            tableLayoutPanel1.Controls.Add(EditButton, 2, 0);
-            tableLayoutPanel1.Controls.Add(RemoveButton, 1, 0);
-            tableLayoutPanel1.Controls.Add(AddProductBTN, 0, 0);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.Padding = new Padding(10);
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(519, 60);
-            tableLayoutPanel1.TabIndex = 0;
             // 
             // EditButton
             // 
@@ -249,11 +230,11 @@
             EditButton.ButtonTextMarginLeft = 0;
             EditButton.ColorContrastOnClick = 45;
             EditButton.ColorContrastOnHover = 45;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            EditButton.CustomizableEdges = borderEdges1;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            EditButton.CustomizableEdges = borderEdges2;
             EditButton.DialogResult = DialogResult.None;
             EditButton.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             EditButton.DisabledFillColor = Color.FromArgb(204, 204, 204);
@@ -277,7 +258,7 @@
             EditButton.IdleIconLeftImage = Properties.Resources.compose;
             EditButton.IdleIconRightImage = null;
             EditButton.IndicateFocus = false;
-            EditButton.Location = new Point(305, 13);
+            EditButton.Location = new Point(292, 15);
             EditButton.Name = "EditButton";
             EditButton.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             EditButton.OnDisabledState.BorderRadius = 1;
@@ -338,11 +319,11 @@
             RemoveButton.ButtonTextMarginLeft = 0;
             RemoveButton.ColorContrastOnClick = 45;
             RemoveButton.ColorContrastOnHover = 45;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            RemoveButton.CustomizableEdges = borderEdges2;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            RemoveButton.CustomizableEdges = borderEdges1;
             RemoveButton.DialogResult = DialogResult.None;
             RemoveButton.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             RemoveButton.DisabledFillColor = Color.FromArgb(204, 204, 204);
@@ -366,7 +347,7 @@
             RemoveButton.IdleIconLeftImage = Properties.Resources.trashcan;
             RemoveButton.IdleIconRightImage = null;
             RemoveButton.IndicateFocus = false;
-            RemoveButton.Location = new Point(159, 13);
+            RemoveButton.Location = new Point(146, 15);
             RemoveButton.Name = "RemoveButton";
             RemoveButton.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             RemoveButton.OnDisabledState.BorderRadius = 1;
@@ -455,7 +436,7 @@
             AddProductBTN.IdleIconLeftImage = Properties.Resources.plus__1_;
             AddProductBTN.IdleIconRightImage = null;
             AddProductBTN.IndicateFocus = false;
-            AddProductBTN.Location = new Point(13, 13);
+            AddProductBTN.Location = new Point(0, 15);
             AddProductBTN.Name = "AddProductBTN";
             AddProductBTN.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             AddProductBTN.OnDisabledState.BorderRadius = 1;
@@ -787,7 +768,6 @@
             ((System.ComponentModel.ISupportInitialize)AllAccountsDatagridView).EndInit();
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel2.ResumeLayout(false);
             Pagination.ResumeLayout(false);
@@ -809,7 +789,6 @@
         private Panel panel3;
         private Bunifu.UI.WinForms.BunifuTextBox SearchBox;
         private Panel panel4;
-        private TableLayoutPanel tableLayoutPanel1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton22;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 AddProductBTN;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 RemoveButton;
