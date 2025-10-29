@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SystemBackEnd;
 
@@ -10,9 +11,11 @@ using SystemBackEnd;
 namespace SystemBackEnd.Migrations
 {
     [DbContext(typeof(BackEndDBContext))]
-    partial class DbcontextModelSnapshot : ModelSnapshot
+    [Migration("20251029080926_UpdateAccountTable")]
+    partial class UpdateAccountTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.9");
@@ -36,9 +39,6 @@ namespace SystemBackEnd.Migrations
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsOwner")
                         .HasColumnType("INTEGER");

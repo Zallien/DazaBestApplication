@@ -4,6 +4,8 @@ using System.Configuration;
 using SystemBackEnd;
 using System.Text.Json;
 using DazaBestApplication.Models_and_Helpers;
+using SystemBackEnd.ServiceModels;
+using DazaBestApplication.Pages;
 
 
 namespace DazaBestApplication
@@ -12,6 +14,9 @@ namespace DazaBestApplication
     {
         public static Size WorkspaceSize { get; set; }
         public static ConfigurationModel? theconfig { get; set; }
+        public static LoggedinAccount theLoggedInAccount { get; set; }
+
+
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -35,7 +40,7 @@ namespace DazaBestApplication
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainPage());
+            Application.Run(new Log_in());
         }
 
 

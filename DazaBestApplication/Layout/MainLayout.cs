@@ -2,6 +2,7 @@ using Bunifu.UI.WinForms;
 using DazaBestApplication.Layout;
 using DazaBestApplication.Pages;
 using System.Windows.Forms;
+using SystemBackEnd.ServiceModels;
 
 namespace DazaBestApplication
 {
@@ -10,6 +11,9 @@ namespace DazaBestApplication
         List<Panel> AllPanels;
         Form MainContainerForm = null;
         private BunifuTransition BunifuTransition = new();
+        private LoggedinAccount theLoggedInAccount;
+
+
 
         public MainPage()
         {
@@ -45,6 +49,7 @@ namespace DazaBestApplication
 
         private void MainPage_Load(object sender, EventArgs e)
         {
+            theLoggedInAccount = Program.theLoggedInAccount;
 
         }
         //Maximize the System AUTOMATICALLY
@@ -192,6 +197,7 @@ namespace DazaBestApplication
             MainContainerForm.Show();
         }
 
+
         //Open Item Inventory Page
         private void NavButton_Item_Click(object sender, EventArgs e)
         {
@@ -291,6 +297,11 @@ namespace DazaBestApplication
         {
             //inventory record
             ShowInventoryRecordmPage();
+        }
+
+        private void AccountsManagementBTN_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

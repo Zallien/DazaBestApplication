@@ -7,14 +7,111 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemBackEnd;
+using SystemBackEnd.Models;
+using SystemBackEnd.ServiceModels;
+using SystemBackEnd.Services;
 
 namespace DazaBestApplication.Pages
 {
     public partial class Log_in : Form
     {
+        private LoggedinAccount LoggedinAccount;
+        private LoginServices LoginServices;
+        private RegisterAccount regAcc;
+
+
         public Log_in()
         {
             InitializeComponent();
+            MaximizeSystem();
+            LoggedinAccount = Program.theLoggedInAccount;
+        }
+
+        //Maximize the System AUTOMATICALLY
+        private void MaximizeSystem()
+        {
+            var screensize = Screen.PrimaryScreen.Bounds;
+            Program.WorkspaceSize = screensize.Size;
+            this.Size = screensize.Size;
+            this.Location = screensize.Location;
+        }
+        //Checks If Theres Currenly Logged In Account or User
+        private async Task CheckLoggedAccount()
+        {
+            if (LoggedinAccount != null)
+            {
+                MainPage mainPage = new MainPage();
+                mainPage.Show();
+                this.Close();
+            }
+        }
+        //Add DeveloperAccount
+        private async Task AddDevAccount()
+        {
+            LoginServices = new LoginServices(new BackEndDBContext());
+            regAcc = new RegisterAccount()
+            {
+                Firstname = "System",
+                Lastname = "Administration",
+                Username = "admin",
+                Password = "admin"
+            };
+            bool addedsuccessfully = await LoginServices.RegisterAccountAsync(regAcc);
+            if (addedsuccessfully == true)
+            {
+                MessageBox.Show("Dev Account Added");
+            }
+        }
+        //Login User
+        private async Task LoginUser()
+        {
+            bool loginsuccess = false;
+            string username;
+            string password;
+            username = Usernametxtbox.Text;
+            password = Passwordtxtbox.Text;
+            LoginServices = new LoginServices(new BackEndDBContext());
+            try
+            {
+                loginsuccess = await LoginServices.LoginAccountAsync(username, password);
+                if (!loginsuccess)
+                {
+                    MessageBox.Show("Account Not Found", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    LoginServices = new LoginServices(new BackEndDBContext());
+                    Program.theLoggedInAccount = await LoginServices.GetAccountInfo(username);
+                    MainPage mainPage = new MainPage();
+                    mainPage.Show();
+                    this.Hide();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+        }
+
+
+
+        //Main Load
+        private async void Log_in_Load(object sender, EventArgs e)
+        {
+            await CheckLoggedAccount();
+            LoginServices = new LoginServices(new BackEndDBContext());
+            int acccounts = await LoginServices.AccountsCounts();
+            if (acccounts <= 0)
+            {
+                await AddDevAccount();
+            }
+        }
+
+        private async void Login_btn_Click(object sender, EventArgs e)
+        {
+            await LoginUser();
         }
     }
 }

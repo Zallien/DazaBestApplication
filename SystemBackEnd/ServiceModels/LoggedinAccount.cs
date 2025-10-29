@@ -1,28 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SystemBackEnd.Models
+namespace SystemBackEnd.ServiceModels
 {
-    public class Accounts
+    public class LoggedinAccount
     {
-        [Key]
-        public int Row { get; set; }
         public Guid AccountId { get; set; }
         public string AccountNumber { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Fullname
-        {
-            get { return $"{FirstName} {LastName}"; }
-        }
+        public string Fullname { get; set; }
         public DateTime DateCreated { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public bool IsOwner { get; set; }
-        public bool IsActive { get; set; }
     }
 }
