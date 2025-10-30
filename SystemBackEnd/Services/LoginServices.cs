@@ -43,13 +43,13 @@ namespace SystemBackEnd.Services
                 return false; // username already exists
 
             string hashedPassword = HashPassword(registeredaccount.Password);
-
+            Guid theaccid = Guid.NewGuid();
             var newAccount = new Accounts
             {
                 Username = registeredaccount.Username,
                 Password = hashedPassword,
                 DateCreated = DateTime.Now,
-                AccountId = Guid.NewGuid(),
+                AccountId = theaccid,
                 AccountNumber = "",
                 IsActive = true,
                 IsOwner = registeredaccount.IsOwner,
@@ -59,6 +59,14 @@ namespace SystemBackEnd.Services
 
             _db.Accounts.Add(newAccount);
             await _db.SaveChangesAsync();
+            var updateaccountnumber = await _db.Accounts.FirstOrDefaultAsync(y => y.AccountId == theaccid);
+            if (updateaccountnumber != null)
+            {
+                updateaccountnumber.AccountNumber = $"DazaAcc-{updateaccountnumber.Row.ToString("D3")}";
+                _db.Update(updateaccountnumber);
+                await _db.SaveChangesAsync();
+            }
+
             return true;
         }
 
