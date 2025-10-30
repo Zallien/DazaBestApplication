@@ -113,5 +113,10 @@ namespace DazaBestApplication.Pages
         {
             await LoginUser();
         }
+
+        private void FormControlBox_CloseClicked(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

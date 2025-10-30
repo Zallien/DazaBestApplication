@@ -48,7 +48,13 @@ namespace SystemBackEnd.Services
             {
                 Username = registeredaccount.Username,
                 Password = hashedPassword,
-                DateCreated = DateTime.Now
+                DateCreated = DateTime.Now,
+                AccountId = Guid.NewGuid(),
+                AccountNumber = "",
+                IsActive = true,
+                IsOwner = registeredaccount.IsOwner,
+                FirstName = registeredaccount.Firstname,
+                LastName = registeredaccount.Lastname
             };
 
             _db.Accounts.Add(newAccount);

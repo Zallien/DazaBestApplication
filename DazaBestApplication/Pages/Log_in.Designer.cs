@@ -163,6 +163,7 @@
             FormControlBox.ShowDesignBorders = false;
             FormControlBox.Size = new Size(153, 30);
             FormControlBox.TabIndex = 5;
+            FormControlBox.CloseClicked += FormControlBox_CloseClicked;
             // 
             // CompanyName
             // 
@@ -202,13 +203,14 @@
             // 
             SystemName_lbl.AllowParentOverrides = false;
             SystemName_lbl.AutoEllipsis = false;
+            SystemName_lbl.AutoSize = false;
             SystemName_lbl.BackColor = Color.FromArgb(251, 205, 119);
             SystemName_lbl.CursorType = Cursors.Default;
             SystemName_lbl.Font = new Font("Courier New", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SystemName_lbl.Location = new Point(82, 540);
+            SystemName_lbl.Location = new Point(36, 556);
             SystemName_lbl.Name = "SystemName_lbl";
             SystemName_lbl.RightToLeft = RightToLeft.No;
-            SystemName_lbl.Size = new Size(288, 63);
+            SystemName_lbl.Size = new Size(361, 63);
             SystemName_lbl.TabIndex = 5;
             SystemName_lbl.Text = "POS with Inventory\r\nManagement Systen";
             SystemName_lbl.TextAlignment = ContentAlignment.MiddleCenter;
@@ -234,6 +236,7 @@
             // 
             Usernametxtbox.AcceptsReturn = false;
             Usernametxtbox.AcceptsTab = false;
+            Usernametxtbox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             Usernametxtbox.AnimationSpeed = 200;
             Usernametxtbox.AutoCompleteMode = AutoCompleteMode.None;
             Usernametxtbox.AutoCompleteSource = AutoCompleteSource.None;
@@ -308,6 +311,7 @@
             // 
             Passwordtxtbox.AcceptsReturn = false;
             Passwordtxtbox.AcceptsTab = false;
+            Passwordtxtbox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             Passwordtxtbox.AnimationSpeed = 200;
             Passwordtxtbox.AutoCompleteMode = AutoCompleteMode.None;
             Passwordtxtbox.AutoCompleteSource = AutoCompleteSource.None;
@@ -383,6 +387,7 @@
             Login_btn.AllowAnimations = true;
             Login_btn.AllowMouseEffects = true;
             Login_btn.AllowToggling = false;
+            Login_btn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             Login_btn.AnimationSpeed = 200;
             Login_btn.AutoGenerateColors = false;
             Login_btn.AutoRoundBorders = false;
@@ -472,6 +477,7 @@
             background_Panel.BackgroundImage = Properties.Resources.backlog__1___1_;
             background_Panel.BackgroundImageLayout = ImageLayout.Stretch;
             background_Panel.Controls.Add(Login_btn);
+            background_Panel.Controls.Add(SystemName_lbl);
             background_Panel.Controls.Add(Passwordtxtbox);
             background_Panel.Controls.Add(Usernametxtbox);
             background_Panel.Dock = DockStyle.Fill;
@@ -518,7 +524,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1100, 700);
             Controls.Add(LogIn_lbl);
-            Controls.Add(SystemName_lbl);
             Controls.Add(logo_Pic);
             Controls.Add(TopNav);
             Controls.Add(background_Panel);

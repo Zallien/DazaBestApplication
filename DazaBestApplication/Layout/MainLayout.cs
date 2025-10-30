@@ -209,7 +209,10 @@ namespace DazaBestApplication
         }
         private void LogOut_btn_Click(object sender, EventArgs e)
         {
+            Program.theLoggedInAccount = null;
             Close();
+            Log_in login = new();
+            login.Show();
         }
         private void NavButton_Home_Click(object sender, EventArgs e)
         {
@@ -280,25 +283,21 @@ namespace DazaBestApplication
         {
             ShowPurchaseItemPage();
         }
-
         private void bunifuButton23_Click(object sender, EventArgs e)
         {
             //stock adjustment record
             ShowAdjustRecordmPage();
         }
-
         private void bunifuButton24_Click(object sender, EventArgs e)
         {
             //stock in record
             StockInRecordmPage();
         }
-
         private void bunifuButton25_Click(object sender, EventArgs e)
         {
             //inventory record
             ShowInventoryRecordmPage();
         }
-
         private void AccountsManagementBTN_Click(object sender, EventArgs e)
         {
             
