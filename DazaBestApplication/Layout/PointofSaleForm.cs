@@ -226,7 +226,7 @@ namespace DazaBestApplication.Layout
             {
                 subtotal += order.ProductPrice * order.Quantity;
             }
-            Subtotalvalue.Text = subtotal.ToString("C2");
+            TotalValue.Text = subtotal.ToString("C2");
             await CalculateTotal();
 
             //Update POSTransactionDone Payment Details
