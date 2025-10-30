@@ -26,6 +26,8 @@ namespace SystemBackEnd.Services
             try
             {
                 purchaseItemHeaders = await(from a in _db.PurcahseItemHeader
+                                            join b in _db.Accounts
+                                            on a.Addedby equals b.AccountId
                                          where a.Purchasenumber.ToLower().Contains(purchaseitem.SearchValue.ToLower())
                                          orderby a.Row descending
                                          select new PurchaseItemHeaderDisplay
@@ -35,7 +37,7 @@ namespace SystemBackEnd.Services
                                              DateCreated = a.DateCreated,
                                              IsVerified = a.Isverified,
                                              Dateverified = a.Isverified == true ? a.Dateverified : null,
-                                             AddedbyName = "No Name",
+                                             AddedbyName = b.Fullname,
                                              VerifiedbyName = a.Isverified == true ? "No Name" : null,
                                              Grandtotal = a.Grandtotal
                                          }).ToListAsync();
@@ -98,7 +100,16 @@ namespace SystemBackEnd.Services
                 _newheader = await _db.PurcahseItemHeader.Where(x => x.Purchaseheaderid == _PurchaseItemHeaderID).FirstOrDefaultAsync();
                 _newheader.Grandtotal = _totalamount;
                 _db.PurcahseItemHeader.Update(_newheader);
-                await _db.SaveChangesAsync();
+                var user = await _db.Accounts.FirstOrDefaultAsync(x => x.AccountId == newitem.Addedby);
+                if (user != null)
+                {
+                    if (user.IsOwner == true)
+                    {
+                        _newheader.Verifiedby = newitem.Addedby;
+                        _newheader.Dateverified = DateTime.Now;
+                    }
+                    await _db.SaveChangesAsync();
+                }
                 isadded = true;
             }
             catch (Exception e)

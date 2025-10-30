@@ -25,7 +25,7 @@ namespace DazaBestApplication.Modals
         private bool AllowCalculating = true;
         private decimal? _Grandtotal = 0;
         private Panel overlay;
-
+        private LoggedinAccount _loggedinaccount;
 
         //for Products Pagination
         private int Productcurrentpage = 1;
@@ -40,6 +40,7 @@ namespace DazaBestApplication.Modals
         {
             InitializeComponent();
             _purchaseitemmodal = purchaseitemmodal;
+            _loggedinaccount = Program.theLoggedInAccount;
         }
         //Checks Modal Action
         private async Task CheckModalAction()
@@ -50,6 +51,7 @@ namespace DazaBestApplication.Modals
                 this.Text = "Add Purchase Item";
                 AddPurchaseItemButton.Text = "Add Purchase Item";
                 removeitempickedbutton.Visible = true;
+                preparedbylbl.Text = Program.theLoggedInAccount.Fullname;
             }
             else if (_purchaseitemmodal.Action == "ViewPurcahseItem")
             {
@@ -235,7 +237,7 @@ namespace DazaBestApplication.Modals
                                    }).ToList();
             InsertPurchaseItem _newpurchaseitem = new InsertPurchaseItem()
             {
-                Addedby = Guid.NewGuid(), //Replace with actual user ID
+                Addedby = _loggedinaccount.AccountId,
                 PurchaseItemDetails = _allpurchasedetails
             };
 
