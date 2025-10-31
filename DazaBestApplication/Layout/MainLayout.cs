@@ -183,6 +183,19 @@ namespace DazaBestApplication
             MainContainer.Controls.Add(MainContainerForm);
             MainContainerForm.Show();
         }
+        private void AccountsPage()
+        {
+            if (MainContainerForm != null)
+            {
+                MainContainer.Controls.Remove(MainContainerForm);
+                MainContainerForm = null;
+            }
+            MainContainerForm = new accountPage(this);
+            MainContainerForm.TopLevel = false;
+            MainContainerForm.Dock = DockStyle.Fill;
+            MainContainer.Controls.Add(MainContainerForm);
+            MainContainerForm.Show();
+        }
         private void ShowSalesRecordmPage()
         {
             if (MainContainerForm != null)
@@ -300,7 +313,7 @@ namespace DazaBestApplication
         }
         private void AccountsManagementBTN_Click(object sender, EventArgs e)
         {
-            
+            AccountsPage();
         }
     }
 }
