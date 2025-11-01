@@ -12,6 +12,7 @@ namespace SystemBackEnd.Models
         [Key]
         public int Row { get; set; }
         public Guid TransactionHeaderId { get; set; }
+        public string TransactionNumber { get; set; }
         public DateTime TransactionDate { get; set; }
         public Guid TransactionBy { get; set; }
         public decimal Grandtotal { get; set; }

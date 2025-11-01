@@ -100,9 +100,6 @@ namespace DazaBestApplication.Modals
             AllProductsContainer.Location = _allproductlocation;
             AllProductsContainer.Visible = true;
             AllProductsContainer.BringToFront();
-
-
-
         }
         //Populate All Item DataGrid
         private async Task PopulatAllItemDataGrid()

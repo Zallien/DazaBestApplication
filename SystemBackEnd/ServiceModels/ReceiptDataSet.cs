@@ -12,14 +12,7 @@ namespace DazaBestApplication.Reports
         public string ORnumber { get; set; }
         public string Date { get; set; }
         public string Cashier { get; set; }
+        public List<RecieptItemInformation> AllItemsReciepts { get; set; }
         public string Total { get; set; }
-    }
-
-    public class RecieptItemDataSet
-    {
-        public string ItemName { get; set; }
-        public int ItemQuantity { get; set; }
-        public decimal ItemPrice { get; set; }
-        public decimal ItemTotal { get; set; }
     }
 }

@@ -31,23 +31,70 @@ namespace SystemBackEnd.Services
             }
             return products;
         }
+        //Get Reciept Information
+        public async Task<RecieptData> GetRecieptData(Guid transacId, string CashierName)
+        {
+            RecieptData recieptData = new();
+            try
+            {
+                recieptData.Cashier = CashierName;
+                //Transacheader 
+                var trasacheader = await _db.TransactionHeader.FirstOrDefaultAsync(x => x.TransactionHeaderId ==  transacId);
+                if (trasacheader != null)
+                {
+                    recieptData.ORnumber = trasacheader.TransactionNumber;
+                    recieptData.Date = trasacheader.TransactionDate;
+                }
+
+                //TransacDetails
+                var transacdetails = await (from a in _db.TransactionDetails
+                                            join b in _db.Products
+                                            on a.ProductId equals b.ProductID
+                                            where a.TransactionHeaderId == transacId
+                                            select new RecieptItemInformation()
+                                            {
+                                                ItemName = b.ProductName,
+                                                ItemPrice = a.UnitPrice,
+                                                ItemQuantity = a.Quantity,
+                                                ItemTotal = a.Quantity * a.UnitPrice
+                                            }).ToListAsync();
+                if (transacdetails != null)
+                {
+                    recieptData.AllItemsReciepts = transacdetails;
+                    foreach (var item in transacdetails)
+                    {
+                        recieptData.Total += item.ItemTotal;
+                    }
+                    return recieptData;
+                }
+            }
+            catch (Exception e)
+            {
+                
+
+            }
+
+            return recieptData;
+        }
 
 
         //Transaction Processing --Done Transaction--
-        public async Task<bool> ProcessPOSTransaction(POSTransactionDone transactionprocess)
+        public async Task<Guid> ProcessPOSTransaction(POSTransactionDone transactionprocess)
         {
-            bool isTransactionSuccess = false;
+            Guid TransactionHeaderIdReturned = Guid.Empty;
 
             try
             {
                 Guid trasactionheaderid = Guid.NewGuid();
+                TransactionHeaderIdReturned = trasactionheaderid;
                 //Transaction Header
                 POSTransactionHeader transactionHeader = new()
                 {
                     TransactionHeaderId = trasactionheaderid,
                     TransactionBy = transactionprocess.TransactionBy,
                     Grandtotal = transactionprocess.Grandtotal,
-                    TransactionDate = DateTime.Now
+                    TransactionDate = DateTime.Now,
+                    TransactionNumber = ""
                 };
                 await _db.AddAsync(transactionHeader);
 
@@ -95,14 +142,21 @@ namespace SystemBackEnd.Services
                     }
                 }
                 await _db.SaveChangesAsync();
-                isTransactionSuccess = true;
+                var theheader = await _db.TransactionHeader.FirstOrDefaultAsync(x => x.TransactionHeaderId == trasactionheaderid);
+                var countsperday = _db.TransactionHeader.Where(x => x.TransactionDate == DateTime.Now).Count();
+                if (theheader != null)
+                {
+                    theheader.TransactionNumber = $"{DateTime.Now.ToString("yyMMddHHmmss")} - {(countsperday + 1).ToString("D4")}";
+                    _db.Update(theheader);
+                    await _db.SaveChangesAsync();
+                }
             }
             catch (Exception e)
             {
                 
             }
 
-            return isTransactionSuccess;
+            return TransactionHeaderIdReturned;
         }
 
 

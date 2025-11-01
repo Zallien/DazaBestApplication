@@ -27,6 +27,7 @@ namespace DazaBestApplication.Modals
         private List<AdjustmentInformations> AllpickedItemswithReason = new List<AdjustmentInformations>();
         private AdjustmentItemFullInformation adjustmentItemFullInformation = new AdjustmentItemFullInformation();
         private Panel OverlayPanel;
+        private LoggedinAccount theloggedaccount = new();
 
         //ForViewOnly
         private Guid? AdjustItemHeaderId;
@@ -45,6 +46,7 @@ namespace DazaBestApplication.Modals
         {
             InitializeComponent();
             adjustItemModalViewModel = _AdjustItemModalViewModel;
+            theloggedaccount = Program.theLoggedInAccount;
             CheckModalAction();
         }
         //Open All Product Panel
@@ -180,7 +182,7 @@ namespace DazaBestApplication.Modals
             {
                 adjustmentItemFullInformation = new AdjustmentItemFullInformation();
                 adjustmentItemFullInformation.AllAdjustments = new List<AdjustItemDetailsInformations>();
-                adjustmentItemFullInformation.OperatedBy = Guid.NewGuid();
+                adjustmentItemFullInformation.OperatedBy = theloggedaccount.AccountId;
                 foreach (var item in AllpickedItemswithReason)
                 {
 

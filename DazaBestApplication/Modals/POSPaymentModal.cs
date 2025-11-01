@@ -13,6 +13,7 @@ using SystemBackEnd.Models;
 using SystemBackEnd;
 using Bunifu.UI.WinForms;
 using SystemBackEnd.EventHandlers;
+using DazaBestApplication.Reports;
 
 namespace DazaBestApplication.Modals
 {
@@ -21,11 +22,13 @@ namespace DazaBestApplication.Modals
         private POSTransactionDone ProcessTransaction = new POSTransactionDone();
         private decimal AmountRecieved = 0;
         private decimal ChangeAmount = 0;
+        private LoggedinAccount accountloggedin;
 
         public POSPaymentModal(POSTransactionDone _paymentprocess)
         {
             InitializeComponent();
             ProcessTransaction = _paymentprocess;
+            accountloggedin = Program.theLoggedInAccount;
         }
 
 
@@ -38,9 +41,9 @@ namespace DazaBestApplication.Modals
         }
 
         //Process Transaction
-        private async Task<bool> PayingTransaction()
+        private async Task<Guid> PayingTransaction()
         {
-            bool isPaymentSuccess = false;
+            Guid ReturnTransacId = Guid.Empty;
             try
             {
                 ProcessTransaction.PaymentAmount = AmountRecieved;
@@ -50,13 +53,13 @@ namespace DazaBestApplication.Modals
                 ProcessTransaction.Discount = 0;
 
                 POSService posService = new POSService(new BackEndDBContext());
-                isPaymentSuccess = await posService.ProcessPOSTransaction(ProcessTransaction);
+                ReturnTransacId = await posService.ProcessPOSTransaction(ProcessTransaction);
             }
             catch (Exception e)
             {
 
             }
-            return isPaymentSuccess;
+            return ReturnTransacId;
 
         }
         //Pay Transaction With Validation
@@ -66,11 +69,16 @@ namespace DazaBestApplication.Modals
             {
                 if (ChangeAmount >= 0)
                 {
-                    bool PaymentProcessSuccess = await PayingTransaction();
-                    if (PaymentProcessSuccess)
+                    Guid transacid = await PayingTransaction();
+                    if (transacid != Guid.Empty)
                     {
                         await POSEventHandler.InvokePaymentTransactionSuccess();
                         MessageBox.Show("Payment Success", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        var posservice = new POSService(new BackEndDBContext());
+                        RecieptData recieptdata = await posservice.GetRecieptData(transacid, accountloggedin.Fullname);
+                        //Open the Recieptmodal then pass the recieptdata
+                        ReceiptForm reciptform = new ReceiptForm(recieptdata);
+                        reciptform.Show();
                         this.Close();
                         this.DialogResult = DialogResult.No;
                     }
