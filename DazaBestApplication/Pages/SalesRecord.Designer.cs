@@ -45,33 +45,38 @@
             panel4 = new Panel();
             label1 = new Label();
             panel1 = new Panel();
+            panel5 = new Panel();
             bunifuButton22 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
+            bunifuDatePicker1 = new Bunifu.UI.WinForms.BunifuDatePicker();
+            bunifuDatePicker2 = new Bunifu.UI.WinForms.BunifuDatePicker();
+            bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             PrintBtn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
-            bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
-            bunifuDatePicker2 = new Bunifu.UI.WinForms.BunifuDatePicker();
-            bunifuDatePicker1 = new Bunifu.UI.WinForms.BunifuDatePicker();
-            bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             panel2 = new Panel();
             Pagination = new Panel();
             PaginationLabel = new Label();
             PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
             PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
             panel3 = new Panel();
-            AllProductDatagridView = new Bunifu.UI.WinForms.BunifuDataGridView();
+            AllsaleDatagrid = new Bunifu.UI.WinForms.BunifuDataGridView();
+            IdCol = new DataGridViewTextBoxColumn();
+            PurchaseNumberCol = new DataGridViewTextBoxColumn();
+            PurchaseDateCol = new DataGridViewTextBoxColumn();
+            CashierCol = new DataGridViewTextBoxColumn();
+            TotalCol = new DataGridViewTextBoxColumn();
             PrintPanel = new Panel();
             bunifuButton23 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             bunifuButton21 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             RemoveButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            panel5 = new Panel();
             TopPanel.SuspendLayout();
             panel1.SuspendLayout();
+            panel5.SuspendLayout();
             panel2.SuspendLayout();
             Pagination.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)AllProductDatagridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AllsaleDatagrid).BeginInit();
             PrintPanel.SuspendLayout();
-            panel5.SuspendLayout();
             SuspendLayout();
             // 
             // TopPanel
@@ -115,6 +120,19 @@
             panel1.Padding = new Padding(10, 0, 10, 0);
             panel1.Size = new Size(900, 76);
             panel1.TabIndex = 3;
+            // 
+            // panel5
+            // 
+            panel5.Controls.Add(bunifuButton22);
+            panel5.Controls.Add(bunifuLabel1);
+            panel5.Controls.Add(bunifuDatePicker1);
+            panel5.Controls.Add(bunifuDatePicker2);
+            panel5.Controls.Add(bunifuLabel2);
+            panel5.Dock = DockStyle.Left;
+            panel5.Location = new Point(10, 0);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(500, 76);
+            panel5.TabIndex = 9;
             // 
             // bunifuButton22
             // 
@@ -204,6 +222,91 @@
             bunifuButton22.TextMarginLeft = 0;
             bunifuButton22.TextPadding = new Padding(35, 0, 0, 0);
             bunifuButton22.UseDefaultRadiusAndThickness = true;
+            // 
+            // bunifuLabel1
+            // 
+            bunifuLabel1.AllowParentOverrides = false;
+            bunifuLabel1.AutoEllipsis = false;
+            bunifuLabel1.CursorType = Cursors.Default;
+            bunifuLabel1.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bunifuLabel1.Location = new Point(17, 5);
+            bunifuLabel1.Name = "bunifuLabel1";
+            bunifuLabel1.RightToLeft = RightToLeft.No;
+            bunifuLabel1.Size = new Size(110, 18);
+            bunifuLabel1.TabIndex = 0;
+            bunifuLabel1.Text = "Date Range:";
+            bunifuLabel1.TextAlignment = ContentAlignment.TopLeft;
+            bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // bunifuDatePicker1
+            // 
+            bunifuDatePicker1.BackColor = Color.White;
+            bunifuDatePicker1.BorderColor = Color.Black;
+            bunifuDatePicker1.BorderRadius = 1;
+            bunifuDatePicker1.Color = Color.Black;
+            bunifuDatePicker1.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
+            bunifuDatePicker1.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
+            bunifuDatePicker1.DisabledColor = Color.Gray;
+            bunifuDatePicker1.DisplayWeekNumbers = false;
+            bunifuDatePicker1.DPHeight = 0;
+            bunifuDatePicker1.DropDownAlign = LeftRightAlignment.Right;
+            bunifuDatePicker1.FillDatePicker = false;
+            bunifuDatePicker1.Font = new Font("Courier New", 9.75F, FontStyle.Bold);
+            bunifuDatePicker1.ForeColor = Color.Black;
+            bunifuDatePicker1.Format = DateTimePickerFormat.Custom;
+            bunifuDatePicker1.Icon = (Image)resources.GetObject("bunifuDatePicker1.Icon");
+            bunifuDatePicker1.IconColor = Color.Gray;
+            bunifuDatePicker1.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
+            bunifuDatePicker1.LeftTextMargin = 5;
+            bunifuDatePicker1.Location = new Point(40, 30);
+            bunifuDatePicker1.MaxDate = new DateTime(2025, 10, 25, 0, 0, 0, 0);
+            bunifuDatePicker1.MinimumSize = new Size(0, 32);
+            bunifuDatePicker1.Name = "bunifuDatePicker1";
+            bunifuDatePicker1.Size = new Size(130, 32);
+            bunifuDatePicker1.TabIndex = 1;
+            bunifuDatePicker1.Value = new DateTime(2025, 10, 25, 0, 0, 0, 0);
+            // 
+            // bunifuDatePicker2
+            // 
+            bunifuDatePicker2.BackColor = Color.White;
+            bunifuDatePicker2.BorderColor = Color.Black;
+            bunifuDatePicker2.BorderRadius = 1;
+            bunifuDatePicker2.CalendarFont = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bunifuDatePicker2.Color = Color.Black;
+            bunifuDatePicker2.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
+            bunifuDatePicker2.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
+            bunifuDatePicker2.DisabledColor = Color.Gray;
+            bunifuDatePicker2.DisplayWeekNumbers = false;
+            bunifuDatePicker2.DPHeight = 0;
+            bunifuDatePicker2.DropDownAlign = LeftRightAlignment.Right;
+            bunifuDatePicker2.FillDatePicker = false;
+            bunifuDatePicker2.Font = new Font("Courier New", 9.75F, FontStyle.Bold);
+            bunifuDatePicker2.ForeColor = Color.Black;
+            bunifuDatePicker2.Format = DateTimePickerFormat.Custom;
+            bunifuDatePicker2.Icon = (Image)resources.GetObject("bunifuDatePicker2.Icon");
+            bunifuDatePicker2.IconColor = Color.Gray;
+            bunifuDatePicker2.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
+            bunifuDatePicker2.LeftTextMargin = 5;
+            bunifuDatePicker2.Location = new Point(188, 30);
+            bunifuDatePicker2.MinimumSize = new Size(0, 32);
+            bunifuDatePicker2.Name = "bunifuDatePicker2";
+            bunifuDatePicker2.Size = new Size(130, 32);
+            bunifuDatePicker2.TabIndex = 2;
+            // 
+            // bunifuLabel2
+            // 
+            bunifuLabel2.AllowParentOverrides = false;
+            bunifuLabel2.AutoEllipsis = false;
+            bunifuLabel2.CursorType = Cursors.Default;
+            bunifuLabel2.Font = new Font("Arial", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bunifuLabel2.Location = new Point(173, 33);
+            bunifuLabel2.Name = "bunifuLabel2";
+            bunifuLabel2.RightToLeft = RightToLeft.No;
+            bunifuLabel2.Size = new Size(7, 24);
+            bunifuLabel2.TabIndex = 3;
+            bunifuLabel2.Text = "-";
+            bunifuLabel2.TextAlignment = ContentAlignment.TopLeft;
+            bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // PrintBtn
             // 
@@ -370,91 +473,6 @@
             SearchBox.UseSystemPasswordChar = false;
             SearchBox.WordWrap = true;
             // 
-            // bunifuLabel2
-            // 
-            bunifuLabel2.AllowParentOverrides = false;
-            bunifuLabel2.AutoEllipsis = false;
-            bunifuLabel2.CursorType = Cursors.Default;
-            bunifuLabel2.Font = new Font("Arial", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bunifuLabel2.Location = new Point(173, 33);
-            bunifuLabel2.Name = "bunifuLabel2";
-            bunifuLabel2.RightToLeft = RightToLeft.No;
-            bunifuLabel2.Size = new Size(7, 24);
-            bunifuLabel2.TabIndex = 3;
-            bunifuLabel2.Text = "-";
-            bunifuLabel2.TextAlignment = ContentAlignment.TopLeft;
-            bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // bunifuDatePicker2
-            // 
-            bunifuDatePicker2.BackColor = Color.White;
-            bunifuDatePicker2.BorderColor = Color.Black;
-            bunifuDatePicker2.BorderRadius = 1;
-            bunifuDatePicker2.CalendarFont = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bunifuDatePicker2.Color = Color.Black;
-            bunifuDatePicker2.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
-            bunifuDatePicker2.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            bunifuDatePicker2.DisabledColor = Color.Gray;
-            bunifuDatePicker2.DisplayWeekNumbers = false;
-            bunifuDatePicker2.DPHeight = 0;
-            bunifuDatePicker2.DropDownAlign = LeftRightAlignment.Right;
-            bunifuDatePicker2.FillDatePicker = false;
-            bunifuDatePicker2.Font = new Font("Courier New", 9.75F, FontStyle.Bold);
-            bunifuDatePicker2.ForeColor = Color.Black;
-            bunifuDatePicker2.Format = DateTimePickerFormat.Custom;
-            bunifuDatePicker2.Icon = (Image)resources.GetObject("bunifuDatePicker2.Icon");
-            bunifuDatePicker2.IconColor = Color.Gray;
-            bunifuDatePicker2.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
-            bunifuDatePicker2.LeftTextMargin = 5;
-            bunifuDatePicker2.Location = new Point(188, 30);
-            bunifuDatePicker2.MinimumSize = new Size(0, 32);
-            bunifuDatePicker2.Name = "bunifuDatePicker2";
-            bunifuDatePicker2.Size = new Size(130, 32);
-            bunifuDatePicker2.TabIndex = 2;
-            // 
-            // bunifuDatePicker1
-            // 
-            bunifuDatePicker1.BackColor = Color.White;
-            bunifuDatePicker1.BorderColor = Color.Black;
-            bunifuDatePicker1.BorderRadius = 1;
-            bunifuDatePicker1.Color = Color.Black;
-            bunifuDatePicker1.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
-            bunifuDatePicker1.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            bunifuDatePicker1.DisabledColor = Color.Gray;
-            bunifuDatePicker1.DisplayWeekNumbers = false;
-            bunifuDatePicker1.DPHeight = 0;
-            bunifuDatePicker1.DropDownAlign = LeftRightAlignment.Right;
-            bunifuDatePicker1.FillDatePicker = false;
-            bunifuDatePicker1.Font = new Font("Courier New", 9.75F, FontStyle.Bold);
-            bunifuDatePicker1.ForeColor = Color.Black;
-            bunifuDatePicker1.Format = DateTimePickerFormat.Custom;
-            bunifuDatePicker1.Icon = (Image)resources.GetObject("bunifuDatePicker1.Icon");
-            bunifuDatePicker1.IconColor = Color.Gray;
-            bunifuDatePicker1.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
-            bunifuDatePicker1.LeftTextMargin = 5;
-            bunifuDatePicker1.Location = new Point(40, 30);
-            bunifuDatePicker1.MaxDate = new DateTime(2025, 10, 25, 0, 0, 0, 0);
-            bunifuDatePicker1.MinimumSize = new Size(0, 32);
-            bunifuDatePicker1.Name = "bunifuDatePicker1";
-            bunifuDatePicker1.Size = new Size(130, 32);
-            bunifuDatePicker1.TabIndex = 1;
-            bunifuDatePicker1.Value = new DateTime(2025, 10, 25, 0, 0, 0, 0);
-            // 
-            // bunifuLabel1
-            // 
-            bunifuLabel1.AllowParentOverrides = false;
-            bunifuLabel1.AutoEllipsis = false;
-            bunifuLabel1.CursorType = Cursors.Default;
-            bunifuLabel1.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bunifuLabel1.Location = new Point(17, 5);
-            bunifuLabel1.Name = "bunifuLabel1";
-            bunifuLabel1.RightToLeft = RightToLeft.No;
-            bunifuLabel1.Size = new Size(110, 18);
-            bunifuLabel1.TabIndex = 0;
-            bunifuLabel1.Text = "Date Range:";
-            bunifuLabel1.TextAlignment = ContentAlignment.TopLeft;
-            bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
             // panel2
             // 
             panel2.Controls.Add(Pagination);
@@ -556,7 +574,7 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(AllProductDatagridView);
+            panel3.Controls.Add(AllsaleDatagrid);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 126);
             panel3.Name = "panel3";
@@ -564,21 +582,21 @@
             panel3.Size = new Size(900, 486);
             panel3.TabIndex = 5;
             // 
-            // AllProductDatagridView
+            // AllsaleDatagrid
             // 
-            AllProductDatagridView.AllowCustomTheming = false;
-            AllProductDatagridView.AllowUserToAddRows = false;
-            AllProductDatagridView.AllowUserToDeleteRows = false;
-            AllProductDatagridView.AllowUserToResizeColumns = false;
-            AllProductDatagridView.AllowUserToResizeRows = false;
+            AllsaleDatagrid.AllowCustomTheming = false;
+            AllsaleDatagrid.AllowUserToAddRows = false;
+            AllsaleDatagrid.AllowUserToDeleteRows = false;
+            AllsaleDatagrid.AllowUserToResizeColumns = false;
+            AllsaleDatagrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(223, 191, 191);
             dataGridViewCellStyle1.ForeColor = Color.Black;
-            AllProductDatagridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            AllProductDatagridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            AllProductDatagridView.BackgroundColor = Color.White;
-            AllProductDatagridView.BorderStyle = BorderStyle.None;
-            AllProductDatagridView.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            AllProductDatagridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            AllsaleDatagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            AllsaleDatagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            AllsaleDatagrid.BackgroundColor = Color.White;
+            AllsaleDatagrid.BorderStyle = BorderStyle.None;
+            AllsaleDatagrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            AllsaleDatagrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.Maroon;
             dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
@@ -586,26 +604,27 @@
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(102, 0, 0);
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            AllProductDatagridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            AllProductDatagridView.ColumnHeadersHeight = 40;
-            AllProductDatagridView.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
-            AllProductDatagridView.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            AllProductDatagridView.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
-            AllProductDatagridView.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            AllProductDatagridView.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.White;
-            AllProductDatagridView.CurrentTheme.BackColor = Color.Maroon;
-            AllProductDatagridView.CurrentTheme.GridColor = Color.FromArgb(216, 178, 178);
-            AllProductDatagridView.CurrentTheme.HeaderStyle.BackColor = Color.Maroon;
-            AllProductDatagridView.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
-            AllProductDatagridView.CurrentTheme.HeaderStyle.ForeColor = Color.White;
-            AllProductDatagridView.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(102, 0, 0);
-            AllProductDatagridView.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
-            AllProductDatagridView.CurrentTheme.Name = null;
-            AllProductDatagridView.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(229, 204, 204);
-            AllProductDatagridView.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            AllProductDatagridView.CurrentTheme.RowsStyle.ForeColor = Color.Black;
-            AllProductDatagridView.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            AllProductDatagridView.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
+            AllsaleDatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            AllsaleDatagrid.ColumnHeadersHeight = 40;
+            AllsaleDatagrid.Columns.AddRange(new DataGridViewColumn[] { IdCol, PurchaseNumberCol, PurchaseDateCol, CashierCol, TotalCol });
+            AllsaleDatagrid.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
+            AllsaleDatagrid.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            AllsaleDatagrid.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
+            AllsaleDatagrid.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            AllsaleDatagrid.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.White;
+            AllsaleDatagrid.CurrentTheme.BackColor = Color.Maroon;
+            AllsaleDatagrid.CurrentTheme.GridColor = Color.FromArgb(216, 178, 178);
+            AllsaleDatagrid.CurrentTheme.HeaderStyle.BackColor = Color.Maroon;
+            AllsaleDatagrid.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            AllsaleDatagrid.CurrentTheme.HeaderStyle.ForeColor = Color.White;
+            AllsaleDatagrid.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(102, 0, 0);
+            AllsaleDatagrid.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
+            AllsaleDatagrid.CurrentTheme.Name = null;
+            AllsaleDatagrid.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(229, 204, 204);
+            AllsaleDatagrid.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            AllsaleDatagrid.CurrentTheme.RowsStyle.ForeColor = Color.Black;
+            AllsaleDatagrid.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            AllsaleDatagrid.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(229, 204, 204);
             dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
@@ -613,24 +632,55 @@
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(178, 102, 102);
             dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            AllProductDatagridView.DefaultCellStyle = dataGridViewCellStyle3;
-            AllProductDatagridView.Dock = DockStyle.Fill;
-            AllProductDatagridView.EnableHeadersVisualStyles = false;
-            AllProductDatagridView.GridColor = Color.FromArgb(216, 178, 178);
-            AllProductDatagridView.HeaderBackColor = Color.Maroon;
-            AllProductDatagridView.HeaderBgColor = Color.Empty;
-            AllProductDatagridView.HeaderForeColor = Color.White;
-            AllProductDatagridView.Location = new Point(35, 10);
-            AllProductDatagridView.Name = "AllProductDatagridView";
-            AllProductDatagridView.ReadOnly = true;
-            AllProductDatagridView.RowHeadersVisible = false;
-            AllProductDatagridView.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            AllProductDatagridView.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64);
-            AllProductDatagridView.RowTemplate.Height = 40;
-            AllProductDatagridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            AllProductDatagridView.Size = new Size(830, 466);
-            AllProductDatagridView.TabIndex = 2;
-            AllProductDatagridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
+            AllsaleDatagrid.DefaultCellStyle = dataGridViewCellStyle3;
+            AllsaleDatagrid.Dock = DockStyle.Fill;
+            AllsaleDatagrid.EnableHeadersVisualStyles = false;
+            AllsaleDatagrid.GridColor = Color.FromArgb(216, 178, 178);
+            AllsaleDatagrid.HeaderBackColor = Color.Maroon;
+            AllsaleDatagrid.HeaderBgColor = Color.Empty;
+            AllsaleDatagrid.HeaderForeColor = Color.White;
+            AllsaleDatagrid.Location = new Point(35, 10);
+            AllsaleDatagrid.Name = "AllsaleDatagrid";
+            AllsaleDatagrid.ReadOnly = true;
+            AllsaleDatagrid.RowHeadersVisible = false;
+            AllsaleDatagrid.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            AllsaleDatagrid.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64);
+            AllsaleDatagrid.RowTemplate.Height = 40;
+            AllsaleDatagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            AllsaleDatagrid.Size = new Size(830, 466);
+            AllsaleDatagrid.TabIndex = 2;
+            AllsaleDatagrid.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
+            // 
+            // IdCol
+            // 
+            IdCol.HeaderText = "HeaderId";
+            IdCol.Name = "IdCol";
+            IdCol.ReadOnly = true;
+            IdCol.Visible = false;
+            // 
+            // PurchaseNumberCol
+            // 
+            PurchaseNumberCol.HeaderText = "PurchaseNumber";
+            PurchaseNumberCol.Name = "PurchaseNumberCol";
+            PurchaseNumberCol.ReadOnly = true;
+            // 
+            // PurchaseDateCol
+            // 
+            PurchaseDateCol.HeaderText = "Date";
+            PurchaseDateCol.Name = "PurchaseDateCol";
+            PurchaseDateCol.ReadOnly = true;
+            // 
+            // CashierCol
+            // 
+            CashierCol.HeaderText = "Cashier";
+            CashierCol.Name = "CashierCol";
+            CashierCol.ReadOnly = true;
+            // 
+            // TotalCol
+            // 
+            TotalCol.HeaderText = "Total";
+            TotalCol.Name = "TotalCol";
+            TotalCol.ReadOnly = true;
             // 
             // PrintPanel
             // 
@@ -910,19 +960,6 @@
             RemoveButton.TextPadding = new Padding(15, 0, 0, 0);
             RemoveButton.UseDefaultRadiusAndThickness = true;
             // 
-            // panel5
-            // 
-            panel5.Controls.Add(bunifuButton22);
-            panel5.Controls.Add(bunifuLabel1);
-            panel5.Controls.Add(bunifuDatePicker1);
-            panel5.Controls.Add(bunifuDatePicker2);
-            panel5.Controls.Add(bunifuLabel2);
-            panel5.Dock = DockStyle.Left;
-            panel5.Location = new Point(10, 0);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(500, 76);
-            panel5.TabIndex = 9;
-            // 
             // SalesRecord
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -937,15 +974,16 @@
             Name = "SalesRecord";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SalesRecord";
+            Load += SalesRecord_Load;
             TopPanel.ResumeLayout(false);
             panel1.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
             panel2.ResumeLayout(false);
             Pagination.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)AllProductDatagridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AllsaleDatagrid).EndInit();
             PrintPanel.ResumeLayout(false);
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -964,7 +1002,7 @@
         private Bunifu.UI.WinForms.BunifuDatePicker bunifuDatePicker2;
         private Bunifu.UI.WinForms.BunifuDatePicker bunifuDatePicker1;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
-        private Bunifu.UI.WinForms.BunifuDataGridView AllProductDatagridView;
+        private Bunifu.UI.WinForms.BunifuDataGridView AllsaleDatagrid;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 PrintBtn;
         private Bunifu.UI.WinForms.BunifuTextBox SearchBox;
         private Panel panel4;
@@ -974,5 +1012,10 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton21;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton22;
         private Panel panel5;
+        private DataGridViewTextBoxColumn IdCol;
+        private DataGridViewTextBoxColumn PurchaseNumberCol;
+        private DataGridViewTextBoxColumn PurchaseDateCol;
+        private DataGridViewTextBoxColumn CashierCol;
+        private DataGridViewTextBoxColumn TotalCol;
     }
 }

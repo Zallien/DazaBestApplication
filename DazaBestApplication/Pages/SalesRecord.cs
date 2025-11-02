@@ -7,12 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemBackEnd.ServiceModels;
+using SystemBackEnd.Services;
+using SystemBackEnd;
 
 namespace DazaBestApplication.Pages
 {
     public partial class SalesRecord : Form
     {
         private Form MainForm;
+        private List<SaleReportHeader> SaleReportHeaders;
+        private SaleRecordFilterSearch saleRecordFilterSearch;
+        private SaleReportServices SaleReportServices = new SaleReportServices(new BackEndDBContext());
+
+
+        //Search and Filterations
+        private string SearchValue = "";
+        private int PageNumber = 0;
+        private int ItemPerPaeg = 12;
+        private DateTime FromDateFilter = DateTime.Now;
+        private DateTime ToDateFilter = DateTime.Now;
+        
+        
         public SalesRecord(Form mainForm)
         {
             InitializeComponent();
@@ -31,6 +47,51 @@ namespace DazaBestApplication.Pages
 
             MainForm = mainForm;
         }
+        //Load Headers
+        private async Task LoadAllSaleHeaders()
+        {
+
+            try
+            {
+                SaleReportHeaders = new List<SaleReportHeader>();
+                saleRecordFilterSearch = new SaleRecordFilterSearch()
+                {
+                    SearchValue = SearchValue,
+                    FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
+                    ToDate = ToDateFilter,
+                    PageNumber = PageNumber,
+                    ItemperPage = ItemPerPaeg
+                };
+
+                SaleReportServices = new SaleReportServices(new BackEndDBContext());
+                SaleReportHeaders = await SaleReportServices.GetSaleReportHeaders(saleRecordFilterSearch);
+            }
+            catch (Exception e)
+            {
+                
+            }
+        }
+        //Populate AllSaleReportHeader Datagrid
+        private async Task PopulateAllSaleReportDatagrid()
+        {
+            await LoadAllSaleHeaders();
+
+            // Datagrid AllsaleDatagrid
+            AllsaleDatagrid.Rows.Clear();
+            foreach (var item in SaleReportHeaders)
+            {
+                int rowindex = AllsaleDatagrid.Rows.Add();
+                DataGridViewRow row = AllsaleDatagrid.Rows[rowindex];
+                row.Cells["IdCol"].Value = item.TransactionHeaderId;
+                row.Cells["PurchaseNumberCol"].Value = item.TransactionNumber;
+                row.Cells["PurchaseDateCol"].Value = item.TransactionDate;
+                row.Cells["CashierCol"].Value = item.Cashier;
+                row.Cells["TotalCol"].Value = item.Total;
+            }
+        }
+
+
+        //Events
         private void ShowDropdown(object sender, EventArgs e)
         {
             PrintPanel.Visible = true;
@@ -50,6 +111,12 @@ namespace DazaBestApplication.Pages
         private void bunifuButton22_Click(object sender, EventArgs e)
         {
 
+        }
+
+        //Main Load
+        private async void SalesRecord_Load(object sender, EventArgs e)
+        {
+            await PopulateAllSaleReportDatagrid();
         }
     }
 }
