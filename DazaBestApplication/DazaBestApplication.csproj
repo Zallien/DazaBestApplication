@@ -15,7 +15,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="App.Metrics.AspNetCore.Reporting" Version="4.0.0" />
+    <None Remove="Reports\Report1.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\Report1.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AspNetCore.Reporting" Version="2.1.0" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="Bunifu.UI.WinForms" Version="7.2.0" />
@@ -30,11 +37,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.ReportingServices.ReportViewerControl.WebForms" Version="150.1652.0" />
-    <PackageReference Include="Microsoft.ReportingServices.ReportViewerControl.Winforms" Version="150.1652.0" />
-    <PackageReference Include="Microsoft.ReportViewer.Common.v12" Version="12.0.0.1" />
-    <PackageReference Include="Microsoft.ReportViewer.WebForms" Version="10.0.40219.1" />
-    <PackageReference Include="Microsoft.ReportViewer.WinForms.v12" Version="12.0.0.1" />
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.26" />
     <PackageReference Include="SQLitePCLRaw.core" Version="3.0.2" />
     <PackageReference Include="SQLitePCLRaw.provider.e_sqlite3" Version="3.0.2" />
     <PackageReference Include="Stub.System.Data.SQLite.Core.NetFramework" Version="1.0.119" />
@@ -82,6 +85,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="DataSets\DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -90,10 +97,6 @@
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>ReceiptData.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Datasets\" />
   </ItemGroup>
 
 </Project>
