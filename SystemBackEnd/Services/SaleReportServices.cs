@@ -22,7 +22,7 @@ namespace SystemBackEnd.Services
 
 
         //Get SaleReportHeader
-        public async Task<List<SaleReportHeader>> GetSaleReportHeaders(SaleRecordFilterSearch salefilter)
+        public async Task<List<SaleReportHeader>> GetSaleReportHeaders(RecordsFilterSearch salefilter)
         {
             List<SaleReportHeader> theHeaderList = new List<SaleReportHeader>();
 
@@ -54,8 +54,6 @@ namespace SystemBackEnd.Services
             {
                 
             }
-
-
             return theHeaderList;
 
         }

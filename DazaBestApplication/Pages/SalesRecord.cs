@@ -17,7 +17,7 @@ namespace DazaBestApplication.Pages
     {
         private Form MainForm;
         private List<SaleReportHeader> SaleReportHeaders;
-        private SaleRecordFilterSearch saleRecordFilterSearch;
+        private RecordsFilterSearch saleRecordFilterSearch;
         private SaleReportServices SaleReportServices = new SaleReportServices(new BackEndDBContext());
 
 
@@ -54,7 +54,7 @@ namespace DazaBestApplication.Pages
             try
             {
                 SaleReportHeaders = new List<SaleReportHeader>();
-                saleRecordFilterSearch = new SaleRecordFilterSearch()
+                saleRecordFilterSearch = new RecordsFilterSearch()
                 {
                     SearchValue = SearchValue,
                     FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,

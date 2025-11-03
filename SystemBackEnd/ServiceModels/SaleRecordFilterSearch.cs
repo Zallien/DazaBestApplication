@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SystemBackEnd.ServiceModels
 {
-    public class SaleRecordFilterSearch
+    public class RecordsFilterSearch
     {
         public string? SearchValue { get; set; }
         public DateTime? FromDate { get; set; }

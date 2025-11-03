@@ -59,7 +59,12 @@
             PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
             PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
             panel3 = new Panel();
-            AllProductDatagridView = new Bunifu.UI.WinForms.BunifuDataGridView();
+            AllAdjustmentRecordsDatagrid = new Bunifu.UI.WinForms.BunifuDataGridView();
+            IdCol = new DataGridViewTextBoxColumn();
+            ReferenceNumberCol = new DataGridViewTextBoxColumn();
+            ItemNameCol = new DataGridViewTextBoxColumn();
+            QuantityCol = new DataGridViewTextBoxColumn();
+            ReasonCol = new DataGridViewTextBoxColumn();
             PrintPanel = new Panel();
             bunifuButton23 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             bunifuButton21 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
@@ -70,7 +75,7 @@
             panel2.SuspendLayout();
             Pagination.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)AllProductDatagridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AllAdjustmentRecordsDatagrid).BeginInit();
             PrintPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -569,7 +574,7 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(AllProductDatagridView);
+            panel3.Controls.Add(AllAdjustmentRecordsDatagrid);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 123);
             panel3.Name = "panel3";
@@ -577,21 +582,21 @@
             panel3.Size = new Size(900, 489);
             panel3.TabIndex = 6;
             // 
-            // AllProductDatagridView
+            // AllAdjustmentRecordsDatagrid
             // 
-            AllProductDatagridView.AllowCustomTheming = false;
-            AllProductDatagridView.AllowUserToAddRows = false;
-            AllProductDatagridView.AllowUserToDeleteRows = false;
-            AllProductDatagridView.AllowUserToResizeColumns = false;
-            AllProductDatagridView.AllowUserToResizeRows = false;
+            AllAdjustmentRecordsDatagrid.AllowCustomTheming = false;
+            AllAdjustmentRecordsDatagrid.AllowUserToAddRows = false;
+            AllAdjustmentRecordsDatagrid.AllowUserToDeleteRows = false;
+            AllAdjustmentRecordsDatagrid.AllowUserToResizeColumns = false;
+            AllAdjustmentRecordsDatagrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(223, 191, 191);
             dataGridViewCellStyle1.ForeColor = Color.Black;
-            AllProductDatagridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            AllProductDatagridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            AllProductDatagridView.BackgroundColor = Color.White;
-            AllProductDatagridView.BorderStyle = BorderStyle.None;
-            AllProductDatagridView.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            AllProductDatagridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            AllAdjustmentRecordsDatagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            AllAdjustmentRecordsDatagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            AllAdjustmentRecordsDatagrid.BackgroundColor = Color.White;
+            AllAdjustmentRecordsDatagrid.BorderStyle = BorderStyle.None;
+            AllAdjustmentRecordsDatagrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            AllAdjustmentRecordsDatagrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.Maroon;
             dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
@@ -599,26 +604,27 @@
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(102, 0, 0);
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            AllProductDatagridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            AllProductDatagridView.ColumnHeadersHeight = 40;
-            AllProductDatagridView.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
-            AllProductDatagridView.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            AllProductDatagridView.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
-            AllProductDatagridView.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            AllProductDatagridView.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.White;
-            AllProductDatagridView.CurrentTheme.BackColor = Color.Maroon;
-            AllProductDatagridView.CurrentTheme.GridColor = Color.FromArgb(216, 178, 178);
-            AllProductDatagridView.CurrentTheme.HeaderStyle.BackColor = Color.Maroon;
-            AllProductDatagridView.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
-            AllProductDatagridView.CurrentTheme.HeaderStyle.ForeColor = Color.White;
-            AllProductDatagridView.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(102, 0, 0);
-            AllProductDatagridView.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
-            AllProductDatagridView.CurrentTheme.Name = null;
-            AllProductDatagridView.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(229, 204, 204);
-            AllProductDatagridView.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            AllProductDatagridView.CurrentTheme.RowsStyle.ForeColor = Color.Black;
-            AllProductDatagridView.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            AllProductDatagridView.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
+            AllAdjustmentRecordsDatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            AllAdjustmentRecordsDatagrid.ColumnHeadersHeight = 40;
+            AllAdjustmentRecordsDatagrid.Columns.AddRange(new DataGridViewColumn[] { IdCol, ReferenceNumberCol, ItemNameCol, QuantityCol, ReasonCol });
+            AllAdjustmentRecordsDatagrid.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
+            AllAdjustmentRecordsDatagrid.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            AllAdjustmentRecordsDatagrid.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
+            AllAdjustmentRecordsDatagrid.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            AllAdjustmentRecordsDatagrid.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.White;
+            AllAdjustmentRecordsDatagrid.CurrentTheme.BackColor = Color.Maroon;
+            AllAdjustmentRecordsDatagrid.CurrentTheme.GridColor = Color.FromArgb(216, 178, 178);
+            AllAdjustmentRecordsDatagrid.CurrentTheme.HeaderStyle.BackColor = Color.Maroon;
+            AllAdjustmentRecordsDatagrid.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            AllAdjustmentRecordsDatagrid.CurrentTheme.HeaderStyle.ForeColor = Color.White;
+            AllAdjustmentRecordsDatagrid.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(102, 0, 0);
+            AllAdjustmentRecordsDatagrid.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
+            AllAdjustmentRecordsDatagrid.CurrentTheme.Name = null;
+            AllAdjustmentRecordsDatagrid.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(229, 204, 204);
+            AllAdjustmentRecordsDatagrid.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            AllAdjustmentRecordsDatagrid.CurrentTheme.RowsStyle.ForeColor = Color.Black;
+            AllAdjustmentRecordsDatagrid.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            AllAdjustmentRecordsDatagrid.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(229, 204, 204);
             dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
@@ -626,24 +632,55 @@
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(178, 102, 102);
             dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            AllProductDatagridView.DefaultCellStyle = dataGridViewCellStyle3;
-            AllProductDatagridView.Dock = DockStyle.Fill;
-            AllProductDatagridView.EnableHeadersVisualStyles = false;
-            AllProductDatagridView.GridColor = Color.FromArgb(216, 178, 178);
-            AllProductDatagridView.HeaderBackColor = Color.Maroon;
-            AllProductDatagridView.HeaderBgColor = Color.Empty;
-            AllProductDatagridView.HeaderForeColor = Color.White;
-            AllProductDatagridView.Location = new Point(35, 10);
-            AllProductDatagridView.Name = "AllProductDatagridView";
-            AllProductDatagridView.ReadOnly = true;
-            AllProductDatagridView.RowHeadersVisible = false;
-            AllProductDatagridView.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            AllProductDatagridView.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64);
-            AllProductDatagridView.RowTemplate.Height = 40;
-            AllProductDatagridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            AllProductDatagridView.Size = new Size(830, 469);
-            AllProductDatagridView.TabIndex = 2;
-            AllProductDatagridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
+            AllAdjustmentRecordsDatagrid.DefaultCellStyle = dataGridViewCellStyle3;
+            AllAdjustmentRecordsDatagrid.Dock = DockStyle.Fill;
+            AllAdjustmentRecordsDatagrid.EnableHeadersVisualStyles = false;
+            AllAdjustmentRecordsDatagrid.GridColor = Color.FromArgb(216, 178, 178);
+            AllAdjustmentRecordsDatagrid.HeaderBackColor = Color.Maroon;
+            AllAdjustmentRecordsDatagrid.HeaderBgColor = Color.Empty;
+            AllAdjustmentRecordsDatagrid.HeaderForeColor = Color.White;
+            AllAdjustmentRecordsDatagrid.Location = new Point(35, 10);
+            AllAdjustmentRecordsDatagrid.Name = "AllAdjustmentRecordsDatagrid";
+            AllAdjustmentRecordsDatagrid.ReadOnly = true;
+            AllAdjustmentRecordsDatagrid.RowHeadersVisible = false;
+            AllAdjustmentRecordsDatagrid.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            AllAdjustmentRecordsDatagrid.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64);
+            AllAdjustmentRecordsDatagrid.RowTemplate.Height = 40;
+            AllAdjustmentRecordsDatagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            AllAdjustmentRecordsDatagrid.Size = new Size(830, 469);
+            AllAdjustmentRecordsDatagrid.TabIndex = 2;
+            AllAdjustmentRecordsDatagrid.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
+            // 
+            // IdCol
+            // 
+            IdCol.HeaderText = "AdjustmentDetailsId";
+            IdCol.Name = "IdCol";
+            IdCol.ReadOnly = true;
+            IdCol.Visible = false;
+            // 
+            // ReferenceNumberCol
+            // 
+            ReferenceNumberCol.HeaderText = "Reference No.";
+            ReferenceNumberCol.Name = "ReferenceNumberCol";
+            ReferenceNumberCol.ReadOnly = true;
+            // 
+            // ItemNameCol
+            // 
+            ItemNameCol.HeaderText = "Item Name";
+            ItemNameCol.Name = "ItemNameCol";
+            ItemNameCol.ReadOnly = true;
+            // 
+            // QuantityCol
+            // 
+            QuantityCol.HeaderText = "Quantity";
+            QuantityCol.Name = "QuantityCol";
+            QuantityCol.ReadOnly = true;
+            // 
+            // ReasonCol
+            // 
+            ReasonCol.HeaderText = "Reason";
+            ReasonCol.Name = "ReasonCol";
+            ReasonCol.ReadOnly = true;
             // 
             // PrintPanel
             // 
@@ -937,6 +974,7 @@
             Name = "AdjustmentRecord";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AdjustmentRecord";
+            Load += AdjustmentRecord_Load;
             TopPanel.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel5.ResumeLayout(false);
@@ -944,7 +982,7 @@
             panel2.ResumeLayout(false);
             Pagination.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)AllProductDatagridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AllAdjustmentRecordsDatagrid).EndInit();
             PrintPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -961,7 +999,7 @@
         private Bunifu.UI.WinForms.BunifuImageButton PaginationPREV;
         private Bunifu.UI.WinForms.BunifuImageButton PaginationNext;
         private Panel panel3;
-        private Bunifu.UI.WinForms.BunifuDataGridView AllProductDatagridView;
+        private Bunifu.UI.WinForms.BunifuDataGridView AllAdjustmentRecordsDatagrid;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 PrintBtn;
         private Bunifu.UI.WinForms.BunifuTextBox SearchBox;
         private Panel PrintPanel;
@@ -974,5 +1012,10 @@
         private Bunifu.UI.WinForms.BunifuDatePicker bunifuDatePicker1;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
         private Panel panel5;
+        private DataGridViewTextBoxColumn IdCol;
+        private DataGridViewTextBoxColumn ReferenceNumberCol;
+        private DataGridViewTextBoxColumn ItemNameCol;
+        private DataGridViewTextBoxColumn QuantityCol;
+        private DataGridViewTextBoxColumn ReasonCol;
     }
 }
