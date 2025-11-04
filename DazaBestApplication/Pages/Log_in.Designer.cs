@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Bunifu.UI.WinForms.BunifuButton.BunifuIconButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuIconButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuIconButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuIconButton.BorderEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Log_in));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties13 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties14 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties15 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties16 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             TopNav = new Panel();
             bunifuIconButton1 = new Bunifu.UI.WinForms.BunifuButton.BunifuIconButton();
             FormControlBox = new Bunifu.UI.WinForms.BunifuFormControlBox();
@@ -50,11 +50,19 @@
             Passwordtxtbox = new Bunifu.UI.WinForms.BunifuTextBox();
             Login_btn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             background_Panel = new Panel();
+            panel2 = new Panel();
+            panel1 = new Panel();
+            pictureBox1 = new PictureBox();
+            label2 = new Label();
+            label1 = new Label();
             greetings_lbl = new Bunifu.UI.WinForms.BunifuLabel();
             ForgotPass_Btn = new Bunifu.UI.WinForms.BunifuLabel();
             TopNav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logo_Pic).BeginInit();
             background_Panel.SuspendLayout();
+            panel2.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // TopNav
@@ -84,11 +92,11 @@
             bunifuIconButton1.BorderThickness = 1;
             bunifuIconButton1.ColorContrastOnClick = 30;
             bunifuIconButton1.ColorContrastOnHover = 30;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            bunifuIconButton1.CustomizableEdges = borderEdges1;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            bunifuIconButton1.CustomizableEdges = borderEdges3;
             bunifuIconButton1.DialogResult = DialogResult.None;
             bunifuIconButton1.Dock = DockStyle.Left;
             bunifuIconButton1.Image = Properties.Resources.clean;
@@ -191,9 +199,9 @@
             logo_Pic.BorderRadius = 0;
             logo_Pic.Image = Properties.Resources.clean;
             logo_Pic.IsCircle = false;
-            logo_Pic.Location = new Point(36, 189);
+            logo_Pic.Location = new Point(39, 2);
             logo_Pic.Name = "logo_Pic";
-            logo_Pic.Size = new Size(361, 361);
+            logo_Pic.Size = new Size(343, 343);
             logo_Pic.SizeMode = PictureBoxSizeMode.Zoom;
             logo_Pic.TabIndex = 4;
             logo_Pic.TabStop = false;
@@ -207,7 +215,7 @@
             SystemName_lbl.BackColor = Color.FromArgb(251, 205, 119);
             SystemName_lbl.CursorType = Cursors.Default;
             SystemName_lbl.Font = new Font("Courier New", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SystemName_lbl.Location = new Point(36, 556);
+            SystemName_lbl.Location = new Point(41, 354);
             SystemName_lbl.Name = "SystemName_lbl";
             SystemName_lbl.RightToLeft = RightToLeft.No;
             SystemName_lbl.Size = new Size(361, 63);
@@ -222,11 +230,11 @@
             LogIn_lbl.AutoEllipsis = false;
             LogIn_lbl.BackColor = Color.White;
             LogIn_lbl.CursorType = Cursors.Default;
-            LogIn_lbl.Font = new Font("Times New Roman", 30F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LogIn_lbl.Location = new Point(636, 220);
+            LogIn_lbl.Font = new Font("Courier New", 30F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LogIn_lbl.Location = new Point(64, 245);
             LogIn_lbl.Name = "LogIn_lbl";
             LogIn_lbl.RightToLeft = RightToLeft.No;
-            LogIn_lbl.Size = new Size(113, 45);
+            LogIn_lbl.Size = new Size(144, 46);
             LogIn_lbl.TabIndex = 6;
             LogIn_lbl.Text = "Log In";
             LogIn_lbl.TextAlignment = ContentAlignment.TopLeft;
@@ -260,32 +268,32 @@
             Usernametxtbox.IconPadding = 10;
             Usernametxtbox.IconRight = null;
             Usernametxtbox.IconRightCursor = Cursors.IBeam;
-            Usernametxtbox.Location = new Point(636, 323);
+            Usernametxtbox.Location = new Point(64, 325);
             Usernametxtbox.MaxLength = 32767;
             Usernametxtbox.MinimumSize = new Size(1, 1);
             Usernametxtbox.Modified = false;
             Usernametxtbox.Multiline = false;
             Usernametxtbox.Name = "Usernametxtbox";
-            stateProperties1.BorderColor = Color.DodgerBlue;
-            stateProperties1.FillColor = Color.Empty;
-            stateProperties1.ForeColor = Color.Empty;
-            stateProperties1.PlaceholderForeColor = Color.Empty;
-            Usernametxtbox.OnActiveState = stateProperties1;
-            stateProperties2.BorderColor = Color.FromArgb(204, 204, 204);
-            stateProperties2.FillColor = Color.FromArgb(240, 240, 240);
-            stateProperties2.ForeColor = Color.FromArgb(109, 109, 109);
-            stateProperties2.PlaceholderForeColor = Color.DarkGray;
-            Usernametxtbox.OnDisabledState = stateProperties2;
-            stateProperties3.BorderColor = Color.FromArgb(105, 181, 255);
-            stateProperties3.FillColor = Color.Empty;
-            stateProperties3.ForeColor = Color.Empty;
-            stateProperties3.PlaceholderForeColor = Color.Empty;
-            Usernametxtbox.OnHoverState = stateProperties3;
-            stateProperties4.BorderColor = Color.Silver;
-            stateProperties4.FillColor = Color.White;
-            stateProperties4.ForeColor = Color.Empty;
-            stateProperties4.PlaceholderForeColor = Color.Empty;
-            Usernametxtbox.OnIdleState = stateProperties4;
+            stateProperties9.BorderColor = Color.DodgerBlue;
+            stateProperties9.FillColor = Color.Empty;
+            stateProperties9.ForeColor = Color.Empty;
+            stateProperties9.PlaceholderForeColor = Color.Empty;
+            Usernametxtbox.OnActiveState = stateProperties9;
+            stateProperties10.BorderColor = Color.FromArgb(204, 204, 204);
+            stateProperties10.FillColor = Color.FromArgb(240, 240, 240);
+            stateProperties10.ForeColor = Color.FromArgb(109, 109, 109);
+            stateProperties10.PlaceholderForeColor = Color.DarkGray;
+            Usernametxtbox.OnDisabledState = stateProperties10;
+            stateProperties11.BorderColor = Color.FromArgb(105, 181, 255);
+            stateProperties11.FillColor = Color.Empty;
+            stateProperties11.ForeColor = Color.Empty;
+            stateProperties11.PlaceholderForeColor = Color.Empty;
+            Usernametxtbox.OnHoverState = stateProperties11;
+            stateProperties12.BorderColor = Color.Silver;
+            stateProperties12.FillColor = Color.White;
+            stateProperties12.ForeColor = Color.Empty;
+            stateProperties12.PlaceholderForeColor = Color.Empty;
+            Usernametxtbox.OnIdleState = stateProperties12;
             Usernametxtbox.Padding = new Padding(3);
             Usernametxtbox.PasswordChar = '\0';
             Usernametxtbox.PlaceholderForeColor = Color.Silver;
@@ -335,32 +343,32 @@
             Passwordtxtbox.IconPadding = 10;
             Passwordtxtbox.IconRight = null;
             Passwordtxtbox.IconRightCursor = Cursors.IBeam;
-            Passwordtxtbox.Location = new Point(636, 380);
+            Passwordtxtbox.Location = new Point(64, 382);
             Passwordtxtbox.MaxLength = 32767;
             Passwordtxtbox.MinimumSize = new Size(1, 1);
             Passwordtxtbox.Modified = false;
             Passwordtxtbox.Multiline = false;
             Passwordtxtbox.Name = "Passwordtxtbox";
-            stateProperties5.BorderColor = Color.DodgerBlue;
-            stateProperties5.FillColor = Color.Empty;
-            stateProperties5.ForeColor = Color.Empty;
-            stateProperties5.PlaceholderForeColor = Color.Empty;
-            Passwordtxtbox.OnActiveState = stateProperties5;
-            stateProperties6.BorderColor = Color.FromArgb(204, 204, 204);
-            stateProperties6.FillColor = Color.FromArgb(240, 240, 240);
-            stateProperties6.ForeColor = Color.FromArgb(109, 109, 109);
-            stateProperties6.PlaceholderForeColor = Color.DarkGray;
-            Passwordtxtbox.OnDisabledState = stateProperties6;
-            stateProperties7.BorderColor = Color.FromArgb(105, 181, 255);
-            stateProperties7.FillColor = Color.Empty;
-            stateProperties7.ForeColor = Color.Empty;
-            stateProperties7.PlaceholderForeColor = Color.Empty;
-            Passwordtxtbox.OnHoverState = stateProperties7;
-            stateProperties8.BorderColor = Color.Silver;
-            stateProperties8.FillColor = Color.White;
-            stateProperties8.ForeColor = Color.Empty;
-            stateProperties8.PlaceholderForeColor = Color.Empty;
-            Passwordtxtbox.OnIdleState = stateProperties8;
+            stateProperties13.BorderColor = Color.DodgerBlue;
+            stateProperties13.FillColor = Color.Empty;
+            stateProperties13.ForeColor = Color.Empty;
+            stateProperties13.PlaceholderForeColor = Color.Empty;
+            Passwordtxtbox.OnActiveState = stateProperties13;
+            stateProperties14.BorderColor = Color.FromArgb(204, 204, 204);
+            stateProperties14.FillColor = Color.FromArgb(240, 240, 240);
+            stateProperties14.ForeColor = Color.FromArgb(109, 109, 109);
+            stateProperties14.PlaceholderForeColor = Color.DarkGray;
+            Passwordtxtbox.OnDisabledState = stateProperties14;
+            stateProperties15.BorderColor = Color.FromArgb(105, 181, 255);
+            stateProperties15.FillColor = Color.Empty;
+            stateProperties15.ForeColor = Color.Empty;
+            stateProperties15.PlaceholderForeColor = Color.Empty;
+            Passwordtxtbox.OnHoverState = stateProperties15;
+            stateProperties16.BorderColor = Color.Silver;
+            stateProperties16.FillColor = Color.White;
+            stateProperties16.ForeColor = Color.Empty;
+            stateProperties16.PlaceholderForeColor = Color.Empty;
+            Passwordtxtbox.OnIdleState = stateProperties16;
             Passwordtxtbox.Padding = new Padding(3);
             Passwordtxtbox.PasswordChar = '\0';
             Passwordtxtbox.PlaceholderForeColor = Color.Silver;
@@ -401,11 +409,11 @@
             Login_btn.ButtonTextMarginLeft = 0;
             Login_btn.ColorContrastOnClick = 45;
             Login_btn.ColorContrastOnHover = 45;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            Login_btn.CustomizableEdges = borderEdges2;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            Login_btn.CustomizableEdges = borderEdges4;
             Login_btn.DialogResult = DialogResult.None;
             Login_btn.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             Login_btn.DisabledFillColor = Color.FromArgb(204, 204, 204);
@@ -429,7 +437,7 @@
             Login_btn.IdleIconLeftImage = null;
             Login_btn.IdleIconRightImage = null;
             Login_btn.IndicateFocus = false;
-            Login_btn.Location = new Point(636, 474);
+            Login_btn.Location = new Point(64, 469);
             Login_btn.Name = "Login_btn";
             Login_btn.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             Login_btn.OnDisabledState.BorderRadius = 1;
@@ -476,15 +484,72 @@
             // 
             background_Panel.BackgroundImage = Properties.Resources.backlog__1___1_;
             background_Panel.BackgroundImageLayout = ImageLayout.Stretch;
-            background_Panel.Controls.Add(Login_btn);
-            background_Panel.Controls.Add(SystemName_lbl);
-            background_Panel.Controls.Add(Passwordtxtbox);
-            background_Panel.Controls.Add(Usernametxtbox);
+            background_Panel.Controls.Add(panel2);
+            background_Panel.Controls.Add(panel1);
             background_Panel.Dock = DockStyle.Fill;
             background_Panel.Location = new Point(0, 0);
             background_Panel.Name = "background_Panel";
             background_Panel.Size = new Size(1100, 700);
             background_Panel.TabIndex = 8;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.Transparent;
+            panel2.Controls.Add(SystemName_lbl);
+            panel2.Controls.Add(logo_Pic);
+            panel2.Location = new Point(27, 152);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(435, 431);
+            panel2.TabIndex = 11;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(LogIn_lbl);
+            panel1.Controls.Add(Usernametxtbox);
+            panel1.Controls.Add(Login_btn);
+            panel1.Controls.Add(Passwordtxtbox);
+            panel1.Dock = DockStyle.Right;
+            panel1.Location = new Point(563, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(537, 700);
+            panel1.TabIndex = 10;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.view__1_;
+            pictureBox1.Location = new Point(334, 386);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(30, 30);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 12;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(234, 437);
+            label2.Name = "label2";
+            label2.Size = new Size(135, 16);
+            label2.TabIndex = 11;
+            label2.Text = "Forgot Password?";
+            label2.MouseEnter += label2_MouseEnter;
+            label2.MouseLeave += label2_MouseLeave;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(64, 297);
+            label1.Name = "label1";
+            label1.Size = new Size(191, 16);
+            label1.TabIndex = 10;
+            label1.Text = "Welcome to Daza's Best!";
             // 
             // greetings_lbl
             // 
@@ -523,8 +588,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1100, 700);
-            Controls.Add(LogIn_lbl);
-            Controls.Add(logo_Pic);
             Controls.Add(TopNav);
             Controls.Add(background_Panel);
             FormBorderStyle = FormBorderStyle.None;
@@ -534,8 +597,11 @@
             TopNav.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)logo_Pic).EndInit();
             background_Panel.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -553,5 +619,10 @@
         private Panel background_Panel;
         private Bunifu.UI.WinForms.BunifuLabel greetings_lbl;
         private Bunifu.UI.WinForms.BunifuLabel ForgotPass_Btn;
+        private Panel panel1;
+        private Panel panel2;
+        private Label label1;
+        private PictureBox pictureBox1;
+        private Label label2;
     }
 }

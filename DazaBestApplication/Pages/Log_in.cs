@@ -118,5 +118,31 @@ namespace DazaBestApplication.Pages
         {
             Application.Exit();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (Passwordtxtbox.PasswordChar == '*')
+            {
+                pictureBox1.Image = Properties.Resources.hide__2_;
+                Passwordtxtbox.PasswordChar = '\0';
+            }
+            else
+            {
+                pictureBox1.Image = Properties.Resources.view__1_;
+                Passwordtxtbox.PasswordChar = '*';
+
+            }
+
+        }
+
+        private void label2_MouseEnter(object sender, EventArgs e)
+        {
+            label2.ForeColor = Color.Blue;
+        }
+
+        private void label2_MouseLeave(object sender, EventArgs e)
+        {
+            label2.ForeColor = Color.Black;
+        }
     }
 }

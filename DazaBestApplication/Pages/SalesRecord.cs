@@ -27,8 +27,8 @@ namespace DazaBestApplication.Pages
         private int ItemPerPaeg = 12;
         private DateTime FromDateFilter = DateTime.Now;
         private DateTime ToDateFilter = DateTime.Now;
-        
-        
+
+
         public SalesRecord(Form mainForm)
         {
             InitializeComponent();
@@ -68,7 +68,7 @@ namespace DazaBestApplication.Pages
             }
             catch (Exception e)
             {
-                
+
             }
         }
         //Populate AllSaleReportHeader Datagrid
@@ -117,6 +117,16 @@ namespace DazaBestApplication.Pages
         private async void SalesRecord_Load(object sender, EventArgs e)
         {
             await PopulateAllSaleReportDatagrid();
+        }
+
+        private void AllsaleDatagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void bunifuButton22_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -222,6 +222,7 @@
             bunifuButton22.TextMarginLeft = 0;
             bunifuButton22.TextPadding = new Padding(35, 0, 0, 0);
             bunifuButton22.UseDefaultRadiusAndThickness = true;
+            bunifuButton22.Click += bunifuButton22_Click_1;
             // 
             // bunifuLabel1
             // 
@@ -650,6 +651,7 @@
             AllsaleDatagrid.Size = new Size(830, 466);
             AllsaleDatagrid.TabIndex = 2;
             AllsaleDatagrid.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
+            AllsaleDatagrid.CellContentClick += AllsaleDatagrid_CellContentClick;
             // 
             // IdCol
             // 
