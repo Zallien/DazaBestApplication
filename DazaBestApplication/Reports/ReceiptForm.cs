@@ -12,8 +12,10 @@ using SystemBackEnd.ServiceModels;
 
 namespace DazaBestApplication.Reports
 {
+    
     public partial class ReceiptForm : Form
     {
+        private Size Hsize;
         private RecieptData RecieptData = new RecieptData();
         private readonly ReportViewer reportViewer;
         public ReceiptForm(RecieptData therecieptdata)
@@ -23,6 +25,8 @@ namespace DazaBestApplication.Reports
             reportViewer = new ReportViewer();
             reportViewer.Dock = DockStyle.Fill;
             this.Controls.Add(reportViewer);
+            Hsize = Program.WorkspaceSize;
+            this.Height = Hsize.Height;
         }
 
         private void ReceiptForm_Load(object sender, EventArgs e)
@@ -50,9 +54,7 @@ namespace DazaBestApplication.Reports
             };
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-
-            // 2. Define the full resource name (usually AssemblyName.Folder.FileName.rdlc)
-            //    - This string MUST match the full resource path for your file.
+            //Name ng report inside the project folder structure
             string resourceName = "DazaBestApplication.Reports.Report1.rdlc";
 
             // 3. Use the assembly to get the file as a stream (this finds the report inside the DLL)
@@ -63,15 +65,11 @@ namespace DazaBestApplication.Reports
                     // Handle the case where the resource name is wrong or the Build Action is not set
                     throw new Exception($"Could not find embedded resource: {resourceName}. Check Build Action and spelling.");
                 }
-
-                // **Corrected Line:** Load the report definition from the stream
                 reportViewer.LocalReport.LoadReportDefinition(stream);
-
-                // Continue with your existing data and parameter setup
                 reportViewer.LocalReport.DataSources.Clear();
                 reportViewer.LocalReport.SetParameters(parameters);
 
-                // Make sure "iteminfo" here matches the DataSet name inside the RDLC file
+                //name ng dataset nasa report
                 reportViewer.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", dataSource));
 
                 reportViewer.RefreshReport();
