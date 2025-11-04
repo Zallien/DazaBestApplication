@@ -18,15 +18,20 @@ namespace DazaBestApplication.Reports
         private Size Hsize;
         private RecieptData RecieptData = new RecieptData();
         private readonly ReportViewer reportViewer;
-        public ReceiptForm(RecieptData therecieptdata)
+        private decimal payment;
+        private decimal change;
+        public ReceiptForm(RecieptData therecieptdata, decimal change1, decimal payment1)
         {
             InitializeComponent();
             RecieptData = therecieptdata;
+            payment = payment1;
+            change = change1;
             reportViewer = new ReportViewer();
             reportViewer.Dock = DockStyle.Fill;
             this.Controls.Add(reportViewer);
             Hsize = Program.WorkspaceSize;
             this.Height = Hsize.Height;
+
         }
 
         private void ReceiptForm_Load(object sender, EventArgs e)
@@ -50,7 +55,9 @@ namespace DazaBestApplication.Reports
                 new ReportParameter("ORno", RecieptData.ORnumber),
                 new ReportParameter("DateTime", RecieptData.Date.ToString("MM/dd/yyyy HH:mm")),
                 new ReportParameter("EmployeeName", RecieptData.Cashier),
-                new ReportParameter("GrandTotal", RecieptData.Total.ToString("N2"))
+                new ReportParameter("GrandTotal", RecieptData.Total.ToString("N2")),
+                new ReportParameter("payment", payment.ToString("N2")),
+                new ReportParameter("change", change.ToString("N2"))
             };
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();

@@ -411,7 +411,14 @@
                   </TextRun>
                   <TextRun>
                     <Value>=Parameters!GrandTotal.Value</Value>
-                    <Style />
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Roboto</FontFamily>
+                      <FontSize>0.16667in</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -555,8 +562,15 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>=Parameters!GrandTotal.Value</Value>
-                    <Style />
+                    <Value>=Parameters!payment.Value</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Roboto</FontFamily>
+                      <FontSize>0.16667in</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -598,8 +612,15 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>=Parameters!GrandTotal.Value</Value>
-                    <Style />
+                    <Value>=Parameters!change.Value</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Roboto</FontFamily>
+                      <FontSize>0.16667in</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -1060,7 +1081,15 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="GrandTotal">
-      <DataType>Float</DataType>
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="change">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="payment">
+      <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
@@ -1088,6 +1117,16 @@
           <ColumnIndex>3</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>GrandTotal</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>change</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>payment</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

@@ -77,7 +77,10 @@ namespace DazaBestApplication.Modals
                         var posservice = new POSService(new BackEndDBContext());
                         RecieptData recieptdata = await posservice.GetRecieptData(transacid, accountloggedin.Fullname);
                         //Open the Recieptmodal then pass the recieptdata
-                        ReceiptForm reciptform = new ReceiptForm(recieptdata);
+             
+                        decimal amountrecieved = Decimal.Parse(PaymentRecievedtextbox.Text);
+                        decimal change = ChangeAmount;
+                        ReceiptForm reciptform = new ReceiptForm(recieptdata, change,amountrecieved);
                         reciptform.Show();
                         this.Close();
                         this.DialogResult = DialogResult.No;
