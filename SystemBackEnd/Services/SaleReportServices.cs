@@ -22,25 +22,27 @@ namespace SystemBackEnd.Services
 
 
         //Get SaleReportHeader
-        public async Task<List<SaleReportHeader>> GetSaleReportHeaders(RecordsFilterSearch salefilter)
+        public async Task<List<SaleReportDetails>> GetSaleReportDetails(RecordsFilterSearch salefilter)
         {
-            List<SaleReportHeader> theHeaderList = new List<SaleReportHeader>();
-
+            List<SaleReportDetails> theHeaderList = new List<SaleReportDetails>();
             try
             {
                 theHeaderList = await ( from a in _db.TransactionHeader
                                 join b in _db.Accounts on a.TransactionBy equals b.AccountId
+                                join c in _db.TransactionDetails on a.TransactionHeaderId equals c.TransactionHeaderId
+                                join d in _db.Products on c.ProductId equals d.ProductID
                                 where (!salefilter.FromDate.HasValue || a.TransactionDate >= salefilter.FromDate.Value)
                                    && (!salefilter.ToDate.HasValue || a.TransactionDate <= salefilter.ToDate.Value)
                                    && (string.IsNullOrEmpty(salefilter.SearchValue) || a.TransactionNumber.Contains(salefilter.SearchValue))
                                 orderby a.Row descending
-                                select new SystemBackEnd.ServiceModels.SaleReportHeader
+                                select new SystemBackEnd.ServiceModels.SaleReportDetails
                                 {
-                                    TransactionDate = a.TransactionDate,
-                                    TransactionHeaderId = a.TransactionHeaderId,
-                                    Total = a.Grandtotal,
-                                    Cashier = b.Fullname,
-                                    TransactionNumber = a.TransactionNumber
+                                    TransactionDetailsId = a.TransactionHeaderId,
+                                    TransactionNumber = a.TransactionNumber,
+                                    Date = a.TransactionDate,
+                                    CashierName = b.Fullname,
+                                    ProductName = d.ProductName,
+                                    Quantity = c.Quantity,
                                 })
                                 .Skip((salefilter.PageNumber - 1) * salefilter.ItemperPage)
                                 .Take(salefilter.ItemperPage)

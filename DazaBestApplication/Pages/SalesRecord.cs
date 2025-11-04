@@ -16,7 +16,7 @@ namespace DazaBestApplication.Pages
     public partial class SalesRecord : Form
     {
         private Form MainForm;
-        private List<SaleReportHeader> SaleReportHeaders;
+        private List<SaleReportDetails> SaleReportHeaders;
         private RecordsFilterSearch saleRecordFilterSearch;
         private SaleReportServices SaleReportServices = new SaleReportServices(new BackEndDBContext());
 
@@ -48,12 +48,12 @@ namespace DazaBestApplication.Pages
             MainForm = mainForm;
         }
         //Load Headers
-        private async Task LoadAllSaleHeaders()
+        private async Task LoadSaleReportDetails()
         {
-
             try
             {
-                SaleReportHeaders = new List<SaleReportHeader>();
+
+                SaleReportHeaders = new List<SaleReportDetails>();
                 saleRecordFilterSearch = new RecordsFilterSearch()
                 {
                     SearchValue = SearchValue,
@@ -62,31 +62,35 @@ namespace DazaBestApplication.Pages
                     PageNumber = PageNumber,
                     ItemperPage = ItemPerPaeg
                 };
-
                 SaleReportServices = new SaleReportServices(new BackEndDBContext());
-                SaleReportHeaders = await SaleReportServices.GetSaleReportHeaders(saleRecordFilterSearch);
+                SaleReportHeaders = await SaleReportServices.GetSaleReportDetails(saleRecordFilterSearch);
+
+
             }
             catch (Exception e)
             {
-
+                
             }
         }
         //Populate AllSaleReportHeader Datagrid
         private async Task PopulateAllSaleReportDatagrid()
         {
-            await LoadAllSaleHeaders();
+            await LoadSaleReportDetails();
 
             // Datagrid AllsaleDatagrid
             AllsaleDatagrid.Rows.Clear();
             foreach (var item in SaleReportHeaders)
             {
+
                 int rowindex = AllsaleDatagrid.Rows.Add();
                 DataGridViewRow row = AllsaleDatagrid.Rows[rowindex];
-                row.Cells["IdCol"].Value = item.TransactionHeaderId;
+                row.Cells["IdCol"].Value = item.TransactionDetailsId;
                 row.Cells["PurchaseNumberCol"].Value = item.TransactionNumber;
-                row.Cells["PurchaseDateCol"].Value = item.TransactionDate;
-                row.Cells["CashierCol"].Value = item.Cashier;
-                row.Cells["TotalCol"].Value = item.Total;
+                row.Cells["ProductNameCol"].Value = item.ProductName;
+                row.Cells["DateCol"].Value = item.Date;
+                row.Cells["CashierCol"].Value = item.CashierName;
+
+
             }
         }
 

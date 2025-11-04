@@ -13,10 +13,12 @@ namespace SystemBackEnd.Services
     public class AdjusmentReportServices
     {
         private BackEndDBContext _db;
+
         public AdjusmentReportServices(BackEndDBContext mdb)
         {
             _db = mdb;
         }
+
         //Get AdjustmentDetails for Adjustment Reports
         public async Task<List<AdjustmentReportDetails>> GetAdjustmentDetails(RecordsFilterSearch filtersearch)
         {

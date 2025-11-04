@@ -60,15 +60,15 @@
             PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
             panel3 = new Panel();
             AllsaleDatagrid = new Bunifu.UI.WinForms.BunifuDataGridView();
-            IdCol = new DataGridViewTextBoxColumn();
-            PurchaseNumberCol = new DataGridViewTextBoxColumn();
-            PurchaseDateCol = new DataGridViewTextBoxColumn();
-            CashierCol = new DataGridViewTextBoxColumn();
-            TotalCol = new DataGridViewTextBoxColumn();
             PrintPanel = new Panel();
             bunifuButton23 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             bunifuButton21 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             RemoveButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            IdCol = new DataGridViewTextBoxColumn();
+            PurchaseNumberCol = new DataGridViewTextBoxColumn();
+            ProductNameCol = new DataGridViewTextBoxColumn();
+            DateCol = new DataGridViewTextBoxColumn();
+            CashierCol = new DataGridViewTextBoxColumn();
             TopPanel.SuspendLayout();
             panel1.SuspendLayout();
             panel5.SuspendLayout();
@@ -607,7 +607,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             AllsaleDatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             AllsaleDatagrid.ColumnHeadersHeight = 40;
-            AllsaleDatagrid.Columns.AddRange(new DataGridViewColumn[] { IdCol, PurchaseNumberCol, PurchaseDateCol, CashierCol, TotalCol });
+            AllsaleDatagrid.Columns.AddRange(new DataGridViewColumn[] { IdCol, PurchaseNumberCol, ProductNameCol, DateCol, CashierCol });
             AllsaleDatagrid.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
             AllsaleDatagrid.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             AllsaleDatagrid.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
@@ -652,37 +652,6 @@
             AllsaleDatagrid.TabIndex = 2;
             AllsaleDatagrid.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             AllsaleDatagrid.CellContentClick += AllsaleDatagrid_CellContentClick;
-            // 
-            // IdCol
-            // 
-            IdCol.HeaderText = "HeaderId";
-            IdCol.Name = "IdCol";
-            IdCol.ReadOnly = true;
-            IdCol.Visible = false;
-            // 
-            // PurchaseNumberCol
-            // 
-            PurchaseNumberCol.HeaderText = "PurchaseNumber";
-            PurchaseNumberCol.Name = "PurchaseNumberCol";
-            PurchaseNumberCol.ReadOnly = true;
-            // 
-            // PurchaseDateCol
-            // 
-            PurchaseDateCol.HeaderText = "Date";
-            PurchaseDateCol.Name = "PurchaseDateCol";
-            PurchaseDateCol.ReadOnly = true;
-            // 
-            // CashierCol
-            // 
-            CashierCol.HeaderText = "Cashier";
-            CashierCol.Name = "CashierCol";
-            CashierCol.ReadOnly = true;
-            // 
-            // TotalCol
-            // 
-            TotalCol.HeaderText = "Total";
-            TotalCol.Name = "TotalCol";
-            TotalCol.ReadOnly = true;
             // 
             // PrintPanel
             // 
@@ -962,6 +931,37 @@
             RemoveButton.TextPadding = new Padding(15, 0, 0, 0);
             RemoveButton.UseDefaultRadiusAndThickness = true;
             // 
+            // IdCol
+            // 
+            IdCol.HeaderText = "DetailsId";
+            IdCol.Name = "IdCol";
+            IdCol.ReadOnly = true;
+            IdCol.Visible = false;
+            // 
+            // PurchaseNumberCol
+            // 
+            PurchaseNumberCol.HeaderText = "PurchaseNumber";
+            PurchaseNumberCol.Name = "PurchaseNumberCol";
+            PurchaseNumberCol.ReadOnly = true;
+            // 
+            // ProductNameCol
+            // 
+            ProductNameCol.HeaderText = "Product";
+            ProductNameCol.Name = "ProductNameCol";
+            ProductNameCol.ReadOnly = true;
+            // 
+            // DateCol
+            // 
+            DateCol.HeaderText = "Date";
+            DateCol.Name = "DateCol";
+            DateCol.ReadOnly = true;
+            // 
+            // CashierCol
+            // 
+            CashierCol.HeaderText = "Cashier";
+            CashierCol.Name = "CashierCol";
+            CashierCol.ReadOnly = true;
+            // 
             // SalesRecord
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1016,8 +1016,8 @@
         private Panel panel5;
         private DataGridViewTextBoxColumn IdCol;
         private DataGridViewTextBoxColumn PurchaseNumberCol;
-        private DataGridViewTextBoxColumn PurchaseDateCol;
+        private DataGridViewTextBoxColumn ProductNameCol;
+        private DataGridViewTextBoxColumn DateCol;
         private DataGridViewTextBoxColumn CashierCol;
-        private DataGridViewTextBoxColumn TotalCol;
     }
 }
