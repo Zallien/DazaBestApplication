@@ -644,8 +644,20 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Line Name="Line2">
+            <Top>1.48345cm</Top>
+            <Left>0.66145cm</Left>
+            <Height>0cm</Height>
+            <Width>18.70479cm</Width>
+            <ZIndex>7</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
         </ReportItems>
-        <Height>1.41807in</Height>
+        <Height>1.34515in</Height>
         <Style />
       </Body>
       <Width>7.88492in</Width>
@@ -1049,6 +1061,18 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Line Name="Line3">
+              <Top>0.10556cm</Top>
+              <Left>0.66145cm</Left>
+              <Height>0cm</Height>
+              <Width>18.70479cm</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Line>
           </ReportItems>
           <Style>
             <Border>
