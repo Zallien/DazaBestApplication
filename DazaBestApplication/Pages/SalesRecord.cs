@@ -125,7 +125,7 @@ namespace DazaBestApplication.Pages
 
         private void AllsaleDatagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
 
         private void bunifuButton22_Click_1(object sender, EventArgs e)

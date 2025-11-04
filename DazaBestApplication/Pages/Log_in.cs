@@ -144,5 +144,10 @@ namespace DazaBestApplication.Pages
         {
             label2.ForeColor = Color.Black;
         }
+
+        private void Passwordtxtbox_KeyUp(object sender, KeyEventArgs e)
+        {
+         
+        }
     }
 }
