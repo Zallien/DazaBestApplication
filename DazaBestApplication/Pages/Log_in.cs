@@ -18,6 +18,7 @@ namespace DazaBestApplication.Pages
     {
         private LoggedinAccount LoggedinAccount;
         private LoginServices LoginServices;
+        
         private RegisterAccount regAcc;
 
 

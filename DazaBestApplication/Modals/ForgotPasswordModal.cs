@@ -15,6 +15,13 @@ namespace DazaBestApplication.Modals
         public ForgotPasswordModal()
         {
             InitializeComponent();
+
+        }
+
+        private void ValidateBtn_Click(object sender, EventArgs e)
+        {
+            ResetPassPanel.Show();
+
         }
     }
 }
