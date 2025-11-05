@@ -29,18 +29,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             TopPanel = new Panel();
             panel4 = new Panel();
             label1 = new Label();
+            bunifuLabel8 = new Bunifu.UI.WinForms.BunifuLabel();
+            panelwhole = new Panel();
             panel1 = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel2 = new Panel();
@@ -89,19 +91,19 @@
             bunifuLabel9 = new Bunifu.UI.WinForms.BunifuLabel();
             label9 = new Label();
             panel15 = new Panel();
-            panel16 = new Panel();
-            bunifuDataGridView1 = new Bunifu.UI.WinForms.BunifuDataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            label10 = new Label();
+            tableLayoutPanel6 = new TableLayoutPanel();
             panel19 = new Panel();
             bunifuDataGridView2 = new Bunifu.UI.WinForms.BunifuDataGridView();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             label11 = new Label();
-            bunifuLabel8 = new Bunifu.UI.WinForms.BunifuLabel();
-            tableLayoutPanel6 = new TableLayoutPanel();
+            panel16 = new Panel();
+            bunifuDataGridView1 = new Bunifu.UI.WinForms.BunifuDataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            label10 = new Label();
             TopPanel.SuspendLayout();
+            panelwhole.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -126,11 +128,11 @@
             panel13.SuspendLayout();
             panel14.SuspendLayout();
             panel15.SuspendLayout();
-            panel16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)bunifuDataGridView1).BeginInit();
+            tableLayoutPanel6.SuspendLayout();
             panel19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bunifuDataGridView2).BeginInit();
-            tableLayoutPanel6.SuspendLayout();
+            panel16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)bunifuDataGridView1).BeginInit();
             SuspendLayout();
             // 
             // TopPanel
@@ -163,14 +165,45 @@
             label1.Text = "Dashboard";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // bunifuLabel8
+            // 
+            bunifuLabel8.AllowParentOverrides = false;
+            bunifuLabel8.AutoEllipsis = false;
+            bunifuLabel8.AutoSize = false;
+            bunifuLabel8.CursorType = Cursors.Default;
+            bunifuLabel8.Dock = DockStyle.Fill;
+            bunifuLabel8.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
+            bunifuLabel8.Location = new Point(15, 33);
+            bunifuLabel8.Name = "bunifuLabel8";
+            bunifuLabel8.RightToLeft = RightToLeft.No;
+            bunifuLabel8.Size = new Size(184, 71);
+            bunifuLabel8.TabIndex = 2;
+            bunifuLabel8.Text = "₱ 5,000.00";
+            bunifuLabel8.TextAlignment = ContentAlignment.MiddleCenter;
+            bunifuLabel8.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // panelwhole
+            // 
+            panelwhole.AutoScroll = true;
+            panelwhole.Controls.Add(panel15);
+            panelwhole.Controls.Add(panel10);
+            panelwhole.Controls.Add(panel9);
+            panelwhole.Controls.Add(panel3);
+            panelwhole.Controls.Add(panel1);
+            panelwhole.Dock = DockStyle.Fill;
+            panelwhole.Location = new Point(0, 50);
+            panelwhole.Name = "panelwhole";
+            panelwhole.Size = new Size(900, 738);
+            panelwhole.TabIndex = 4;
+            // 
             // panel1
             // 
             panel1.Controls.Add(tableLayoutPanel1);
             panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 50);
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(900, 63);
-            panel1.TabIndex = 4;
+            panel1.TabIndex = 6;
             // 
             // tableLayoutPanel1
             // 
@@ -229,7 +262,6 @@
             button4.TabIndex = 0;
             button4.Text = "Annually";
             button4.UseVisualStyleBackColor = false;
-            button4.Click += button4_Click;
             // 
             // panelbtn3
             // 
@@ -261,7 +293,6 @@
             button3.TabIndex = 0;
             button3.Text = "Monthly";
             button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
             // 
             // panelbtn2
             // 
@@ -293,7 +324,6 @@
             button2.TabIndex = 0;
             button2.Text = "Weekly";
             button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
             // 
             // panelbutton
             // 
@@ -326,17 +356,16 @@
             button1.TabIndex = 0;
             button1.Text = "Daily";
             button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
             // 
             // panel3
             // 
             panel3.Controls.Add(tableLayoutPanel2);
             panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(0, 113);
+            panel3.Location = new Point(0, 63);
             panel3.Name = "panel3";
             panel3.Padding = new Padding(15);
             panel3.Size = new Size(900, 143);
-            panel3.TabIndex = 5;
+            panel3.TabIndex = 7;
             // 
             // tableLayoutPanel2
             // 
@@ -478,7 +507,6 @@
             bunifuLabel2.Text = "₱ 5,000.00";
             bunifuLabel2.TextAlignment = ContentAlignment.MiddleCenter;
             bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            bunifuLabel2.Click += bunifuLabel2_Click;
             // 
             // label3
             // 
@@ -532,26 +560,25 @@
             // 
             panel9.Controls.Add(chart1);
             panel9.Dock = DockStyle.Top;
-            panel9.Location = new Point(0, 256);
+            panel9.Location = new Point(0, 206);
             panel9.Name = "panel9";
             panel9.Padding = new Padding(15);
             panel9.Size = new Size(900, 273);
-            panel9.TabIndex = 6;
-            panel9.Paint += panel9_Paint;
+            panel9.TabIndex = 8;
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea2);
             chart1.Dock = DockStyle.Fill;
-            legend1.Name = "Legend1";
-            chart1.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            chart1.Legends.Add(legend2);
             chart1.Location = new Point(15, 15);
             chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chart1.Series.Add(series2);
             chart1.Size = new Size(870, 243);
             chart1.TabIndex = 0;
             chart1.Text = "chart1";
@@ -560,10 +587,10 @@
             // 
             panel10.Controls.Add(tableLayoutPanel4);
             panel10.Dock = DockStyle.Top;
-            panel10.Location = new Point(0, 529);
+            panel10.Location = new Point(0, 479);
             panel10.Name = "panel10";
             panel10.Size = new Size(900, 114);
-            panel10.TabIndex = 7;
+            panel10.TabIndex = 9;
             // 
             // tableLayoutPanel4
             // 
@@ -758,114 +785,25 @@
             // 
             panel15.Controls.Add(tableLayoutPanel6);
             panel15.Dock = DockStyle.Top;
-            panel15.Location = new Point(0, 643);
+            panel15.Location = new Point(0, 593);
             panel15.Name = "panel15";
             panel15.Size = new Size(900, 144);
-            panel15.TabIndex = 8;
+            panel15.TabIndex = 10;
             // 
-            // panel16
+            // tableLayoutPanel6
             // 
-            panel16.BackColor = Color.White;
-            panel16.Controls.Add(bunifuDataGridView1);
-            panel16.Controls.Add(label10);
-            panel16.Dock = DockStyle.Fill;
-            panel16.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel16.Location = new Point(453, 3);
-            panel16.Name = "panel16";
-            panel16.Size = new Size(444, 138);
-            panel16.TabIndex = 3;
-            // 
-            // bunifuDataGridView1
-            // 
-            bunifuDataGridView1.AllowCustomTheming = false;
-            bunifuDataGridView1.AllowUserToAddRows = false;
-            bunifuDataGridView1.AllowUserToDeleteRows = false;
-            bunifuDataGridView1.AllowUserToResizeColumns = false;
-            bunifuDataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(223, 191, 191);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            bunifuDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            bunifuDataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            bunifuDataGridView1.BackgroundColor = Color.White;
-            bunifuDataGridView1.BorderStyle = BorderStyle.None;
-            bunifuDataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            bunifuDataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.Maroon;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(102, 0, 0);
-            dataGridViewCellStyle5.SelectionForeColor = Color.White;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            bunifuDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            bunifuDataGridView1.ColumnHeadersHeight = 40;
-            bunifuDataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2 });
-            bunifuDataGridView1.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
-            bunifuDataGridView1.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            bunifuDataGridView1.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
-            bunifuDataGridView1.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            bunifuDataGridView1.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.White;
-            bunifuDataGridView1.CurrentTheme.BackColor = Color.Maroon;
-            bunifuDataGridView1.CurrentTheme.GridColor = Color.FromArgb(216, 178, 178);
-            bunifuDataGridView1.CurrentTheme.HeaderStyle.BackColor = Color.Maroon;
-            bunifuDataGridView1.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
-            bunifuDataGridView1.CurrentTheme.HeaderStyle.ForeColor = Color.White;
-            bunifuDataGridView1.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(102, 0, 0);
-            bunifuDataGridView1.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
-            bunifuDataGridView1.CurrentTheme.Name = null;
-            bunifuDataGridView1.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(229, 204, 204);
-            bunifuDataGridView1.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            bunifuDataGridView1.CurrentTheme.RowsStyle.ForeColor = Color.Black;
-            bunifuDataGridView1.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            bunifuDataGridView1.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(229, 204, 204);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            dataGridViewCellStyle6.ForeColor = Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            dataGridViewCellStyle6.SelectionForeColor = Color.White;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            bunifuDataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
-            bunifuDataGridView1.Dock = DockStyle.Fill;
-            bunifuDataGridView1.EnableHeadersVisualStyles = false;
-            bunifuDataGridView1.GridColor = Color.FromArgb(216, 178, 178);
-            bunifuDataGridView1.HeaderBackColor = Color.Maroon;
-            bunifuDataGridView1.HeaderBgColor = Color.Empty;
-            bunifuDataGridView1.HeaderForeColor = Color.White;
-            bunifuDataGridView1.Location = new Point(0, 23);
-            bunifuDataGridView1.Name = "bunifuDataGridView1";
-            bunifuDataGridView1.ReadOnly = true;
-            bunifuDataGridView1.RowHeadersVisible = false;
-            bunifuDataGridView1.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            bunifuDataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64);
-            bunifuDataGridView1.RowTemplate.Height = 40;
-            bunifuDataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            bunifuDataGridView1.Size = new Size(444, 115);
-            bunifuDataGridView1.TabIndex = 4;
-            bunifuDataGridView1.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "#";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Item Name";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // label10
-            // 
-            label10.BorderStyle = BorderStyle.FixedSingle;
-            label10.Dock = DockStyle.Top;
-            label10.Location = new Point(0, 0);
-            label10.Name = "label10";
-            label10.Size = new Size(444, 23);
-            label10.TabIndex = 0;
-            label10.Text = "Least Selling Item";
-            label10.TextAlign = ContentAlignment.MiddleCenter;
+            tableLayoutPanel6.ColumnCount = 2;
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel6.Controls.Add(panel19, 0, 0);
+            tableLayoutPanel6.Controls.Add(panel16, 1, 0);
+            tableLayoutPanel6.Dock = DockStyle.Fill;
+            tableLayoutPanel6.Location = new Point(0, 0);
+            tableLayoutPanel6.Name = "tableLayoutPanel6";
+            tableLayoutPanel6.RowCount = 1;
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel6.Size = new Size(900, 144);
+            tableLayoutPanel6.TabIndex = 4;
             // 
             // panel19
             // 
@@ -971,54 +909,123 @@
             label11.Text = "Top Selling Item";
             label11.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // bunifuLabel8
+            // panel16
             // 
-            bunifuLabel8.AllowParentOverrides = false;
-            bunifuLabel8.AutoEllipsis = false;
-            bunifuLabel8.AutoSize = false;
-            bunifuLabel8.CursorType = Cursors.Default;
-            bunifuLabel8.Dock = DockStyle.Fill;
-            bunifuLabel8.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
-            bunifuLabel8.Location = new Point(15, 33);
-            bunifuLabel8.Name = "bunifuLabel8";
-            bunifuLabel8.RightToLeft = RightToLeft.No;
-            bunifuLabel8.Size = new Size(184, 71);
-            bunifuLabel8.TabIndex = 2;
-            bunifuLabel8.Text = "₱ 5,000.00";
-            bunifuLabel8.TextAlignment = ContentAlignment.MiddleCenter;
-            bunifuLabel8.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            panel16.BackColor = Color.White;
+            panel16.Controls.Add(bunifuDataGridView1);
+            panel16.Controls.Add(label10);
+            panel16.Dock = DockStyle.Fill;
+            panel16.Font = new Font("Courier New", 12F, FontStyle.Bold);
+            panel16.Location = new Point(453, 3);
+            panel16.Name = "panel16";
+            panel16.Size = new Size(444, 138);
+            panel16.TabIndex = 3;
             // 
-            // tableLayoutPanel6
+            // bunifuDataGridView1
             // 
-            tableLayoutPanel6.ColumnCount = 2;
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.Controls.Add(panel19, 0, 0);
-            tableLayoutPanel6.Controls.Add(panel16, 1, 0);
-            tableLayoutPanel6.Dock = DockStyle.Fill;
-            tableLayoutPanel6.Location = new Point(0, 0);
-            tableLayoutPanel6.Name = "tableLayoutPanel6";
-            tableLayoutPanel6.RowCount = 1;
-            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.Size = new Size(900, 144);
-            tableLayoutPanel6.TabIndex = 4;
+            bunifuDataGridView1.AllowCustomTheming = false;
+            bunifuDataGridView1.AllowUserToAddRows = false;
+            bunifuDataGridView1.AllowUserToDeleteRows = false;
+            bunifuDataGridView1.AllowUserToResizeColumns = false;
+            bunifuDataGridView1.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(223, 191, 191);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            bunifuDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            bunifuDataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            bunifuDataGridView1.BackgroundColor = Color.White;
+            bunifuDataGridView1.BorderStyle = BorderStyle.None;
+            bunifuDataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            bunifuDataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.Maroon;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(102, 0, 0);
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            bunifuDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            bunifuDataGridView1.ColumnHeadersHeight = 40;
+            bunifuDataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2 });
+            bunifuDataGridView1.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
+            bunifuDataGridView1.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            bunifuDataGridView1.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
+            bunifuDataGridView1.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            bunifuDataGridView1.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.White;
+            bunifuDataGridView1.CurrentTheme.BackColor = Color.Maroon;
+            bunifuDataGridView1.CurrentTheme.GridColor = Color.FromArgb(216, 178, 178);
+            bunifuDataGridView1.CurrentTheme.HeaderStyle.BackColor = Color.Maroon;
+            bunifuDataGridView1.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            bunifuDataGridView1.CurrentTheme.HeaderStyle.ForeColor = Color.White;
+            bunifuDataGridView1.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(102, 0, 0);
+            bunifuDataGridView1.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
+            bunifuDataGridView1.CurrentTheme.Name = null;
+            bunifuDataGridView1.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(229, 204, 204);
+            bunifuDataGridView1.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            bunifuDataGridView1.CurrentTheme.RowsStyle.ForeColor = Color.Black;
+            bunifuDataGridView1.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            bunifuDataGridView1.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(229, 204, 204);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            bunifuDataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            bunifuDataGridView1.Dock = DockStyle.Fill;
+            bunifuDataGridView1.EnableHeadersVisualStyles = false;
+            bunifuDataGridView1.GridColor = Color.FromArgb(216, 178, 178);
+            bunifuDataGridView1.HeaderBackColor = Color.Maroon;
+            bunifuDataGridView1.HeaderBgColor = Color.Empty;
+            bunifuDataGridView1.HeaderForeColor = Color.White;
+            bunifuDataGridView1.Location = new Point(0, 23);
+            bunifuDataGridView1.Name = "bunifuDataGridView1";
+            bunifuDataGridView1.ReadOnly = true;
+            bunifuDataGridView1.RowHeadersVisible = false;
+            bunifuDataGridView1.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            bunifuDataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64);
+            bunifuDataGridView1.RowTemplate.Height = 40;
+            bunifuDataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            bunifuDataGridView1.Size = new Size(444, 115);
+            bunifuDataGridView1.TabIndex = 4;
+            bunifuDataGridView1.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.HeaderText = "#";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.HeaderText = "Item Name";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // label10
+            // 
+            label10.BorderStyle = BorderStyle.FixedSingle;
+            label10.Dock = DockStyle.Top;
+            label10.Location = new Point(0, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(444, 23);
+            label10.TabIndex = 0;
+            label10.Text = "Least Selling Item";
+            label10.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 788);
-            Controls.Add(panel15);
-            Controls.Add(panel10);
-            Controls.Add(panel9);
-            Controls.Add(panel3);
-            Controls.Add(panel1);
+            Controls.Add(panelwhole);
             Controls.Add(TopPanel);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Dashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Dashboard";
             TopPanel.ResumeLayout(false);
+            panelwhole.ResumeLayout(false);
             panel1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
@@ -1043,11 +1050,11 @@
             panel13.ResumeLayout(false);
             panel14.ResumeLayout(false);
             panel15.ResumeLayout(false);
-            panel16.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)bunifuDataGridView1).EndInit();
+            tableLayoutPanel6.ResumeLayout(false);
             panel19.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)bunifuDataGridView2).EndInit();
-            tableLayoutPanel6.ResumeLayout(false);
+            panel16.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)bunifuDataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -1056,7 +1063,10 @@
         private Panel TopPanel;
         private Panel panel4;
         private Label label1;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel8;
+        private Panel panelwhole;
         private Panel panel1;
+        private TableLayoutPanel tableLayoutPanel1;
         private Panel panel2;
         private Panel panelbtn4;
         private Panel color4;
@@ -1071,36 +1081,23 @@
         private Panel color1;
         private Button button1;
         private Panel panel3;
-        private Panel panel7;
-        private Panel panel6;
+        private TableLayoutPanel tableLayoutPanel2;
+        private TableLayoutPanel tableLayoutPanel3;
         private Panel panel5;
-        private Panel panel8;
-        private Label label5;
-        private Label label4;
-        private Label label3;
-        private Label label2;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
+        private Label label2;
+        private Panel panel8;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel4;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
+        private Label label5;
+        private Panel panel6;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
+        private Label label3;
+        private Panel panel7;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
+        private Label label4;
         private Panel panel9;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private Panel panel10;
-        private Panel panel15;
-        private Panel panel16;
-        private Panel panel19;
-        private Label label10;
-        private Bunifu.UI.WinForms.BunifuDataGridView bunifuDataGridView1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private Bunifu.UI.WinForms.BunifuDataGridView bunifuDataGridView2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private Label label11;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel8;
-        private TableLayoutPanel tableLayoutPanel1;
-        private TableLayoutPanel tableLayoutPanel2;
-        private TableLayoutPanel tableLayoutPanel3;
         private TableLayoutPanel tableLayoutPanel4;
         private TableLayoutPanel tableLayoutPanel5;
         private Panel panel11;
@@ -1115,6 +1112,17 @@
         private Panel panel14;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel9;
         private Label label9;
+        private Panel panel15;
         private TableLayoutPanel tableLayoutPanel6;
+        private Panel panel19;
+        private Bunifu.UI.WinForms.BunifuDataGridView bunifuDataGridView2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private Label label11;
+        private Panel panel16;
+        private Bunifu.UI.WinForms.BunifuDataGridView bunifuDataGridView1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private Label label10;
     }
 }
