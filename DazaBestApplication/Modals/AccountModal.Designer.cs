@@ -65,7 +65,7 @@
             label6 = new Label();
             LastNametxt = new Bunifu.UI.WinForms.BunifuTextBox();
             label7 = new Label();
-            bunifuToggleSwitch1 = new Bunifu.UI.WinForms.BunifuToggleSwitch();
+            isAdminToggle = new Bunifu.UI.WinForms.BunifuToggleSwitch();
             label8 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -108,8 +108,8 @@
             CloseModal.Image = Properties.Resources.close;
             CloseModal.ImageActive = null;
             CloseModal.ImageLocation = null;
-            CloseModal.ImageMargin = 20;
-            CloseModal.ImageSize = new Size(10, 10);
+            CloseModal.ImageMargin = 23;
+            CloseModal.ImageSize = new Size(7, 7);
             CloseModal.ImageZoomSize = new Size(30, 30);
             CloseModal.InitialImage = (Image)resources.GetObject("CloseModal.InitialImage");
             CloseModal.Location = new Point(384, 3);
@@ -123,8 +123,9 @@
             CloseModal.TabIndex = 1;
             CloseModal.ToolTipText = "";
             CloseModal.WaitOnLoad = false;
-            CloseModal.Zoom = 20;
+            CloseModal.Zoom = 23;
             CloseModal.ZoomSpeed = 10;
+            CloseModal.Click += CloseModal_Click;
             // 
             // label1
             // 
@@ -328,6 +329,7 @@
             AddAccountBtn.TextMarginLeft = 0;
             AddAccountBtn.TextPadding = new Padding(0);
             AddAccountBtn.UseDefaultRadiusAndThickness = true;
+            AddAccountBtn.Click += AddAccountBtn_Click;
             // 
             // FirstNametxt
             // 
@@ -665,20 +667,20 @@
             label7.Text = "Last Name:";
             label7.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // bunifuToggleSwitch1
+            // isAdminToggle
             // 
-            bunifuToggleSwitch1.Animation = 5;
-            bunifuToggleSwitch1.AnimationSpeed = 5;
-            bunifuToggleSwitch1.BackColor = Color.Transparent;
-            bunifuToggleSwitch1.BackgroundImage = (Image)resources.GetObject("bunifuToggleSwitch1.BackgroundImage");
-            bunifuToggleSwitch1.Checked = true;
-            bunifuToggleSwitch1.InnerCirclePadding = 3;
-            bunifuToggleSwitch1.Location = new Point(150, 196);
-            bunifuToggleSwitch1.Margin = new Padding(4, 3, 4, 3);
-            bunifuToggleSwitch1.Name = "bunifuToggleSwitch1";
-            bunifuToggleSwitch1.Size = new Size(43, 19);
-            bunifuToggleSwitch1.TabIndex = 21;
-            bunifuToggleSwitch1.ThumbMargin = 3;
+            isAdminToggle.Animation = 5;
+            isAdminToggle.AnimationSpeed = 5;
+            isAdminToggle.BackColor = Color.Transparent;
+            isAdminToggle.BackgroundImage = (Image)resources.GetObject("isAdminToggle.BackgroundImage");
+            isAdminToggle.Checked = true;
+            isAdminToggle.InnerCirclePadding = 3;
+            isAdminToggle.Location = new Point(150, 196);
+            isAdminToggle.Margin = new Padding(4, 3, 4, 3);
+            isAdminToggle.Name = "isAdminToggle";
+            isAdminToggle.Size = new Size(43, 19);
+            isAdminToggle.TabIndex = 21;
+            isAdminToggle.ThumbMargin = 3;
             toggleState1.BackColor = Color.DarkGray;
             toggleState1.BackColorInner = Color.White;
             toggleState1.BorderColor = Color.DarkGray;
@@ -687,16 +689,16 @@
             toggleState1.BorderRadiusInner = 11;
             toggleState1.BorderThickness = 1;
             toggleState1.BorderThicknessInner = 1;
-            bunifuToggleSwitch1.ToggleStateDisabled = toggleState1;
-            toggleState2.BackColor = Color.Empty;
-            toggleState2.BackColorInner = Color.Empty;
-            toggleState2.BorderColor = Color.FromArgb(220, 220, 221);
-            toggleState2.BorderColorInner = Color.Empty;
-            toggleState2.BorderRadius = 1;
-            toggleState2.BorderRadiusInner = 1;
+            isAdminToggle.ToggleStateDisabled = toggleState1;
+            toggleState2.BackColor = Color.FromArgb(191, 191, 191);
+            toggleState2.BackColorInner = Color.White;
+            toggleState2.BorderColor = Color.FromArgb(191, 191, 191);
+            toggleState2.BorderColorInner = Color.White;
+            toggleState2.BorderRadius = 15;
+            toggleState2.BorderRadiusInner = 9;
             toggleState2.BorderThickness = 1;
             toggleState2.BorderThicknessInner = 1;
-            bunifuToggleSwitch1.ToggleStateOff = toggleState2;
+            isAdminToggle.ToggleStateOff = toggleState2;
             toggleState3.BackColor = Color.Maroon;
             toggleState3.BackColorInner = Color.White;
             toggleState3.BorderColor = Color.Maroon;
@@ -705,9 +707,9 @@
             toggleState3.BorderRadiusInner = 9;
             toggleState3.BorderThickness = 1;
             toggleState3.BorderThicknessInner = 1;
-            bunifuToggleSwitch1.ToggleStateOn = toggleState3;
-            bunifuToggleSwitch1.Value = true;
-            bunifuToggleSwitch1.CheckedChanged += bunifuToggleSwitch1_CheckedChanged;
+            isAdminToggle.ToggleStateOn = toggleState3;
+            isAdminToggle.Value = true;
+            isAdminToggle.CheckedChanged += bunifuToggleSwitch1_CheckedChanged;
             // 
             // label8
             // 
@@ -725,7 +727,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(420, 256);
             Controls.Add(label8);
-            Controls.Add(bunifuToggleSwitch1);
+            Controls.Add(isAdminToggle);
             Controls.Add(LastNametxt);
             Controls.Add(label7);
             Controls.Add(Passwordtxt);
@@ -740,6 +742,7 @@
             Name = "AccountModal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AccountModal";
+            Load += AccountModal_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ResumeLayout(false);
@@ -762,7 +765,7 @@
         private Label label6;
         private Bunifu.UI.WinForms.BunifuTextBox LastNametxt;
         private Label label7;
-        private Bunifu.UI.WinForms.BunifuToggleSwitch bunifuToggleSwitch1;
+        private Bunifu.UI.WinForms.BunifuToggleSwitch isAdminToggle;
         private Label label8;
     }
 }

@@ -54,7 +54,8 @@ namespace SystemBackEnd.Services
                 IsActive = true,
                 IsOwner = registeredaccount.IsOwner,
                 FirstName = registeredaccount.Firstname,
-                LastName = registeredaccount.Lastname
+                LastName = registeredaccount.Lastname,
+                FirstTimeLogout = true,
             };
 
             _db.Accounts.Add(newAccount);

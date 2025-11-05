@@ -51,6 +51,7 @@ namespace DazaBestApplication.Modals
                 ProcessTransaction.Total = ProcessTransaction.Total;
                 ProcessTransaction.PaymentMethod = "CASH";
                 ProcessTransaction.Discount = 0;
+                ProcessTransaction.TransactionBy = accountloggedin.AccountId;
 
                 POSService posService = new POSService(new BackEndDBContext());
                 ReturnTransacId = await posService.ProcessPOSTransaction(ProcessTransaction);
