@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DazaBestApplication.Modals;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,6 +28,9 @@ namespace DazaBestApplication.Pages
             MaximizeSystem();
             LoggedinAccount = Program.theLoggedInAccount;
         }
+
+
+
 
         //Maximize the System AUTOMATICALLY
         private void MaximizeSystem()
@@ -143,6 +147,11 @@ namespace DazaBestApplication.Pages
         private void label2_MouseLeave(object sender, EventArgs e)
         {
             label2.ForeColor = Color.Black;
+        }
+
+        private void Passwordtxtbox_KeyUp(object sender, KeyEventArgs e)
+        {
+         
         }
     }
 }
