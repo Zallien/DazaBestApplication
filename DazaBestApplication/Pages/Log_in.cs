@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DazaBestApplication.Modals;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,7 +19,6 @@ namespace DazaBestApplication.Pages
     {
         private LoggedinAccount LoggedinAccount;
         private LoginServices LoginServices;
-        
         private RegisterAccount regAcc;
 
 
@@ -28,6 +28,9 @@ namespace DazaBestApplication.Pages
             MaximizeSystem();
             LoggedinAccount = Program.theLoggedInAccount;
         }
+
+
+
 
         //Maximize the System AUTOMATICALLY
         private void MaximizeSystem()

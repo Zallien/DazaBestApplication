@@ -8,22 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DazaBestApplication.Modals
+namespace DazaBestApplication.Reports
 {
-    public partial class ForgotPasswordModal : Form
+    public partial class MonthlySalesReportForm : Form
     {
-        public ForgotPasswordModal()
+        public MonthlySalesReportForm()
         {
             InitializeComponent();
-
-        }
-
-
-
-        private void ValidateBtn_Click(object sender, EventArgs e)
-        {
-            ResetPassPanel.Show();
-
         }
     }
 }
