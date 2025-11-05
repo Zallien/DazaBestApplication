@@ -118,42 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btncancel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAJYAAAAnCAYAAADtl7EyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACRSURBVHhe7dIxEYAwAMDA+qkBcF8fyEAA7BwbZPvhl8wZ
-        a5/H2ucFPzrGS4TPjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXC
-        WCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkxtrm+YzwyTbPG0Zh1j1M6wqD
-        AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="btnNext.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAJYAAAAnCAYAAADtl7EyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACRSURBVHhe7dIxEYAwAMDA+qkBcF8fyEAA7BwbZPvhl8wZ
-        a5/H2ucFPzrGS4TPjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXC
-        WCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkjEXCWCSMRcJYJIxFwlgkxtrm+YzwyTbPG0Zh1j1M6wqD
-        AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="ForgotEmailTxt.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAUkAAAAnCAYAAACCA7o2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC3SURBVHhe7dTBCcMwAARB91+VhMpIGSkgQRhsDMlWMAP3
-        uQL2OABoa63XGONjZmbndhevSO4DgNvuokgC/CGSAEEkAYJIAgSRBAgiCRBEEiCIJEAQSYAgkgBBJAGC
-        SAIEkQQIIgkQRBIgiCRAEEmAIJIAQSQBgkgCBJEECCIJEEQSIIgkQBBJgCCSAEEkAYJIAgSRBAgiCRBE
-        EiCIJEAQSYAgkgDhEck553sfZmZ2bnfxiiQAv30BEr9DD5VeZSUAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="BackBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAJsAAAAnCAYAAAAYaTqCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACRSURBVHhe7dIxEYAwAMDA+qkBcF8fyEAA7BwjZPrhl8wZ
-        a5/H2ucFPzvGS4RfmI2M2ciYjYzZyJiNjNnImI2M2ciYjYzZyJiNjNnImI2M2ciYjYzZyJiNjNnImI2M
-        2ciYjYzZyJiNjNnImI2M2ciYjYzZyJiNjNnImI2M2ciYjYzZyJiNjNnIjLXN8xnhc9s8b+I5dwRNPfMF
-        AAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="ValidateBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAJsAAAAnCAYAAAAYaTqCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -188,42 +152,6 @@
         wLsuAPhZa73GGB8zMztvuwFPEPYBwJl2AwQBAEEA4EsQAIggABBBACCCAEAEAYAIAgARBAAiCABEEACI
         IAAQQQAgggBABAGACAIAEQQAIggARBAAiCAAEEEAIIIAQAQBgAgCABEEACIIAEQQAMhfEOac732Ymdl5
         2w14ggAAN08i4dx2PdneAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="bunifuTextBox2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAXYAAAAnCAYAAAAb+2ODAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADDSURBVHhe7dRBCcQwAAXR+leVEBkrowJacimshAzvwb98
-        AXNdAPSstX5jjMfMzM7dbvkX9n0AcLbdcmEHCBF2gBhhB4gRdoAYYQeIEXaAGGEHiBF2gBhhB4gRdoAY
-        YQeIEXaAGGEHiBF2gBhhB4gRdoAYYQeIEXaAGGEHiBF2gBhhB4gRdoAYYQeIEXaAGGEHiBF2gBhhB4gR
-        doAYYQeIEXaAGGEHiBF2gBhhB4gRdoCYv7DPOe99mJnZudst/8IOQMcLLATsEF17FrIAAAAASUVORK5C
-        YII=
-</value>
-  </data>
-  <data name="bunifuTextBox1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAXYAAAAnCAYAAAAb+2ODAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADDSURBVHhe7dRBCcQwAAXR+leVEBkrowJacimshAzvwb98
-        AXNdAPSstX5jjMfMzM7dbvkX9n0AcLbdcmEHCBF2gBhhB4gRdoAYYQeIEXaAGGEHiBF2gBhhB4gRdoAY
-        YQeIEXaAGGEHiBF2gBhhB4gRdoAYYQeIEXaAGGEHiBF2gBhhB4gRdoAYYQeIEXaAGGEHiBF2gBhhB4gR
-        doAYYQeIEXaAGGEHiBF2gBhhB4gRdoCYv7DPOe99mJnZudst/8IOQMcLLATsEF17FrIAAAAASUVORK5C
-        YII=
-</value>
-  </data>
-  <data name="CancelBtn2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAEEAAAAeCAYAAABzL3NnAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABbSURBVFhH7dCxDcAwDANB77+i5CkyQAKDnZENdMU37Hir
-        e1f3fgdX62ccFwQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgHISqfu5xUuf/B8Bw
-        Qoi2IG/AAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="ResetPassBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAGYAAAAfCAYAAAAV8rhrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB3SURBVGhD7dExEcMwAMBAg3Bg1RjNKzACoLmsLYBo+OEX
-        rRprz3Pt40vJPMd/pMCYKGOijIkyJsqYKGOijIkyJsqYKGOijIkyJsqYKGOijIkyJsqYKGOijIkyJsqY
-        KGOijIkyJsqYKGOijIkyJmp89rx+I+96ntzBAM234/f7dAAAAABJRU5ErkJggg==
 </value>
   </data>
 </root>

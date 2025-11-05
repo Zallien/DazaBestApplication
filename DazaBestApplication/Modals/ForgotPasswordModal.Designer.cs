@@ -29,36 +29,36 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ForgotPasswordModal));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties13 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties14 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties15 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties16 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties17 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties18 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties19 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties20 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties21 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties22 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties23 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties24 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges6 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges13 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges14 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties49 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties50 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties51 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties52 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges15 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges16 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties53 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties54 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties55 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties56 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties57 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties58 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties59 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties60 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties61 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties62 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties63 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties64 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties65 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties66 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties67 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties68 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties69 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties70 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties71 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties72 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges17 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges18 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             pictureBox1 = new PictureBox();
             btncancel = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             label1 = new Label();
@@ -66,15 +66,15 @@
             label2 = new Label();
             ForgotEmailTxt = new Bunifu.UI.WinForms.BunifuTextBox();
             QuestionPanel = new Panel();
+            panel1 = new Panel();
+            panel5 = new Panel();
+            label6 = new Label();
             pictureBox2 = new PictureBox();
             BackBtn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             ValidateBtn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             Ans3txt = new Bunifu.UI.WinForms.BunifuTextBox();
             Ans2txt = new Bunifu.UI.WinForms.BunifuTextBox();
             Ans1txt = new Bunifu.UI.WinForms.BunifuTextBox();
-            bunifuDropdown3 = new Bunifu.UI.WinForms.BunifuDropdown();
-            bunifuDropdown2 = new Bunifu.UI.WinForms.BunifuDropdown();
-            bunifuDropdown1 = new Bunifu.UI.WinForms.BunifuDropdown();
             ResetPassPanel = new Panel();
             label5 = new Label();
             label4 = new Label();
@@ -85,23 +85,20 @@
             ResetPassBtn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             panel2 = new Panel();
             panel3 = new Panel();
-            CloseModal = new Bunifu.UI.WinForms.BunifuImageButton();
             label3 = new Label();
-            panel1 = new Panel();
-            panel5 = new Panel();
-            CloseModal2 = new Bunifu.UI.WinForms.BunifuImageButton();
-            label6 = new Label();
             panel6 = new Panel();
             panel7 = new Panel();
-            bunifuImageButton1 = new Bunifu.UI.WinForms.BunifuImageButton();
             label7 = new Label();
+            label8 = new Label();
+            label9 = new Label();
+            label10 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             QuestionPanel.SuspendLayout();
+            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ResetPassPanel.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
-            panel1.SuspendLayout();
             panel6.SuspendLayout();
             SuspendLayout();
             // 
@@ -133,11 +130,11 @@
             btncancel.ButtonTextMarginLeft = 0;
             btncancel.ColorContrastOnClick = 45;
             btncancel.ColorContrastOnHover = 45;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            btncancel.CustomizableEdges = borderEdges1;
+            borderEdges13.BottomLeft = true;
+            borderEdges13.BottomRight = true;
+            borderEdges13.TopLeft = true;
+            borderEdges13.TopRight = true;
+            btncancel.CustomizableEdges = borderEdges13;
             btncancel.DialogResult = DialogResult.None;
             btncancel.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             btncancel.DisabledFillColor = Color.Empty;
@@ -234,11 +231,11 @@
             btnNext.ButtonTextMarginLeft = 0;
             btnNext.ColorContrastOnClick = 45;
             btnNext.ColorContrastOnHover = 45;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            btnNext.CustomizableEdges = borderEdges2;
+            borderEdges14.BottomLeft = true;
+            borderEdges14.BottomRight = true;
+            borderEdges14.TopLeft = true;
+            borderEdges14.TopRight = true;
+            btnNext.CustomizableEdges = borderEdges14;
             btnNext.DialogResult = DialogResult.None;
             btnNext.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             btnNext.DisabledFillColor = Color.Empty;
@@ -349,26 +346,26 @@
             ForgotEmailTxt.Modified = false;
             ForgotEmailTxt.Multiline = false;
             ForgotEmailTxt.Name = "ForgotEmailTxt";
-            stateProperties1.BorderColor = Color.DodgerBlue;
-            stateProperties1.FillColor = Color.Empty;
-            stateProperties1.ForeColor = Color.Empty;
-            stateProperties1.PlaceholderForeColor = Color.Empty;
-            ForgotEmailTxt.OnActiveState = stateProperties1;
-            stateProperties2.BorderColor = Color.FromArgb(204, 204, 204);
-            stateProperties2.FillColor = Color.FromArgb(240, 240, 240);
-            stateProperties2.ForeColor = Color.FromArgb(109, 109, 109);
-            stateProperties2.PlaceholderForeColor = Color.DarkGray;
-            ForgotEmailTxt.OnDisabledState = stateProperties2;
-            stateProperties3.BorderColor = Color.FromArgb(105, 181, 255);
-            stateProperties3.FillColor = Color.Empty;
-            stateProperties3.ForeColor = Color.Empty;
-            stateProperties3.PlaceholderForeColor = Color.Empty;
-            ForgotEmailTxt.OnHoverState = stateProperties3;
-            stateProperties4.BorderColor = Color.Silver;
-            stateProperties4.FillColor = Color.White;
-            stateProperties4.ForeColor = Color.Empty;
-            stateProperties4.PlaceholderForeColor = Color.Empty;
-            ForgotEmailTxt.OnIdleState = stateProperties4;
+            stateProperties49.BorderColor = Color.DodgerBlue;
+            stateProperties49.FillColor = Color.Empty;
+            stateProperties49.ForeColor = Color.Empty;
+            stateProperties49.PlaceholderForeColor = Color.Empty;
+            ForgotEmailTxt.OnActiveState = stateProperties49;
+            stateProperties50.BorderColor = Color.FromArgb(204, 204, 204);
+            stateProperties50.FillColor = Color.FromArgb(240, 240, 240);
+            stateProperties50.ForeColor = Color.FromArgb(109, 109, 109);
+            stateProperties50.PlaceholderForeColor = Color.DarkGray;
+            ForgotEmailTxt.OnDisabledState = stateProperties50;
+            stateProperties51.BorderColor = Color.FromArgb(105, 181, 255);
+            stateProperties51.FillColor = Color.Empty;
+            stateProperties51.ForeColor = Color.Empty;
+            stateProperties51.PlaceholderForeColor = Color.Empty;
+            ForgotEmailTxt.OnHoverState = stateProperties51;
+            stateProperties52.BorderColor = Color.Silver;
+            stateProperties52.FillColor = Color.White;
+            stateProperties52.ForeColor = Color.Empty;
+            stateProperties52.PlaceholderForeColor = Color.Empty;
+            ForgotEmailTxt.OnIdleState = stateProperties52;
             ForgotEmailTxt.Padding = new Padding(3);
             ForgotEmailTxt.PasswordChar = '\0';
             ForgotEmailTxt.PlaceholderForeColor = Color.Silver;
@@ -392,6 +389,9 @@
             // 
             // QuestionPanel
             // 
+            QuestionPanel.Controls.Add(label10);
+            QuestionPanel.Controls.Add(label9);
+            QuestionPanel.Controls.Add(label8);
             QuestionPanel.Controls.Add(panel1);
             QuestionPanel.Controls.Add(pictureBox2);
             QuestionPanel.Controls.Add(BackBtn);
@@ -399,13 +399,41 @@
             QuestionPanel.Controls.Add(Ans3txt);
             QuestionPanel.Controls.Add(Ans2txt);
             QuestionPanel.Controls.Add(Ans1txt);
-            QuestionPanel.Controls.Add(bunifuDropdown3);
-            QuestionPanel.Controls.Add(bunifuDropdown2);
-            QuestionPanel.Controls.Add(bunifuDropdown1);
             QuestionPanel.Location = new Point(700, 300);
             QuestionPanel.Name = "QuestionPanel";
             QuestionPanel.Size = new Size(800, 450);
             QuestionPanel.TabIndex = 6;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.White;
+            panel1.Controls.Add(panel5);
+            panel1.Controls.Add(label6);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(800, 40);
+            panel1.TabIndex = 9;
+            // 
+            // panel5
+            // 
+            panel5.BackColor = Color.Maroon;
+            panel5.Dock = DockStyle.Bottom;
+            panel5.Location = new Point(0, 35);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(800, 5);
+            panel5.TabIndex = 3;
+            // 
+            // label6
+            // 
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(10, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(154, 33);
+            label6.TabIndex = 0;
+            label6.Text = "Reset Password";
+            label6.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // pictureBox2
             // 
@@ -435,11 +463,11 @@
             BackBtn.ButtonTextMarginLeft = 0;
             BackBtn.ColorContrastOnClick = 45;
             BackBtn.ColorContrastOnHover = 45;
-            borderEdges3.BottomLeft = true;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = true;
-            borderEdges3.TopRight = true;
-            BackBtn.CustomizableEdges = borderEdges3;
+            borderEdges15.BottomLeft = true;
+            borderEdges15.BottomRight = true;
+            borderEdges15.TopLeft = true;
+            borderEdges15.TopRight = true;
+            BackBtn.CustomizableEdges = borderEdges15;
             BackBtn.DialogResult = DialogResult.None;
             BackBtn.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             BackBtn.DisabledFillColor = Color.Empty;
@@ -525,11 +553,11 @@
             ValidateBtn.ButtonTextMarginLeft = 0;
             ValidateBtn.ColorContrastOnClick = 45;
             ValidateBtn.ColorContrastOnHover = 45;
-            borderEdges4.BottomLeft = true;
-            borderEdges4.BottomRight = true;
-            borderEdges4.TopLeft = true;
-            borderEdges4.TopRight = true;
-            ValidateBtn.CustomizableEdges = borderEdges4;
+            borderEdges16.BottomLeft = true;
+            borderEdges16.BottomRight = true;
+            borderEdges16.TopLeft = true;
+            borderEdges16.TopRight = true;
+            ValidateBtn.CustomizableEdges = borderEdges16;
             ValidateBtn.DialogResult = DialogResult.None;
             ValidateBtn.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             ValidateBtn.DisabledFillColor = Color.Empty;
@@ -631,26 +659,26 @@
             Ans3txt.Modified = false;
             Ans3txt.Multiline = false;
             Ans3txt.Name = "Ans3txt";
-            stateProperties5.BorderColor = Color.DodgerBlue;
-            stateProperties5.FillColor = Color.Empty;
-            stateProperties5.ForeColor = Color.Empty;
-            stateProperties5.PlaceholderForeColor = Color.Empty;
-            Ans3txt.OnActiveState = stateProperties5;
-            stateProperties6.BorderColor = Color.FromArgb(204, 204, 204);
-            stateProperties6.FillColor = Color.FromArgb(240, 240, 240);
-            stateProperties6.ForeColor = Color.FromArgb(109, 109, 109);
-            stateProperties6.PlaceholderForeColor = Color.DarkGray;
-            Ans3txt.OnDisabledState = stateProperties6;
-            stateProperties7.BorderColor = Color.FromArgb(105, 181, 255);
-            stateProperties7.FillColor = Color.Empty;
-            stateProperties7.ForeColor = Color.Empty;
-            stateProperties7.PlaceholderForeColor = Color.Empty;
-            Ans3txt.OnHoverState = stateProperties7;
-            stateProperties8.BorderColor = Color.Silver;
-            stateProperties8.FillColor = Color.White;
-            stateProperties8.ForeColor = Color.Empty;
-            stateProperties8.PlaceholderForeColor = Color.Empty;
-            Ans3txt.OnIdleState = stateProperties8;
+            stateProperties53.BorderColor = Color.DodgerBlue;
+            stateProperties53.FillColor = Color.Empty;
+            stateProperties53.ForeColor = Color.Empty;
+            stateProperties53.PlaceholderForeColor = Color.Empty;
+            Ans3txt.OnActiveState = stateProperties53;
+            stateProperties54.BorderColor = Color.FromArgb(204, 204, 204);
+            stateProperties54.FillColor = Color.FromArgb(240, 240, 240);
+            stateProperties54.ForeColor = Color.FromArgb(109, 109, 109);
+            stateProperties54.PlaceholderForeColor = Color.DarkGray;
+            Ans3txt.OnDisabledState = stateProperties54;
+            stateProperties55.BorderColor = Color.FromArgb(105, 181, 255);
+            stateProperties55.FillColor = Color.Empty;
+            stateProperties55.ForeColor = Color.Empty;
+            stateProperties55.PlaceholderForeColor = Color.Empty;
+            Ans3txt.OnHoverState = stateProperties55;
+            stateProperties56.BorderColor = Color.Silver;
+            stateProperties56.FillColor = Color.White;
+            stateProperties56.ForeColor = Color.Empty;
+            stateProperties56.PlaceholderForeColor = Color.Empty;
+            Ans3txt.OnIdleState = stateProperties56;
             Ans3txt.Padding = new Padding(3);
             Ans3txt.PasswordChar = '\0';
             Ans3txt.PlaceholderForeColor = Color.Silver;
@@ -705,26 +733,26 @@
             Ans2txt.Modified = false;
             Ans2txt.Multiline = false;
             Ans2txt.Name = "Ans2txt";
-            stateProperties9.BorderColor = Color.DodgerBlue;
-            stateProperties9.FillColor = Color.Empty;
-            stateProperties9.ForeColor = Color.Empty;
-            stateProperties9.PlaceholderForeColor = Color.Empty;
-            Ans2txt.OnActiveState = stateProperties9;
-            stateProperties10.BorderColor = Color.FromArgb(204, 204, 204);
-            stateProperties10.FillColor = Color.FromArgb(240, 240, 240);
-            stateProperties10.ForeColor = Color.FromArgb(109, 109, 109);
-            stateProperties10.PlaceholderForeColor = Color.DarkGray;
-            Ans2txt.OnDisabledState = stateProperties10;
-            stateProperties11.BorderColor = Color.FromArgb(105, 181, 255);
-            stateProperties11.FillColor = Color.Empty;
-            stateProperties11.ForeColor = Color.Empty;
-            stateProperties11.PlaceholderForeColor = Color.Empty;
-            Ans2txt.OnHoverState = stateProperties11;
-            stateProperties12.BorderColor = Color.Silver;
-            stateProperties12.FillColor = Color.White;
-            stateProperties12.ForeColor = Color.Empty;
-            stateProperties12.PlaceholderForeColor = Color.Empty;
-            Ans2txt.OnIdleState = stateProperties12;
+            stateProperties57.BorderColor = Color.DodgerBlue;
+            stateProperties57.FillColor = Color.Empty;
+            stateProperties57.ForeColor = Color.Empty;
+            stateProperties57.PlaceholderForeColor = Color.Empty;
+            Ans2txt.OnActiveState = stateProperties57;
+            stateProperties58.BorderColor = Color.FromArgb(204, 204, 204);
+            stateProperties58.FillColor = Color.FromArgb(240, 240, 240);
+            stateProperties58.ForeColor = Color.FromArgb(109, 109, 109);
+            stateProperties58.PlaceholderForeColor = Color.DarkGray;
+            Ans2txt.OnDisabledState = stateProperties58;
+            stateProperties59.BorderColor = Color.FromArgb(105, 181, 255);
+            stateProperties59.FillColor = Color.Empty;
+            stateProperties59.ForeColor = Color.Empty;
+            stateProperties59.PlaceholderForeColor = Color.Empty;
+            Ans2txt.OnHoverState = stateProperties59;
+            stateProperties60.BorderColor = Color.Silver;
+            stateProperties60.FillColor = Color.White;
+            stateProperties60.ForeColor = Color.Empty;
+            stateProperties60.PlaceholderForeColor = Color.Empty;
+            Ans2txt.OnIdleState = stateProperties60;
             Ans2txt.Padding = new Padding(3);
             Ans2txt.PasswordChar = '\0';
             Ans2txt.PlaceholderForeColor = Color.Silver;
@@ -779,26 +807,26 @@
             Ans1txt.Modified = false;
             Ans1txt.Multiline = false;
             Ans1txt.Name = "Ans1txt";
-            stateProperties13.BorderColor = Color.DodgerBlue;
-            stateProperties13.FillColor = Color.Empty;
-            stateProperties13.ForeColor = Color.Empty;
-            stateProperties13.PlaceholderForeColor = Color.Empty;
-            Ans1txt.OnActiveState = stateProperties13;
-            stateProperties14.BorderColor = Color.FromArgb(204, 204, 204);
-            stateProperties14.FillColor = Color.FromArgb(240, 240, 240);
-            stateProperties14.ForeColor = Color.FromArgb(109, 109, 109);
-            stateProperties14.PlaceholderForeColor = Color.DarkGray;
-            Ans1txt.OnDisabledState = stateProperties14;
-            stateProperties15.BorderColor = Color.FromArgb(105, 181, 255);
-            stateProperties15.FillColor = Color.Empty;
-            stateProperties15.ForeColor = Color.Empty;
-            stateProperties15.PlaceholderForeColor = Color.Empty;
-            Ans1txt.OnHoverState = stateProperties15;
-            stateProperties16.BorderColor = Color.Silver;
-            stateProperties16.FillColor = Color.White;
-            stateProperties16.ForeColor = Color.Empty;
-            stateProperties16.PlaceholderForeColor = Color.Empty;
-            Ans1txt.OnIdleState = stateProperties16;
+            stateProperties61.BorderColor = Color.DodgerBlue;
+            stateProperties61.FillColor = Color.Empty;
+            stateProperties61.ForeColor = Color.Empty;
+            stateProperties61.PlaceholderForeColor = Color.Empty;
+            Ans1txt.OnActiveState = stateProperties61;
+            stateProperties62.BorderColor = Color.FromArgb(204, 204, 204);
+            stateProperties62.FillColor = Color.FromArgb(240, 240, 240);
+            stateProperties62.ForeColor = Color.FromArgb(109, 109, 109);
+            stateProperties62.PlaceholderForeColor = Color.DarkGray;
+            Ans1txt.OnDisabledState = stateProperties62;
+            stateProperties63.BorderColor = Color.FromArgb(105, 181, 255);
+            stateProperties63.FillColor = Color.Empty;
+            stateProperties63.ForeColor = Color.Empty;
+            stateProperties63.PlaceholderForeColor = Color.Empty;
+            Ans1txt.OnHoverState = stateProperties63;
+            stateProperties64.BorderColor = Color.Silver;
+            stateProperties64.FillColor = Color.White;
+            stateProperties64.ForeColor = Color.Empty;
+            stateProperties64.PlaceholderForeColor = Color.Empty;
+            Ans1txt.OnIdleState = stateProperties64;
             Ans1txt.Padding = new Padding(3);
             Ans1txt.PasswordChar = '\0';
             Ans1txt.PlaceholderForeColor = Color.Silver;
@@ -819,138 +847,6 @@
             Ans1txt.TextPlaceholder = "Enter text";
             Ans1txt.UseSystemPasswordChar = false;
             Ans1txt.WordWrap = true;
-            // 
-            // bunifuDropdown3
-            // 
-            bunifuDropdown3.BackColor = Color.Transparent;
-            bunifuDropdown3.BackgroundColor = Color.White;
-            bunifuDropdown3.BorderColor = Color.Silver;
-            bunifuDropdown3.BorderRadius = 1;
-            bunifuDropdown3.Color = Color.Silver;
-            bunifuDropdown3.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
-            bunifuDropdown3.DisabledBackColor = Color.FromArgb(240, 240, 240);
-            bunifuDropdown3.DisabledBorderColor = Color.FromArgb(204, 204, 204);
-            bunifuDropdown3.DisabledColor = Color.FromArgb(240, 240, 240);
-            bunifuDropdown3.DisabledForeColor = Color.FromArgb(109, 109, 109);
-            bunifuDropdown3.DisabledIndicatorColor = Color.DarkGray;
-            bunifuDropdown3.DrawMode = DrawMode.OwnerDrawFixed;
-            bunifuDropdown3.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
-            bunifuDropdown3.DropDownStyle = ComboBoxStyle.DropDownList;
-            bunifuDropdown3.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
-            bunifuDropdown3.FillDropDown = true;
-            bunifuDropdown3.FillIndicator = false;
-            bunifuDropdown3.FlatStyle = FlatStyle.Flat;
-            bunifuDropdown3.Font = new Font("Segoe UI", 9F);
-            bunifuDropdown3.ForeColor = Color.Black;
-            bunifuDropdown3.FormattingEnabled = true;
-            bunifuDropdown3.Icon = null;
-            bunifuDropdown3.IndicatorAlignment = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
-            bunifuDropdown3.IndicatorColor = Color.DarkGray;
-            bunifuDropdown3.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
-            bunifuDropdown3.IndicatorThickness = 2;
-            bunifuDropdown3.IsDropdownOpened = false;
-            bunifuDropdown3.ItemBackColor = Color.White;
-            bunifuDropdown3.ItemBorderColor = Color.White;
-            bunifuDropdown3.ItemForeColor = Color.Black;
-            bunifuDropdown3.ItemHeight = 26;
-            bunifuDropdown3.ItemHighLightColor = Color.DodgerBlue;
-            bunifuDropdown3.ItemHighLightForeColor = Color.White;
-            bunifuDropdown3.ItemTopMargin = 3;
-            bunifuDropdown3.Location = new Point(343, 268);
-            bunifuDropdown3.Name = "bunifuDropdown3";
-            bunifuDropdown3.Size = new Size(388, 32);
-            bunifuDropdown3.TabIndex = 2;
-            bunifuDropdown3.Text = null;
-            bunifuDropdown3.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
-            bunifuDropdown3.TextLeftMargin = 5;
-            // 
-            // bunifuDropdown2
-            // 
-            bunifuDropdown2.BackColor = Color.Transparent;
-            bunifuDropdown2.BackgroundColor = Color.White;
-            bunifuDropdown2.BorderColor = Color.Silver;
-            bunifuDropdown2.BorderRadius = 1;
-            bunifuDropdown2.Color = Color.Silver;
-            bunifuDropdown2.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
-            bunifuDropdown2.DisabledBackColor = Color.FromArgb(240, 240, 240);
-            bunifuDropdown2.DisabledBorderColor = Color.FromArgb(204, 204, 204);
-            bunifuDropdown2.DisabledColor = Color.FromArgb(240, 240, 240);
-            bunifuDropdown2.DisabledForeColor = Color.FromArgb(109, 109, 109);
-            bunifuDropdown2.DisabledIndicatorColor = Color.DarkGray;
-            bunifuDropdown2.DrawMode = DrawMode.OwnerDrawFixed;
-            bunifuDropdown2.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
-            bunifuDropdown2.DropDownStyle = ComboBoxStyle.DropDownList;
-            bunifuDropdown2.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
-            bunifuDropdown2.FillDropDown = true;
-            bunifuDropdown2.FillIndicator = false;
-            bunifuDropdown2.FlatStyle = FlatStyle.Flat;
-            bunifuDropdown2.Font = new Font("Segoe UI", 9F);
-            bunifuDropdown2.ForeColor = Color.Black;
-            bunifuDropdown2.FormattingEnabled = true;
-            bunifuDropdown2.Icon = null;
-            bunifuDropdown2.IndicatorAlignment = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
-            bunifuDropdown2.IndicatorColor = Color.DarkGray;
-            bunifuDropdown2.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
-            bunifuDropdown2.IndicatorThickness = 2;
-            bunifuDropdown2.IsDropdownOpened = false;
-            bunifuDropdown2.ItemBackColor = Color.White;
-            bunifuDropdown2.ItemBorderColor = Color.White;
-            bunifuDropdown2.ItemForeColor = Color.Black;
-            bunifuDropdown2.ItemHeight = 26;
-            bunifuDropdown2.ItemHighLightColor = Color.DodgerBlue;
-            bunifuDropdown2.ItemHighLightForeColor = Color.White;
-            bunifuDropdown2.ItemTopMargin = 3;
-            bunifuDropdown2.Location = new Point(343, 166);
-            bunifuDropdown2.Name = "bunifuDropdown2";
-            bunifuDropdown2.Size = new Size(388, 32);
-            bunifuDropdown2.TabIndex = 1;
-            bunifuDropdown2.Text = null;
-            bunifuDropdown2.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
-            bunifuDropdown2.TextLeftMargin = 5;
-            // 
-            // bunifuDropdown1
-            // 
-            bunifuDropdown1.BackColor = Color.Transparent;
-            bunifuDropdown1.BackgroundColor = Color.White;
-            bunifuDropdown1.BorderColor = Color.Silver;
-            bunifuDropdown1.BorderRadius = 1;
-            bunifuDropdown1.Color = Color.Silver;
-            bunifuDropdown1.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
-            bunifuDropdown1.DisabledBackColor = Color.FromArgb(240, 240, 240);
-            bunifuDropdown1.DisabledBorderColor = Color.FromArgb(204, 204, 204);
-            bunifuDropdown1.DisabledColor = Color.FromArgb(240, 240, 240);
-            bunifuDropdown1.DisabledForeColor = Color.FromArgb(109, 109, 109);
-            bunifuDropdown1.DisabledIndicatorColor = Color.DarkGray;
-            bunifuDropdown1.DrawMode = DrawMode.OwnerDrawFixed;
-            bunifuDropdown1.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
-            bunifuDropdown1.DropDownStyle = ComboBoxStyle.DropDownList;
-            bunifuDropdown1.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
-            bunifuDropdown1.FillDropDown = true;
-            bunifuDropdown1.FillIndicator = false;
-            bunifuDropdown1.FlatStyle = FlatStyle.Flat;
-            bunifuDropdown1.Font = new Font("Segoe UI", 9F);
-            bunifuDropdown1.ForeColor = Color.Black;
-            bunifuDropdown1.FormattingEnabled = true;
-            bunifuDropdown1.Icon = null;
-            bunifuDropdown1.IndicatorAlignment = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
-            bunifuDropdown1.IndicatorColor = Color.DarkGray;
-            bunifuDropdown1.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
-            bunifuDropdown1.IndicatorThickness = 2;
-            bunifuDropdown1.IsDropdownOpened = false;
-            bunifuDropdown1.ItemBackColor = Color.White;
-            bunifuDropdown1.ItemBorderColor = Color.White;
-            bunifuDropdown1.ItemForeColor = Color.Black;
-            bunifuDropdown1.ItemHeight = 26;
-            bunifuDropdown1.ItemHighLightColor = Color.DodgerBlue;
-            bunifuDropdown1.ItemHighLightForeColor = Color.White;
-            bunifuDropdown1.ItemTopMargin = 3;
-            bunifuDropdown1.Location = new Point(343, 62);
-            bunifuDropdown1.Name = "bunifuDropdown1";
-            bunifuDropdown1.Size = new Size(388, 32);
-            bunifuDropdown1.TabIndex = 0;
-            bunifuDropdown1.Text = null;
-            bunifuDropdown1.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
-            bunifuDropdown1.TextLeftMargin = 5;
             // 
             // ResetPassPanel
             // 
@@ -1020,26 +916,26 @@
             bunifuTextBox2.Modified = false;
             bunifuTextBox2.Multiline = false;
             bunifuTextBox2.Name = "bunifuTextBox2";
-            stateProperties17.BorderColor = Color.DodgerBlue;
-            stateProperties17.FillColor = Color.Empty;
-            stateProperties17.ForeColor = Color.Empty;
-            stateProperties17.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox2.OnActiveState = stateProperties17;
-            stateProperties18.BorderColor = Color.FromArgb(204, 204, 204);
-            stateProperties18.FillColor = Color.FromArgb(240, 240, 240);
-            stateProperties18.ForeColor = Color.FromArgb(109, 109, 109);
-            stateProperties18.PlaceholderForeColor = Color.DarkGray;
-            bunifuTextBox2.OnDisabledState = stateProperties18;
-            stateProperties19.BorderColor = Color.FromArgb(105, 181, 255);
-            stateProperties19.FillColor = Color.Empty;
-            stateProperties19.ForeColor = Color.Empty;
-            stateProperties19.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox2.OnHoverState = stateProperties19;
-            stateProperties20.BorderColor = Color.Silver;
-            stateProperties20.FillColor = Color.White;
-            stateProperties20.ForeColor = Color.Empty;
-            stateProperties20.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox2.OnIdleState = stateProperties20;
+            stateProperties65.BorderColor = Color.DodgerBlue;
+            stateProperties65.FillColor = Color.Empty;
+            stateProperties65.ForeColor = Color.Empty;
+            stateProperties65.PlaceholderForeColor = Color.Empty;
+            bunifuTextBox2.OnActiveState = stateProperties65;
+            stateProperties66.BorderColor = Color.FromArgb(204, 204, 204);
+            stateProperties66.FillColor = Color.FromArgb(240, 240, 240);
+            stateProperties66.ForeColor = Color.FromArgb(109, 109, 109);
+            stateProperties66.PlaceholderForeColor = Color.DarkGray;
+            bunifuTextBox2.OnDisabledState = stateProperties66;
+            stateProperties67.BorderColor = Color.FromArgb(105, 181, 255);
+            stateProperties67.FillColor = Color.Empty;
+            stateProperties67.ForeColor = Color.Empty;
+            stateProperties67.PlaceholderForeColor = Color.Empty;
+            bunifuTextBox2.OnHoverState = stateProperties67;
+            stateProperties68.BorderColor = Color.Silver;
+            stateProperties68.FillColor = Color.White;
+            stateProperties68.ForeColor = Color.Empty;
+            stateProperties68.PlaceholderForeColor = Color.Empty;
+            bunifuTextBox2.OnIdleState = stateProperties68;
             bunifuTextBox2.Padding = new Padding(3);
             bunifuTextBox2.PasswordChar = '\0';
             bunifuTextBox2.PlaceholderForeColor = Color.Silver;
@@ -1094,26 +990,26 @@
             bunifuTextBox1.Modified = false;
             bunifuTextBox1.Multiline = false;
             bunifuTextBox1.Name = "bunifuTextBox1";
-            stateProperties21.BorderColor = Color.DodgerBlue;
-            stateProperties21.FillColor = Color.Empty;
-            stateProperties21.ForeColor = Color.Empty;
-            stateProperties21.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox1.OnActiveState = stateProperties21;
-            stateProperties22.BorderColor = Color.FromArgb(204, 204, 204);
-            stateProperties22.FillColor = Color.FromArgb(240, 240, 240);
-            stateProperties22.ForeColor = Color.FromArgb(109, 109, 109);
-            stateProperties22.PlaceholderForeColor = Color.DarkGray;
-            bunifuTextBox1.OnDisabledState = stateProperties22;
-            stateProperties23.BorderColor = Color.FromArgb(105, 181, 255);
-            stateProperties23.FillColor = Color.Empty;
-            stateProperties23.ForeColor = Color.Empty;
-            stateProperties23.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox1.OnHoverState = stateProperties23;
-            stateProperties24.BorderColor = Color.Silver;
-            stateProperties24.FillColor = Color.White;
-            stateProperties24.ForeColor = Color.Empty;
-            stateProperties24.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox1.OnIdleState = stateProperties24;
+            stateProperties69.BorderColor = Color.DodgerBlue;
+            stateProperties69.FillColor = Color.Empty;
+            stateProperties69.ForeColor = Color.Empty;
+            stateProperties69.PlaceholderForeColor = Color.Empty;
+            bunifuTextBox1.OnActiveState = stateProperties69;
+            stateProperties70.BorderColor = Color.FromArgb(204, 204, 204);
+            stateProperties70.FillColor = Color.FromArgb(240, 240, 240);
+            stateProperties70.ForeColor = Color.FromArgb(109, 109, 109);
+            stateProperties70.PlaceholderForeColor = Color.DarkGray;
+            bunifuTextBox1.OnDisabledState = stateProperties70;
+            stateProperties71.BorderColor = Color.FromArgb(105, 181, 255);
+            stateProperties71.FillColor = Color.Empty;
+            stateProperties71.ForeColor = Color.Empty;
+            stateProperties71.PlaceholderForeColor = Color.Empty;
+            bunifuTextBox1.OnHoverState = stateProperties71;
+            stateProperties72.BorderColor = Color.Silver;
+            stateProperties72.FillColor = Color.White;
+            stateProperties72.ForeColor = Color.Empty;
+            stateProperties72.PlaceholderForeColor = Color.Empty;
+            bunifuTextBox1.OnIdleState = stateProperties72;
             bunifuTextBox1.Padding = new Padding(3);
             bunifuTextBox1.PasswordChar = '\0';
             bunifuTextBox1.PlaceholderForeColor = Color.Silver;
@@ -1164,11 +1060,11 @@
             CancelBtn2.ButtonTextMarginLeft = 0;
             CancelBtn2.ColorContrastOnClick = 45;
             CancelBtn2.ColorContrastOnHover = 45;
-            borderEdges5.BottomLeft = true;
-            borderEdges5.BottomRight = true;
-            borderEdges5.TopLeft = true;
-            borderEdges5.TopRight = true;
-            CancelBtn2.CustomizableEdges = borderEdges5;
+            borderEdges17.BottomLeft = true;
+            borderEdges17.BottomRight = true;
+            borderEdges17.TopLeft = true;
+            borderEdges17.TopRight = true;
+            CancelBtn2.CustomizableEdges = borderEdges17;
             CancelBtn2.DialogResult = DialogResult.None;
             CancelBtn2.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             CancelBtn2.DisabledFillColor = Color.Empty;
@@ -1254,11 +1150,11 @@
             ResetPassBtn.ButtonTextMarginLeft = 0;
             ResetPassBtn.ColorContrastOnClick = 45;
             ResetPassBtn.ColorContrastOnHover = 45;
-            borderEdges6.BottomLeft = true;
-            borderEdges6.BottomRight = true;
-            borderEdges6.TopLeft = true;
-            borderEdges6.TopRight = true;
-            ResetPassBtn.CustomizableEdges = borderEdges6;
+            borderEdges18.BottomLeft = true;
+            borderEdges18.BottomRight = true;
+            borderEdges18.TopLeft = true;
+            borderEdges18.TopRight = true;
+            ResetPassBtn.CustomizableEdges = borderEdges18;
             ResetPassBtn.DialogResult = DialogResult.None;
             ResetPassBtn.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             ResetPassBtn.DisabledFillColor = Color.Empty;
@@ -1331,7 +1227,6 @@
             // 
             panel2.BackColor = Color.White;
             panel2.Controls.Add(panel3);
-            panel2.Controls.Add(CloseModal);
             panel2.Controls.Add(label3);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
@@ -1348,40 +1243,6 @@
             panel3.Size = new Size(420, 5);
             panel3.TabIndex = 3;
             // 
-            // CloseModal
-            // 
-            CloseModal.ActiveImage = null;
-            CloseModal.AllowAnimations = true;
-            CloseModal.AllowBuffering = false;
-            CloseModal.AllowToggling = false;
-            CloseModal.AllowZooming = true;
-            CloseModal.AllowZoomingOnFocus = false;
-            CloseModal.BackColor = Color.Transparent;
-            CloseModal.DialogResult = DialogResult.None;
-            CloseModal.ErrorImage = (Image)resources.GetObject("CloseModal.ErrorImage");
-            CloseModal.FadeWhenInactive = false;
-            CloseModal.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            CloseModal.Image = Properties.Resources.close;
-            CloseModal.ImageActive = null;
-            CloseModal.ImageLocation = null;
-            CloseModal.ImageMargin = 20;
-            CloseModal.ImageSize = new Size(10, 10);
-            CloseModal.ImageZoomSize = new Size(30, 30);
-            CloseModal.InitialImage = (Image)resources.GetObject("CloseModal.InitialImage");
-            CloseModal.Location = new Point(384, 3);
-            CloseModal.Name = "CloseModal";
-            CloseModal.Rotation = 0;
-            CloseModal.ShowActiveImage = true;
-            CloseModal.ShowCursorChanges = true;
-            CloseModal.ShowImageBorders = true;
-            CloseModal.ShowSizeMarkers = false;
-            CloseModal.Size = new Size(30, 30);
-            CloseModal.TabIndex = 1;
-            CloseModal.ToolTipText = "";
-            CloseModal.WaitOnLoad = false;
-            CloseModal.Zoom = 20;
-            CloseModal.ZoomSpeed = 10;
-            // 
             // label3
             // 
             label3.BackColor = Color.Transparent;
@@ -1393,77 +1254,10 @@
             label3.Text = "Reset Password";
             label3.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // panel1
-            // 
-            panel1.BackColor = Color.White;
-            panel1.Controls.Add(panel5);
-            panel1.Controls.Add(CloseModal2);
-            panel1.Controls.Add(label6);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(800, 40);
-            panel1.TabIndex = 9;
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.Maroon;
-            panel5.Dock = DockStyle.Bottom;
-            panel5.Location = new Point(0, 35);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(800, 5);
-            panel5.TabIndex = 3;
-            // 
-            // CloseModal2
-            // 
-            CloseModal2.ActiveImage = null;
-            CloseModal2.AllowAnimations = true;
-            CloseModal2.AllowBuffering = false;
-            CloseModal2.AllowToggling = false;
-            CloseModal2.AllowZooming = true;
-            CloseModal2.AllowZoomingOnFocus = false;
-            CloseModal2.BackColor = Color.Transparent;
-            CloseModal2.DialogResult = DialogResult.None;
-            CloseModal2.ErrorImage = (Image)resources.GetObject("CloseModal2.ErrorImage");
-            CloseModal2.FadeWhenInactive = false;
-            CloseModal2.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            CloseModal2.Image = Properties.Resources.close;
-            CloseModal2.ImageActive = null;
-            CloseModal2.ImageLocation = null;
-            CloseModal2.ImageMargin = 20;
-            CloseModal2.ImageSize = new Size(10, 10);
-            CloseModal2.ImageZoomSize = new Size(30, 30);
-            CloseModal2.InitialImage = (Image)resources.GetObject("CloseModal2.InitialImage");
-            CloseModal2.Location = new Point(767, 3);
-            CloseModal2.Name = "CloseModal2";
-            CloseModal2.Rotation = 0;
-            CloseModal2.ShowActiveImage = true;
-            CloseModal2.ShowCursorChanges = true;
-            CloseModal2.ShowImageBorders = true;
-            CloseModal2.ShowSizeMarkers = false;
-            CloseModal2.Size = new Size(30, 30);
-            CloseModal2.TabIndex = 1;
-            CloseModal2.ToolTipText = "";
-            CloseModal2.WaitOnLoad = false;
-            CloseModal2.Zoom = 20;
-            CloseModal2.ZoomSpeed = 10;
-            // 
-            // label6
-            // 
-            label6.BackColor = Color.Transparent;
-            label6.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(10, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(154, 33);
-            label6.TabIndex = 0;
-            label6.Text = "Reset Password";
-            label6.TextAlign = ContentAlignment.MiddleLeft;
-            // 
             // panel6
             // 
             panel6.BackColor = Color.White;
             panel6.Controls.Add(panel7);
-            panel6.Controls.Add(bunifuImageButton1);
             panel6.Controls.Add(label7);
             panel6.Dock = DockStyle.Top;
             panel6.Location = new Point(0, 0);
@@ -1480,40 +1274,6 @@
             panel7.Size = new Size(800, 5);
             panel7.TabIndex = 3;
             // 
-            // bunifuImageButton1
-            // 
-            bunifuImageButton1.ActiveImage = null;
-            bunifuImageButton1.AllowAnimations = true;
-            bunifuImageButton1.AllowBuffering = false;
-            bunifuImageButton1.AllowToggling = false;
-            bunifuImageButton1.AllowZooming = true;
-            bunifuImageButton1.AllowZoomingOnFocus = false;
-            bunifuImageButton1.BackColor = Color.Transparent;
-            bunifuImageButton1.DialogResult = DialogResult.None;
-            bunifuImageButton1.ErrorImage = (Image)resources.GetObject("bunifuImageButton1.ErrorImage");
-            bunifuImageButton1.FadeWhenInactive = false;
-            bunifuImageButton1.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            bunifuImageButton1.Image = Properties.Resources.close;
-            bunifuImageButton1.ImageActive = null;
-            bunifuImageButton1.ImageLocation = null;
-            bunifuImageButton1.ImageMargin = 20;
-            bunifuImageButton1.ImageSize = new Size(10, 10);
-            bunifuImageButton1.ImageZoomSize = new Size(30, 30);
-            bunifuImageButton1.InitialImage = (Image)resources.GetObject("bunifuImageButton1.InitialImage");
-            bunifuImageButton1.Location = new Point(767, 3);
-            bunifuImageButton1.Name = "bunifuImageButton1";
-            bunifuImageButton1.Rotation = 0;
-            bunifuImageButton1.ShowActiveImage = true;
-            bunifuImageButton1.ShowCursorChanges = true;
-            bunifuImageButton1.ShowImageBorders = true;
-            bunifuImageButton1.ShowSizeMarkers = false;
-            bunifuImageButton1.Size = new Size(30, 30);
-            bunifuImageButton1.TabIndex = 1;
-            bunifuImageButton1.ToolTipText = "";
-            bunifuImageButton1.WaitOnLoad = false;
-            bunifuImageButton1.Zoom = 20;
-            bunifuImageButton1.ZoomSpeed = 10;
-            // 
             // label7
             // 
             label7.BackColor = Color.Transparent;
@@ -1524,6 +1284,36 @@
             label7.TabIndex = 0;
             label7.Text = "Forgot Password";
             label7.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label8
+            // 
+            label8.BorderStyle = BorderStyle.FixedSingle;
+            label8.Font = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Location = new Point(343, 70);
+            label8.Name = "label8";
+            label8.Size = new Size(388, 32);
+            label8.TabIndex = 10;
+            label8.Text = "Question1";
+            // 
+            // label9
+            // 
+            label9.BorderStyle = BorderStyle.FixedSingle;
+            label9.Font = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Location = new Point(343, 171);
+            label9.Name = "label9";
+            label9.Size = new Size(388, 32);
+            label9.TabIndex = 11;
+            label9.Text = "Question2";
+            // 
+            // label10
+            // 
+            label10.BorderStyle = BorderStyle.FixedSingle;
+            label10.Font = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.Location = new Point(343, 271);
+            label10.Name = "label10";
+            label10.Size = new Size(388, 32);
+            label10.TabIndex = 12;
+            label10.Text = "Question3";
             // 
             // ForgotPasswordModal
             // 
@@ -1546,11 +1336,11 @@
             Text = "ForgotPasswordModal";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             QuestionPanel.ResumeLayout(false);
+            panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResetPassPanel.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel2.ResumeLayout(false);
-            panel1.ResumeLayout(false);
             panel6.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -1571,13 +1361,9 @@
         private Bunifu.UI.WinForms.BunifuTextBox Ans3txt;
         private Bunifu.UI.WinForms.BunifuTextBox Ans2txt;
         private Bunifu.UI.WinForms.BunifuTextBox Ans1txt;
-        private Bunifu.UI.WinForms.BunifuDropdown bunifuDropdown3;
-        private Bunifu.UI.WinForms.BunifuDropdown bunifuDropdown2;
-        private Bunifu.UI.WinForms.BunifuDropdown bunifuDropdown1;
         private Panel ResetPassPanel;
         private Panel panel2;
         private Panel panel3;
-        private Bunifu.UI.WinForms.BunifuImageButton CloseModal;
         private Label label3;
         private Label label5;
         private Label label4;
@@ -1588,11 +1374,12 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ResetPassBtn;
         private Panel panel1;
         private Panel panel5;
-        private Bunifu.UI.WinForms.BunifuImageButton CloseModal2;
         private Label label6;
         private Panel panel6;
         private Panel panel7;
-        private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton1;
         private Label label7;
+        private Label label10;
+        private Label label9;
+        private Label label8;
     }
 }
