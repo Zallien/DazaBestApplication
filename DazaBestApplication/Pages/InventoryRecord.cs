@@ -43,6 +43,7 @@ namespace DazaBestApplication.Pages
                 itemsReportDetailsList = new List<ItemsReportDetails>();
                 ItemReportServices = new ItemReportServices(new SystemBackEnd.BackEndDBContext());
                 itemsReportDetailsList = await ItemReportServices.GetItemsReportDetails(searchItem);
+
             }
             catch (Exception e)
             {

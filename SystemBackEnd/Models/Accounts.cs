@@ -24,5 +24,6 @@ namespace SystemBackEnd.Models
         public string Password { get; set; }
         public bool IsOwner { get; set; }
         public bool IsActive { get; set; }
+        public bool FirstTimeLogout { get; set; }
     }
 }
