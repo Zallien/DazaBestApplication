@@ -189,7 +189,7 @@ namespace SystemBackEnd.Services
                                       ItemID = a.ItemID,
                                       ItemName = a.ItemName,
                                       Quantity = 1,
-                                      Unitprice = a.ItemPrice ?? 0,
+                                      Unitprice = a.ItemPrice,
                                       GrandTotal = 0
                                   }).FirstOrDefaultAsync();
             }
