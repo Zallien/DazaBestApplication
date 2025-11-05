@@ -12,9 +12,14 @@ namespace DazaBestApplication.Modals
 {
     public partial class SecurityQuestionModal : Form
     {
-        public SecurityQuestionModal()
+        private Form Mainform;
+
+        public SecurityQuestionModal(Form mainform)
         {
             InitializeComponent();
+            Mainform = mainform;
         }
+
+
     }
 }

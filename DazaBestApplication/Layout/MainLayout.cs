@@ -1,5 +1,6 @@
 using Bunifu.UI.WinForms;
 using DazaBestApplication.Layout;
+using DazaBestApplication.Modals;
 using DazaBestApplication.Pages;
 using System.Windows.Forms;
 using SystemBackEnd.ServiceModels;
@@ -47,10 +48,10 @@ namespace DazaBestApplication
             }
         }
 
-        private void MainPage_Load(object sender, EventArgs e)
+        private async void MainPage_Load(object sender, EventArgs e)
         {
             theLoggedInAccount = Program.theLoggedInAccount;
-
+            await CheckIfNewlyLoggedIn();
         }
         //Maximize the System AUTOMATICALLY
         private void MaximizeSystem()
@@ -60,7 +61,41 @@ namespace DazaBestApplication
             this.Size = screensize.Size;
             this.Location = screensize.Location;
         }
+        //Check if User is Newly Logged In
+        private async Task CheckIfNewlyLoggedIn()
+        {   
+            await Task.Delay(500); // Wait for 500 milliseconds to ensure the form is fully loaded
+            if (theLoggedInAccount != null && theLoggedInAccount.NewlyLoggedIn == true)
+            {
+                await ShowForgotPassswordSetup();
+            }
 
+        }
+        //Show ForgotPassswordSetupModal
+        private async Task ShowForgotPassswordSetup()
+        {
+            Form ModalBackgorund = new();
+            using (SecurityQuestionModal modalcontent = new(this))
+            {
+                var mainBounds = this.Bounds;
+
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = this.Size;
+                ModalBackgorund.Location = this.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(this);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+                modalcontent.ShowDialog();
+                ModalBackgorund.Dispose();
+            }
+        }
 
 
 
@@ -78,7 +113,6 @@ namespace DazaBestApplication
             MainContainer.Controls.Add(MainContainerForm);
             MainContainerForm.Show();
         }
-
         private void ShowProductPage()
         {
             if (MainContainerForm != null)

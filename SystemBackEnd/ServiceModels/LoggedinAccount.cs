@@ -15,5 +15,6 @@ namespace SystemBackEnd.ServiceModels
         public string Username { get; set; }
         public string Password { get; set; }
         public bool IsOwner { get; set; }
+        public bool NewlyLoggedIn { get; set; }
     }
 }

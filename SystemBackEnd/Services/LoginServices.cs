@@ -110,6 +110,7 @@ namespace SystemBackEnd.Services
                     AccountNumber = acc.AccountNumber,
                     DateCreated = acc.DateCreated,
                     IsOwner = acc.IsOwner,
+                    NewlyLoggedIn = acc.FirstTimeLogout
                 };
                 return loggedinAccount;
             }
