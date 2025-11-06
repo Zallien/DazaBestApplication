@@ -121,37 +121,37 @@
   <data name="ValidateBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAJsAAAAnCAYAAAAYaTqCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACRSURBVHhe7dIxEYAwAMDA+qkBcF8fyEAA7BwjZPrhl8wZ
-        a5/H2ucFPzvGS4RfmI2M2ciYjYzZyJiNjNnImI2M2ciYjYzZyJiNjNnImI2M2ciYjYzZyJiNjNnImI2M
-        2ciYjYzZyJiNjNnImI2M2ciYjYzZyJiNjNnImI2M2ciYjYzZyJiNjNnIjLXN8xnhc9s8b+I5dwRNPfMF
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACRSURBVHhe7dIpAYBAAABB+lwBaH89iEEAHo+EVSNGrd1l
+        bmO/nfCz/ZntLcDnzEbGbGTMRsZsZMxGxmxkzEbGbGTMRsZsZMxGxmxkzEbGbGTMRsZsZMxGxmxkzEbG
+        bGTMRsZsZMxGxmxkzEbGbGTMRsZsZMxGxmxkzEbGbGTMRsZsZMxGxmxklrmO4y3Ap9ZxXOI5dwThYLJn
         AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="Ans3txt.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Answer3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAYQAAAAgCAYAAAASRw+fAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACgSURBVHhe7dVRCQMxAETB868qITIqowJ65JUeVENmYH/W
-        wLsuAPhZa73GGB8zMztvuwFPEPYBwJl2AwQBAEEA4EsQAIggABBBACCCAEAEAYAIAgARBAAiCABEEACI
-        IAAQQQAgggBABAGACAIAEQQAIggARBAAiCAAEEEAIIIAQAQBgAgCABEEACIIAEQQAMhfEOac732Ymdl5
-        2w14ggAAN08i4dx2PdneAAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACkSURBVHhe7dVRCUMxAATB+FeVR2RURgW0ZAmFasgM3M8Z
+        2AEAP2ut15zzY2Zm92034ORgjH0AcKfdgJMDQQC4mSAAEEEAIIIAQAQBgAgCABEEACIIAEQQAIggABBB
+        ACCCAEAEAYAIAgARBAAiCABEEACIIAAQQQAgggBABAGACAIAEQQAIggARBAAiCAAEEEAIH9BeJ7nvQ8z
+        M7tvuwEnBwAwxhdPIuHcRcq7/gAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="Ans2txt.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Answer2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAYQAAAAgCAYAAAASRw+fAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACgSURBVHhe7dVRCQMxAETB868qITIqowJ65JUeVENmYH/W
-        wLsuAPhZa73GGB8zMztvuwFPEPYBwJl2AwQBAEEA4EsQAIggABBBACCCAEAEAYAIAgARBAAiCABEEACI
-        IAAQQQAgggBABAGACAIAEQQAIggARBAAiCAAEEEAIIIAQAQBgAgCABEEACIIAEQQAMhfEOac732Ymdl5
-        2w14ggAAN08i4dx2PdneAAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACkSURBVHhe7dVRCUMxAATB+FeVR2RURgW0ZAmFasgM3M8Z
+        2AEAP2ut15zzY2Zm92034ORgjH0AcKfdgJMDQQC4mSAAEEEAIIIAQAQBgAgCABEEACIIAEQQAIggABBB
+        ACCCAEAEAYAIAgARBAAiCABEEACIIAAQQQAgggBABAGACAIAEQQAIggARBAAiCAAEEEAIH9BeJ7nvQ8z
+        M7tvuwEnBwAwxhdPIuHcRcq7/gAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="Ans1txt.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Answer1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAYQAAAAgCAYAAAASRw+fAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACgSURBVHhe7dVRCQMxAETB868qITIqowJ65JUeVENmYH/W
-        wLsuAPhZa73GGB8zMztvuwFPEPYBwJl2AwQBAEEA4EsQAIggABBBACCCAEAEAYAIAgARBAAiCABEEACI
-        IAAQQQAgggBABAGACAIAEQQAIggARBAAiCAAEEEAIIIAQAQBgAgCABEEACIIAEQQAMhfEOac732Ymdl5
-        2w14ggAAN08i4dx2PdneAAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACkSURBVHhe7dVRCUMxAATB+FeVR2RURgW0ZAmFasgM3M8Z
+        2AEAP2ut15zzY2Zm92034ORgjH0AcKfdgJMDQQC4mSAAEEEAIIIAQAQBgAgCABEEACIIAEQQAIggABBB
+        ACCCAEAEAYAIAgARBAAiCABEEACIIAAQQQAgggBABAGACAIAEQQAIggARBAAiCAAEEEAIH9BeJ7nvQ8z
+        M7tvuwEnBwAwxhdPIuHcRcq7/gAAAABJRU5ErkJggg==
 </value>
   </data>
 </root>

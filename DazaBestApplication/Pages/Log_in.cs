@@ -28,10 +28,7 @@ namespace DazaBestApplication.Pages
             MaximizeSystem();
             LoggedinAccount = Program.theLoggedInAccount;
         }
-
-
-
-
+        
         //Maximize the System AUTOMATICALLY
         private void MaximizeSystem()
         {

@@ -4,6 +4,7 @@ using DazaBestApplication.Modals;
 using DazaBestApplication.Pages;
 using System.Windows.Forms;
 using SystemBackEnd.ServiceModels;
+using SystemBackEnd.Services;
 
 namespace DazaBestApplication
 {
@@ -254,7 +255,7 @@ namespace DazaBestApplication
         {
             ShowProductPage();
         }
-        private void LogOut_btn_Click(object sender, EventArgs e)
+        private async void LogOut_btn_Click(object sender, EventArgs e)
         {
             Program.theLoggedInAccount = null;
             Close();

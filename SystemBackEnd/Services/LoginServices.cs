@@ -94,7 +94,6 @@ namespace SystemBackEnd.Services
             }
             return count;
         }
-
         public async Task<LoggedinAccount> GetAccountInfo(string username)
         {
             LoggedinAccount loggedinAccount = null;
@@ -121,6 +120,27 @@ namespace SystemBackEnd.Services
             return loggedinAccount;
         }
 
+        //Change Account First Time Logout
+        public async Task<bool> ChangeFirstTimeLogout(Guid accountId)
+        {
+            try
+            {
+                var acc = await _db.Accounts.FirstOrDefaultAsync(y => y.AccountId == accountId);
+                if (acc != null)
+                {
+                    acc.FirstTimeLogout = false;
+                    _db.Update(acc);
+                    await _db.SaveChangesAsync();
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
 
+            }
+            return false;
+
+
+        }
     }
 }

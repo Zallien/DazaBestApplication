@@ -39,6 +39,7 @@ namespace SystemBackEnd
             modelBuilder.Entity<POSTransactionHistory>().ToTable("POSTransactionHistory");
             modelBuilder.Entity<ItemAdjustmentHeader>().ToTable("ItemAdjustmentHeader");
             modelBuilder.Entity<ItemAdjustmentDetails>().ToTable("ItemAdjustmentDetails");
+            modelBuilder.Entity<SecurityQuestions>().ToTable("SecurityQuestions");
         }
 
         public DbSet<Accounts> Accounts { get; set; }
@@ -53,6 +54,7 @@ namespace SystemBackEnd
         public DbSet<POSTransactionHistory> MyProperty { get; set; }
         public DbSet<ItemAdjustmentHeader> ItemAdjustmentHeader { get; set; }
         public DbSet<ItemAdjustmentDetails> ItemAdjustmentDetails { get; set; }
-        
+        public DbSet<SecurityQuestions> SecurityQuestions { get; set; }
+
     }
 }
