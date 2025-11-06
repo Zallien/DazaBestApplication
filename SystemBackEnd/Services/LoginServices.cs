@@ -142,5 +142,44 @@ namespace SystemBackEnd.Services
 
 
         }
+        //Get All Accounts with SecurityQuestion
+        public async Task<List<AccountDisplay>> GetAllAccountwithQuestion()
+        {
+            List<AccountDisplay> accountDisplays = new List<AccountDisplay>();
+            try
+            {
+                //Accounts
+                var accounts = await _db.Accounts.ToListAsync();
+                if(accounts.Count > 0)
+                {
+                    //Get Questions Based On AccountId
+                    foreach (var account in accounts)
+                    {
+                        accountDisplays.Add(new AccountDisplay()
+                        {
+                            AccountId = account.AccountId,
+                            Fullname = account.Fullname,
+                            Username = account.Username,
+                            AllSecurityQuestions = await _db.SecurityQuestions
+                                            .Where(q => q.AccountId == account.AccountId)
+                                            .Select(q => new SecurityQuestionwithId
+                                            {
+                                                QuestionId = q.QuestionId,
+                                                Question = q.Question,
+                                                Answer = q.Answer
+                                            }).ToListAsync()
+                        });
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return accountDisplays;
+        }
+
+
     }
 }

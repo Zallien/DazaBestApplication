@@ -765,6 +765,7 @@
             Name = "accountPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "accountPage";
+            Load += accountPage_Load;
             TopPanel.ResumeLayout(false);
             MainContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)AllAccountsDatagridView).EndInit();
