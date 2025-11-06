@@ -51,7 +51,38 @@ namespace SystemBackEnd.Services
             return adjustmentReportDetails;
         }
 
+        //Get Adjustment Report Details for Printing
+        public async Task<List<AdjustmentReportDetailsforPrint>> GetAdjustmentDetailsForPrinting(RecordsFilterSearch filtersearch)
+        {
+            List<AdjustmentReportDetailsforPrint> adjustmentReportDetails = new List<AdjustmentReportDetailsforPrint>();
+            try
+            {
+                adjustmentReportDetails = await (from a in _db.ItemAdjustmentHeader
+                                                 join b in _db.ItemAdjustmentDetails on a.ReferenceHeaderId equals b.ReferenceHeaderId
+                                                 join c in _db.Items on b.ItemId equals c.ItemID
+                                                 where (!filtersearch.FromDate.HasValue || a.DateOperated >= filtersearch.FromDate.Value)
+                                                       && (!filtersearch.ToDate.HasValue || a.DateOperated <= filtersearch.ToDate.Value)
+                                                       && (string.IsNullOrEmpty(filtersearch.SearchValue) || a.ReferenceNumber.Contains(filtersearch.SearchValue))
+                                                 select new AdjustmentReportDetailsforPrint()
+                                                 {
+                                                     ReferenceNumber = a.ReferenceNumber,
+                                                     ReferenceDetailsId = b.ReferenceDetailsId,
+                                                     ItemName = c.ItemName,
+                                                     Quantity = b.RemovedQuantity,
+                                                     Reason = b.Reason,
+                                                     Date = a.DateOperated
+                                                 })
+                                                 .Skip((filtersearch.PageNumber - 1) * filtersearch.ItemperPage)
+                                                .Take(filtersearch.ItemperPage)
+                                                .ToListAsync();
+            }
+            catch (Exception e)
+            {
 
+            }
+
+            return adjustmentReportDetails;
+        }
 
     }
 }

@@ -15,4 +15,16 @@ namespace SystemBackEnd.ServiceModels
         public DateTime Date { get; set; }
         public string CashierName { get; set; }
     }
+
+    public class SaleReportDetailsforPrint
+    {
+        public Guid TransactionDetailsId { get; set; }
+        public string TransactionNumber { get; set; }
+        public string ProductName { get; set; }
+        public decimal Quantity { get; set; }
+        public decimal Price { get; set; }
+        public decimal Total { get; set; }
+        public DateTime Date { get; set; }
+        public string CashierName { get; set; }
+    }
 }

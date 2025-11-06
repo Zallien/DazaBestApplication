@@ -15,4 +15,14 @@ namespace SystemBackEnd.ServiceModels
         public decimal Quantity { get; set; }
         public string Reason { get; set; }
     }
+
+    public class AdjustmentReportDetailsforPrint
+    {
+        public Guid ReferenceDetailsId { get; set; }
+        public string ReferenceNumber { get; set; }
+        public string ItemName { get; set; }
+        public decimal Quantity { get; set; }
+        public string Reason { get; set; }
+        public DateTime Date { get; set; }
+    }
 }

@@ -59,5 +59,34 @@ namespace SystemBackEnd.Services
             return theHeaderList;
 
         }
+        //Get SaleReportDetails For Print
+        public async Task<List<SaleReportDetailsforPrint>> GetSaleReportforPrinting(RecordsFilterSearch salefilter)
+        {
+            List<SaleReportDetailsforPrint> saleReportDetailsforPrints = new List<SaleReportDetailsforPrint>();
+
+            saleReportDetailsforPrints = await (from a in _db.TransactionHeader
+                                                join b in _db.Accounts on a.TransactionBy equals b.AccountId
+                                                join c in _db.TransactionDetails on a.TransactionHeaderId equals c.TransactionHeaderId
+                                                join d in _db.Products on c.ProductId equals d.ProductID
+                                                where (!salefilter.FromDate.HasValue || a.TransactionDate >= salefilter.FromDate.Value)
+                                                   && (!salefilter.ToDate.HasValue || a.TransactionDate <= salefilter.ToDate.Value)
+                                                   && (string.IsNullOrEmpty(salefilter.SearchValue) || a.TransactionNumber.Contains(salefilter.SearchValue))
+                                                orderby a.Row descending
+                                                select new SystemBackEnd.ServiceModels.SaleReportDetailsforPrint()
+                                                {
+                                                    TransactionDetailsId = a.TransactionHeaderId,
+                                                    TransactionNumber = a.TransactionNumber,
+                                                    Date = a.TransactionDate,
+                                                    CashierName = b.Fullname,
+                                                    ProductName = d.ProductName,
+                                                    Quantity = c.Quantity,
+                                                    Price = d.Price,
+                                                    Total = c.Quantity * d.Price
+                                                })
+                                                .ToListAsync();
+
+            return saleReportDetailsforPrints;
+        }
+
     }
 }
