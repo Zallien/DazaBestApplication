@@ -40,8 +40,8 @@ namespace DazaBestApplication.Reports
     {
         public string ReferenceNo { get; set; }
         public string Date { get; set; }
-        public string itemName { get; set; }
-        public decimal Quantity { get; set; }
+        public string ItemName { get; set; }
+        public decimal ItemQty { get; set; }
         public string Reason { get; set; }
     }
 }

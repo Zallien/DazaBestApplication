@@ -41,15 +41,15 @@ namespace DazaBestApplication.Reports
                 {
                     ReferenceNo = data.ReferenceNumber,
                     Date = data.Date.ToString("MM/dd/yyyy"),
-                    itemName = data.ItemName,
-                    Quantity = data.Quantity,
+                    ItemName = data.ItemName,
+                    ItemQty = data.Quantity,
                     Reason = data.Reason
                 });
 
             }
             var parameters = new List<ReportParameter>
             {
-                new ReportParameter("Datestart", startdate.ToString("MMMM dd, yyyy")),
+                new ReportParameter("DateStart", startdate.ToString("MMMM dd, yyyy")),
                 new ReportParameter("DateEnd", enddate.ToString("MMMM dd, yyyy"))
             };
 

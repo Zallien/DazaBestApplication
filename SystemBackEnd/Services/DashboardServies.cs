@@ -38,12 +38,12 @@ namespace SystemBackEnd.Services
                 dashinfo.Qouta = Qouta;
                 dashinfo.ItemsCount = await _db.Items.Where(x => x.IsActive == true).CountAsync();
                 dashinfo.OrdersCount = await _db.TransactionHeader
-                                        .Where(x => x.TransactionDate >= fromDate &&
-                                                    x.TransactionDate <= toDate)
+                                        .Where(x => x.TransactionDate.Date >= fromDate &&
+                                                    x.TransactionDate.Date <= toDate)
                                         .CountAsync();
                 dashinfo.TotalSale = await (from a in _db.TransactionHeader
                                             join b in _db.TransactionDetails on a.TransactionHeaderId equals b.TransactionHeaderId
-                                            where a.TransactionDate >= fromDate && a.TransactionDate <= toDate
+                                            where a.TransactionDate.Date >= fromDate && a.TransactionDate.Date <= toDate
                                             select a.Grandtotal).SumAsync();
                 dashinfo.ProductsCount =  await _db.Products.CountAsync();
                 dashinfo.CriticalItems =  await _db.Items.Where(x => x.BalanceStocks <= 10m).CountAsync();
@@ -78,7 +78,7 @@ namespace SystemBackEnd.Services
                 dashinfo.ForChart = await (from a in _db.TransactionDetails
                                                 join b in _db.Products on a.ProductId equals b.ProductID
                                                 join c in _db.TransactionHeader on a.TransactionHeaderId equals c.TransactionHeaderId
-                                                where c.TransactionDate >= fromDate && c.TransactionDate <= toDate
+                                                where c.TransactionDate.Date >= fromDate && c.TransactionDate.Date <= toDate
                                                 group a by new { a.ProductId, b.ProductName } into d
                                                 orderby d.Count() descending
                                                 select new DashboardItems()

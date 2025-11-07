@@ -19,6 +19,7 @@ namespace DazaBestApplication.Pages
     public partial class AdjustmentRecord : Form
     {
         List<AdjustmentReportDetails> AllAdjustmentDetails = new List<AdjustmentReportDetails>();
+        List<AdjustmentReportDetailsforPrint>  adjustmentReportDetailsforPrints= new();
         AdjusmentReportServices adjustmentreportservice;
         RecordsFilterSearch recordsFilterSearch;
 
@@ -27,7 +28,7 @@ namespace DazaBestApplication.Pages
         private string SearchValue = "";
         private int PageNumber = 0;
         private int ItemPerPaeg = 12;
-        private DateTime FromDateFilter = DateTime.Parse("2025-10-27 14:04:35.161");
+        private DateTime FromDateFilter = DateTime.Now;
         private DateTime ToDateFilter = DateTime.Now;
 
         private Form MainForm;
@@ -81,21 +82,23 @@ namespace DazaBestApplication.Pages
 
 
 
-        private void PrintBtn_Click(object sender, EventArgs e)
+        private async void PrintBtn_Click(object sender, EventArgs e)
         {
             //print for report
             try
             {
-                AllAdjustmentDetails = new List<AdjustmentReportDetails>();
+                adjustmentReportDetailsforPrints = new List<AdjustmentReportDetailsforPrint>();
+                adjustmentreportservice = new AdjusmentReportServices(new BackEndDBContext());
                 recordsFilterSearch = new RecordsFilterSearch()
                 {
                     SearchValue = SearchValue,
                     FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
-                    ToDate = ToDateFilter,
-                    PageNumber = PageNumber
+                    ToDate = ToDateFilter
                 };
-                adjustmentreportservice = new AdjusmentReportServices(new BackEndDBContext());
-                
+                adjustmentReportDetailsforPrints = await adjustmentreportservice.GetAdjustmentDetailsForPrinting(recordsFilterSearch);
+                AdjustmentReportForm adjustmentReportForm = new AdjustmentReportForm(adjustmentReportDetailsforPrints, bunifuDatePicker1.Value, bunifuDatePicker2.Value);
+                adjustmentReportForm.Show();
+
             }
             catch (Exception ex)
             {

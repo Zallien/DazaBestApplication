@@ -48,7 +48,7 @@ namespace DazaBestApplication.Pages
 
             qoutalabel.Text = DashboardInformation.Qouta.ToString("");
             numberoforderslabel.Text = DashboardInformation.OrdersCount.ToString();
-            revenuelabel.Text = DashboardInformation.Revenue.ToString("");
+            
             salelabel.Text = DashboardInformation.TotalSale.ToString("");
             numberofitemslabel.Text = DashboardInformation.ItemsCount.ToString();
             outofstocklabel.Text = DashboardInformation.OutofStockCount.ToString();

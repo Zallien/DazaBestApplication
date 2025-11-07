@@ -81,9 +81,6 @@
             panel8 = new Panel();
             salelabel = new Bunifu.UI.WinForms.BunifuLabel();
             label5 = new Label();
-            panel6 = new Panel();
-            revenuelabel = new Bunifu.UI.WinForms.BunifuLabel();
-            label3 = new Label();
             panel7 = new Panel();
             numberoforderslabel = new Bunifu.UI.WinForms.BunifuLabel();
             label4 = new Label();
@@ -124,7 +121,6 @@
             tableLayoutPanel3.SuspendLayout();
             panel5.SuspendLayout();
             panel8.SuspendLayout();
-            panel6.SuspendLayout();
             panel7.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -193,6 +189,7 @@
             panelwhole.Dock = DockStyle.Fill;
             panelwhole.Location = new Point(0, 50);
             panelwhole.Name = "panelwhole";
+            panelwhole.Padding = new Padding(0, 0, 0, 20);
             panelwhole.Size = new Size(900, 738);
             panelwhole.TabIndex = 4;
             // 
@@ -680,13 +677,12 @@
             // tableLayoutPanel3
             // 
             tableLayoutPanel3.ColumnCount = 4;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3344421F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 0F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3311157F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.334446F));
             tableLayoutPanel3.Controls.Add(panel5, 0, 0);
             tableLayoutPanel3.Controls.Add(panel8, 3, 0);
-            tableLayoutPanel3.Controls.Add(panel6, 1, 0);
             tableLayoutPanel3.Controls.Add(panel7, 2, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(83, 3);
@@ -742,7 +738,7 @@
             panel8.Controls.Add(salelabel);
             panel8.Controls.Add(label5);
             panel8.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel8.Location = new Point(591, 3);
+            panel8.Location = new Point(525, 3);
             panel8.Name = "panel8";
             panel8.Padding = new Padding(15, 15, 0, 0);
             panel8.Size = new Size(185, 101);
@@ -774,45 +770,6 @@
             label5.TabIndex = 2;
             label5.Text = "Total Sales";
             // 
-            // panel6
-            // 
-            panel6.BackColor = Color.White;
-            panel6.BorderStyle = BorderStyle.FixedSingle;
-            panel6.Controls.Add(revenuelabel);
-            panel6.Controls.Add(label3);
-            panel6.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel6.Location = new Point(199, 3);
-            panel6.Name = "panel6";
-            panel6.Padding = new Padding(15, 15, 0, 0);
-            panel6.Size = new Size(185, 101);
-            panel6.TabIndex = 1;
-            // 
-            // revenuelabel
-            // 
-            revenuelabel.AllowParentOverrides = false;
-            revenuelabel.AutoEllipsis = false;
-            revenuelabel.AutoSize = false;
-            revenuelabel.CursorType = Cursors.Default;
-            revenuelabel.Dock = DockStyle.Fill;
-            revenuelabel.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
-            revenuelabel.Location = new Point(15, 33);
-            revenuelabel.Name = "revenuelabel";
-            revenuelabel.RightToLeft = RightToLeft.No;
-            revenuelabel.Size = new Size(168, 66);
-            revenuelabel.TabIndex = 3;
-            revenuelabel.Text = "₱ 5,000.00";
-            revenuelabel.TextAlignment = ContentAlignment.MiddleCenter;
-            revenuelabel.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // label3
-            // 
-            label3.Dock = DockStyle.Top;
-            label3.Location = new Point(15, 15);
-            label3.Name = "label3";
-            label3.Size = new Size(168, 18);
-            label3.TabIndex = 1;
-            label3.Text = "Revenue";
-            // 
             // panel7
             // 
             panel7.BackColor = Color.White;
@@ -820,7 +777,7 @@
             panel7.Controls.Add(numberoforderslabel);
             panel7.Controls.Add(label4);
             panel7.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel7.Location = new Point(395, 3);
+            panel7.Location = new Point(264, 3);
             panel7.Name = "panel7";
             panel7.Padding = new Padding(15, 15, 0, 0);
             panel7.Size = new Size(185, 101);
@@ -1051,7 +1008,6 @@
             tableLayoutPanel3.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel8.ResumeLayout(false);
-            panel6.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
@@ -1094,9 +1050,6 @@
         private Panel panel8;
         private Bunifu.UI.WinForms.BunifuLabel salelabel;
         private Label label5;
-        private Panel panel6;
-        private Bunifu.UI.WinForms.BunifuLabel revenuelabel;
-        private Label label3;
         private Panel panel7;
         private Bunifu.UI.WinForms.BunifuLabel numberoforderslabel;
         private Label label4;
