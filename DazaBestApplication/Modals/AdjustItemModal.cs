@@ -403,9 +403,17 @@ namespace DazaBestApplication.Modals
         }
         private void AddAdjustmentItemInformationsBTN_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Do you want to Proceed? ", "System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if(AllPickedItems.Rows.Count == 0)
             {
-                AddAdjustmentBTN();
+                MessageBox.Show("Please pick at least one item to proceed.", "System", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                if (MessageBox.Show("Do you want to Proceed? ", "System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    AddAdjustmentBTN();
+                }
             }
         }
         private void removeitempickedbutton_Click(object sender, EventArgs e)

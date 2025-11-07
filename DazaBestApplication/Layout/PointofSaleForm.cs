@@ -526,7 +526,15 @@ namespace DazaBestApplication.Layout
 
         private async void PaymentButton_Click_1(object sender, EventArgs e)
         {
-            await ShowPaymentModal();
+            if (ProductOrdersDatagrid.Rows.Count == 0)
+            {
+                MessageBox.Show("Please pick at least one item to proceed.", "System", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                await ShowPaymentModal();
+            }
         }
 
         private async void bunifuButton1_Click(object sender, EventArgs e)

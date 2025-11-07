@@ -422,6 +422,8 @@ namespace DazaBestApplication
         }
         private async void LogOut_btn_Click(object sender, EventArgs e)
         {
+            // Show confirmation dialog
+
             Program.theLoggedInAccount = null;
             Close();
             Log_in login = new();
@@ -430,6 +432,7 @@ namespace DazaBestApplication
         private void NavButton_Home_Click(object sender, EventArgs e)
         {
             ShowDashboardmPage();
+            DashClicked();
 
 
         }
@@ -518,6 +521,42 @@ namespace DazaBestApplication
         private void AccountsManagementBTN_Click(object sender, EventArgs e)
         {
             AccountsPage();
+        }
+
+
+        ///clicked 
+        private void DashClicked()
+        {
+            //backcolor
+            NavButton_Home.BackColor = Color.FromArgb(198, 40, 40);
+            NavButton_Home.IdleFillColor = Color.FromArgb(198, 40, 40);
+            NavButton_Item.BackColor = Color.Transparent;
+            NavButton_Products.BackColor = Color.Transparent;
+            NavButton_PurchaseItem.BackColor = Color.Transparent;
+            NavButton_Reports.BackColor = Color.Transparent;
+            bunifuButton21.BackColor = Color.Transparent; // Backup and Restore
+            POSButton.BackColor = Color.Transparent;
+            AccountsManagementBTN.BackColor = Color.Transparent;
+            // Forecolor
+            NavButton_Home.ForeColor = Color.White;
+            NavButton_Item.ForeColor = Color.Black;
+            NavButton_Products.ForeColor = Color.Black;
+            NavButton_PurchaseItem.ForeColor = Color.Black;
+            NavButton_Reports.ForeColor = Color.Black;
+            bunifuButton21.ForeColor = Color.Black; // Backup and Restore
+            POSButton.ForeColor = Color.Black;
+            AccountsManagementBTN.ForeColor = Color.Black;
+            //Icon
+            NavButton_Home.IdleIconLeftImage = Properties.Resources.speedometer__1___1_;
+            //NavButton_Home.IdleIconLeftImage = Properties.Resources.speedometer__1___1_;
+            //NavButton_Home.IdleIconLeftImage = Properties.Resources.speedometer__1___1_;
+            NavButton_Item.IdleIconLeftImage = Properties.Resources.clipboard;
+            NavButton_Products.IdleIconLeftImage = Properties.Resources.clipboard;
+            NavButton_PurchaseItem.IdleIconLeftImage = Properties.Resources.logistics;
+            NavButton_Reports.IdleIconLeftImage = Properties.Resources.folder;
+            bunifuButton21.IdleIconLeftImage = Properties.Resources.gear; // Backup and Restore
+            POSButton.IdleIconLeftImage = Properties.Resources.payment_terminal;
+            AccountsManagementBTN.IdleIconLeftImage = Properties.Resources.accounts;
         }
     }
 }
