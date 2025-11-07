@@ -173,19 +173,7 @@ namespace DazaBestApplication
             MainContainer.Controls.Add(MainContainerForm);
             MainContainerForm.Show();
         }
-        private void ShowSettingsPage()
-        {
-            if (MainContainerForm != null)
-            {
-                MainContainer.Controls.Remove(MainContainerForm);
-                MainContainerForm = null;
-            }
-            MainContainerForm = new Settings(this);
-            MainContainerForm.TopLevel = false;
-            MainContainerForm.Dock = DockStyle.Fill;
-            MainContainer.Controls.Add(MainContainerForm);
-            MainContainerForm.Show();
-        }
+        
         private void ShowDashboardmPage()
         {
             if (MainContainerForm != null)
@@ -294,7 +282,9 @@ namespace DazaBestApplication
         }
         private void bunifuButton21_Click(object sender, EventArgs e)
         {
-            ShowSettingsPage();
+            /*ShowSettingsPage();*/
+            /// backup and restore page
+            
         }
         private void POSButton_Click(object sender, EventArgs e)
         {

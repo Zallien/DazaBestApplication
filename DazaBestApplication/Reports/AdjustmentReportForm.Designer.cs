@@ -1,6 +1,6 @@
 ﻿namespace DazaBestApplication.Reports
 {
-    partial class MonthlySalesReportForm
+    partial class AdjustmentReportForm
     {
         /// <summary>
         /// Required designer variable.
@@ -43,7 +43,7 @@
             TopPanel.Location = new Point(0, 0);
             TopPanel.Name = "TopPanel";
             TopPanel.Size = new Size(800, 32);
-            TopPanel.TabIndex = 3;
+            TopPanel.TabIndex = 4;
             // 
             // pictureBox1
             // 
@@ -57,16 +57,17 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // MonthlySalesReportForm
+            // AdjustmentReportForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(TopPanel);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "MonthlySalesReportForm";
-            Text = "MonthlySalesReportForm";
-            Load += MonthlySalesReportForm_Load;
+            Name = "AdjustmentReportForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "AdjustmentReportForm";
+            Load += AdjustmentReportForm_Load;
             TopPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

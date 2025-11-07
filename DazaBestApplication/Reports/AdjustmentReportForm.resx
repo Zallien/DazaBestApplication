@@ -117,45 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="bunifuButton1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAIoAAAAcCAYAAAC+uCc6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB0SURBVGhD7dKxCYBAAMBAJ/mVdT/HsH+1EgSFDHDFVWmz
-        jG3uYztP+Df3e5SvAG9GITEKiVFIjEJiFBKjkBiFxCgkRiExColRSIxCYhQSo5AYhcQoJEYhMQqJUUiM
-        QmIUEqOQGIXEKCRGIVnGOo+vAI91Hhde/VYTxriRkgAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="bunifuButton2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAJUAAAAcCAYAAABoHf1fAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB2SURBVHhe7dKhEYAwAMDATtKVYb+OgS8wAIqLfPEqNmOe
-        e83zvqGx1zvVV4D/TEXOVORMRc5U5ExFzlTkTEXOVORMRc5U5ExFzlTkTEXOVORMRc5U5ExFzlTkTEXO
-        VORMRc5U5ExFzlTkTEVuzGNfXwF+Ofb1AA3WjTCpGK2KAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="bunifuToggleSwitch2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADYAAAAcCAYAAAAqckyNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFHSURBVFhH7Zi9SgNBEMe3tLRMkc2m9BF8BF9CsBEsLU3n
-        Awi7e0haSW1ta2mbNxBSBCF+QvwCyYz/udxFlHmAG9mBXzW7x/6Y2YMd9zfCBW/5yAeDRGMwHSTmboKz
-        ZZr4REch8nZzfD1Cpl0faQaW+se6CL1BbtHPtNdo/A7IjHymZ31z96nPHik1OuuoK2VYqgWVe0J77q+l
-        5E4lutMW2oQewjn3pAWPwae+yCo0diHRpZ60DE2lYrd60jL07vSEfYqYNYqYNYqYNYqYNYqYNf6vGN5i
-        91rCMnD6cnhOX2tJy8iLBRXjEzHUFpgl08SFyEOImZ93tMjsRmY49dwD7XiIyr1oCy2BFlyCs1qqDblr
-        Pq1etQ0W6MfVB17ONzKcapR+wmc+RfJR29hlpP18RZUq1UaoeEcGPDZmITTHj+Jqc6c24dw3t+pMgihk
-        fRoAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="bunifuToggleSwitch1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADYAAAAcCAYAAAAqckyNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFHSURBVFhH7Zi9SgNBEMe3tLRMkc2m9BF8BF9CsBEsLU3n
-        Awi7e0haSW1ta2mbNxBSBCF+QvwCyYz/udxFlHmAG9mBXzW7x/6Y2YMd9zfCBW/5yAeDRGMwHSTmboKz
-        ZZr4REch8nZzfD1Cpl0faQaW+se6CL1BbtHPtNdo/A7IjHymZ31z96nPHik1OuuoK2VYqgWVe0J77q+l
-        5E4lutMW2oQewjn3pAWPwae+yCo0diHRpZ60DE2lYrd60jL07vSEfYqYNYqYNYqYNYqYNYqYNf6vGN5i
-        91rCMnD6cnhOX2tJy8iLBRXjEzHUFpgl08SFyEOImZ93tMjsRmY49dwD7XiIyr1oCy2BFlyCs1qqDblr
-        Pq1etQ0W6MfVB17ONzKcapR+wmc+RfJR29hlpP18RZUq1UaoeEcGPDZmITTHj+Jqc6c24dw3t+pMgihk
-        fRoAAAAASUVORK5CYII=
-</value>
-  </data>
 </root>

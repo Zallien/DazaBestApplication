@@ -12,18 +12,17 @@ using SystemBackEnd.ServiceModels;
 
 namespace DazaBestApplication.Reports
 {
-    public partial class MonthlySalesReportForm : Form
+    public partial class AdjustmentReportForm : Form
     {
         private Size Hsize;
-        private List<SaleReportDetailsforPrint> salesPerformanceData = new List<SaleReportDetailsforPrint>();
+        private List<AdjustmentReportDetailsforPrint> adjustmentReportDetails = new List<AdjustmentReportDetailsforPrint>();
         private readonly ReportViewer reportViewer;
         private DateTime startdate;
         private DateTime enddate;
-        private decimal grandtotal;
-        public MonthlySalesReportForm(List<SaleReportDetailsforPrint> salesData, DateTime startDate, DateTime endDate)
+        public AdjustmentReportForm(List<AdjustmentReportDetailsforPrint> AdjustData, DateTime startDate, DateTime endDate)
         {
             InitializeComponent();
-            salesPerformanceData = salesData;
+            adjustmentReportDetails = AdjustData;
             reportViewer = new ReportViewer();
             reportViewer.Dock = DockStyle.Fill;
             startdate = startDate;
@@ -32,35 +31,31 @@ namespace DazaBestApplication.Reports
             Hsize = Program.WorkspaceSize;
             this.Height = Hsize.Height;
         }
-        
-        private void MonthlySalesReportForm_Load(object sender, EventArgs e)
+
+        private void AdjustmentReportForm_Load(object sender, EventArgs e)
         {
-            List<SalesPerformanceData> datasource = new List<SalesPerformanceData>();
-            foreach (var data in salesPerformanceData)
+            List<DataforAdjustment> datasource = new List<DataforAdjustment>();
+            foreach (var data in adjustmentReportDetails)
             {
-                datasource.Add(new SalesPerformanceData
+                datasource.Add(new DataforAdjustment
                 {
-                    TransactionNo = data.TransactionNumber,
+                    ReferenceNo = data.ReferenceNumber,
                     Date = data.Date.ToString("MM/dd/yyyy"),
-                    Seller = data.CashierName,
-                    ProductName = data.ProductName,
-                    ProductQty = data.Quantity,
-                    ProductPrice = data.Price,
-                    ProductTotal = data.Quantity * data.Price
+                    itemName = data.ItemName,
+                    Quantity = data.Quantity,
+                    Reason = data.Reason
                 });
-                grandtotal += data.Quantity * data.Price;
+
             }
             var parameters = new List<ReportParameter>
             {
-                new ReportParameter("GrandTotal", grandtotal.ToString("N2")),
                 new ReportParameter("Datestart", startdate.ToString("MMMM dd, yyyy")),
                 new ReportParameter("DateEnd", enddate.ToString("MMMM dd, yyyy"))
             };
 
-
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             //Name ng report inside the project folder structure
-            string resourceName = "DazaBestApplication.Reports.Report2.rdlc";
+            string resourceName = "DazaBestApplication.Reports.Report3.rdlc";
             using (var stream = assembly.GetManifestResourceStream(resourceName))
             {
                 if (stream == null)

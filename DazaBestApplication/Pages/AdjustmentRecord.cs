@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DazaBestApplication.Reports;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,10 +10,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd;
+using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
 
 namespace DazaBestApplication.Pages
 {
+    
     public partial class AdjustmentRecord : Form
     {
         List<AdjustmentReportDetails> AllAdjustmentDetails = new List<AdjustmentReportDetails>();
@@ -80,7 +83,24 @@ namespace DazaBestApplication.Pages
 
         private void PrintBtn_Click(object sender, EventArgs e)
         {
+            //print for report
+            try
+            {
+                AllAdjustmentDetails = new List<AdjustmentReportDetails>();
+                recordsFilterSearch = new RecordsFilterSearch()
+                {
+                    SearchValue = SearchValue,
+                    FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
+                    ToDate = ToDateFilter,
+                    PageNumber = PageNumber
+                };
+                adjustmentreportservice = new AdjusmentReportServices(new BackEndDBContext());
+                
+            }
+            catch (Exception ex)
+            {
 
+            }
         }
 
 

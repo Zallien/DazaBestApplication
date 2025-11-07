@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
 using SystemBackEnd;
+using DazaBestApplication.Reports;
 
 namespace DazaBestApplication.Pages
 {
@@ -17,6 +18,7 @@ namespace DazaBestApplication.Pages
     {
         private Form MainForm;
         private List<SaleReportDetails> SaleReportHeaders;
+        private List<SaleReportDetailsforPrint> SaleReportDetailsforPrints;
         private RecordsFilterSearch saleRecordFilterSearch;
         private SaleReportServices SaleReportServices = new SaleReportServices(new BackEndDBContext());
 
@@ -53,6 +55,8 @@ namespace DazaBestApplication.Pages
                 };
                 SaleReportServices = new SaleReportServices(new BackEndDBContext());
                 SaleReportHeaders = await SaleReportServices.GetSaleReportDetails(saleRecordFilterSearch);
+                /*MonthlySalesReportForm monthlySalesReportForm = new MonthlySalesReportForm();*/
+
 
 
             }
@@ -86,9 +90,27 @@ namespace DazaBestApplication.Pages
 
         //Events
       
-        private void bunifuButton22_Click(object sender, EventArgs e)
+        private async void bunifuButton22_Click(object sender, EventArgs e)
         {
-
+            //print the report
+            try {
+                SaleReportDetailsforPrints = new List<SaleReportDetailsforPrint>();
+                SaleReportServices = new SaleReportServices(new BackEndDBContext());
+                saleRecordFilterSearch = new RecordsFilterSearch()
+                {
+                    SearchValue = SearchValue,
+                    FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
+                    ToDate = ToDateFilter,
+                    PageNumber = PageNumber
+                };
+                SaleReportDetailsforPrints = await SaleReportServices.GetSaleReportforPrinting(saleRecordFilterSearch);
+                MonthlySalesReportForm monthlySalesReportForm = new MonthlySalesReportForm(SaleReportDetailsforPrints, bunifuDatePicker1.Value, bunifuDatePicker2.Value);
+                monthlySalesReportForm.Show();
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
 
         //Main Load
