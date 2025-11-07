@@ -14,6 +14,7 @@ namespace SystemBackEnd.ServiceModels
         public string ItemName { get; set; }
         public decimal Quantity { get; set; }
         public string Reason { get; set; }
+        public DateTime Date { get; set; }
     }
 
     public class AdjustmentReportDetailsforPrint

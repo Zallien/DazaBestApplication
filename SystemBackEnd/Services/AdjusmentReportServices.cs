@@ -37,7 +37,8 @@ namespace SystemBackEnd.Services
                                                      ReferenceDetailsId = b.ReferenceDetailsId,
                                                      ItemName = c.ItemName,
                                                      Quantity = b.RemovedQuantity,
-                                                     Reason = b.Reason
+                                                     Reason = b.Reason,
+                                                     Date = a.DateOperated
                                                  })
                                                  .Skip((filtersearch.PageNumber - 1) * filtersearch.ItemperPage)
                                                 .Take(filtersearch.ItemperPage)

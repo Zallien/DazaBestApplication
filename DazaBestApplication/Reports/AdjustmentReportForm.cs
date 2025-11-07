@@ -15,11 +15,11 @@ namespace DazaBestApplication.Reports
     public partial class AdjustmentReportForm : Form
     {
         private Size Hsize;
-        private List<AdjustmentReportDetailsforPrint> adjustmentReportDetails = new List<AdjustmentReportDetailsforPrint>();
+        private List<AdjustmentReportDetails> adjustmentReportDetails = new List<AdjustmentReportDetails>();
         private readonly ReportViewer reportViewer;
         private DateTime startdate;
         private DateTime enddate;
-        public AdjustmentReportForm(List<AdjustmentReportDetailsforPrint> AdjustData, DateTime startDate, DateTime endDate)
+        public AdjustmentReportForm(List<AdjustmentReportDetails> AdjustData, DateTime startDate, DateTime endDate)
         {
             InitializeComponent();
             adjustmentReportDetails = AdjustData;
@@ -45,14 +45,12 @@ namespace DazaBestApplication.Reports
                     ItemQty = data.Quantity,
                     Reason = data.Reason
                 });
-
             }
             var parameters = new List<ReportParameter>
             {
                 new ReportParameter("DateStart", startdate.ToString("MMMM dd, yyyy")),
                 new ReportParameter("DateEnd", enddate.ToString("MMMM dd, yyyy"))
             };
-
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             //Name ng report inside the project folder structure
             string resourceName = "DazaBestApplication.Reports.Report3.rdlc";

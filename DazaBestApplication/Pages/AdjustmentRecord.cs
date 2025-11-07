@@ -19,6 +19,7 @@ namespace DazaBestApplication.Pages
     public partial class AdjustmentRecord : Form
     {
         List<AdjustmentReportDetails> AllAdjustmentDetails = new List<AdjustmentReportDetails>();
+        List<AdjustmentReportDetails> forprinting = new List<AdjustmentReportDetails>();
         List<AdjustmentReportDetailsforPrint>  adjustmentReportDetailsforPrints= new();
         AdjusmentReportServices adjustmentreportservice;
         RecordsFilterSearch recordsFilterSearch;
@@ -87,16 +88,19 @@ namespace DazaBestApplication.Pages
             //print for report
             try
             {
+                forprinting = new List<AdjustmentReportDetails>();
                 adjustmentReportDetailsforPrints = new List<AdjustmentReportDetailsforPrint>();
                 adjustmentreportservice = new AdjusmentReportServices(new BackEndDBContext());
                 recordsFilterSearch = new RecordsFilterSearch()
                 {
                     SearchValue = SearchValue,
                     FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
-                    ToDate = ToDateFilter
+                    ToDate = ToDateFilter,
+                    PageNumber = 0,
+                    ItemperPage = 99999
                 };
-                adjustmentReportDetailsforPrints = await adjustmentreportservice.GetAdjustmentDetailsForPrinting(recordsFilterSearch);
-                AdjustmentReportForm adjustmentReportForm = new AdjustmentReportForm(adjustmentReportDetailsforPrints, bunifuDatePicker1.Value, bunifuDatePicker2.Value);
+                forprinting = await adjustmentreportservice.GetAdjustmentDetails(recordsFilterSearch);
+                AdjustmentReportForm adjustmentReportForm = new AdjustmentReportForm(forprinting, bunifuDatePicker1.Value, bunifuDatePicker2.Value);
                 adjustmentReportForm.Show();
 
             }
