@@ -12,9 +12,17 @@ namespace DazaBestApplication.Pages
 {
     public partial class BackupForm : Form
     {
-        public BackupForm()
+        private Form MainForm;
+
+        public BackupForm(Form mainForm)
         {
             InitializeComponent();
+            MainForm = mainForm;
+        }
+
+        private void BackupForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

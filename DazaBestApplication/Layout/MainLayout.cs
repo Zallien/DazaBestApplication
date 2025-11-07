@@ -239,6 +239,19 @@ namespace DazaBestApplication
             MainContainer.Controls.Add(MainContainerForm);
             MainContainerForm.Show();
         }
+        private void BackupAndRestorePage()
+        {
+            if (MainContainerForm != null)
+            {
+                MainContainer.Controls.Remove(MainContainerForm);
+                MainContainerForm = null;
+            }
+            MainContainerForm = new BackupForm(this);
+            MainContainerForm.TopLevel = false;
+            MainContainerForm.Dock = DockStyle.Fill;
+            MainContainer.Controls.Add(MainContainerForm);
+            MainContainerForm.Show();
+        }
         private void ShowSalesRecordmPage()
         {
             if (MainContainerForm != null)
@@ -284,7 +297,9 @@ namespace DazaBestApplication
         {
             /*ShowSettingsPage();*/
             /// backup and restore page
-            
+            BackupAndRestorePage();
+
+
         }
         private void POSButton_Click(object sender, EventArgs e)
         {

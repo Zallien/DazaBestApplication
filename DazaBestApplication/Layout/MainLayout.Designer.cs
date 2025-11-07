@@ -142,7 +142,7 @@
             AccountsManagementBTN.IdleBorderRadius = 1;
             AccountsManagementBTN.IdleBorderThickness = 2;
             AccountsManagementBTN.IdleFillColor = Color.Transparent;
-            AccountsManagementBTN.IdleIconLeftImage = Properties.Resources.payment_terminal;
+            AccountsManagementBTN.IdleIconLeftImage = Properties.Resources.accounts;
             AccountsManagementBTN.IdleIconRightImage = null;
             AccountsManagementBTN.IndicateFocus = false;
             AccountsManagementBTN.Location = new Point(0, 510);
@@ -161,7 +161,7 @@
             AccountsManagementBTN.onHoverState.BorderThickness = 2;
             AccountsManagementBTN.onHoverState.FillColor = Color.FromArgb(255, 240, 221);
             AccountsManagementBTN.onHoverState.ForeColor = Color.Black;
-            AccountsManagementBTN.onHoverState.IconLeftImage = Properties.Resources.payment_terminal;
+            AccountsManagementBTN.onHoverState.IconLeftImage = Properties.Resources.accounts;
             AccountsManagementBTN.onHoverState.IconRightImage = null;
             AccountsManagementBTN.OnIdleState.BorderColor = Color.Transparent;
             AccountsManagementBTN.OnIdleState.BorderRadius = 1;
@@ -169,7 +169,7 @@
             AccountsManagementBTN.OnIdleState.BorderThickness = 2;
             AccountsManagementBTN.OnIdleState.FillColor = Color.Transparent;
             AccountsManagementBTN.OnIdleState.ForeColor = Color.Black;
-            AccountsManagementBTN.OnIdleState.IconLeftImage = Properties.Resources.payment_terminal;
+            AccountsManagementBTN.OnIdleState.IconLeftImage = Properties.Resources.accounts;
             AccountsManagementBTN.OnIdleState.IconRightImage = null;
             AccountsManagementBTN.OnPressedState.BorderColor = Color.Black;
             AccountsManagementBTN.OnPressedState.BorderRadius = 1;
@@ -486,7 +486,7 @@
             bunifuButton21.BackColor1 = Color.Transparent;
             bunifuButton21.BackgroundImage = (Image)resources.GetObject("bunifuButton21.BackgroundImage");
             bunifuButton21.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            bunifuButton21.ButtonText = "Settings";
+            bunifuButton21.ButtonText = "Back-Up/Restore";
             bunifuButton21.ButtonTextMarginLeft = 0;
             bunifuButton21.ColorContrastOnClick = 45;
             bunifuButton21.ColorContrastOnHover = 45;

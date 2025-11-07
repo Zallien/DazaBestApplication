@@ -19,6 +19,14 @@ namespace DazaBestApplication.Reports
         private readonly ReportViewer reportViewer;
         private DateTime startdate;
         private DateTime enddate;
+
+
+        private async Task CloseAddAccountModal()
+        {
+            this.Close();
+            await Task.CompletedTask;
+        }
+
         public AdjustmentReportForm(List<AdjustmentReportDetails> AdjustData, DateTime startDate, DateTime endDate)
         {
             InitializeComponent();

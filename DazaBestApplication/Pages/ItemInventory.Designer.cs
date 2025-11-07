@@ -33,7 +33,6 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -51,19 +50,18 @@
             PaginationLabel = new Label();
             PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
             PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
-            PrintItemBtn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             SearchBoxTextBox = new Bunifu.UI.WinForms.BunifuTextBox();
             AllItemsDatagrid = new Bunifu.UI.WinForms.BunifuDataGridView();
-            MenustripforItems = new ContextMenuStrip(components);
-            edittoolstrip = new ToolStripMenuItem();
-            sep1 = new ToolStripSeparator();
-            deletetoolstrip = new ToolStripMenuItem();
             IdCol = new DataGridViewTextBoxColumn();
             RowCol = new DataGridViewTextBoxColumn();
             ItemCodeCol = new DataGridViewTextBoxColumn();
             ItemNameCol = new DataGridViewTextBoxColumn();
             StocksCol = new DataGridViewTextBoxColumn();
             PriceCol = new DataGridViewTextBoxColumn();
+            MenustripforItems = new ContextMenuStrip(components);
+            edittoolstrip = new ToolStripMenuItem();
+            sep1 = new ToolStripSeparator();
+            deletetoolstrip = new ToolStripMenuItem();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             Pagination.SuspendLayout();
@@ -98,7 +96,6 @@
             MainContainer.Controls.Add(bunifuButton21);
             MainContainer.Controls.Add(AddItemButton);
             MainContainer.Controls.Add(Pagination);
-            MainContainer.Controls.Add(PrintItemBtn);
             MainContainer.Controls.Add(SearchBoxTextBox);
             MainContainer.Controls.Add(AllItemsDatagrid);
             MainContainer.Dock = DockStyle.Bottom;
@@ -469,95 +466,6 @@
             PaginationNext.ZoomSpeed = 10;
             PaginationNext.Click += PaginationNext_Click;
             // 
-            // PrintItemBtn
-            // 
-            PrintItemBtn.AllowAnimations = true;
-            PrintItemBtn.AllowMouseEffects = true;
-            PrintItemBtn.AllowToggling = false;
-            PrintItemBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            PrintItemBtn.AnimationSpeed = 200;
-            PrintItemBtn.AutoGenerateColors = false;
-            PrintItemBtn.AutoRoundBorders = false;
-            PrintItemBtn.AutoSizeLeftIcon = true;
-            PrintItemBtn.AutoSizeRightIcon = true;
-            PrintItemBtn.BackColor = Color.Transparent;
-            PrintItemBtn.BackColor1 = Color.FromArgb(220, 220, 221);
-            PrintItemBtn.BackgroundImage = (Image)resources.GetObject("PrintItemBtn.BackgroundImage");
-            PrintItemBtn.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            PrintItemBtn.ButtonText = "Print";
-            PrintItemBtn.ButtonTextMarginLeft = 0;
-            PrintItemBtn.ColorContrastOnClick = 45;
-            PrintItemBtn.ColorContrastOnHover = 45;
-            borderEdges4.BottomLeft = true;
-            borderEdges4.BottomRight = true;
-            borderEdges4.TopLeft = true;
-            borderEdges4.TopRight = true;
-            PrintItemBtn.CustomizableEdges = borderEdges4;
-            PrintItemBtn.DialogResult = DialogResult.None;
-            PrintItemBtn.DisabledBorderColor = Color.FromArgb(191, 191, 191);
-            PrintItemBtn.DisabledFillColor = Color.FromArgb(204, 204, 204);
-            PrintItemBtn.DisabledForecolor = Color.FromArgb(168, 160, 168);
-            PrintItemBtn.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            PrintItemBtn.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            PrintItemBtn.ForeColor = Color.Black;
-            PrintItemBtn.IconLeftAlign = ContentAlignment.MiddleLeft;
-            PrintItemBtn.IconLeftCursor = Cursors.Default;
-            PrintItemBtn.IconLeftPadding = new Padding(11, 3, 3, 3);
-            PrintItemBtn.IconMarginLeft = 11;
-            PrintItemBtn.IconPadding = 10;
-            PrintItemBtn.IconRightAlign = ContentAlignment.MiddleRight;
-            PrintItemBtn.IconRightCursor = Cursors.Default;
-            PrintItemBtn.IconRightPadding = new Padding(3, 3, 7, 3);
-            PrintItemBtn.IconSize = 25;
-            PrintItemBtn.IdleBorderColor = Color.FromArgb(220, 220, 221);
-            PrintItemBtn.IdleBorderRadius = 1;
-            PrintItemBtn.IdleBorderThickness = 1;
-            PrintItemBtn.IdleFillColor = Color.FromArgb(220, 220, 221);
-            PrintItemBtn.IdleIconLeftImage = Properties.Resources.printer__1_;
-            PrintItemBtn.IdleIconRightImage = null;
-            PrintItemBtn.IndicateFocus = false;
-            PrintItemBtn.Location = new Point(472, 23);
-            PrintItemBtn.Name = "PrintItemBtn";
-            PrintItemBtn.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
-            PrintItemBtn.OnDisabledState.BorderRadius = 1;
-            PrintItemBtn.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            PrintItemBtn.OnDisabledState.BorderThickness = 1;
-            PrintItemBtn.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
-            PrintItemBtn.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
-            PrintItemBtn.OnDisabledState.IconLeftImage = null;
-            PrintItemBtn.OnDisabledState.IconRightImage = null;
-            PrintItemBtn.onHoverState.BorderColor = Color.Black;
-            PrintItemBtn.onHoverState.BorderRadius = 1;
-            PrintItemBtn.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            PrintItemBtn.onHoverState.BorderThickness = 1;
-            PrintItemBtn.onHoverState.FillColor = Color.FromArgb(205, 205, 207);
-            PrintItemBtn.onHoverState.ForeColor = Color.Black;
-            PrintItemBtn.onHoverState.IconLeftImage = null;
-            PrintItemBtn.onHoverState.IconRightImage = null;
-            PrintItemBtn.OnIdleState.BorderColor = Color.FromArgb(220, 220, 221);
-            PrintItemBtn.OnIdleState.BorderRadius = 1;
-            PrintItemBtn.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            PrintItemBtn.OnIdleState.BorderThickness = 1;
-            PrintItemBtn.OnIdleState.FillColor = Color.FromArgb(220, 220, 221);
-            PrintItemBtn.OnIdleState.ForeColor = Color.Black;
-            PrintItemBtn.OnIdleState.IconLeftImage = Properties.Resources.printer__1_;
-            PrintItemBtn.OnIdleState.IconRightImage = null;
-            PrintItemBtn.OnPressedState.BorderColor = Color.FromArgb(161, 205, 220);
-            PrintItemBtn.OnPressedState.BorderRadius = 1;
-            PrintItemBtn.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            PrintItemBtn.OnPressedState.BorderThickness = 1;
-            PrintItemBtn.OnPressedState.FillColor = Color.FromArgb(161, 205, 220);
-            PrintItemBtn.OnPressedState.ForeColor = Color.Black;
-            PrintItemBtn.OnPressedState.IconLeftImage = null;
-            PrintItemBtn.OnPressedState.IconRightImage = null;
-            PrintItemBtn.Size = new Size(136, 40);
-            PrintItemBtn.TabIndex = 3;
-            PrintItemBtn.TextAlign = ContentAlignment.MiddleLeft;
-            PrintItemBtn.TextAlignment = HorizontalAlignment.Center;
-            PrintItemBtn.TextMarginLeft = 0;
-            PrintItemBtn.TextPadding = new Padding(35, 0, 0, 0);
-            PrintItemBtn.UseDefaultRadiusAndThickness = true;
-            // 
             // SearchBoxTextBox
             // 
             SearchBoxTextBox.AcceptsReturn = false;
@@ -586,7 +494,7 @@
             SearchBoxTextBox.IconPadding = 10;
             SearchBoxTextBox.IconRight = null;
             SearchBoxTextBox.IconRightCursor = Cursors.IBeam;
-            SearchBoxTextBox.Location = new Point(615, 24);
+            SearchBoxTextBox.Location = new Point(489, 24);
             SearchBoxTextBox.MaxLength = 32767;
             SearchBoxTextBox.MinimumSize = new Size(1, 1);
             SearchBoxTextBox.Modified = false;
@@ -622,7 +530,7 @@
             SearchBoxTextBox.SelectionLength = 0;
             SearchBoxTextBox.SelectionStart = 0;
             SearchBoxTextBox.ShortcutsEnabled = true;
-            SearchBoxTextBox.Size = new Size(280, 38);
+            SearchBoxTextBox.Size = new Size(406, 38);
             SearchBoxTextBox.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             SearchBoxTextBox.TabIndex = 2;
             SearchBoxTextBox.TextAlign = HorizontalAlignment.Left;
@@ -704,35 +612,6 @@
             AllItemsDatagrid.KeyDown += AllItemsDatagrid_KeyDown;
             AllItemsDatagrid.MouseClick += AllItemsDatagrid_MouseClick;
             // 
-            // MenustripforItems
-            // 
-            MenustripforItems.BackColor = Color.White;
-            MenustripforItems.Items.AddRange(new ToolStripItem[] { edittoolstrip, sep1, deletetoolstrip });
-            MenustripforItems.Name = "MenustripforItems";
-            MenustripforItems.Size = new Size(121, 54);
-            MenustripforItems.Text = "Actions";
-            // 
-            // edittoolstrip
-            // 
-            edittoolstrip.Font = new Font("Cambria", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            edittoolstrip.Name = "edittoolstrip";
-            edittoolstrip.Size = new Size(120, 22);
-            edittoolstrip.Text = "Edit";
-            edittoolstrip.ToolTipText = "Edit the Selected Item";
-            // 
-            // sep1
-            // 
-            sep1.Name = "sep1";
-            sep1.Size = new Size(117, 6);
-            // 
-            // deletetoolstrip
-            // 
-            deletetoolstrip.Font = new Font("Cambria", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            deletetoolstrip.Name = "deletetoolstrip";
-            deletetoolstrip.Size = new Size(120, 22);
-            deletetoolstrip.Text = "Delete";
-            deletetoolstrip.ToolTipText = "Delete the Selected Item";
-            // 
             // IdCol
             // 
             IdCol.HeaderText = "ItemID";
@@ -781,6 +660,35 @@
             PriceCol.ReadOnly = true;
             PriceCol.Width = 69;
             // 
+            // MenustripforItems
+            // 
+            MenustripforItems.BackColor = Color.White;
+            MenustripforItems.Items.AddRange(new ToolStripItem[] { edittoolstrip, sep1, deletetoolstrip });
+            MenustripforItems.Name = "MenustripforItems";
+            MenustripforItems.Size = new Size(121, 54);
+            MenustripforItems.Text = "Actions";
+            // 
+            // edittoolstrip
+            // 
+            edittoolstrip.Font = new Font("Cambria", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            edittoolstrip.Name = "edittoolstrip";
+            edittoolstrip.Size = new Size(120, 22);
+            edittoolstrip.Text = "Edit";
+            edittoolstrip.ToolTipText = "Edit the Selected Item";
+            // 
+            // sep1
+            // 
+            sep1.Name = "sep1";
+            sep1.Size = new Size(117, 6);
+            // 
+            // deletetoolstrip
+            // 
+            deletetoolstrip.Font = new Font("Cambria", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            deletetoolstrip.Name = "deletetoolstrip";
+            deletetoolstrip.Size = new Size(120, 22);
+            deletetoolstrip.Text = "Delete";
+            deletetoolstrip.ToolTipText = "Delete the Selected Item";
+            // 
             // ItemInventory
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
@@ -818,7 +726,6 @@
         private Bunifu.UI.WinForms.BunifuImageButton PaginationPREV;
         private Panel Pagination;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 AddItemButton;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 PrintItemBtn;
         private Bunifu.UI.WinForms.BunifuTextBox SearchBoxTextBox;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton23;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton21;

@@ -35,7 +35,6 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -53,7 +52,6 @@
             EditButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             AddAccountBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             panel3 = new Panel();
-            bunifuButton22 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
             panel2 = new Panel();
             Pagination = new Panel();
@@ -482,103 +480,12 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(bunifuButton22);
             panel3.Controls.Add(SearchBox);
             panel3.Dock = DockStyle.Right;
             panel3.Location = new Point(529, 0);
             panel3.Name = "panel3";
             panel3.Size = new Size(361, 60);
             panel3.TabIndex = 14;
-            // 
-            // bunifuButton22
-            // 
-            bunifuButton22.AllowAnimations = true;
-            bunifuButton22.AllowMouseEffects = true;
-            bunifuButton22.AllowToggling = false;
-            bunifuButton22.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            bunifuButton22.AnimationSpeed = 200;
-            bunifuButton22.AutoGenerateColors = false;
-            bunifuButton22.AutoRoundBorders = false;
-            bunifuButton22.AutoSizeLeftIcon = true;
-            bunifuButton22.AutoSizeRightIcon = true;
-            bunifuButton22.BackColor = Color.Transparent;
-            bunifuButton22.BackColor1 = Color.FromArgb(220, 220, 221);
-            bunifuButton22.BackgroundImage = (Image)resources.GetObject("bunifuButton22.BackgroundImage");
-            bunifuButton22.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            bunifuButton22.ButtonText = "Print";
-            bunifuButton22.ButtonTextMarginLeft = 0;
-            bunifuButton22.ColorContrastOnClick = 45;
-            bunifuButton22.ColorContrastOnHover = 45;
-            borderEdges4.BottomLeft = true;
-            borderEdges4.BottomRight = true;
-            borderEdges4.TopLeft = true;
-            borderEdges4.TopRight = true;
-            bunifuButton22.CustomizableEdges = borderEdges4;
-            bunifuButton22.DialogResult = DialogResult.None;
-            bunifuButton22.DisabledBorderColor = Color.FromArgb(191, 191, 191);
-            bunifuButton22.DisabledFillColor = Color.FromArgb(204, 204, 204);
-            bunifuButton22.DisabledForecolor = Color.FromArgb(168, 160, 168);
-            bunifuButton22.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            bunifuButton22.Font = new Font("Courier New", 11.25F, FontStyle.Bold);
-            bunifuButton22.ForeColor = Color.Black;
-            bunifuButton22.IconLeftAlign = ContentAlignment.MiddleLeft;
-            bunifuButton22.IconLeftCursor = Cursors.Default;
-            bunifuButton22.IconLeftPadding = new Padding(11, 3, 3, 3);
-            bunifuButton22.IconMarginLeft = 11;
-            bunifuButton22.IconPadding = 10;
-            bunifuButton22.IconRightAlign = ContentAlignment.MiddleRight;
-            bunifuButton22.IconRightCursor = Cursors.Default;
-            bunifuButton22.IconRightPadding = new Padding(3, 3, 7, 3);
-            bunifuButton22.IconSize = 25;
-            bunifuButton22.IdleBorderColor = Color.FromArgb(220, 220, 221);
-            bunifuButton22.IdleBorderRadius = 1;
-            bunifuButton22.IdleBorderThickness = 1;
-            bunifuButton22.IdleFillColor = Color.FromArgb(220, 220, 221);
-            bunifuButton22.IdleIconLeftImage = Properties.Resources.printer__1_;
-            bunifuButton22.IdleIconRightImage = null;
-            bunifuButton22.IndicateFocus = false;
-            bunifuButton22.Location = new Point(8, 10);
-            bunifuButton22.Name = "bunifuButton22";
-            bunifuButton22.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
-            bunifuButton22.OnDisabledState.BorderRadius = 1;
-            bunifuButton22.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            bunifuButton22.OnDisabledState.BorderThickness = 1;
-            bunifuButton22.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
-            bunifuButton22.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
-            bunifuButton22.OnDisabledState.IconLeftImage = null;
-            bunifuButton22.OnDisabledState.IconRightImage = null;
-            bunifuButton22.onHoverState.BorderColor = Color.Black;
-            bunifuButton22.onHoverState.BorderRadius = 1;
-            bunifuButton22.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            bunifuButton22.onHoverState.BorderThickness = 1;
-            bunifuButton22.onHoverState.FillColor = Color.FromArgb(205, 205, 207);
-            bunifuButton22.onHoverState.ForeColor = Color.Black;
-            bunifuButton22.onHoverState.IconLeftImage = null;
-            bunifuButton22.onHoverState.IconRightImage = null;
-            bunifuButton22.OnIdleState.BorderColor = Color.FromArgb(220, 220, 221);
-            bunifuButton22.OnIdleState.BorderRadius = 1;
-            bunifuButton22.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            bunifuButton22.OnIdleState.BorderThickness = 1;
-            bunifuButton22.OnIdleState.FillColor = Color.FromArgb(220, 220, 221);
-            bunifuButton22.OnIdleState.ForeColor = Color.Black;
-            bunifuButton22.OnIdleState.IconLeftImage = Properties.Resources.printer__1_;
-            bunifuButton22.OnIdleState.IconRightImage = null;
-            bunifuButton22.OnPressedState.BorderColor = Color.FromArgb(161, 205, 220);
-            bunifuButton22.OnPressedState.BorderRadius = 1;
-            bunifuButton22.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            bunifuButton22.OnPressedState.BorderThickness = 1;
-            bunifuButton22.OnPressedState.FillColor = Color.FromArgb(161, 205, 220);
-            bunifuButton22.OnPressedState.ForeColor = Color.Black;
-            bunifuButton22.OnPressedState.IconLeftImage = null;
-            bunifuButton22.OnPressedState.IconRightImage = null;
-            bunifuButton22.Size = new Size(98, 40);
-            bunifuButton22.TabIndex = 14;
-            bunifuButton22.TextAlign = ContentAlignment.MiddleLeft;
-            bunifuButton22.TextAlignment = HorizontalAlignment.Center;
-            bunifuButton22.TextMarginLeft = 0;
-            bunifuButton22.TextPadding = new Padding(35, 0, 0, 0);
-            bunifuButton22.UseDefaultRadiusAndThickness = true;
-            bunifuButton22.Click += bunifuButton22_Click;
             // 
             // SearchBox
             // 
@@ -608,7 +515,7 @@
             SearchBox.IconPadding = 10;
             SearchBox.IconRight = null;
             SearchBox.IconRightCursor = Cursors.IBeam;
-            SearchBox.Location = new Point(112, 10);
+            SearchBox.Location = new Point(6, 10);
             SearchBox.MaxLength = 32767;
             SearchBox.MinimumSize = new Size(1, 1);
             SearchBox.Modified = false;
@@ -637,21 +544,21 @@
             SearchBox.Padding = new Padding(35, 3, 3, 3);
             SearchBox.PasswordChar = '\0';
             SearchBox.PlaceholderForeColor = Color.Silver;
-            SearchBox.PlaceholderText = "Search by Purchase No";
+            SearchBox.PlaceholderText = "Search by Name";
             SearchBox.ReadOnly = false;
             SearchBox.ScrollBars = ScrollBars.None;
             SearchBox.SelectedText = "";
             SearchBox.SelectionLength = 0;
             SearchBox.SelectionStart = 0;
             SearchBox.ShortcutsEnabled = true;
-            SearchBox.Size = new Size(243, 39);
+            SearchBox.Size = new Size(349, 39);
             SearchBox.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             SearchBox.TabIndex = 13;
             SearchBox.TextAlign = HorizontalAlignment.Left;
             SearchBox.TextMarginBottom = 0;
             SearchBox.TextMarginLeft = 3;
             SearchBox.TextMarginTop = 1;
-            SearchBox.TextPlaceholder = "Search by Purchase No";
+            SearchBox.TextPlaceholder = "Search by Name";
             SearchBox.UseSystemPasswordChar = false;
             SearchBox.WordWrap = true;
             // 
@@ -792,7 +699,6 @@
         private Panel panel3;
         private Bunifu.UI.WinForms.BunifuTextBox SearchBox;
         private Panel panel4;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton22;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 AddAccountBTN;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 RemoveButton;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 EditButton;
