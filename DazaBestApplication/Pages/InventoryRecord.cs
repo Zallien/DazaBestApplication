@@ -87,37 +87,27 @@ namespace DazaBestApplication.Pages
         private async void PrintBtn_Click(object sender, EventArgs e)
         {
             //for printing
-            searchItem = new SearchItem()
-            {
-                SearchValue = SearchValue,
-                PageNumber = PageNumber,
-                ItemperPage = ItemPerPaeg
-            };
-            itemsReportDetailsList = new List<ItemsReportDetails>();
-            ItemReportServices = new ItemReportServices(new SystemBackEnd.BackEndDBContext());
-            itemsReportDetailsList = await ItemReportServices.GetItemsReportDetails(searchItem);
-            //call the form for the report
-
-
-            /*try
-            {
-                SaleReportDetailsforPrints = new List<SaleReportDetailsforPrint>();
-                SaleReportServices = new SaleReportServices(new BackEndDBContext());
-                saleRecordFilterSearch = new RecordsFilterSearch()
+            try {
+                searchItem = new SearchItem()
                 {
                     SearchValue = SearchValue,
-                    FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
-                    ToDate = ToDateFilter,
-                    PageNumber = PageNumber
+                    PageNumber = PageNumber,
+                    ItemperPage = ItemPerPaeg
                 };
-                SaleReportDetailsforPrints = await SaleReportServices.GetSaleReportforPrinting(saleRecordFilterSearch);
-                MonthlySalesReportForm monthlySalesReportForm = new MonthlySalesReportForm(SaleReportDetailsforPrints, bunifuDatePicker1.Value, bunifuDatePicker2.Value);
-                monthlySalesReportForm.Show();
+                itemsReportDetailsList = new List<ItemsReportDetails>();
+                ItemReportServices = new ItemReportServices(new SystemBackEnd.BackEndDBContext());
+                itemsReportDetailsList = await ItemReportServices.GetItemsReportDetails(searchItem);
+                //call the form for the report
+                InventoryReportForm inventoryReportForm = new InventoryReportForm(itemsReportDetailsList);
+                inventoryReportForm.Show();
+
             }
             catch (Exception ex)
             {
 
-            }*/
+            }
+            
+           
 
         }
 

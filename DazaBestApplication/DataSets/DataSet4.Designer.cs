@@ -291,6 +291,8 @@ namespace DazaBestApplication.DataSets {
             
             private global::System.Data.DataColumn columnDate;
             
+            private global::System.Data.DataColumn columnItemTotal;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public stockinDataTable() {
@@ -368,6 +370,14 @@ namespace DazaBestApplication.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ItemTotalColumn {
+                get {
+                    return this.columnItemTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -403,14 +413,15 @@ namespace DazaBestApplication.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public stockinRow AddstockinRow(string PurchaseNo, string ItemName, string ItemQty, string ItemPrice, string Date) {
+            public stockinRow AddstockinRow(string PurchaseNo, string ItemName, string ItemQty, string ItemPrice, string Date, string ItemTotal) {
                 stockinRow rowstockinRow = ((stockinRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PurchaseNo,
                         ItemName,
                         ItemQty,
                         ItemPrice,
-                        Date};
+                        Date,
+                        ItemTotal};
                 rowstockinRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowstockinRow);
                 return rowstockinRow;
@@ -438,6 +449,7 @@ namespace DazaBestApplication.DataSets {
                 this.columnItemQty = base.Columns["ItemQty"];
                 this.columnItemPrice = base.Columns["ItemPrice"];
                 this.columnDate = base.Columns["Date"];
+                this.columnItemTotal = base.Columns["ItemTotal"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -453,6 +465,8 @@ namespace DazaBestApplication.DataSets {
                 base.Columns.Add(this.columnItemPrice);
                 this.columnDate = new global::System.Data.DataColumn("Date", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDate);
+                this.columnItemTotal = new global::System.Data.DataColumn("ItemTotal", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItemTotal);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -675,6 +689,22 @@ namespace DazaBestApplication.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string ItemTotal {
+                get {
+                    try {
+                        return ((string)(this[this.tablestockin.ItemTotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ItemTotal\' in table \'stockin\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablestockin.ItemTotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsPurchaseNoNull() {
                 return this.IsNull(this.tablestockin.PurchaseNoColumn);
             }
@@ -731,6 +761,18 @@ namespace DazaBestApplication.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetDateNull() {
                 this[this.tablestockin.DateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsItemTotalNull() {
+                return this.IsNull(this.tablestockin.ItemTotalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetItemTotalNull() {
+                this[this.tablestockin.ItemTotalColumn] = global::System.Convert.DBNull;
             }
         }
         

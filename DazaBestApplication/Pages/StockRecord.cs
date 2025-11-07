@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd;
 using SystemBackEnd.Services;
+using DazaBestApplication.Reports;
 
 
 namespace DazaBestApplication.Pages
@@ -18,7 +19,9 @@ namespace DazaBestApplication.Pages
     {
         private Form MainForm;
         private List<StockInReportsDetails> stockindetailslist = new List<StockInReportsDetails>();
+
         private StockInReportServices StockInReportServices;
+        private List<StockInReportsDetails> stockindetailsforPrints = new();
         private RecordsFilterSearch RecordFilterSearch;
 
         //Search and Filterations
@@ -92,8 +95,23 @@ namespace DazaBestApplication.Pages
 
         //Events
         
-        private void PrintBtn_Click(object sender, EventArgs e)
+        private async void PrintBtn_Click(object sender, EventArgs e)
         {
+            ///for printing
+            stockindetailslist = new List<StockInReportsDetails>();
+            StockInReportServices = new StockInReportServices(new BackEndDBContext());
+            RecordFilterSearch = new RecordsFilterSearch()
+            {
+                SearchValue = SearchValue,
+                FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
+                ToDate = ToDateFilter,
+                PageNumber = PageNumber,
+                ItemperPage = ItemPerPaeg
+            };
+
+            stockindetailslist = await StockInReportServices.GetStockInDetails(RecordFilterSearch);
+            StockInReportForm stockInReportForm = new StockInReportForm(stockindetailslist, bunifuDatePicker1.Value, bunifuDatePicker2.Value);
+            stockInReportForm.Show();
 
         }
 

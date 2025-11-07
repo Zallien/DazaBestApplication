@@ -44,4 +44,23 @@ namespace DazaBestApplication.Reports
         public decimal ItemQty { get; set; }
         public string Reason { get; set; }
     }
+
+    public class DataforInventory
+    {
+        public string ItemName { get; set; }
+        public string ItemCode { get; set; }
+        public decimal ItemQty { get; set; }
+
+        public string Status { get; set; }
+    }
+
+    public class DataforStockIn
+    {
+        public string PurchaseNo { get; set; }
+        public string ItemName { get; set; }
+        public decimal ItemQty { get; set; }
+        public decimal ItemPrice { get; set; }
+        public string Date { get; set; }
+        public decimal ItemTotal { get; set; }
+    }
 }
