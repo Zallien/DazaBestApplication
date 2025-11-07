@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Bunifu.UI.WinForms;
+using DazaBestApplication.Reports;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemBackEnd;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
 
@@ -16,6 +19,7 @@ namespace DazaBestApplication.Pages
     {
         private Form MainForm;
         private List<ItemsReportDetails> itemsReportDetailsList = new List<ItemsReportDetails>();
+        private List<ItemsReportDetails> itemsReportDetailsforPrints = new();
         private ItemReportServices ItemReportServices;
         private SearchItem searchItem;
 
@@ -80,8 +84,40 @@ namespace DazaBestApplication.Pages
         
 
         //Events
-        private void PrintBtn_Click(object sender, EventArgs e)
+        private async void PrintBtn_Click(object sender, EventArgs e)
         {
+            //for printing
+            searchItem = new SearchItem()
+            {
+                SearchValue = SearchValue,
+                PageNumber = PageNumber,
+                ItemperPage = ItemPerPaeg
+            };
+            itemsReportDetailsList = new List<ItemsReportDetails>();
+            ItemReportServices = new ItemReportServices(new SystemBackEnd.BackEndDBContext());
+            itemsReportDetailsList = await ItemReportServices.GetItemsReportDetails(searchItem);
+            //call the form for the report
+
+
+            /*try
+            {
+                SaleReportDetailsforPrints = new List<SaleReportDetailsforPrint>();
+                SaleReportServices = new SaleReportServices(new BackEndDBContext());
+                saleRecordFilterSearch = new RecordsFilterSearch()
+                {
+                    SearchValue = SearchValue,
+                    FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
+                    ToDate = ToDateFilter,
+                    PageNumber = PageNumber
+                };
+                SaleReportDetailsforPrints = await SaleReportServices.GetSaleReportforPrinting(saleRecordFilterSearch);
+                MonthlySalesReportForm monthlySalesReportForm = new MonthlySalesReportForm(SaleReportDetailsforPrints, bunifuDatePicker1.Value, bunifuDatePicker2.Value);
+                monthlySalesReportForm.Show();
+            }
+            catch (Exception ex)
+            {
+
+            }*/
 
         }
 
