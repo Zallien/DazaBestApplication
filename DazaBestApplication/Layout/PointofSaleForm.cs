@@ -1,5 +1,6 @@
 ﻿using Bunifu.UI.WinForms;
 using DazaBestApplication.Modals;
+using DazaBestApplication.Pages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,7 +26,7 @@ namespace DazaBestApplication.Layout
         private decimal Total;
         private decimal discountPercentage = 0; // No discount by default
         private POSTransactionDone POSTransactionDone = new POSTransactionDone();
-
+        private LoggedinAccount CurrentLoggedinAccount = Program.theLoggedInAccount;
 
         public PointofSaleForm()
         {
@@ -214,9 +215,23 @@ namespace DazaBestApplication.Layout
         {
             //Add Logic Here Later
             //Checks if the User has access to Inventory Form
-            this.Hide();
-            MainPage mainLayout = new MainPage();
-            mainLayout.Show();
+            if (CurrentLoggedinAccount.IsOwner == true)
+            {
+                this.Hide();
+                MainPage mainLayout = new MainPage();
+                mainLayout.Show();
+            }
+            else
+            {
+                if (MessageBox.Show("Do you want to Logout", "System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Program.theLoggedInAccount = null;
+                    Close();
+                    Log_in login = new();
+                    login.Show();
+                    this.Close();
+                }
+            }
         }
         //cALculate Subtotal
         private async Task CalculateSubtotal()

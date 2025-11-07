@@ -14,8 +14,9 @@ namespace DazaBestApplication
         Form MainContainerForm = null;
         private BunifuTransition BunifuTransition = new();
         private LoggedinAccount theLoggedInAccount;
+        
 
-
+        
 
         public MainPage()
         {
@@ -48,11 +49,12 @@ namespace DazaBestApplication
                 ctrl.Click += (s, e) => { panel2.Visible = false; };
             }
         }
-
+        //Main Load Event
         private async void MainPage_Load(object sender, EventArgs e)
         {
             theLoggedInAccount = Program.theLoggedInAccount;
             await CheckIfNewlyLoggedIn();
+            await IsAdminAccount();
         }
         //Maximize the System AUTOMATICALLY
         private void MaximizeSystem()
@@ -96,6 +98,24 @@ namespace DazaBestApplication
                 modalcontent.ShowDialog();
                 ModalBackgorund.Dispose();
             }
+        }
+        //Check if the Logged In Account is Admin
+        private async Task<bool> IsAdminAccount()
+        {
+            try
+            {
+                if (theLoggedInAccount.IsOwner != true)
+                {
+                    PointofSaleForm posForm = new PointofSaleForm();
+                    posForm.Show();
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            return false;
         }
 
 

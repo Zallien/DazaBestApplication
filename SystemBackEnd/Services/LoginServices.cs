@@ -19,14 +19,12 @@ namespace SystemBackEnd.Services
         {
             _db = mdb;
         }
-
         // ======= HASH PASSWORD =======
         public static string HashPassword(string password)
         {
             // Automatically includes salt and cost factor (default 11)
             return BCrypt.Net.BCrypt.HashPassword(password);
         }
-
         // ======= VERIFY PASSWORD =======
         public static bool VerifyPassword(string password, string storedHash)
         {
@@ -35,7 +33,6 @@ namespace SystemBackEnd.Services
 
             return BCrypt.Net.BCrypt.Verify(password, storedHash);
         }
-
         // ======= REGISTER ACCOUNT =======
         public async Task<bool> RegisterAccountAsync(RegisterAccount registeredaccount)
         {
@@ -70,7 +67,6 @@ namespace SystemBackEnd.Services
 
             return true;
         }
-
         // ======= LOGIN ACCOUNT =======
         public async Task<bool> LoginAccountAsync(string username, string password)
         {
@@ -80,7 +76,6 @@ namespace SystemBackEnd.Services
 
             return VerifyPassword(password, user.Password);
         }
-
         public async Task<int> AccountsCounts()
         {
             int count = 0;
@@ -119,7 +114,6 @@ namespace SystemBackEnd.Services
             }
             return loggedinAccount;
         }
-
         //Change Account First Time Logout
         public async Task<bool> ChangeFirstTimeLogout(Guid accountId)
         {
