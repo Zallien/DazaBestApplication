@@ -29,19 +29,17 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemAdjustment));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             TopPanel = new Panel();
             label1 = new Label();
             MainContainer = new Panel();
-            PurchaseReportBtn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
             AdjustItemBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             AllAdjustmentItemsDatagrid = new Bunifu.UI.WinForms.BunifuDataGridView();
@@ -82,7 +80,6 @@
             // 
             // MainContainer
             // 
-            MainContainer.Controls.Add(PurchaseReportBtn);
             MainContainer.Controls.Add(SearchBox);
             MainContainer.Controls.Add(AdjustItemBTN);
             MainContainer.Controls.Add(AllAdjustmentItemsDatagrid);
@@ -93,95 +90,6 @@
             MainContainer.Padding = new Padding(0, 10, 0, 0);
             MainContainer.Size = new Size(900, 612);
             MainContainer.TabIndex = 5;
-            // 
-            // PurchaseReportBtn
-            // 
-            PurchaseReportBtn.AllowAnimations = true;
-            PurchaseReportBtn.AllowMouseEffects = true;
-            PurchaseReportBtn.AllowToggling = false;
-            PurchaseReportBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            PurchaseReportBtn.AnimationSpeed = 200;
-            PurchaseReportBtn.AutoGenerateColors = false;
-            PurchaseReportBtn.AutoRoundBorders = false;
-            PurchaseReportBtn.AutoSizeLeftIcon = true;
-            PurchaseReportBtn.AutoSizeRightIcon = true;
-            PurchaseReportBtn.BackColor = Color.Transparent;
-            PurchaseReportBtn.BackColor1 = Color.FromArgb(220, 220, 221);
-            PurchaseReportBtn.BackgroundImage = (Image)resources.GetObject("PurchaseReportBtn.BackgroundImage");
-            PurchaseReportBtn.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            PurchaseReportBtn.ButtonText = "Print";
-            PurchaseReportBtn.ButtonTextMarginLeft = 0;
-            PurchaseReportBtn.ColorContrastOnClick = 45;
-            PurchaseReportBtn.ColorContrastOnHover = 45;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            PurchaseReportBtn.CustomizableEdges = borderEdges1;
-            PurchaseReportBtn.DialogResult = DialogResult.None;
-            PurchaseReportBtn.DisabledBorderColor = Color.FromArgb(191, 191, 191);
-            PurchaseReportBtn.DisabledFillColor = Color.FromArgb(204, 204, 204);
-            PurchaseReportBtn.DisabledForecolor = Color.FromArgb(168, 160, 168);
-            PurchaseReportBtn.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            PurchaseReportBtn.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            PurchaseReportBtn.ForeColor = Color.Black;
-            PurchaseReportBtn.IconLeftAlign = ContentAlignment.MiddleLeft;
-            PurchaseReportBtn.IconLeftCursor = Cursors.Default;
-            PurchaseReportBtn.IconLeftPadding = new Padding(11, 3, 3, 3);
-            PurchaseReportBtn.IconMarginLeft = 11;
-            PurchaseReportBtn.IconPadding = 10;
-            PurchaseReportBtn.IconRightAlign = ContentAlignment.MiddleRight;
-            PurchaseReportBtn.IconRightCursor = Cursors.Default;
-            PurchaseReportBtn.IconRightPadding = new Padding(3, 3, 7, 3);
-            PurchaseReportBtn.IconSize = 25;
-            PurchaseReportBtn.IdleBorderColor = Color.FromArgb(220, 220, 221);
-            PurchaseReportBtn.IdleBorderRadius = 1;
-            PurchaseReportBtn.IdleBorderThickness = 1;
-            PurchaseReportBtn.IdleFillColor = Color.FromArgb(220, 220, 221);
-            PurchaseReportBtn.IdleIconLeftImage = Properties.Resources.printer__1_;
-            PurchaseReportBtn.IdleIconRightImage = null;
-            PurchaseReportBtn.IndicateFocus = false;
-            PurchaseReportBtn.Location = new Point(452, 14);
-            PurchaseReportBtn.Name = "PurchaseReportBtn";
-            PurchaseReportBtn.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
-            PurchaseReportBtn.OnDisabledState.BorderRadius = 1;
-            PurchaseReportBtn.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            PurchaseReportBtn.OnDisabledState.BorderThickness = 1;
-            PurchaseReportBtn.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
-            PurchaseReportBtn.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
-            PurchaseReportBtn.OnDisabledState.IconLeftImage = null;
-            PurchaseReportBtn.OnDisabledState.IconRightImage = null;
-            PurchaseReportBtn.onHoverState.BorderColor = Color.Black;
-            PurchaseReportBtn.onHoverState.BorderRadius = 1;
-            PurchaseReportBtn.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            PurchaseReportBtn.onHoverState.BorderThickness = 1;
-            PurchaseReportBtn.onHoverState.FillColor = Color.FromArgb(205, 205, 207);
-            PurchaseReportBtn.onHoverState.ForeColor = Color.Black;
-            PurchaseReportBtn.onHoverState.IconLeftImage = null;
-            PurchaseReportBtn.onHoverState.IconRightImage = null;
-            PurchaseReportBtn.OnIdleState.BorderColor = Color.FromArgb(220, 220, 221);
-            PurchaseReportBtn.OnIdleState.BorderRadius = 1;
-            PurchaseReportBtn.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            PurchaseReportBtn.OnIdleState.BorderThickness = 1;
-            PurchaseReportBtn.OnIdleState.FillColor = Color.FromArgb(220, 220, 221);
-            PurchaseReportBtn.OnIdleState.ForeColor = Color.Black;
-            PurchaseReportBtn.OnIdleState.IconLeftImage = Properties.Resources.printer__1_;
-            PurchaseReportBtn.OnIdleState.IconRightImage = null;
-            PurchaseReportBtn.OnPressedState.BorderColor = Color.FromArgb(40, 96, 144);
-            PurchaseReportBtn.OnPressedState.BorderRadius = 1;
-            PurchaseReportBtn.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            PurchaseReportBtn.OnPressedState.BorderThickness = 1;
-            PurchaseReportBtn.OnPressedState.FillColor = Color.FromArgb(192, 64, 0);
-            PurchaseReportBtn.OnPressedState.ForeColor = Color.White;
-            PurchaseReportBtn.OnPressedState.IconLeftImage = null;
-            PurchaseReportBtn.OnPressedState.IconRightImage = null;
-            PurchaseReportBtn.Size = new Size(150, 40);
-            PurchaseReportBtn.TabIndex = 13;
-            PurchaseReportBtn.TextAlign = ContentAlignment.MiddleLeft;
-            PurchaseReportBtn.TextAlignment = HorizontalAlignment.Center;
-            PurchaseReportBtn.TextMarginLeft = 0;
-            PurchaseReportBtn.TextPadding = new Padding(35, 0, 0, 0);
-            PurchaseReportBtn.UseDefaultRadiusAndThickness = true;
             // 
             // SearchBox
             // 
@@ -211,7 +119,7 @@
             SearchBox.IconPadding = 10;
             SearchBox.IconRight = null;
             SearchBox.IconRightCursor = Cursors.IBeam;
-            SearchBox.Location = new Point(608, 14);
+            SearchBox.Location = new Point(394, 14);
             SearchBox.MaxLength = 32767;
             SearchBox.MinimumSize = new Size(1, 1);
             SearchBox.Modified = false;
@@ -247,7 +155,7 @@
             SearchBox.SelectionLength = 0;
             SearchBox.SelectionStart = 0;
             SearchBox.ShortcutsEnabled = true;
-            SearchBox.Size = new Size(280, 39);
+            SearchBox.Size = new Size(494, 39);
             SearchBox.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             SearchBox.TabIndex = 12;
             SearchBox.TextAlign = HorizontalAlignment.Left;
@@ -277,11 +185,11 @@
             AdjustItemBTN.ButtonTextMarginLeft = 0;
             AdjustItemBTN.ColorContrastOnClick = 45;
             AdjustItemBTN.ColorContrastOnHover = 45;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            AdjustItemBTN.CustomizableEdges = borderEdges2;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            AdjustItemBTN.CustomizableEdges = borderEdges1;
             AdjustItemBTN.DialogResult = DialogResult.None;
             AdjustItemBTN.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             AdjustItemBTN.DisabledFillColor = Color.FromArgb(204, 204, 204);
@@ -558,7 +466,6 @@
         private Panel TopPanel;
         private Label label1;
         private Panel MainContainer;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 PurchaseReportBtn;
         private Bunifu.UI.WinForms.BunifuTextBox SearchBox;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 AdjustItemBTN;
         private Bunifu.UI.WinForms.BunifuDataGridView AllAdjustmentItemsDatagrid;

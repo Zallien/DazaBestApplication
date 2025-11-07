@@ -32,12 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductsInventory));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
@@ -48,7 +47,6 @@
             MainContainer = new Panel();
             EditButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             RemoveButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            bunifuButton22 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             Pagination = new Panel();
             PaginationLabel = new Label();
             PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
@@ -56,10 +54,6 @@
             SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
             AddProductBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             AllProductDatagridView = new Bunifu.UI.WinForms.BunifuDataGridView();
-            ProductMenuStrip = new ContextMenuStrip(components);
-            Edittoolstrip = new ToolStripMenuItem();
-            sep1 = new ToolStripSeparator();
-            Deletetoolstrip = new ToolStripMenuItem();
             IdCol = new DataGridViewTextBoxColumn();
             AvailabilityCol = new DataGridViewImageColumn();
             ProductCodeCol = new DataGridViewTextBoxColumn();
@@ -67,6 +61,10 @@
             QuantityCol = new DataGridViewTextBoxColumn();
             PriceCol = new DataGridViewTextBoxColumn();
             ActionCol = new DataGridViewButtonColumn();
+            ProductMenuStrip = new ContextMenuStrip(components);
+            Edittoolstrip = new ToolStripMenuItem();
+            sep1 = new ToolStripSeparator();
+            Deletetoolstrip = new ToolStripMenuItem();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             Pagination.SuspendLayout();
@@ -99,7 +97,6 @@
             // 
             MainContainer.Controls.Add(EditButton);
             MainContainer.Controls.Add(RemoveButton);
-            MainContainer.Controls.Add(bunifuButton22);
             MainContainer.Controls.Add(Pagination);
             MainContainer.Controls.Add(SearchBox);
             MainContainer.Controls.Add(AddProductBTN);
@@ -291,95 +288,6 @@
             RemoveButton.UseDefaultRadiusAndThickness = true;
             RemoveButton.Click += RemoveButton_Click;
             // 
-            // bunifuButton22
-            // 
-            bunifuButton22.AllowAnimations = true;
-            bunifuButton22.AllowMouseEffects = true;
-            bunifuButton22.AllowToggling = false;
-            bunifuButton22.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            bunifuButton22.AnimationSpeed = 200;
-            bunifuButton22.AutoGenerateColors = false;
-            bunifuButton22.AutoRoundBorders = false;
-            bunifuButton22.AutoSizeLeftIcon = true;
-            bunifuButton22.AutoSizeRightIcon = true;
-            bunifuButton22.BackColor = Color.Transparent;
-            bunifuButton22.BackColor1 = Color.FromArgb(220, 220, 221);
-            bunifuButton22.BackgroundImage = (Image)resources.GetObject("bunifuButton22.BackgroundImage");
-            bunifuButton22.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            bunifuButton22.ButtonText = "Print";
-            bunifuButton22.ButtonTextMarginLeft = 0;
-            bunifuButton22.ColorContrastOnClick = 45;
-            bunifuButton22.ColorContrastOnHover = 45;
-            borderEdges3.BottomLeft = true;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = true;
-            borderEdges3.TopRight = true;
-            bunifuButton22.CustomizableEdges = borderEdges3;
-            bunifuButton22.DialogResult = DialogResult.None;
-            bunifuButton22.DisabledBorderColor = Color.FromArgb(191, 191, 191);
-            bunifuButton22.DisabledFillColor = Color.FromArgb(204, 204, 204);
-            bunifuButton22.DisabledForecolor = Color.FromArgb(168, 160, 168);
-            bunifuButton22.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            bunifuButton22.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            bunifuButton22.ForeColor = Color.Black;
-            bunifuButton22.IconLeftAlign = ContentAlignment.MiddleLeft;
-            bunifuButton22.IconLeftCursor = Cursors.Default;
-            bunifuButton22.IconLeftPadding = new Padding(11, 3, 3, 3);
-            bunifuButton22.IconMarginLeft = 11;
-            bunifuButton22.IconPadding = 10;
-            bunifuButton22.IconRightAlign = ContentAlignment.MiddleRight;
-            bunifuButton22.IconRightCursor = Cursors.Default;
-            bunifuButton22.IconRightPadding = new Padding(3, 3, 7, 3);
-            bunifuButton22.IconSize = 25;
-            bunifuButton22.IdleBorderColor = Color.FromArgb(220, 220, 221);
-            bunifuButton22.IdleBorderRadius = 1;
-            bunifuButton22.IdleBorderThickness = 1;
-            bunifuButton22.IdleFillColor = Color.FromArgb(220, 220, 221);
-            bunifuButton22.IdleIconLeftImage = Properties.Resources.printer__1_;
-            bunifuButton22.IdleIconRightImage = null;
-            bunifuButton22.IndicateFocus = false;
-            bunifuButton22.Location = new Point(449, 20);
-            bunifuButton22.Name = "bunifuButton22";
-            bunifuButton22.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
-            bunifuButton22.OnDisabledState.BorderRadius = 1;
-            bunifuButton22.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            bunifuButton22.OnDisabledState.BorderThickness = 1;
-            bunifuButton22.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
-            bunifuButton22.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
-            bunifuButton22.OnDisabledState.IconLeftImage = null;
-            bunifuButton22.OnDisabledState.IconRightImage = null;
-            bunifuButton22.onHoverState.BorderColor = Color.Black;
-            bunifuButton22.onHoverState.BorderRadius = 1;
-            bunifuButton22.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            bunifuButton22.onHoverState.BorderThickness = 1;
-            bunifuButton22.onHoverState.FillColor = Color.FromArgb(205, 205, 207);
-            bunifuButton22.onHoverState.ForeColor = Color.Black;
-            bunifuButton22.onHoverState.IconLeftImage = null;
-            bunifuButton22.onHoverState.IconRightImage = null;
-            bunifuButton22.OnIdleState.BorderColor = Color.FromArgb(220, 220, 221);
-            bunifuButton22.OnIdleState.BorderRadius = 1;
-            bunifuButton22.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            bunifuButton22.OnIdleState.BorderThickness = 1;
-            bunifuButton22.OnIdleState.FillColor = Color.FromArgb(220, 220, 221);
-            bunifuButton22.OnIdleState.ForeColor = Color.Black;
-            bunifuButton22.OnIdleState.IconLeftImage = Properties.Resources.printer__1_;
-            bunifuButton22.OnIdleState.IconRightImage = null;
-            bunifuButton22.OnPressedState.BorderColor = Color.FromArgb(161, 205, 220);
-            bunifuButton22.OnPressedState.BorderRadius = 1;
-            bunifuButton22.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            bunifuButton22.OnPressedState.BorderThickness = 1;
-            bunifuButton22.OnPressedState.FillColor = Color.FromArgb(161, 205, 220);
-            bunifuButton22.OnPressedState.ForeColor = Color.Black;
-            bunifuButton22.OnPressedState.IconLeftImage = null;
-            bunifuButton22.OnPressedState.IconRightImage = null;
-            bunifuButton22.Size = new Size(160, 40);
-            bunifuButton22.TabIndex = 5;
-            bunifuButton22.TextAlign = ContentAlignment.MiddleLeft;
-            bunifuButton22.TextAlignment = HorizontalAlignment.Center;
-            bunifuButton22.TextMarginLeft = 0;
-            bunifuButton22.TextPadding = new Padding(35, 0, 0, 0);
-            bunifuButton22.UseDefaultRadiusAndThickness = true;
-            // 
             // Pagination
             // 
             Pagination.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
@@ -499,7 +407,7 @@
             SearchBox.IconPadding = 10;
             SearchBox.IconRight = null;
             SearchBox.IconRightCursor = Cursors.IBeam;
-            SearchBox.Location = new Point(615, 20);
+            SearchBox.Location = new Point(510, 20);
             SearchBox.MaxLength = 32767;
             SearchBox.MinimumSize = new Size(1, 1);
             SearchBox.Modified = false;
@@ -535,7 +443,7 @@
             SearchBox.SelectionLength = 0;
             SearchBox.SelectionStart = 0;
             SearchBox.ShortcutsEnabled = true;
-            SearchBox.Size = new Size(280, 39);
+            SearchBox.Size = new Size(385, 39);
             SearchBox.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             SearchBox.TabIndex = 4;
             SearchBox.TextAlign = HorizontalAlignment.Left;
@@ -566,11 +474,11 @@
             AddProductBTN.ButtonTextMarginLeft = 0;
             AddProductBTN.ColorContrastOnClick = 45;
             AddProductBTN.ColorContrastOnHover = 45;
-            borderEdges4.BottomLeft = true;
-            borderEdges4.BottomRight = true;
-            borderEdges4.TopLeft = true;
-            borderEdges4.TopRight = true;
-            AddProductBTN.CustomizableEdges = borderEdges4;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            AddProductBTN.CustomizableEdges = borderEdges3;
             AddProductBTN.DialogResult = DialogResult.None;
             AddProductBTN.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             AddProductBTN.DisabledFillColor = Color.FromArgb(204, 204, 204);
@@ -709,30 +617,6 @@
             AllProductDatagridView.CellFormatting += AllProductDatagridView_CellFormatting;
             AllProductDatagridView.MouseClick += AllItemsDatagrid_MouseClick;
             // 
-            // ProductMenuStrip
-            // 
-            ProductMenuStrip.Items.AddRange(new ToolStripItem[] { Edittoolstrip, sep1, Deletetoolstrip });
-            ProductMenuStrip.Name = "ProductMenuStrip";
-            ProductMenuStrip.Size = new Size(150, 54);
-            // 
-            // Edittoolstrip
-            // 
-            Edittoolstrip.Name = "Edittoolstrip";
-            Edittoolstrip.Size = new Size(149, 22);
-            Edittoolstrip.Text = "Edit";
-            Edittoolstrip.Click += Edittoolstrip_Click;
-            // 
-            // sep1
-            // 
-            sep1.Name = "sep1";
-            sep1.Size = new Size(146, 6);
-            // 
-            // Deletetoolstrip
-            // 
-            Deletetoolstrip.Name = "Deletetoolstrip";
-            Deletetoolstrip.Size = new Size(149, 22);
-            Deletetoolstrip.Text = "Remove Items";
-            // 
             // IdCol
             // 
             IdCol.FillWeight = 5F;
@@ -806,6 +690,30 @@
             ActionCol.Text = "Change Status";
             ActionCol.UseColumnTextForButtonValue = true;
             // 
+            // ProductMenuStrip
+            // 
+            ProductMenuStrip.Items.AddRange(new ToolStripItem[] { Edittoolstrip, sep1, Deletetoolstrip });
+            ProductMenuStrip.Name = "ProductMenuStrip";
+            ProductMenuStrip.Size = new Size(150, 54);
+            // 
+            // Edittoolstrip
+            // 
+            Edittoolstrip.Name = "Edittoolstrip";
+            Edittoolstrip.Size = new Size(149, 22);
+            Edittoolstrip.Text = "Edit";
+            Edittoolstrip.Click += Edittoolstrip_Click;
+            // 
+            // sep1
+            // 
+            sep1.Name = "sep1";
+            sep1.Size = new Size(146, 6);
+            // 
+            // Deletetoolstrip
+            // 
+            Deletetoolstrip.Name = "Deletetoolstrip";
+            Deletetoolstrip.Size = new Size(149, 22);
+            Deletetoolstrip.Text = "Remove Items";
+            // 
             // ProductsInventory
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -832,7 +740,6 @@
         private Panel MainContainer;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 AddProductBTN;
         private Bunifu.UI.WinForms.BunifuDataGridView AllProductDatagridView;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton22;
         private Bunifu.UI.WinForms.BunifuTextBox SearchBox;
         private Panel Pagination;
         private Label PaginationLabel;

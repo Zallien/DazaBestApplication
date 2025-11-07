@@ -93,7 +93,16 @@ namespace DazaBestApplication.Modals
 
         private async void AddAccountBtn_Click(object sender, EventArgs e)
         {
-            await AddAccount();
+            if (FirstNametxt.Text == "" || LastNametxt.Text == "" || Usernametxt.Text== "" || Passwordtxt.Text=="")
+            {
+                MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                await AddAccount();
+            }
+                
         }
     }
 }

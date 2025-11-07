@@ -357,11 +357,20 @@ namespace DazaBestApplication.Modals
         }
         private async void AddPurchaseItemButton_Click(object sender, EventArgs e)
         {
-            if (AllPickedItems.Focused)
+            if (AllPickedItems.Rows.Count == 0)
             {
-                AllPickedItems.EndEdit();
+                MessageBox.Show("Please pick at least one item to proceed.", "System", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            await AddPurchaseItem();
+            else
+            {
+                if (AllPickedItems.Focused)
+                {
+                    AllPickedItems.EndEdit();
+                }
+                await AddPurchaseItem();
+            }
+            
         }
         private async void removeitempickedbutton_Click(object sender, EventArgs e)
         {

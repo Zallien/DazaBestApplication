@@ -177,7 +177,7 @@
             AccountsManagementBTN.OnPressedState.BorderThickness = 2;
             AccountsManagementBTN.OnPressedState.FillColor = Color.FromArgb(198, 40, 40);
             AccountsManagementBTN.OnPressedState.ForeColor = Color.White;
-            AccountsManagementBTN.OnPressedState.IconLeftImage = Properties.Resources.payment_terminal_1_;
+            AccountsManagementBTN.OnPressedState.IconLeftImage = Properties.Resources.accounts__1_;
             AccountsManagementBTN.OnPressedState.IconRightImage = null;
             AccountsManagementBTN.Size = new Size(200, 40);
             AccountsManagementBTN.TabIndex = 9;
