@@ -3,6 +3,7 @@ using DazaBestApplication.Layout;
 using DazaBestApplication.Modals;
 using DazaBestApplication.Pages;
 using System.Windows.Forms;
+using SystemBackEnd.Models;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
 
@@ -14,8 +15,6 @@ namespace DazaBestApplication
         Form MainContainerForm = null;
         private BunifuTransition BunifuTransition = new();
         private LoggedinAccount theLoggedInAccount;
-        
-
         
 
         public MainPage()
@@ -55,6 +54,9 @@ namespace DazaBestApplication
             theLoggedInAccount = Program.theLoggedInAccount;
             await CheckIfNewlyLoggedIn();
             await IsAdminAccount();
+            await AddBackupSettingsIfNotExists();
+            await LoadSettingsValues();
+            await AutoBackupCheck();
         }
         //Maximize the System AUTOMATICALLY
         private void MaximizeSystem()
@@ -117,6 +119,148 @@ namespace DazaBestApplication
             }
             return false;
         }
+        //Add Backup Settings if not exists
+        private async Task AddBackupSettingsIfNotExists()
+        {
+            try
+            {
+                
+                string backupDirectory = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                    "DazaBestApplication",
+                    "Backups"
+                );
+
+                
+                Directory.CreateDirectory(backupDirectory);
+
+                using (var context = new SystemBackEnd.BackEndDBContext())
+                {
+                    BackupSettingsServices backupSettingsServices = new BackupSettingsServices(context);
+
+                    int backupSettingsCount = backupSettingsServices.GetBackupSettingsCount();
+
+                    if (backupSettingsCount == 0)
+                    {
+                        InsertBackupSettings newBackupSettings = new InsertBackupSettings
+                        {
+                            BackupLocation = backupDirectory,
+                            AutoBackupSchedule = "Daily",
+                            LastAutoBackupDate = DateTime.Now
+                        };
+
+                        backupSettingsServices.AddBackupSettings(newBackupSettings);
+                        await LoadSettingsValues();
+                        RunAutoBackup(); // your backup logic
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or handle exception
+            }
+        }
+        //Load BackupSettings 
+        private async Task LoadSettingsValues()
+        {
+            try
+            {
+                using (var context = new SystemBackEnd.BackEndDBContext())
+                {
+                    BackupSettingsServices backupSettingsServices = new BackupSettingsServices(context);
+                    Program.theBackupSettings = await backupSettingsServices.GetBackupSettings();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or handle exception
+            }
+        }
+        //For AutoBackup Functionality
+        public bool ShouldAutoBackupRun(string schedule, DateTime lastBackup)
+        {
+            DateTime today = DateTime.Today;
+
+            switch (schedule)
+            {
+                case "Daily":
+                    return lastBackup.Date < today;
+
+                case "Every 2 Days":
+                    return (today - lastBackup.Date).TotalDays >= 2;
+
+                case "Every 3 Days":
+                    return (today - lastBackup.Date).TotalDays >= 3;
+
+                case "Weekly":
+                    return (today - lastBackup.Date).TotalDays >= 7;
+
+                case "Monthly":
+                    return (today - lastBackup.Date).TotalDays >= 30;
+
+                default:
+                    return false;
+            }
+        }
+        //Run Auto Backup
+        private async Task AutoBackupCheck()
+        {
+            BackupSettingsServices backupSettingsServices = new BackupSettingsServices(new SystemBackEnd.BackEndDBContext());
+            var backsettingsinfo = await backupSettingsServices.GetBackupSettings();
+            string schedule = backsettingsinfo.AutoBackupSchedule;
+            DateTime lastBackup = backsettingsinfo.LastAutoBackupDate;
+
+            if (ShouldAutoBackupRun(schedule, lastBackup))
+            {
+                RunAutoBackup(); // your backup logic
+                Program.theBackupSettings.LastAutoBackupDate = DateTime.Now;
+
+                backupSettingsServices = new BackupSettingsServices(new SystemBackEnd.BackEndDBContext());
+                InsertBackupSettings updatedSettings = new InsertBackupSettings
+                {
+                    BackupLocation = Program.theBackupSettings.BackupLocation,
+                    AutoBackupSchedule = Program.theBackupSettings.AutoBackupSchedule,
+                    LastAutoBackupDate = Program.theBackupSettings.LastAutoBackupDate
+                };
+
+                await backupSettingsServices.UpdateBackupSettings(updatedSettings);
+            }
+        }
+        //Actual Auto Backup Logic
+        private void RunAutoBackup()
+        {
+            try
+            {
+                string backupFolder = Program.theBackupSettings.BackupLocation;
+                Directory.CreateDirectory(backupFolder);
+
+                // DB path
+                string dbPath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                    "DazaBestApplication",
+                    "DazaBestApplication.db"
+                );
+
+                // Create backup file
+                string backupFile = Path.Combine(
+                    backupFolder,
+                    $"AutoBackup_{DateTime.Now:yyyyMMdd_HHmmss}.db"
+                );
+
+                File.Copy(dbPath, backupFile, true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Auto-backup failed:\n" + ex.Message);
+            }
+        }
+
+
+
+
+
+
+
 
 
 

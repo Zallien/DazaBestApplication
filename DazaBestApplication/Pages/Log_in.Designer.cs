@@ -172,6 +172,7 @@
             FormControlBox.Size = new Size(153, 30);
             FormControlBox.TabIndex = 5;
             FormControlBox.CloseClicked += FormControlBox_CloseClicked;
+            FormControlBox.HelpClicked += FormControlBox_HelpClicked;
             // 
             // CompanyName
             // 

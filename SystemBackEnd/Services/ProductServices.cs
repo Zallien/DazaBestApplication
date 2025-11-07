@@ -113,7 +113,8 @@ namespace SystemBackEnd.Services
                     Quantity = 0,
                     Price = product.ProductPrice,
                     IsAvailable = false,
-                    ProductImage = product.ProductPicture
+                    ProductImage = product.ProductPicture,
+                    Category = ""
                 };
                 await _db.Products.AddAsync(_theaddedproduct);
                 await _db.SaveChangesAsync();

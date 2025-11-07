@@ -6,6 +6,7 @@ using System.Text.Json;
 using DazaBestApplication.Models_and_Helpers;
 using SystemBackEnd.ServiceModels;
 using DazaBestApplication.Pages;
+using SystemBackEnd.Models;
 
 
 namespace DazaBestApplication
@@ -15,6 +16,7 @@ namespace DazaBestApplication
         public static Size WorkspaceSize { get; set; }
         public static ConfigurationModel? theconfig { get; set; }
         public static LoggedinAccount theLoggedInAccount { get; set; }
+        public static BackupSettings theBackupSettings { get; set; }
 
 
         /// <summary>

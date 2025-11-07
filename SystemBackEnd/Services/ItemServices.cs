@@ -64,6 +64,7 @@ namespace SystemBackEnd.Services
                 Items newinserteditem = new Items()
                 {
                     ItemName = item.ItemName,
+                    ItemCode = "",
                     ItemID = uid,
                     ItemPrice = item.ItemPrice,
                     BalanceStocks = 0,

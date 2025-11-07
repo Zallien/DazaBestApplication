@@ -28,7 +28,7 @@ namespace DazaBestApplication.Pages
             MaximizeSystem();
             LoggedinAccount = Program.theLoggedInAccount;
         }
-        
+
         //Maximize the System AUTOMATICALLY
         private void MaximizeSystem()
         {
@@ -148,7 +148,12 @@ namespace DazaBestApplication.Pages
 
         private void Passwordtxtbox_KeyUp(object sender, KeyEventArgs e)
         {
-         
+
+        }
+
+        private void FormControlBox_HelpClicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

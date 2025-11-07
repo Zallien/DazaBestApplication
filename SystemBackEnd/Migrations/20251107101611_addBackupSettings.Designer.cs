@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SystemBackEnd;
 
@@ -10,9 +11,11 @@ using SystemBackEnd;
 namespace SystemBackEnd.Migrations
 {
     [DbContext(typeof(BackEndDBContext))]
-    partial class DbcontextModelSnapshot : ModelSnapshot
+    [Migration("20251107101611_addBackupSettings")]
+    partial class addBackupSettings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.10");
@@ -75,9 +78,6 @@ namespace SystemBackEnd.Migrations
 
                     b.Property<string>("BackupLocation")
                         .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("LastAutoBackupDate")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Row");
