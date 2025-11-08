@@ -422,12 +422,16 @@ namespace DazaBestApplication
         }
         private async void LogOut_btn_Click(object sender, EventArgs e)
         {
-            // Show confirmation dialog
+            // Show confirmation dialog which will do logout if confirmed
+            var result = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Program.theLoggedInAccount = null;
+                Close();
+                Log_in login = new();
+                login.Show();
+            }
 
-            Program.theLoggedInAccount = null;
-            Close();
-            Log_in login = new();
-            login.Show();
         }
         private void NavButton_Home_Click(object sender, EventArgs e)
         {
@@ -527,6 +531,8 @@ namespace DazaBestApplication
         ///clicked 
         private void DashClicked()
         {
+
+
             //backcolor
             NavButton_Home.BackColor = Color.FromArgb(198, 40, 40);
             NavButton_Home.IdleFillColor = Color.FromArgb(198, 40, 40);

@@ -52,6 +52,7 @@
             PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
             TopPanel = new Panel();
             label1 = new Label();
+            panel4 = new Panel();
             MainContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllPurchaseDatagridView).BeginInit();
             Pagination.SuspendLayout();
@@ -431,6 +432,8 @@
             // 
             // TopPanel
             // 
+            TopPanel.BackColor = Color.White;
+            TopPanel.Controls.Add(panel4);
             TopPanel.Controls.Add(label1);
             TopPanel.Dock = DockStyle.Top;
             TopPanel.Location = new Point(0, 0);
@@ -441,7 +444,6 @@
             // 
             // label1
             // 
-            label1.Dock = DockStyle.Left;
             label1.Font = new Font("Courier New", 30F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(10, 0);
             label1.Name = "label1";
@@ -449,6 +451,15 @@
             label1.TabIndex = 0;
             label1.Text = "Purchase Item";
             label1.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.Maroon;
+            panel4.Dock = DockStyle.Bottom;
+            panel4.Location = new Point(10, 45);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(880, 5);
+            panel4.TabIndex = 2;
             // 
             // PurchaseItem
             // 
@@ -485,5 +496,6 @@
         private DataGridViewTextBoxColumn PurchaseDateCol;
         private DataGridViewTextBoxColumn AddedByCol;
         private DataGridViewTextBoxColumn VerifiedByCol;
+        private Panel panel4;
     }
 }

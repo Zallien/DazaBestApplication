@@ -93,7 +93,7 @@ namespace DazaBestApplication.Modals
 
         private async void AddAccountBtn_Click(object sender, EventArgs e)
         {
-            if (FirstNametxt.Text == "" || LastNametxt.Text == "" || Usernametxt.Text== "" || Passwordtxt.Text=="")
+            if (FirstNametxt.Text == "" || LastNametxt.Text == "" || Usernametxt.Text == "" || Passwordtxt.Text == "")
             {
                 MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -102,7 +102,36 @@ namespace DazaBestApplication.Modals
             {
                 await AddAccount();
             }
-                
+
+        }
+
+        private void bunifuButton2_Click(object sender, EventArgs e)
+        {
+            CloseAddAccountModal();
+        }
+
+        private void FirstNametxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void LastNametxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Usernametxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

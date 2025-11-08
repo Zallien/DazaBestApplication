@@ -238,6 +238,7 @@
             bunifuButton2.TextMarginLeft = 0;
             bunifuButton2.TextPadding = new Padding(0);
             bunifuButton2.UseDefaultRadiusAndThickness = true;
+            bunifuButton2.Click += bunifuButton2_Click;
             // 
             // AddAccountBtn
             // 
@@ -404,6 +405,7 @@
             FirstNametxt.TextPlaceholder = "";
             FirstNametxt.UseSystemPasswordChar = false;
             FirstNametxt.WordWrap = true;
+            FirstNametxt.KeyPress += FirstNametxt_KeyPress;
             // 
             // label2
             // 
@@ -488,6 +490,7 @@
             Usernametxt.TextPlaceholder = "";
             Usernametxt.UseSystemPasswordChar = false;
             Usernametxt.WordWrap = true;
+            Usernametxt.KeyPress += Usernametxt_KeyPress;
             // 
             // label3
             // 
@@ -656,6 +659,7 @@
             LastNametxt.TextPlaceholder = "";
             LastNametxt.UseSystemPasswordChar = false;
             LastNametxt.WordWrap = true;
+            LastNametxt.KeyPress += LastNametxt_KeyPress;
             // 
             // label7
             // 

@@ -270,7 +270,7 @@
             Usernametxtbox.IconRight = null;
             Usernametxtbox.IconRightCursor = Cursors.IBeam;
             Usernametxtbox.Location = new Point(64, 325);
-            Usernametxtbox.MaxLength = 32767;
+            Usernametxtbox.MaxLength = 20;
             Usernametxtbox.MinimumSize = new Size(1, 1);
             Usernametxtbox.Modified = false;
             Usernametxtbox.Multiline = false;
@@ -315,6 +315,7 @@
             Usernametxtbox.TextPlaceholder = "Username";
             Usernametxtbox.UseSystemPasswordChar = false;
             Usernametxtbox.WordWrap = true;
+            Usernametxtbox.KeyPress += Usernametxtbox_KeyPress;
             // 
             // Passwordtxtbox
             // 
@@ -345,7 +346,7 @@
             Passwordtxtbox.IconRight = null;
             Passwordtxtbox.IconRightCursor = Cursors.IBeam;
             Passwordtxtbox.Location = new Point(64, 382);
-            Passwordtxtbox.MaxLength = 32767;
+            Passwordtxtbox.MaxLength = 20;
             Passwordtxtbox.MinimumSize = new Size(1, 1);
             Passwordtxtbox.Modified = false;
             Passwordtxtbox.Multiline = false;

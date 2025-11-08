@@ -122,7 +122,7 @@ namespace DazaBestApplication.Modals
         {
             if (_productmodal.Action == "AddProduct")
             {
-                if(string.IsNullOrWhiteSpace(ProductNametxt.Text) || string.IsNullOrWhiteSpace(Productpricetxt.Text) || AddProductPic.Image is null)
+                if(string.IsNullOrWhiteSpace(ProductNametxt.Text) || string.IsNullOrWhiteSpace(Productpricetxt.Text) || AddProductPic.Image is null || ProductCategories.SelectedIndex ==-1)
                 {
                     MessageBox.Show("Please fill in all required fields.", "System", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;

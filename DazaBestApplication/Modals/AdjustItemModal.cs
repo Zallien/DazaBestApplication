@@ -481,25 +481,6 @@ namespace DazaBestApplication.Modals
             const int NUMBER_COLUMN_INDEX = 2;
             const int LETTER_COLUMN_INDEX = 3;
 
-            /*if (AllPickedItems.CurrentCell.ColumnIndex == NUMBER_COLUMN_INDEX)
-            {
-                TextBox textBox = e.Control as TextBox; 
-
-                if (textBox != null)
-                {
-                    textBox.KeyPress -= new KeyPressEventHandler(NumbersOnly_KeyPress);
-                    textBox.KeyPress += new KeyPressEventHandler(NumbersOnly_KeyPress);
-                }
-            }
-            else if (AllPickedItems.CurrentCell.ColumnIndex == LETTER_COLUMN_INDEX)
-            {
-                TextBox textBox1 = e.Control as TextBox;
-                if (textBox1 != null)
-                {
-                    textBox1.KeyPress -= new KeyPressEventHandler(letters_KeyPress);
-                    textBox1.KeyPress += new KeyPressEventHandler(letters_KeyPress);
-                }
-            }*/
             TextBox textBox = e.Control as TextBox;
 
             if (textBox != null)
