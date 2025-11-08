@@ -22,17 +22,18 @@ namespace SystemBackEnd.Services
         {
             try
             {
-                SecurityQuestions securityQuestions = new SecurityQuestions();
-                securityQuestions.AccountId = theData.AccountId;
+                
                 // Iterate through each question and answer pair
                 foreach (var item in theData.AllQuestionAnswers)
                 {
+                    SecurityQuestions securityQuestions = new SecurityQuestions();
+                    securityQuestions.AccountId = theData.AccountId;
                     securityQuestions.QuestionId = Guid.NewGuid();
                     securityQuestions.Question = item.Question;
                     securityQuestions.Answer = item.Answer;
-                    await _db.SecurityQuestions.AddAsync(securityQuestions);
+                    await _db.AddAsync(securityQuestions);
+                    await _db.SaveChangesAsync();
                 }
-                await _db.SaveChangesAsync();
                 return true;
             }
             catch (Exception)

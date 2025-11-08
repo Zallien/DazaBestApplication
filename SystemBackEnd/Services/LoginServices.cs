@@ -144,7 +144,7 @@ namespace SystemBackEnd.Services
             {
                 //Accounts
                 var accounts = await _db.Accounts.ToListAsync();
-                if(accounts.Count > 0)
+                if (accounts.Count > 0)
                 {
                     //Get Questions Based On AccountId
                     foreach (var account in accounts)
@@ -173,7 +173,54 @@ namespace SystemBackEnd.Services
 
             return accountDisplays;
         }
+        //Find Username then Retrieve Security Questions
+        public async Task<SucurityQuestionAnswerModel> SucurityQuestionAnswerModel(string username)
+        {
+            SucurityQuestionAnswerModel sucurityQuestionAnswerModel = new SucurityQuestionAnswerModel();
+            try
+            {
+
+                sucurityQuestionAnswerModel.AccountId = await _db.Accounts
+                    .Where(a => a.Username == username)
+                    .Select(a => a.AccountId)
+                    .FirstOrDefaultAsync();
+
+                sucurityQuestionAnswerModel.SucurityQuestions = await _db.SecurityQuestions
+                    .Where(q => q.AccountId == sucurityQuestionAnswerModel.AccountId)
+                    .Select(q => new SucurityQuestionModel
+                    {
+                        QuestionId = q.QuestionId,
+                        Question = q.Question,
+                        Answer = q.Answer
+                    }).ToListAsync();
+
+            }
+            catch (Exception e)
+            {
+            }
+            return sucurityQuestionAnswerModel;
+        }
+        //Change Password
+        public async Task<bool> ChangePassword(Guid accountId, string newpassword)
+        {
+            try
+            {
+                var acc = await _db.Accounts.FirstOrDefaultAsync(y => y.AccountId == accountId);
+                if (acc != null)
+                {
+                    string hashedPassword = HashPassword(newpassword);
+                    acc.Password = hashedPassword;
+                    _db.Update(acc);
+                    await _db.SaveChangesAsync();
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return false;
 
 
+        }
     }
 }

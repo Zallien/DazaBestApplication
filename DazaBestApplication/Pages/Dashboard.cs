@@ -56,6 +56,7 @@ namespace DazaBestApplication.Pages
             overstocklabel.Text = DashboardInformation.OverstockItems.ToString();
 
             //Populate Tables or Datagrids for Top Selling and Least Selling Items
+            TopSellingTable.Rows.Clear();
             int topsellingnumbering = 1;
             foreach (var item in DashboardInformation.TopSellingItems)
             {
@@ -67,6 +68,7 @@ namespace DazaBestApplication.Pages
                 topsellingnumbering++;
             }
 
+            LeastSellingTable.Rows.Clear();
             int leastsellingnumbering = 1;
             foreach (var item in DashboardInformation.LeastSellingItems)
             {
@@ -87,13 +89,22 @@ namespace DazaBestApplication.Pages
             salesChart.Series["Sales"].Points.Clear();
             var salesData = DashboardInformation.ForChart;
             var series = salesChart.Series["Sales"];
-            series.IsXValueIndexed = true; // ✅ important
 
-            //Populate Chart with Data
-            foreach (var dataPoint in salesData)
+            series.IsXValueIndexed = true;
+
+            if (salesData == null || salesData.Count == 0)
             {
-                salesChart.Series["Sales"].Points.AddXY(dataPoint.ProductName.Trim(), dataPoint.ProducsSold);
+                // Add a dummy point to show chart even with no data
+                series.Points.AddXY("No Data", 0);
             }
+            else
+            {
+                foreach (var dataPoint in salesData)
+                {
+                    series.Points.AddXY(dataPoint.ProductName.Trim(), dataPoint.ProducsSold);
+                }
+            }
+
         }
 
 
@@ -142,7 +153,6 @@ namespace DazaBestApplication.Pages
         {
             await SetDashboard();
         }
-
         private async void DailyBTM_Click(object sender, EventArgs e)
         {
             if (DashboardInformationType != "Daily")
@@ -151,7 +161,6 @@ namespace DazaBestApplication.Pages
                 await SetDashboard();
             }
         }
-
         private async void WekklyBTN_Click(object sender, EventArgs e)
         {
             if (DashboardInformationType != "Weekly")
@@ -160,7 +169,6 @@ namespace DazaBestApplication.Pages
                 await SetDashboard();
             }
         }
-
         private async void MonthlyBTN_Click(object sender, EventArgs e)
         {
             if (DashboardInformationType != "Monthly")
@@ -169,7 +177,6 @@ namespace DazaBestApplication.Pages
                 await SetDashboard();
             }
         }
-
         private async void YearlyBTN_Click(object sender, EventArgs e)
         {
             if (DashboardInformationType != "Yearly")

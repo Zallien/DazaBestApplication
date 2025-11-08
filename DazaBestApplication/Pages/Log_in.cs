@@ -22,6 +22,7 @@ namespace DazaBestApplication.Pages
         private RegisterAccount regAcc;
 
 
+
         public Log_in()
         {
             InitializeComponent();
@@ -95,7 +96,31 @@ namespace DazaBestApplication.Pages
             }
 
         }
+        //ShowForgotPasswordModal
+        private async Task ShowForgotPasswordModal()
+        {
+            Form ModalBackgorund = new();
+            using (ForgotPasswordModal modalcontent = new(this))
+            {
+                var mainBounds = this.Bounds;
 
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = this.Size;
+                ModalBackgorund.Location = this.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(this);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+                modalcontent.ShowDialog();
+                ModalBackgorund.Dispose();
+            }
+        }
 
 
         //Main Load
@@ -154,6 +179,11 @@ namespace DazaBestApplication.Pages
         private void FormControlBox_HelpClicked(object sender, EventArgs e)
         {
 
+        }
+
+        private async void label2_Click(object sender, EventArgs e)
+        {
+            await ShowForgotPasswordModal();
         }
     }
 }
