@@ -200,5 +200,10 @@ namespace DazaBestApplication.Modals
             overlay.Dispose();
             ResetPassPanel.Visible = false;
         }
+        private void BackBtn_Click(object sender, EventArgs e)
+        {
+            overlay.Dispose();
+            QuestionPanel.Visible = false;
+        }
     }
 }
