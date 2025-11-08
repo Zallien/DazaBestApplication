@@ -210,7 +210,7 @@ namespace DazaBestApplication.Modals
 
                     //Update quantiy and priceperunit
                     Guid ItemId = Guid.Parse(AllPickedItems.Rows[e.RowIndex].Cells["IdCol"].Value.ToString());
-                    var item = _allpickeditems.FirstOrDefault(e => e.ItemID ==  ItemId);
+                    var item = _allpickeditems.FirstOrDefault(e => e.ItemID == ItemId);
                     item.Quantity = decimal.Parse(AllPickedItems.Rows[e.RowIndex].Cells["ItemQuantityCol"].Value.ToString() ?? "1");
                     item.Unitprice = decimal.Parse(AllPickedItems.Rows[e.RowIndex].Cells["ItemPriceCol"].Value.ToString() ?? "0.00");
                     await CalculateGrandtotal();
@@ -221,6 +221,17 @@ namespace DazaBestApplication.Modals
                 MessageBox.Show(ex.Message);
             }
         }
+
+        //prevents letters
+        private void NumbersOnly_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+        }
+
+
         //Add Purchase Item
         private async Task AddPurchaseItem()
         {
@@ -305,7 +316,7 @@ namespace DazaBestApplication.Modals
             {
                 decimal? totalperitem = item.Quantity * item.Unitprice;
                 _Grandtotal += totalperitem;
-            } 
+            }
             Grandtotalvaluelabel.Text = _Grandtotal.ToString();
         }
 
@@ -370,7 +381,7 @@ namespace DazaBestApplication.Modals
                 }
                 await AddPurchaseItem();
             }
-            
+
         }
         private async void removeitempickedbutton_Click(object sender, EventArgs e)
         {
@@ -384,6 +395,30 @@ namespace DazaBestApplication.Modals
         {
             this.Close();
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void AllPickedItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void AllPickedItems_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            const int COl1 = 2;
+            const int COl2 = 3;
+            TextBox textBox = e.Control as TextBox;
+            if (textBox != null)
+            {
+                if (AllPickedItems.CurrentCell.ColumnIndex == COl1 || AllPickedItems.CurrentCell.ColumnIndex == COl2)
+                {
+                    textBox.KeyPress -= NumbersOnly_KeyPress;
+                    textBox.KeyPress += NumbersOnly_KeyPress;
+                }
+                else
+                {
+                    textBox.KeyPress -= NumbersOnly_KeyPress;
+                }
+            }
         }
     }
 }

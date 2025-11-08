@@ -150,6 +150,10 @@ namespace DazaBestApplication.Pages
                 DashboardInformationType = "Daily";
                 await SetDashboard();
             }
+            color1.BackColor = Color.Maroon;
+            color2.BackColor = Color.White;
+            color3.BackColor = Color.White;
+            color4.BackColor = Color.White;
         }
 
         private async void WekklyBTN_Click(object sender, EventArgs e)
@@ -159,6 +163,10 @@ namespace DazaBestApplication.Pages
                 DashboardInformationType = "Weekly";
                 await SetDashboard();
             }
+            color1.BackColor = Color.White;
+            color2.BackColor = Color.Maroon;
+            color3.BackColor = Color.White;
+            color4.BackColor = Color.White;
         }
 
         private async void MonthlyBTN_Click(object sender, EventArgs e)
@@ -168,6 +176,10 @@ namespace DazaBestApplication.Pages
                 DashboardInformationType = "Monthly";
                 await SetDashboard();
             }
+            color1.BackColor = Color.White;
+            color2.BackColor = Color.White;
+            color3.BackColor = Color.Maroon;
+            color4.BackColor = Color.White;
         }
 
         private async void YearlyBTN_Click(object sender, EventArgs e)
@@ -177,6 +189,10 @@ namespace DazaBestApplication.Pages
                 DashboardInformationType = "Yearly";
                 await SetDashboard();
             }
+            color1.BackColor = Color.White;
+            color2.BackColor = Color.White;
+            color3.BackColor = Color.White;
+            color4.BackColor = Color.Maroon;
         }
     }
 }
