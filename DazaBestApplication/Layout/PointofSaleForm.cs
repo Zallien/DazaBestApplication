@@ -405,10 +405,10 @@ namespace DazaBestApplication.Layout
                 var navButton = new BunifuButton
                 {
                     Text = category,
-                    AutoSize = false,            // ❌ turn off AutoSize
+                    AutoSize = false,            
                     Margin = new Padding(5),
                     Tag = category,
-                    Dock = DockStyle.Fill,       // ✅ fills the percentage-based column
+                    Dock = DockStyle.Fill,       
                 };
 
                 navButton.Click += async (s, e) =>

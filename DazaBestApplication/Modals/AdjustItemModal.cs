@@ -61,7 +61,7 @@ namespace DazaBestApplication.Modals
             OverlayPanel.BringToFront();
 
             //Set Datagrid Properties
-            AllItemDatagridview.ColumnHeadersHeight = 32;
+            AllItemDatagridview.ColumnHeadersHeight = 26;
             AllItemDatagridview.RowTemplate.Height = 30;
             Size _allppanelsize = AllProductsContainer.Size;
             var _allproductlocation = new Point((this.Width - _allppanelsize.Width) / 2, (this.Height - _allppanelsize.Height) / 2);
@@ -83,7 +83,7 @@ namespace DazaBestApplication.Modals
                 row.Cells["ALLI_ItemIdCol"].Value = item.ItemID;
                 row.Cells["ALLI_ItemNameCol"].Value = item.ItemName;
                 row.Cells["ALLI_ItemCodeCol"].Value = item.ItemCode;
-                row.Height = 21;
+                row.Height = 24;
                 row.Resizable = DataGridViewTriState.False;
             }
         }

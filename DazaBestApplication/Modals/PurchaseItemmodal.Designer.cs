@@ -43,7 +43,6 @@
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             panel1 = new Panel();
@@ -930,8 +929,8 @@
             AllItemDatagridview.Name = "AllItemDatagridview";
             AllItemDatagridview.ReadOnly = true;
             AllItemDatagridview.RowHeadersVisible = false;
-            dataGridViewCellStyle9.Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            AllItemDatagridview.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            AllItemDatagridview.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            AllItemDatagridview.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             AllItemDatagridview.RowTemplate.Height = 40;
             AllItemDatagridview.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             AllItemDatagridview.Size = new Size(384, 170);
@@ -966,7 +965,6 @@
             dataGridViewCellStyle7.BackColor = Color.White;
             dataGridViewCellStyle7.Font = new Font("Courier New", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle7.ForeColor = Color.Black;
-            dataGridViewCellStyle7.Padding = new Padding(5, 3, 5, 3);
             ALLI_ActionCol.DefaultCellStyle = dataGridViewCellStyle7;
             ALLI_ActionCol.FlatStyle = FlatStyle.Flat;
             ALLI_ActionCol.HeaderText = "";
@@ -1016,10 +1014,6 @@
         private Label label2;
         private Bunifu.UI.WinForms.BunifuDataGridView AllItemDatagridview;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton CloseAllPModal;
-        private DataGridViewTextBoxColumn ALLI_ItemIdCol;
-        private DataGridViewTextBoxColumn ALLI_ItemCodeCol;
-        private DataGridViewTextBoxColumn ALLI_ItemNameCol;
-        private DataGridViewButtonColumn ALLI_ActionCol;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton AddPurchaseItemButton;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton2;
         private Label preparedbylabel;
@@ -1034,5 +1028,9 @@
         private DataGridViewTextBoxColumn ItemQuantityCol;
         private DataGridViewTextBoxColumn ItemPriceCol;
         private DataGridViewTextBoxColumn ItemTotalCol;
+        private DataGridViewTextBoxColumn ALLI_ItemIdCol;
+        private DataGridViewTextBoxColumn ALLI_ItemCodeCol;
+        private DataGridViewTextBoxColumn ALLI_ItemNameCol;
+        private DataGridViewButtonColumn ALLI_ActionCol;
     }
 }

@@ -94,7 +94,7 @@ namespace DazaBestApplication.Modals
             overlay.BringToFront();
 
             //Set Datagrid Properties
-            AllItemDatagridview.ColumnHeadersHeight = 24;
+            AllItemDatagridview.ColumnHeadersHeight = 26;
             Size _allppanelsize = AllProductsContainer.Size;
             var _allproductlocation = new Point((this.Width - _allppanelsize.Width) / 2, (this.Height - _allppanelsize.Height) / 2);
             AllProductsContainer.Location = _allproductlocation;
@@ -114,6 +114,7 @@ namespace DazaBestApplication.Modals
                 DataGridViewRow row = AllItemDatagridview.Rows[rowindex];
                 row.Cells["ALLI_ItemIdCol"].Value = item.ItemID;
                 row.Cells["ALLI_ItemNameCol"].Value = item.ItemName;
+                row.Height = 24;
                 row.Cells["ALLI_ItemCodeCol"].Value = item.ItemCode;
             }
         }
@@ -222,6 +223,8 @@ namespace DazaBestApplication.Modals
             }
         }
 
+
+
         //prevents letters
         private void NumbersOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -266,6 +269,37 @@ namespace DazaBestApplication.Modals
 
 
         }
+        //Remove Selected Item
+        private async Task<bool> RemovedSelectedItem()
+        {
+            bool isDeletedSuccessfully = false;
+            try
+            {
+                if (AllPickedItems.SelectedRows.Count > 0)
+                {
+                    foreach (DataGridViewRow row in AllPickedItems.SelectedRows)
+                    {
+                        //int index = row.Index;
+                        Guid Id = Guid.Parse(row.Cells["IdCol"].Value.ToString());
+                        AllPickedItems.Rows.Remove(row);
+                        AllSelectedProducts.Remove(Id);
+
+                        var theadjusteditem = _allpickeditems.Where(x => x.ItemID == Id).FirstOrDefault();
+                        if (theadjusteditem != null)
+                        {
+                            _allpickeditems.Remove(theadjusteditem);
+                        }
+
+                    }
+                    isDeletedSuccessfully = true;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return isDeletedSuccessfully;
+        }
         //Remove Item from PickedItems
         private async Task<bool> RemoveItemfrompickeditems(List<Guid> AllselecteditemsId)
         {
@@ -273,6 +307,8 @@ namespace DazaBestApplication.Modals
             {
                 var selectedidset = new HashSet<Guid>(AllselecteditemsId);
                 _allpickeditems.RemoveAll(picked => selectedidset.Contains(picked.ItemID));
+
+
                 await PopulateAllPickedItemsDatagrid();
                 CalculateGrandtotal();
                 return true;
@@ -285,27 +321,38 @@ namespace DazaBestApplication.Modals
         //Remove Function
         private async Task RemoveItem()
         {
-            List<Guid> allselecteditems = new();
-            foreach (DataGridViewRow _row in AllPickedItems.SelectedRows)
+
+            //List<Guid> allselecteditems = new();
+            //foreach (DataGridViewRow _row in AllPickedItems.SelectedRows)
+            //{
+            //    if (_row.Cells["IdCol"].Value != null)
+            //    {
+            //        allselecteditems.Add(Guid.Parse(_row.Cells["IdCol"].Value.ToString()));
+            //    }
+            //}
+            //bool isRemoveSuccess = await RemoveItemfrompickeditems(allselecteditems);
+            //if (isRemoveSuccess)
+            //{
+            //    MessageBox.Show("Successfully Removed", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Error Occured", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+
+            //if (!AllowCalculating)
+            //{
+            //    AllowCalculating = true;
+            //}
+
+            bool isDeletedSuccessfully = await RemovedSelectedItem();
+            if (isDeletedSuccessfully == true)
             {
-                if (_row.Cells["IdCol"].Value != null)
-                {
-                    allselecteditems.Add(Guid.Parse(_row.Cells["IdCol"].Value.ToString()));
-                }
-            }
-            bool isRemoveSuccess = await RemoveItemfrompickeditems(allselecteditems);
-            if (isRemoveSuccess)
-            {
-                MessageBox.Show("Successfully Removed", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Removed Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 MessageBox.Show("Error Occured", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if (!AllowCalculating)
-            {
-                AllowCalculating = true;
             }
         }
         //Calculate GrandTotal
@@ -319,6 +366,7 @@ namespace DazaBestApplication.Modals
             }
             Grandtotalvaluelabel.Text = _Grandtotal.ToString();
         }
+
 
 
 
@@ -396,12 +444,10 @@ namespace DazaBestApplication.Modals
             this.Close();
             this.DialogResult = DialogResult.OK;
         }
-
         private void AllPickedItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
         private void AllPickedItems_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             const int COl1 = 2;
