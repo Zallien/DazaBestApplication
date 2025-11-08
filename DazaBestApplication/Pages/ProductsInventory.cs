@@ -274,6 +274,8 @@ namespace DazaBestApplication.Pages
                 _editproduct.ProductID = Guid.Parse(selectedRow.Cells["IdCol"].Value.ToString());
                 _editproduct.ProductImage = await new ProductServices(new BackEndDBContext())
                                             .GetProductImageByID(_editproduct.ProductID);
+                _editproduct.Category = await new ProductServices(new BackEndDBContext())
+                                            .GetProductCategoryByID(_editproduct.ProductID);
                 _productmodal = new ProductModal()
                 {
                     Action = "EditProduct",

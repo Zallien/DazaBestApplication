@@ -57,7 +57,8 @@ namespace DazaBestApplication.Pages
                 Firstname = "System",
                 Lastname = "Administration",
                 Username = "admin",
-                Password = "admin"
+                Password = "admin",
+                IsOwner = true
             };
             bool addedsuccessfully = await LoginServices.RegisterAccountAsync(regAcc);
             if (addedsuccessfully == true)

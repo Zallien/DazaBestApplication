@@ -22,6 +22,14 @@ namespace DazaBestApplication.Modals
         private ProductServices _productservices = new ProductServices(new BackEndDBContext());
         private Guid ProducteditID;
         private byte[]? Pic = null;
+        private List<string> Categories = new List<string>()
+        {
+            "Silog Meal",
+            "Barkada Meal",
+            "Meals",
+            "Beverage"
+        };
+
 
 
         //Constructor
@@ -31,10 +39,12 @@ namespace DazaBestApplication.Modals
             _productmodal = product;
         }
 
+        
         //Main Load
         private void ProductModalForm_Load(object sender, EventArgs e)
         {
             CheckModalType();
+            PopulateCategories();
         }
         //Close Modal
         private void Closemodal()
@@ -57,6 +67,7 @@ namespace DazaBestApplication.Modals
                 ProducteditID = _productmodal.EditItem.ProductID;
                 ProductNametxt.Text = _productmodal.EditItem.ProductName;
                 Productpricetxt.Text = _productmodal.EditItem.ProductPrice.ToString("#.##0");
+                ProductCategories.Text = _productmodal.EditItem.Category;
                 if (_productmodal.EditItem.ProductImage != null)
                 {
                     AddProductPic.Image = Image.FromStream(new MemoryStream(_productmodal.EditItem.ProductImage)!);
@@ -71,7 +82,8 @@ namespace DazaBestApplication.Modals
             {
                 ProductName = ProductNametxt.Text,
                 ProductPrice = decimal.Parse(Productpricetxt.Text),
-                ProductPicture = Pic
+                ProductPicture = Pic,
+                Category = ProductCategories.Text.ToString()
             };
             bool IsAdded = await _productservices.AddProduct(newproduct);
             if (IsAdded)
@@ -108,6 +120,16 @@ namespace DazaBestApplication.Modals
                 MessageBox.Show("Failed to Save Changes", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //Populate Categories
+        private void PopulateCategories()
+        {
+            ProductCategories.Items.Clear();
+            foreach (var category in Categories)
+            {
+                ProductCategories.Items.Add(category);
+            }
+        }
+
 
 
 

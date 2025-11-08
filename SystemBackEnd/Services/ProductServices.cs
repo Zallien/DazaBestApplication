@@ -114,7 +114,7 @@ namespace SystemBackEnd.Services
                     Price = product.ProductPrice,
                     IsAvailable = false,
                     ProductImage = product.ProductPicture,
-                    Category = ""
+                    Category = product.Category
                 };
                 await _db.Products.AddAsync(_theaddedproduct);
                 await _db.SaveChangesAsync();
@@ -149,7 +149,7 @@ namespace SystemBackEnd.Services
             }
             catch (Exception e)
             {
-                
+
             }
             return _issuccess;
         }
@@ -165,6 +165,7 @@ namespace SystemBackEnd.Services
                     _theproduct.ProductName = _editedproduct.ProductName;
                     _theproduct.Price = _editedproduct.ProductPrice;
                     _theproduct.ProductImage = _editedproduct.ProductImage;
+                    _theproduct.Category = _editedproduct.Category;
                     _db.Update(_theproduct);
                     await _db.SaveChangesAsync();
                     _issuccess = true;
@@ -194,7 +195,26 @@ namespace SystemBackEnd.Services
             }
             return _theimage;
         }
+        //Get ProductCategory By Id
+        public async Task<string> GetProductCategoryByID(Guid _productid)
+        {
+            string _thecategory = "";
+            try
+            {
+                Products _theproduct = await _db.Products.FirstOrDefaultAsync(x => x.ProductID == _productid);
+                if (_theproduct != null)
+                {
+                    _thecategory = _theproduct.Category;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return _thecategory;
 
 
+
+        }
     }
 }

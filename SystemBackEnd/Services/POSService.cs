@@ -18,12 +18,16 @@ namespace SystemBackEnd.Services
         }
 
         //Get All Available Products
-        public async Task<List<Products>> GetAllAvailableProducts()
+        public async Task<List<Products>> GetAllAvailableProducts(PosItemFilter thefilter)
         {
             List<Products> products = new();
             try
             {
-                products = await _db.Products.Where(x => x.IsActive == true && x.IsAvailable == true).ToListAsync();
+                products = await (from a in _db.Products
+                                  where a.IsActive == true
+                                  && (string.IsNullOrEmpty(thefilter.SearchValue) ? true : a.ProductName.Contains(thefilter.SearchValue))
+                                  && (thefilter.Category == "All" ? true : a.Category == thefilter.Category)
+                                  select a).ToListAsync();
             }
             catch (Exception e)
             {
@@ -31,6 +35,8 @@ namespace SystemBackEnd.Services
             }
             return products;
         }
+
+
         //Get Reciept Information
         public async Task<RecieptData> GetRecieptData(Guid transacId, string CashierName)
         {

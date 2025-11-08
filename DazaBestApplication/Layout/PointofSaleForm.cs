@@ -1,4 +1,5 @@
 ﻿using Bunifu.UI.WinForms;
+using Bunifu.UI.WinForms.BunifuButton;
 using DazaBestApplication.Modals;
 using DazaBestApplication.Pages;
 using System;
@@ -7,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,6 +29,20 @@ namespace DazaBestApplication.Layout
         private decimal discountPercentage = 0; // No discount by default
         private POSTransactionDone POSTransactionDone = new POSTransactionDone();
         private LoggedinAccount CurrentLoggedinAccount = Program.theLoggedInAccount;
+        private PosItemFilter theFilter;
+        private List<string> NavigationButtons = new List<string>()
+        {
+            "All",
+            "Beverage",
+            "Silog Meal",
+            "Barkada Meal",
+            "Meals"
+        };
+
+        //For PosItemFIlter
+        private string SearchValue = "";
+        private string SelectedCategory = "All";
+
 
         public PointofSaleForm()
         {
@@ -203,11 +219,11 @@ namespace DazaBestApplication.Layout
 
         }
         //Get All Avaiable Products from Database
-        private async Task GetAllAvailableProducts()
+        private async Task GetAllAvailableProducts(PosItemFilter filter)
         {
             AllavailableProducts = new List<Products>();
             POSService posService = new POSService(new SystemBackEnd.BackEndDBContext());
-            AllavailableProducts = await posService.GetAllAvailableProducts();
+            AllavailableProducts = await posService.GetAllAvailableProducts(filter);
             PopulatePOSItems();
         }
         //Back from Inventory Form --To be Fixed Later--
@@ -366,18 +382,76 @@ namespace DazaBestApplication.Layout
                 return result == DialogResult.Yes;
             }
         }
+        //Populate Navigation Buttons
+        private async Task PopulateNavigationButtons()
+        {
+            // Clear old controls and column styles
+            tableLayoutPanel1.Controls.Clear();
+            tableLayoutPanel1.ColumnStyles.Clear();
+
+            // Set the number of columns based on your list
+            tableLayoutPanel1.ColumnCount = NavigationButtons.Count;
+
+            // Optional: one row only
+            tableLayoutPanel1.RowCount = 1;
+
+            //Percentage based column styles
+            float percentage = 100f / NavigationButtons.Count;
+
+            int col = 0;
+
+            foreach (string category in NavigationButtons)
+            {
+                var navButton = new BunifuButton
+                {
+                    Text = category,
+                    AutoSize = false,            // ❌ turn off AutoSize
+                    Margin = new Padding(5),
+                    Tag = category,
+                    Dock = DockStyle.Fill,       // ✅ fills the percentage-based column
+                };
+
+                navButton.Click += async (s, e) =>
+                {
+                    SelectedCategory = (string)navButton.Tag;
+
+                    MainDisplay.Controls.Clear();
+                    await GetAllAvailableProducts(new PosItemFilter
+                    {
+                        SearchValue = SearchValue,
+                        Category = SelectedCategory
+                    });
+                };
+
+                // Add autosizing column
+                tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, percentage));
+
+                // Add button at specific column/row
+                tableLayoutPanel1.Controls.Add(navButton, col, 0);
+
+                col++;
+            }
+
+        }
+
 
 
         //Main Load
         private async void PointofSaleForm_Load(object sender, EventArgs e)
         {
-            await GetAllAvailableProducts();
+            await PopulateNavigationButtons();
+            theFilter = new PosItemFilter()
+            {
+                SearchValue = SearchValue,
+                Category = SelectedCategory
+            };
+
+            await GetAllAvailableProducts(theFilter);
             ProductOrdersDatagrid.ColumnHeadersHeight = 24;
             ProductOrdersDatagrid.RowTemplate.Height = 24;
 
             //Initialize POSTransactionDone
             POSTransactionDone.TransactionBy = Guid.NewGuid(); // Replace with actual user ID
-
             POSEventHandler.PaymentTransactionSuccess += async () =>
             {
                 await CancelResetOrder();

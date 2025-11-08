@@ -12,5 +12,6 @@ namespace SystemBackEnd.ServiceModels
         public decimal ProductPrice { get; set; }
         public DateTime? DateCreated { get; set; }
         public byte[]? ProductPicture { get; set; }
+        public string Category { get; set; }
     }
 }
