@@ -643,7 +643,11 @@
             salesChart.Legends.Add(legend1);
             salesChart.Location = new Point(15, 15);
             salesChart.Name = "salesChart";
-            salesChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
+            salesChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            salesChart.PaletteCustomColors = new Color[]
+    {
+    Color.Maroon
+    };
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Sales";

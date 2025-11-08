@@ -549,6 +549,11 @@ namespace DazaBestApplication.Layout
                 e.Handled = true;
             }
         }
+
+        private void MainDisplay_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
     public class ProductInformation
