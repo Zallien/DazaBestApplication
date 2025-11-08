@@ -51,6 +51,7 @@
             PaginationLabel = new Label();
             PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
             PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
+            panel4 = new Panel();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllAdjustmentItemsDatagrid).BeginInit();
@@ -59,6 +60,8 @@
             // 
             // TopPanel
             // 
+            TopPanel.BackColor = Color.White;
+            TopPanel.Controls.Add(panel4);
             TopPanel.Controls.Add(label1);
             TopPanel.Dock = DockStyle.Top;
             TopPanel.Location = new Point(0, 0);
@@ -69,7 +72,6 @@
             // 
             // label1
             // 
-            label1.Dock = DockStyle.Left;
             label1.Font = new Font("Courier New", 30F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(10, 0);
             label1.Name = "label1";
@@ -442,6 +444,15 @@
             PaginationNext.Zoom = 20;
             PaginationNext.ZoomSpeed = 10;
             // 
+            // panel4
+            // 
+            panel4.BackColor = Color.Maroon;
+            panel4.Dock = DockStyle.Bottom;
+            panel4.Location = new Point(10, 45);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(880, 5);
+            panel4.TabIndex = 2;
+            // 
             // ItemAdjustment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -477,5 +488,6 @@
         private DataGridViewTextBoxColumn ReferenceNoCol;
         private DataGridViewTextBoxColumn OperatedDateCol;
         private DataGridViewTextBoxColumn AdjustedByCol;
+        private Panel panel4;
     }
 }

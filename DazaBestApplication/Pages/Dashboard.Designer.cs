@@ -133,6 +133,7 @@
             // 
             // TopPanel
             // 
+            TopPanel.BackColor = Color.White;
             TopPanel.Controls.Add(panel4);
             TopPanel.Controls.Add(label1);
             TopPanel.Dock = DockStyle.Top;

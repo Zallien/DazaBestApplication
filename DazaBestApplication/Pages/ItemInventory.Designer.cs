@@ -62,6 +62,7 @@
             edittoolstrip = new ToolStripMenuItem();
             sep1 = new ToolStripSeparator();
             deletetoolstrip = new ToolStripMenuItem();
+            panel4 = new Panel();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             Pagination.SuspendLayout();
@@ -71,6 +72,7 @@
             // 
             // TopPanel
             // 
+            TopPanel.Controls.Add(panel4);
             TopPanel.Controls.Add(label1);
             TopPanel.Dock = DockStyle.Top;
             TopPanel.Location = new Point(0, 0);
@@ -81,7 +83,6 @@
             // 
             // label1
             // 
-            label1.Dock = DockStyle.Left;
             label1.Font = new Font("Courier New", 30F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(10, 0);
             label1.Name = "label1";
@@ -689,6 +690,15 @@
             deletetoolstrip.Text = "Delete";
             deletetoolstrip.ToolTipText = "Delete the Selected Item";
             // 
+            // panel4
+            // 
+            panel4.BackColor = Color.Maroon;
+            panel4.Dock = DockStyle.Bottom;
+            panel4.Location = new Point(10, 45);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(880, 5);
+            panel4.TabIndex = 2;
+            // 
             // ItemInventory
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
@@ -735,5 +745,6 @@
         private DataGridViewTextBoxColumn ItemNameCol;
         private DataGridViewTextBoxColumn StocksCol;
         private DataGridViewTextBoxColumn PriceCol;
+        private Panel panel4;
     }
 }

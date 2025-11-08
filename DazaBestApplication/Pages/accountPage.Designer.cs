@@ -58,6 +58,7 @@
             PaginationLabel = new Label();
             PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
             PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
+            panel5 = new Panel();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllAccountsDatagridView).BeginInit();
@@ -70,6 +71,8 @@
             // 
             // TopPanel
             // 
+            TopPanel.BackColor = Color.White;
+            TopPanel.Controls.Add(panel5);
             TopPanel.Controls.Add(label1);
             TopPanel.Dock = DockStyle.Top;
             TopPanel.Location = new Point(0, 0);
@@ -80,7 +83,6 @@
             // 
             // label1
             // 
-            label1.Dock = DockStyle.Left;
             label1.Font = new Font("Courier New", 30F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(10, 0);
             label1.Name = "label1";
@@ -661,6 +663,15 @@
             PaginationNext.Zoom = 20;
             PaginationNext.ZoomSpeed = 10;
             // 
+            // panel5
+            // 
+            panel5.BackColor = Color.Maroon;
+            panel5.Dock = DockStyle.Bottom;
+            panel5.Location = new Point(10, 45);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(880, 5);
+            panel5.TabIndex = 2;
+            // 
             // accountPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -705,5 +716,6 @@
         private DataGridViewTextBoxColumn IdCol;
         private DataGridViewTextBoxColumn NameCol;
         private DataGridViewTextBoxColumn UsernameCol;
+        private Panel panel5;
     }
 }
