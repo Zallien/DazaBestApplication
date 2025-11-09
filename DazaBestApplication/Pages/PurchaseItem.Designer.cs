@@ -41,18 +41,17 @@
             SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
             BuyProductBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             AllPurchaseDatagridView = new Bunifu.UI.WinForms.BunifuDataGridView();
-            IdCol = new DataGridViewTextBoxColumn();
-            PurchaseNumberCol = new DataGridViewTextBoxColumn();
-            PurchaseDateCol = new DataGridViewTextBoxColumn();
-            AddedByCol = new DataGridViewTextBoxColumn();
-            VerifiedByCol = new DataGridViewTextBoxColumn();
             Pagination = new Panel();
             PaginationLabel = new Label();
             PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
             PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
             TopPanel = new Panel();
-            label1 = new Label();
             panel4 = new Panel();
+            label1 = new Label();
+            IdCol = new DataGridViewTextBoxColumn();
+            PurchaseNumberCol = new DataGridViewTextBoxColumn();
+            PurchaseDateCol = new DataGridViewTextBoxColumn();
+            AddedByCol = new DataGridViewTextBoxColumn();
             MainContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllPurchaseDatagridView).BeginInit();
             Pagination.SuspendLayout();
@@ -262,7 +261,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             AllPurchaseDatagridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             AllPurchaseDatagridView.ColumnHeadersHeight = 40;
-            AllPurchaseDatagridView.Columns.AddRange(new DataGridViewColumn[] { IdCol, PurchaseNumberCol, PurchaseDateCol, AddedByCol, VerifiedByCol });
+            AllPurchaseDatagridView.Columns.AddRange(new DataGridViewColumn[] { IdCol, PurchaseNumberCol, PurchaseDateCol, AddedByCol });
             AllPurchaseDatagridView.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
             AllPurchaseDatagridView.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             AllPurchaseDatagridView.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
@@ -305,41 +304,6 @@
             AllPurchaseDatagridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             AllPurchaseDatagridView.CellContentClick += AllPurchaseDatagridView_CellContentClick;
             AllPurchaseDatagridView.CellDoubleClick += AllPurchaseDatagridView_CellDoubleClick;
-            // 
-            // IdCol
-            // 
-            IdCol.HeaderText = "PurchaseId";
-            IdCol.Name = "IdCol";
-            IdCol.ReadOnly = true;
-            IdCol.Visible = false;
-            // 
-            // PurchaseNumberCol
-            // 
-            PurchaseNumberCol.FillWeight = 40F;
-            PurchaseNumberCol.HeaderText = "Purchase No";
-            PurchaseNumberCol.Name = "PurchaseNumberCol";
-            PurchaseNumberCol.ReadOnly = true;
-            // 
-            // PurchaseDateCol
-            // 
-            PurchaseDateCol.FillWeight = 35F;
-            PurchaseDateCol.HeaderText = "Date";
-            PurchaseDateCol.Name = "PurchaseDateCol";
-            PurchaseDateCol.ReadOnly = true;
-            // 
-            // AddedByCol
-            // 
-            AddedByCol.FillWeight = 25F;
-            AddedByCol.HeaderText = "Added By";
-            AddedByCol.Name = "AddedByCol";
-            AddedByCol.ReadOnly = true;
-            // 
-            // VerifiedByCol
-            // 
-            VerifiedByCol.FillWeight = 25F;
-            VerifiedByCol.HeaderText = "Verified By";
-            VerifiedByCol.Name = "VerifiedByCol";
-            VerifiedByCol.ReadOnly = true;
             // 
             // Pagination
             // 
@@ -442,6 +406,15 @@
             TopPanel.Size = new Size(900, 50);
             TopPanel.TabIndex = 3;
             // 
+            // panel4
+            // 
+            panel4.BackColor = Color.Maroon;
+            panel4.Dock = DockStyle.Bottom;
+            panel4.Location = new Point(10, 45);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(880, 5);
+            panel4.TabIndex = 2;
+            // 
             // label1
             // 
             label1.Font = new Font("Courier New", 30F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -452,14 +425,33 @@
             label1.Text = "Purchase Item";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // panel4
+            // IdCol
             // 
-            panel4.BackColor = Color.Maroon;
-            panel4.Dock = DockStyle.Bottom;
-            panel4.Location = new Point(10, 45);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(880, 5);
-            panel4.TabIndex = 2;
+            IdCol.HeaderText = "PurchaseId";
+            IdCol.Name = "IdCol";
+            IdCol.ReadOnly = true;
+            IdCol.Visible = false;
+            // 
+            // PurchaseNumberCol
+            // 
+            PurchaseNumberCol.FillWeight = 40F;
+            PurchaseNumberCol.HeaderText = "Purchase No";
+            PurchaseNumberCol.Name = "PurchaseNumberCol";
+            PurchaseNumberCol.ReadOnly = true;
+            // 
+            // PurchaseDateCol
+            // 
+            PurchaseDateCol.FillWeight = 35F;
+            PurchaseDateCol.HeaderText = "Date";
+            PurchaseDateCol.Name = "PurchaseDateCol";
+            PurchaseDateCol.ReadOnly = true;
+            // 
+            // AddedByCol
+            // 
+            AddedByCol.FillWeight = 25F;
+            AddedByCol.HeaderText = "Added By";
+            AddedByCol.Name = "AddedByCol";
+            AddedByCol.ReadOnly = true;
             // 
             // PurchaseItem
             // 
@@ -491,11 +483,10 @@
         private Label PaginationLabel;
         private Bunifu.UI.WinForms.BunifuImageButton PaginationPREV;
         private Bunifu.UI.WinForms.BunifuImageButton PaginationNext;
+        private Panel panel4;
         private DataGridViewTextBoxColumn IdCol;
         private DataGridViewTextBoxColumn PurchaseNumberCol;
         private DataGridViewTextBoxColumn PurchaseDateCol;
         private DataGridViewTextBoxColumn AddedByCol;
-        private DataGridViewTextBoxColumn VerifiedByCol;
-        private Panel panel4;
     }
 }

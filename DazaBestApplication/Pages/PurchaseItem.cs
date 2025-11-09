@@ -96,7 +96,6 @@ namespace DazaBestApplication.Pages
                 row.Cells["PurchaseNumberCol"].Value = item.Purchasenumber;
                 row.Cells["PurchaseDateCol"].Value = item.DateCreated;
                 row.Cells["AddedByCol"].Value = item.AddedbyName;
-                row.Cells["VerifiedByCol"].Value = item.VerifiedbyName == null ? "N/A" : item.VerifiedbyName;
             }
         }
         //Open purchase item modal

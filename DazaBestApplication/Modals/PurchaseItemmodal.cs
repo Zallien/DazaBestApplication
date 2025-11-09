@@ -71,7 +71,7 @@ namespace DazaBestApplication.Modals
                 await PopulateAllPickedItemsDatagrid();
                 Modaltitle.Text = _purchaseitemmodal.ForViewOnly._PurcahseItemHeader.Purchasenumber;
                 removeitempickedbutton.Visible = false;
-                preparedbylabel.Text = _purchaseitemmodal.Operatedby;
+                preparedbylbl.Text = _purchaseitemmodal.Operatedby;
                 bunifuButton1.Visible = false;
             }
         }

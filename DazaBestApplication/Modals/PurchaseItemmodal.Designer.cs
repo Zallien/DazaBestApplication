@@ -206,10 +206,11 @@
             // 
             // preparedbylbl
             // 
+            preparedbylbl.AutoEllipsis = true;
             preparedbylbl.Font = new Font("Courier New", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             preparedbylbl.Location = new Point(104, 3);
             preparedbylbl.Name = "preparedbylbl";
-            preparedbylbl.Size = new Size(155, 30);
+            preparedbylbl.Size = new Size(196, 30);
             preparedbylbl.TabIndex = 12;
             preparedbylbl.Text = "Edwin Germedia";
             preparedbylbl.TextAlign = ContentAlignment.MiddleLeft;
