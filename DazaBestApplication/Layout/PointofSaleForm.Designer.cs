@@ -89,6 +89,7 @@
             // 
             // Bottomnavbar
             // 
+            Bottomnavbar.BackColor = Color.FromArgb(251, 205, 119);
             Bottomnavbar.BorderStyle = BorderStyle.FixedSingle;
             Bottomnavbar.Controls.Add(bunifuImageButton4);
             Bottomnavbar.Dock = DockStyle.Bottom;
@@ -478,7 +479,7 @@
             // 
             // label2
             // 
-            label2.BackColor = Color.White;
+            label2.BackColor = Color.FromArgb(251, 205, 119);
             label2.Dock = DockStyle.Top;
             label2.Font = new Font("Courier New", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(0, 0);
@@ -508,22 +509,24 @@
             // 
             // panel5
             // 
+            panel5.BackColor = Color.FromArgb(251, 205, 119);
             panel5.Controls.Add(panel2);
             panel5.Controls.Add(panel3);
             panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(0, 55);
+            panel5.Location = new Point(0, 65);
             panel5.Name = "panel5";
-            panel5.Size = new Size(718, 43);
+            panel5.Size = new Size(718, 33);
             panel5.TabIndex = 12;
             // 
             // panel2
             // 
+            panel2.BackColor = Color.FromArgb(251, 205, 119);
             panel2.Controls.Add(Searchbox);
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(465, 0);
+            panel2.Location = new Point(399, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(253, 43);
+            panel2.Size = new Size(319, 33);
             panel2.TabIndex = 10;
             // 
             // Searchbox
@@ -590,7 +593,7 @@
             Searchbox.SelectionLength = 0;
             Searchbox.SelectionStart = 0;
             Searchbox.ShortcutsEnabled = true;
-            Searchbox.Size = new Size(167, 43);
+            Searchbox.Size = new Size(233, 33);
             Searchbox.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             Searchbox.TabIndex = 6;
             Searchbox.TextAlign = HorizontalAlignment.Left;
@@ -607,18 +610,19 @@
             label1.Font = new Font("Cambria", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(86, 43);
+            label1.Size = new Size(86, 33);
             label1.TabIndex = 5;
             label1.Text = "Search :";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // panel3
             // 
+            panel3.BackColor = Color.FromArgb(251, 205, 119);
             panel3.Controls.Add(tableLayoutPanel1);
             panel3.Dock = DockStyle.Left;
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(459, 43);
+            panel3.Size = new Size(551, 33);
             panel3.TabIndex = 8;
             // 
             // tableLayoutPanel1
@@ -638,7 +642,7 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(459, 43);
+            tableLayoutPanel1.Size = new Size(551, 33);
             tableLayoutPanel1.TabIndex = 30;
             // 
             // bunifuButton2
@@ -690,7 +694,7 @@
             bunifuButton2.IdleIconLeftImage = null;
             bunifuButton2.IdleIconRightImage = null;
             bunifuButton2.IndicateFocus = false;
-            bunifuButton2.Location = new Point(3, 4);
+            bunifuButton2.Location = new Point(3, 3);
             bunifuButton2.Name = "bunifuButton2";
             bunifuButton2.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton2.OnDisabledState.BorderRadius = 1;
@@ -724,7 +728,7 @@
             bunifuButton2.OnPressedState.ForeColor = Color.White;
             bunifuButton2.OnPressedState.IconLeftImage = null;
             bunifuButton2.OnPressedState.IconRightImage = null;
-            bunifuButton2.Size = new Size(103, 36);
+            bunifuButton2.Size = new Size(126, 27);
             bunifuButton2.TabIndex = 26;
             bunifuButton2.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton2.TextAlignment = HorizontalAlignment.Center;
@@ -781,7 +785,7 @@
             bunifuButton4.IdleIconLeftImage = null;
             bunifuButton4.IdleIconRightImage = null;
             bunifuButton4.IndicateFocus = false;
-            bunifuButton4.Location = new Point(221, 4);
+            bunifuButton4.Location = new Point(267, 3);
             bunifuButton4.Name = "bunifuButton4";
             bunifuButton4.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton4.OnDisabledState.BorderRadius = 1;
@@ -815,7 +819,7 @@
             bunifuButton4.OnPressedState.ForeColor = Color.White;
             bunifuButton4.OnPressedState.IconLeftImage = null;
             bunifuButton4.OnPressedState.IconRightImage = null;
-            bunifuButton4.Size = new Size(103, 36);
+            bunifuButton4.Size = new Size(126, 27);
             bunifuButton4.TabIndex = 28;
             bunifuButton4.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton4.TextAlignment = HorizontalAlignment.Center;
@@ -872,7 +876,7 @@
             bunifuButton3.IdleIconLeftImage = null;
             bunifuButton3.IdleIconRightImage = null;
             bunifuButton3.IndicateFocus = false;
-            bunifuButton3.Location = new Point(112, 4);
+            bunifuButton3.Location = new Point(135, 3);
             bunifuButton3.Name = "bunifuButton3";
             bunifuButton3.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton3.OnDisabledState.BorderRadius = 1;
@@ -906,7 +910,7 @@
             bunifuButton3.OnPressedState.ForeColor = Color.White;
             bunifuButton3.OnPressedState.IconLeftImage = null;
             bunifuButton3.OnPressedState.IconRightImage = null;
-            bunifuButton3.Size = new Size(103, 36);
+            bunifuButton3.Size = new Size(126, 27);
             bunifuButton3.TabIndex = 27;
             bunifuButton3.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton3.TextAlignment = HorizontalAlignment.Center;
@@ -963,7 +967,7 @@
             bunifuButton5.IdleIconLeftImage = null;
             bunifuButton5.IdleIconRightImage = null;
             bunifuButton5.IndicateFocus = false;
-            bunifuButton5.Location = new Point(330, 4);
+            bunifuButton5.Location = new Point(399, 3);
             bunifuButton5.Name = "bunifuButton5";
             bunifuButton5.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton5.OnDisabledState.BorderRadius = 1;
@@ -997,7 +1001,7 @@
             bunifuButton5.OnPressedState.ForeColor = Color.White;
             bunifuButton5.OnPressedState.IconLeftImage = null;
             bunifuButton5.OnPressedState.IconRightImage = null;
-            bunifuButton5.Size = new Size(103, 36);
+            bunifuButton5.Size = new Size(126, 27);
             bunifuButton5.TabIndex = 29;
             bunifuButton5.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton5.TextAlignment = HorizontalAlignment.Center;
@@ -1007,24 +1011,23 @@
             // 
             // panel4
             // 
-            panel4.BackColor = Color.White;
+            panel4.BackColor = Color.FromArgb(251, 205, 119);
+            panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(label3);
             panel4.Controls.Add(bunifuPictureBox1);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
             panel4.Name = "panel4";
-            panel4.Size = new Size(718, 55);
+            panel4.Size = new Size(718, 65);
             panel4.TabIndex = 11;
             // 
             // label3
             // 
-            label3.BackColor = Color.White;
-            label3.Dock = DockStyle.Left;
+            label3.BackColor = Color.FromArgb(251, 205, 119);
             label3.Font = new Font("Brush Script MT", 27.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label3.Location = new Point(55, 0);
+            label3.Location = new Point(71, 0);
             label3.Name = "label3";
-            label3.Padding = new Padding(15, 0, 0, 0);
-            label3.Size = new Size(663, 55);
+            label3.Size = new Size(647, 53);
             label3.TabIndex = 1;
             label3.Text = "Daza's Best";
             label3.TextAlign = ContentAlignment.MiddleLeft;
@@ -1033,14 +1036,14 @@
             // 
             bunifuPictureBox1.AllowFocused = false;
             bunifuPictureBox1.AutoSizeHeight = true;
-            bunifuPictureBox1.BackColor = Color.White;
-            bunifuPictureBox1.BorderRadius = 27;
+            bunifuPictureBox1.BackColor = Color.FromArgb(251, 205, 119);
+            bunifuPictureBox1.BorderRadius = 32;
             bunifuPictureBox1.Dock = DockStyle.Left;
             bunifuPictureBox1.Image = Properties.Resources.clean;
             bunifuPictureBox1.IsCircle = true;
             bunifuPictureBox1.Location = new Point(0, 0);
             bunifuPictureBox1.Name = "bunifuPictureBox1";
-            bunifuPictureBox1.Size = new Size(55, 55);
+            bunifuPictureBox1.Size = new Size(65, 65);
             bunifuPictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             bunifuPictureBox1.TabIndex = 0;
             bunifuPictureBox1.TabStop = false;
@@ -1049,6 +1052,7 @@
             // MainDisplay
             // 
             MainDisplay.AutoScroll = true;
+            MainDisplay.BackColor = SystemColors.Control;
             MainDisplay.Dock = DockStyle.Bottom;
             MainDisplay.Location = new Point(0, 0);
             MainDisplay.Name = "MainDisplay";

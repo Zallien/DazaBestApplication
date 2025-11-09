@@ -28,13 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            bunifuShadowPanel1 = new Bunifu.UI.WinForms.BunifuShadowPanel();
             SuspendLayout();
+            // 
+            // bunifuShadowPanel1
+            // 
+            bunifuShadowPanel1.BackColor = Color.Transparent;
+            bunifuShadowPanel1.BorderColor = Color.WhiteSmoke;
+            bunifuShadowPanel1.BorderRadius = 1;
+            bunifuShadowPanel1.BorderThickness = 1;
+            bunifuShadowPanel1.FillStyle = Bunifu.UI.WinForms.BunifuShadowPanel.FillStyles.Solid;
+            bunifuShadowPanel1.GradientMode = Bunifu.UI.WinForms.BunifuShadowPanel.GradientModes.Vertical;
+            bunifuShadowPanel1.Location = new Point(443, 80);
+            bunifuShadowPanel1.Name = "bunifuShadowPanel1";
+            bunifuShadowPanel1.PanelColor = Color.Maroon;
+            bunifuShadowPanel1.PanelColor2 = Color.Maroon;
+            bunifuShadowPanel1.ShadowColor = Color.DarkGray;
+            bunifuShadowPanel1.ShadowDept = 2;
+            bunifuShadowPanel1.ShadowDepth = 5;
+            bunifuShadowPanel1.ShadowStyle = Bunifu.UI.WinForms.BunifuShadowPanel.ShadowStyles.Surrounded;
+            bunifuShadowPanel1.ShadowTopLeftVisible = false;
+            bunifuShadowPanel1.Size = new Size(202, 117);
+            bunifuShadowPanel1.Style = Bunifu.UI.WinForms.BunifuShadowPanel.BevelStyles.Flat;
+            bunifuShadowPanel1.TabIndex = 0;
             // 
             // Records
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 662);
+            Controls.Add(bunifuShadowPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Records";
             SizeGripStyle = SizeGripStyle.Hide;
@@ -44,5 +67,7 @@
         }
 
         #endregion
+
+        private Bunifu.UI.WinForms.BunifuShadowPanel bunifuShadowPanel1;
     }
 }

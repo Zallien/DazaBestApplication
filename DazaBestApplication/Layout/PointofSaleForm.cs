@@ -67,7 +67,7 @@ namespace DazaBestApplication.Layout
             int panelWidth = maindisplaysize.Width / cols;
             foreach (Products product in AllavailableProducts)
             {
-                BunifuGradientPanel itemPanel = new BunifuGradientPanel
+                BunifuShadowPanel itemPanel = new BunifuShadowPanel
                 {
                     Width = panelWidth - 10,
                     Height = 150,
@@ -79,12 +79,14 @@ namespace DazaBestApplication.Layout
                         ProductPrice = product.Price,
                         ProductName = product.ProductName
                     },
-                    GradientBottomLeft = ColorTranslator.FromHtml("#ffffff"),
+                    /*GradientBottomLeft = ColorTranslator.FromHtml("#ffffff"),
                     GradientBottomRight = ColorTranslator.FromHtml("#ffffff"),
                     GradientTopLeft = ColorTranslator.FromHtml("#ffffff"),
                     GradientTopRight = ColorTranslator.FromHtml("#ffffff"),
-                    BorderStyle = BorderStyle.FixedSingle,
-
+                    BorderStyle = BorderStyle.FixedSingle,*/
+                    PanelColor = Color.White,
+                    PanelColor2 = Color.White,
+                    ShadowColor = Color.Maroon,
                     Padding = new Padding(15)
                 };
                 PictureBox pictureBox = new PictureBox
