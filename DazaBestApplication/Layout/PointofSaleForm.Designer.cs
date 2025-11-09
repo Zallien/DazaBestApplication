@@ -521,16 +521,15 @@
             panel2.Controls.Add(Searchbox);
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(459, 0);
+            panel2.Location = new Point(465, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(259, 43);
+            panel2.Size = new Size(253, 43);
             panel2.TabIndex = 10;
             // 
             // Searchbox
             // 
             Searchbox.AcceptsReturn = false;
             Searchbox.AcceptsTab = false;
-            Searchbox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             Searchbox.AnimationSpeed = 200;
             Searchbox.AutoCompleteMode = AutoCompleteMode.None;
             Searchbox.AutoCompleteSource = AutoCompleteSource.None;
@@ -547,6 +546,7 @@
             Searchbox.CharacterCasing = CharacterCasing.Normal;
             Searchbox.DefaultFont = new Font("Segoe UI", 9.25F);
             Searchbox.DefaultText = "";
+            Searchbox.Dock = DockStyle.Fill;
             Searchbox.FillColor = Color.White;
             Searchbox.HideSelection = true;
             Searchbox.IconLeft = Properties.Resources.magnifying_glass;
@@ -554,7 +554,7 @@
             Searchbox.IconPadding = 10;
             Searchbox.IconRight = null;
             Searchbox.IconRightCursor = Cursors.IBeam;
-            Searchbox.Location = new Point(71, 2);
+            Searchbox.Location = new Point(86, 0);
             Searchbox.MaxLength = 32767;
             Searchbox.MinimumSize = new Size(1, 1);
             Searchbox.Modified = false;
@@ -590,7 +590,7 @@
             Searchbox.SelectionLength = 0;
             Searchbox.SelectionStart = 0;
             Searchbox.ShortcutsEnabled = true;
-            Searchbox.Size = new Size(183, 39);
+            Searchbox.Size = new Size(167, 43);
             Searchbox.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             Searchbox.TabIndex = 6;
             Searchbox.TextAlign = HorizontalAlignment.Left;
@@ -603,12 +603,14 @@
             // 
             // label1
             // 
+            label1.Dock = DockStyle.Left;
             label1.Font = new Font("Cambria", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(9, 11);
+            label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(86, 21);
+            label1.Size = new Size(86, 43);
             label1.TabIndex = 5;
             label1.Text = "Search :";
+            label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // panel3
             // 
