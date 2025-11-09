@@ -51,7 +51,7 @@ namespace SystemBackEnd.Services
                 }
                 await _db.SaveChangesAsync();
                 //Add ReferenceNumber
-                ItemAdjustmentHeader theheader = await _db.ItemAdjustmentHeader.FirstOrDefaultAsync(x => x.ReferenceHeaderId ==  HeaderId);
+                ItemAdjustmentHeader theheader = await _db.ItemAdjustmentHeader.FirstOrDefaultAsync(x => x.ReferenceHeaderId == HeaderId);
                 if (theheader != null && theheader.ReferenceNumber == "")
                 {
                     int countToday = await _db.ItemAdjustmentHeader
@@ -68,7 +68,7 @@ namespace SystemBackEnd.Services
 
                 throw;
             }
-            return isAdded; 
+            return isAdded;
         }
         //Get Header List
         public async Task<List<AdjustItemHeaderwithOperatedName>> GetAdjustItemHeader(SearchItem searchvalue)
@@ -77,17 +77,17 @@ namespace SystemBackEnd.Services
             try
             {
                 //TO BE FIX WHEN ACCOUNT IS FIXED
-                _thelist = await ( from a in _db.ItemAdjustmentHeader
-                                   //join b in _db.Accounts
-                                   //on a.OperatedBy equals b.AccountId
-                                   orderby a.DateOperated descending
-                                   select new AdjustItemHeaderwithOperatedName
-                                   {
-                                       DateCreated = a.DateOperated,
-                                       OperatedByName = "No Account Yet",
-                                       ReferenceHeaderId = a.ReferenceHeaderId,
-                                       ReferenceNumber = a.ReferenceNumber
-                                   }).Skip((searchvalue.PageNumber - 1) * searchvalue.ItemperPage)
+                _thelist = await (from a in _db.ItemAdjustmentHeader
+                                  join b in _db.Accounts
+                                  on a.OperatedBy equals b.AccountId
+                                  orderby a.DateOperated descending
+                                  select new AdjustItemHeaderwithOperatedName
+                                  {
+                                      DateCreated = a.DateOperated,
+                                      OperatedByName = b.Fullname,
+                                      ReferenceHeaderId = a.ReferenceHeaderId,
+                                      ReferenceNumber = a.ReferenceNumber
+                                  }).Skip((searchvalue.PageNumber - 1) * searchvalue.ItemperPage)
                                    .Take(searchvalue.ItemperPage)
                                    .ToListAsync();
             }
@@ -107,18 +107,18 @@ namespace SystemBackEnd.Services
 
                 var theheader = await _db.ItemAdjustmentHeader.Where(x => x.ReferenceHeaderId == theHeaderId).FirstOrDefaultAsync();
                 var theitems = await (from a in _db.ItemAdjustmentDetails
-                                                                  join b in _db.Items
-                                                                  on a.ItemId equals b.ItemID
-                                                                  where a.ReferenceHeaderId == theHeaderId
-                                                                  select new AdjustItemDetailswithItemName
-                                                                  {
-                                                                      ItemId = a.ItemId,
-                                                                      ItemName = b.ItemName,
-                                                                      ReferenceDetailsId = a.ReferenceDetailsId,
-                                                                      Reason = a.Reason,
-                                                                      ReferenceHeaderId = a.ReferenceHeaderId,
-                                                                      RemovedQuantity = a.RemovedQuantity,
-                                                                  }).ToListAsync();
+                                      join b in _db.Items
+                                      on a.ItemId equals b.ItemID
+                                      where a.ReferenceHeaderId == theHeaderId
+                                      select new AdjustItemDetailswithItemName
+                                      {
+                                          ItemId = a.ItemId,
+                                          ItemName = b.ItemName,
+                                          ReferenceDetailsId = a.ReferenceDetailsId,
+                                          Reason = a.Reason,
+                                          ReferenceHeaderId = a.ReferenceHeaderId,
+                                          RemovedQuantity = a.RemovedQuantity,
+                                      }).ToListAsync();
                 if (theitems != null)
                 {
                     viewAdjustItem.AdjustItemDetailswithName = theitems;
@@ -141,10 +141,10 @@ namespace SystemBackEnd.Services
             bool isStockAcceptable = false;
             try
             {
-                var item = await _db.Items.FirstOrDefaultAsync(x => x.ItemID ==  ItemId);
+                var item = await _db.Items.FirstOrDefaultAsync(x => x.ItemID == ItemId);
                 if (item != null)
                 {
-                    bool acceptable = item.BalanceStocks >= stockInput? true : false;
+                    bool acceptable = item.BalanceStocks >= stockInput ? true : false;
                     isStockAcceptable = acceptable;
                     return isStockAcceptable;
                 }
@@ -152,11 +152,10 @@ namespace SystemBackEnd.Services
             }
             catch (Exception)
             {
-                
+
             }
             return isStockAcceptable;
         }
-
         //Update Inventory Stocks
         private async Task UpdateBalanceStock(Guid itemId, decimal stockremoved)
         {
@@ -173,6 +172,31 @@ namespace SystemBackEnd.Services
 
             }
         }
+        //Get Operated By using HeaderId
+        public async Task<string> GetOperatedByName(Guid headerId)
+        {
+            string operatedByName = "";
+            try
+            {
+                var result = await (from a in _db.ItemAdjustmentHeader
+                                    join b in _db.Accounts
+                                    on a.OperatedBy equals b.AccountId
+                                    where a.ReferenceHeaderId == headerId
+                                    select b.Fullname).FirstOrDefaultAsync();
+                if (result != null)
+                {
+                    operatedByName = result;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return operatedByName;
 
+
+
+
+        }
     }
 }

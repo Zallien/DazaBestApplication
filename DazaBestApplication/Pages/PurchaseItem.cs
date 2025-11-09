@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemBackEnd;
 using SystemBackEnd.EventHandlers;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
@@ -47,12 +48,15 @@ namespace DazaBestApplication.Pages
         //Show Purcahse Item Page --View--
         private async Task ShowAddItemModelView(Guid PurcahseItemHeaderId)
         {
-            PurchaseitemServices _purchaseitemServices = new PurchaseitemServices(new SystemBackEnd.BackEndDBContext());
+            var db = new BackEndDBContext();
+            var service = new PurchaseitemServices(db);
+
             _purcahseitemmodal = new PurchaseItemModal()
             {
                 Action = "ViewPurcahseItem",
                 EditPurchaseItemHeaderId = PurcahseItemHeaderId,
-                ForViewOnly = await _purchaseitemServices.GetPurchaseItemDetailsandHeader(PurcahseItemHeaderId)
+                ForViewOnly = await service.GetPurchaseItemDetailsandHeader(PurcahseItemHeaderId),
+                Operatedby = await service.GetOperatedBy(PurcahseItemHeaderId)
             };
             OpenModal();
         }

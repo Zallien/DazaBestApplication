@@ -79,13 +79,17 @@ namespace DazaBestApplication.Pages
         //View Adjustment Details
         private async Task ViewAdjustmentItemDetails(Guid theheaderId)
         {
-            AdjustItemServices service = new AdjustItemServices(new BackEndDBContext());
+            var db = new BackEndDBContext();
+            var service = new AdjustItemServices(db);
+
             ViewAdjustItem viewAdjustItem = await service.GetViewAdjustItem(theheaderId);
+            string operatename = await service.GetOperatedByName(theheaderId);
             adjustItemModalViewModel = new AdjustItemModalViewModel()
             {
                 Action = "ViewItems",
                 EditPurchaseItemHeaderId = theheaderId,
-                ForViewOnly = viewAdjustItem
+                ForViewOnly = viewAdjustItem,
+                OperatedBy = operatename
             };
             await ShowItemAdjustmentModal();
 

@@ -414,7 +414,6 @@ namespace DazaBestApplication.Pages
                 }
             }
         }
-
         private void bunifuButton23_Click(object sender, EventArgs e)
         {
             if (AllItemsDatagrid.SelectedRows.Count > 0)
@@ -433,7 +432,6 @@ namespace DazaBestApplication.Pages
                 OpenModal();
             }
         }
-
         private void AllItemsDatagrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 

@@ -71,6 +71,8 @@ namespace DazaBestApplication.Modals
                 await PopulateAllPickedItemsDatagrid();
                 Modaltitle.Text = _purchaseitemmodal.ForViewOnly._PurcahseItemHeader.Purchasenumber;
                 removeitempickedbutton.Visible = false;
+                preparedbylabel.Text = _purchaseitemmodal.Operatedby;
+                bunifuButton1.Visible = false;
             }
         }
         //Main Load
@@ -367,6 +369,67 @@ namespace DazaBestApplication.Modals
             Grandtotalvaluelabel.Text = _Grandtotal.ToString();
         }
 
+        //Pagination for Items
+        //Get Total Pages
+        private async Task Gettotalpages()
+        {
+            using (var context = new BackEndDBContext())
+            {
+                PurchaseitemServices = new PurchaseitemServices(context);
+                Producttotalpage = await PurchaseitemServices.GettotalPages(Productitemperpage);
+            }
+        }
+        //Check Page Number
+        private async Task CheckPageNumber()
+        {
+            await Task.Delay(200);
+            //await Gettotalpages();
+            if (Productcurrentpage == 1)
+            {
+                buttonprev.Enabled = false;
+            }
+            else
+            {
+                buttonprev.Enabled = true;
+            }
+            if (Productcurrentpage >= Producttotalpage)
+            {
+                buttonnext.Enabled = false;
+            }
+            else
+            {
+                buttonnext.Enabled = true;
+            }
+            pagenumberindicator.Text = $"{Productcurrentpage} / {Producttotalpage}";
+        }
+
+
+        //Press Prev Button
+        private async Task PressPrevButton()
+        {
+            await Gettotalpages();
+            if (Productcurrentpage > 0)
+            {
+                Productcurrentpage--;
+                await CheckPageNumber();
+                await PopulatAllItemDataGrid();
+            }
+        }
+        //Press Next Buttons
+        private async Task PressNextButton()
+        {
+            await Gettotalpages();
+            if (Productcurrentpage < Producttotalpage)
+            {
+                Productcurrentpage++;
+                await CheckPageNumber();
+                await PopulatAllItemDataGrid();
+            }
+        }
+
+
+
+
 
 
 
@@ -465,6 +528,14 @@ namespace DazaBestApplication.Modals
                     textBox.KeyPress -= NumbersOnly_KeyPress;
                 }
             }
+        }
+        private void buttonprev_Click(object sender, EventArgs e)
+        {
+            PressPrevButton();
+        }
+        private void buttonnext_Click(object sender, EventArgs e)
+        {
+            PressNextButton();
         }
     }
 }

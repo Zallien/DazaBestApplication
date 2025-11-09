@@ -11,5 +11,6 @@ namespace SystemBackEnd.ServiceModels
         public string Action { get; set; }
         public Guid? EditPurchaseItemHeaderId { get; set; }
         public ViewAdjustItem? ForViewOnly { get; set; }
+        public string OperatedBy { get; set; }
     }
 }

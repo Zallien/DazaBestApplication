@@ -151,7 +151,26 @@ namespace SystemBackEnd.Services
             }
             return _viewpurchaseitem;
         }
+        //Get Fullname of Operated By using Header Id
+        public async Task<string> GetOperatedBy(Guid headerid)
+        {
+            string opeartedby = "";
+            try
+            {
+                opeartedby = await (from a in _db.PurcahseItemHeader
+                                    join b in _db.Accounts
+                                    on a.Addedby equals b.AccountId
+                                    where a.Purchaseheaderid == headerid
+                                    select b.Fullname).FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
 
+                throw;
+            }
+
+            return opeartedby;
+        }
 
 
         //Get All Available and Active Items 
@@ -176,6 +195,24 @@ namespace SystemBackEnd.Services
             }
             return AllItems;
         }
+        //Get the Total Count of Pages based on Item per Page
+        public async Task<int> GettotalPages(int itemperpage)
+        {
+            int total = 0;
+            try
+            {
+                int totalitems = await _db.Items.Where(x => x.IsActive == true).CountAsync();
+                total = (totalitems / itemperpage) + 1;
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return total;
+        }
+
+
         //Get The Picked Items
         public async Task<PurcahseItemDisplay> GetPickedItem(Guid ItemID)
         {

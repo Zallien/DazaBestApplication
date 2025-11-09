@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Net.Security;
@@ -52,6 +53,8 @@ namespace DazaBestApplication.Modals
         //Open All Product Panel
         private async Task OpenAllProductsPanel()
         {
+            await Gettotalpages();
+            await CheckPageNumber();
             await PopulatAllItemDataGrid();
             OverlayPanel = new Panel();
             OverlayPanel.Location = new Point(0, 0);
@@ -300,6 +303,7 @@ namespace DazaBestApplication.Modals
                 Point point = AddAdjustmentItemInformationsBTN.Location;
                 AddAdjustmentItemInformationsBTN.Visible = false;
                 bunifuButton2.Location = point;
+                preparedby.Text = adjustItemModalViewModel.OperatedBy;
             }
         }
         //Populate to Selected Item DatagridView
@@ -333,12 +337,70 @@ namespace DazaBestApplication.Modals
             }
         }
 
+        //Pagination for Items
+        //Get Total Pages
+        private async Task Gettotalpages()
+        {
+            using (var context = new BackEndDBContext())
+            {
+                PurchaseitemServices = new PurchaseitemServices(context);
+                Producttotalpage = await PurchaseitemServices.GettotalPages(Productitemperpage);
+            }
+        }
+        //Check Page Number
+        private async Task CheckPageNumber()
+        {
+            await Task.Delay(200);
+            //await Gettotalpages();
+            if (Productcurrentpage == 1)
+            {
+                buttonprev.Enabled = false;
+            }
+            else
+            {
+                buttonprev.Enabled = true;
+            }
+            if (Productcurrentpage >= Producttotalpage)
+            {
+                buttonnext.Enabled = false;
+            }
+            else
+            {
+                buttonnext.Enabled = true;
+            }
+            pagenumberindicator.Text = $"{Productcurrentpage} / {Producttotalpage}";
+        }
+
+
+        //Press Prev Button
+        private async Task PressPrevButton()
+        {
+            await Gettotalpages();
+            if (Productcurrentpage > 0)
+            {
+                Productcurrentpage--;
+                await CheckPageNumber();
+                await PopulatAllItemDataGrid();
+            }
+        }
+        //Press Next Buttons
+        private async Task PressNextButton()
+        {
+            await Gettotalpages();
+            if (Productcurrentpage < Producttotalpage)
+            {
+                Productcurrentpage++;
+                await CheckPageNumber();
+                await PopulatAllItemDataGrid();
+            }
+        }
 
 
         //Main Load
-        private void AdjustItemModal_Load(object sender, EventArgs e)
+        private async void AdjustItemModal_Load(object sender, EventArgs e)
         {
             AllPickedItems.RowTemplate.Height = 32;
+            pagenumberindicator.Text = $"{Productcurrentpage} / {Producttotalpage}";
         }
 
 
@@ -391,7 +453,7 @@ namespace DazaBestApplication.Modals
         private async void bunifuButton1_Click(object sender, EventArgs e)
         {
             await OpenAllProductsPanel();
-            
+
         }
         private void CloseAllPModal_Click(object sender, EventArgs e)
         {
@@ -403,7 +465,7 @@ namespace DazaBestApplication.Modals
         }
         private void AddAdjustmentItemInformationsBTN_Click(object sender, EventArgs e)
         {
-            if(AllPickedItems.Rows.Count == 0)
+            if (AllPickedItems.Rows.Count == 0)
             {
                 MessageBox.Show("Please pick at least one item to proceed.", "System", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -496,6 +558,14 @@ namespace DazaBestApplication.Modals
                     textBox.KeyPress += new KeyPressEventHandler(letters_KeyPress);
                 }
             }
+        }
+        private void buttonprev_Click(object sender, EventArgs e)
+        {
+            PressPrevButton();
+        }
+        private void buttonnext_Click(object sender, EventArgs e)
+        {
+            PressNextButton();
         }
     }
 

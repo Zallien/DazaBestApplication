@@ -66,6 +66,9 @@
             bunifuButton1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             removeitempickedbutton = new Bunifu.UI.WinForms.BunifuImageButton();
             AllProductsContainer = new Bunifu.UI.WinForms.BunifuShadowPanel();
+            buttonnext = new Bunifu.UI.WinForms.BunifuImageButton();
+            buttonprev = new Bunifu.UI.WinForms.BunifuImageButton();
+            pagenumberindicator = new Label();
             bunifuTextBox1 = new Bunifu.UI.WinForms.BunifuTextBox();
             panel2 = new Panel();
             CloseAllPModal = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -663,6 +666,9 @@
             AllProductsContainer.BorderColor = Color.Black;
             AllProductsContainer.BorderRadius = 1;
             AllProductsContainer.BorderThickness = 1;
+            AllProductsContainer.Controls.Add(buttonnext);
+            AllProductsContainer.Controls.Add(buttonprev);
+            AllProductsContainer.Controls.Add(pagenumberindicator);
             AllProductsContainer.Controls.Add(bunifuTextBox1);
             AllProductsContainer.Controls.Add(panel2);
             AllProductsContainer.Controls.Add(CloseAllPModal);
@@ -670,7 +676,7 @@
             AllProductsContainer.Controls.Add(AllItemDatagridview);
             AllProductsContainer.FillStyle = Bunifu.UI.WinForms.BunifuShadowPanel.FillStyles.Solid;
             AllProductsContainer.GradientMode = Bunifu.UI.WinForms.BunifuShadowPanel.GradientModes.Vertical;
-            AllProductsContainer.Location = new Point(1154, 61);
+            AllProductsContainer.Location = new Point(1119, 46);
             AllProductsContainer.Name = "AllProductsContainer";
             AllProductsContainer.Padding = new Padding(0, 10, 0, 0);
             AllProductsContainer.PanelColor = Color.WhiteSmoke;
@@ -684,6 +690,86 @@
             AllProductsContainer.Style = Bunifu.UI.WinForms.BunifuShadowPanel.BevelStyles.Flat;
             AllProductsContainer.TabIndex = 8;
             AllProductsContainer.Visible = false;
+            // 
+            // buttonnext
+            // 
+            buttonnext.ActiveImage = null;
+            buttonnext.AllowAnimations = true;
+            buttonnext.AllowBuffering = false;
+            buttonnext.AllowToggling = false;
+            buttonnext.AllowZooming = true;
+            buttonnext.AllowZoomingOnFocus = false;
+            buttonnext.BackColor = Color.Transparent;
+            buttonnext.DialogResult = DialogResult.None;
+            buttonnext.ErrorImage = (Image)resources.GetObject("buttonnext.ErrorImage");
+            buttonnext.FadeWhenInactive = false;
+            buttonnext.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            buttonnext.Image = Properties.Resources.prev;
+            buttonnext.ImageActive = null;
+            buttonnext.ImageLocation = null;
+            buttonnext.ImageMargin = 10;
+            buttonnext.ImageSize = new Size(15, 15);
+            buttonnext.ImageZoomSize = new Size(25, 25);
+            buttonnext.InitialImage = (Image)resources.GetObject("buttonnext.InitialImage");
+            buttonnext.Location = new Point(110, 263);
+            buttonnext.Name = "buttonnext";
+            buttonnext.Rotation = 180;
+            buttonnext.ShowActiveImage = true;
+            buttonnext.ShowCursorChanges = true;
+            buttonnext.ShowImageBorders = true;
+            buttonnext.ShowSizeMarkers = false;
+            buttonnext.Size = new Size(25, 25);
+            buttonnext.TabIndex = 17;
+            buttonnext.ToolTipText = "";
+            buttonnext.WaitOnLoad = false;
+            buttonnext.Zoom = 10;
+            buttonnext.ZoomSpeed = 10;
+            buttonnext.Click += buttonnext_Click;
+            // 
+            // buttonprev
+            // 
+            buttonprev.ActiveImage = null;
+            buttonprev.AllowAnimations = true;
+            buttonprev.AllowBuffering = false;
+            buttonprev.AllowToggling = false;
+            buttonprev.AllowZooming = true;
+            buttonprev.AllowZoomingOnFocus = false;
+            buttonprev.BackColor = Color.Transparent;
+            buttonprev.DialogResult = DialogResult.None;
+            buttonprev.ErrorImage = (Image)resources.GetObject("buttonprev.ErrorImage");
+            buttonprev.FadeWhenInactive = false;
+            buttonprev.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            buttonprev.Image = Properties.Resources.prev;
+            buttonprev.ImageActive = null;
+            buttonprev.ImageLocation = null;
+            buttonprev.ImageMargin = 10;
+            buttonprev.ImageSize = new Size(15, 15);
+            buttonprev.ImageZoomSize = new Size(25, 25);
+            buttonprev.InitialImage = (Image)resources.GetObject("buttonprev.InitialImage");
+            buttonprev.Location = new Point(23, 263);
+            buttonprev.Name = "buttonprev";
+            buttonprev.Rotation = 0;
+            buttonprev.ShowActiveImage = true;
+            buttonprev.ShowCursorChanges = true;
+            buttonprev.ShowImageBorders = true;
+            buttonprev.ShowSizeMarkers = false;
+            buttonprev.Size = new Size(25, 25);
+            buttonprev.TabIndex = 16;
+            buttonprev.ToolTipText = "";
+            buttonprev.WaitOnLoad = false;
+            buttonprev.Zoom = 10;
+            buttonprev.ZoomSpeed = 10;
+            buttonprev.Click += buttonprev_Click;
+            // 
+            // pagenumberindicator
+            // 
+            pagenumberindicator.Font = new Font("Cambria", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            pagenumberindicator.Location = new Point(54, 263);
+            pagenumberindicator.Name = "pagenumberindicator";
+            pagenumberindicator.Size = new Size(50, 25);
+            pagenumberindicator.TabIndex = 15;
+            pagenumberindicator.Text = "1";
+            pagenumberindicator.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // bunifuTextBox1
             // 
@@ -815,7 +901,7 @@
             CloseAllPModal.IdleIconLeftImage = null;
             CloseAllPModal.IdleIconRightImage = null;
             CloseAllPModal.IndicateFocus = false;
-            CloseAllPModal.Location = new Point(316, 263);
+            CloseAllPModal.Location = new Point(316, 266);
             CloseAllPModal.Name = "CloseAllPModal";
             CloseAllPModal.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             CloseAllPModal.OnDisabledState.BorderRadius = 1;
@@ -1032,5 +1118,8 @@
         private DataGridViewTextBoxColumn ALLI_ItemCodeCol;
         private DataGridViewTextBoxColumn ALLI_ItemNameCol;
         private DataGridViewButtonColumn ALLI_ActionCol;
+        private Bunifu.UI.WinForms.BunifuImageButton buttonnext;
+        private Bunifu.UI.WinForms.BunifuImageButton buttonprev;
+        private Label pagenumberindicator;
     }
 }
