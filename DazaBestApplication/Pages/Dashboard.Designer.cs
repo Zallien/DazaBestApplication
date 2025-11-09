@@ -471,6 +471,8 @@
             // panel11
             // 
             panel11.BackColor = Color.White;
+            panel11.BackgroundImage = Properties.Resources._4;
+            panel11.BackgroundImageLayout = ImageLayout.Zoom;
             panel11.BorderStyle = BorderStyle.FixedSingle;
             panel11.Controls.Add(numberofitemslabel);
             panel11.Controls.Add(label6);
@@ -489,6 +491,7 @@
             numberofitemslabel.CursorType = Cursors.Default;
             numberofitemslabel.Dock = DockStyle.Fill;
             numberofitemslabel.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
+            numberofitemslabel.ForeColor = Color.Black;
             numberofitemslabel.Location = new Point(15, 33);
             numberofitemslabel.Name = "numberofitemslabel";
             numberofitemslabel.RightToLeft = RightToLeft.No;
@@ -500,7 +503,9 @@
             // 
             // label6
             // 
+            label6.BackColor = Color.Transparent;
             label6.Dock = DockStyle.Top;
+            label6.ForeColor = Color.Black;
             label6.Location = new Point(15, 15);
             label6.Name = "label6";
             label6.Size = new Size(168, 18);
@@ -510,6 +515,8 @@
             // panel12
             // 
             panel12.BackColor = Color.White;
+            panel12.BackgroundImage = Properties.Resources._3__1_;
+            panel12.BackgroundImageLayout = ImageLayout.Zoom;
             panel12.BorderStyle = BorderStyle.FixedSingle;
             panel12.Controls.Add(overstocklabel);
             panel12.Controls.Add(label7);
@@ -528,6 +535,7 @@
             overstocklabel.CursorType = Cursors.Default;
             overstocklabel.Dock = DockStyle.Fill;
             overstocklabel.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
+            overstocklabel.ForeColor = Color.Black;
             overstocklabel.Location = new Point(15, 33);
             overstocklabel.Name = "overstocklabel";
             overstocklabel.RightToLeft = RightToLeft.No;
@@ -539,7 +547,9 @@
             // 
             // label7
             // 
+            label7.BackColor = Color.Transparent;
             label7.Dock = DockStyle.Top;
+            label7.ForeColor = Color.Black;
             label7.Location = new Point(15, 15);
             label7.Name = "label7";
             label7.Size = new Size(168, 18);
@@ -549,6 +559,8 @@
             // panel13
             // 
             panel13.BackColor = Color.White;
+            panel13.BackgroundImage = Properties.Resources._2__1_;
+            panel13.BackgroundImageLayout = ImageLayout.Zoom;
             panel13.BorderStyle = BorderStyle.FixedSingle;
             panel13.Controls.Add(outofstocklabel);
             panel13.Controls.Add(label8);
@@ -567,6 +579,7 @@
             outofstocklabel.CursorType = Cursors.Default;
             outofstocklabel.Dock = DockStyle.Fill;
             outofstocklabel.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
+            outofstocklabel.ForeColor = Color.Black;
             outofstocklabel.Location = new Point(15, 33);
             outofstocklabel.Name = "outofstocklabel";
             outofstocklabel.RightToLeft = RightToLeft.No;
@@ -578,7 +591,9 @@
             // 
             // label8
             // 
+            label8.BackColor = Color.Transparent;
             label8.Dock = DockStyle.Top;
+            label8.ForeColor = Color.Black;
             label8.Location = new Point(15, 15);
             label8.Name = "label8";
             label8.Size = new Size(168, 18);
@@ -588,6 +603,8 @@
             // panel14
             // 
             panel14.BackColor = Color.White;
+            panel14.BackgroundImage = Properties.Resources._1;
+            panel14.BackgroundImageLayout = ImageLayout.Zoom;
             panel14.BorderStyle = BorderStyle.FixedSingle;
             panel14.Controls.Add(criticalitemslabel);
             panel14.Controls.Add(label9);
@@ -606,6 +623,7 @@
             criticalitemslabel.CursorType = Cursors.Default;
             criticalitemslabel.Dock = DockStyle.Fill;
             criticalitemslabel.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
+            criticalitemslabel.ForeColor = Color.Black;
             criticalitemslabel.Location = new Point(15, 33);
             criticalitemslabel.Name = "criticalitemslabel";
             criticalitemslabel.RightToLeft = RightToLeft.No;
@@ -617,7 +635,9 @@
             // 
             // label9
             // 
+            label9.BackColor = Color.Transparent;
             label9.Dock = DockStyle.Top;
+            label9.ForeColor = Color.Black;
             label9.Location = new Point(15, 15);
             label9.Name = "label9";
             label9.Size = new Size(168, 18);
@@ -701,6 +721,8 @@
             // panel5
             // 
             panel5.BackColor = Color.White;
+            panel5.BackgroundImage = Properties.Resources.target__1_1;
+            panel5.BackgroundImageLayout = ImageLayout.Zoom;
             panel5.BorderStyle = BorderStyle.FixedSingle;
             panel5.Controls.Add(qoutalabel);
             panel5.Controls.Add(label2);
@@ -719,6 +741,7 @@
             qoutalabel.CursorType = Cursors.Default;
             qoutalabel.Dock = DockStyle.Fill;
             qoutalabel.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
+            qoutalabel.ForeColor = Color.Black;
             qoutalabel.Location = new Point(15, 33);
             qoutalabel.Name = "qoutalabel";
             qoutalabel.RightToLeft = RightToLeft.No;
@@ -730,7 +753,9 @@
             // 
             // label2
             // 
+            label2.BackColor = Color.Transparent;
             label2.Dock = DockStyle.Top;
+            label2.ForeColor = Color.Black;
             label2.Location = new Point(15, 15);
             label2.Name = "label2";
             label2.Size = new Size(168, 18);
@@ -740,6 +765,8 @@
             // panel8
             // 
             panel8.BackColor = Color.White;
+            panel8.BackgroundImage = Properties.Resources.sales__1___1_;
+            panel8.BackgroundImageLayout = ImageLayout.Zoom;
             panel8.BorderStyle = BorderStyle.FixedSingle;
             panel8.Controls.Add(salelabel);
             panel8.Controls.Add(label5);
@@ -758,6 +785,7 @@
             salelabel.CursorType = Cursors.Default;
             salelabel.Dock = DockStyle.Fill;
             salelabel.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
+            salelabel.ForeColor = Color.Black;
             salelabel.Location = new Point(15, 33);
             salelabel.Name = "salelabel";
             salelabel.RightToLeft = RightToLeft.No;
@@ -769,7 +797,9 @@
             // 
             // label5
             // 
+            label5.BackColor = Color.Transparent;
             label5.Dock = DockStyle.Top;
+            label5.ForeColor = Color.Black;
             label5.Location = new Point(15, 15);
             label5.Name = "label5";
             label5.Size = new Size(168, 18);
@@ -779,6 +809,8 @@
             // panel7
             // 
             panel7.BackColor = Color.White;
+            panel7.BackgroundImage = Properties.Resources.shopping_cart__1_;
+            panel7.BackgroundImageLayout = ImageLayout.Zoom;
             panel7.BorderStyle = BorderStyle.FixedSingle;
             panel7.Controls.Add(numberoforderslabel);
             panel7.Controls.Add(label4);
@@ -797,6 +829,7 @@
             numberoforderslabel.CursorType = Cursors.Default;
             numberoforderslabel.Dock = DockStyle.Fill;
             numberoforderslabel.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
+            numberoforderslabel.ForeColor = Color.Black;
             numberoforderslabel.Location = new Point(15, 33);
             numberoforderslabel.Name = "numberoforderslabel";
             numberoforderslabel.RightToLeft = RightToLeft.No;
@@ -808,7 +841,9 @@
             // 
             // label4
             // 
+            label4.BackColor = Color.Transparent;
             label4.Dock = DockStyle.Top;
+            label4.ForeColor = Color.Black;
             label4.Location = new Point(15, 15);
             label4.Name = "label4";
             label4.Size = new Size(168, 18);

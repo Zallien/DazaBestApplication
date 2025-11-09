@@ -495,6 +495,7 @@
             background_Panel.Name = "background_Panel";
             background_Panel.Size = new Size(1100, 700);
             background_Panel.TabIndex = 8;
+            background_Panel.Paint += background_Panel_Paint;
             // 
             // panel2
             // 
