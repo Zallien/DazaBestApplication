@@ -20,10 +20,15 @@ namespace DazaBestApplication.Pages
         private Form Mainform;
         private PurchaseItemModal _purcahseitemmodal;
         private List<PurchaseItemHeaderDisplay> _allpurchaseitemsheaders;
+        private PurchaseitemServices PurchaseitemServices;
+        private string Searchvalue;
+
 
         //pagination
         private int currentpage = 1;
         private int itemperpage = 12;
+        private int maxPage;
+
 
         public PurchaseItem(Form _mainform)
         {
@@ -63,8 +68,11 @@ namespace DazaBestApplication.Pages
         //Main Load
         private async void PurchaseItem_Load(object sender, EventArgs e)
         {
+            await GetMaxpagevalue();
+            await CheckPageNumber();
             await GetAllPurchaseItemHeaders();
             HookEvents();
+            PaginationLabel.Text = $"{currentpage} / {maxPage}";//Pagination Label
         }
         //Hook Events
         private void HookEvents()
@@ -123,6 +131,68 @@ namespace DazaBestApplication.Pages
                 ModalBackgorund.Dispose();
             }
         }
+        //Search Purchase Items
+        private async Task SearchPurchaseitem()
+        {
+            await GetAllPurchaseItemHeaders();
+        }
+
+
+
+        //Pagination
+        private async Task GetMaxpagevalue()
+        {
+            PurchaseitemServices = new PurchaseitemServices(new BackEndDBContext());
+            maxPage = await PurchaseitemServices.GetPurchaseItemMaxPage(itemperpage);
+        }
+        private async Task CheckPageNumber()
+        {
+            await Task.Delay(200);
+            if (currentpage == 1)
+            {
+                PaginationPREV.Enabled = false;
+            }
+            else
+            {
+                PaginationPREV.Enabled = true;
+            }
+            if (currentpage >= maxPage)
+            {
+                PaginationNext.Enabled = false;
+            }
+            else
+            {
+                PaginationNext.Enabled = true;
+            }
+        }
+        //Pagination Next
+        private async void NextButton()
+        {
+
+            if (currentpage < maxPage)
+            {
+                currentpage++;
+                await CheckPageNumber();
+                await GetAllPurchaseItemHeaders();
+                PaginationLabel.Text = $"{currentpage} / {maxPage}";//Pagination Label
+            }
+        }
+        //Pagination Previous
+        private async void PreviousButton()
+        {
+            if (currentpage > 1)
+            {
+                currentpage--;
+                await CheckPageNumber();
+                await GetAllPurchaseItemHeaders();
+                PaginationLabel.Text = $"{currentpage} / {maxPage}";//Pagination Label
+
+            }
+        }
+
+
+
+
         //Open Adjust Item Modal
 
 
@@ -149,10 +219,25 @@ namespace DazaBestApplication.Pages
         {
 
         }
-
+        //datagridcell click event
         private void AllPurchaseDatagridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+        //pagination prev click
+        private void PaginationPREV_Click(object sender, EventArgs e)
+        {
+            PreviousButton();
+        }
+        //pagination next click
+        private void PaginationNext_Click(object sender, EventArgs e)
+        {
+            NextButton();
+        }
+        //search box text change
+        private void SearchBox_TextChange(object sender, EventArgs e)
+        {
+            SearchPurchaseitem();
         }
     }
 }

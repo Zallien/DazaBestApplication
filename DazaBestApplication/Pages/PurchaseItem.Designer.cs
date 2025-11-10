@@ -41,6 +41,10 @@
             SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
             BuyProductBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             AllPurchaseDatagridView = new Bunifu.UI.WinForms.BunifuDataGridView();
+            IdCol = new DataGridViewTextBoxColumn();
+            PurchaseNumberCol = new DataGridViewTextBoxColumn();
+            PurchaseDateCol = new DataGridViewTextBoxColumn();
+            AddedByCol = new DataGridViewTextBoxColumn();
             Pagination = new Panel();
             PaginationLabel = new Label();
             PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
@@ -48,10 +52,6 @@
             TopPanel = new Panel();
             panel4 = new Panel();
             label1 = new Label();
-            IdCol = new DataGridViewTextBoxColumn();
-            PurchaseNumberCol = new DataGridViewTextBoxColumn();
-            PurchaseDateCol = new DataGridViewTextBoxColumn();
-            AddedByCol = new DataGridViewTextBoxColumn();
             MainContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllPurchaseDatagridView).BeginInit();
             Pagination.SuspendLayout();
@@ -145,6 +145,7 @@
             SearchBox.TextPlaceholder = "Search by Purchase No";
             SearchBox.UseSystemPasswordChar = false;
             SearchBox.WordWrap = true;
+            SearchBox.TextChange += SearchBox_TextChange;
             // 
             // BuyProductBTN
             // 
@@ -305,6 +306,34 @@
             AllPurchaseDatagridView.CellContentClick += AllPurchaseDatagridView_CellContentClick;
             AllPurchaseDatagridView.CellDoubleClick += AllPurchaseDatagridView_CellDoubleClick;
             // 
+            // IdCol
+            // 
+            IdCol.HeaderText = "PurchaseId";
+            IdCol.Name = "IdCol";
+            IdCol.ReadOnly = true;
+            IdCol.Visible = false;
+            // 
+            // PurchaseNumberCol
+            // 
+            PurchaseNumberCol.FillWeight = 40F;
+            PurchaseNumberCol.HeaderText = "Purchase No";
+            PurchaseNumberCol.Name = "PurchaseNumberCol";
+            PurchaseNumberCol.ReadOnly = true;
+            // 
+            // PurchaseDateCol
+            // 
+            PurchaseDateCol.FillWeight = 35F;
+            PurchaseDateCol.HeaderText = "Date";
+            PurchaseDateCol.Name = "PurchaseDateCol";
+            PurchaseDateCol.ReadOnly = true;
+            // 
+            // AddedByCol
+            // 
+            AddedByCol.FillWeight = 25F;
+            AddedByCol.HeaderText = "Added By";
+            AddedByCol.Name = "AddedByCol";
+            AddedByCol.ReadOnly = true;
+            // 
             // Pagination
             // 
             Pagination.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
@@ -313,7 +342,7 @@
             Pagination.Controls.Add(PaginationNext);
             Pagination.Location = new Point(4, 557);
             Pagination.Name = "Pagination";
-            Pagination.Size = new Size(145, 50);
+            Pagination.Size = new Size(181, 50);
             Pagination.TabIndex = 14;
             // 
             // PaginationLabel
@@ -321,7 +350,7 @@
             PaginationLabel.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PaginationLabel.Location = new Point(52, 7);
             PaginationLabel.Name = "PaginationLabel";
-            PaginationLabel.Size = new Size(40, 40);
+            PaginationLabel.Size = new Size(80, 40);
             PaginationLabel.TabIndex = 7;
             PaginationLabel.Text = "0";
             PaginationLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -359,6 +388,7 @@
             PaginationPREV.WaitOnLoad = false;
             PaginationPREV.Zoom = 20;
             PaginationPREV.ZoomSpeed = 10;
+            PaginationPREV.Click += PaginationPREV_Click;
             // 
             // PaginationNext
             // 
@@ -380,7 +410,7 @@
             PaginationNext.ImageSize = new Size(20, 20);
             PaginationNext.ImageZoomSize = new Size(40, 40);
             PaginationNext.InitialImage = (Image)resources.GetObject("PaginationNext.InitialImage");
-            PaginationNext.Location = new Point(98, 7);
+            PaginationNext.Location = new Point(138, 7);
             PaginationNext.Name = "PaginationNext";
             PaginationNext.Rotation = 0;
             PaginationNext.ShowActiveImage = true;
@@ -393,6 +423,7 @@
             PaginationNext.WaitOnLoad = false;
             PaginationNext.Zoom = 20;
             PaginationNext.ZoomSpeed = 10;
+            PaginationNext.Click += PaginationNext_Click;
             // 
             // TopPanel
             // 
@@ -424,34 +455,6 @@
             label1.TabIndex = 0;
             label1.Text = "Purchase Item";
             label1.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // IdCol
-            // 
-            IdCol.HeaderText = "PurchaseId";
-            IdCol.Name = "IdCol";
-            IdCol.ReadOnly = true;
-            IdCol.Visible = false;
-            // 
-            // PurchaseNumberCol
-            // 
-            PurchaseNumberCol.FillWeight = 40F;
-            PurchaseNumberCol.HeaderText = "Purchase No";
-            PurchaseNumberCol.Name = "PurchaseNumberCol";
-            PurchaseNumberCol.ReadOnly = true;
-            // 
-            // PurchaseDateCol
-            // 
-            PurchaseDateCol.FillWeight = 35F;
-            PurchaseDateCol.HeaderText = "Date";
-            PurchaseDateCol.Name = "PurchaseDateCol";
-            PurchaseDateCol.ReadOnly = true;
-            // 
-            // AddedByCol
-            // 
-            AddedByCol.FillWeight = 25F;
-            AddedByCol.HeaderText = "Added By";
-            AddedByCol.Name = "AddedByCol";
-            AddedByCol.ReadOnly = true;
             // 
             // PurchaseItem
             // 

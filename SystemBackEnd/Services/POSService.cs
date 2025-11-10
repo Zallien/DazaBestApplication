@@ -36,7 +36,6 @@ namespace SystemBackEnd.Services
             return products;
         }
 
-
         //Get Reciept Information
         public async Task<RecieptData> GetRecieptData(Guid transacId, string CashierName)
         {
@@ -82,7 +81,6 @@ namespace SystemBackEnd.Services
 
             return recieptData;
         }
-
 
         //Transaction Processing --Done Transaction--
         public async Task<Guid> ProcessPOSTransaction(POSTransactionDone transactionprocess)
@@ -149,7 +147,7 @@ namespace SystemBackEnd.Services
                 }
                 await _db.SaveChangesAsync();
                 var theheader = await _db.TransactionHeader.FirstOrDefaultAsync(x => x.TransactionHeaderId == trasactionheaderid);
-                var countsperday = _db.TransactionHeader.Where(x => x.TransactionDate == DateTime.Now).Count();
+                var countsperday = _db.TransactionHeader.Where(x => x.TransactionDate.Date == DateTime.Now.Date).Count();
                 if (theheader != null)
                 {
                     theheader.TransactionNumber = $"{DateTime.Now.ToString("yyMMddHHmmss")} - {(countsperday + 1).ToString("D4")}";

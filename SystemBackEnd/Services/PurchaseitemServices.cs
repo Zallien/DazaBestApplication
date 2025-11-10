@@ -70,7 +70,8 @@ namespace SystemBackEnd.Services
 
                 _newheader = new PurchaseItemHeader();
                 _newheader = await _db.PurcahseItemHeader.Where(x => x.Purchaseheaderid == _PurchaseItemHeaderID).FirstOrDefaultAsync();
-                _newheader.Purchasenumber = $"P-{DateTime.Now.ToString("yyyyMMddHHmmss")}-{_newheader.Row.ToString("D4")}";
+                var countsperday = await _db.PurcahseItemHeader.Where(x => x.DateCreated.Date == DateTime.Now.Date).CountAsync();
+                _newheader.Purchasenumber = $"P-{DateTime.Now.ToString("yyyyMMddHHmmss")}-{(countsperday + 1).ToString("D4")}";
                 _db.PurcahseItemHeader.Update(_newheader);
                 await _db.SaveChangesAsync();
 
@@ -171,6 +172,21 @@ namespace SystemBackEnd.Services
 
             return opeartedby;
         }
+        //Get PurchaseItem MaxPage
+        public async Task<int> GetPurchaseItemMaxPage(int itemperpage)
+        {
+            int totalpages = 0;
+            try
+            {
+                int totalitems = await _db.PurcahseItemHeader.CountAsync();
+                totalpages = (totalitems / itemperpage) + 1;
+            }
+            catch (Exception e)
+            {
+            }
+            return totalpages;
+        }
+
 
 
         //Get All Available and Active Items 

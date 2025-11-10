@@ -42,6 +42,7 @@ namespace DazaBestApplication.Pages
         private async void ProductsInventory_Load(object sender, EventArgs e)
         {
             await CheckAllProductsCount();
+            await CheckPageNumber();
             await LoadProducts();
             HookEvents();
 
