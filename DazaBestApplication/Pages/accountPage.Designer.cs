@@ -40,6 +40,7 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             TopPanel = new Panel();
+            panel5 = new Panel();
             label1 = new Label();
             MainContainer = new Panel();
             AllAccountsDatagridView = new Bunifu.UI.WinForms.BunifuDataGridView();
@@ -58,7 +59,6 @@
             PaginationLabel = new Label();
             PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
             PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
-            panel5 = new Panel();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllAccountsDatagridView).BeginInit();
@@ -80,6 +80,15 @@
             TopPanel.Padding = new Padding(10, 0, 10, 0);
             TopPanel.Size = new Size(900, 50);
             TopPanel.TabIndex = 4;
+            // 
+            // panel5
+            // 
+            panel5.BackColor = Color.Maroon;
+            panel5.Dock = DockStyle.Bottom;
+            panel5.Location = new Point(10, 45);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(880, 5);
+            panel5.TabIndex = 2;
             // 
             // label1
             // 
@@ -169,7 +178,7 @@
             AllAccountsDatagridView.Size = new Size(900, 492);
             AllAccountsDatagridView.TabIndex = 11;
             AllAccountsDatagridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
-            AllAccountsDatagridView.Click += AddAccountBTN_Click;
+            AllAccountsDatagridView.CellDoubleClick += AllAccountsDatagridView_CellDoubleClick;
             // 
             // IdCol
             // 
@@ -180,12 +189,14 @@
             // 
             // NameCol
             // 
+            NameCol.FillWeight = 70F;
             NameCol.HeaderText = "Name";
             NameCol.Name = "NameCol";
             NameCol.ReadOnly = true;
             // 
             // UsernameCol
             // 
+            UsernameCol.FillWeight = 30F;
             UsernameCol.HeaderText = "Username";
             UsernameCol.Name = "UsernameCol";
             UsernameCol.ReadOnly = true;
@@ -300,6 +311,7 @@
             RemoveButton.TextMarginLeft = 0;
             RemoveButton.TextPadding = new Padding(35, 0, 0, 0);
             RemoveButton.UseDefaultRadiusAndThickness = true;
+            RemoveButton.Click += RemoveButton_Click;
             // 
             // EditButton
             // 
@@ -389,6 +401,7 @@
             EditButton.TextMarginLeft = 0;
             EditButton.TextPadding = new Padding(35, 0, 0, 0);
             EditButton.UseDefaultRadiusAndThickness = true;
+            EditButton.Click += EditButton_Click;
             // 
             // AddAccountBTN
             // 
@@ -582,7 +595,7 @@
             Pagination.Dock = DockStyle.Left;
             Pagination.Location = new Point(10, 0);
             Pagination.Name = "Pagination";
-            Pagination.Size = new Size(145, 50);
+            Pagination.Size = new Size(190, 50);
             Pagination.TabIndex = 10;
             // 
             // PaginationLabel
@@ -590,7 +603,7 @@
             PaginationLabel.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PaginationLabel.Location = new Point(52, 7);
             PaginationLabel.Name = "PaginationLabel";
-            PaginationLabel.Size = new Size(40, 40);
+            PaginationLabel.Size = new Size(88, 40);
             PaginationLabel.TabIndex = 7;
             PaginationLabel.Text = "0";
             PaginationLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -649,7 +662,7 @@
             PaginationNext.ImageSize = new Size(20, 20);
             PaginationNext.ImageZoomSize = new Size(40, 40);
             PaginationNext.InitialImage = (Image)resources.GetObject("PaginationNext.InitialImage");
-            PaginationNext.Location = new Point(98, 7);
+            PaginationNext.Location = new Point(146, 7);
             PaginationNext.Name = "PaginationNext";
             PaginationNext.Rotation = 0;
             PaginationNext.ShowActiveImage = true;
@@ -662,15 +675,6 @@
             PaginationNext.WaitOnLoad = false;
             PaginationNext.Zoom = 20;
             PaginationNext.ZoomSpeed = 10;
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.Maroon;
-            panel5.Dock = DockStyle.Bottom;
-            panel5.Location = new Point(10, 45);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(880, 5);
-            panel5.TabIndex = 2;
             // 
             // accountPage
             // 
@@ -713,9 +717,9 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 AddAccountBTN;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 RemoveButton;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 EditButton;
+        private Panel panel5;
         private DataGridViewTextBoxColumn IdCol;
         private DataGridViewTextBoxColumn NameCol;
         private DataGridViewTextBoxColumn UsernameCol;
-        private Panel panel5;
     }
 }

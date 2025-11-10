@@ -11,20 +11,27 @@ using SystemBackEnd.Services;
 using SystemBackEnd.Models;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd;
+using SystemBackEnd.EventHandlers;
 
 namespace DazaBestApplication.Modals
 {
     public partial class AccountModal : Form
     {
+
         private Form MainPage;
         private bool IsOwner = false;
         private LoginServices loginServices = new LoginServices(new BackEndDBContext());
+        private AccountEditInformation accountEditInformation = new AccountEditInformation();
+        private string ActionType;
 
 
-        public AccountModal(Form mainPage)
+
+        public AccountModal(Form mainPage, AccountEditInformation accountEditInformation,string actionModal)
         {
             InitializeComponent();
             MainPage = mainPage;
+            this.accountEditInformation = accountEditInformation;
+            ActionType = actionModal;
         }
         //Close Modal
         private async Task CloseAddAccountModal()
@@ -52,6 +59,7 @@ namespace DazaBestApplication.Modals
                 {
                     MessageBox.Show("Account successfully created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     await CloseAddAccountModal();
+                    await AccountEventHandlers.InvokeAccount();
                 }
                 else
                 {
@@ -66,6 +74,62 @@ namespace DazaBestApplication.Modals
 
             }
         }
+        //Check Account Action Type
+        private async Task CheckActions()
+        {
+            if (ActionType != "Add")
+            {
+                modaltitletext.Text = "Edit Account";
+                FirstNametxt.Text = accountEditInformation.Firstname;
+                LastNametxt.Text = accountEditInformation.Lastname;
+                Usernametxt.Text = accountEditInformation.Username;
+                isAdminToggle.Checked = accountEditInformation.IsOwner;
+                Passwordtxt.PlaceholderText = "Enter New Password";
+                AddAccountBtn.Text = "Save Changes";
+            }
+        }
+        //Save Changes
+        private async Task SaveChanges()
+        {
+            try
+            {
+                loginServices = new LoginServices(new BackEndDBContext());
+                accountEditInformation.Firstname = FirstNametxt.Text;
+                accountEditInformation.Lastname = LastNametxt.Text;
+                accountEditInformation.Username = Usernametxt.Text;
+                accountEditInformation.IsOwner = isAdminToggle.Checked;
+                if (Passwordtxt.Text != "")
+                {
+                    accountEditInformation.Password = Passwordtxt.Text;
+                }
+                bool isUpdated = await loginServices.EditAccountInformation(accountEditInformation);
+                if (isUpdated)
+                {
+                    MessageBox.Show("Account successfully updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await CloseAddAccountModal();
+                    await AccountEventHandlers.InvokeAccount();
+                }
+                else
+                {
+                    MessageBox.Show("Error updating account. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception e)
+            {
+            }
+        }
+
+
+
+
+        //Main Load
+        private async void AccountModal_Load(object sender, EventArgs e)
+        {
+            isAdminToggle.Checked = IsOwner;
+            await CheckActions();
+        }
+
+
 
 
 
@@ -75,24 +139,22 @@ namespace DazaBestApplication.Modals
         {
 
         }
-
         private void bunifuToggleSwitch1_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuToggleSwitch.CheckedChangedEventArgs e)
         {
 
         }
-
         private void CloseModal_Click(object sender, EventArgs e)
         {
             CloseAddAccountModal();
         }
-
-        private void AccountModal_Load(object sender, EventArgs e)
-        {
-            isAdminToggle.Checked = IsOwner;
-        }
-
         private async void AddAccountBtn_Click(object sender, EventArgs e)
         {
+            if (ActionType != "Add")
+            {
+                await SaveChanges();
+                return;
+            }
+
             if (FirstNametxt.Text == "" || LastNametxt.Text == "" || Usernametxt.Text == "" || Passwordtxt.Text == "")
             {
                 MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -104,12 +166,10 @@ namespace DazaBestApplication.Modals
             }
 
         }
-
         private void bunifuButton2_Click(object sender, EventArgs e)
         {
             CloseAddAccountModal();
         }
-
         private void FirstNametxt_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -117,7 +177,6 @@ namespace DazaBestApplication.Modals
                 e.Handled = true;
             }
         }
-
         private void LastNametxt_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -125,7 +184,6 @@ namespace DazaBestApplication.Modals
                 e.Handled = true;
             }
         }
-
         private void Usernametxt_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))

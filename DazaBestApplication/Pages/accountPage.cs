@@ -8,8 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SystemBackEnd.ServiceModels;
 using SystemBackEnd;
+using SystemBackEnd.EventHandlers;
+using SystemBackEnd.Models;
+using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
 
 namespace DazaBestApplication.Pages
@@ -19,16 +21,19 @@ namespace DazaBestApplication.Pages
         private Form MainForm;
         private List<AccountDisplay> allAccounts = new();
         private LoginServices loginServices;
+        private AccountEditInformation accountEditInformation = new AccountEditInformation();
+
+
         public accountPage(Form mainForm)
         {
             InitializeComponent();
             MainForm = mainForm;
         }
         //Show Add Account Modal
-        private async Task ShowAccountModal()
+        private async Task ShowAccountModal(string Actionmodal)
         {
             Form ModalBackgorund = new();
-            using (AccountModal modalcontent = new(MainForm))
+            using (AccountModal modalcontent = new(MainForm, accountEditInformation, Actionmodal))
             {
                 var mainBounds = MainForm.Bounds;
 
@@ -76,24 +81,71 @@ namespace DazaBestApplication.Pages
                 row.Cells["UsernameCol"].Value = account.Username;
             }
         }
-
-
-
-        //Events
-        private async void AddAccountBTN_Click(object sender, EventArgs e)
+        //Edit Account
+        private async Task EditAccount()
         {
-            await ShowAccountModal();
+            Guid theEditAccountId;
+            theEditAccountId = Guid.Parse(AllAccountsDatagridView.SelectedRows[0].Cells["IdCol"].Value.ToString()!);
+            loginServices = new LoginServices(new BackEndDBContext());
+            accountEditInformation = new AccountEditInformation();
+            accountEditInformation = await loginServices.GetAccountEditInformation(theEditAccountId);
+            await ShowAccountModal("Edit");
         }
-        private void bunifuButton22_Click(object sender, EventArgs e)
+        //Remove All Selected Accounts
+        private async Task RemoveSelectedAccounts()
         {
+            List<Guid> accountIdsToRemove = new List<Guid>();
+            foreach (DataGridViewRow row in AllAccountsDatagridView.SelectedRows)
+            {
+                Guid accountId = Guid.Parse(row.Cells["IdCol"].Value.ToString()!);
+                accountIdsToRemove.Add(accountId);
+            }
+            loginServices = new LoginServices(new BackEndDBContext());
+            bool isOwnerRemoved = await loginServices.RemoveAccount(accountIdsToRemove);
+            if (isOwnerRemoved == true)
+            {
+                MessageBox.Show("Removed Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                await AccountEventHandlers.InvokeAccount();
+            }
+            else
+            {
+                MessageBox.Show("Removed Unsuccessfully an Error Occured", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            await PopulateDatagridAllAccounts();
 
         }
+
+
 
 
         //Main Load
         private async void accountPage_Load(object sender, EventArgs e)
         {
             await PopulateDatagridAllAccounts();
+            AccountEventHandlers.AccountChangeNotifier += async () =>
+            {
+                await PopulateDatagridAllAccounts();
+            };
+
+        }
+
+
+        //Events
+        private async void AddAccountBTN_Click(object sender, EventArgs e)
+        {
+            ShowAccountModal("Add");
+        }
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            EditAccount();
+        }
+        private void RemoveButton_Click(object sender, EventArgs e)
+        {
+            RemoveSelectedAccounts();
+        }
+        private void AllAccountsDatagridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            EditAccount();
         }
     }
 }

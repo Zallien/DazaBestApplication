@@ -143,7 +143,7 @@ namespace SystemBackEnd.Services
             try
             {
                 //Accounts
-                var accounts = await _db.Accounts.ToListAsync();
+                var accounts = await _db.Accounts.Where(x => x.IsActive == true).ToListAsync();
                 if (accounts.Count > 0)
                 {
                     //Get Questions Based On AccountId
@@ -221,6 +221,76 @@ namespace SystemBackEnd.Services
             return false;
 
 
+        }
+        //Get Edit Account Information
+        public async Task<AccountEditInformation> GetAccountEditInformation(Guid accountId)
+        {
+            AccountEditInformation accountEditInformation = new AccountEditInformation();
+            try
+            {
+                var acc = await _db.Accounts.FirstOrDefaultAsync(y => y.AccountId == accountId);
+                if (acc != null)
+                {
+                    accountEditInformation.AccountId = acc.AccountId;
+                    accountEditInformation.Firstname = acc.FirstName;
+                    accountEditInformation.Lastname = acc.LastName;
+                    accountEditInformation.Username = acc.Username;
+                    accountEditInformation.IsOwner = acc.IsOwner;
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return accountEditInformation;
+        }
+        //Edit Account Information
+        public async Task<bool> EditAccountInformation(AccountEditInformation accountEditInformation)
+        {
+            try
+            {
+                var acc = await _db.Accounts.FirstOrDefaultAsync(y => y.AccountId == accountEditInformation.AccountId);
+                if (acc != null)
+                {
+                    acc.FirstName = accountEditInformation.Firstname;
+                    acc.LastName = accountEditInformation.Lastname;
+                    acc.Username = accountEditInformation.Username;
+                    if (!string.IsNullOrEmpty(accountEditInformation.Password))
+                    {
+                        string hashedPassword = HashPassword(accountEditInformation.Password);
+                        acc.Password = hashedPassword;
+                    }
+                    acc.IsOwner = accountEditInformation.IsOwner;
+                    _db.Update(acc);
+                    await _db.SaveChangesAsync();
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return false;
+        }
+        //Remove Account by updating IsActive to false
+        public async Task<bool> RemoveAccount(List<Guid> Allaccounts)
+        {
+            try
+            {
+                foreach (Guid accountId in Allaccounts)
+                {
+                    var acc = await _db.Accounts.FirstOrDefaultAsync(y => y.AccountId == accountId);
+                    if (acc != null)
+                    {
+                        acc.IsActive = false;
+                        _db.Update(acc);
+                    }
+                }
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+            }
+            return false;
         }
     }
 }
