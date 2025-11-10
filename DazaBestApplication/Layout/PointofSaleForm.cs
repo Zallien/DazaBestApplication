@@ -67,7 +67,7 @@ namespace DazaBestApplication.Layout
             int panelWidth = maindisplaysize.Width / cols;
             foreach (Products product in AllavailableProducts)
             {
-                BunifuGradientPanel itemPanel = new BunifuGradientPanel
+                BunifuShadowPanel itemPanel = new BunifuShadowPanel
                 {
                     Width = panelWidth - 10,
                     Height = 150,
@@ -79,11 +79,14 @@ namespace DazaBestApplication.Layout
                         ProductPrice = product.Price,
                         ProductName = product.ProductName
                     },
-                    GradientBottomLeft = ColorTranslator.FromHtml("#ffffff"),
+                    /*GradientBottomLeft = ColorTranslator.FromHtml("#ffffff"),
                     GradientBottomRight = ColorTranslator.FromHtml("#ffffff"),
                     GradientTopLeft = ColorTranslator.FromHtml("#ffffff"),
                     GradientTopRight = ColorTranslator.FromHtml("#ffffff"),
-                    BorderStyle = BorderStyle.FixedSingle,
+                    BorderStyle = BorderStyle.FixedSingle,*/
+                    PanelColor = Color.White,
+                    PanelColor2 = Color.White,
+                    ShadowColor = Color.Maroon,
                     Padding = new Padding(15)
                 };
                 PictureBox pictureBox = new PictureBox
@@ -388,7 +391,7 @@ namespace DazaBestApplication.Layout
             // Clear old controls and column styles
             tableLayoutPanel1.Controls.Clear();
             tableLayoutPanel1.ColumnStyles.Clear();
-
+            tableLayoutPanel1.Dock = DockStyle.Fill;
             // Set the number of columns based on your list
             tableLayoutPanel1.ColumnCount = NavigationButtons.Count;
 
@@ -408,8 +411,21 @@ namespace DazaBestApplication.Layout
                     AutoSize = false,            
                     Margin = new Padding(5),
                     Tag = category,
-                    Dock = DockStyle.Fill,       
+                    Dock = DockStyle.Fill,
+                    Width=150,
+                    
                 };
+
+                
+                navButton.onHoverState.BorderColor = Color.FromArgb(255, 240, 221);
+                navButton.onHoverState.FillColor = Color.FromArgb(255, 240, 221);
+                navButton.onHoverState.ForeColor = Color.Black;
+                navButton.OnIdleState.BorderColor = Color.Maroon;
+                navButton.OnIdleState.FillColor = Color.Maroon;
+                navButton.OnIdleState.ForeColor = Color.White;
+                navButton.OnPressedState.BorderColor = Color.Black;
+                navButton.OnPressedState.FillColor = Color.FromArgb(198, 40, 40);
+                navButton.OnPressedState.ForeColor = Color.White;
 
                 navButton.Click += async (s, e) =>
                 {

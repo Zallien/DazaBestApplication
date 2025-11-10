@@ -42,7 +42,15 @@ namespace DazaBestApplication
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Log_in());
+            /*Application.Run(new Log_in());*/
+            try
+            {
+                Application.Run(new Log_in());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Startup Error");
+            }
         }
 
 

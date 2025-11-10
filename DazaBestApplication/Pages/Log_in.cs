@@ -194,5 +194,10 @@ namespace DazaBestApplication.Pages
                 e.Handled = true;
             }
         }
+
+        private void background_Panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
