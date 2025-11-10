@@ -80,6 +80,7 @@ namespace SystemBackEnd.Services
                 _thelist = await (from a in _db.ItemAdjustmentHeader
                                   join b in _db.Accounts
                                   on a.OperatedBy equals b.AccountId
+                                  where a.ReferenceNumber.ToLower().Contains(searchvalue.SearchValue.ToLower())
                                   orderby a.DateOperated descending
                                   select new AdjustItemHeaderwithOperatedName
                                   {

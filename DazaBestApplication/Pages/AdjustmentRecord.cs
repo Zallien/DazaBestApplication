@@ -23,24 +23,27 @@ namespace DazaBestApplication.Pages
         List<AdjustmentReportDetailsforPrint> adjustmentReportDetailsforPrints = new();
         AdjusmentReportServices adjustmentreportservice;
         RecordsFilterSearch recordsFilterSearch;
+        private Form MainForm;
 
 
-        //Search and Filterations
+        #region Search and Filterations
         private string SearchValue = "";
         private int PageNumber = 0;
         private int ItemPerPaeg = 12;
         private DateTime FromDateFilter = DateTime.Now;
         private DateTime ToDateFilter = DateTime.Now;
         private int totalpages = 0;
+        #endregion
 
-        private Form MainForm;
+        //Contrutor
         public AdjustmentRecord(Form mainForm)
         {
             InitializeComponent();
 
             MainForm = mainForm;
         }
-        //Get A djustmentDetails
+
+        //Get AdjustmentDetails
         private async Task GetAdjustmentDetails()
         {
             try
@@ -80,9 +83,7 @@ namespace DazaBestApplication.Pages
             }
         }
 
-
-
-        //pagination
+        #region pagination Logic
         private async Task GetTotalPages()
         {
             try
@@ -169,10 +170,23 @@ namespace DazaBestApplication.Pages
                 todatetxt.Value = DateTime.Now;
             }
         }
+        #endregion
 
+        //Main Load
+        private async void AdjustmentRecord_Load(object sender, EventArgs e)
+        {
+            //Set DatePickers
+            fromdatetxt.MaxDate = DateTime.Now;
+            todatetxt.MaxDate = DateTime.Now;
+            fromdatetxt.Value = FromDateFilter;
+            todatetxt.Value = ToDateFilter;
+            await GetTotalPages();
+            await CheckPageNumber();
+            await PopulateAlldjustDetailsDatagrid();
 
+        }
 
-
+        #region Form Events
         private async void PrintBtn_Click(object sender, EventArgs e)
         {
             //print for report
@@ -199,13 +213,6 @@ namespace DazaBestApplication.Pages
 
             }
         }
-
-
-        //Main Load
-        private async void AdjustmentRecord_Load(object sender, EventArgs e)
-        {
-            await PopulateAlldjustDetailsDatagrid();
-        }
         private void PaginationNext_Click(object sender, EventArgs e)
         {
             NextButton();
@@ -218,5 +225,6 @@ namespace DazaBestApplication.Pages
         {
             ChangeDateFilter();
         }
+        #endregion
     }
 }

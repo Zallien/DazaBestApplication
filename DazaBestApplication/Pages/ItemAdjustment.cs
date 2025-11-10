@@ -21,11 +21,13 @@ namespace DazaBestApplication.Pages
         private Form MainForm;
         private AdjustItemModalViewModel adjustItemModalViewModel = new();
         private List<AdjustItemHeaderwithOperatedName> _theadjustitemheaderlist = new();
+        private AdjustItemServices adjustitemservice;
 
         //for Products Pagination
         private int pagenumber = 1;
         private int itemperpage = 12;
         private int maxpagenumber = 0;
+        private string searchvalue = "";
 
         //Constructor
         public ItemAdjustment(Form mainForm)
@@ -33,6 +35,17 @@ namespace DazaBestApplication.Pages
             InitializeComponent();
             MainForm = mainForm;
         }
+        //Main Load
+        private async void ItemAdjustment_Load(object sender, EventArgs e)
+        {
+            await GetMaxpagevalue();
+            await CheckPageNumber();
+            await PopulateHeaderDatagridview();
+            AdjustItemEventHandler.AdjustItemNotifier += PopulateHeaderDatagridview;
+            PaginationLabel.Text = $"{pagenumber} / {maxpagenumber}";//Pagination Label
+        }
+
+
         //Get AdjustItemHeader
         private async Task<List<AdjustItemHeaderwithOperatedName>> GetAdjustItemHeader()
         {
@@ -43,7 +56,7 @@ namespace DazaBestApplication.Pages
                 {
                     ItemperPage = itemperpage,
                     PageNumber = pagenumber,
-                    SearchValue = ""
+                    SearchValue = searchvalue
                 };
                 AdjustItemServices service = new AdjustItemServices(new BackEndDBContext());
                 thelist = await service.GetAdjustItemHeader(_info);
@@ -94,16 +107,6 @@ namespace DazaBestApplication.Pages
             await ShowItemAdjustmentModal();
 
         }
-        
-
-
-        //Main Load
-        private async void ItemAdjustment_Load(object sender, EventArgs e)
-        {
-            await PopulateHeaderDatagridview();
-            AdjustItemEventHandler.AdjustItemNotifier += PopulateHeaderDatagridview;
-        }
-
         //Show Adjust Item Modal
         private async Task ShowItemAdjustmentModal()
         {
@@ -129,10 +132,74 @@ namespace DazaBestApplication.Pages
                 ModalBackgorund.Dispose();
             }
         }
+        //Search Adjust Item 
+        private async Task SearchAdjustitem()
+        {
+            searchvalue = SearchBox.Text.Trim();
+            pagenumber = 1;
+            await PopulateHeaderDatagridview();
+        }
+
+
+        #region Pagination
+        private async Task GetMaxpagevalue()
+        {
+            adjustitemservice = new AdjustItemServices(new BackEndDBContext());
+            maxpagenumber = await adjustitemservice.GetTotalPages(itemperpage);
+        }
+        private async Task CheckPageNumber()
+        {
+            await Task.Delay(200);
+            if (pagenumber == 1)
+            {
+                PaginationPREV.Enabled = false;
+            }
+            else
+            {
+                PaginationPREV.Enabled = true;
+            }
+            if (pagenumber >= maxpagenumber)
+            {
+                PaginationNext.Enabled = false;
+            }
+            else
+            {
+                PaginationNext.Enabled = true;
+            }
+        }
+        //Pagination Next
+        private async void NextButton()
+        {
+
+            if (pagenumber < maxpagenumber)
+            {
+                pagenumber++;
+                await GetMaxpagevalue();
+                await CheckPageNumber();
+                await PopulateHeaderDatagridview();
+                PaginationLabel.Text = $"{pagenumber} / {maxpagenumber}";//Pagination Label
+            }
+        }
+        //Pagination Previous
+        private async void PreviousButton()
+        {
+            if (pagenumber > 1)
+            {
+                pagenumber--;
+                await GetMaxpagevalue();
+                await CheckPageNumber();
+                await PopulateHeaderDatagridview();
+                PaginationLabel.Text = $"{pagenumber} / {maxpagenumber}";//Pagination Label
+
+            }
+        }
 
 
 
-        //---Events---
+        #endregion
+
+
+        #region Form Events
         private async void AdjustItemBTN_Click(object sender, EventArgs e)
         {
             adjustItemModalViewModel = new AdjustItemModalViewModel()
@@ -143,7 +210,6 @@ namespace DazaBestApplication.Pages
             };
             await ShowItemAdjustmentModal();
         }
-
         private void AllAdjustmentItemsDatagrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -152,7 +218,6 @@ namespace DazaBestApplication.Pages
                 ViewAdjustmentItemDetails(_selectedpurchaseheaderid);
             }
         }
-
         private void AllAdjustmentItemsDatagrid_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             const int NumberOnlyCol = 0;
@@ -183,5 +248,20 @@ namespace DazaBestApplication.Pages
                 e.Handled = true;
             }
         }
+        private void PaginationNext_Click(object sender, EventArgs e)
+        {
+            NextButton();
+        }
+        private void PaginationPREV_Click(object sender, EventArgs e)
+        {
+            PreviousButton();
+        }
+        private void SearchBox_TextChange(object sender, EventArgs e)
+        {
+            SearchAdjustitem();
+        }
+
+        #endregion
+
     }
 }

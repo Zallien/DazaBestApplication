@@ -176,6 +176,7 @@
             SearchBox.TextPlaceholder = "Search by Purchase No";
             SearchBox.UseSystemPasswordChar = false;
             SearchBox.WordWrap = true;
+            SearchBox.TextChange += SearchBox_TextChange;
             // 
             // AdjustItemBTN
             // 
@@ -418,6 +419,7 @@
             PaginationPREV.WaitOnLoad = false;
             PaginationPREV.Zoom = 20;
             PaginationPREV.ZoomSpeed = 10;
+            PaginationPREV.Click += PaginationPREV_Click;
             // 
             // PaginationNext
             // 
@@ -452,6 +454,7 @@
             PaginationNext.WaitOnLoad = false;
             PaginationNext.Zoom = 20;
             PaginationNext.ZoomSpeed = 10;
+            PaginationNext.Click += PaginationNext_Click;
             // 
             // ItemAdjustment
             // 
