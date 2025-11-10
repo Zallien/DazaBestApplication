@@ -85,5 +85,26 @@ namespace SystemBackEnd.Services
             return adjustmentReportDetails;
         }
 
+        //Get total pages for Adjustment Report
+        public async Task<int> GetTotalPages(RecordsFilterSearch filtersearch)
+        {
+            int totalpages = 0;
+            try
+            {
+                var totalcount = await (from a in _db.ItemAdjustmentHeader
+                                        join b in _db.ItemAdjustmentDetails on a.ReferenceHeaderId equals b.ReferenceHeaderId
+                                        join c in _db.Items on b.ItemId equals c.ItemID
+                                        where (!filtersearch.FromDate.HasValue || a.DateOperated >= filtersearch.FromDate.Value)
+                                              && (!filtersearch.ToDate.HasValue || a.DateOperated <= filtersearch.ToDate.Value)
+                                              && (string.IsNullOrEmpty(filtersearch.SearchValue) || a.ReferenceNumber.Contains(filtersearch.SearchValue))
+                                        select b).CountAsync();
+                totalpages = (totalcount / filtersearch.ItemperPage);
+            }
+            catch (Exception e)
+            {
+            }
+            return totalpages;
+        }
+
     }
 }

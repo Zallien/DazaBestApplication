@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesRecord));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             TopPanel = new Panel();
             panel4 = new Panel();
             label1 = new Label();
@@ -45,8 +45,8 @@
             panel5 = new Panel();
             bunifuButton22 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
-            bunifuDatePicker1 = new Bunifu.UI.WinForms.BunifuDatePicker();
-            bunifuDatePicker2 = new Bunifu.UI.WinForms.BunifuDatePicker();
+            fromdatetxt = new Bunifu.UI.WinForms.BunifuDatePicker();
+            todatetxt = new Bunifu.UI.WinForms.BunifuDatePicker();
             bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             PrintBtn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -118,8 +118,8 @@
             // 
             panel5.Controls.Add(bunifuButton22);
             panel5.Controls.Add(bunifuLabel1);
-            panel5.Controls.Add(bunifuDatePicker1);
-            panel5.Controls.Add(bunifuDatePicker2);
+            panel5.Controls.Add(fromdatetxt);
+            panel5.Controls.Add(todatetxt);
             panel5.Controls.Add(bunifuLabel2);
             panel5.Dock = DockStyle.Left;
             panel5.Location = new Point(10, 0);
@@ -146,11 +146,11 @@
             bunifuButton22.ButtonTextMarginLeft = 0;
             bunifuButton22.ColorContrastOnClick = 45;
             bunifuButton22.ColorContrastOnHover = 45;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            bunifuButton22.CustomizableEdges = borderEdges1;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            bunifuButton22.CustomizableEdges = borderEdges3;
             bunifuButton22.DialogResult = DialogResult.None;
             bunifuButton22.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton22.DisabledFillColor = Color.FromArgb(204, 204, 204);
@@ -232,60 +232,62 @@
             bunifuLabel1.TextAlignment = ContentAlignment.TopLeft;
             bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuDatePicker1
+            // fromdatetxt
             // 
-            bunifuDatePicker1.BackColor = Color.White;
-            bunifuDatePicker1.BorderColor = Color.Black;
-            bunifuDatePicker1.BorderRadius = 1;
-            bunifuDatePicker1.Color = Color.Black;
-            bunifuDatePicker1.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
-            bunifuDatePicker1.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            bunifuDatePicker1.DisabledColor = Color.Gray;
-            bunifuDatePicker1.DisplayWeekNumbers = false;
-            bunifuDatePicker1.DPHeight = 0;
-            bunifuDatePicker1.DropDownAlign = LeftRightAlignment.Right;
-            bunifuDatePicker1.FillDatePicker = false;
-            bunifuDatePicker1.Font = new Font("Courier New", 9.75F, FontStyle.Bold);
-            bunifuDatePicker1.ForeColor = Color.Black;
-            bunifuDatePicker1.Format = DateTimePickerFormat.Custom;
-            bunifuDatePicker1.Icon = (Image)resources.GetObject("bunifuDatePicker1.Icon");
-            bunifuDatePicker1.IconColor = Color.Gray;
-            bunifuDatePicker1.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
-            bunifuDatePicker1.LeftTextMargin = 5;
-            bunifuDatePicker1.Location = new Point(40, 30);
-            bunifuDatePicker1.MaxDate = new DateTime(2025, 10, 25, 0, 0, 0, 0);
-            bunifuDatePicker1.MinimumSize = new Size(0, 32);
-            bunifuDatePicker1.Name = "bunifuDatePicker1";
-            bunifuDatePicker1.Size = new Size(130, 32);
-            bunifuDatePicker1.TabIndex = 1;
-            bunifuDatePicker1.Value = new DateTime(2025, 10, 25, 0, 0, 0, 0);
+            fromdatetxt.BackColor = Color.White;
+            fromdatetxt.BorderColor = Color.Black;
+            fromdatetxt.BorderRadius = 1;
+            fromdatetxt.Color = Color.Black;
+            fromdatetxt.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
+            fromdatetxt.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
+            fromdatetxt.DisabledColor = Color.Gray;
+            fromdatetxt.DisplayWeekNumbers = false;
+            fromdatetxt.DPHeight = 0;
+            fromdatetxt.DropDownAlign = LeftRightAlignment.Right;
+            fromdatetxt.FillDatePicker = false;
+            fromdatetxt.Font = new Font("Courier New", 9.75F, FontStyle.Bold);
+            fromdatetxt.ForeColor = Color.Black;
+            fromdatetxt.Format = DateTimePickerFormat.Custom;
+            fromdatetxt.Icon = (Image)resources.GetObject("fromdatetxt.Icon");
+            fromdatetxt.IconColor = Color.Gray;
+            fromdatetxt.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
+            fromdatetxt.LeftTextMargin = 5;
+            fromdatetxt.Location = new Point(40, 30);
+            fromdatetxt.MaxDate = new DateTime(2025, 10, 25, 0, 0, 0, 0);
+            fromdatetxt.MinimumSize = new Size(0, 32);
+            fromdatetxt.Name = "fromdatetxt";
+            fromdatetxt.Size = new Size(130, 32);
+            fromdatetxt.TabIndex = 1;
+            fromdatetxt.Value = new DateTime(2025, 10, 25, 0, 0, 0, 0);
+            fromdatetxt.ValueChanged += fromdatetxt_ValueChanged;
             // 
-            // bunifuDatePicker2
+            // todatetxt
             // 
-            bunifuDatePicker2.BackColor = Color.White;
-            bunifuDatePicker2.BorderColor = Color.Black;
-            bunifuDatePicker2.BorderRadius = 1;
-            bunifuDatePicker2.CalendarFont = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bunifuDatePicker2.Color = Color.Black;
-            bunifuDatePicker2.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
-            bunifuDatePicker2.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            bunifuDatePicker2.DisabledColor = Color.Gray;
-            bunifuDatePicker2.DisplayWeekNumbers = false;
-            bunifuDatePicker2.DPHeight = 0;
-            bunifuDatePicker2.DropDownAlign = LeftRightAlignment.Right;
-            bunifuDatePicker2.FillDatePicker = false;
-            bunifuDatePicker2.Font = new Font("Courier New", 9.75F, FontStyle.Bold);
-            bunifuDatePicker2.ForeColor = Color.Black;
-            bunifuDatePicker2.Format = DateTimePickerFormat.Custom;
-            bunifuDatePicker2.Icon = (Image)resources.GetObject("bunifuDatePicker2.Icon");
-            bunifuDatePicker2.IconColor = Color.Gray;
-            bunifuDatePicker2.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
-            bunifuDatePicker2.LeftTextMargin = 5;
-            bunifuDatePicker2.Location = new Point(188, 30);
-            bunifuDatePicker2.MinimumSize = new Size(0, 32);
-            bunifuDatePicker2.Name = "bunifuDatePicker2";
-            bunifuDatePicker2.Size = new Size(130, 32);
-            bunifuDatePicker2.TabIndex = 2;
+            todatetxt.BackColor = Color.White;
+            todatetxt.BorderColor = Color.Black;
+            todatetxt.BorderRadius = 1;
+            todatetxt.CalendarFont = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            todatetxt.Color = Color.Black;
+            todatetxt.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
+            todatetxt.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
+            todatetxt.DisabledColor = Color.Gray;
+            todatetxt.DisplayWeekNumbers = false;
+            todatetxt.DPHeight = 0;
+            todatetxt.DropDownAlign = LeftRightAlignment.Right;
+            todatetxt.FillDatePicker = false;
+            todatetxt.Font = new Font("Courier New", 9.75F, FontStyle.Bold);
+            todatetxt.ForeColor = Color.Black;
+            todatetxt.Format = DateTimePickerFormat.Custom;
+            todatetxt.Icon = (Image)resources.GetObject("todatetxt.Icon");
+            todatetxt.IconColor = Color.Gray;
+            todatetxt.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
+            todatetxt.LeftTextMargin = 5;
+            todatetxt.Location = new Point(188, 30);
+            todatetxt.MinimumSize = new Size(0, 32);
+            todatetxt.Name = "todatetxt";
+            todatetxt.Size = new Size(130, 32);
+            todatetxt.TabIndex = 2;
+            todatetxt.ValueChanged += todatetxt_ValueChanged;
             // 
             // bunifuLabel2
             // 
@@ -321,11 +323,11 @@
             PrintBtn.ButtonTextMarginLeft = 0;
             PrintBtn.ColorContrastOnClick = 45;
             PrintBtn.ColorContrastOnHover = 45;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            PrintBtn.CustomizableEdges = borderEdges2;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            PrintBtn.CustomizableEdges = borderEdges4;
             PrintBtn.DialogResult = DialogResult.None;
             PrintBtn.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             PrintBtn.DisabledFillColor = Color.FromArgb(204, 204, 204);
@@ -426,26 +428,26 @@
             SearchBox.Modified = false;
             SearchBox.Multiline = false;
             SearchBox.Name = "SearchBox";
-            stateProperties1.BorderColor = Color.DodgerBlue;
-            stateProperties1.FillColor = Color.Empty;
-            stateProperties1.ForeColor = Color.Empty;
-            stateProperties1.PlaceholderForeColor = Color.Empty;
-            SearchBox.OnActiveState = stateProperties1;
-            stateProperties2.BorderColor = Color.FromArgb(204, 204, 204);
-            stateProperties2.FillColor = Color.FromArgb(240, 240, 240);
-            stateProperties2.ForeColor = Color.FromArgb(109, 109, 109);
-            stateProperties2.PlaceholderForeColor = Color.DarkGray;
-            SearchBox.OnDisabledState = stateProperties2;
-            stateProperties3.BorderColor = Color.FromArgb(105, 181, 255);
-            stateProperties3.FillColor = Color.Empty;
-            stateProperties3.ForeColor = Color.Empty;
-            stateProperties3.PlaceholderForeColor = Color.Empty;
-            SearchBox.OnHoverState = stateProperties3;
-            stateProperties4.BorderColor = Color.Silver;
-            stateProperties4.FillColor = Color.White;
-            stateProperties4.ForeColor = Color.Empty;
-            stateProperties4.PlaceholderForeColor = Color.Empty;
-            SearchBox.OnIdleState = stateProperties4;
+            stateProperties5.BorderColor = Color.DodgerBlue;
+            stateProperties5.FillColor = Color.Empty;
+            stateProperties5.ForeColor = Color.Empty;
+            stateProperties5.PlaceholderForeColor = Color.Empty;
+            SearchBox.OnActiveState = stateProperties5;
+            stateProperties6.BorderColor = Color.FromArgb(204, 204, 204);
+            stateProperties6.FillColor = Color.FromArgb(240, 240, 240);
+            stateProperties6.ForeColor = Color.FromArgb(109, 109, 109);
+            stateProperties6.PlaceholderForeColor = Color.DarkGray;
+            SearchBox.OnDisabledState = stateProperties6;
+            stateProperties7.BorderColor = Color.FromArgb(105, 181, 255);
+            stateProperties7.FillColor = Color.Empty;
+            stateProperties7.ForeColor = Color.Empty;
+            stateProperties7.PlaceholderForeColor = Color.Empty;
+            SearchBox.OnHoverState = stateProperties7;
+            stateProperties8.BorderColor = Color.Silver;
+            stateProperties8.FillColor = Color.White;
+            stateProperties8.ForeColor = Color.Empty;
+            stateProperties8.PlaceholderForeColor = Color.Empty;
+            SearchBox.OnIdleState = stateProperties8;
             SearchBox.Padding = new Padding(35, 3, 3, 3);
             SearchBox.PasswordChar = '\0';
             SearchBox.PlaceholderForeColor = Color.Silver;
@@ -485,7 +487,7 @@
             Pagination.Dock = DockStyle.Left;
             Pagination.Location = new Point(10, 0);
             Pagination.Name = "Pagination";
-            Pagination.Size = new Size(145, 50);
+            Pagination.Size = new Size(210, 50);
             Pagination.TabIndex = 10;
             // 
             // PaginationLabel
@@ -493,7 +495,7 @@
             PaginationLabel.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PaginationLabel.Location = new Point(52, 7);
             PaginationLabel.Name = "PaginationLabel";
-            PaginationLabel.Size = new Size(40, 40);
+            PaginationLabel.Size = new Size(98, 40);
             PaginationLabel.TabIndex = 7;
             PaginationLabel.Text = "0";
             PaginationLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -531,6 +533,7 @@
             PaginationPREV.WaitOnLoad = false;
             PaginationPREV.Zoom = 20;
             PaginationPREV.ZoomSpeed = 10;
+            PaginationPREV.Click += PaginationPREV_Click;
             // 
             // PaginationNext
             // 
@@ -552,7 +555,7 @@
             PaginationNext.ImageSize = new Size(20, 20);
             PaginationNext.ImageZoomSize = new Size(40, 40);
             PaginationNext.InitialImage = (Image)resources.GetObject("PaginationNext.InitialImage");
-            PaginationNext.Location = new Point(98, 7);
+            PaginationNext.Location = new Point(156, 7);
             PaginationNext.Name = "PaginationNext";
             PaginationNext.Rotation = 0;
             PaginationNext.ShowActiveImage = true;
@@ -565,6 +568,7 @@
             PaginationNext.WaitOnLoad = false;
             PaginationNext.Zoom = 20;
             PaginationNext.ZoomSpeed = 10;
+            PaginationNext.Click += PaginationNext_Click;
             // 
             // panel3
             // 
@@ -583,22 +587,22 @@
             AllsaleDatagrid.AllowUserToDeleteRows = false;
             AllsaleDatagrid.AllowUserToResizeColumns = false;
             AllsaleDatagrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(223, 191, 191);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            AllsaleDatagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(223, 191, 191);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            AllsaleDatagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             AllsaleDatagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             AllsaleDatagrid.BackgroundColor = Color.White;
             AllsaleDatagrid.BorderStyle = BorderStyle.None;
             AllsaleDatagrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             AllsaleDatagrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.Maroon;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(102, 0, 0);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            AllsaleDatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.Maroon;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(102, 0, 0);
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            AllsaleDatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             AllsaleDatagrid.ColumnHeadersHeight = 40;
             AllsaleDatagrid.Columns.AddRange(new DataGridViewColumn[] { IdCol, PurchaseNumberCol, ProductNameCol, DateCol, CashierCol });
             AllsaleDatagrid.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
@@ -619,14 +623,14 @@
             AllsaleDatagrid.CurrentTheme.RowsStyle.ForeColor = Color.Black;
             AllsaleDatagrid.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
             AllsaleDatagrid.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(229, 204, 204);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            AllsaleDatagrid.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(229, 204, 204);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            AllsaleDatagrid.DefaultCellStyle = dataGridViewCellStyle6;
             AllsaleDatagrid.Dock = DockStyle.Fill;
             AllsaleDatagrid.EnableHeadersVisualStyles = false;
             AllsaleDatagrid.GridColor = Color.FromArgb(216, 178, 178);
@@ -714,8 +718,8 @@
         private Bunifu.UI.WinForms.BunifuImageButton PaginationPREV;
         private Bunifu.UI.WinForms.BunifuImageButton PaginationNext;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
-        private Bunifu.UI.WinForms.BunifuDatePicker bunifuDatePicker2;
-        private Bunifu.UI.WinForms.BunifuDatePicker bunifuDatePicker1;
+        private Bunifu.UI.WinForms.BunifuDatePicker todatetxt;
+        private Bunifu.UI.WinForms.BunifuDatePicker fromdatetxt;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
         private Bunifu.UI.WinForms.BunifuDataGridView AllsaleDatagrid;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 PrintBtn;

@@ -87,6 +87,33 @@ namespace SystemBackEnd.Services
 
             return saleReportDetailsforPrints;
         }
+        //Get Total Pages
+        public async Task<int> GetTotalPages(RecordsFilterSearch salefilter)
+        {
+            int totalRecords = 0;
+            int totalPages = 0;
+
+            try
+            {
+                totalRecords = await (from a in _db.TransactionHeader
+                                join b in _db.Accounts on a.TransactionBy equals b.AccountId
+                                join c in _db.TransactionDetails on a.TransactionHeaderId equals c.TransactionHeaderId
+                                join d in _db.Products on c.ProductId equals d.ProductID
+                                where (!salefilter.FromDate.HasValue || a.TransactionDate >= salefilter.FromDate.Value)
+                                   && (!salefilter.ToDate.HasValue || a.TransactionDate <= salefilter.ToDate.Value)
+                                   && (string.IsNullOrEmpty(salefilter.SearchValue) || a.TransactionNumber.Contains(salefilter.SearchValue))
+                                select a).CountAsync();
+                totalPages = (totalRecords / salefilter.ItemperPage) + 1;
+            }
+            catch (Exception e)
+            {
+                
+            }
+            return totalPages;
+        }
+
+
+
 
     }
 }

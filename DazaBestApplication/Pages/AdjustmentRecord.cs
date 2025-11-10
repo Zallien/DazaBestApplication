@@ -15,12 +15,12 @@ using SystemBackEnd.Services;
 
 namespace DazaBestApplication.Pages
 {
-    
+
     public partial class AdjustmentRecord : Form
     {
         List<AdjustmentReportDetails> AllAdjustmentDetails = new List<AdjustmentReportDetails>();
         List<AdjustmentReportDetails> forprinting = new List<AdjustmentReportDetails>();
-        List<AdjustmentReportDetailsforPrint>  adjustmentReportDetailsforPrints= new();
+        List<AdjustmentReportDetailsforPrint> adjustmentReportDetailsforPrints = new();
         AdjusmentReportServices adjustmentreportservice;
         RecordsFilterSearch recordsFilterSearch;
 
@@ -31,6 +31,7 @@ namespace DazaBestApplication.Pages
         private int ItemPerPaeg = 12;
         private DateTime FromDateFilter = DateTime.Now;
         private DateTime ToDateFilter = DateTime.Now;
+        private int totalpages = 0;
 
         private Form MainForm;
         public AdjustmentRecord(Form mainForm)
@@ -60,7 +61,6 @@ namespace DazaBestApplication.Pages
 
             }
         }
-
         //Populate Datagrid
         private async Task PopulateAlldjustDetailsDatagrid()
         {
@@ -77,6 +77,96 @@ namespace DazaBestApplication.Pages
                 row.Cells["ItemNameCol"].Value = item.ItemName;
                 row.Cells["QuantityCol"].Value = item.Quantity;
                 row.Cells["ReasonCol"].Value = item.Reason;
+            }
+        }
+
+
+
+        //pagination
+        private async Task GetTotalPages()
+        {
+            try
+            {
+                var db = new BackEndDBContext();
+                var adjustmentservice = new AdjusmentReportServices(db);
+
+                recordsFilterSearch = new RecordsFilterSearch()
+                {
+                    SearchValue = SearchValue,
+                    FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
+                    ToDate = ToDateFilter,
+                    PageNumber = PageNumber,
+                    ItemperPage = ItemPerPaeg
+                };
+
+                totalpages = await adjustmentservice.GetTotalPages(recordsFilterSearch);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private async Task CheckPageNumber()
+        {
+            await Task.Delay(200);
+            if (PageNumber == 1)
+            {
+                PaginationPREV.Enabled = false;
+            }
+            else
+            {
+                PaginationPREV.Enabled = true;
+            }
+            if (PageNumber >= totalpages)
+            {
+                PaginationNext.Enabled = false;
+            }
+            else
+            {
+                PaginationNext.Enabled = true;
+            }
+        }
+        //Pagination Next
+        private async void NextButton()
+        {
+
+            if (PageNumber < totalpages)
+            {
+                PageNumber++;
+                await CheckPageNumber();
+                await PopulateAlldjustDetailsDatagrid();
+                PaginationLabel.Text = $"{PageNumber} / {totalpages}";//Pagination Label
+            }
+        }
+        //Pagination Previous
+        private async void PreviousButton()
+        {
+            if (PageNumber > 1)
+            {
+                PageNumber--;
+                await CheckPageNumber();
+                await PopulateAlldjustDetailsDatagrid();
+                PaginationLabel.Text = $"{PageNumber} / {totalpages}";//Pagination Label
+
+            }
+        }
+        //Change the Date Filter
+        private async Task ChangeDateFilter()
+        {
+            if (fromdatetxt.Value < todatetxt.Value)
+            {
+                FromDateFilter = fromdatetxt.Value;
+                ToDateFilter = todatetxt.Value;
+                await GetTotalPages();
+                await CheckPageNumber();
+                await PopulateAlldjustDetailsDatagrid();
+                PaginationLabel.Text = $"{PageNumber} / {totalpages}";//Pagination Label
+            }
+            else
+            {
+                MessageBox.Show("Invalid Date Range. Please ensure that the 'From' date is earlier than or equal to the 'To' date.", "Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                fromdatetxt.Value = DateTime.Now;
+                todatetxt.Value = DateTime.Now;
             }
         }
 
@@ -100,7 +190,7 @@ namespace DazaBestApplication.Pages
                     ItemperPage = 99999
                 };
                 forprinting = await adjustmentreportservice.GetAdjustmentDetails(recordsFilterSearch);
-                AdjustmentReportForm adjustmentReportForm = new AdjustmentReportForm(forprinting, bunifuDatePicker1.Value, bunifuDatePicker2.Value);
+                AdjustmentReportForm adjustmentReportForm = new AdjustmentReportForm(forprinting, fromdatetxt.Value, todatetxt.Value);
                 adjustmentReportForm.Show();
 
             }
@@ -115,6 +205,18 @@ namespace DazaBestApplication.Pages
         private async void AdjustmentRecord_Load(object sender, EventArgs e)
         {
             await PopulateAlldjustDetailsDatagrid();
+        }
+        private void PaginationNext_Click(object sender, EventArgs e)
+        {
+            NextButton();
+        }
+        private void PaginationPREV_Click(object sender, EventArgs e)
+        {
+            PreviousButton();
+        }
+        private void todatetxt_ValueChanged(object sender, EventArgs e)
+        {
+            ChangeDateFilter();
         }
     }
 }

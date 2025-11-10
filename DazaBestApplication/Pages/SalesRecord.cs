@@ -25,10 +25,12 @@ namespace DazaBestApplication.Pages
 
         //Search and Filterations
         private string SearchValue = "";
-        private int PageNumber = 0;
+        private int PageNumber = 1;
         private int ItemPerPaeg = 12;
         private DateTime FromDateFilter = DateTime.Now;
         private DateTime ToDateFilter = DateTime.Now;
+        private int totalpages = 0;
+
 
 
         public SalesRecord(Form mainForm)
@@ -62,7 +64,7 @@ namespace DazaBestApplication.Pages
             }
             catch (Exception e)
             {
-                
+
             }
         }
         //Populate AllSaleReportHeader Datagrid
@@ -87,13 +89,116 @@ namespace DazaBestApplication.Pages
             }
         }
 
+        //pagination
+        private async Task GetTotalPages()
+        {
+            try
+            {
+                var db = new BackEndDBContext();
+                var saleReportServices = new SaleReportServices(db);
+
+                SaleReportHeaders = new List<SaleReportDetails>();
+                saleRecordFilterSearch = new RecordsFilterSearch()
+                {
+                    SearchValue = SearchValue,
+                    FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
+                    ToDate = ToDateFilter,
+                    PageNumber = PageNumber,
+                    ItemperPage = ItemPerPaeg
+                };
+                totalpages = await saleReportServices.GetTotalPages(saleRecordFilterSearch);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private async Task CheckPageNumber()
+        {
+            await Task.Delay(200);
+            if (PageNumber == 1)
+            {
+                PaginationPREV.Enabled = false;
+            }
+            else
+            {
+                PaginationPREV.Enabled = true;
+            }
+            if (PageNumber >= totalpages)
+            {
+                PaginationNext.Enabled = false;
+            }
+            else
+            {
+                PaginationNext.Enabled = true;
+            }
+        }
+        //Pagination Next
+        private async void NextButton()
+        {
+
+            if (PageNumber < totalpages)
+            {
+                PageNumber++;
+                await CheckPageNumber();
+                await PopulateAllSaleReportDatagrid();
+                PaginationLabel.Text = $"{PageNumber} / {totalpages}";//Pagination Label
+            }
+        }
+        //Pagination Previous
+        private async void PreviousButton()
+        {
+            if (PageNumber > 1)
+            {
+                PageNumber--;
+                await CheckPageNumber();
+                await PopulateAllSaleReportDatagrid();
+                PaginationLabel.Text = $"{PageNumber} / {totalpages}";//Pagination Label
+
+            }
+        }
+        //Change the Date Filter
+        private async Task ChangeDateFilter()
+        {
+            if (fromdatetxt.Value < todatetxt.Value)
+            {
+                FromDateFilter = fromdatetxt.Value;
+                ToDateFilter = todatetxt.Value;
+                await GetTotalPages();
+                await CheckPageNumber();
+                await PopulateAllSaleReportDatagrid();
+                PaginationLabel.Text = $"{PageNumber} / {totalpages}";//Pagination Label
+            }
+            else
+            {
+                MessageBox.Show("Invalid Date Range. Please ensure that the 'From' date is earlier than or equal to the 'To' date.", "Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                fromdatetxt.Value = DateTime.Now;
+                todatetxt.Value = DateTime.Now;
+            }
+        }
+
+
+
+
+        //Main Load
+        private async void SalesRecord_Load(object sender, EventArgs e)
+        {
+            fromdatetxt.MaxDate = DateTime.Now;
+            todatetxt.MaxDate = DateTime.Now;
+            fromdatetxt.Value = FromDateFilter;
+            todatetxt.Value = ToDateFilter;
+            await GetTotalPages();
+            await CheckPageNumber();
+            await PopulateAllSaleReportDatagrid();
+            PaginationLabel.Text = $"{PageNumber} / {totalpages}";//Pagination Label
+        }
 
         //Events
-      
         private async void bunifuButton22_Click(object sender, EventArgs e)
         {
             //print the report
-            try {
+            try
+            {
                 SaleReportDetailsforPrints = new List<SaleReportDetailsforPrint>();
                 SaleReportServices = new SaleReportServices(new BackEndDBContext());
                 saleRecordFilterSearch = new RecordsFilterSearch()
@@ -104,29 +209,37 @@ namespace DazaBestApplication.Pages
                     PageNumber = PageNumber
                 };
                 SaleReportDetailsforPrints = await SaleReportServices.GetSaleReportforPrinting(saleRecordFilterSearch);
-                MonthlySalesReportForm monthlySalesReportForm = new MonthlySalesReportForm(SaleReportDetailsforPrints, bunifuDatePicker1.Value, bunifuDatePicker2.Value);
+                MonthlySalesReportForm monthlySalesReportForm = new MonthlySalesReportForm(SaleReportDetailsforPrints, fromdatetxt.Value, todatetxt.Value);
                 monthlySalesReportForm.Show();
             }
             catch (Exception ex)
             {
-                
+
             }
         }
-
-        //Main Load
-        private async void SalesRecord_Load(object sender, EventArgs e)
-        {
-            await PopulateAllSaleReportDatagrid();
-        }
-
         private void AllsaleDatagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-        }
 
+        }
         private void bunifuButton22_Click_1(object sender, EventArgs e)
         {
 
+        }
+        private void PaginationNext_Click(object sender, EventArgs e)
+        {
+            NextButton();
+        }
+        private void PaginationPREV_Click(object sender, EventArgs e)
+        {
+            PreviousButton();
+        }
+        private void fromdatetxt_ValueChanged(object sender, EventArgs e)
+        {
+            ChangeDateFilter();
+        }
+        private void todatetxt_ValueChanged(object sender, EventArgs e)
+        {
+            ChangeDateFilter();
         }
     }
 }
