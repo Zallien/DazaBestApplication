@@ -51,15 +51,13 @@ namespace DazaBestApplication.Pages
             OpenModal();
         }
 
-
-
         //Main Load
         private async void ItemInventory_Load(object sender, EventArgs e)
         {
             await GetData();
             await GetAllItemCount();
             HookEvents();
-            PaginationLabel.Text = $"{_pagenumber}";//Pagination Label
+            PaginationLabel.Text = $"{_pagenumber} / {_maxpagenumber}";//Pagination Label
             CheckPageNumber();
         }
 
@@ -112,7 +110,7 @@ namespace DazaBestApplication.Pages
                 _pagenumber++;
                 await CheckPageNumber();
                 await GetData();
-                PaginationLabel.Text = $"{_pagenumber}";//Pagination Label
+                PaginationLabel.Text = $"{_pagenumber} / {_maxpagenumber}";//Pagination Label
             }
         }
         //Pagination Previous
@@ -123,8 +121,7 @@ namespace DazaBestApplication.Pages
                 _pagenumber--;
                 await CheckPageNumber();
                 await GetData();
-                PaginationLabel.Text = $"{_pagenumber}";//Pagination Label
-
+                PaginationLabel.Text = $"{_pagenumber} / {_maxpagenumber}";//Pagination Label
             }
         }
         //Check Page Number
@@ -303,6 +300,7 @@ namespace DazaBestApplication.Pages
             });
             await PopulatAllItemDataGrid(_allitem);
             await ItemEventHandlers.InvokeChangeItemDisplayed();
+            PaginationLabel.Text = $"{_pagenumber} / {_maxpagenumber}";//Pagination Label
 
         } //Search
         private void PaginationNext_Click(object sender, EventArgs e)

@@ -43,6 +43,7 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             TopPanel = new Panel();
+            panel4 = new Panel();
             label1 = new Label();
             MainContainer = new Panel();
             EditButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
@@ -65,7 +66,6 @@
             Edittoolstrip = new ToolStripMenuItem();
             sep1 = new ToolStripSeparator();
             Deletetoolstrip = new ToolStripMenuItem();
-            panel4 = new Panel();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             Pagination.SuspendLayout();
@@ -84,6 +84,15 @@
             TopPanel.Padding = new Padding(10, 0, 10, 0);
             TopPanel.Size = new Size(900, 50);
             TopPanel.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.Maroon;
+            panel4.Dock = DockStyle.Bottom;
+            panel4.Location = new Point(10, 45);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(880, 5);
+            panel4.TabIndex = 2;
             // 
             // label1
             // 
@@ -298,7 +307,7 @@
             Pagination.Controls.Add(PaginationNext);
             Pagination.Location = new Point(5, 553);
             Pagination.Name = "Pagination";
-            Pagination.Size = new Size(145, 50);
+            Pagination.Size = new Size(194, 50);
             Pagination.TabIndex = 9;
             // 
             // PaginationLabel
@@ -306,7 +315,7 @@
             PaginationLabel.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PaginationLabel.Location = new Point(52, 7);
             PaginationLabel.Name = "PaginationLabel";
-            PaginationLabel.Size = new Size(40, 40);
+            PaginationLabel.Size = new Size(95, 40);
             PaginationLabel.TabIndex = 7;
             PaginationLabel.Text = "0";
             PaginationLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -366,7 +375,7 @@
             PaginationNext.ImageSize = new Size(20, 20);
             PaginationNext.ImageZoomSize = new Size(40, 40);
             PaginationNext.InitialImage = (Image)resources.GetObject("PaginationNext.InitialImage");
-            PaginationNext.Location = new Point(98, 7);
+            PaginationNext.Location = new Point(153, 7);
             PaginationNext.Name = "PaginationNext";
             PaginationNext.Rotation = 0;
             PaginationNext.ShowActiveImage = true;
@@ -715,15 +724,6 @@
             Deletetoolstrip.Name = "Deletetoolstrip";
             Deletetoolstrip.Size = new Size(149, 22);
             Deletetoolstrip.Text = "Remove Items";
-            // 
-            // panel4
-            // 
-            panel4.BackColor = Color.Maroon;
-            panel4.Dock = DockStyle.Bottom;
-            panel4.Location = new Point(10, 45);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(880, 5);
-            panel4.TabIndex = 2;
             // 
             // ProductsInventory
             // 

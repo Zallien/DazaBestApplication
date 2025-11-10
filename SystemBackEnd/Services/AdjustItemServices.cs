@@ -198,5 +198,22 @@ namespace SystemBackEnd.Services
 
 
         }
+        //Get Total Pages
+        public async Task<int> GetTotalPages(int itemperpage)
+        {
+            int totalpages = 0;
+            try
+            {
+                int totalitems = await _db.ItemAdjustmentHeader.CountAsync();
+                totalpages = (int)Math.Ceiling((double)totalitems / itemperpage);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return totalpages;
+        }
+
+
     }
 }

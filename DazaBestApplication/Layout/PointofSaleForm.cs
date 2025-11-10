@@ -87,7 +87,8 @@ namespace DazaBestApplication.Layout
                     PanelColor = Color.White,
                     PanelColor2 = Color.White,
                     ShadowColor = Color.Maroon,
-                    Padding = new Padding(15)
+                    Padding = new Padding(15),
+                    
                 };
                 PictureBox pictureBox = new PictureBox
                 {
@@ -149,13 +150,13 @@ namespace DazaBestApplication.Layout
 
         }
         //Get Parent Panel
-        private BunifuGradientPanel GetParentPanel(Control control)
+        private BunifuShadowPanel GetParentPanel(Control control)
         {
-            while (control != null && !(control is BunifuGradientPanel))
+            while (control != null && !(control is BunifuShadowPanel))
             {
                 control = control.Parent;
             }
-            return control as BunifuGradientPanel;
+            return control as BunifuShadowPanel;
         }
         //Check if Product Exists in Current Orders
         private bool IsProductInCurrentOrders(Guid productId)
@@ -478,7 +479,7 @@ namespace DazaBestApplication.Layout
         //Handle Order Clicked
         private async void OrderClicked(object sender, EventArgs e)
         {
-            Panel clickedPanel = GetParentPanel((Control)sender);
+            BunifuShadowPanel clickedPanel = GetParentPanel((Control)sender);
             ProductInformation productInfo = (ProductInformation)clickedPanel.Tag;
             SearchOrderedProductInDatagrid(productInfo);
             await CalculateSubtotal();

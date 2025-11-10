@@ -44,6 +44,7 @@ namespace DazaBestApplication.Pages
             await CheckAllProductsCount();
             await CheckPageNumber();
             await LoadProducts();
+            PaginationLabel.Text = $"{_currentPage} / {_maxpages}";//Pagination Label
             HookEvents();
 
             
@@ -110,7 +111,7 @@ namespace DazaBestApplication.Pages
             if (_currentPage > 1)
             {
                 _currentPage--;
-                PaginationLabel.Text = $"{_currentPage}";//Pagination Label
+                PaginationLabel.Text = $"{_currentPage} / {_maxpages}";//Pagination Label
                 await CheckPageNumber();
                 await LoadProducts();
             }
@@ -121,7 +122,7 @@ namespace DazaBestApplication.Pages
             if (_currentPage < _maxpages)
             {
                 _currentPage++;
-                PaginationLabel.Text = $"{_currentPage}";//Pagination Label
+                PaginationLabel.Text = $"{_currentPage} / {_maxpages}";//Pagination Label
                 await CheckPageNumber();
                 await LoadProducts();
             }
@@ -161,6 +162,7 @@ namespace DazaBestApplication.Pages
             PopulateProductsDatagrid(_theproducts);
             await CheckAllProductsCount();
             await CheckPageNumber();
+            PaginationLabel.Text = $"{_currentPage} / {_maxpages}";//Pagination Label
         }
         //Open Decision Modal
         private bool OpenDecisionModal()

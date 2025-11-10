@@ -94,7 +94,7 @@ namespace DazaBestApplication.Pages
             await ShowItemAdjustmentModal();
 
         }
-
+        
 
 
         //Main Load
