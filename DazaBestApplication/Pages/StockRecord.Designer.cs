@@ -52,8 +52,8 @@
             bunifuButton21 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
-            bunifuDatePicker1 = new Bunifu.UI.WinForms.BunifuDatePicker();
-            bunifuDatePicker2 = new Bunifu.UI.WinForms.BunifuDatePicker();
+            fromdatetxt = new Bunifu.UI.WinForms.BunifuDatePicker();
+            todatetxt = new Bunifu.UI.WinForms.BunifuDatePicker();
             bunifuButton22 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             PrintBtn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -123,7 +123,7 @@
             Pagination.Dock = DockStyle.Left;
             Pagination.Location = new Point(10, 0);
             Pagination.Name = "Pagination";
-            Pagination.Size = new Size(145, 50);
+            Pagination.Size = new Size(185, 50);
             Pagination.TabIndex = 10;
             // 
             // PaginationLabel
@@ -131,7 +131,7 @@
             PaginationLabel.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PaginationLabel.Location = new Point(52, 7);
             PaginationLabel.Name = "PaginationLabel";
-            PaginationLabel.Size = new Size(40, 40);
+            PaginationLabel.Size = new Size(84, 40);
             PaginationLabel.TabIndex = 7;
             PaginationLabel.Text = "0";
             PaginationLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -169,6 +169,7 @@
             PaginationPREV.WaitOnLoad = false;
             PaginationPREV.Zoom = 20;
             PaginationPREV.ZoomSpeed = 10;
+            PaginationPREV.Click += PaginationPREV_Click;
             // 
             // PaginationNext
             // 
@@ -190,7 +191,7 @@
             PaginationNext.ImageSize = new Size(20, 20);
             PaginationNext.ImageZoomSize = new Size(40, 40);
             PaginationNext.InitialImage = (Image)resources.GetObject("PaginationNext.InitialImage");
-            PaginationNext.Location = new Point(98, 7);
+            PaginationNext.Location = new Point(142, 7);
             PaginationNext.Name = "PaginationNext";
             PaginationNext.Rotation = 0;
             PaginationNext.ShowActiveImage = true;
@@ -203,6 +204,7 @@
             PaginationNext.WaitOnLoad = false;
             PaginationNext.Zoom = 20;
             PaginationNext.ZoomSpeed = 10;
+            PaginationNext.Click += PaginationNext_Click;
             // 
             // panel1
             // 
@@ -222,8 +224,8 @@
             panel5.Controls.Add(bunifuButton21);
             panel5.Controls.Add(bunifuLabel1);
             panel5.Controls.Add(bunifuLabel2);
-            panel5.Controls.Add(bunifuDatePicker1);
-            panel5.Controls.Add(bunifuDatePicker2);
+            panel5.Controls.Add(fromdatetxt);
+            panel5.Controls.Add(todatetxt);
             panel5.Dock = DockStyle.Left;
             panel5.Location = new Point(10, 0);
             panel5.Name = "panel5";
@@ -349,60 +351,62 @@
             bunifuLabel2.TextAlignment = ContentAlignment.TopLeft;
             bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuDatePicker1
+            // fromdatetxt
             // 
-            bunifuDatePicker1.BackColor = Color.White;
-            bunifuDatePicker1.BorderColor = Color.Black;
-            bunifuDatePicker1.BorderRadius = 1;
-            bunifuDatePicker1.Color = Color.Black;
-            bunifuDatePicker1.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
-            bunifuDatePicker1.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            bunifuDatePicker1.DisabledColor = Color.Gray;
-            bunifuDatePicker1.DisplayWeekNumbers = false;
-            bunifuDatePicker1.DPHeight = 0;
-            bunifuDatePicker1.DropDownAlign = LeftRightAlignment.Right;
-            bunifuDatePicker1.FillDatePicker = false;
-            bunifuDatePicker1.Font = new Font("Courier New", 9.75F, FontStyle.Bold);
-            bunifuDatePicker1.ForeColor = Color.Black;
-            bunifuDatePicker1.Format = DateTimePickerFormat.Custom;
-            bunifuDatePicker1.Icon = (Image)resources.GetObject("bunifuDatePicker1.Icon");
-            bunifuDatePicker1.IconColor = Color.Gray;
-            bunifuDatePicker1.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
-            bunifuDatePicker1.LeftTextMargin = 5;
-            bunifuDatePicker1.Location = new Point(30, 30);
-            bunifuDatePicker1.MaxDate = new DateTime(2025, 10, 25, 0, 0, 0, 0);
-            bunifuDatePicker1.MinimumSize = new Size(0, 32);
-            bunifuDatePicker1.Name = "bunifuDatePicker1";
-            bunifuDatePicker1.Size = new Size(130, 32);
-            bunifuDatePicker1.TabIndex = 15;
-            bunifuDatePicker1.Value = new DateTime(2025, 10, 25, 0, 0, 0, 0);
+            fromdatetxt.BackColor = Color.White;
+            fromdatetxt.BorderColor = Color.Black;
+            fromdatetxt.BorderRadius = 1;
+            fromdatetxt.Color = Color.Black;
+            fromdatetxt.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
+            fromdatetxt.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
+            fromdatetxt.DisabledColor = Color.Gray;
+            fromdatetxt.DisplayWeekNumbers = false;
+            fromdatetxt.DPHeight = 0;
+            fromdatetxt.DropDownAlign = LeftRightAlignment.Right;
+            fromdatetxt.FillDatePicker = false;
+            fromdatetxt.Font = new Font("Courier New", 9.75F, FontStyle.Bold);
+            fromdatetxt.ForeColor = Color.Black;
+            fromdatetxt.Format = DateTimePickerFormat.Custom;
+            fromdatetxt.Icon = (Image)resources.GetObject("fromdatetxt.Icon");
+            fromdatetxt.IconColor = Color.Gray;
+            fromdatetxt.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
+            fromdatetxt.LeftTextMargin = 5;
+            fromdatetxt.Location = new Point(30, 30);
+            fromdatetxt.MaxDate = new DateTime(2025, 10, 25, 0, 0, 0, 0);
+            fromdatetxt.MinimumSize = new Size(0, 32);
+            fromdatetxt.Name = "fromdatetxt";
+            fromdatetxt.Size = new Size(130, 32);
+            fromdatetxt.TabIndex = 15;
+            fromdatetxt.Value = new DateTime(2025, 10, 25, 0, 0, 0, 0);
+            fromdatetxt.ValueChanged += fromdatetxt_ValueChanged;
             // 
-            // bunifuDatePicker2
+            // todatetxt
             // 
-            bunifuDatePicker2.BackColor = Color.White;
-            bunifuDatePicker2.BorderColor = Color.Black;
-            bunifuDatePicker2.BorderRadius = 1;
-            bunifuDatePicker2.CalendarFont = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bunifuDatePicker2.Color = Color.Black;
-            bunifuDatePicker2.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
-            bunifuDatePicker2.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            bunifuDatePicker2.DisabledColor = Color.Gray;
-            bunifuDatePicker2.DisplayWeekNumbers = false;
-            bunifuDatePicker2.DPHeight = 0;
-            bunifuDatePicker2.DropDownAlign = LeftRightAlignment.Right;
-            bunifuDatePicker2.FillDatePicker = false;
-            bunifuDatePicker2.Font = new Font("Courier New", 9.75F, FontStyle.Bold);
-            bunifuDatePicker2.ForeColor = Color.Black;
-            bunifuDatePicker2.Format = DateTimePickerFormat.Custom;
-            bunifuDatePicker2.Icon = (Image)resources.GetObject("bunifuDatePicker2.Icon");
-            bunifuDatePicker2.IconColor = Color.Gray;
-            bunifuDatePicker2.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
-            bunifuDatePicker2.LeftTextMargin = 5;
-            bunifuDatePicker2.Location = new Point(178, 30);
-            bunifuDatePicker2.MinimumSize = new Size(0, 32);
-            bunifuDatePicker2.Name = "bunifuDatePicker2";
-            bunifuDatePicker2.Size = new Size(130, 32);
-            bunifuDatePicker2.TabIndex = 16;
+            todatetxt.BackColor = Color.White;
+            todatetxt.BorderColor = Color.Black;
+            todatetxt.BorderRadius = 1;
+            todatetxt.CalendarFont = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            todatetxt.Color = Color.Black;
+            todatetxt.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
+            todatetxt.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
+            todatetxt.DisabledColor = Color.Gray;
+            todatetxt.DisplayWeekNumbers = false;
+            todatetxt.DPHeight = 0;
+            todatetxt.DropDownAlign = LeftRightAlignment.Right;
+            todatetxt.FillDatePicker = false;
+            todatetxt.Font = new Font("Courier New", 9.75F, FontStyle.Bold);
+            todatetxt.ForeColor = Color.Black;
+            todatetxt.Format = DateTimePickerFormat.Custom;
+            todatetxt.Icon = (Image)resources.GetObject("todatetxt.Icon");
+            todatetxt.IconColor = Color.Gray;
+            todatetxt.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
+            todatetxt.LeftTextMargin = 5;
+            todatetxt.Location = new Point(178, 30);
+            todatetxt.MinimumSize = new Size(0, 32);
+            todatetxt.Name = "todatetxt";
+            todatetxt.Size = new Size(130, 32);
+            todatetxt.TabIndex = 16;
+            todatetxt.ValueChanged += fromdatetxt_ValueChanged;
             // 
             // bunifuButton22
             // 
@@ -657,6 +661,7 @@
             SearchBox.TextPlaceholder = "Search by Purchase No";
             SearchBox.UseSystemPasswordChar = false;
             SearchBox.WordWrap = true;
+            SearchBox.TextChanged += SearchBox_TextChanged;
             // 
             // panel3
             // 
@@ -817,8 +822,8 @@
         private Bunifu.UI.WinForms.BunifuDataGridView AllPurchaseItemDetailsRecordsDatagrid;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton21;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
-        private Bunifu.UI.WinForms.BunifuDatePicker bunifuDatePicker2;
-        private Bunifu.UI.WinForms.BunifuDatePicker bunifuDatePicker1;
+        private Bunifu.UI.WinForms.BunifuDatePicker todatetxt;
+        private Bunifu.UI.WinForms.BunifuDatePicker fromdatetxt;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
         private Panel panel5;
         private DataGridViewTextBoxColumn IdCol;

@@ -101,8 +101,8 @@ namespace DazaBestApplication.Modals
                 AllSelectedItem = AllSelectedProducts
             };
 
-            PurchaseitemServices = new PurchaseitemServices(new BackEndDBContext());
-            var _allproducts = await PurchaseitemServices.GetAllActiveProducts(_getavailableitemswithpagination);
+            AdjustItemServices adjustitemservice = new AdjustItemServices(new BackEndDBContext());
+            var _allproducts = await adjustitemservice.GetAllActiveProducts(_getavailableitemswithpagination);
             return _allproducts;
         }
         //Close Panel
@@ -126,7 +126,7 @@ namespace DazaBestApplication.Modals
                 if (AllProductsContainer.Visible == true && AllItemDatagridview.SelectedRows.Count > 0)
                 {
                     adjustmentInformations.Reason = "No Reason Yet";
-                    adjustmentInformations.ItemQuantity = 1;
+                    adjustmentInformations.ItemQuantity = 0;
                     adjustmentInformations.ItemId = theid;
                     adjustmentInformations.ItemName = itemname;
 
@@ -520,13 +520,13 @@ namespace DazaBestApplication.Modals
                         row.Cells["ReasonCol"].Value = reason;
                     }
 
-                    decimal qty = 1;
+                    decimal qty = 0;
                     string qtyValue = row.Cells["ItemQuantityCol"].Value?.ToString();
                     AdjustItemServices service = new AdjustItemServices(new BackEndDBContext());
                     bool acceptable = await service.CheckItemStock(theId, decimal.Parse(qtyValue));
                     if ((!decimal.TryParse(qtyValue, out qty) || qty <= 0) || !acceptable)
                     {
-                        qty = 1;
+                        qty = 0;
                         row.Cells["ItemQuantityCol"].Value = qty;
                     }
                     UpdateValuesfromSelectedItems(theId, reason, qty);

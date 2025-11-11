@@ -1,4 +1,6 @@
-﻿namespace DazaBestApplication.Pages
+﻿using DazaBestApplication.Models_and_Helpers;
+
+namespace DazaBestApplication.Pages
 {
     partial class Log_in
     {
@@ -49,9 +51,9 @@
             Usernametxtbox = new Bunifu.UI.WinForms.BunifuTextBox();
             Passwordtxtbox = new Bunifu.UI.WinForms.BunifuTextBox();
             Login_btn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            background_Panel = new Panel();
-            panel2 = new Panel();
-            panel1 = new Panel();
+            background_Panel = new SmoothPanel();
+            panel2 = new SmoothPanel();
+            panel1 = new SmoothPanel();
             pictureBox1 = new PictureBox();
             label2 = new Label();
             label1 = new Label();
@@ -623,11 +625,11 @@
         private Bunifu.UI.WinForms.BunifuTextBox Usernametxtbox;
         private Bunifu.UI.WinForms.BunifuTextBox Passwordtxtbox;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 Login_btn;
-        private Panel background_Panel;
+        private SmoothPanel background_Panel;
         private Bunifu.UI.WinForms.BunifuLabel greetings_lbl;
         private Bunifu.UI.WinForms.BunifuLabel ForgotPass_Btn;
-        private Panel panel1;
-        private Panel panel2;
+        private SmoothPanel panel1;
+        private SmoothPanel panel2;
         private Label label1;
         private PictureBox pictureBox1;
         private Label label2;

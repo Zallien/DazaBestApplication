@@ -1,4 +1,4 @@
-using DazaBestApplication.Models;
+
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using SystemBackEnd;
@@ -14,7 +14,6 @@ namespace DazaBestApplication
     internal static class Program
     {
         public static Size WorkspaceSize { get; set; }
-        public static ConfigurationModel? theconfig { get; set; }
         public static LoggedinAccount theLoggedInAccount { get; set; }
         public static BackupSettings theBackupSettings { get; set; }
 
@@ -25,7 +24,6 @@ namespace DazaBestApplication
         [STAThread]
         static void Main()
         {
-            theconfig = ConfigHelper.LoadOrCreateConfigFile();
 
             try
             {

@@ -1,4 +1,6 @@
-﻿namespace DazaBestApplication
+﻿using DazaBestApplication.Models_and_Helpers;
+
+namespace DazaBestApplication
 {
     partial class MainPage
     {
@@ -45,7 +47,7 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges15 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges10 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges11 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            SideNav = new Panel();
+            SideNav = new SmoothPanel();
             AccountsManagementBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             POSButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             NavButton_PurchaseItem = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
@@ -61,14 +63,14 @@
             NavButton_Products = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             NavButton_Item = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             NavButton_Home = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            MainContainer = new Panel();
+            MainContainer = new SmoothPanel();
             FormDragFeature = new Bunifu.UI.WinForms.BunifuFormDrag();
-            panel1 = new Panel();
+            panel1 = new SmoothPanel();
             bunifuButton25 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             bunifuButton24 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             bunifuButton23 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             bunifuButton22 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            panel2 = new Panel();
+            panel2 = new SmoothPanel();
             PurchaseItemBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             AdjustStockBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             SideNav.SuspendLayout();
@@ -1582,8 +1584,8 @@
         }
 
         #endregion
-        private Panel SideNav;
-        private Panel MainContainer;
+        private SmoothPanel SideNav;
+        private SmoothPanel MainContainer;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 NavButton_Home;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 NavButton_Reports;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 NavButton_Products;
@@ -1599,12 +1601,12 @@
         private ToolStripMenuItem dailyToolStripMenuItem;
         private ToolStripMenuItem monthlyToolStripMenuItem;
         private ToolStripMenuItem annuallyToolStripMenuItem;
-        private Panel panel1;
+        private SmoothPanel panel1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton25;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton24;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton23;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton22;
-        private Panel panel2;
+        private SmoothPanel panel2;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 PurchaseItemBTN;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 AdjustStockBTN;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 AccountsManagementBTN;

@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd;
-using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
 
 namespace DazaBestApplication.Pages
@@ -82,6 +81,16 @@ namespace DazaBestApplication.Pages
                 row.Cells["ReasonCol"].Value = item.Reason;
             }
         }
+        //Search Box Text Changed
+        private async Task SearchSaleRecords()
+        {
+            SearchValue = SearchBox.Text.Trim();
+            await GetTotalPages();
+            await CheckPageNumber();
+            await PopulateAlldjustDetailsDatagrid();
+        }
+
+
 
         #region pagination Logic
         private async Task GetTotalPages()
@@ -166,8 +175,8 @@ namespace DazaBestApplication.Pages
             else
             {
                 MessageBox.Show("Invalid Date Range. Please ensure that the 'From' date is earlier than or equal to the 'To' date.", "Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                fromdatetxt.Value = DateTime.Now;
-                todatetxt.Value = DateTime.Now;
+                fromdatetxt.Value = FromDateFilter;
+                todatetxt.Value = ToDateFilter;
             }
         }
         #endregion
@@ -224,6 +233,10 @@ namespace DazaBestApplication.Pages
         private void todatetxt_ValueChanged(object sender, EventArgs e)
         {
             ChangeDateFilter();
+        }
+        private void SearchBox_TextChange(object sender, EventArgs e)
+        {
+            SearchSaleRecords();
         }
         #endregion
     }

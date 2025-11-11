@@ -25,6 +25,7 @@ namespace SystemBackEnd.Services
             try
             {
                 result = await (from a in _db.Items
+                                where a.ItemName.Contains(searchitem.SearchValue)
                                 select new ItemsReportDetails
                                 {
                                     ItemId = a.ItemID,
@@ -44,6 +45,22 @@ namespace SystemBackEnd.Services
             }
 
             return result;
+        }
+
+        //Get total pages
+        public async Task<int> GetTotalPages(int itemperpage)
+        {
+            int GetTotalPages = 0;
+            try
+            {
+                int totalcount  = await _db.Items.CountAsync();
+                GetTotalPages = (totalcount / itemperpage) + 1;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return GetTotalPages;
         }
 
 

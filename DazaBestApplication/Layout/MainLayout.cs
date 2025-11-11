@@ -1,6 +1,7 @@
 using Bunifu.UI.WinForms;
 using DazaBestApplication.Layout;
 using DazaBestApplication.Modals;
+using DazaBestApplication.Models_and_Helpers;
 using DazaBestApplication.Pages;
 using System.Windows.Forms;
 using SystemBackEnd.Models;
@@ -9,7 +10,7 @@ using SystemBackEnd.Services;
 
 namespace DazaBestApplication
 {
-    public partial class MainPage : Form
+    public partial class MainPage : SmoothForm
     {
         List<Panel> AllPanels;
         Form MainContainerForm = null;
@@ -21,6 +22,22 @@ namespace DazaBestApplication
         {
             InitializeComponent();
             MaximizeSystem();
+        }
+        //Main Load Event
+        private async void MainPage_Load(object sender, EventArgs e)
+        {
+
+            await startup();
+            theLoggedInAccount = Program.theLoggedInAccount;
+            await CheckIfNewlyLoggedIn();
+            await IsAdminAccount();
+            await AddBackupSettingsIfNotExists();
+            await LoadSettingsValues();
+            await AutoBackupCheck();
+        }
+
+        private async Task startup()
+        {
             ShowDashboardmPage();
 
             panel1.Visible = false;
@@ -47,16 +64,6 @@ namespace DazaBestApplication
                 ctrl.MouseLeave += HideDropdown_Check1;
                 ctrl.Click += (s, e) => { panel2.Visible = false; };
             }
-        }
-        //Main Load Event
-        private async void MainPage_Load(object sender, EventArgs e)
-        {
-            theLoggedInAccount = Program.theLoggedInAccount;
-            await CheckIfNewlyLoggedIn();
-            await IsAdminAccount();
-            await AddBackupSettingsIfNotExists();
-            await LoadSettingsValues();
-            await AutoBackupCheck();
         }
         //Maximize the System AUTOMATICALLY
         private void MaximizeSystem()

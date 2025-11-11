@@ -113,7 +113,7 @@
             Pagination.Dock = DockStyle.Left;
             Pagination.Location = new Point(10, 0);
             Pagination.Name = "Pagination";
-            Pagination.Size = new Size(145, 50);
+            Pagination.Size = new Size(196, 50);
             Pagination.TabIndex = 10;
             // 
             // PaginationLabel
@@ -121,7 +121,7 @@
             PaginationLabel.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PaginationLabel.Location = new Point(52, 7);
             PaginationLabel.Name = "PaginationLabel";
-            PaginationLabel.Size = new Size(40, 40);
+            PaginationLabel.Size = new Size(95, 40);
             PaginationLabel.TabIndex = 7;
             PaginationLabel.Text = "0";
             PaginationLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -159,6 +159,7 @@
             PaginationPREV.WaitOnLoad = false;
             PaginationPREV.Zoom = 20;
             PaginationPREV.ZoomSpeed = 10;
+            PaginationPREV.Click += PaginationPREV_Click;
             // 
             // PaginationNext
             // 
@@ -180,7 +181,7 @@
             PaginationNext.ImageSize = new Size(20, 20);
             PaginationNext.ImageZoomSize = new Size(40, 40);
             PaginationNext.InitialImage = (Image)resources.GetObject("PaginationNext.InitialImage");
-            PaginationNext.Location = new Point(98, 7);
+            PaginationNext.Location = new Point(153, 7);
             PaginationNext.Name = "PaginationNext";
             PaginationNext.Rotation = 0;
             PaginationNext.ShowActiveImage = true;
@@ -193,6 +194,7 @@
             PaginationNext.WaitOnLoad = false;
             PaginationNext.Zoom = 20;
             PaginationNext.ZoomSpeed = 10;
+            PaginationNext.Click += PaginationNext_Click;
             // 
             // panel1
             // 
@@ -369,6 +371,7 @@
             SearchBox.TextPlaceholder = "Search by Item Name or Code\r\n";
             SearchBox.UseSystemPasswordChar = false;
             SearchBox.WordWrap = true;
+            SearchBox.TextChange += SearchBox_TextChange;
             // 
             // panel3
             // 
@@ -442,7 +445,7 @@
             AllItemDatagrid.ReadOnly = true;
             AllItemDatagrid.RowHeadersVisible = false;
             AllItemDatagrid.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            AllItemDatagrid.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64);
+            AllItemDatagrid.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             AllItemDatagrid.RowTemplate.Height = 40;
             AllItemDatagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             AllItemDatagrid.Size = new Size(830, 481);

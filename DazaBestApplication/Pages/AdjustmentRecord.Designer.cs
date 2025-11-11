@@ -467,6 +467,7 @@
             SearchBox.TextPlaceholder = "Search by Reference No";
             SearchBox.UseSystemPasswordChar = false;
             SearchBox.WordWrap = true;
+            SearchBox.TextChange += SearchBox_TextChange;
             // 
             // panel2
             // 
@@ -641,7 +642,7 @@
             AllAdjustmentRecordsDatagrid.ReadOnly = true;
             AllAdjustmentRecordsDatagrid.RowHeadersVisible = false;
             AllAdjustmentRecordsDatagrid.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            AllAdjustmentRecordsDatagrid.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64);
+            AllAdjustmentRecordsDatagrid.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             AllAdjustmentRecordsDatagrid.RowTemplate.Height = 40;
             AllAdjustmentRecordsDatagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             AllAdjustmentRecordsDatagrid.Size = new Size(830, 469);

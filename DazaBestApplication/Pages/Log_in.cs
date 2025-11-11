@@ -1,4 +1,5 @@
 ﻿using DazaBestApplication.Modals;
+using DazaBestApplication.Models_and_Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,19 +16,18 @@ using SystemBackEnd.Services;
 
 namespace DazaBestApplication.Pages
 {
-    public partial class Log_in : Form
+    public partial class Log_in : SmoothForm
     {
         private LoggedinAccount LoggedinAccount;
         private LoginServices LoginServices;
         private RegisterAccount regAcc;
 
 
-
+        
         public Log_in()
         {
             InitializeComponent();
             MaximizeSystem();
-            LoggedinAccount = Program.theLoggedInAccount;
         }
 
         //Maximize the System AUTOMATICALLY
@@ -127,6 +127,7 @@ namespace DazaBestApplication.Pages
         //Main Load
         private async void Log_in_Load(object sender, EventArgs e)
         {
+            LoggedinAccount = Program.theLoggedInAccount;
             await CheckLoggedAccount();
             LoginServices = new LoginServices(new BackEndDBContext());
             int acccounts = await LoginServices.AccountsCounts();
@@ -140,12 +141,10 @@ namespace DazaBestApplication.Pages
         {
             await LoginUser();
         }
-
         private void FormControlBox_CloseClicked(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             if (Passwordtxtbox.PasswordChar == '*')
@@ -161,32 +160,26 @@ namespace DazaBestApplication.Pages
             }
 
         }
-
         private void label2_MouseEnter(object sender, EventArgs e)
         {
             label2.ForeColor = Color.Blue;
         }
-
         private void label2_MouseLeave(object sender, EventArgs e)
         {
             label2.ForeColor = Color.Black;
         }
-
         private void Passwordtxtbox_KeyUp(object sender, KeyEventArgs e)
         {
 
         }
-
         private void FormControlBox_HelpClicked(object sender, EventArgs e)
         {
 
         }
-
         private async void label2_Click(object sender, EventArgs e)
         {
             await ShowForgotPasswordModal();
         }
-
         private void Usernametxtbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
@@ -194,7 +187,6 @@ namespace DazaBestApplication.Pages
                 e.Handled = true;
             }
         }
-
         private void background_Panel_Paint(object sender, PaintEventArgs e)
         {
 

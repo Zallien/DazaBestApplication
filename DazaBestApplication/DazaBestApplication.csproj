@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <PackageIcon>clean.png</PackageIcon>
+    <ApplicationIcon>clean.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +22,10 @@
     <None Remove="Reports\Report3.rdlc" />
     <None Remove="Reports\Report4.rdlc" />
     <None Remove="Reports\Report5.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="clean.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -148,6 +154,10 @@
     <None Update="Reports\ReceiptData.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>ReceiptData.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Resources\clean.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 

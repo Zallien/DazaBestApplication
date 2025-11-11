@@ -216,5 +216,30 @@ namespace SystemBackEnd.Services
         }
 
 
+
+        //Get All Available and Active Items 
+        public async Task<List<Items>> GetAllActiveProducts(GetAvailableItemswithpagination item)
+        {
+            List<Items> AllItems = new List<Items>();
+            try
+            {
+                AllItems = await _db.Items
+                                    .Where(x => x.IsActive == true
+                                        && (x.ItemName.ToLower().Contains(item.Searchvalue.ToLower()) ||
+                                        x.ItemCode.ToLower().Contains(item.Searchvalue.ToLower()))
+                                        && !item.AllSelectedItem.Contains(x.ItemID) && x.BalanceStocks > 0.0m)
+                                    .OrderByDescending(x => x.Row)
+                                    .Skip((item.Pagenumber - 1) * item.Itemperpage)
+                                    .Take(item.Itemperpage)
+                                    .ToListAsync();
+            }
+            catch (Exception e)
+            {
+                return AllItems;
+            }
+            return AllItems;
+        }
+
+
     }
 }

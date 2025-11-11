@@ -88,8 +88,16 @@ namespace DazaBestApplication.Pages
 
             }
         }
+        //Search Function
+        private async Task SearchSaleRecords()
+        {
+            SearchValue = SearchBox.Text.Trim();
+            await GetTotalPages();
+            await CheckPageNumber();
+            await PopulateAllSaleReportDatagrid();
+        }
 
-        //pagination
+        #region pagination
         private async Task GetTotalPages()
         {
             try
@@ -172,13 +180,11 @@ namespace DazaBestApplication.Pages
             else
             {
                 MessageBox.Show("Invalid Date Range. Please ensure that the 'From' date is earlier than or equal to the 'To' date.", "Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                fromdatetxt.Value = DateTime.Now;
-                todatetxt.Value = DateTime.Now;
+                fromdatetxt.Value = FromDateFilter;
+                todatetxt.Value = ToDateFilter;
             }
         }
-
-
-
+        #endregion
 
         //Main Load
         private async void SalesRecord_Load(object sender, EventArgs e)
@@ -193,7 +199,7 @@ namespace DazaBestApplication.Pages
             PaginationLabel.Text = $"{PageNumber} / {totalpages}";//Pagination Label
         }
 
-        //Events
+        #region Form Events
         private async void bunifuButton22_Click(object sender, EventArgs e)
         {
             //print the report
@@ -241,5 +247,10 @@ namespace DazaBestApplication.Pages
         {
             ChangeDateFilter();
         }
+        private void SearchBox_TextChange(object sender, EventArgs e)
+        {
+            SearchSaleRecords();
+        }
+        #endregion
     }
 }
