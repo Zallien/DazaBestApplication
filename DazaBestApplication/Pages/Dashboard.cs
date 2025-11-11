@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,11 +46,12 @@ namespace DazaBestApplication.Pages
         private async Task SetDashboard()
         {
             await LoadDashboardInformation();
+            CultureInfo phCulture = new CultureInfo("en-PH");
 
-            qoutalabel.Text = DashboardInformation.Qouta.ToString("");
+            qoutalabel.Text = DashboardInformation.Qouta.ToString("C", phCulture);
             numberoforderslabel.Text = DashboardInformation.OrdersCount.ToString();
             
-            salelabel.Text = DashboardInformation.TotalSale.ToString("");
+            salelabel.Text = DashboardInformation.TotalSale.ToString("C", phCulture);
             numberofitemslabel.Text = DashboardInformation.ItemsCount.ToString();
             outofstocklabel.Text = DashboardInformation.OutofStockCount.ToString();
             criticalitemslabel.Text = DashboardInformation.CriticalItems.ToString();

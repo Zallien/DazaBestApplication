@@ -7,6 +7,7 @@ using DazaBestApplication.Models_and_Helpers;
 using SystemBackEnd.ServiceModels;
 using DazaBestApplication.Pages;
 using SystemBackEnd.Models;
+using DazaBestApplication.Layout;
 
 
 namespace DazaBestApplication
@@ -43,7 +44,7 @@ namespace DazaBestApplication
             /*Application.Run(new Log_in());*/
             try
             {
-                Application.Run(new Log_in());
+                Application.Run(new Splashscreen());
             }
             catch (Exception ex)
             {

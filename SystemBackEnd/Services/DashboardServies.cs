@@ -25,9 +25,9 @@ namespace SystemBackEnd.Services
             var (fromDate, toDate, Qouta) = dashboardType switch
             {
                 "Daily" => (now.Date, now.Date, 3000m),
-                "Weekly" => (now.Date.AddDays(-(int)now.DayOfWeek), now.Date, 5000m),
-                "Monthly" => (new DateTime(now.Year, now.Month, 1), now.Date, 10000m),
-                "Yearly" => (new DateTime(now.Year, 1, 1), now.Date, 30000m),
+                "Weekly" => (now.Date.AddDays(-(int)now.DayOfWeek), now.Date, 21000m),
+                "Monthly" => (new DateTime(now.Year, now.Month, 1), now.Date, 90000m),
+                "Yearly" => (new DateTime(now.Year, 1, 1), now.Date, 1095000m),
 
                 _ => throw new ArgumentException("Invalid dashboard type.")
             };
