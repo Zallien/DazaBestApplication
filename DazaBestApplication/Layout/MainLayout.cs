@@ -48,6 +48,11 @@ namespace DazaBestApplication
             {
                 NavButton_Home,
                 NavButton_Item,
+                NavButton_PurchaseItem,
+                NavButton_Products,
+                NavButton_Reports,
+                bunifuButton21,
+                AccountsManagementBTN
             };
             Activebutton = NavButton_Home;
             await CheckActiveButton();
@@ -481,6 +486,8 @@ namespace DazaBestApplication
         private void NavButton_Products_Click(object sender, EventArgs e)
         {
             ShowProductPage();
+            Activebutton = NavButton_Products;
+            CheckActiveButton();
         }
         private async void LogOut_btn_Click(object sender, EventArgs e)
         {
@@ -511,7 +518,8 @@ namespace DazaBestApplication
             /*ShowSettingsPage();*/
             /// backup and restore page
             BackupAndRestorePage();
-
+            Activebutton = bunifuButton21;
+            CheckActiveButton();
 
         }
         private void POSButton_Click(object sender, EventArgs e)
@@ -560,33 +568,47 @@ namespace DazaBestApplication
         {
             //sales
             ShowSalesRecordmPage();
+            Activebutton = NavButton_Reports;
+            CheckActiveButton();
         }
         private void AdjustStockBTN_Click(object sender, EventArgs e)
         {
             ShowAdjustItemPage();
+            Activebutton = NavButton_PurchaseItem;
+            CheckActiveButton();
         }
         private void PurchaseItemBTN_Click(object sender, EventArgs e)
         {
             ShowPurchaseItemPage();
+            Activebutton = NavButton_PurchaseItem;
+            CheckActiveButton();
         }
         private void bunifuButton23_Click(object sender, EventArgs e)
         {
             //stock adjustment record
             ShowAdjustRecordmPage();
+            Activebutton = NavButton_Reports;
+            CheckActiveButton();
         }
         private void bunifuButton24_Click(object sender, EventArgs e)
         {
             //stock in record
             StockInRecordmPage();
+            Activebutton = NavButton_Reports;
+            CheckActiveButton();
         }
         private void bunifuButton25_Click(object sender, EventArgs e)
         {
             //inventory record
             ShowInventoryRecordmPage();
+            Activebutton = NavButton_Reports;
+            CheckActiveButton();
         }
         private void AccountsManagementBTN_Click(object sender, EventArgs e)
         {
             AccountsPage();
+            Activebutton = AccountsManagementBTN;
+            CheckActiveButton();
         }
 
         //Navbutton Hover
