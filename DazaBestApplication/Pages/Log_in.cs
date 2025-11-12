@@ -1,4 +1,5 @@
 ﻿using Bunifu.UI.WinForms;
+using DazaBestApplication.Layout;
 using DazaBestApplication.Modals;
 using DazaBestApplication.Models_and_Helpers;
 using System;
@@ -24,6 +25,7 @@ namespace DazaBestApplication.Pages
         private LoginServices LoginServices;
         private RegisterAccount regAcc;
         private Panel loadingpanel;
+        private LoggingInModel logInModel;
 
         public Log_in()
         {
@@ -70,27 +72,30 @@ namespace DazaBestApplication.Pages
         //Login User
         private async Task LoginUser()
         {
+            logInModel = new LoggingInModel()
+            {
+                Username = Usernametxtbox.Text,
+                Password = Passwordtxtbox.Text,
+            };
             bool loginsuccess = false;
-            string username;
-            string password;
-            username = Usernametxtbox.Text;
-            password = Passwordtxtbox.Text;
+            //string username;
+            //string password;
+            //username = Usernametxtbox.Text;
+            //password = Passwordtxtbox.Text;
             LoginServices = new LoginServices(new BackEndDBContext());
             try
             {
-                
-                loginsuccess = await LoginServices.LoginAccountAsync(username, password);
-                if (!loginsuccess)
+
+                loginsuccess = await ShowLoading();
+                if (loginsuccess == false)
                 {
-                    //await HideLoadingScreen();
                     Usernametxtbox.Clear();
                     Passwordtxtbox.Clear();
                     MessageBox.Show("Account Not Found", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                //await HideLoadingScreen();
                 LoginServices = new LoginServices(new BackEndDBContext());
-                Program.theLoggedInAccount = await LoginServices.GetAccountInfo(username);
+                Program.theLoggedInAccount = await LoginServices.GetAccountInfo(logInModel.Username);
                 this.Close();
                 MainPage mainPage = new MainPage();
                 mainPage.Show();
@@ -126,6 +131,38 @@ namespace DazaBestApplication.Pages
                 ModalBackgorund.Dispose();
             }
         }
+        //Show lOADING
+        private async Task<bool> ShowLoading()
+        {
+            Form ModalBackgorund = new();
+            using (Loadingscreen modalcontent = new(logInModel))
+            {
+                var mainBounds = this.Bounds;
+
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = this.Size;
+                ModalBackgorund.Location = this.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(this);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+
+                var result = modalcontent.ShowDialog();
+
+                ModalBackgorund.Dispose();
+
+                return result == DialogResult.Yes;
+            }
+        }
+
+
+
 
         //Main Load
         private async void Log_in_Load(object sender, EventArgs e)
