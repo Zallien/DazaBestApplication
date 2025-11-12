@@ -27,11 +27,13 @@ namespace DazaBestApplication.Pages
         private Panel loadingpanel;
         private LoggingInModel logInModel;
 
+
         public Log_in()
         {
             InitializeComponent();
             MaximizeSystem();
         }
+
 
         //Maximize the System AUTOMATICALLY
         private void MaximizeSystem()
@@ -78,10 +80,6 @@ namespace DazaBestApplication.Pages
                 Password = Passwordtxtbox.Text,
             };
             bool loginsuccess = false;
-            //string username;
-            //string password;
-            //username = Usernametxtbox.Text;
-            //password = Passwordtxtbox.Text;
             LoginServices = new LoginServices(new BackEndDBContext());
             try
             {
@@ -163,7 +161,6 @@ namespace DazaBestApplication.Pages
 
 
 
-
         //Main Load
         private async void Log_in_Load(object sender, EventArgs e)
         {
@@ -177,6 +174,7 @@ namespace DazaBestApplication.Pages
             }
 
         }
+
 
         private async void Login_btn_Click(object sender, EventArgs e)
         {
@@ -197,7 +195,6 @@ namespace DazaBestApplication.Pages
             {
                 pictureBox1.Image = Properties.Resources.view__1_;
                 Passwordtxtbox.PasswordChar = '*';
-
             }
 
         }

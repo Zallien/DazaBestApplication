@@ -399,13 +399,13 @@ namespace DazaBestApplication.Modals
         //Main Load
         private async void AdjustItemModal_Load(object sender, EventArgs e)
         {
+            preparedby.Text = theloggedaccount.Fullname;
             AllPickedItems.RowTemplate.Height = 32;
             pagenumberindicator.Text = $"{Productcurrentpage} / {Producttotalpage}";
         }
 
 
-
-
+        
         private void AllPickedItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
