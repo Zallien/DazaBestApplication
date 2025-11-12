@@ -23,6 +23,7 @@ namespace DazaBestApplication.Pages
         private LoggedinAccount LoggedinAccount;
         private LoginServices LoginServices;
         private RegisterAccount regAcc;
+        private Panel loadingpanel;
 
         public Log_in()
         {
@@ -82,6 +83,8 @@ namespace DazaBestApplication.Pages
                 if (!loginsuccess)
                 {
                     //await HideLoadingScreen();
+                    Usernametxtbox.Clear();
+                    Passwordtxtbox.Clear();
                     MessageBox.Show("Account Not Found", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -123,7 +126,6 @@ namespace DazaBestApplication.Pages
                 ModalBackgorund.Dispose();
             }
         }
-
 
         //Main Load
         private async void Log_in_Load(object sender, EventArgs e)

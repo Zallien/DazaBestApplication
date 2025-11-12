@@ -15,13 +15,8 @@ namespace DazaBestApplication.Layout
     public partial class Loadingscreen : Form
     {
         private Size clientsize = Program.WorkspaceSize;
-
-        //Logo Animation Properties
-        string animationType = "Scale";
-        int maxanimationTime = 500; //in milliseconds
-        float timestep = 0.02f; //in seconds
-        private Size originallogosize;
-        private Point originallogolocation;
+        private System.Windows.Forms.Timer loadingTimer;
+        private int Timerprogress = 0;
 
         public Loadingscreen()
         {
@@ -30,14 +25,27 @@ namespace DazaBestApplication.Layout
 
         private void Loadingscreen_Load(object sender, EventArgs e)
         {
-            CenterCOmpanyLogo();
+            SetupTimer();
         }
-        //Center Piturebox Horizontally
-        private void CenterCOmpanyLogo()
+        private void SetupTimer()
         {
-            CompanyLogo.Left = (clientsize.Width - CompanyLogo.Width) / 2;
-            originallogosize = CompanyLogo.Size;
-            originallogolocation = CompanyLogo.Location;
+            loadingprogressbar.Value = 0;
+            loadingprogressbar.Maximum = 100;
+            loadingTimer = new System.Windows.Forms.Timer();
+            loadingTimer.Interval = 100;
+            loadingTimer.Tick += LoadingtimerTick;
+            loadingTimer.Start();
+
+        }
+        private void LoadingtimerTick(object sender, EventArgs e)
+        {
+            Timerprogress++;
+            if (Timerprogress >= 100)
+            {
+                loadingTimer.Stop();
+                Timerprogress = 0;
+            }
+            loadingprogressbar.Value = Timerprogress;
         }
 
     }

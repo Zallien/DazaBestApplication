@@ -363,6 +363,16 @@ namespace DazaBestApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap loadingforapp {
+            get {
+                object obj = ResourceManager.GetObject("loadingforapp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LoadingGIF {
             get {
                 object obj = ResourceManager.GetObject("LoadingGIF", resourceCulture);

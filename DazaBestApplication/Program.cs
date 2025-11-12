@@ -44,7 +44,8 @@ namespace DazaBestApplication
             /*Application.Run(new Log_in());*/
             try
             {
-                Application.Run(new Splashscreen());
+                //Application.Run(new Splashscreen());
+                Application.Run(new Loadingscreen());
             }
             catch (Exception ex)
             {

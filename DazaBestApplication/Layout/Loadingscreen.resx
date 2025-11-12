@@ -117,4 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="loadingprogressbar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAATsAAAAKCAYAAADLjfl7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEbSURBVGhD7dqvSgRRFMfxE1RmBteVRVCxiBaDYaNNMBnU
+        vNFmEBEUBF/AbDL4AL6AWAxiM4nJ6gu4smjcmXuu98qFYeG+wMHvDz4wYc7EH/fPCCGE/LuoyEDnyzcv
+        4gHAkthdWk3fhOelVGn5hBef3Pb6d3078OPXCwAwJXZXc77jtVcNtVMepGqbjJZTJ83e5k/uAwBgyvOp
+        d8vdr7DC20gV10Y7xUd9d5gfBABjmqt977rFQ6q4NlrNfNb3R9khADDn8fjvHC9VXJvYgLEJs0MAYEw8
+        vws71vdUcW1C/fXdam84fjnLDgKAJa6/MlKR3VRxk9G54tKtLYy4jQVgVbx7iEXnFmevU7XlE5pwi//s
+        AFgVL1vzKzqRX64kF1k9yJkaAAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>
