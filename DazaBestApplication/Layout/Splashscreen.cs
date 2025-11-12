@@ -30,7 +30,7 @@ namespace DazaBestApplication.Layout
             pictureBox1.Image = frames[0];
 
             gifTimer = new System.Windows.Forms.Timer();
-            gifTimer.Interval = 25; // default GIF speed, adjust if needed
+            gifTimer.Interval = 25;
             gifTimer.Tick += GifTimer_Tick;
             gifTimer.Start();
         }
