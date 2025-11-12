@@ -189,6 +189,8 @@ namespace DazaBestApplication
             AccountsManagementBTN.TextPadding = new Padding(35, 0, 0, 0);
             AccountsManagementBTN.UseDefaultRadiusAndThickness = true;
             AccountsManagementBTN.Click += AccountsManagementBTN_Click;
+            AccountsManagementBTN.MouseEnter += NavbuttonMouseEnter;
+            AccountsManagementBTN.MouseLeave += NavbuttonMouseLeave;
             // 
             // POSButton
             // 
@@ -562,6 +564,8 @@ namespace DazaBestApplication
             bunifuButton21.TextPadding = new Padding(35, 0, 0, 0);
             bunifuButton21.UseDefaultRadiusAndThickness = true;
             bunifuButton21.Click += bunifuButton21_Click;
+            bunifuButton21.MouseEnter += NavbuttonMouseEnter;
+            bunifuButton21.MouseLeave += NavbuttonMouseLeave;
             // 
             // NavButton_Reports
             // 
@@ -741,11 +745,11 @@ namespace DazaBestApplication
             NavButton_Products.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
             NavButton_Products.OnDisabledState.IconLeftImage = null;
             NavButton_Products.OnDisabledState.IconRightImage = null;
-            NavButton_Products.onHoverState.BorderColor = Color.Black;
+            NavButton_Products.onHoverState.BorderColor = Color.Transparent;
             NavButton_Products.onHoverState.BorderRadius = 1;
             NavButton_Products.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             NavButton_Products.onHoverState.BorderThickness = 2;
-            NavButton_Products.onHoverState.FillColor = Color.FromArgb(255, 240, 221);
+            NavButton_Products.onHoverState.FillColor = Color.Transparent;
             NavButton_Products.onHoverState.ForeColor = Color.Black;
             NavButton_Products.onHoverState.IconLeftImage = Properties.Resources.clipboard;
             NavButton_Products.onHoverState.IconRightImage = null;
@@ -757,11 +761,11 @@ namespace DazaBestApplication
             NavButton_Products.OnIdleState.ForeColor = Color.Black;
             NavButton_Products.OnIdleState.IconLeftImage = Properties.Resources.clipboard;
             NavButton_Products.OnIdleState.IconRightImage = null;
-            NavButton_Products.OnPressedState.BorderColor = Color.Black;
+            NavButton_Products.OnPressedState.BorderColor = Color.Transparent;
             NavButton_Products.OnPressedState.BorderRadius = 1;
             NavButton_Products.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             NavButton_Products.OnPressedState.BorderThickness = 2;
-            NavButton_Products.OnPressedState.FillColor = Color.FromArgb(198, 40, 40);
+            NavButton_Products.OnPressedState.FillColor = Color.Transparent;
             NavButton_Products.OnPressedState.ForeColor = Color.White;
             NavButton_Products.OnPressedState.IconLeftImage = Properties.Resources.clipboard__1_;
             NavButton_Products.OnPressedState.IconRightImage = null;
@@ -773,6 +777,8 @@ namespace DazaBestApplication
             NavButton_Products.TextPadding = new Padding(35, 0, 0, 0);
             NavButton_Products.UseDefaultRadiusAndThickness = true;
             NavButton_Products.Click += NavButton_Products_Click;
+            NavButton_Products.MouseEnter += NavbuttonMouseEnter;
+            NavButton_Products.MouseHover += NavbuttonMouseLeave;
             // 
             // NavButton_Item
             // 

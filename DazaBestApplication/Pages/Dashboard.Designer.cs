@@ -200,7 +200,7 @@ namespace DazaBestApplication.Pages
             // 
             panel15.Controls.Add(tableLayoutPanel6);
             panel15.Dock = DockStyle.Top;
-            panel15.Location = new Point(0, 593);
+            panel15.Location = new Point(0, 571);
             panel15.Name = "panel15";
             panel15.Size = new Size(900, 144);
             panel15.TabIndex = 10;
@@ -432,7 +432,7 @@ namespace DazaBestApplication.Pages
             // 
             panel10.Controls.Add(tableLayoutPanel4);
             panel10.Dock = DockStyle.Top;
-            panel10.Location = new Point(0, 479);
+            panel10.Location = new Point(0, 457);
             panel10.Name = "panel10";
             panel10.Size = new Size(900, 114);
             panel10.TabIndex = 9;
@@ -653,7 +653,7 @@ namespace DazaBestApplication.Pages
             panel9.Location = new Point(0, 206);
             panel9.Name = "panel9";
             panel9.Padding = new Padding(15);
-            panel9.Size = new Size(900, 273);
+            panel9.Size = new Size(900, 251);
             panel9.TabIndex = 8;
             // 
             // salesChart
@@ -674,7 +674,7 @@ namespace DazaBestApplication.Pages
             series1.Legend = "Legend1";
             series1.Name = "Sales";
             salesChart.Series.Add(series1);
-            salesChart.Size = new Size(870, 243);
+            salesChart.Size = new Size(870, 221);
             salesChart.TabIndex = 0;
             salesChart.Text = "chart1";
             // 
