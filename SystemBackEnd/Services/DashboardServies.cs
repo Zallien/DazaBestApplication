@@ -45,10 +45,10 @@ namespace SystemBackEnd.Services
                                             join b in _db.TransactionDetails on a.TransactionHeaderId equals b.TransactionHeaderId
                                             where a.TransactionDate.Date >= fromDate && a.TransactionDate.Date <= toDate
                                             select a.Grandtotal).SumAsync();
-                dashinfo.ProductsCount =  await _db.Products.CountAsync();
-                dashinfo.CriticalItems =  await _db.Items.Where(x => x.BalanceStocks <= 10m).CountAsync();
-                dashinfo.OutofStockCount =  await _db.Items.Where(x => x.BalanceStocks == 0m).CountAsync();
-                dashinfo.OverstockItems =  await _db.Items.Where(x => x.BalanceStocks <= 50m).CountAsync();
+                dashinfo.ProductsCount =  await _db.Products.Where(x => x.IsActive == true).CountAsync();
+                dashinfo.CriticalItems =  await _db.Items.Where(x => x.BalanceStocks <= 10m && x.IsActive == true).CountAsync();
+                dashinfo.OutofStockCount =  await _db.Items.Where(x => x.BalanceStocks == 0m && x.IsActive == true).CountAsync();
+                dashinfo.OverstockItems =  await _db.Items.Where(x => x.BalanceStocks <= 50m && x.IsActive == true).CountAsync();
                 var Topsellingtable = await (from a in _db.TransactionDetails
                                                   join b in _db.Products on a.ProductId equals b.ProductID
                                                   join c in _db.TransactionHeader on a.TransactionHeaderId equals c.TransactionHeaderId

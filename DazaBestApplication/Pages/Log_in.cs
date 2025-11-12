@@ -23,8 +23,6 @@ namespace DazaBestApplication.Pages
         private LoggedinAccount LoggedinAccount;
         private LoginServices LoginServices;
         private RegisterAccount regAcc;
-        private Panel Loadingpanel;
-        private BunifuLoader bunifuLoader;
 
         public Log_in()
         {
@@ -90,9 +88,9 @@ namespace DazaBestApplication.Pages
                 //await HideLoadingScreen();
                 LoginServices = new LoginServices(new BackEndDBContext());
                 Program.theLoggedInAccount = await LoginServices.GetAccountInfo(username);
+                this.Close();
                 MainPage mainPage = new MainPage();
                 mainPage.Show();
-                this.Close();
             }
             catch (Exception e)
             {
@@ -124,41 +122,6 @@ namespace DazaBestApplication.Pages
                 modalcontent.ShowDialog();
                 ModalBackgorund.Dispose();
             }
-        }
-        //Show Loading Screen
-        private async Task ShowloadingScreeen()
-        {
-            Loadingpanel = new Panel()
-            {
-                Location = new Point(0, 0),
-                Size = this.ClientSize,
-                BackColor = Color.FromArgb(20, 0, 0, 0),
-                Visible = false
-            };
-
-            this.Controls.Add(Loadingpanel);
-            Loadingpanel.BringToFront();
-            Loadingpanel.Visible = true;
-
-            bunifuLoader = new BunifuLoader()
-            {
-                Size = new Size(200, 200),
-                BackColor = Color.BlanchedAlmond,
-                Visible = true
-            };
-
-            Loadingpanel.Controls.Add(bunifuLoader);
-
-            bunifuLoader.Location = new Point(
-                (Loadingpanel.Width - bunifuLoader.Width) / 2,
-                (Loadingpanel.Height - bunifuLoader.Height) / 2
-            );
-
-        }
-        private async Task HideLoadingScreen()
-        {
-            bunifuLoader.Dispose();
-            Loadingpanel.Dispose();
         }
 
 

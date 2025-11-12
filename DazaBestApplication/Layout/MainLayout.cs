@@ -19,6 +19,7 @@ namespace DazaBestApplication
         private Panel Loadingpanel;
         private BunifuLoader bunifuLoader;
 
+
         public MainPage()
         {
             InitializeComponent();
@@ -30,12 +31,12 @@ namespace DazaBestApplication
             await ShowloadingScreeen();
             await startup();
             theLoggedInAccount = Program.theLoggedInAccount;
-            await CheckIfNewlyLoggedIn();
-            await IsAdminAccount();
+            await IsAdminAccount(); //Delete if redirectpage is created
             await AddBackupSettingsIfNotExists();
             await LoadSettingsValues();
             await AutoBackupCheck();
             await HideLoadingScreen();
+            await CheckIfNewlyLoggedIn();
         }
 
         private async Task startup()
@@ -77,11 +78,16 @@ namespace DazaBestApplication
         }
         //Check if User is Newly Logged In
         private async Task CheckIfNewlyLoggedIn()
-        {   
-            await Task.Delay(500); // Wait for 500 milliseconds to ensure the form is fully loaded
+        {  
+
             if (theLoggedInAccount != null && theLoggedInAccount.NewlyLoggedIn == true)
             {
-                await ShowForgotPassswordSetup();
+                LoginServices loginservice = new LoginServices(new SystemBackEnd.BackEndDBContext());
+                bool firsttimelogout = await loginservice.GetAccountFirstLoginInformation(theLoggedInAccount.AccountId);
+                if (firsttimelogout == true)
+                {
+                    await ShowForgotPassswordSetup();
+                }
             }
 
         }
@@ -263,6 +269,8 @@ namespace DazaBestApplication
                 MessageBox.Show("Auto-backup failed:\n" + ex.Message);
             }
         }
+
+
 
         //Show and Hide Loading screen
         private async Task ShowloadingScreeen()

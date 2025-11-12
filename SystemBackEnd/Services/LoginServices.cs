@@ -292,6 +292,26 @@ namespace SystemBackEnd.Services
             }
             return false;
         }
+        //Get Account Firstloggin Information
+        public async Task<bool> GetAccountFirstLoginInformation(Guid Accountid)
+        {
+            bool accountFirstLoginInformation = false;
+            try
+            {
+
+                var acc = await _db.Accounts.FirstOrDefaultAsync(x => x.AccountId == Accountid);
+                if (acc != null)
+                {
+                    accountFirstLoginInformation = acc.FirstTimeLogout;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return accountFirstLoginInformation;
+        }
 
     }
 }
