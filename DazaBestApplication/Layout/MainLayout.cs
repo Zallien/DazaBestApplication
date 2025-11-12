@@ -1,4 +1,5 @@
 using Bunifu.UI.WinForms;
+using Bunifu.UI.WinForms.BunifuButton;
 using DazaBestApplication.Layout;
 using DazaBestApplication.Modals;
 using DazaBestApplication.Models_and_Helpers;
@@ -19,6 +20,10 @@ namespace DazaBestApplication
         private Panel Loadingpanel;
         private BunifuLoader bunifuLoader;
 
+        //Button Index
+        private List<BunifuButton2> bunifuButtons;
+        private BunifuButton2 Activebutton = new();
+
 
         public MainPage()
         {
@@ -37,6 +42,15 @@ namespace DazaBestApplication
             await AutoBackupCheck();
             await HideLoadingScreen();
             await CheckIfNewlyLoggedIn();
+
+
+            bunifuButtons = new List<BunifuButton2>()
+            {
+                NavButton_Home,
+                NavButton_Item,
+            };
+            Activebutton = NavButton_Home;
+            await CheckActiveButton();
         }
 
         private async Task startup()
@@ -78,7 +92,7 @@ namespace DazaBestApplication
         }
         //Check if User is Newly Logged In
         private async Task CheckIfNewlyLoggedIn()
-        {  
+        {
 
             if (theLoggedInAccount != null && theLoggedInAccount.NewlyLoggedIn == true)
             {
@@ -139,14 +153,14 @@ namespace DazaBestApplication
         {
             try
             {
-                
+
                 string backupDirectory = Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                     "DazaBestApplication",
                     "Backups"
                 );
 
-                
+
                 Directory.CreateDirectory(backupDirectory);
 
                 using (var context = new SystemBackEnd.BackEndDBContext())
@@ -311,9 +325,6 @@ namespace DazaBestApplication
 
 
 
-
-
-
         //Routing Each Pages
         private void ShowItemPage()
         {
@@ -367,7 +378,6 @@ namespace DazaBestApplication
             MainContainer.Controls.Add(MainContainerForm);
             MainContainerForm.Show();
         }
-        
         private void ShowDashboardmPage()
         {
             if (MainContainerForm != null)
@@ -465,6 +475,8 @@ namespace DazaBestApplication
         private void NavButton_Item_Click(object sender, EventArgs e)
         {
             ShowItemPage();
+            Activebutton = NavButton_Item;
+            CheckActiveButton();
         }
         private void NavButton_Products_Click(object sender, EventArgs e)
         {
@@ -486,8 +498,8 @@ namespace DazaBestApplication
         private void NavButton_Home_Click(object sender, EventArgs e)
         {
             ShowDashboardmPage();
-            DashClicked();
-
+            Activebutton = NavButton_Home;
+            CheckActiveButton();
 
         }
         private void NavButton_PurchaseItem_Click(object sender, EventArgs e)
@@ -575,6 +587,41 @@ namespace DazaBestApplication
         private void AccountsManagementBTN_Click(object sender, EventArgs e)
         {
             AccountsPage();
+        }
+
+        //Navbutton Hover
+        private void NavbuttonMouseEnter(object sender, EventArgs e)
+        {
+            if (sender is BunifuButton2 button)
+            {
+                if (button == Activebutton)
+                {
+                    return;
+                }
+                button.BackColor = Color.FromArgb(255, 240, 221);
+            }
+        }
+        private void NavbuttonMouseLeave(object sender, EventArgs e)
+        {
+            if (sender is BunifuButton2 button)
+            {
+                button.BackColor = Color.Transparent;
+                button.ForeColor = Color.Black;
+                CheckActiveButton();
+            }
+        }
+        private async Task CheckActiveButton()
+        {
+            foreach (BunifuButton2 button2 in bunifuButtons)
+            {
+                button2.BackColor = Color.Transparent;
+                button2.ForeColor = Color.Black;
+            }
+            if (Activebutton is BunifuButton2 activebutton)
+            {
+                activebutton.BackColor = Color.FromArgb(198, 40, 40);
+                activebutton.ForeColor = Color.White;
+            }
         }
 
 

@@ -798,9 +798,9 @@ namespace DazaBestApplication
             borderEdges8.TopRight = true;
             NavButton_Item.CustomizableEdges = borderEdges8;
             NavButton_Item.DialogResult = DialogResult.None;
-            NavButton_Item.DisabledBorderColor = Color.FromArgb(191, 191, 191);
-            NavButton_Item.DisabledFillColor = Color.FromArgb(204, 204, 204);
-            NavButton_Item.DisabledForecolor = Color.FromArgb(168, 160, 168);
+            NavButton_Item.DisabledBorderColor = Color.Transparent;
+            NavButton_Item.DisabledFillColor = Color.Transparent;
+            NavButton_Item.DisabledForecolor = Color.Black;
             NavButton_Item.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
             NavButton_Item.Font = new Font("Courier New", 12F, FontStyle.Bold);
             NavButton_Item.ForeColor = Color.Black;
@@ -822,19 +822,19 @@ namespace DazaBestApplication
             NavButton_Item.IndicateFocus = false;
             NavButton_Item.Location = new Point(0, 267);
             NavButton_Item.Name = "NavButton_Item";
-            NavButton_Item.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
+            NavButton_Item.OnDisabledState.BorderColor = Color.Transparent;
             NavButton_Item.OnDisabledState.BorderRadius = 1;
             NavButton_Item.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             NavButton_Item.OnDisabledState.BorderThickness = 2;
-            NavButton_Item.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
-            NavButton_Item.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
-            NavButton_Item.OnDisabledState.IconLeftImage = null;
+            NavButton_Item.OnDisabledState.FillColor = Color.Transparent;
+            NavButton_Item.OnDisabledState.ForeColor = Color.Black;
+            NavButton_Item.OnDisabledState.IconLeftImage = Properties.Resources.clipboard;
             NavButton_Item.OnDisabledState.IconRightImage = null;
-            NavButton_Item.onHoverState.BorderColor = Color.Black;
+            NavButton_Item.onHoverState.BorderColor = Color.Transparent;
             NavButton_Item.onHoverState.BorderRadius = 1;
             NavButton_Item.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             NavButton_Item.onHoverState.BorderThickness = 2;
-            NavButton_Item.onHoverState.FillColor = Color.FromArgb(255, 240, 221);
+            NavButton_Item.onHoverState.FillColor = Color.Transparent;
             NavButton_Item.onHoverState.ForeColor = Color.Black;
             NavButton_Item.onHoverState.IconLeftImage = Properties.Resources.clipboard;
             NavButton_Item.onHoverState.IconRightImage = null;
@@ -846,13 +846,13 @@ namespace DazaBestApplication
             NavButton_Item.OnIdleState.ForeColor = Color.Black;
             NavButton_Item.OnIdleState.IconLeftImage = Properties.Resources.clipboard;
             NavButton_Item.OnIdleState.IconRightImage = null;
-            NavButton_Item.OnPressedState.BorderColor = Color.Black;
+            NavButton_Item.OnPressedState.BorderColor = Color.Transparent;
             NavButton_Item.OnPressedState.BorderRadius = 1;
             NavButton_Item.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             NavButton_Item.OnPressedState.BorderThickness = 2;
-            NavButton_Item.OnPressedState.FillColor = Color.FromArgb(198, 40, 40);
-            NavButton_Item.OnPressedState.ForeColor = Color.White;
-            NavButton_Item.OnPressedState.IconLeftImage = Properties.Resources.clipboard__1_;
+            NavButton_Item.OnPressedState.FillColor = Color.Transparent;
+            NavButton_Item.OnPressedState.ForeColor = Color.Black;
+            NavButton_Item.OnPressedState.IconLeftImage = Properties.Resources.clipboard;
             NavButton_Item.OnPressedState.IconRightImage = null;
             NavButton_Item.Size = new Size(200, 40);
             NavButton_Item.TabIndex = 1;
@@ -862,6 +862,8 @@ namespace DazaBestApplication
             NavButton_Item.TextPadding = new Padding(35, 0, 0, 0);
             NavButton_Item.UseDefaultRadiusAndThickness = true;
             NavButton_Item.Click += NavButton_Item_Click;
+            NavButton_Item.MouseEnter += NavbuttonMouseEnter;
+            NavButton_Item.MouseLeave += NavbuttonMouseLeave;
             // 
             // NavButton_Home
             // 
@@ -887,9 +889,9 @@ namespace DazaBestApplication
             borderEdges9.TopRight = true;
             NavButton_Home.CustomizableEdges = borderEdges9;
             NavButton_Home.DialogResult = DialogResult.None;
-            NavButton_Home.DisabledBorderColor = Color.FromArgb(191, 191, 191);
-            NavButton_Home.DisabledFillColor = Color.FromArgb(204, 204, 204);
-            NavButton_Home.DisabledForecolor = Color.FromArgb(168, 160, 168);
+            NavButton_Home.DisabledBorderColor = Color.Transparent;
+            NavButton_Home.DisabledFillColor = Color.Transparent;
+            NavButton_Home.DisabledForecolor = Color.Black;
             NavButton_Home.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
             NavButton_Home.Font = new Font("Courier New", 12F, FontStyle.Bold);
             NavButton_Home.ForeColor = Color.Black;
@@ -911,19 +913,19 @@ namespace DazaBestApplication
             NavButton_Home.IndicateFocus = false;
             NavButton_Home.Location = new Point(0, 227);
             NavButton_Home.Name = "NavButton_Home";
-            NavButton_Home.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
+            NavButton_Home.OnDisabledState.BorderColor = Color.Transparent;
             NavButton_Home.OnDisabledState.BorderRadius = 1;
             NavButton_Home.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             NavButton_Home.OnDisabledState.BorderThickness = 2;
-            NavButton_Home.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
-            NavButton_Home.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
-            NavButton_Home.OnDisabledState.IconLeftImage = null;
+            NavButton_Home.OnDisabledState.FillColor = Color.Transparent;
+            NavButton_Home.OnDisabledState.ForeColor = Color.Black;
+            NavButton_Home.OnDisabledState.IconLeftImage = Properties.Resources.speedometer__1_;
             NavButton_Home.OnDisabledState.IconRightImage = null;
-            NavButton_Home.onHoverState.BorderColor = Color.Black;
+            NavButton_Home.onHoverState.BorderColor = Color.Transparent;
             NavButton_Home.onHoverState.BorderRadius = 1;
             NavButton_Home.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             NavButton_Home.onHoverState.BorderThickness = 2;
-            NavButton_Home.onHoverState.FillColor = Color.FromArgb(255, 240, 221);
+            NavButton_Home.onHoverState.FillColor = Color.Transparent;
             NavButton_Home.onHoverState.ForeColor = Color.Black;
             NavButton_Home.onHoverState.IconLeftImage = Properties.Resources.speedometer__1_;
             NavButton_Home.onHoverState.IconRightImage = null;
@@ -935,13 +937,13 @@ namespace DazaBestApplication
             NavButton_Home.OnIdleState.ForeColor = Color.Black;
             NavButton_Home.OnIdleState.IconLeftImage = Properties.Resources.speedometer__1_;
             NavButton_Home.OnIdleState.IconRightImage = null;
-            NavButton_Home.OnPressedState.BorderColor = Color.Black;
+            NavButton_Home.OnPressedState.BorderColor = Color.Transparent;
             NavButton_Home.OnPressedState.BorderRadius = 1;
             NavButton_Home.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             NavButton_Home.OnPressedState.BorderThickness = 2;
-            NavButton_Home.OnPressedState.FillColor = Color.FromArgb(198, 40, 40);
-            NavButton_Home.OnPressedState.ForeColor = Color.White;
-            NavButton_Home.OnPressedState.IconLeftImage = Properties.Resources.speedometer__1___1_;
+            NavButton_Home.OnPressedState.FillColor = Color.Transparent;
+            NavButton_Home.OnPressedState.ForeColor = Color.Black;
+            NavButton_Home.OnPressedState.IconLeftImage = Properties.Resources.speedometer__1_;
             NavButton_Home.OnPressedState.IconRightImage = null;
             NavButton_Home.Size = new Size(200, 40);
             NavButton_Home.TabIndex = 0;
@@ -951,6 +953,8 @@ namespace DazaBestApplication
             NavButton_Home.TextPadding = new Padding(35, 0, 0, 0);
             NavButton_Home.UseDefaultRadiusAndThickness = true;
             NavButton_Home.Click += NavButton_Home_Click;
+            NavButton_Home.MouseEnter += NavbuttonMouseEnter;
+            NavButton_Home.MouseLeave += NavbuttonMouseLeave;
             // 
             // MainContainer
             // 
@@ -1556,6 +1560,8 @@ namespace DazaBestApplication
             AdjustStockBTN.TextPadding = new Padding(35, 0, 0, 0);
             AdjustStockBTN.UseDefaultRadiusAndThickness = true;
             AdjustStockBTN.Click += AdjustStockBTN_Click;
+            AdjustStockBTN.MouseEnter += NavbuttonMouseEnter;
+            AdjustStockBTN.MouseLeave += NavbuttonMouseLeave;
             // 
             // MainPage
             // 
