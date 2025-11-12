@@ -16,7 +16,8 @@ namespace DazaBestApplication
         Form MainContainerForm = null;
         private BunifuTransition BunifuTransition = new();
         private LoggedinAccount theLoggedInAccount;
-        
+        private Panel Loadingpanel;
+        private BunifuLoader bunifuLoader;
 
         public MainPage()
         {
@@ -26,7 +27,7 @@ namespace DazaBestApplication
         //Main Load Event
         private async void MainPage_Load(object sender, EventArgs e)
         {
-
+            await ShowloadingScreeen();
             await startup();
             theLoggedInAccount = Program.theLoggedInAccount;
             await CheckIfNewlyLoggedIn();
@@ -34,6 +35,7 @@ namespace DazaBestApplication
             await AddBackupSettingsIfNotExists();
             await LoadSettingsValues();
             await AutoBackupCheck();
+            await HideLoadingScreen();
         }
 
         private async Task startup()
@@ -262,8 +264,41 @@ namespace DazaBestApplication
             }
         }
 
+        //Show and Hide Loading screen
+        private async Task ShowloadingScreeen()
+        {
+            Loadingpanel = new Panel()
+            {
+                Location = new Point(0, 0),
+                Size = this.Size,
+                BackColor = Color.FromArgb(20, 0, 0, 0),
+                Visible = false
+            };
 
+            this.Controls.Add(Loadingpanel);
+            Loadingpanel.BringToFront();
+            Loadingpanel.Visible = true;
 
+            bunifuLoader = new BunifuLoader()
+            {
+                Size = new Size(200, 200),
+                BackColor = Color.BlanchedAlmond,
+                Visible = true
+            };
+
+            Loadingpanel.Controls.Add(bunifuLoader);
+
+            bunifuLoader.Location = new Point(
+                (Loadingpanel.Width - bunifuLoader.Width) / 2,
+                (Loadingpanel.Height - bunifuLoader.Height) / 2
+            );
+
+        }
+        private async Task HideLoadingScreen()
+        {
+            bunifuLoader.Dispose();
+            Loadingpanel.Dispose();
+        }
 
 
 
@@ -279,7 +314,7 @@ namespace DazaBestApplication
                 MainContainer.Controls.Remove(MainContainerForm);
                 MainContainerForm = null;
             }
-            MainContainerForm = new ItemInventory(this);
+            MainContainerForm = new ItemInventory(this, MainContainer);
             MainContainerForm.TopLevel = false;
             MainContainerForm.Dock = DockStyle.Fill;
             MainContainer.Controls.Add(MainContainerForm);

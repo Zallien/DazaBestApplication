@@ -22,6 +22,7 @@ namespace DazaBestApplication.Pages
     {
         private ItemServices itemservices = new ItemServices(new BackEndDBContext());
         private Form Mainform;
+        private Panel ContainerPanel;
         private List<Items> _allitem;
         private ItemModal _itemmodal = new ItemModal();
         private DecisionModel _decision = new DecisionModel();
@@ -30,15 +31,19 @@ namespace DazaBestApplication.Pages
         private int _totalitems = 0;
         private int _maxpagenumber;
         private bool DesicionResult;
+        private Panel Loadingpanel;
+        private BunifuLoader bunifuLoader;
 
         //Constructor
-        public ItemInventory(Form _MainForm)
+        public ItemInventory(Form _MainForm, Panel containerPanel)
         {
             InitializeComponent();
             if (_MainForm.Name == "MainPage")
             {
                 Mainform = _MainForm;
             }
+
+            ContainerPanel = containerPanel;
         }
         //ShowAddItemModal
         private void ShowAddItemModal()
@@ -50,15 +55,56 @@ namespace DazaBestApplication.Pages
             };
             OpenModal();
         }
+        private async Task ShowloadingScreeen()
+        {
+            // ✅ 1. Create the panel
+            Loadingpanel = new Panel()
+            {
+                Location = new Point(0, 0),
+                Size = ContainerPanel.Size,
+                BackColor = Color.FromArgb(20, 0, 0, 0),
+                Visible = false
+            };
+
+            // ✅ 2. Add panel to the form FIRST (important!)
+            this.Controls.Add(Loadingpanel);
+            Loadingpanel.BringToFront();
+            Loadingpanel.Visible = true;
+
+            // ✅ 3. Create the loader
+            bunifuLoader = new BunifuLoader()
+            {
+                Size = new Size(200, 200),
+                BackColor = Color.BlanchedAlmond,
+                Visible = true
+            };
+
+            // ✅ 4. Add loader to the panel BEFORE centering it
+            Loadingpanel.Controls.Add(bunifuLoader);
+
+            // ✅ 5. Now center it safely
+            bunifuLoader.Location = new Point(
+                (Loadingpanel.Width - bunifuLoader.Width) / 2,
+                (Loadingpanel.Height - bunifuLoader.Height) / 2
+            );
+
+        }
+        private async Task HideLoadingScreen()
+        {
+            bunifuLoader.Dispose();
+            Loadingpanel.Dispose();
+        }
 
         //Main Load
         private async void ItemInventory_Load(object sender, EventArgs e)
         {
+            await ShowloadingScreeen();
             await GetData();
             await GetAllItemCount();
             HookEvents();
             PaginationLabel.Text = $"{_pagenumber} / {_maxpagenumber}";//Pagination Label
             CheckPageNumber();
+            await HideLoadingScreen();
         }
 
 

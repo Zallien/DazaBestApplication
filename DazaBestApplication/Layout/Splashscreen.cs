@@ -36,7 +36,6 @@ namespace DazaBestApplication.Layout
         }
 
 
-
         #region Play GIF Smooth Without Flash
         private void GifTimer_Tick(object sender, EventArgs e)
         {
