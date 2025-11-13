@@ -95,8 +95,8 @@ namespace DazaBestApplication.Pages
                 LoginServices = new LoginServices(new BackEndDBContext());
                 Program.theLoggedInAccount = await LoginServices.GetAccountInfo(logInModel.Username);
                 this.Close();
-                MainPage mainPage = new MainPage();
-                mainPage.Show();
+                RedirectForm redirectform = new RedirectForm();
+                redirectform.Show();
             }
             catch (Exception e)
             {

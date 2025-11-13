@@ -37,7 +37,6 @@ namespace DazaBestApplication
             await ShowloadingScreeen();
             await startup();
             theLoggedInAccount = Program.theLoggedInAccount;
-            await IsAdminAccount(); //Delete if redirectpage is created
             await AddBackupSettingsIfNotExists(1); //Add Backup Folder
             await LoadSettingsValues();
             await AutoBackupCheck();
@@ -135,24 +134,6 @@ namespace DazaBestApplication
                 modalcontent.ShowDialog();
                 ModalBackgorund.Dispose();
             }
-        }
-        //Check if the Logged In Account is Admin
-        private async Task<bool> IsAdminAccount()
-        {
-            try
-            {
-                if (theLoggedInAccount.IsOwner != true)
-                {
-                    PointofSaleForm posForm = new PointofSaleForm();
-                    posForm.Show();
-                    this.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle exception (e.g., log the error)
-            }
-            return false;
         }
 
 
@@ -547,7 +528,7 @@ namespace DazaBestApplication
         }
         private void POSButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             PointofSaleForm posForm = new PointofSaleForm();
             posForm.Show();
         }

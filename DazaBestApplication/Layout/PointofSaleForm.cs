@@ -29,6 +29,7 @@ namespace DazaBestApplication.Layout
         private decimal discountPercentage = 0; // No discount by default
         private POSTransactionDone POSTransactionDone = new POSTransactionDone();
         private LoggedinAccount CurrentLoggedinAccount = Program.theLoggedInAccount;
+        private LoggedinAccount theLoggedInAccount = Program.theLoggedInAccount;
         private PosItemFilter theFilter;
         private List<string> NavigationButtons = new List<string>()
         {
@@ -450,12 +451,53 @@ namespace DazaBestApplication.Layout
             }
 
         }
+        //Show ForgotPassswordSetupModal
+        private async Task ShowForgotPassswordSetup()
+        {
+            Form ModalBackgorund = new();
+            using (SecurityQuestionModal modalcontent = new(this))
+            {
+                var mainBounds = this.Bounds;
+
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = this.Size;
+                ModalBackgorund.Location = this.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(this);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+                modalcontent.ShowDialog();
+                ModalBackgorund.Dispose();
+            }
+        }
+        //Check if User is Newly Logged In
+        private async Task CheckIfNewlyLoggedIn()
+        {
+
+            if (theLoggedInAccount != null && theLoggedInAccount.NewlyLoggedIn == true)
+            {
+                LoginServices loginservice = new LoginServices(new SystemBackEnd.BackEndDBContext());
+                bool firsttimelogout = await loginservice.GetAccountFirstLoginInformation(theLoggedInAccount.AccountId);
+                if (firsttimelogout == true)
+                {
+                    await ShowForgotPassswordSetup();
+                }
+            }
+
+        }
 
 
 
         //Main Load
         private async void PointofSaleForm_Load(object sender, EventArgs e)
         {
+            await CheckIfNewlyLoggedIn();
             await PopulateNavigationButtons();
             theFilter = new PosItemFilter()
             {
