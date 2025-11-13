@@ -8,7 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemBackEnd;
 using SystemBackEnd.Models;
+using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
 
 namespace DazaBestApplication.Pages
@@ -28,6 +30,7 @@ namespace DazaBestApplication.Pages
                                                     "Monthly"
                                                 };
 
+
         public BackupForm(Form mainForm)
         {
             InitializeComponent();
@@ -39,7 +42,7 @@ namespace DazaBestApplication.Pages
             backupdirectorytxtbox.Text = Program.theBackupSettings.BackupLocation;
             backupscheduledropdown.Text = Program.theBackupSettings.AutoBackupSchedule;
             await PopulateDropdown();
-
+            
         }
         //Update Backup Settings Values
         private async Task UpdateBackupSettings()
@@ -49,7 +52,8 @@ namespace DazaBestApplication.Pages
                 using (var context = new SystemBackEnd.BackEndDBContext())
                 {
                     BackupSettingsServices backupSettingsServices = new BackupSettingsServices(context);
-                    Program.theBackupSettings = await backupSettingsServices.GetBackupSettings();
+                    Program.theBackupSettings = await backupSettingsServices.LoadBackupSettings();
+                    await UpdateTextboxandContainer();
                 }
             }
             catch (Exception ex)
@@ -79,7 +83,20 @@ namespace DazaBestApplication.Pages
                 source.BackupDatabase(dest);
             }
         }
-
+        //Update All Textbox
+        private async Task UpdateTextboxandContainer()
+        {
+            using (var context = new BackEndDBContext())
+            {
+                BackupSettingsJSONModel backupSettingsJSONModel = new BackupSettingsJSONModel();
+                BackupSettingsServices = new BackupSettingsServices(context);
+                backupSettingsJSONModel = await BackupSettingsServices.LoadBackupSettings();
+                Program.theBackupSettings = backupSettingsJSONModel;
+                backupdirectorytxtbox.Text = Program.theBackupSettings.BackupLocation;
+                backupscheduledropdown.Text = Program.theBackupSettings.AutoBackupSchedule;
+            }
+            
+        }
 
 
 
@@ -91,38 +108,41 @@ namespace DazaBestApplication.Pages
                 dialog.Description = "Select a backup folder";
                 dialog.UseDescriptionForTitle = true;
 
+
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
+
                     string selectedDirectory = dialog.SelectedPath;
                     BackupSettingsServices = new BackupSettingsServices(new SystemBackEnd.BackEndDBContext());
-                    InsertBackupSettings insertBackupSettings = new InsertBackupSettings
+                    BackupSettingsJSONModel insertBackupSettings = new BackupSettingsJSONModel
                     {
                         BackupLocation = selectedDirectory,
-                        AutoBackupSchedule = Program.theBackupSettings.AutoBackupSchedule
+                        AutoBackupSchedule = Program.theBackupSettings.AutoBackupSchedule,
+                        LastAutoBackupDate = Program.theBackupSettings.LastAutoBackupDate
                     };
-                    await BackupSettingsServices.UpdateBackupSettings(insertBackupSettings);
+                    await BackupSettingsServices.SaveBackupJSONFile(insertBackupSettings);
                     await UpdateBackupSettings();
+                    await UpdateTextboxandContainer();
+
                 }
             }
         }
-
         private async void backupscheduledropdown_SelectedValueChanged(object sender, EventArgs e)
         {
             //Update Backup Schedule
             BackupSettingsServices = new BackupSettingsServices(new SystemBackEnd.BackEndDBContext());
-            InsertBackupSettings insertBackupSettings = new InsertBackupSettings
+            BackupSettingsJSONModel insertBackupSettings = new BackupSettingsJSONModel
             {
                 BackupLocation = Program.theBackupSettings.BackupLocation,
                 AutoBackupSchedule = backupscheduledropdown.SelectedItem.ToString()
             };
-            await BackupSettingsServices.UpdateBackupSettings(insertBackupSettings);
+            await BackupSettingsServices.SaveBackupJSONFile(insertBackupSettings);
+            await UpdateTextboxandContainer();
         }
-
         private void panel4_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private void ManualBackupBTN_Click(object sender, EventArgs e)
         {
             try
@@ -169,7 +189,6 @@ namespace DazaBestApplication.Pages
                 MessageBox.Show("Backup failed:\n" + ex.Message);
             }
         }
-
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -183,7 +202,6 @@ namespace DazaBestApplication.Pages
                 Restorebackuptxtbox.Text = SelectedBackupFilePath;
             }
         }
-
         private void bunifuButton2_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(SelectedBackupFilePath) || !File.Exists(SelectedBackupFilePath))
@@ -215,11 +233,9 @@ namespace DazaBestApplication.Pages
             {
                 try
                 {
-                    // ✅ IMPORTANT: Close all DB connections first!
+                   
                     Microsoft.Data.Sqlite.SqliteConnection.ClearAllPools();
 
-                    // ✅ Now copy the backup over the DB file
-                    //File.Copy(SelectedBackupFilePath, dbPath, true);
                     RestoreDatabase(SelectedBackupFilePath, dbPath);
                     MessageBox.Show("Database restored successfully!\nThe application will now restart.");
 

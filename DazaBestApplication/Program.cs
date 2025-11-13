@@ -16,7 +16,7 @@ namespace DazaBestApplication
     {
         public static Size WorkspaceSize { get; set; }
         public static LoggedinAccount theLoggedInAccount { get; set; }
-        public static BackupSettings theBackupSettings { get; set; }
+        public static BackupSettingsJSONModel theBackupSettings { get; set; }
 
 
         /// <summary>

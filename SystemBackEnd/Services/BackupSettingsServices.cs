@@ -2,20 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using SystemBackEnd.Models;
+using SystemBackEnd.ServiceModels;
 
 namespace SystemBackEnd.Services
 {
     public class BackupSettingsServices
     {
         private BackEndDBContext _db;
-        
+        private readonly string appDataFolder;
+        private readonly string jsonFilePath;
+
 
 
         public BackupSettingsServices(BackEndDBContext mdb)
         {
             _db = mdb;
+            appDataFolder = Path.Combine(
+                            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                            "DazaBestApplication"
+                            );
+
+            jsonFilePath = Path.Combine(appDataFolder, "BackupSettings.json");
         }
         //Add Backup Settings
         public void AddBackupSettings(InsertBackupSettings backupSettings)
@@ -92,6 +102,79 @@ namespace SystemBackEnd.Services
                 throw;
             }
         }
+
+
+        /// <summary>
+        /// Ensures the backup settings file exists. Creates one with default values if missing.
+        /// </summary>
+        public async Task<BackupSettingsJSONModel> InitializeBackupJSON()
+        {
+            try
+            {
+                if (!Directory.Exists(appDataFolder))
+                    Directory.CreateDirectory(appDataFolder);
+
+                if (!File.Exists(jsonFilePath))
+                {
+                    var defaultSettings = new BackupSettingsJSONModel
+                    {
+                        BackupLocation = Path.Combine(appDataFolder, "Backups"),
+                        LastAutoBackupDate = DateTime.MinValue,
+                        AutoBackupSchedule = "Daily"
+                    };
+
+                    SaveBackupJSONFile(defaultSettings);
+                    return defaultSettings;
+                }
+                else
+                {
+                    return await LoadBackupSettings();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error initializing backup settings: {ex.Message}");
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Reads and returns the current backup settings from JSON.
+        /// </summary>
+        public async Task<BackupSettingsJSONModel> LoadBackupSettings()
+        {
+            try
+            {
+                string json = File.ReadAllText(jsonFilePath);
+                return JsonSerializer.Deserialize<BackupSettingsJSONModel>(json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reading settings: {ex.Message}");
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Saves the provided settings to JSON file.
+        /// </summary>
+        public async Task SaveBackupJSONFile(BackupSettingsJSONModel settings)
+        {
+            try
+            {
+                string json = JsonSerializer.Serialize(settings, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(jsonFilePath, json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving settings: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Returns the full path to the settings JSON file.
+        /// </summary>
+        public string GetSettingsPath() => jsonFilePath;
 
 
     }

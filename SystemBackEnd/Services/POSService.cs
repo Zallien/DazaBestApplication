@@ -24,7 +24,7 @@ namespace SystemBackEnd.Services
             try
             {
                 products = await (from a in _db.Products
-                                  where a.IsActive == true
+                                  where (a.IsAvailable == true && a.IsActive == true)
                                   && (string.IsNullOrEmpty(thefilter.SearchValue) ? true : a.ProductName.Contains(thefilter.SearchValue))
                                   && (thefilter.Category == "All" ? true : a.Category == thefilter.Category)
                                   select a).ToListAsync();

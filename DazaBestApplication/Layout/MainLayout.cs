@@ -33,11 +33,12 @@ namespace DazaBestApplication
         //Main Load Event
         private async void MainPage_Load(object sender, EventArgs e)
         {
+            
             await ShowloadingScreeen();
             await startup();
             theLoggedInAccount = Program.theLoggedInAccount;
             await IsAdminAccount(); //Delete if redirectpage is created
-            await AddBackupSettingsIfNotExists();
+            await AddBackupSettingsIfNotExists(1); //Add Backup Folder
             await LoadSettingsValues();
             await AutoBackupCheck();
             await HideLoadingScreen();
@@ -153,47 +154,62 @@ namespace DazaBestApplication
             }
             return false;
         }
+
+
+
+        #region Auto Backup Function
+
         //Add Backup Settings if not exists
-        private async Task AddBackupSettingsIfNotExists()
+        private async Task AddBackupSettingsIfNotExists(int retry = 0)
         {
             try
             {
-
                 string backupDirectory = Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                     "DazaBestApplication",
                     "Backups"
                 );
 
-
                 Directory.CreateDirectory(backupDirectory);
 
                 using (var context = new SystemBackEnd.BackEndDBContext())
                 {
-                    BackupSettingsServices backupSettingsServices = new BackupSettingsServices(context);
+                    var backupSettingsServices = new BackupSettingsServices(context);
+                    var backupSettingsCount = await backupSettingsServices.InitializeBackupJSON();
 
-                    int backupSettingsCount = backupSettingsServices.GetBackupSettingsCount();
-
-                    if (backupSettingsCount == 0)
+                    if (backupSettingsCount == null)
                     {
-                        InsertBackupSettings newBackupSettings = new InsertBackupSettings
+                        if (retry >= 5)
                         {
-                            BackupLocation = backupDirectory,
-                            AutoBackupSchedule = "Daily",
-                            LastAutoBackupDate = DateTime.Now
-                        };
+                            Console.WriteLine("Max retries reached. Stopping...");
+                            return;
+                        }
 
-                        backupSettingsServices.AddBackupSettings(newBackupSettings);
-                        await LoadSettingsValues();
-                        RunAutoBackup(); // your backup logic
+                        Console.WriteLine($"Backup not found. Retrying... Attempt {retry + 1}");
+
+                        await Task.Delay(1000); // wait 1 second before retry
+                        await AddBackupSettingsIfNotExists(retry + 1);
+                        return;
                     }
+
+                    Console.WriteLine("Backup settings found or created successfully.");
                 }
             }
             catch (Exception ex)
             {
-                // Log or handle exception
+                Console.WriteLine($"Error: {ex.Message}");
+                if (retry < 5)
+                {
+                    await Task.Delay(1000);
+                    await AddBackupSettingsIfNotExists(retry + 1);
+                }
+                else
+                {
+                    Console.WriteLine("Failed after multiple attempts.");
+                }
             }
         }
+
         //Load BackupSettings 
         private async Task LoadSettingsValues()
         {
@@ -202,7 +218,7 @@ namespace DazaBestApplication
                 using (var context = new SystemBackEnd.BackEndDBContext())
                 {
                     BackupSettingsServices backupSettingsServices = new BackupSettingsServices(context);
-                    Program.theBackupSettings = await backupSettingsServices.GetBackupSettings();
+                    Program.theBackupSettings = await backupSettingsServices.LoadBackupSettings();
                 }
             }
             catch (Exception ex)
@@ -239,25 +255,32 @@ namespace DazaBestApplication
         //Run Auto Backup
         private async Task AutoBackupCheck()
         {
-            BackupSettingsServices backupSettingsServices = new BackupSettingsServices(new SystemBackEnd.BackEndDBContext());
-            var backsettingsinfo = await backupSettingsServices.GetBackupSettings();
-            string schedule = backsettingsinfo.AutoBackupSchedule;
-            DateTime lastBackup = backsettingsinfo.LastAutoBackupDate;
-
-            if (ShouldAutoBackupRun(schedule, lastBackup))
+            try
             {
-                RunAutoBackup(); // your backup logic
-                Program.theBackupSettings.LastAutoBackupDate = DateTime.Now;
+                BackupSettingsServices backupSettingsServices = new BackupSettingsServices(new SystemBackEnd.BackEndDBContext());
+                var backsettingsinfo = await backupSettingsServices.LoadBackupSettings();
+                string schedule = backsettingsinfo.AutoBackupSchedule;
+                DateTime lastBackup = backsettingsinfo.LastAutoBackupDate;
 
-                backupSettingsServices = new BackupSettingsServices(new SystemBackEnd.BackEndDBContext());
-                InsertBackupSettings updatedSettings = new InsertBackupSettings
+                if (ShouldAutoBackupRun(schedule, lastBackup))
                 {
-                    BackupLocation = Program.theBackupSettings.BackupLocation,
-                    AutoBackupSchedule = Program.theBackupSettings.AutoBackupSchedule,
-                    LastAutoBackupDate = Program.theBackupSettings.LastAutoBackupDate
-                };
+                    RunAutoBackup(); // your backup logic
+                    Program.theBackupSettings.LastAutoBackupDate = DateTime.Now;
 
-                await backupSettingsServices.UpdateBackupSettings(updatedSettings);
+                    backupSettingsServices = new BackupSettingsServices(new SystemBackEnd.BackEndDBContext());
+                    BackupSettingsJSONModel updatedSettings = new BackupSettingsJSONModel
+                    {
+                        BackupLocation = Program.theBackupSettings.BackupLocation,
+                        AutoBackupSchedule = Program.theBackupSettings.AutoBackupSchedule,
+                        LastAutoBackupDate = Program.theBackupSettings.LastAutoBackupDate
+                    };
+
+                    await backupSettingsServices.SaveBackupJSONFile(updatedSettings);
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
         //Actual Auto Backup Logic
@@ -266,7 +289,7 @@ namespace DazaBestApplication
             try
             {
                 string backupFolder = Program.theBackupSettings.BackupLocation;
-                Directory.CreateDirectory(backupFolder);
+                Directory.CreateDirectory(Path.GetDirectoryName(backupFolder));
 
                 // DB path
                 string dbPath = Path.Combine(
@@ -288,6 +311,8 @@ namespace DazaBestApplication
                 MessageBox.Show("Auto-backup failed:\n" + ex.Message);
             }
         }
+
+        #endregion
 
 
 
@@ -327,10 +352,8 @@ namespace DazaBestApplication
             Loadingpanel.Dispose();
         }
 
-
-
-
-        //Routing Each Pages
+        
+        #region Routing Each Pages
         private void ShowItemPage()
         {
             if (MainContainerForm != null)
@@ -474,6 +497,7 @@ namespace DazaBestApplication
             MainContainer.Controls.Add(MainContainerForm);
             MainContainerForm.Show();
         }
+        #endregion
 
 
         //Open Item Inventory Page
@@ -515,7 +539,6 @@ namespace DazaBestApplication
         }
         private void bunifuButton21_Click(object sender, EventArgs e)
         {
-            /*ShowSettingsPage();*/
             /// backup and restore page
             BackupAndRestorePage();
             Activebutton = bunifuButton21;
