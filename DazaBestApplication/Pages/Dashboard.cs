@@ -48,10 +48,13 @@ namespace DazaBestApplication.Pages
             await LoadDashboardInformation();
             CultureInfo phCulture = new CultureInfo("en-PH");
 
-            qoutalabel.Text = DashboardInformation.Qouta.ToString("C", phCulture);
+            string qoutal = await TransformLongAmount(DashboardInformation.Qouta);
+            qoutalabel.Text = "₱" + qoutal;
             numberoforderslabel.Text = DashboardInformation.OrdersCount.ToString();
-            
-            salelabel.Text = DashboardInformation.TotalSale.ToString("C", phCulture);
+
+            string totalsale = await TransformLongAmount(DashboardInformation.TotalSale);
+            salelabel.Text = "₱" + totalsale;
+
             numberofitemslabel.Text = DashboardInformation.ItemsCount.ToString();
             outofstocklabel.Text = DashboardInformation.OutofStockCount.ToString();
             criticalitemslabel.Text = DashboardInformation.CriticalItems.ToString();
@@ -108,7 +111,24 @@ namespace DazaBestApplication.Pages
             }
 
         }
-
+        //Helper Function 
+        private async Task<string> TransformLongAmount(decimal convertthis)
+        {
+            string thevalue = null;
+            if (convertthis >= 1_000_000M)
+            {
+                thevalue = (convertthis / 1_000_000M).ToString("0.#") + "M";
+            }
+            else if (convertthis >= 1_000M)
+            {
+                thevalue = (convertthis / 1_000M).ToString("0.#") + "K";
+            }
+            else
+            {
+                thevalue = convertthis.ToString("0");
+            }
+            return thevalue;
+        }
 
 
         //Event Handlers

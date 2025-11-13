@@ -239,5 +239,11 @@ namespace DazaBestApplication.Pages
             SearchSaleRecords();
         }
         #endregion
+
+        private void bunifuButton22_Click(object sender, EventArgs e)
+        {
+            fromdatetxt.Value = fromdatetxt.MaxDate;
+            todatetxt.Value = todatetxt.MaxDate;
+        }
     }
 }

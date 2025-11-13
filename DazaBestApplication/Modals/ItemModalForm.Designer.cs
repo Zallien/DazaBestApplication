@@ -356,6 +356,7 @@
             label5.TabIndex = 9;
             label5.Text = "09/20/2025";
             label5.TextAlign = ContentAlignment.MiddleLeft;
+            label5.Click += label5_Click;
             // 
             // ItemNametxt
             // 

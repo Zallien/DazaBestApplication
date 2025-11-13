@@ -713,9 +713,9 @@ namespace DazaBestApplication
             borderEdges7.TopRight = true;
             NavButton_Products.CustomizableEdges = borderEdges7;
             NavButton_Products.DialogResult = DialogResult.None;
-            NavButton_Products.DisabledBorderColor = Color.FromArgb(191, 191, 191);
-            NavButton_Products.DisabledFillColor = Color.FromArgb(204, 204, 204);
-            NavButton_Products.DisabledForecolor = Color.FromArgb(168, 160, 168);
+            NavButton_Products.DisabledBorderColor = Color.Transparent;
+            NavButton_Products.DisabledFillColor = Color.Transparent;
+            NavButton_Products.DisabledForecolor = Color.Black;
             NavButton_Products.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
             NavButton_Products.Font = new Font("Courier New", 12F, FontStyle.Bold);
             NavButton_Products.ForeColor = Color.Black;
@@ -737,12 +737,12 @@ namespace DazaBestApplication
             NavButton_Products.IndicateFocus = false;
             NavButton_Products.Location = new Point(0, 349);
             NavButton_Products.Name = "NavButton_Products";
-            NavButton_Products.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
+            NavButton_Products.OnDisabledState.BorderColor = Color.Transparent;
             NavButton_Products.OnDisabledState.BorderRadius = 1;
             NavButton_Products.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             NavButton_Products.OnDisabledState.BorderThickness = 2;
-            NavButton_Products.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
-            NavButton_Products.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
+            NavButton_Products.OnDisabledState.FillColor = Color.Transparent;
+            NavButton_Products.OnDisabledState.ForeColor = Color.Black;
             NavButton_Products.OnDisabledState.IconLeftImage = null;
             NavButton_Products.OnDisabledState.IconRightImage = null;
             NavButton_Products.onHoverState.BorderColor = Color.Transparent;
@@ -778,7 +778,7 @@ namespace DazaBestApplication
             NavButton_Products.UseDefaultRadiusAndThickness = true;
             NavButton_Products.Click += NavButton_Products_Click;
             NavButton_Products.MouseEnter += NavbuttonMouseEnter;
-            NavButton_Products.MouseHover += NavbuttonMouseLeave;
+            NavButton_Products.MouseLeave += NavbuttonMouseLeave;
             // 
             // NavButton_Item
             // 

@@ -229,7 +229,8 @@ namespace DazaBestApplication.Pages
         }
         private void bunifuButton22_Click_1(object sender, EventArgs e)
         {
-
+            fromdatetxt.Value = fromdatetxt.MaxDate;
+            todatetxt.Value = todatetxt.MaxDate;
         }
         private void PaginationNext_Click(object sender, EventArgs e)
         {

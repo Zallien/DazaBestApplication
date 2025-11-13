@@ -41,10 +41,10 @@ namespace SystemBackEnd.Services
                                         .Where(x => x.TransactionDate.Date >= fromDate &&
                                                     x.TransactionDate.Date <= toDate)
                                         .CountAsync();
-                dashinfo.TotalSale = await (from a in _db.TransactionHeader
-                                            join b in _db.TransactionDetails on a.TransactionHeaderId equals b.TransactionHeaderId
-                                            where a.TransactionDate.Date >= fromDate && a.TransactionDate.Date <= toDate
-                                            select a.Grandtotal).SumAsync();
+                dashinfo.TotalSale = await _db.TransactionHeader.Where(x => x.TransactionDate.Date >= fromDate.Date && x.TransactionDate.Date
+                                    <= toDate.Date).SumAsync(x => x.Grandtotal);
+
+
                 dashinfo.ProductsCount =  await _db.Products.Where(x => x.IsActive == true).CountAsync();
                 dashinfo.CriticalItems =  await _db.Items.Where(x => (x.BalanceStocks > 0.0m && x.BalanceStocks <= 3.0m) && x.IsActive == true).CountAsync();
                 dashinfo.OutofStockCount =  await _db.Items.Where(x => x.BalanceStocks == 0m && x.IsActive == true).CountAsync();

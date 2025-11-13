@@ -120,15 +120,15 @@
             PaymentRecievedtextbox.AutoSizeHeight = true;
             PaymentRecievedtextbox.BackColor = Color.Transparent;
             PaymentRecievedtextbox.BackgroundImage = (Image)resources.GetObject("PaymentRecievedtextbox.BackgroundImage");
-            PaymentRecievedtextbox.BorderColorActive = Color.DodgerBlue;
+            PaymentRecievedtextbox.BorderColorActive = Color.White;
             PaymentRecievedtextbox.BorderColorDisabled = Color.FromArgb(204, 204, 204);
-            PaymentRecievedtextbox.BorderColorHover = Color.FromArgb(105, 181, 255);
+            PaymentRecievedtextbox.BorderColorHover = Color.White;
             PaymentRecievedtextbox.BorderColorIdle = Color.Silver;
             PaymentRecievedtextbox.BorderRadius = 1;
             PaymentRecievedtextbox.BorderThickness = 1;
             PaymentRecievedtextbox.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
             PaymentRecievedtextbox.CharacterCasing = CharacterCasing.Normal;
-            PaymentRecievedtextbox.DefaultFont = new Font("Segoe UI", 9.25F);
+            PaymentRecievedtextbox.DefaultFont = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PaymentRecievedtextbox.DefaultText = "";
             PaymentRecievedtextbox.FillColor = Color.White;
             PaymentRecievedtextbox.HideSelection = true;
@@ -143,7 +143,7 @@
             PaymentRecievedtextbox.Modified = false;
             PaymentRecievedtextbox.Multiline = false;
             PaymentRecievedtextbox.Name = "PaymentRecievedtextbox";
-            stateProperties1.BorderColor = Color.DodgerBlue;
+            stateProperties1.BorderColor = Color.White;
             stateProperties1.FillColor = Color.Empty;
             stateProperties1.ForeColor = Color.Empty;
             stateProperties1.PlaceholderForeColor = Color.Empty;
@@ -153,7 +153,7 @@
             stateProperties2.ForeColor = Color.FromArgb(109, 109, 109);
             stateProperties2.PlaceholderForeColor = Color.DarkGray;
             PaymentRecievedtextbox.OnDisabledState = stateProperties2;
-            stateProperties3.BorderColor = Color.FromArgb(105, 181, 255);
+            stateProperties3.BorderColor = Color.White;
             stateProperties3.FillColor = Color.Empty;
             stateProperties3.ForeColor = Color.Empty;
             stateProperties3.PlaceholderForeColor = Color.Empty;
@@ -173,7 +173,7 @@
             PaymentRecievedtextbox.SelectionLength = 0;
             PaymentRecievedtextbox.SelectionStart = 0;
             PaymentRecievedtextbox.ShortcutsEnabled = true;
-            PaymentRecievedtextbox.Size = new Size(209, 39);
+            PaymentRecievedtextbox.Size = new Size(209, 37);
             PaymentRecievedtextbox.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             PaymentRecievedtextbox.TabIndex = 5;
             PaymentRecievedtextbox.TextAlign = HorizontalAlignment.Left;

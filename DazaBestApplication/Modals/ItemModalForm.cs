@@ -53,6 +53,7 @@ namespace DazaBestApplication.Modals
         private async void AddItemModal_Load(object sender, EventArgs e)
         {
             FadeIn();
+            label5.Text = DateTime.Now.ToString("MM/dd/yyyy");
         }
         //FadeIn Animation
         private void FadeIn()
@@ -189,6 +190,11 @@ namespace DazaBestApplication.Modals
         }
 
         private void ItemPricetxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }

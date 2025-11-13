@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -43,6 +44,7 @@ namespace DazaBestApplication.Layout
         //For PosItemFIlter
         private string SearchValue = "";
         private string SelectedCategory = "All";
+        private bool IsEdittingdatagrid = false;
 
 
         public PointofSaleForm()
@@ -89,7 +91,7 @@ namespace DazaBestApplication.Layout
                     PanelColor2 = Color.White,
                     ShadowColor = Color.Maroon,
                     Padding = new Padding(15),
-                    
+
                 };
                 PictureBox pictureBox = new PictureBox
                 {
@@ -299,7 +301,8 @@ namespace DazaBestApplication.Layout
             }
             decimal discountAmount = subtotal * (discountPercentage / 100);
             Total = subtotal - discountAmount;
-            TotalValue.Text = Total.ToString("C2");
+            CultureInfo phCulture = new CultureInfo("en-PH");
+            TotalValue.Text = Total.ToString("C2", phCulture);
         }
         //Show Payment Modal
         private async Task ShowPaymentModal()
@@ -410,15 +413,15 @@ namespace DazaBestApplication.Layout
                 var navButton = new BunifuButton
                 {
                     Text = category,
-                    AutoSize = false,            
+                    AutoSize = false,
                     Margin = new Padding(5),
                     Tag = category,
                     Dock = DockStyle.Fill,
-                    Width=150,
-                    
+                    Width = 150,
+
                 };
 
-                
+
                 navButton.onHoverState.BorderColor = Color.FromArgb(255, 240, 221);
                 navButton.onHoverState.FillColor = Color.FromArgb(255, 240, 221);
                 navButton.onHoverState.ForeColor = Color.Black;
@@ -521,6 +524,7 @@ namespace DazaBestApplication.Layout
         //Handle Order Clicked
         private async void OrderClicked(object sender, EventArgs e)
         {
+            IsEdittingdatagrid = false;
             BunifuShadowPanel clickedPanel = GetParentPanel((Control)sender);
             ProductInformation productInfo = (ProductInformation)clickedPanel.Tag;
             SearchOrderedProductInDatagrid(productInfo);
@@ -629,6 +633,7 @@ namespace DazaBestApplication.Layout
         ///datagrid ulit
         private async void ProductOrdersDatagrid_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            IsEdittingdatagrid = true;
             if (e.RowIndex >= 0 && ProductOrdersDatagrid.Columns[e.ColumnIndex].Name == "ActionCol")
             {
                 Guid productId = (Guid)ProductOrdersDatagrid.Rows[e.RowIndex].Cells["ProductIdCol"].Value;
@@ -686,6 +691,34 @@ namespace DazaBestApplication.Layout
         private void MainDisplay_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private async void ProductOrdersDatagrid_CellValueChanged_1(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0 && IsEdittingdatagrid == true)
+                {
+                    Guid productid = Guid.Parse(ProductOrdersDatagrid.Rows[e.RowIndex].Cells["ProductIdCol"].Value.ToString());
+                    if (productid == null)
+                        return;
+                    var item = CurrentOrders.FirstOrDefault(x => x.ProductID == productid);
+                    if (item != null)
+                    {
+                        item.Quantity = Convert.ToInt32(ProductOrdersDatagrid.Rows[e.RowIndex].Cells["QuantityCol"].Value);
+                        await CalculateTotal();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        private void ProductOrdersDatagrid_MouseClick(object sender, MouseEventArgs e)
+        {
+            IsEdittingdatagrid = true;
         }
     }
 
