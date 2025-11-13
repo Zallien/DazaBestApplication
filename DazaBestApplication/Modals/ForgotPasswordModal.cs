@@ -138,7 +138,7 @@ namespace DazaBestApplication.Modals
             {
                 if (newpasswordtxt.Text != reenterpasswordtxt.Text)
                 {
-                    MessageBox.Show("Hindi sila match GAGA!!", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Passwords Not Matched", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 using (var context = new BackEndDBContext())
