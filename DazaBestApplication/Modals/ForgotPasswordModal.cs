@@ -182,7 +182,7 @@ namespace DazaBestApplication.Modals
         {
             if (ForgotUsernameTxt.Text == "")
             {
-                MessageBox.Show("Username First Dumbass", "Security Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No Username Provided", "Security Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             await ShowSecurityQuestions();
