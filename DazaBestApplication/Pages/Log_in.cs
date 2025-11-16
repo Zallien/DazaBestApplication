@@ -87,6 +87,8 @@ namespace DazaBestApplication.Pages
                 loginsuccess = await ShowLoading();
                 if (loginsuccess == false)
                 {
+                    Usernametxtbox.Focus();
+                    Usernametxtbox.Select();
                     Usernametxtbox.Clear();
                     Passwordtxtbox.Clear();
                     MessageBox.Show("Account Not Found", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -172,6 +174,8 @@ namespace DazaBestApplication.Pages
             {
                 await AddDevAccount();
             }
+            Usernametxtbox.Focus();
+            Usernametxtbox.Select();
 
         }
 
@@ -228,6 +232,15 @@ namespace DazaBestApplication.Pages
         private void background_Panel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private async void Passwordtxtbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                Login_btn.Focus();
+                await LoginUser();
+            }
         }
     }
 }

@@ -70,6 +70,7 @@ namespace DazaBestApplication.Pages
                 DataGridViewRow row = TopSellingTable.Rows[rowindex];
                 row.Cells["NumberCol"].Value = topsellingnumbering;
                 row.Cells["ProductNameCol"].Value = item.ProductName;
+                row.Height = 24;
                 topsellingnumbering++;
             }
 
@@ -82,6 +83,7 @@ namespace DazaBestApplication.Pages
                 DataGridViewRow row = LeastSellingTable.Rows[rowindex];
                 row.Cells["NumberColLeast"].Value = leastsellingnumbering;
                 row.Cells["ProductNameColLeast"].Value = item.ProductName;
+                row.Height = 24;
                 leastsellingnumbering++;
             }
             //Populate Chart

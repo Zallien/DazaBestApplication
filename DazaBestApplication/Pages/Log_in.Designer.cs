@@ -317,7 +317,7 @@ namespace DazaBestApplication.Pages
             Usernametxtbox.TextPlaceholder = "Username";
             Usernametxtbox.UseSystemPasswordChar = false;
             Usernametxtbox.WordWrap = true;
-            Usernametxtbox.KeyPress += Usernametxtbox_KeyPress;
+            Usernametxtbox.KeyPress += Passwordtxtbox_KeyPress;
             // 
             // Passwordtxtbox
             // 
@@ -393,6 +393,7 @@ namespace DazaBestApplication.Pages
             Passwordtxtbox.TextPlaceholder = "Password";
             Passwordtxtbox.UseSystemPasswordChar = false;
             Passwordtxtbox.WordWrap = true;
+            Passwordtxtbox.KeyPress += Passwordtxtbox_KeyPress;
             Passwordtxtbox.KeyUp += Passwordtxtbox_KeyUp;
             // 
             // Login_btn

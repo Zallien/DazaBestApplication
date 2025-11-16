@@ -95,6 +95,7 @@ namespace DazaBestApplication.Pages
             Loadingpanel.Dispose();
         }
 
+
         //Main Load
         private async void ItemInventory_Load(object sender, EventArgs e)
         {

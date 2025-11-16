@@ -19,6 +19,7 @@ namespace DazaBestApplication
         private LoggedinAccount theLoggedInAccount;
         private Panel Loadingpanel;
         private BunifuLoader bunifuLoader;
+        private DecisionModel _decision;
 
         //Button Index
         private List<BunifuButton2> bunifuButtons;
@@ -292,6 +293,36 @@ namespace DazaBestApplication
                 MessageBox.Show("Auto-backup failed:\n" + ex.Message);
             }
         }
+        //Open Decision Modal
+        private bool OpenDecisionModal()
+        {
+            Form ModalBackgorund = new();
+            using (DecisionModal modalcontent = new(_decision))
+            {
+                var mainBounds = this.Bounds;
+
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = this.Size;
+                ModalBackgorund.Location = this.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(this);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+
+                var result = modalcontent.ShowDialog();
+
+                ModalBackgorund.Dispose();
+
+                return result == DialogResult.Yes;
+            }
+        }
+
 
         #endregion
 
@@ -497,8 +528,22 @@ namespace DazaBestApplication
         private async void LogOut_btn_Click(object sender, EventArgs e)
         {
             // Show confirmation dialog which will do logout if confirmed
-            var result = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            //var result = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //if (result == DialogResult.Yes)
+            //{
+            //    Program.theLoggedInAccount = null;
+            //    Close();
+            //    Log_in login = new();
+            //    login.Show();
+            //}
+            _decision = new DecisionModel()
+            {
+                DecisionQuestion = "Do you want to Logout?",
+                DecisionTitle = "Logout",
+            };
+
+            bool result = OpenDecisionModal();
+            if (result == true)
             {
                 Program.theLoggedInAccount = null;
                 Close();
@@ -614,6 +659,7 @@ namespace DazaBestApplication
             Activebutton = AccountsManagementBTN;
             CheckActiveButton();
         }
+
 
         //Navbutton Hover
         private void NavbuttonMouseEnter(object sender, EventArgs e)

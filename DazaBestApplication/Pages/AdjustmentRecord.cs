@@ -23,11 +23,12 @@ namespace DazaBestApplication.Pages
         AdjusmentReportServices adjustmentreportservice;
         RecordsFilterSearch recordsFilterSearch;
         private Form MainForm;
+        private DateTime datenow = DateTime.Now.Date;
 
 
         #region Search and Filterations
         private string SearchValue = "";
-        private int PageNumber = 0;
+        private int PageNumber = 1;
         private int ItemPerPaeg = 12;
         private DateTime FromDateFilter = DateTime.Now;
         private DateTime ToDateFilter = DateTime.Now;
@@ -163,7 +164,7 @@ namespace DazaBestApplication.Pages
         //Change the Date Filter
         private async Task ChangeDateFilter()
         {
-            if (fromdatetxt.Value < todatetxt.Value)
+            if (fromdatetxt.Value.Date <= todatetxt.Value.Date)
             {
                 FromDateFilter = fromdatetxt.Value;
                 ToDateFilter = todatetxt.Value;
@@ -242,8 +243,8 @@ namespace DazaBestApplication.Pages
 
         private void bunifuButton22_Click(object sender, EventArgs e)
         {
-            fromdatetxt.Value = fromdatetxt.MaxDate;
-            todatetxt.Value = todatetxt.MaxDate;
+            todatetxt.Value = datenow;
+            fromdatetxt.Value = datenow;
         }
     }
 }

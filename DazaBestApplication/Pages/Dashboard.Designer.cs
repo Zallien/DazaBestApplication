@@ -31,15 +31,15 @@ namespace DazaBestApplication.Pages
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             TopPanel = new SmoothPanel();
             panel4 = new SmoothPanel();
             label1 = new Label();
@@ -200,7 +200,7 @@ namespace DazaBestApplication.Pages
             // 
             panel15.Controls.Add(tableLayoutPanel6);
             panel15.Dock = DockStyle.Top;
-            panel15.Location = new Point(0, 571);
+            panel15.Location = new Point(0, 565);
             panel15.Name = "panel15";
             panel15.Size = new Size(900, 144);
             panel15.TabIndex = 10;
@@ -239,22 +239,22 @@ namespace DazaBestApplication.Pages
             TopSellingTable.AllowUserToDeleteRows = false;
             TopSellingTable.AllowUserToResizeColumns = false;
             TopSellingTable.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = Color.FromArgb(223, 191, 191);
-            dataGridViewCellStyle7.ForeColor = Color.Black;
-            TopSellingTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(223, 191, 191);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            TopSellingTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             TopSellingTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             TopSellingTable.BackgroundColor = Color.White;
             TopSellingTable.BorderStyle = BorderStyle.None;
             TopSellingTable.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             TopSellingTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.Maroon;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
-            dataGridViewCellStyle8.ForeColor = Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(102, 0, 0);
-            dataGridViewCellStyle8.SelectionForeColor = Color.White;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            TopSellingTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.Maroon;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(102, 0, 0);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            TopSellingTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             TopSellingTable.ColumnHeadersHeight = 40;
             TopSellingTable.Columns.AddRange(new DataGridViewColumn[] { NumberCol, ProductNameCol });
             TopSellingTable.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
@@ -275,14 +275,14 @@ namespace DazaBestApplication.Pages
             TopSellingTable.CurrentTheme.RowsStyle.ForeColor = Color.Black;
             TopSellingTable.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
             TopSellingTable.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = Color.FromArgb(229, 204, 204);
-            dataGridViewCellStyle9.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            dataGridViewCellStyle9.ForeColor = Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            dataGridViewCellStyle9.SelectionForeColor = Color.White;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
-            TopSellingTable.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(229, 204, 204);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            TopSellingTable.DefaultCellStyle = dataGridViewCellStyle3;
             TopSellingTable.Dock = DockStyle.Fill;
             TopSellingTable.EnableHeadersVisualStyles = false;
             TopSellingTable.GridColor = Color.FromArgb(216, 178, 178);
@@ -294,7 +294,7 @@ namespace DazaBestApplication.Pages
             TopSellingTable.ReadOnly = true;
             TopSellingTable.RowHeadersVisible = false;
             TopSellingTable.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TopSellingTable.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64);
+            TopSellingTable.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             TopSellingTable.RowTemplate.Height = 40;
             TopSellingTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             TopSellingTable.Size = new Size(444, 115);
@@ -303,13 +303,14 @@ namespace DazaBestApplication.Pages
             // 
             // NumberCol
             // 
+            NumberCol.FillWeight = 20F;
             NumberCol.HeaderText = "#";
             NumberCol.Name = "NumberCol";
             NumberCol.ReadOnly = true;
             // 
             // ProductNameCol
             // 
-            ProductNameCol.HeaderText = "Item Name";
+            ProductNameCol.HeaderText = "Products";
             ProductNameCol.Name = "ProductNameCol";
             ProductNameCol.ReadOnly = true;
             // 
@@ -321,7 +322,7 @@ namespace DazaBestApplication.Pages
             label11.Name = "label11";
             label11.Size = new Size(444, 23);
             label11.TabIndex = 5;
-            label11.Text = "Top Selling Item";
+            label11.Text = "Top Selling Products";
             label11.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel16
@@ -343,22 +344,22 @@ namespace DazaBestApplication.Pages
             LeastSellingTable.AllowUserToDeleteRows = false;
             LeastSellingTable.AllowUserToResizeColumns = false;
             LeastSellingTable.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = Color.FromArgb(223, 191, 191);
-            dataGridViewCellStyle10.ForeColor = Color.Black;
-            LeastSellingTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(223, 191, 191);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            LeastSellingTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             LeastSellingTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             LeastSellingTable.BackgroundColor = Color.White;
             LeastSellingTable.BorderStyle = BorderStyle.None;
             LeastSellingTable.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             LeastSellingTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = Color.Maroon;
-            dataGridViewCellStyle11.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
-            dataGridViewCellStyle11.ForeColor = Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(102, 0, 0);
-            dataGridViewCellStyle11.SelectionForeColor = Color.White;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            LeastSellingTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.Maroon;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(102, 0, 0);
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            LeastSellingTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             LeastSellingTable.ColumnHeadersHeight = 40;
             LeastSellingTable.Columns.AddRange(new DataGridViewColumn[] { NumberColLeast, ProductNameColLeast });
             LeastSellingTable.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
@@ -379,14 +380,14 @@ namespace DazaBestApplication.Pages
             LeastSellingTable.CurrentTheme.RowsStyle.ForeColor = Color.Black;
             LeastSellingTable.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
             LeastSellingTable.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.FromArgb(229, 204, 204);
-            dataGridViewCellStyle12.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            dataGridViewCellStyle12.ForeColor = Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            dataGridViewCellStyle12.SelectionForeColor = Color.White;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
-            LeastSellingTable.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(229, 204, 204);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            LeastSellingTable.DefaultCellStyle = dataGridViewCellStyle6;
             LeastSellingTable.Dock = DockStyle.Fill;
             LeastSellingTable.EnableHeadersVisualStyles = false;
             LeastSellingTable.GridColor = Color.FromArgb(216, 178, 178);
@@ -398,7 +399,7 @@ namespace DazaBestApplication.Pages
             LeastSellingTable.ReadOnly = true;
             LeastSellingTable.RowHeadersVisible = false;
             LeastSellingTable.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LeastSellingTable.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64);
+            LeastSellingTable.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             LeastSellingTable.RowTemplate.Height = 40;
             LeastSellingTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             LeastSellingTable.Size = new Size(444, 115);
@@ -407,13 +408,14 @@ namespace DazaBestApplication.Pages
             // 
             // NumberColLeast
             // 
+            NumberColLeast.FillWeight = 20F;
             NumberColLeast.HeaderText = "#";
             NumberColLeast.Name = "NumberColLeast";
             NumberColLeast.ReadOnly = true;
             // 
             // ProductNameColLeast
             // 
-            ProductNameColLeast.HeaderText = "Item Name";
+            ProductNameColLeast.HeaderText = "Products";
             ProductNameColLeast.Name = "ProductNameColLeast";
             ProductNameColLeast.ReadOnly = true;
             // 
@@ -425,14 +427,14 @@ namespace DazaBestApplication.Pages
             label10.Name = "label10";
             label10.Size = new Size(444, 23);
             label10.TabIndex = 0;
-            label10.Text = "Least Selling Item";
+            label10.Text = "Least Selling Products";
             label10.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel10
             // 
             panel10.Controls.Add(tableLayoutPanel4);
             panel10.Dock = DockStyle.Top;
-            panel10.Location = new Point(0, 457);
+            panel10.Location = new Point(0, 451);
             panel10.Name = "panel10";
             panel10.Size = new Size(900, 114);
             panel10.TabIndex = 9;
@@ -653,16 +655,16 @@ namespace DazaBestApplication.Pages
             panel9.Location = new Point(0, 206);
             panel9.Name = "panel9";
             panel9.Padding = new Padding(15);
-            panel9.Size = new Size(900, 251);
+            panel9.Size = new Size(900, 245);
             panel9.TabIndex = 8;
             // 
             // salesChart
             // 
-            chartArea2.Name = "ChartArea1";
-            salesChart.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            salesChart.ChartAreas.Add(chartArea1);
             salesChart.Dock = DockStyle.Fill;
-            legend2.Name = "Legend1";
-            salesChart.Legends.Add(legend2);
+            legend1.Name = "Legend1";
+            salesChart.Legends.Add(legend1);
             salesChart.Location = new Point(15, 15);
             salesChart.Name = "salesChart";
             salesChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
@@ -670,11 +672,11 @@ namespace DazaBestApplication.Pages
     {
     Color.Maroon
     };
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Sales";
-            salesChart.Series.Add(series2);
-            salesChart.Size = new Size(870, 221);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Sales";
+            salesChart.Series.Add(series1);
+            salesChart.Size = new Size(870, 215);
             salesChart.TabIndex = 0;
             salesChart.Text = "chart1";
             // 

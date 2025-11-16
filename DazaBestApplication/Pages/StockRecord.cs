@@ -24,6 +24,7 @@ namespace DazaBestApplication.Pages
         private StockInReportServices StockInReportServices;
         private List<StockInReportsDetails> stockindetailsforPrints = new();
         private RecordsFilterSearch RecordFilterSearch;
+        private DateTime datenow = DateTime.Now.Date;
 
         //Search and Filterations
         private string SearchValue = "";
@@ -172,7 +173,7 @@ namespace DazaBestApplication.Pages
         //Change the Date Filter
         private async Task ChangeDateFilter()
         {
-            if (fromdatetxt.Value < todatetxt.Value)
+            if (fromdatetxt.Value.Date <= todatetxt.Value.Date)
             {
                 FromDateFilter = fromdatetxt.Value;
                 ToDateFilter = todatetxt.Value;
@@ -219,6 +220,8 @@ namespace DazaBestApplication.Pages
         //Main Load
         private async void StockRecord_Load(object sender, EventArgs e)
         {
+            fromdatetxt.MaxDate = DateTime.Now.Date;
+            todatetxt.MaxDate= DateTime.Now.Date;
             await GetTotalPages();
             await CheckPageNumber();
             await PopulateDatagrid();
@@ -247,8 +250,8 @@ namespace DazaBestApplication.Pages
 
         private void bunifuButton21_Click(object sender, EventArgs e)
         {
-            fromdatetxt.Value = fromdatetxt.MaxDate;
-            todatetxt.Value = todatetxt.MaxDate;
+            todatetxt.Value = datenow;
+            fromdatetxt.Value = datenow;
         }
     }
 }

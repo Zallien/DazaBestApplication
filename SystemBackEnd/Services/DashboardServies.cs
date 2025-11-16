@@ -52,6 +52,7 @@ namespace SystemBackEnd.Services
                 var Topsellingtable = await (from a in _db.TransactionDetails
                                                   join b in _db.Products on a.ProductId equals b.ProductID
                                                   join c in _db.TransactionHeader on a.TransactionHeaderId equals c.TransactionHeaderId
+                                                  where b.Category != "Beverage"
                                                   group a by new { a.ProductId, b.ProductName } into d
                                                   orderby d.Count() descending
                                                   select new DashboardItems()
@@ -65,6 +66,7 @@ namespace SystemBackEnd.Services
                 var leastsellingtalbe = await (from a in _db.TransactionDetails
                                                     join b in _db.Products on a.ProductId equals b.ProductID
                                                     join c in _db.TransactionHeader on a.TransactionHeaderId equals c.TransactionHeaderId
+                                                    where b.Category != "Beverage"
                                                     group a by new { a.ProductId, b.ProductName } into d
                                                     orderby d.Count() ascending
                                                     select new DashboardItems()

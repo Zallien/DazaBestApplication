@@ -21,6 +21,7 @@ namespace DazaBestApplication.Pages
         private List<SaleReportDetailsforPrint> SaleReportDetailsforPrints;
         private RecordsFilterSearch saleRecordFilterSearch;
         private SaleReportServices SaleReportServices = new SaleReportServices(new BackEndDBContext());
+        private DateTime datenow = DateTime.Now.Date;
 
 
         //Search and Filterations
@@ -168,7 +169,7 @@ namespace DazaBestApplication.Pages
         //Change the Date Filter
         private async Task ChangeDateFilter()
         {
-            if (fromdatetxt.Value < todatetxt.Value)
+            if (fromdatetxt.Value.Date <= todatetxt.Value.Date)
             {
                 FromDateFilter = fromdatetxt.Value;
                 ToDateFilter = todatetxt.Value;
@@ -229,8 +230,8 @@ namespace DazaBestApplication.Pages
         }
         private void bunifuButton22_Click_1(object sender, EventArgs e)
         {
-            fromdatetxt.Value = fromdatetxt.MaxDate;
-            todatetxt.Value = todatetxt.MaxDate;
+            todatetxt.Value = datenow;
+            fromdatetxt.Value = datenow;
         }
         private void PaginationNext_Click(object sender, EventArgs e)
         {

@@ -259,7 +259,7 @@
             fromdatetxt.Size = new Size(130, 32);
             fromdatetxt.TabIndex = 1;
             fromdatetxt.Value = new DateTime(2025, 10, 25, 0, 0, 0, 0);
-            fromdatetxt.ValueChanged += fromdatetxt_ValueChanged;
+            fromdatetxt.ValueChanged += todatetxt_ValueChanged;
             // 
             // todatetxt
             // 
@@ -287,7 +287,7 @@
             todatetxt.Name = "todatetxt";
             todatetxt.Size = new Size(130, 32);
             todatetxt.TabIndex = 2;
-            todatetxt.ValueChanged += todatetxt_ValueChanged;
+            todatetxt.ValueChanged += fromdatetxt_ValueChanged;
             // 
             // bunifuLabel2
             // 

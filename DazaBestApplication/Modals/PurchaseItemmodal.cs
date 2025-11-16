@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,6 +56,9 @@ namespace DazaBestApplication.Modals
             }
             else if (_purchaseitemmodal.Action == "ViewPurcahseItem")
             {
+                Point buttonlocation = AddPurchaseItemButton.Location;
+                AddPurchaseItemButton.Visible = false;
+                AddPurchaseItemButton.Enabled = false;
                 this.Text = "Edit Purchase Item";
                 AddPurchaseItemButton.Text = "Update Purchase Item";
                 foreach (var item in _purchaseitemmodal.ForViewOnly._PurchaseItemDetails)
@@ -73,6 +77,7 @@ namespace DazaBestApplication.Modals
                 removeitempickedbutton.Visible = false;
                 preparedbylbl.Text = _purchaseitemmodal.Operatedby;
                 bunifuButton1.Visible = false;
+                bunifuButton2.Location = buttonlocation;
             }
         }
         //Main Load
@@ -81,7 +86,7 @@ namespace DazaBestApplication.Modals
             AllPickedItems.ColumnHeadersHeight = 30; //Set the height of the column headers to 30 pixels
             AllSelectedProducts = new List<Guid>();
             await CheckModalAction();
-            Grandtotalvaluelabel.Text = _Grandtotal.ToString();
+            Grandtotalvaluelabel.Text = "₱" + (_Grandtotal ?? 0).ToString("N2");
         }
         //OpenAllProductsPanel
         private async Task OpenAllProductsPanel()
@@ -154,6 +159,7 @@ namespace DazaBestApplication.Modals
         //Populate All Picked Item DataGrid
         private async Task PopulateAllPickedItemsDatagrid()
         {
+            CultureInfo phCulture = new CultureInfo("en-PH");
             AllPickedItems.Rows.Clear();
             foreach (var item in _allpickeditems)
             {
@@ -163,10 +169,11 @@ namespace DazaBestApplication.Modals
                 row.Cells["ItemNameCol"].Value = item.ItemName;
                 row.Cells["ItemQuantityCol"].Value = _purchaseitemmodal.Action == "AddItemStock" ? "1" : item.Quantity.ToString();
                 row.Cells["ItemPriceCol"].Value = item.Unitprice?.ToString("0.00") ?? "0.00";
-                row.Cells["ItemTotalCol"].Value = UpdateTotalAmount(
+                decimal Itemtotal = UpdateTotalAmount(
                     decimal.Parse(row.Cells["ItemQuantityCol"].Value.ToString() ?? "1"),
                     decimal.Parse(row.Cells["ItemPriceCol"].Value.ToString() ?? "0.00")
-                    ).Result.ToString();
+                    ).Result;
+                row.Cells["ItemTotalCol"].Value = "₱" + Itemtotal.ToString("N2");
             }
             if (_purchaseitemmodal.Action == "ViewPurcahseItem")
             {
@@ -184,6 +191,7 @@ namespace DazaBestApplication.Modals
             }
             await CalculateGrandtotal();
         }
+
         //Close AllItems Panel
         private void CloseAllItemsPanel()
         {
@@ -196,8 +204,8 @@ namespace DazaBestApplication.Modals
         //Update The Total Amount for each Picked Item --First Time Load or when the datagridview value changed
         private async Task<decimal> UpdateTotalAmount(decimal quantity, decimal unitprice)
         {
-            decimal _thetotal = quantity * unitprice;
-            return _thetotal;
+            decimal total = quantity * unitprice;
+            return Math.Round(total, 2);
         }
         //Update the Total Amount of Selected Row by rowindex
         private async Task UpdateTheTotalAmountofSelectedRow(int rowindex, DataGridViewCellEventArgs e)
@@ -366,7 +374,7 @@ namespace DazaBestApplication.Modals
                 decimal? totalperitem = item.Quantity * item.Unitprice;
                 _Grandtotal += totalperitem;
             }
-            Grandtotalvaluelabel.Text = _Grandtotal.ToString();
+            Grandtotalvaluelabel.Text = "₱" + (_Grandtotal ?? 0).ToString("N2");
         }
 
         //Pagination for Items

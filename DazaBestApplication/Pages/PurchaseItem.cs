@@ -239,5 +239,10 @@ namespace DazaBestApplication.Pages
         {
             SearchPurchaseitem();
         }
+
+        private void SearchBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

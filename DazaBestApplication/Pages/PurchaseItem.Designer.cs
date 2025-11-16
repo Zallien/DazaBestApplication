@@ -146,6 +146,7 @@
             SearchBox.UseSystemPasswordChar = false;
             SearchBox.WordWrap = true;
             SearchBox.TextChange += SearchBox_TextChange;
+            SearchBox.TextChanged += SearchBox_TextChanged;
             // 
             // BuyProductBTN
             // 
