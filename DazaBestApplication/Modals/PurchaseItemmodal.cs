@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,6 +34,7 @@ namespace DazaBestApplication.Modals
         private int Productitemperpage = 12;
         private int Producttotalpage = 0;
         private int Producttotalitem = 0;
+        private string searchvalue = "";
 
 
 
@@ -132,7 +134,7 @@ namespace DazaBestApplication.Modals
             {
                 Pagenumber = Productcurrentpage,
                 Itemperpage = Productitemperpage,
-                Searchvalue = "",
+                Searchvalue = searchvalue,
                 AllSelectedItem = AllSelectedProducts
             };
 
@@ -232,7 +234,15 @@ namespace DazaBestApplication.Modals
                 MessageBox.Show(ex.Message);
             }
         }
+        //Search Item
+        private async Task Searchitemvalue()
+        {
 
+            searchvalue = bunifuTextBox1.Text;
+            Productcurrentpage = 1;
+            await PopulatAllItemDataGrid();
+
+        }
 
 
         //prevents letters
@@ -544,6 +554,11 @@ namespace DazaBestApplication.Modals
         private void buttonnext_Click(object sender, EventArgs e)
         {
             PressNextButton();
+        }
+
+        private void bunifuTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            Searchitemvalue();
         }
     }
 }

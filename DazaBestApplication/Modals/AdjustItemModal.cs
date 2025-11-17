@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,6 +41,8 @@ namespace DazaBestApplication.Modals
         private int Productitemperpage = 12;
         private int Producttotalpage = 0;
         private int Producttotalitem = 0;
+
+        private string searchvalue = "";
 
 
         //Constructor
@@ -97,7 +100,7 @@ namespace DazaBestApplication.Modals
             {
                 Pagenumber = Productcurrentpage,
                 Itemperpage = Productitemperpage,
-                Searchvalue = "",
+                Searchvalue = searchvalue,
                 AllSelectedItem = AllSelectedProducts
             };
 
@@ -336,6 +339,17 @@ namespace DazaBestApplication.Modals
                 tobeupdated.ItemQuantity = updatedQuantity;
             }
         }
+        //Search Item
+        private async Task Searchitemvalue()
+        {
+
+            searchvalue = bunifuTextBox1.Text;
+            Productcurrentpage = 1;
+            await PopulatAllItemDataGrid();
+
+        }
+
+
 
         //Pagination for Items
         //Get Total Pages
@@ -344,7 +358,7 @@ namespace DazaBestApplication.Modals
             using (var context = new BackEndDBContext())
             {
                 PurchaseitemServices = new PurchaseitemServices(context);
-                Producttotalpage = await PurchaseitemServices.GettotalPages(Productitemperpage);
+                Producttotalpage = await PurchaseitemServices.Gettotalitemspage(Productitemperpage);
             }
         }
         //Check Page Number
@@ -405,7 +419,7 @@ namespace DazaBestApplication.Modals
         }
 
 
-        
+
         private void AllPickedItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -566,6 +580,11 @@ namespace DazaBestApplication.Modals
         private void buttonnext_Click(object sender, EventArgs e)
         {
             PressNextButton();
+        }
+
+        private void bunifuTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            Searchitemvalue();
         }
     }
 

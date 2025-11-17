@@ -227,7 +227,22 @@ namespace SystemBackEnd.Services
 
             return total;
         }
+        //Get the Total Count of Pages based on Item per Page
+        public async Task<int> Gettotalitemspage(int itemperpage)
+        {
+            int total = 0;
+            try
+            {
+                int totalitems = await _db.Items.Where(x => x.IsActive == true && x.BalanceStocks > 0.0m).CountAsync();
+                total = (totalitems / itemperpage) + 1;
+            }
+            catch (Exception ex)
+            {
 
+            }
+
+            return total;
+        }
 
         //Get The Picked Items
         public async Task<PurcahseItemDisplay> GetPickedItem(Guid ItemID)
