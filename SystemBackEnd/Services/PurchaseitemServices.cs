@@ -212,13 +212,18 @@ namespace SystemBackEnd.Services
             return AllItems;
         }
         //Get the Total Count of Pages based on Item per Page
-        public async Task<int> GettotalPages(int itemperpage)
+        public async Task<int> GettotalPages(GetAvailableItemswithpagination item)
         {
             int total = 0;
             try
             {
-                int totalitems = await _db.Items.Where(x => x.IsActive == true).CountAsync();
-                total = (totalitems / itemperpage) + 1;
+                int totalitems = await (_db.Items
+                                    .Where(x => x.IsActive == true
+                                        && (x.ItemName.ToLower().Contains(item.Searchvalue.ToLower()) ||
+                                        x.ItemCode.ToLower().Contains(item.Searchvalue.ToLower()))
+                                        && !item.AllSelectedItem.Contains(x.ItemID))
+                                    ).CountAsync();
+                total = (totalitems / item.Itemperpage) + 1;
             }
             catch (Exception ex)
             {

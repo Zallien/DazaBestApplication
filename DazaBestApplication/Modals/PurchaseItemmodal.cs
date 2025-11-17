@@ -241,6 +241,8 @@ namespace DazaBestApplication.Modals
             searchvalue = bunifuTextBox1.Text;
             Productcurrentpage = 1;
             await PopulatAllItemDataGrid();
+            await Gettotalpages();
+            await CheckPageNumber();
 
         }
 
@@ -393,8 +395,16 @@ namespace DazaBestApplication.Modals
         {
             using (var context = new BackEndDBContext())
             {
+                _getavailableitemswithpagination = new GetAvailableItemswithpagination()
+                {
+                    Pagenumber = Productcurrentpage,
+                    Itemperpage = Productitemperpage,
+                    Searchvalue = searchvalue,
+                    AllSelectedItem = AllSelectedProducts
+                };
+
                 PurchaseitemServices = new PurchaseitemServices(context);
-                Producttotalpage = await PurchaseitemServices.GettotalPages(Productitemperpage);
+                Producttotalpage = await PurchaseitemServices.GettotalPages(_getavailableitemswithpagination);
             }
         }
         //Check Page Number
