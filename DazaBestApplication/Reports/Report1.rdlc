@@ -1158,7 +1158,7 @@
   </ReportSections>
   <ReportParameters>
     <ReportParameter Name="DateTime">
-      <DataType>DateTime</DataType>
+      <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="EmployeeName">
