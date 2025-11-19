@@ -11,6 +11,7 @@ namespace SystemBackEnd.ServiceModels
         public Guid AccountId { get; set; }
         public string Fullname { get; set; }
         public string Username { get; set; }
+        public bool Isadmin { get; set; }
         public List<SecurityQuestionwithId>? AllSecurityQuestions { get; set; }
     }
 

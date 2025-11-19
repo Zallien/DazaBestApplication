@@ -79,6 +79,7 @@ namespace DazaBestApplication.Pages
                 row.Cells["IdCol"].Value = account.AccountId;
                 row.Cells["NameCol"].Value = account.Fullname;
                 row.Cells["UsernameCol"].Value = account.Username;
+                row.Cells["PositionCol"].Value = account.Isadmin == true ? "Admin" : "Staff";
             }
         }
         //Edit Account

@@ -161,7 +161,8 @@ namespace SystemBackEnd.Services
                                                 QuestionId = q.QuestionId,
                                                 Question = q.Question,
                                                 Answer = q.Answer
-                                            }).ToListAsync()
+                                            }).ToListAsync(),
+                            Isadmin = account.IsOwner
                         });
                     }
                 }

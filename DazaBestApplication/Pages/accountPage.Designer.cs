@@ -44,9 +44,6 @@
             label1 = new Label();
             MainContainer = new Panel();
             AllAccountsDatagridView = new Bunifu.UI.WinForms.BunifuDataGridView();
-            IdCol = new DataGridViewTextBoxColumn();
-            NameCol = new DataGridViewTextBoxColumn();
-            UsernameCol = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
             panel4 = new Panel();
             RemoveButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
@@ -59,6 +56,10 @@
             PaginationLabel = new Label();
             PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
             PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
+            IdCol = new DataGridViewTextBoxColumn();
+            NameCol = new DataGridViewTextBoxColumn();
+            UsernameCol = new DataGridViewTextBoxColumn();
+            PositionCol = new DataGridViewTextBoxColumn();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllAccountsDatagridView).BeginInit();
@@ -136,7 +137,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             AllAccountsDatagridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             AllAccountsDatagridView.ColumnHeadersHeight = 40;
-            AllAccountsDatagridView.Columns.AddRange(new DataGridViewColumn[] { IdCol, NameCol, UsernameCol });
+            AllAccountsDatagridView.Columns.AddRange(new DataGridViewColumn[] { IdCol, NameCol, UsernameCol, PositionCol });
             AllAccountsDatagridView.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
             AllAccountsDatagridView.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             AllAccountsDatagridView.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
@@ -179,27 +180,6 @@
             AllAccountsDatagridView.TabIndex = 11;
             AllAccountsDatagridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             AllAccountsDatagridView.CellDoubleClick += AllAccountsDatagridView_CellDoubleClick;
-            // 
-            // IdCol
-            // 
-            IdCol.HeaderText = "ID";
-            IdCol.Name = "IdCol";
-            IdCol.ReadOnly = true;
-            IdCol.Visible = false;
-            // 
-            // NameCol
-            // 
-            NameCol.FillWeight = 70F;
-            NameCol.HeaderText = "Name";
-            NameCol.Name = "NameCol";
-            NameCol.ReadOnly = true;
-            // 
-            // UsernameCol
-            // 
-            UsernameCol.FillWeight = 30F;
-            UsernameCol.HeaderText = "Username";
-            UsernameCol.Name = "UsernameCol";
-            UsernameCol.ReadOnly = true;
             // 
             // panel1
             // 
@@ -676,6 +656,34 @@
             PaginationNext.Zoom = 20;
             PaginationNext.ZoomSpeed = 10;
             // 
+            // IdCol
+            // 
+            IdCol.HeaderText = "ID";
+            IdCol.Name = "IdCol";
+            IdCol.ReadOnly = true;
+            IdCol.Visible = false;
+            // 
+            // NameCol
+            // 
+            NameCol.FillWeight = 70F;
+            NameCol.HeaderText = "Name";
+            NameCol.Name = "NameCol";
+            NameCol.ReadOnly = true;
+            // 
+            // UsernameCol
+            // 
+            UsernameCol.FillWeight = 30F;
+            UsernameCol.HeaderText = "Username";
+            UsernameCol.Name = "UsernameCol";
+            UsernameCol.ReadOnly = true;
+            // 
+            // PositionCol
+            // 
+            PositionCol.FillWeight = 30F;
+            PositionCol.HeaderText = "Position";
+            PositionCol.Name = "PositionCol";
+            PositionCol.ReadOnly = true;
+            // 
             // accountPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -721,5 +729,6 @@
         private DataGridViewTextBoxColumn IdCol;
         private DataGridViewTextBoxColumn NameCol;
         private DataGridViewTextBoxColumn UsernameCol;
+        private DataGridViewTextBoxColumn PositionCol;
     }
 }
