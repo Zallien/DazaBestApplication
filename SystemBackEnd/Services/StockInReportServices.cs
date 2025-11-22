@@ -28,9 +28,9 @@ namespace SystemBackEnd.Services
                                         join b in _db.PurchaseItemDetails on a.Purchaseheaderid equals b.Purchaseheaderid
                                         join c in _db.Items on b.ItemID equals c.ItemID
                                         join d in _db.Accounts on a.Addedby equals d.AccountId
-                                        where (!searchfilter.FromDate.HasValue || a.DateCreated >= searchfilter.FromDate.Value)
-                                             && (!searchfilter.ToDate.HasValue || a.DateCreated <= searchfilter.ToDate.Value)
-                                             && (string.IsNullOrEmpty(searchfilter.SearchValue) || a.Purchasenumber.Contains(searchfilter.SearchValue))
+                                        where (!searchfilter.FromDate.HasValue || a.DateCreated.Date >= searchfilter.FromDate.Value)
+                                             && (!searchfilter.ToDate.HasValue || a.DateCreated.Date <= searchfilter.ToDate.Value)
+                                        && (string.IsNullOrEmpty(searchfilter.SearchValue) || a.Purchasenumber.Contains(searchfilter.SearchValue))
                                         select new StockInReportsDetails()
                                         {
                                             PurchaseItemDetailsId = b.Purchasedetailsid,

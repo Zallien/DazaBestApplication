@@ -222,6 +222,8 @@ namespace DazaBestApplication.Pages
         {
             fromdatetxt.MaxDate = DateTime.Now.Date;
             todatetxt.MaxDate= DateTime.Now.Date;
+            fromdatetxt.Value = datenow;
+            todatetxt.Value = datenow;
             await GetTotalPages();
             await CheckPageNumber();
             await PopulateDatagrid();
