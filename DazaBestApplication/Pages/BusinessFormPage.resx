@@ -118,23 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="AddBusinessBTN.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="EditBTN.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAJoAAAAgCAYAAADqrmEEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACDSURBVHhe7dIhAYBAAMBAQjyxIOP3IgYBgABImDpxanbL
-        Psexz/WC/4zjGe0twLeMRsJoJIxGwmgkjEbCaCSMRsJoJIxGwmgkjEbCaCSMRsJoJIxGwmgkjEbCaCSM
-        RsJoJIxGwmgkjEbCaCSMRsJoJIxGwmgkjEZi2eY43wJ8ZZvjvAF8p6hVs1LJUQAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAHgAAAAgCAYAAADZubxIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB0SURBVGhD7dE7FYBAEMBA/FvcQwUC+PRngLwppkqZY61z
+        XjdJ8w3eBSIMjjM4zuA4g+MMjjM4zuA4g+MMjjM4zuA4g+MMjjM4zuA4g+MMjjM4zuA4g+MMjjM4zuA4
+        g+MMjjM4zuA4g+MMjjtm1rUL/N/Muh6vJa62PFKJvQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="IdCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="BusinessNameCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="DateCreatedCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="RemoveBTN.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAHgAAAAgCAYAAADZubxIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB0SURBVGhD7dE7FYBAEMBA/FvcQwUC+PRngLwppkqZY61z
+        XjdJ8w3eBSIMjjM4zuA4g+MMjjM4zuA4g+MMjjM4zuA4g+MMjjM4zuA4g+MMjjM4zuA4g+MMjjM4zuA4
+        g+MMjjM4zuA4g+MMjjtm1rUL/N/Muh6vJa62PFKJvQAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="PaginationPREV.ErrorImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -1015,20 +1014,21 @@
         RK5CYII=
 </value>
   </data>
-  <data name="RemoveBTN.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <metadata name="IdCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="BusinessNameCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="DateCreatedCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="AddBusinessBTN.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAHYAAAAgCAYAAADHcIz7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB1SURBVGhD7dE7FYBAEMBA/FvcQwUC+PRngLwppkqZY61z
-        Xjcp843dBX7O2Chjo4yNMjbK2Chjo4yNMjbK2Chjo4yNMjbK2Chjo4yNMjbK2Chjo4yNMjbK2Chjo4yN
-        MjbK2Chjo4yNMjbK2KhjZl27wH/NrOsBE2fJpzDljMIAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="EditBTN.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAHYAAAAgCAYAAADHcIz7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB1SURBVGhD7dE7FYBAEMBA/FvcQwUC+PRngLwppkqZY61z
-        Xjcp843dBX7O2Chjo4yNMjbK2Chjo4yNMjbK2Chjo4yNMjbK2Chjo4yNMjbK2Chjo4yNMjbK2Chjo4yN
-        MjbK2Chjo4yNMjbK2KhjZl27wH/NrOsBE2fJpzDljMIAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAAJoAAAAgCAYAAADqrmEEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACDSURBVHhe7dIhAYBAAMBAQjyxIOP3IgYBgABImDpxanbL
+        Psexz/WC/4zjGe0twLeMRsJoJIxGwmgkjEbCaCSMRsJoJIxGwmgkjEbCaCSMRsJoJIxGwmgkjEbCaCSM
+        RsJoJIxGwmgkjEbCaCSMRsJoJIxGwmgkjEZi2eY43wJ8ZZvjvAF8p6hVs1LJUQAAAABJRU5ErkJggg==
 </value>
   </data>
 </root>
