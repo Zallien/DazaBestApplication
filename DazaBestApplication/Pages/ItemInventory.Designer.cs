@@ -570,7 +570,7 @@
             AllItemsDatagrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.Maroon;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            dataGridViewCellStyle2.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(102, 0, 0);
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
@@ -598,7 +598,7 @@
             AllItemsDatagrid.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(229, 204, 204);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewCellStyle3.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle3.ForeColor = Color.Black;
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(178, 102, 102);
             dataGridViewCellStyle3.SelectionForeColor = Color.White;
@@ -644,7 +644,7 @@
             ItemCodeCol.HeaderText = "Item Code";
             ItemCodeCol.Name = "ItemCodeCol";
             ItemCodeCol.ReadOnly = true;
-            ItemCodeCol.Width = 110;
+            ItemCodeCol.Width = 89;
             // 
             // ItemNameCol
             // 
@@ -659,7 +659,7 @@
             StocksCol.HeaderText = "Stocks";
             StocksCol.Name = "StocksCol";
             StocksCol.ReadOnly = true;
-            StocksCol.Width = 81;
+            StocksCol.Width = 74;
             // 
             // PriceCol
             // 
@@ -668,7 +668,7 @@
             PriceCol.HeaderText = "Price";
             PriceCol.Name = "PriceCol";
             PriceCol.ReadOnly = true;
-            PriceCol.Width = 69;
+            PriceCol.Width = 63;
             // 
             // MenustripforItems
             // 

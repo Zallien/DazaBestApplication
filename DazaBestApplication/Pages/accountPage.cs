@@ -18,6 +18,7 @@ namespace DazaBestApplication.Pages
 {
     public partial class accountPage : Form
     {
+
         private Form MainForm;
         private List<AccountDisplay> allAccounts = new();
         private LoginServices loginServices;
@@ -74,12 +75,14 @@ namespace DazaBestApplication.Pages
             AllAccountsDatagridView.Rows.Clear();
             foreach (var account in allAccounts)
             {
+
                 int rowindex = AllAccountsDatagridView.Rows.Add();
                 DataGridViewRow row = AllAccountsDatagridView.Rows[rowindex];
                 row.Cells["IdCol"].Value = account.AccountId;
                 row.Cells["NameCol"].Value = account.Fullname;
                 row.Cells["UsernameCol"].Value = account.Username;
                 row.Cells["PositionCol"].Value = account.Isadmin == true ? "Admin" : "Staff";
+
             }
         }
         //Edit Account

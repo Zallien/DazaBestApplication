@@ -41,6 +41,7 @@ namespace SystemBackEnd
             modelBuilder.Entity<ItemAdjustmentDetails>().ToTable("ItemAdjustmentDetails");
             modelBuilder.Entity<SecurityQuestions>().ToTable("SecurityQuestions");
             modelBuilder.Entity<BackupSettings>().ToTable("BackupSettings");
+            modelBuilder.Entity<BusinessType>().ToTable("BusinessType");
         }
 
         public DbSet<Accounts> Accounts { get; set; }
@@ -57,6 +58,7 @@ namespace SystemBackEnd
         public DbSet<ItemAdjustmentDetails> ItemAdjustmentDetails { get; set; }
         public DbSet<SecurityQuestions> SecurityQuestions { get; set; }
         public DbSet<BackupSettings> BackupSettings { get; set; }
+        public DbSet<BusinessType> BusinessType { get; set; }
 
     }
 }

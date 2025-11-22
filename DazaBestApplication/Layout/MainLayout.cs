@@ -34,7 +34,7 @@ namespace DazaBestApplication
         //Main Load Event
         private async void MainPage_Load(object sender, EventArgs e)
         {
-            
+
             await ShowloadingScreeen();
             await startup();
             theLoggedInAccount = Program.theLoggedInAccount;
@@ -58,6 +58,7 @@ namespace DazaBestApplication
             Activebutton = NavButton_Home;
             await CheckActiveButton();
         }
+
 
         private async Task startup()
         {
@@ -364,7 +365,7 @@ namespace DazaBestApplication
             Loadingpanel.Dispose();
         }
 
-        
+
         #region Routing Each Pages
         private void ShowItemPage()
         {
@@ -509,6 +510,20 @@ namespace DazaBestApplication
             MainContainer.Controls.Add(MainContainerForm);
             MainContainerForm.Show();
         }
+        private void ShowBusinessForm()
+        {
+            if (MainContainerForm != null)
+            {
+                MainContainer.Controls.Remove(MainContainerForm);
+                MainContainerForm = null;
+            }
+            MainContainerForm = new BusinessFormPage(this);
+            MainContainerForm.TopLevel = false;
+            MainContainerForm.Dock = DockStyle.Fill;
+            MainContainer.Controls.Add(MainContainerForm);
+            MainContainerForm.Show();
+        }
+
         #endregion
 
 
@@ -732,6 +747,10 @@ namespace DazaBestApplication
             bunifuButton21.IdleIconLeftImage = Properties.Resources.gear; // Backup and Restore
             POSButton.IdleIconLeftImage = Properties.Resources.payment_terminal;
             AccountsManagementBTN.IdleIconLeftImage = Properties.Resources.accounts;
+        }
+        private void BusinessNavButton_Click(object sender, EventArgs e)
+        {
+            ShowBusinessForm();
         }
     }
 }

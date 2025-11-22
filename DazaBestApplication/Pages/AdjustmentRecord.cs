@@ -33,7 +33,9 @@ namespace DazaBestApplication.Pages
         private DateTime FromDateFilter = DateTime.Now;
         private DateTime ToDateFilter = DateTime.Now;
         private int totalpages = 0;
+
         #endregion
+
 
         //Contrutor
         public AdjustmentRecord(Form mainForm)
@@ -90,7 +92,6 @@ namespace DazaBestApplication.Pages
             await CheckPageNumber();
             await PopulateAlldjustDetailsDatagrid();
         }
-
 
 
         #region pagination Logic
@@ -239,12 +240,11 @@ namespace DazaBestApplication.Pages
         {
             SearchSaleRecords();
         }
-        #endregion
-
         private void bunifuButton22_Click(object sender, EventArgs e)
         {
             todatetxt.Value = datenow;
             fromdatetxt.Value = datenow;
         }
+        #endregion
     }
 }
