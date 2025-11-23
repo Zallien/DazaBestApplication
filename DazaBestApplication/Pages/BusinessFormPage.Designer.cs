@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BusinessFormPage));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges6 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             TopPanel = new Panel();
             panel4 = new Panel();
             label1 = new Label();
@@ -88,7 +88,7 @@
             // 
             // MainContainer
             // 
-            MainContainer.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            MainContainer.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             MainContainer.Controls.Add(EditBTN);
             MainContainer.Controls.Add(RemoveBTN);
             MainContainer.Controls.Add(Pagination);
@@ -117,11 +117,11 @@
             EditBTN.ButtonTextMarginLeft = 0;
             EditBTN.ColorContrastOnClick = 45;
             EditBTN.ColorContrastOnHover = 45;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            EditBTN.CustomizableEdges = borderEdges1;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            EditBTN.CustomizableEdges = borderEdges4;
             EditBTN.DialogResult = DialogResult.None;
             EditBTN.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             EditBTN.DisabledFillColor = Color.FromArgb(204, 204, 204);
@@ -205,11 +205,11 @@
             RemoveBTN.ButtonTextMarginLeft = 0;
             RemoveBTN.ColorContrastOnClick = 45;
             RemoveBTN.ColorContrastOnHover = 45;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            RemoveBTN.CustomizableEdges = borderEdges2;
+            borderEdges5.BottomLeft = true;
+            borderEdges5.BottomRight = true;
+            borderEdges5.TopLeft = true;
+            borderEdges5.TopRight = true;
+            RemoveBTN.CustomizableEdges = borderEdges5;
             RemoveBTN.DialogResult = DialogResult.None;
             RemoveBTN.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             RemoveBTN.DisabledFillColor = Color.FromArgb(204, 204, 204);
@@ -371,23 +371,23 @@
             AllBusinessDatagrid.AllowUserToDeleteRows = false;
             AllBusinessDatagrid.AllowUserToResizeColumns = false;
             AllBusinessDatagrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(223, 191, 191);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            AllBusinessDatagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(223, 191, 191);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            AllBusinessDatagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             AllBusinessDatagrid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AllBusinessDatagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             AllBusinessDatagrid.BackgroundColor = Color.White;
             AllBusinessDatagrid.BorderStyle = BorderStyle.None;
             AllBusinessDatagrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             AllBusinessDatagrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.Maroon;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(102, 0, 0);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            AllBusinessDatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.Maroon;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(102, 0, 0);
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            AllBusinessDatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             AllBusinessDatagrid.ColumnHeadersHeight = 40;
             AllBusinessDatagrid.Columns.AddRange(new DataGridViewColumn[] { IdCol, BusinessNameCol, DateCreatedCol });
             AllBusinessDatagrid.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
@@ -408,14 +408,14 @@
             AllBusinessDatagrid.CurrentTheme.RowsStyle.ForeColor = Color.Black;
             AllBusinessDatagrid.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
             AllBusinessDatagrid.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(229, 204, 204);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            AllBusinessDatagrid.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(229, 204, 204);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            AllBusinessDatagrid.DefaultCellStyle = dataGridViewCellStyle6;
             AllBusinessDatagrid.EnableHeadersVisualStyles = false;
             AllBusinessDatagrid.GridColor = Color.FromArgb(216, 178, 178);
             AllBusinessDatagrid.HeaderBackColor = Color.Maroon;
@@ -469,11 +469,11 @@
             AddBusinessBTN.ButtonTextMarginLeft = 0;
             AddBusinessBTN.ColorContrastOnClick = 45;
             AddBusinessBTN.ColorContrastOnHover = 45;
-            borderEdges3.BottomLeft = true;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = true;
-            borderEdges3.TopRight = true;
-            AddBusinessBTN.CustomizableEdges = borderEdges3;
+            borderEdges6.BottomLeft = true;
+            borderEdges6.BottomRight = true;
+            borderEdges6.TopLeft = true;
+            borderEdges6.TopRight = true;
+            AddBusinessBTN.CustomizableEdges = borderEdges6;
             AddBusinessBTN.DialogResult = DialogResult.None;
             AddBusinessBTN.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             AddBusinessBTN.DisabledFillColor = Color.FromArgb(204, 204, 204);
@@ -538,6 +538,7 @@
             AddBusinessBTN.TextMarginLeft = 0;
             AddBusinessBTN.TextPadding = new Padding(35, 0, 0, 0);
             AddBusinessBTN.UseDefaultRadiusAndThickness = true;
+            AddBusinessBTN.Click += AddBusinessBTN_Click;
             // 
             // BusinessFormPage
             // 
@@ -550,6 +551,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "BusinessFormPage";
             Text = "BusinessFormPage";
+            Load += BusinessFormPage_Load;
             TopPanel.ResumeLayout(false);
             MainContainer.ResumeLayout(false);
             Pagination.ResumeLayout(false);
