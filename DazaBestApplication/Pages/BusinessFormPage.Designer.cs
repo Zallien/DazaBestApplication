@@ -53,6 +53,8 @@
             AddBusinessBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             Menustrip = new ContextMenuStrip(components);
             deleteToolStripMenuItem = new ToolStripMenuItem();
+            updateToolStripMenuItem = new ToolStripMenuItem();
+            sep1 = new ToolStripSeparator();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             Pagination.SuspendLayout();
@@ -190,6 +192,7 @@
             EditBTN.TextMarginLeft = 0;
             EditBTN.TextPadding = new Padding(35, 0, 0, 0);
             EditBTN.UseDefaultRadiusAndThickness = true;
+            EditBTN.Click += EditBTN_Click;
             // 
             // RemoveBTN
             // 
@@ -548,9 +551,9 @@
             // 
             // Menustrip
             // 
-            Menustrip.Items.AddRange(new ToolStripItem[] { deleteToolStripMenuItem });
+            Menustrip.Items.AddRange(new ToolStripItem[] { deleteToolStripMenuItem, sep1, updateToolStripMenuItem });
             Menustrip.Name = "Menustrip";
-            Menustrip.Size = new Size(123, 26);
+            Menustrip.Size = new Size(123, 54);
             // 
             // deleteToolStripMenuItem
             // 
@@ -559,6 +562,19 @@
             deleteToolStripMenuItem.Size = new Size(122, 22);
             deleteToolStripMenuItem.Text = "Delete";
             deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
+            // 
+            // updateToolStripMenuItem
+            // 
+            updateToolStripMenuItem.Font = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+            updateToolStripMenuItem.Size = new Size(122, 22);
+            updateToolStripMenuItem.Text = "Edit";
+            updateToolStripMenuItem.Click += updateToolStripMenuItem_Click;
+            // 
+            // sep1
+            // 
+            sep1.Name = "sep1";
+            sep1.Size = new Size(119, 6);
             // 
             // BusinessFormPage
             // 
@@ -598,5 +614,7 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 RemoveBTN;
         private ContextMenuStrip Menustrip;
         private ToolStripMenuItem deleteToolStripMenuItem;
+        private ToolStripMenuItem updateToolStripMenuItem;
+        private ToolStripSeparator sep1;
     }
 }

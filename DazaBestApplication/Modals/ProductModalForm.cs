@@ -71,6 +71,7 @@ namespace DazaBestApplication.Modals
                 if (_productmodal.EditItem.ProductImage != null)
                 {
                     AddProductPic.Image = Image.FromStream(new MemoryStream(_productmodal.EditItem.ProductImage)!);
+                    Pic = _productmodal.EditItem.ProductImage;
                 }
             }
         }
@@ -106,7 +107,8 @@ namespace DazaBestApplication.Modals
                 ProductID = ProducteditID,
                 ProductName = ProductNametxt.Text,
                 ProductPrice = decimal.Parse(Productpricetxt.Text),
-                ProductImage = Pic
+                ProductImage = Pic,
+                Category = ProductCategories.Text
             };
             bool IsEdited = await _productservices.UpdateProduct(editproduct);
             if (IsEdited)

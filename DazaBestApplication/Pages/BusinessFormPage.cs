@@ -19,6 +19,7 @@ namespace DazaBestApplication.Pages
     {
         private List<BusinessCategoryDisplay> BusinessCategoryDisplay;
         private BusinessCategoryServices BusinessCategoryServices;
+        private BusinessFormModalAction modalAction;
         private SearchItem SearchItem;
         private Form mainForm;
         private List<Guid> IdList = new List<Guid>();
@@ -47,7 +48,7 @@ namespace DazaBestApplication.Pages
         private void showAddBusinessCategory()
         {
             Form ModalBackgorund = new();
-            using (BusinessModalForm modalcontent = new(mainForm))
+            using (BusinessModalForm modalcontent = new(mainForm, modalAction))
             {
                 var mainBounds = mainForm.Bounds;
 
@@ -149,18 +150,54 @@ namespace DazaBestApplication.Pages
 
 
         }
+        //Edit Business Type Information
+        private async Task EditInformation()
+        {
+            DataGridViewRow row = AllBusinessDatagrid.SelectedRows[0];
+
+            Guid businesstyperow = Guid.Parse(row.Cells["IdCol"].Value.ToString());
+            string businesstypename = row.Cells["BusinessNameCol"].Value.ToString();
+
+            modalAction = new BusinessFormModalAction()
+            {
+                Action = "Edit",
+                BusinessName = businesstypename,
+                BusinessTypeId = businesstyperow,
+            };
+
+            showAddBusinessCategory();
+        }
+
 
 
 
         //Events
         private void AddBusinessBTN_Click(object sender, EventArgs e)
         {
+            modalAction = new BusinessFormModalAction()
+            {
+                Action = "Add",
+                BusinessName = null,
+                BusinessTypeId = null,
+            };
+
             showAddBusinessCategory();
         }
         private void AllBusinessDatagrid_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
+
+                if (AllBusinessDatagrid.SelectedRows.Count > 1)
+                {
+                    updateToolStripMenuItem.Visible = false;
+                    sep1.Visible = false;
+                }
+                else
+                {
+                    updateToolStripMenuItem.Visible = true;
+                    sep1.Visible = true;
+                }
                 Menustrip.Show(Cursor.Position);
             }
         }
@@ -178,6 +215,19 @@ namespace DazaBestApplication.Pages
             {
                 RemoveAllBusinessCategories();
             }
+        }
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditInformation();
+        }
+        private void EditBTN_Click(object sender, EventArgs e)
+        {
+            if (AllBusinessDatagrid.SelectedRows.Count > 0)
+            {
+                MessageBox.Show("You can't Edit more than 1 Item", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            EditInformation();
         }
     }
 }
