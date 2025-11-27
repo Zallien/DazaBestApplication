@@ -174,7 +174,7 @@
             BusinessTypeTxt.SelectionLength = 0;
             BusinessTypeTxt.SelectionStart = 0;
             BusinessTypeTxt.ShortcutsEnabled = true;
-            BusinessTypeTxt.Size = new Size(204, 30);
+            BusinessTypeTxt.Size = new Size(204, 39);
             BusinessTypeTxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             BusinessTypeTxt.TabIndex = 3;
             BusinessTypeTxt.TextAlign = HorizontalAlignment.Left;
@@ -284,6 +284,7 @@
             bunifuButton1.TextMarginLeft = 0;
             bunifuButton1.TextPadding = new Padding(0);
             bunifuButton1.UseDefaultRadiusAndThickness = true;
+            bunifuButton1.Click += bunifuButton1_Click;
             // 
             // BusinessModalForm
             // 
