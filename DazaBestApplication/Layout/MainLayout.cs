@@ -748,9 +748,5 @@ namespace DazaBestApplication
             POSButton.IdleIconLeftImage = Properties.Resources.payment_terminal;
             AccountsManagementBTN.IdleIconLeftImage = Properties.Resources.accounts;
         }
-        private void BusinessNavButton_Click(object sender, EventArgs e)
-        {
-            ShowBusinessForm();
-        }
     }
 }

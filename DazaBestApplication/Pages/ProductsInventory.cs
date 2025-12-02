@@ -279,6 +279,8 @@ namespace DazaBestApplication.Pages
                                             .GetProductImageByID(_editproduct.ProductID);
                 _editproduct.Category = await new ProductServices(new BackEndDBContext())
                                             .GetProductCategoryByID(_editproduct.ProductID);
+                _editproduct.BusinessCategory = await new ProductServices(new BackEndDBContext())
+                                             .GetProductBusinessCategory(_editproduct.ProductID);
                 _productmodal = new ProductModal()
                 {
                     Action = "EditProduct",

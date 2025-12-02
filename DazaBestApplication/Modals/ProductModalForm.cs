@@ -29,6 +29,11 @@ namespace DazaBestApplication.Modals
             "Meals",
             "Beverage"
         };
+        private List<string> Businesses = new List<string>()
+        {
+            "Karinderya",
+            "Food Stall"
+        };
 
 
 
@@ -45,6 +50,7 @@ namespace DazaBestApplication.Modals
         {
             CheckModalType();
             PopulateCategories();
+            PopulateBusinesses();
         }
         //Close Modal
         private void Closemodal()
@@ -68,6 +74,7 @@ namespace DazaBestApplication.Modals
                 ProductNametxt.Text = _productmodal.EditItem.ProductName;
                 Productpricetxt.Text = _productmodal.EditItem.ProductPrice.ToString("#.##0");
                 ProductCategories.Text = _productmodal.EditItem.Category;
+                Businessdropdown.Text = _productmodal.EditItem.BusinessCategory;
                 if (_productmodal.EditItem.ProductImage != null)
                 {
                     AddProductPic.Image = Image.FromStream(new MemoryStream(_productmodal.EditItem.ProductImage)!);
@@ -84,7 +91,9 @@ namespace DazaBestApplication.Modals
                 ProductName = ProductNametxt.Text,
                 ProductPrice = decimal.Parse(Productpricetxt.Text),
                 ProductPicture = Pic,
-                Category = ProductCategories.Text.ToString()
+                Category = ProductCategories.Text.ToString(),
+                BusinessCategory = Businessdropdown.Text.ToString()
+
             };
             bool IsAdded = await _productservices.AddProduct(newproduct);
             if (IsAdded)
@@ -108,7 +117,8 @@ namespace DazaBestApplication.Modals
                 ProductName = ProductNametxt.Text,
                 ProductPrice = decimal.Parse(Productpricetxt.Text),
                 ProductImage = Pic,
-                Category = ProductCategories.Text
+                Category = ProductCategories.Text,
+                BusinessCategory = Businessdropdown.Text
             };
             bool IsEdited = await _productservices.UpdateProduct(editproduct);
             if (IsEdited)
@@ -131,7 +141,15 @@ namespace DazaBestApplication.Modals
                 ProductCategories.Items.Add(category);
             }
         }
-
+        //Populate Businesses
+        private void PopulateBusinesses()
+        {
+            Businessdropdown.Items.Clear();
+            foreach (var category in Businesses)
+            {
+                Businessdropdown.Items.Add(category);
+            }
+        }
 
 
 
