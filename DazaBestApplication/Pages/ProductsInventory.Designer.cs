@@ -55,17 +55,16 @@
             SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
             AddProductBTN = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             AllProductDatagridView = new Bunifu.UI.WinForms.BunifuDataGridView();
-            IdCol = new DataGridViewTextBoxColumn();
-            AvailabilityCol = new DataGridViewImageColumn();
-            ProductCodeCol = new DataGridViewTextBoxColumn();
-            ProductNameCol = new DataGridViewTextBoxColumn();
-            QuantityCol = new DataGridViewTextBoxColumn();
-            PriceCol = new DataGridViewTextBoxColumn();
-            ActionCol = new DataGridViewButtonColumn();
             ProductMenuStrip = new ContextMenuStrip(components);
             Edittoolstrip = new ToolStripMenuItem();
             sep1 = new ToolStripSeparator();
             Deletetoolstrip = new ToolStripMenuItem();
+            IdCol = new DataGridViewTextBoxColumn();
+            AvailabilityCol = new DataGridViewImageColumn();
+            ProductCodeCol = new DataGridViewTextBoxColumn();
+            ProductNameCol = new DataGridViewTextBoxColumn();
+            PriceCol = new DataGridViewTextBoxColumn();
+            ActionCol = new DataGridViewButtonColumn();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             Pagination.SuspendLayout();
@@ -581,7 +580,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             AllProductDatagridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             AllProductDatagridView.ColumnHeadersHeight = 40;
-            AllProductDatagridView.Columns.AddRange(new DataGridViewColumn[] { IdCol, AvailabilityCol, ProductCodeCol, ProductNameCol, QuantityCol, PriceCol, ActionCol });
+            AllProductDatagridView.Columns.AddRange(new DataGridViewColumn[] { IdCol, AvailabilityCol, ProductCodeCol, ProductNameCol, PriceCol, ActionCol });
             AllProductDatagridView.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
             AllProductDatagridView.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             AllProductDatagridView.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
@@ -628,6 +627,30 @@
             AllProductDatagridView.CellFormatting += AllProductDatagridView_CellFormatting;
             AllProductDatagridView.MouseClick += AllItemsDatagrid_MouseClick;
             // 
+            // ProductMenuStrip
+            // 
+            ProductMenuStrip.Items.AddRange(new ToolStripItem[] { Edittoolstrip, sep1, Deletetoolstrip });
+            ProductMenuStrip.Name = "ProductMenuStrip";
+            ProductMenuStrip.Size = new Size(150, 54);
+            // 
+            // Edittoolstrip
+            // 
+            Edittoolstrip.Name = "Edittoolstrip";
+            Edittoolstrip.Size = new Size(149, 22);
+            Edittoolstrip.Text = "Edit";
+            Edittoolstrip.Click += Edittoolstrip_Click;
+            // 
+            // sep1
+            // 
+            sep1.Name = "sep1";
+            sep1.Size = new Size(146, 6);
+            // 
+            // Deletetoolstrip
+            // 
+            Deletetoolstrip.Name = "Deletetoolstrip";
+            Deletetoolstrip.Size = new Size(149, 22);
+            Deletetoolstrip.Text = "Remove Items";
+            // 
             // IdCol
             // 
             IdCol.FillWeight = 5F;
@@ -669,15 +692,6 @@
             ProductNameCol.Name = "ProductNameCol";
             ProductNameCol.ReadOnly = true;
             // 
-            // QuantityCol
-            // 
-            QuantityCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            QuantityCol.FillWeight = 20F;
-            QuantityCol.HeaderText = "Qty.";
-            QuantityCol.Name = "QuantityCol";
-            QuantityCol.ReadOnly = true;
-            QuantityCol.Width = 62;
-            // 
             // PriceCol
             // 
             PriceCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -700,30 +714,6 @@
             ActionCol.ReadOnly = true;
             ActionCol.Text = "Change Status";
             ActionCol.UseColumnTextForButtonValue = true;
-            // 
-            // ProductMenuStrip
-            // 
-            ProductMenuStrip.Items.AddRange(new ToolStripItem[] { Edittoolstrip, sep1, Deletetoolstrip });
-            ProductMenuStrip.Name = "ProductMenuStrip";
-            ProductMenuStrip.Size = new Size(150, 54);
-            // 
-            // Edittoolstrip
-            // 
-            Edittoolstrip.Name = "Edittoolstrip";
-            Edittoolstrip.Size = new Size(149, 22);
-            Edittoolstrip.Text = "Edit";
-            Edittoolstrip.Click += Edittoolstrip_Click;
-            // 
-            // sep1
-            // 
-            sep1.Name = "sep1";
-            sep1.Size = new Size(146, 6);
-            // 
-            // Deletetoolstrip
-            // 
-            Deletetoolstrip.Name = "Deletetoolstrip";
-            Deletetoolstrip.Size = new Size(149, 22);
-            Deletetoolstrip.Text = "Remove Items";
             // 
             // ProductsInventory
             // 
@@ -762,13 +752,12 @@
         private ToolStripMenuItem Deletetoolstrip;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 EditButton;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 RemoveButton;
+        private Panel panel4;
         private DataGridViewTextBoxColumn IdCol;
         private DataGridViewImageColumn AvailabilityCol;
         private DataGridViewTextBoxColumn ProductCodeCol;
         private DataGridViewTextBoxColumn ProductNameCol;
-        private DataGridViewTextBoxColumn QuantityCol;
         private DataGridViewTextBoxColumn PriceCol;
         private DataGridViewButtonColumn ActionCol;
-        private Panel panel4;
     }
 }

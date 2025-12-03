@@ -304,7 +304,7 @@
             ProductNametxt.SelectionLength = 0;
             ProductNametxt.SelectionStart = 0;
             ProductNametxt.ShortcutsEnabled = true;
-            ProductNametxt.Size = new Size(305, 32);
+            ProductNametxt.Size = new Size(305, 40);
             ProductNametxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             ProductNametxt.TabIndex = 5;
             ProductNametxt.TextAlign = HorizontalAlignment.Left;
@@ -379,7 +379,7 @@
             Productpricetxt.SelectionLength = 0;
             Productpricetxt.SelectionStart = 0;
             Productpricetxt.ShortcutsEnabled = true;
-            Productpricetxt.Size = new Size(305, 32);
+            Productpricetxt.Size = new Size(305, 40);
             Productpricetxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             Productpricetxt.TabIndex = 7;
             Productpricetxt.TextAlign = HorizontalAlignment.Left;
@@ -602,7 +602,7 @@
             label1.Name = "label1";
             label1.Size = new Size(144, 28);
             label1.TabIndex = 11;
-            label1.Text = "Category :";
+            label1.Text = "Belong to :";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // ProductCategories
@@ -641,7 +641,7 @@
             ProductCategories.ItemHighLightColor = Color.DodgerBlue;
             ProductCategories.ItemHighLightForeColor = Color.White;
             ProductCategories.ItemTopMargin = 3;
-            ProductCategories.Location = new Point(147, 177);
+            ProductCategories.Location = new Point(147, 232);
             ProductCategories.Name = "ProductCategories";
             ProductCategories.Size = new Size(305, 32);
             ProductCategories.TabIndex = 12;
@@ -656,7 +656,7 @@
             label4.Name = "label4";
             label4.Size = new Size(144, 17);
             label4.TabIndex = 13;
-            label4.Text = "Belong to: ";
+            label4.Text = "Categories :";
             label4.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // Businessdropdown
@@ -695,13 +695,14 @@
             Businessdropdown.ItemHighLightColor = Color.DodgerBlue;
             Businessdropdown.ItemHighLightForeColor = Color.White;
             Businessdropdown.ItemTopMargin = 3;
-            Businessdropdown.Location = new Point(147, 232);
+            Businessdropdown.Location = new Point(147, 177);
             Businessdropdown.Name = "Businessdropdown";
             Businessdropdown.Size = new Size(305, 32);
             Businessdropdown.TabIndex = 14;
             Businessdropdown.Text = null;
             Businessdropdown.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             Businessdropdown.TextLeftMargin = 5;
+            Businessdropdown.SelectedValueChanged += Businessdropdown_SelectedValueChanged;
             // 
             // ProductModalForm
             // 

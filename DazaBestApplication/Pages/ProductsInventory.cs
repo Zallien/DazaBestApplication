@@ -82,7 +82,6 @@ namespace DazaBestApplication.Pages
                     row.Cells["IdCol"].Value = item.ProductID;
                     row.Cells["ProductCodeCol"].Value = item.ProductCode;
                     row.Cells["ProductNameCol"].Value = item.ProductName;
-                    row.Cells["QuantityCol"].Value = item.Quantity;
                     row.Cells["PriceCol"].Value = item.Price;
                     row.Cells["AvailabilityCol"].Value = item.IsAvailable == true ? Properties.Resources.check :
                                         Properties.Resources.cancel;
