@@ -3,6 +3,7 @@ using Bunifu.UI.WinForms.BunifuButton;
 using DazaBestApplication.Modals;
 using DazaBestApplication.Pages;
 using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -645,7 +646,6 @@ namespace DazaBestApplication.Layout
 
             await CancelResetOrderValidation();
         }
-
         private void ProductOrdersDatagrid_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -653,7 +653,6 @@ namespace DazaBestApplication.Layout
                 e.Handled = true;
             }
         }
-
         //Para sa number lang yung mailagay sa datagridview
         private void NumbersOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -677,7 +676,6 @@ namespace DazaBestApplication.Layout
                 }
             }
         }
-
         private void bunifuTextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -719,7 +717,6 @@ namespace DazaBestApplication.Layout
                 }
             }
         }
-
         private async void PaymentButton_Click_1(object sender, EventArgs e)
         {
             if (ProductOrdersDatagrid.Rows.Count == 0)
@@ -732,12 +729,10 @@ namespace DazaBestApplication.Layout
                 await ShowPaymentModal();
             }
         }
-
         private async void bunifuButton1_Click(object sender, EventArgs e)
         {
             await CancelResetOrderValidation();
         }
-
         private void bunifuTextBox1_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '.')
@@ -745,12 +740,10 @@ namespace DazaBestApplication.Layout
                 e.Handled = true;
             }
         }
-
         private void MainDisplay_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private async void ProductOrdersDatagrid_CellValueChanged_1(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -773,12 +766,10 @@ namespace DazaBestApplication.Layout
                 throw;
             }
         }
-
         private void ProductOrdersDatagrid_MouseClick(object sender, MouseEventArgs e)
         {
             IsEdittingdatagrid = true;
         }
-
         private async void foodstallbutton_Click(object sender, EventArgs e)
         {
             MainDisplay.Controls.Clear();
@@ -792,7 +783,6 @@ namespace DazaBestApplication.Layout
             });
             PopulateNavigationButtons();
         }
-
         private async void karinderyabutton_Click(object sender, EventArgs e)
         {
             MainDisplay.Controls.Clear();
@@ -805,6 +795,17 @@ namespace DazaBestApplication.Layout
                 Business = CurrentBusiness
             });
             PopulateNavigationButtons();
+        }
+        private async void Searchbox_TextChange(object sender, EventArgs e)
+        {
+            MainDisplay.Controls.Clear();
+            SearchValue = Searchbox.Text;
+            await GetAllAvailableProducts(new PosItemFilter
+            {
+                SearchValue = SearchValue,
+                Category = SelectedCategory,
+                Business = CurrentBusiness
+            });
         }
     }
 

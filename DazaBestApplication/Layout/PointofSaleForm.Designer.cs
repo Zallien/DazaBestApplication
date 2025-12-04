@@ -783,6 +783,7 @@
             Searchbox.TextPlaceholder = "Search by Product Name";
             Searchbox.UseSystemPasswordChar = false;
             Searchbox.WordWrap = true;
+            Searchbox.TextChange += Searchbox_TextChange;
             // 
             // label1
             // 
