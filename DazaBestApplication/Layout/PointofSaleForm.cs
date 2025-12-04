@@ -793,7 +793,7 @@ namespace DazaBestApplication.Layout
                 SearchValue = SearchValue,
                 Category = SelectedCategory,
                 Business = CurrentBusiness
-            });
+            }); 
             PopulateNavigationButtons();
         }
         private async void Searchbox_TextChange(object sender, EventArgs e)
