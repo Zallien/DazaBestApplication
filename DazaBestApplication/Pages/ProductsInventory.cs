@@ -27,6 +27,12 @@ namespace DazaBestApplication.Pages
         private int _totalproducts;
         private int _maxpages;
         private DecisionModel _decision;
+        private string ProductsBusiness = "Karinderya";
+        private List<string> Businesses = new List<string>()
+        {
+            "Karinderya",
+            "Food Stall"
+        };
 
 
         //Constructor
@@ -46,8 +52,8 @@ namespace DazaBestApplication.Pages
             await LoadProducts();
             PaginationLabel.Text = $"{_currentPage} / {_maxpages}";//Pagination Label
             HookEvents();
+            Setfilterpanel();
 
-            
         }
 
         //Hook Events
@@ -64,10 +70,10 @@ namespace DazaBestApplication.Pages
             _theproducts = await _productservices.GetAllProductsByPagination(new SearchItem
             {
                 PageNumber = _currentPage,
-                ItemperPage = _productsperpage
+                ItemperPage = _productsperpage,
+                ProductBusiness = ProductsBusiness
             });
             PopulateProductsDatagrid(_theproducts);
-
         }
         //Populate ProductDatagrid
         private void PopulateProductsDatagrid(List<Products> _productsparam)
@@ -288,6 +294,34 @@ namespace DazaBestApplication.Pages
                 OpenProductModal();
             }
         }
+        //Set FilterPanel
+        private void Setfilterpanel()
+        {
+            bunifuShadowPanel1.Location = new Point(filterbutton.Location.X - (bunifuShadowPanel1.Width - filterbutton.Width), filterbutton.Location.Y + filterbutton.Height);
+
+            //populate dropdown in filter
+            businesscategorypicked.Items.Clear();
+            foreach (var item in Businesses)
+            {
+                businesscategorypicked.Items.Add(item.ToString());
+            }
+            //Set Defult value of filter
+            businesscategorypicked.Text = ProductsBusiness;
+            productperpagetxt.Text = _productsperpage.ToString();
+        }
+        //Save Filter
+        private async Task SaveFilter()
+        {
+
+            ProductsBusiness = businesscategorypicked.Text;
+            _productsperpage = int.Parse(productperpagetxt.Text);
+            await CheckAllProductsCount();
+            await CheckPageNumber();
+            await LoadProducts();
+            PaginationLabel.Text = $"{_currentPage} / {_maxpages}";//Pagination Label
+            bunifuShadowPanel1.Visible = false;
+        }
+
 
 
 
@@ -418,6 +452,24 @@ namespace DazaBestApplication.Pages
                 buttonCell.Style.SelectionForeColor = Color.White;
                 buttonCell.FlatStyle = FlatStyle.Flat;
             }
+        }
+
+        private void filterbutton_Click(object sender, EventArgs e)
+        {
+            bunifuShadowPanel1.Visible = !bunifuShadowPanel1.Visible;
+        }
+
+        private void productperpagetxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Block the input
+            }
+        }
+
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+            SaveFilter();
         }
     }
 }

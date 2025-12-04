@@ -25,13 +25,13 @@ namespace SystemBackEnd.Services
             try
             {
                 _theproducts = await _db.Products
-                                   .Where(x => x.IsActive == true)
+                                   .Where(x => x.IsActive == true && x.BusinessCategory == product.ProductBusiness)
                                    .OrderByDescending(x => x.Row)
                                    .Skip((product.PageNumber - 1) * product.ItemperPage)
                                    .Take(product.ItemperPage)
                                    .ToListAsync();
             }
-            catch (Exception e)
+            catch (Exception e) 
             {
                 MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
