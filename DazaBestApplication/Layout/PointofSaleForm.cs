@@ -40,11 +40,18 @@ namespace DazaBestApplication.Layout
             "Barkada Meal",
             "Meals"
         };
+        private List<string> Foodstallcategories = new List<string>()
+        {
+            "All",
+            "Lechon",
+            "Fried/Prito",
+        };
 
         //For PosItemFIlter
         private string SearchValue = "";
         private string SelectedCategory = "All";
         private bool IsEdittingdatagrid = false;
+        private string CurrentBusiness = "Karinderya";
 
 
         public PointofSaleForm()
@@ -407,52 +414,102 @@ namespace DazaBestApplication.Layout
             float percentage = 100f / NavigationButtons.Count;
 
             int col = 0;
-
-            foreach (string category in NavigationButtons)
+            if (CurrentBusiness == "Karinderya")
             {
-                var navButton = new BunifuButton
+                foreach (string category in NavigationButtons)
                 {
-                    Text = category,
-                    AutoSize = false,
-                    Margin = new Padding(5),
-                    Tag = category,
-                    Dock = DockStyle.Fill,
-                    Width = 150,
-
-                };
-
-
-                navButton.onHoverState.BorderColor = Color.FromArgb(255, 240, 221);
-                navButton.onHoverState.FillColor = Color.FromArgb(255, 240, 221);
-                navButton.onHoverState.ForeColor = Color.Black;
-                navButton.OnIdleState.BorderColor = Color.Maroon;
-                navButton.OnIdleState.FillColor = Color.Maroon;
-                navButton.OnIdleState.ForeColor = Color.White;
-                navButton.OnPressedState.BorderColor = Color.Black;
-                navButton.OnPressedState.FillColor = Color.FromArgb(198, 40, 40);
-                navButton.OnPressedState.ForeColor = Color.White;
-
-                navButton.Click += async (s, e) =>
-                {
-                    SelectedCategory = (string)navButton.Tag;
-
-                    MainDisplay.Controls.Clear();
-                    await GetAllAvailableProducts(new PosItemFilter
+                    var navButton = new BunifuButton
                     {
-                        SearchValue = SearchValue,
-                        Category = SelectedCategory
-                    });
-                };
+                        Text = category,
+                        AutoSize = false,
+                        Margin = new Padding(5),
+                        Tag = category,
+                        Dock = DockStyle.Fill,
+                        Width = 150,
 
-                // Add autosizing column
-                tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, percentage));
+                    };
 
-                // Add button at specific column/row
-                tableLayoutPanel1.Controls.Add(navButton, col, 0);
 
-                col++;
+                    navButton.onHoverState.BorderColor = Color.FromArgb(255, 240, 221);
+                    navButton.onHoverState.FillColor = Color.FromArgb(255, 240, 221);
+                    navButton.onHoverState.ForeColor = Color.Black;
+                    navButton.OnIdleState.BorderColor = Color.Maroon;
+                    navButton.OnIdleState.FillColor = Color.Maroon;
+                    navButton.OnIdleState.ForeColor = Color.White;
+                    navButton.OnPressedState.BorderColor = Color.Black;
+                    navButton.OnPressedState.FillColor = Color.FromArgb(198, 40, 40);
+                    navButton.OnPressedState.ForeColor = Color.White;
+
+                    navButton.Click += async (s, e) =>
+                    {
+                        SelectedCategory = (string)navButton.Tag;
+
+                        MainDisplay.Controls.Clear();
+                        await GetAllAvailableProducts(new PosItemFilter
+                        {
+                            SearchValue = SearchValue,
+                            Category = SelectedCategory,
+                            Business = CurrentBusiness
+                        });
+                    };
+
+                    // Add autosizing column
+                    tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, percentage));
+
+                    // Add button at specific column/row
+                    tableLayoutPanel1.Controls.Add(navButton, col, 0);
+
+                    col++;
+                }
             }
+            else
+            {
+                foreach (string category in Foodstallcategories)
+                {
+                    var navButton = new BunifuButton
+                    {
+                        Text = category,
+                        AutoSize = false,
+                        Margin = new Padding(5),
+                        Tag = category,
+                        Dock = DockStyle.Fill,
+                        Width = 150,
 
+                    };
+
+
+                    navButton.onHoverState.BorderColor = Color.FromArgb(255, 240, 221);
+                    navButton.onHoverState.FillColor = Color.FromArgb(255, 240, 221);
+                    navButton.onHoverState.ForeColor = Color.Black;
+                    navButton.OnIdleState.BorderColor = Color.Maroon;
+                    navButton.OnIdleState.FillColor = Color.Maroon;
+                    navButton.OnIdleState.ForeColor = Color.White;
+                    navButton.OnPressedState.BorderColor = Color.Black;
+                    navButton.OnPressedState.FillColor = Color.FromArgb(198, 40, 40);
+                    navButton.OnPressedState.ForeColor = Color.White;
+
+                    navButton.Click += async (s, e) =>
+                    {
+                        SelectedCategory = (string)navButton.Tag;
+
+                        MainDisplay.Controls.Clear();
+                        await GetAllAvailableProducts(new PosItemFilter
+                        {
+                            SearchValue = SearchValue,
+                            Category = SelectedCategory,
+                            Business = CurrentBusiness
+                        });
+                    };
+
+                    // Add autosizing column
+                    tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, percentage));
+
+                    // Add button at specific column/row
+                    tableLayoutPanel1.Controls.Add(navButton, col, 0);
+
+                    col++;
+                }
+            }
         }
         //Show ForgotPassswordSetupModal
         private async Task ShowForgotPassswordSetup()
@@ -505,7 +562,8 @@ namespace DazaBestApplication.Layout
             theFilter = new PosItemFilter()
             {
                 SearchValue = SearchValue,
-                Category = SelectedCategory
+                Category = SelectedCategory,
+                Business = CurrentBusiness
             };
 
             await GetAllAvailableProducts(theFilter);
@@ -719,6 +777,34 @@ namespace DazaBestApplication.Layout
         private void ProductOrdersDatagrid_MouseClick(object sender, MouseEventArgs e)
         {
             IsEdittingdatagrid = true;
+        }
+
+        private async void foodstallbutton_Click(object sender, EventArgs e)
+        {
+            MainDisplay.Controls.Clear();
+            CurrentBusiness = "Food Stall";
+            SelectedCategory = "All";
+            await GetAllAvailableProducts(new PosItemFilter
+            {
+                SearchValue = SearchValue,
+                Category = SelectedCategory,
+                Business = CurrentBusiness
+            });
+            PopulateNavigationButtons();
+        }
+
+        private async void karinderyabutton_Click(object sender, EventArgs e)
+        {
+            MainDisplay.Controls.Clear();
+            CurrentBusiness = "Karinderya";
+            SelectedCategory = "All";
+            await GetAllAvailableProducts(new PosItemFilter
+            {
+                SearchValue = SearchValue,
+                Category = SelectedCategory,
+                Business = CurrentBusiness
+            });
+            PopulateNavigationButtons();
         }
     }
 

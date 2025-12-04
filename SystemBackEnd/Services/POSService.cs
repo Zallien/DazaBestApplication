@@ -27,6 +27,7 @@ namespace SystemBackEnd.Services
                                   where (a.IsAvailable == true && a.IsActive == true)
                                   && (string.IsNullOrEmpty(thefilter.SearchValue) ? true : a.ProductName.Contains(thefilter.SearchValue))
                                   && (thefilter.Category == "All" ? true : a.Category == thefilter.Category)
+                                  && a.BusinessCategory == thefilter.Business
                                   select a).ToListAsync();
             }
             catch (Exception e)
