@@ -6,15 +6,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemBackEnd;
 using SystemBackEnd.EventHandlers;
 using SystemBackEnd.Models;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
-using SystemBackEnd;
 
 namespace DazaBestApplication.Pages
 {
@@ -33,6 +34,7 @@ namespace DazaBestApplication.Pages
         private bool DesicionResult;
         private Panel Loadingpanel;
         private BunifuLoader bunifuLoader;
+        private string searchvalue = "";
 
         //Constructor
         public ItemInventory(Form _MainForm, Panel containerPanel)
@@ -106,6 +108,7 @@ namespace DazaBestApplication.Pages
             PaginationLabel.Text = $"{_pagenumber} / {_maxpagenumber}";//Pagination Label
             CheckPageNumber();
             await HideLoadingScreen();
+            Setfilterpanel();
         }
 
 
@@ -139,7 +142,7 @@ namespace DazaBestApplication.Pages
         {
             SearchItem Bypage = new SearchItem()
             {
-                SearchValue = "",
+                SearchValue = searchvalue,
                 PageNumber = _pagenumber,
                 ItemperPage = _itemperpage
             };
@@ -219,6 +222,7 @@ namespace DazaBestApplication.Pages
         {
             _allitem = new List<Items>();
             AllItemsDatagrid.Rows.Clear();
+            CultureInfo phCulture = new CultureInfo("en-PH");
             foreach (var item in _allitemparam)
             {
                 int rowindex = AllItemsDatagrid.Rows.Add();
@@ -228,7 +232,7 @@ namespace DazaBestApplication.Pages
                 row.Cells["ItemCodeCol"].Value = item.ItemCode;
                 row.Cells["ItemNameCol"].Value = item.ItemName;
                 row.Cells["StocksCol"].Value = item.BalanceStocks;
-                row.Cells["PriceCol"].Value = item.ItemPrice;
+                row.Cells["PriceCol"].Value = "₱" + item.ItemPrice.ToString();
             }
         }
         //Open Item Modal
@@ -285,7 +289,25 @@ namespace DazaBestApplication.Pages
                 return result == DialogResult.Yes;
             }
         }
+        //Set FilterPanel
+        private void Setfilterpanel()
+        {
+            bunifuShadowPanel1.Location = new Point(filterbutton.Location.X - (bunifuShadowPanel1.Width - filterbutton.Width), filterbutton.Location.Y + filterbutton.Height);
 
+            //Set Defult value of filter
+            productperpagetxt.Text = _itemperpage.ToString();
+        }
+        //Save Filter
+        private async Task SaveFilter()
+        {
+
+            _itemperpage = int.Parse(productperpagetxt.Text);
+            await GetAllItemCount();
+            await CheckPageNumber();
+            await GetData();
+            PaginationLabel.Text = $"{_pagenumber} / {_maxpagenumber}";//Pagination Label
+            bunifuShadowPanel1.Visible = false;
+        }
 
 
 
@@ -337,11 +359,11 @@ namespace DazaBestApplication.Pages
         }
         private async void SearchBox(object sender, EventArgs e)
         {
-
+            searchvalue = SearchBoxTextBox.Text;
             _allitem = new List<Items>();
             _allitem = await itemservices.SearchItems(new SearchItem()
             {
-                SearchValue = SearchBoxTextBox.Text,
+                SearchValue = searchvalue,
                 PageNumber = 1,
                 ItemperPage = 10
             });
@@ -480,6 +502,14 @@ namespace DazaBestApplication.Pages
         private void AllItemsDatagrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
+        }
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+            SaveFilter();
+        }
+        private void filterbutton_Click(object sender, EventArgs e)
+        {
+            bunifuShadowPanel1.Visible = !bunifuShadowPanel1.Visible;
         }
     }
 }

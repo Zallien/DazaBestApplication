@@ -82,13 +82,13 @@ namespace DazaBestApplication.Pages
             if (_productsparam.Count > 0)
             {
                 foreach (var item in _productsparam)
-                {
+                {   
                     int rowindex = AllProductDatagridView.Rows.Add();
                     DataGridViewRow row = AllProductDatagridView.Rows[rowindex];
                     row.Cells["IdCol"].Value = item.ProductID;
                     row.Cells["ProductCodeCol"].Value = item.ProductCode;
                     row.Cells["ProductNameCol"].Value = item.ProductName;
-                    row.Cells["PriceCol"].Value = item.Price;
+                    row.Cells["PriceCol"].Value = "₱" + item.Price;
                     row.Cells["AvailabilityCol"].Value = item.IsAvailable == true ? Properties.Resources.check :
                                         Properties.Resources.cancel;
                 }

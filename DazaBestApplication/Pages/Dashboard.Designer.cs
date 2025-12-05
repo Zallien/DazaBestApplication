@@ -46,7 +46,7 @@ namespace DazaBestApplication.Pages
             bunifuLabel8 = new Bunifu.UI.WinForms.BunifuLabel();
             panelwhole = new SmoothPanel();
             panel15 = new SmoothPanel();
-            tableLayoutPanel6 = new TableLayoutPanel();
+            fortables = new TableLayoutPanel();
             panel19 = new SmoothPanel();
             TopSellingTable = new Bunifu.UI.WinForms.BunifuDataGridView();
             NumberCol = new DataGridViewTextBoxColumn();
@@ -104,7 +104,7 @@ namespace DazaBestApplication.Pages
             TopPanel.SuspendLayout();
             panelwhole.SuspendLayout();
             panel15.SuspendLayout();
-            tableLayoutPanel6.SuspendLayout();
+            fortables.SuspendLayout();
             panel19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TopSellingTable).BeginInit();
             panel16.SuspendLayout();
@@ -142,7 +142,7 @@ namespace DazaBestApplication.Pages
             TopPanel.Location = new Point(0, 0);
             TopPanel.Name = "TopPanel";
             TopPanel.Padding = new Padding(10, 0, 10, 0);
-            TopPanel.Size = new Size(900, 50);
+            TopPanel.Size = new Size(875, 50);
             TopPanel.TabIndex = 3;
             // 
             // panel4
@@ -151,7 +151,7 @@ namespace DazaBestApplication.Pages
             panel4.Dock = DockStyle.Bottom;
             panel4.Location = new Point(10, 45);
             panel4.Name = "panel4";
-            panel4.Size = new Size(880, 5);
+            panel4.Size = new Size(855, 5);
             panel4.TabIndex = 1;
             // 
             // label1
@@ -193,32 +193,32 @@ namespace DazaBestApplication.Pages
             panelwhole.Location = new Point(0, 50);
             panelwhole.Name = "panelwhole";
             panelwhole.Padding = new Padding(0, 0, 0, 20);
-            panelwhole.Size = new Size(900, 738);
+            panelwhole.Size = new Size(875, 696);
             panelwhole.TabIndex = 4;
             // 
             // panel15
             // 
-            panel15.Controls.Add(tableLayoutPanel6);
+            panel15.Controls.Add(fortables);
             panel15.Dock = DockStyle.Top;
             panel15.Location = new Point(0, 565);
             panel15.Name = "panel15";
-            panel15.Size = new Size(900, 144);
+            panel15.Size = new Size(858, 144);
             panel15.TabIndex = 10;
             // 
-            // tableLayoutPanel6
+            // fortables
             // 
-            tableLayoutPanel6.ColumnCount = 2;
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.Controls.Add(panel19, 0, 0);
-            tableLayoutPanel6.Controls.Add(panel16, 1, 0);
-            tableLayoutPanel6.Dock = DockStyle.Fill;
-            tableLayoutPanel6.Location = new Point(0, 0);
-            tableLayoutPanel6.Name = "tableLayoutPanel6";
-            tableLayoutPanel6.RowCount = 1;
-            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.Size = new Size(900, 144);
-            tableLayoutPanel6.TabIndex = 4;
+            fortables.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            fortables.ColumnCount = 2;
+            fortables.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            fortables.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            fortables.Controls.Add(panel19, 0, 0);
+            fortables.Controls.Add(panel16, 1, 0);
+            fortables.Location = new Point(0, 0);
+            fortables.Name = "fortables";
+            fortables.RowCount = 1;
+            fortables.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            fortables.Size = new Size(858, 165);
+            fortables.TabIndex = 4;
             // 
             // panel19
             // 
@@ -229,8 +229,8 @@ namespace DazaBestApplication.Pages
             panel19.Font = new Font("Courier New", 12F, FontStyle.Bold);
             panel19.Location = new Point(3, 3);
             panel19.Name = "panel19";
-            panel19.Size = new Size(444, 138);
-            panel19.TabIndex = 0;
+            panel19.Size = new Size(423, 159);
+            panel19.TabIndex = 4;
             // 
             // TopSellingTable
             // 
@@ -297,7 +297,7 @@ namespace DazaBestApplication.Pages
             TopSellingTable.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             TopSellingTable.RowTemplate.Height = 40;
             TopSellingTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            TopSellingTable.Size = new Size(444, 115);
+            TopSellingTable.Size = new Size(423, 136);
             TopSellingTable.TabIndex = 6;
             TopSellingTable.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             // 
@@ -320,7 +320,7 @@ namespace DazaBestApplication.Pages
             label11.Dock = DockStyle.Top;
             label11.Location = new Point(0, 0);
             label11.Name = "label11";
-            label11.Size = new Size(444, 23);
+            label11.Size = new Size(423, 23);
             label11.TabIndex = 5;
             label11.Text = "Top Selling Products";
             label11.TextAlign = ContentAlignment.MiddleCenter;
@@ -332,10 +332,10 @@ namespace DazaBestApplication.Pages
             panel16.Controls.Add(label10);
             panel16.Dock = DockStyle.Fill;
             panel16.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel16.Location = new Point(453, 3);
+            panel16.Location = new Point(432, 3);
             panel16.Name = "panel16";
-            panel16.Size = new Size(444, 138);
-            panel16.TabIndex = 3;
+            panel16.Size = new Size(423, 159);
+            panel16.TabIndex = 5;
             // 
             // LeastSellingTable
             // 
@@ -402,7 +402,7 @@ namespace DazaBestApplication.Pages
             LeastSellingTable.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             LeastSellingTable.RowTemplate.Height = 40;
             LeastSellingTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            LeastSellingTable.Size = new Size(444, 115);
+            LeastSellingTable.Size = new Size(423, 136);
             LeastSellingTable.TabIndex = 4;
             LeastSellingTable.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             // 
@@ -425,7 +425,7 @@ namespace DazaBestApplication.Pages
             label10.Dock = DockStyle.Top;
             label10.Location = new Point(0, 0);
             label10.Name = "label10";
-            label10.Size = new Size(444, 23);
+            label10.Size = new Size(423, 23);
             label10.TabIndex = 0;
             label10.Text = "Least Selling Products";
             label10.TextAlign = ContentAlignment.MiddleCenter;
@@ -436,7 +436,7 @@ namespace DazaBestApplication.Pages
             panel10.Dock = DockStyle.Top;
             panel10.Location = new Point(0, 451);
             panel10.Name = "panel10";
-            panel10.Size = new Size(900, 114);
+            panel10.Size = new Size(858, 114);
             panel10.TabIndex = 9;
             // 
             // tableLayoutPanel4
@@ -450,7 +450,7 @@ namespace DazaBestApplication.Pages
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Size = new Size(900, 114);
+            tableLayoutPanel4.Size = new Size(858, 114);
             tableLayoutPanel4.TabIndex = 5;
             // 
             // tableLayoutPanel5
@@ -469,7 +469,7 @@ namespace DazaBestApplication.Pages
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 1;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel5.Size = new Size(814, 108);
+            tableLayoutPanel5.Size = new Size(772, 108);
             tableLayoutPanel5.TabIndex = 0;
             // 
             // panel11
@@ -525,7 +525,7 @@ namespace DazaBestApplication.Pages
             panel12.Controls.Add(overstocklabel);
             panel12.Controls.Add(label7);
             panel12.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel12.Location = new Point(612, 3);
+            panel12.Location = new Point(582, 3);
             panel12.Name = "panel12";
             panel12.Padding = new Padding(15, 15, 0, 0);
             panel12.Size = new Size(185, 101);
@@ -569,7 +569,7 @@ namespace DazaBestApplication.Pages
             panel13.Controls.Add(outofstocklabel);
             panel13.Controls.Add(label8);
             panel13.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel13.Location = new Point(206, 3);
+            panel13.Location = new Point(196, 3);
             panel13.Name = "panel13";
             panel13.Padding = new Padding(15, 15, 0, 0);
             panel13.Size = new Size(185, 101);
@@ -613,7 +613,7 @@ namespace DazaBestApplication.Pages
             panel14.Controls.Add(criticalitemslabel);
             panel14.Controls.Add(label9);
             panel14.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel14.Location = new Point(409, 3);
+            panel14.Location = new Point(389, 3);
             panel14.Name = "panel14";
             panel14.Padding = new Padding(15, 15, 0, 0);
             panel14.Size = new Size(185, 101);
@@ -655,7 +655,7 @@ namespace DazaBestApplication.Pages
             panel9.Location = new Point(0, 206);
             panel9.Name = "panel9";
             panel9.Padding = new Padding(15);
-            panel9.Size = new Size(900, 245);
+            panel9.Size = new Size(858, 245);
             panel9.TabIndex = 8;
             // 
             // salesChart
@@ -673,10 +673,12 @@ namespace DazaBestApplication.Pages
     Color.Maroon
     };
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
             series1.Legend = "Legend1";
             series1.Name = "Sales";
+            series1.YValuesPerPoint = 2;
             salesChart.Series.Add(series1);
-            salesChart.Size = new Size(870, 215);
+            salesChart.Size = new Size(828, 215);
             salesChart.TabIndex = 0;
             salesChart.Text = "chart1";
             // 
@@ -687,7 +689,7 @@ namespace DazaBestApplication.Pages
             panel3.Location = new Point(0, 63);
             panel3.Name = "panel3";
             panel3.Padding = new Padding(15);
-            panel3.Size = new Size(900, 143);
+            panel3.Size = new Size(858, 143);
             panel3.TabIndex = 7;
             // 
             // tableLayoutPanel2
@@ -701,7 +703,7 @@ namespace DazaBestApplication.Pages
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(870, 113);
+            tableLayoutPanel2.Size = new Size(828, 113);
             tableLayoutPanel2.TabIndex = 4;
             // 
             // tableLayoutPanel3
@@ -719,13 +721,13 @@ namespace DazaBestApplication.Pages
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Size = new Size(784, 107);
+            tableLayoutPanel3.Size = new Size(742, 107);
             tableLayoutPanel3.TabIndex = 0;
             // 
             // panel5
             // 
             panel5.BackColor = Color.White;
-            panel5.BackgroundImage = Properties.Resources.target__1_1;
+            panel5.BackgroundImage = Properties.Resources.target__3_;
             panel5.BackgroundImageLayout = ImageLayout.Zoom;
             panel5.BorderStyle = BorderStyle.FixedSingle;
             panel5.Controls.Add(qoutalabel);
@@ -775,7 +777,7 @@ namespace DazaBestApplication.Pages
             panel8.Controls.Add(salelabel);
             panel8.Controls.Add(label5);
             panel8.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel8.Location = new Point(525, 3);
+            panel8.Location = new Point(497, 3);
             panel8.Name = "panel8";
             panel8.Padding = new Padding(15, 15, 0, 0);
             panel8.Size = new Size(185, 101);
@@ -819,7 +821,7 @@ namespace DazaBestApplication.Pages
             panel7.Controls.Add(numberoforderslabel);
             panel7.Controls.Add(label4);
             panel7.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel7.Location = new Point(264, 3);
+            panel7.Location = new Point(250, 3);
             panel7.Name = "panel7";
             panel7.Padding = new Padding(15, 15, 0, 0);
             panel7.Size = new Size(185, 101);
@@ -860,7 +862,7 @@ namespace DazaBestApplication.Pages
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(900, 63);
+            panel1.Size = new Size(858, 63);
             panel1.TabIndex = 6;
             // 
             // tableLayoutPanel1
@@ -875,7 +877,7 @@ namespace DazaBestApplication.Pages
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(900, 63);
+            tableLayoutPanel1.Size = new Size(858, 63);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // panel2
@@ -1023,7 +1025,7 @@ namespace DazaBestApplication.Pages
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(900, 788);
+            ClientSize = new Size(875, 746);
             Controls.Add(panelwhole);
             Controls.Add(TopPanel);
             FormBorderStyle = FormBorderStyle.None;
@@ -1034,7 +1036,7 @@ namespace DazaBestApplication.Pages
             TopPanel.ResumeLayout(false);
             panelwhole.ResumeLayout(false);
             panel15.ResumeLayout(false);
-            tableLayoutPanel6.ResumeLayout(false);
+            fortables.ResumeLayout(false);
             panel19.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)TopSellingTable).EndInit();
             panel16.ResumeLayout(false);
@@ -1116,16 +1118,16 @@ namespace DazaBestApplication.Pages
         private Bunifu.UI.WinForms.BunifuLabel criticalitemslabel;
         private Label label9;
         private SmoothPanel panel15;
-        private TableLayoutPanel tableLayoutPanel6;
+        private TableLayoutPanel fortables;
         private SmoothPanel panel19;
         private Bunifu.UI.WinForms.BunifuDataGridView TopSellingTable;
+        private DataGridViewTextBoxColumn NumberCol;
+        private DataGridViewTextBoxColumn ProductNameCol;
         private Label label11;
         private SmoothPanel panel16;
         private Bunifu.UI.WinForms.BunifuDataGridView LeastSellingTable;
-        private Label label10;
-        private DataGridViewTextBoxColumn NumberCol;
-        private DataGridViewTextBoxColumn ProductNameCol;
         private DataGridViewTextBoxColumn NumberColLeast;
         private DataGridViewTextBoxColumn ProductNameColLeast;
+        private Label label10;
     }
 }

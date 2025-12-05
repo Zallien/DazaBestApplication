@@ -98,6 +98,9 @@ namespace DazaBestApplication.Pages
             var series = salesChart.Series["Sales"];
 
             series.IsXValueIndexed = true;
+            //salesChart.ChartAreas[0].AxisX.Interval = 1;
+            //salesChart.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
+            //salesChart.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
 
             if (salesData == null || salesData.Count == 0)
             {

@@ -1,4 +1,5 @@
-﻿using DazaBestApplication.Modals;
+﻿using Bunifu.UI.WinForms;
+using DazaBestApplication.Modals;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,15 @@ namespace DazaBestApplication.Pages
         private List<AccountDisplay> allAccounts = new();
         private LoginServices loginServices;
         private AccountEditInformation accountEditInformation = new AccountEditInformation();
+        private AccountPagination AccountPagination;
+
+        //Pagination
+        private int _itemperpage = 10;
+        private int _pagenumber = 1;
+        private int _maxpagenumber = 1;
+        private string _searchvalue = "";
+        private int _totalaccounts = 0;
+
 
 
         public accountPage(Form mainForm)
@@ -61,11 +71,18 @@ namespace DazaBestApplication.Pages
             try
             {
                 loginServices = new LoginServices(new BackEndDBContext());
+                AccountPagination = new AccountPagination()
+                {
+                    SearchValue = _searchvalue,
+                    PageNumber = _pagenumber,
+                    ItemperPage = _itemperpage
+                };
                 allAccounts.Clear();
-                allAccounts = await loginServices.GetAllAccountwithQuestion();
+                allAccounts = await loginServices.GetAllAccountwithQuestion(AccountPagination);
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //Populate Accounts to DataGridView
@@ -120,17 +137,81 @@ namespace DazaBestApplication.Pages
         }
 
 
+        //Pagination
+        //Get All item Count
+        private async Task GetAllAccountCounts()
+        {
+            _pagenumber = 1;
+            loginServices = new LoginServices(new BackEndDBContext());
+            PaginationLabel.Text = $"{_pagenumber}";//Pagination Label
+            SearchItem Bypage = new SearchItem()
+            {
+                SearchValue = _searchvalue,
+                PageNumber = _pagenumber,
+                ItemperPage = _itemperpage
+            };
+            _totalaccounts = await loginServices.GetTotalAccountsCount();
+            _maxpagenumber = _totalaccounts % _itemperpage != 0 ? (_totalaccounts / _itemperpage) + 1
+                                                        : _totalaccounts / _itemperpage;
+            await CheckPageNumber();
+        }
+        //Pagination Next
+        private async void NextButton_Click()
+        {
+
+            if (_pagenumber < _maxpagenumber)
+            {
+                _pagenumber++;
+                await CheckPageNumber();
+                await GetAllAccounts();
+                PaginationLabel.Text = $"{_pagenumber} / {_maxpagenumber}";//Pagination Label
+            }
+        }
+        //Pagination Previous
+        private async void PreviousButton_Click()
+        {
+            if (_pagenumber > 1)
+            {
+                _pagenumber--;
+                await CheckPageNumber();
+                await GetAllAccounts();
+                PaginationLabel.Text = $"{_pagenumber} / {_maxpagenumber}";//Pagination Label
+            }
+        }
+        //Check Page Number
+        private async Task CheckPageNumber()
+        {
+            await Task.Delay(200);
+            if (_pagenumber == 1)
+            {
+                PaginationPREV.Enabled = false;
+            }
+            else
+            {
+                PaginationPREV.Enabled = true;
+            }
+            if (_pagenumber >= _maxpagenumber)
+            {
+                PaginationNext.Enabled = false;
+            }
+            else
+            {
+                PaginationNext.Enabled = true;
+            }
+        }
+
 
 
         //Main Load
         private async void accountPage_Load(object sender, EventArgs e)
         {
+            await GetAllAccountCounts();
             await PopulateDatagridAllAccounts();
             AccountEventHandlers.AccountChangeNotifier += async () =>
             {
                 await PopulateDatagridAllAccounts();
             };
-
+            PaginationLabel.Text = $"{_pagenumber} / {_maxpagenumber}";
         }
 
 
@@ -150,6 +231,22 @@ namespace DazaBestApplication.Pages
         private void AllAccountsDatagridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             EditAccount();
+        }
+        private void PaginationNext_Click(object sender, EventArgs e)
+        {
+            NextButton_Click();
+        }
+        private void PaginationPREV_Click(object sender, EventArgs e)
+        {
+            PreviousButton_Click();
+        }
+
+        private async void SearchBox_TextChange(object sender, EventArgs e)
+        {
+            _searchvalue = SearchBox.Text;
+            await GetAllAccountCounts();
+            await GetAllAccountCounts();
+            PaginationLabel.Text = $"{_pagenumber} / {_maxpagenumber}";
         }
     }
 }

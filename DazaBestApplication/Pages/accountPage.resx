@@ -156,12 +156,12 @@
   </data>
   <data name="SearchBox.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAV0AAAAnCAYAAACsRpukAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADDSURBVHhe7dQxDQMxAARB80fll2EERgDkZclNAHirGema
-        A7ADgNha6zPn/JmZ2Z3tzp7kjrEPAO7ZnT3JFV2A20QXICS6ACHRBQiJLkBIdAFCogsQEl2AkOgChEQX
-        ICS6ACHRBQiJLkBIdAFCogsQEl2AkOgChEQXICS6ACHRBQiJLkBIdAFCogsQEl2AkOgChEQXICS6ACHR
-        BQiJLkBIdAFCogsQEl2AkOgChEQXIPQX3ed5vvswM7M72509yQWgMcYLD0mqnKIZe4QAAAAASUVORK5C
-        YII=
+        iVBORw0KGgoAAAANSUhEUgAAAYoAAAAnCAYAAAARiw+UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADGSURBVHhe7dXRCQIxAETB9F/VhZRhGRagBO5AEd81MAP7
+        sw28AQC31lqP4zheZmZm13YbzkyMsQ8A+LTbcGZCKAD4JRQAJKEAIAkFAEkoAEhCAUASCgCSUACQhAKA
+        JBQAJKEAIAkFAEkoAEhCAUASCgCSUACQhAKAJBQAJKEAIAkFAEkoAEhCAUASCgCSUACQhAKAJBQAJKEA
+        IAkFAEkoAEhCAUASCgCSUACQhAKAJBQApK9QzDmf+zAzM7u223BmAgD+GeMNXXJTrHPK+/gAAAAASUVO
+        RK5CYII=
 </value>
   </data>
   <data name="PaginationPREV.ErrorImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

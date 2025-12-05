@@ -137,13 +137,17 @@ namespace SystemBackEnd.Services
 
         }
         //Get All Accounts with SecurityQuestion
-        public async Task<List<AccountDisplay>> GetAllAccountwithQuestion()
+        public async Task<List<AccountDisplay>> GetAllAccountwithQuestion(AccountPagination pagination)
         {
             List<AccountDisplay> accountDisplays = new List<AccountDisplay>();
             try
             {
                 //Accounts
-                var accounts = await _db.Accounts.Where(x => x.IsActive == true).ToListAsync();
+                var accounts = await _db.Accounts.Where(x => x.IsActive == true 
+                    && (x.FirstName + " " + x.LastName).ToLower().Contains(pagination.SearchValue.ToLower()) )
+                                                    .Skip((pagination.PageNumber - 1) * pagination.ItemperPage)
+                                                    .Take(pagination.ItemperPage)
+                                                    .ToListAsync();
                 if (accounts.Count > 0)
                 {
                     //Get Questions Based On AccountId
@@ -313,6 +317,20 @@ namespace SystemBackEnd.Services
             }
             return accountFirstLoginInformation;
         }
+        //Get Total Accounts Count
+        public async Task<int> GetTotalAccountsCount()
+        {
+            int totalAccounts = 0;
+            try
+            {
+                totalAccounts = await _db.Accounts.Where(x => x.IsActive == true).CountAsync();
+            }
+            catch (Exception e)
+            {
+            }
+            return totalAccounts;
+        }
+
 
     }
 }
