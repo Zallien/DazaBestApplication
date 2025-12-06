@@ -129,23 +129,6 @@ namespace SystemBackEnd.Services
                     PaymentMethod = transactionprocess.PaymentMethod
                 };
                 await _db.AddAsync(transactionPayment);
-
-                //Transaction History
-                if (transactionprocess.TransactionHistory != null)
-                {
-                    foreach (var item in transactionprocess.TransactionHistory)
-                    {
-                        POSTransactionHistory transactionHistory = new()
-                        {
-                            TransactionHistoryId = Guid.NewGuid(),
-                            TransactionHeaderId = trasactionheaderid,
-                            TransactionHistoryTitle = item.TransactionHistoryTitle,
-                            TransactionHistoryDate = item.TransactionHistoryDate,
-                            TransactionHistoryDetails = item.TransactionHistoryDetails
-                        };
-                        await _db.AddAsync(transactionHistory);
-                    }
-                }
                 await _db.SaveChangesAsync();
                 var theheader = await _db.TransactionHeader.FirstOrDefaultAsync(x => x.TransactionHeaderId == trasactionheaderid);
                 var countsperday = _db.TransactionHeader.Where(x => x.TransactionDate.Date == DateTime.Now.Date).Count();
@@ -162,6 +145,35 @@ namespace SystemBackEnd.Services
             }
 
             return TransactionHeaderIdReturned;
+        }
+
+        //Store Void History
+        public async Task<bool> InsertVoidHistory(InsertVoidHistory voiddetails)
+        {
+            bool isSuccess = false;
+            try
+            {
+                Guid newid = Guid.NewGuid();
+                POSTransactionVoidHistory storevoid = new()
+                {
+                    TransactionVoidHistoryId = newid,
+                    TransactionHistoryDetails = voiddetails.Reason,
+                    TransactionHistoryDate = DateTime.Now,
+                    AccountId = voiddetails.AccountId,
+                    TransactionVoidHistoryNumber = ""
+                };
+                await _db.AddAsync(storevoid);
+                await _db.SaveChangesAsync();
+                storevoid.TransactionVoidHistoryNumber = $"Void{DateTime.Now.ToString("yyMMddHHmmss")}-{storevoid.Row.ToString("D4")}";
+                _db.Update(storevoid);
+                await _db.SaveChangesAsync();
+                isSuccess = true;
+            }
+            catch (Exception e)
+            {
+                
+            }
+            return isSuccess;
         }
 
 

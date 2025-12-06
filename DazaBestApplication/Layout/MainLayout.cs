@@ -748,5 +748,10 @@ namespace DazaBestApplication
             POSButton.IdleIconLeftImage = Properties.Resources.payment_terminal;
             AccountsManagementBTN.IdleIconLeftImage = Properties.Resources.accounts;
         }
+
+        private void voidsbutton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace DazaBestApplication.Layout
 {
     public partial class PointofSaleForm : Form
     {
-
+        private LoggedinAccount loggedaccount = Program.theLoggedInAccount;
         private List<Products> AllavailableProducts;
         private List<POSProductOrders> CurrentOrders = new List<POSProductOrders>();
         private decimal Total;
@@ -33,6 +33,7 @@ namespace DazaBestApplication.Layout
         private LoggedinAccount CurrentLoggedinAccount = Program.theLoggedInAccount;
         private LoggedinAccount theLoggedInAccount = Program.theLoggedInAccount;
         private PosItemFilter theFilter;
+        private DecisionModel _decision;
         private List<string> NavigationButtons = new List<string>()
         {
             "All",
@@ -359,7 +360,11 @@ namespace DazaBestApplication.Layout
                     DecisionQuestion = "Are you sure you want to cancel/new order?"
                 };
                 bool userConfirmed = OpenDecisionModal(decisionModel);
-                if (userConfirmed)
+                if (userConfirmed == true && loggedaccount.IsOwner == false)
+                {
+                    await ShowVoidModal();
+                }
+                else
                 {
                     await CancelResetOrder();
                 }
@@ -552,7 +557,59 @@ namespace DazaBestApplication.Layout
             }
 
         }
+        //Open Decision Modal
+        private bool OpenDecisionModal()
+        {
+            Form ModalBackgorund = new();
+            using (DecisionModal modalcontent = new(_decision))
+            {
+                var mainBounds = this.Bounds;
 
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = this.Size;
+                ModalBackgorund.Location = this.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(this);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+
+                var result = modalcontent.ShowDialog();
+
+                ModalBackgorund.Dispose();
+
+                return result == DialogResult.Yes;
+            }
+        }
+        //Show VoidModal
+        private async Task ShowVoidModal()
+        {
+            Form Backgroundmodal = new Form();
+            using (VoidModal modalcontent = new VoidModal())
+            {
+                var mainbounds = this.Bounds;
+
+                Backgroundmodal.StartPosition = FormStartPosition.Manual;
+                Backgroundmodal.FormBorderStyle = FormBorderStyle.None;
+                Backgroundmodal.Opacity = .60d;
+                Backgroundmodal.BackColor = Color.Black;
+                Backgroundmodal.Bounds = mainbounds;
+                Backgroundmodal.Size = this.Size;
+                Backgroundmodal.Location = this.Location;
+                Backgroundmodal.ShowInTaskbar = false;
+                Backgroundmodal.Show(this);
+
+                modalcontent.Owner = Backgroundmodal;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+                modalcontent.ShowDialog();
+                Backgroundmodal.Dispose();
+            }
+        }
 
 
         //Main Load
@@ -574,6 +631,12 @@ namespace DazaBestApplication.Layout
             //Initialize POSTransactionDone
             POSTransactionDone.TransactionBy = Guid.NewGuid(); // Replace with actual user ID
             POSEventHandler.PaymentTransactionSuccess += async () =>
+            {
+                await CancelResetOrder();
+            };
+
+            //Hook Event Handlers
+            VoidHistoryEventHandler.EventHandlerNotifier += async () =>
             {
                 await CancelResetOrder();
             };
@@ -689,17 +752,27 @@ namespace DazaBestApplication.Layout
         ///datagrid ulit
         private async void ProductOrdersDatagrid_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            IsEdittingdatagrid = true;
-            if (e.RowIndex >= 0 && ProductOrdersDatagrid.Columns[e.ColumnIndex].Name == "ActionCol")
+            _decision = new DecisionModel()
             {
-                Guid productId = (Guid)ProductOrdersDatagrid.Rows[e.RowIndex].Cells["ProductIdCol"].Value;
-                ProductOrdersDatagrid.Rows.RemoveAt(e.RowIndex);
-                POSProductOrders orderToRemove = CurrentOrders.FirstOrDefault(o => o.ProductID == productId);
-                if (orderToRemove != null)
+                DecisionQuestion = "Do you want to Remove this Item from the Ordered List?",
+                DecisionTitle = "Remove Item",
+            };
+
+            bool result = OpenDecisionModal();
+            if (result == true)
+            {
+                IsEdittingdatagrid = true;
+                if (e.RowIndex >= 0 && ProductOrdersDatagrid.Columns[e.ColumnIndex].Name == "ActionCol")
                 {
-                    CurrentOrders.Remove(orderToRemove);
+                    Guid productId = (Guid)ProductOrdersDatagrid.Rows[e.RowIndex].Cells["ProductIdCol"].Value;
+                    ProductOrdersDatagrid.Rows.RemoveAt(e.RowIndex);
+                    POSProductOrders orderToRemove = CurrentOrders.FirstOrDefault(o => o.ProductID == productId);
+                    if (orderToRemove != null)
+                    {
+                        CurrentOrders.Remove(orderToRemove);
+                    }
+                    await CalculateSubtotal();
                 }
-                await CalculateSubtotal();
             }
         }
         private void ProductOrdersDatagrid_EditingControlShowing_1(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -793,7 +866,7 @@ namespace DazaBestApplication.Layout
                 SearchValue = SearchValue,
                 Category = SelectedCategory,
                 Business = CurrentBusiness
-            }); 
+            });
             PopulateNavigationButtons();
         }
         private async void Searchbox_TextChange(object sender, EventArgs e)

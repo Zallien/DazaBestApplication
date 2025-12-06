@@ -25,6 +25,7 @@ namespace DazaBestApplication.Pages
         private LoginServices loginServices;
         private AccountEditInformation accountEditInformation = new AccountEditInformation();
         private AccountPagination AccountPagination;
+        private DecisionModel _decision;
 
         //Pagination
         private int _itemperpage = 10;
@@ -115,24 +116,36 @@ namespace DazaBestApplication.Pages
         //Remove All Selected Accounts
         private async Task RemoveSelectedAccounts()
         {
-            List<Guid> accountIdsToRemove = new List<Guid>();
-            foreach (DataGridViewRow row in AllAccountsDatagridView.SelectedRows)
+            _decision = new DecisionModel()
             {
-                Guid accountId = Guid.Parse(row.Cells["IdCol"].Value.ToString()!);
-                accountIdsToRemove.Add(accountId);
-            }
-            loginServices = new LoginServices(new BackEndDBContext());
-            bool isOwnerRemoved = await loginServices.RemoveAccount(accountIdsToRemove);
-            if (isOwnerRemoved == true)
+                DecisionQuestion = "Do you want to Remove this Account?",
+                DecisionTitle = "Remove Account",
+            };
+
+            bool result = OpenDecisionModal();
+            if (result == true)
             {
-                MessageBox.Show("Removed Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                await AccountEventHandlers.InvokeAccount();
+                List<Guid> accountIdsToRemove = new List<Guid>();
+                foreach (DataGridViewRow row in AllAccountsDatagridView.SelectedRows)
+                {
+                    Guid accountId = Guid.Parse(row.Cells["IdCol"].Value.ToString()!);
+                    accountIdsToRemove.Add(accountId);
+                }
+                loginServices = new LoginServices(new BackEndDBContext());
+                bool isOwnerRemoved = await loginServices.RemoveAccount(accountIdsToRemove);
+                if (isOwnerRemoved == true)
+                {
+                    MessageBox.Show("Removed Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await AccountEventHandlers.InvokeAccount();
+                }
+                else
+                {
+                    MessageBox.Show("Removed Unsuccessfully an Error Occured", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                await PopulateDatagridAllAccounts();
             }
-            else
-            {
-                MessageBox.Show("Removed Unsuccessfully an Error Occured", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            await PopulateDatagridAllAccounts();
+
+            
 
         }
 
@@ -197,6 +210,35 @@ namespace DazaBestApplication.Pages
             else
             {
                 PaginationNext.Enabled = true;
+            }
+        }
+        //Open Decision Modal
+        private bool OpenDecisionModal()
+        {
+            Form ModalBackgorund = new();
+            using (DecisionModal modalcontent = new(_decision))
+            {
+                var mainBounds = MainForm.Bounds;
+
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = MainForm.Size;
+                ModalBackgorund.Location = MainForm.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(MainForm);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+
+                var result = modalcontent.ShowDialog();
+
+                ModalBackgorund.Dispose();
+
+                return result == DialogResult.Yes;
             }
         }
 

@@ -22,9 +22,6 @@ namespace SystemBackEnd.ServiceModels
         public decimal PaymentAmount { get; set; }
         public string? PaymentMethod { get; set; }
 
-        // Transaction History
-        public List<POSTransactionHistoryDone>? TransactionHistory { get; set; }
-
     }
 
     public class POSTransactionDetailsDone
