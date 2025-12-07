@@ -128,11 +128,11 @@
   </data>
   <data name="Restorebackuptxtbox.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAATUAAAAgCAYAAABzc++YAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACmSURBVHhe7dRBCQQxAATB+FeVJTJOxgm4JZDPSUhTBfMZ
+        iVBORw0KGgoAAAANSUhEUgAAATUAAAAnCAYAAABudt8gAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC9SURBVHhe7dRBCQQxAATB+FeVJTJOxgm4JZDPSUhTBfMZ
         AT0ActZanznnz8zs1u2OnaSNsQ+Am+2OnaSJGnA/UQNSRA1IETUgRdSAFFEDUkQNSBE1IEXUgBRRA1JE
-        DUgRNSBF1IAUUQNSRA1IETUgRdSAFFEDUkQNSBE1IEXUgBRRA1JEDUgRNSBF1IAUUQNSRA1I+Yva8zzf
-        fZiZ3brdsZM0gIoxXgX+cW4ER0QXAAAAAElFTkSuQmCC
+        DUgRNSBF1IAUUQNSRA1IETUgRdSAFFEDUkQNSBE1IEXUgBRRA1JEDUgRNSBF1IAUUQNSRA1IETUgRdSA
+        FFEDUkQNSBE1IEXUgBRRA1L+ovY8z3cfZma3bnfsJA2gYowXZpfbc9EPxpoAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="bunifuButton1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -157,6 +157,14 @@
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABnSURBVGhD7dIxEYAwAATBSMdnZEQAkI5hzkG22Oa/vXGN
         MV83fMwdRh0cThgkYZCEQRIGSRgkYZCEQRIGSRgkYZCEQRIGSRgkYZCEQRIGSRgkYZCEQRIGSRgkYZCE
         QdphrP/I6cZ6AO3eXTHsWMpKAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="clouduploadbtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAJ8AAAAjCAYAAACKE9juAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACESURBVHhe7dKhEYAwAATBlE6flJECgFgGG86sWPNvbxxj
+        nI8Lfnau+L4O2E58ZMRHRnxkxEdGfGTER0Z8ZMRHRnxkxEdGfGTER0Z8ZMRHRnxkxEdGfGTER0Z8ZMRH
+        RnxkxEdGfGTER0Z8ZMRHRnxkxEdGfGTER0Z8ZMRHZsU33yPsN+YNidqHRIHRltgAAAAASUVORK5CYII=
 </value>
   </data>
 </root>

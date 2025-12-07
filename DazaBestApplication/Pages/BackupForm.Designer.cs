@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BackupForm));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges6 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges6 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges7 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges8 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges9 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges10 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             TopPanel = new Panel();
             panel1 = new Panel();
             label1 = new Label();
@@ -55,6 +56,7 @@
             label16 = new Label();
             backupdirectorytxtbox = new TextBox();
             label14 = new Label();
+            clouduploadbtn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             bunifuShadowPanel1.SuspendLayout();
@@ -169,11 +171,11 @@
             bunifuButton2.ButtonTextMarginLeft = 0;
             bunifuButton2.ColorContrastOnClick = 45;
             bunifuButton2.ColorContrastOnHover = 45;
-            borderEdges5.BottomLeft = true;
-            borderEdges5.BottomRight = true;
-            borderEdges5.TopLeft = true;
-            borderEdges5.TopRight = true;
-            bunifuButton2.CustomizableEdges = borderEdges5;
+            borderEdges6.BottomLeft = true;
+            borderEdges6.BottomRight = true;
+            borderEdges6.TopLeft = true;
+            borderEdges6.TopRight = true;
+            bunifuButton2.CustomizableEdges = borderEdges6;
             bunifuButton2.DialogResult = DialogResult.None;
             bunifuButton2.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton2.DisabledFillColor = Color.Empty;
@@ -305,7 +307,7 @@
             Restorebackuptxtbox.SelectionLength = 0;
             Restorebackuptxtbox.SelectionStart = 0;
             Restorebackuptxtbox.ShortcutsEnabled = true;
-            Restorebackuptxtbox.Size = new Size(309, 32);
+            Restorebackuptxtbox.Size = new Size(309, 39);
             Restorebackuptxtbox.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             Restorebackuptxtbox.TabIndex = 16;
             Restorebackuptxtbox.TextAlign = HorizontalAlignment.Left;
@@ -334,11 +336,11 @@
             bunifuButton1.ButtonTextMarginLeft = 0;
             bunifuButton1.ColorContrastOnClick = 45;
             bunifuButton1.ColorContrastOnHover = 45;
-            borderEdges6.BottomLeft = true;
-            borderEdges6.BottomRight = true;
-            borderEdges6.TopLeft = true;
-            borderEdges6.TopRight = true;
-            bunifuButton1.CustomizableEdges = borderEdges6;
+            borderEdges7.BottomLeft = true;
+            borderEdges7.BottomRight = true;
+            borderEdges7.TopLeft = true;
+            borderEdges7.TopRight = true;
+            bunifuButton1.CustomizableEdges = borderEdges7;
             bunifuButton1.DialogResult = DialogResult.None;
             bunifuButton1.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton1.DisabledFillColor = Color.Empty;
@@ -420,6 +422,7 @@
             // panel3
             // 
             panel3.BackColor = Color.White;
+            panel3.Controls.Add(clouduploadbtn);
             panel3.Controls.Add(ManualBackupBTN);
             panel3.Controls.Add(SelectDirectoryBTN);
             panel3.Controls.Add(backupscheduledropdown);
@@ -451,11 +454,11 @@
             ManualBackupBTN.ButtonTextMarginLeft = 0;
             ManualBackupBTN.ColorContrastOnClick = 45;
             ManualBackupBTN.ColorContrastOnHover = 45;
-            borderEdges7.BottomLeft = true;
-            borderEdges7.BottomRight = true;
-            borderEdges7.TopLeft = true;
-            borderEdges7.TopRight = true;
-            ManualBackupBTN.CustomizableEdges = borderEdges7;
+            borderEdges8.BottomLeft = true;
+            borderEdges8.BottomRight = true;
+            borderEdges8.TopLeft = true;
+            borderEdges8.TopRight = true;
+            ManualBackupBTN.CustomizableEdges = borderEdges8;
             ManualBackupBTN.DialogResult = DialogResult.None;
             ManualBackupBTN.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             ManualBackupBTN.DisabledFillColor = Color.Empty;
@@ -542,11 +545,11 @@
             SelectDirectoryBTN.ButtonTextMarginLeft = 0;
             SelectDirectoryBTN.ColorContrastOnClick = 45;
             SelectDirectoryBTN.ColorContrastOnHover = 45;
-            borderEdges8.BottomLeft = true;
-            borderEdges8.BottomRight = true;
-            borderEdges8.TopLeft = true;
-            borderEdges8.TopRight = true;
-            SelectDirectoryBTN.CustomizableEdges = borderEdges8;
+            borderEdges9.BottomLeft = true;
+            borderEdges9.BottomRight = true;
+            borderEdges9.TopLeft = true;
+            borderEdges9.TopRight = true;
+            SelectDirectoryBTN.CustomizableEdges = borderEdges9;
             SelectDirectoryBTN.DialogResult = DialogResult.None;
             SelectDirectoryBTN.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             SelectDirectoryBTN.DisabledFillColor = Color.Empty;
@@ -688,6 +691,97 @@
             label14.Text = "Backup Directory :";
             label14.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // clouduploadbtn
+            // 
+            clouduploadbtn.AllowAnimations = true;
+            clouduploadbtn.AllowMouseEffects = true;
+            clouduploadbtn.AllowToggling = false;
+            clouduploadbtn.AnimationSpeed = 200;
+            clouduploadbtn.AutoGenerateColors = false;
+            clouduploadbtn.AutoRoundBorders = false;
+            clouduploadbtn.AutoSizeLeftIcon = true;
+            clouduploadbtn.AutoSizeRightIcon = true;
+            clouduploadbtn.BackColor = Color.Transparent;
+            clouduploadbtn.BackColor1 = Color.FromArgb(51, 122, 183);
+            clouduploadbtn.BackgroundImage = (Image)resources.GetObject("clouduploadbtn.BackgroundImage");
+            clouduploadbtn.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            clouduploadbtn.ButtonText = "Upload to Cloud";
+            clouduploadbtn.ButtonTextMarginLeft = 0;
+            clouduploadbtn.ColorContrastOnClick = 45;
+            clouduploadbtn.ColorContrastOnHover = 45;
+            borderEdges10.BottomLeft = true;
+            borderEdges10.BottomRight = true;
+            borderEdges10.TopLeft = true;
+            borderEdges10.TopRight = true;
+            clouduploadbtn.CustomizableEdges = borderEdges10;
+            clouduploadbtn.DialogResult = DialogResult.None;
+            clouduploadbtn.DisabledBorderColor = Color.FromArgb(191, 191, 191);
+            clouduploadbtn.DisabledFillColor = Color.Empty;
+            clouduploadbtn.DisabledForecolor = Color.Empty;
+            clouduploadbtn.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            clouduploadbtn.Font = new Font("Segoe UI", 9F);
+            clouduploadbtn.ForeColor = Color.White;
+            clouduploadbtn.IconLeft = null;
+            clouduploadbtn.IconLeftAlign = ContentAlignment.MiddleLeft;
+            clouduploadbtn.IconLeftCursor = Cursors.Default;
+            clouduploadbtn.IconLeftPadding = new Padding(11, 3, 3, 3);
+            clouduploadbtn.IconMarginLeft = 11;
+            clouduploadbtn.IconPadding = 10;
+            clouduploadbtn.IconRight = null;
+            clouduploadbtn.IconRightAlign = ContentAlignment.MiddleRight;
+            clouduploadbtn.IconRightCursor = Cursors.Default;
+            clouduploadbtn.IconRightPadding = new Padding(3, 3, 7, 3);
+            clouduploadbtn.IconSize = 25;
+            clouduploadbtn.IdleBorderColor = Color.Empty;
+            clouduploadbtn.IdleBorderRadius = 0;
+            clouduploadbtn.IdleBorderThickness = 0;
+            clouduploadbtn.IdleFillColor = Color.Empty;
+            clouduploadbtn.IdleIconLeftImage = null;
+            clouduploadbtn.IdleIconRightImage = null;
+            clouduploadbtn.IndicateFocus = false;
+            clouduploadbtn.Location = new Point(161, 212);
+            clouduploadbtn.Name = "clouduploadbtn";
+            clouduploadbtn.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
+            clouduploadbtn.OnDisabledState.BorderRadius = 1;
+            clouduploadbtn.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            clouduploadbtn.OnDisabledState.BorderThickness = 1;
+            clouduploadbtn.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
+            clouduploadbtn.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
+            clouduploadbtn.OnDisabledState.IconLeftImage = null;
+            clouduploadbtn.OnDisabledState.IconRightImage = null;
+            clouduploadbtn.onHoverState.BorderColor = Color.FromArgb(220, 74, 74);
+            clouduploadbtn.onHoverState.BorderRadius = 1;
+            clouduploadbtn.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            clouduploadbtn.onHoverState.BorderThickness = 1;
+            clouduploadbtn.onHoverState.FillColor = Color.FromArgb(220, 74, 74);
+            clouduploadbtn.onHoverState.ForeColor = Color.White;
+            clouduploadbtn.onHoverState.IconLeftImage = null;
+            clouduploadbtn.onHoverState.IconRightImage = null;
+            clouduploadbtn.OnIdleState.BorderColor = Color.Maroon;
+            clouduploadbtn.OnIdleState.BorderRadius = 1;
+            clouduploadbtn.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            clouduploadbtn.OnIdleState.BorderThickness = 1;
+            clouduploadbtn.OnIdleState.FillColor = Color.Maroon;
+            clouduploadbtn.OnIdleState.ForeColor = Color.White;
+            clouduploadbtn.OnIdleState.IconLeftImage = null;
+            clouduploadbtn.OnIdleState.IconRightImage = null;
+            clouduploadbtn.OnPressedState.BorderColor = Color.FromArgb(40, 96, 144);
+            clouduploadbtn.OnPressedState.BorderRadius = 1;
+            clouduploadbtn.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            clouduploadbtn.OnPressedState.BorderThickness = 1;
+            clouduploadbtn.OnPressedState.FillColor = Color.FromArgb(40, 96, 144);
+            clouduploadbtn.OnPressedState.ForeColor = Color.White;
+            clouduploadbtn.OnPressedState.IconLeftImage = null;
+            clouduploadbtn.OnPressedState.IconRightImage = null;
+            clouduploadbtn.Size = new Size(159, 35);
+            clouduploadbtn.TabIndex = 19;
+            clouduploadbtn.TextAlign = ContentAlignment.MiddleCenter;
+            clouduploadbtn.TextAlignment = HorizontalAlignment.Center;
+            clouduploadbtn.TextMarginLeft = 0;
+            clouduploadbtn.TextPadding = new Padding(0);
+            clouduploadbtn.UseDefaultRadiusAndThickness = true;
+            clouduploadbtn.Click += bunifuButton3_Click;
+            // 
             // BackupForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -731,5 +825,6 @@
         private Label label14;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton SelectDirectoryBTN;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ManualBackupBTN;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton clouduploadbtn;
     }
 }

@@ -42,7 +42,7 @@ namespace DazaBestApplication.Pages
             backupdirectorytxtbox.Text = Program.theBackupSettings.BackupLocation;
             backupscheduledropdown.Text = Program.theBackupSettings.AutoBackupSchedule;
             await PopulateDropdown();
-            
+
         }
         //Update Backup Settings Values
         private async Task UpdateBackupSettings()
@@ -95,7 +95,7 @@ namespace DazaBestApplication.Pages
                 backupdirectorytxtbox.Text = Program.theBackupSettings.BackupLocation;
                 backupscheduledropdown.Text = Program.theBackupSettings.AutoBackupSchedule;
             }
-            
+
         }
 
 
@@ -233,7 +233,7 @@ namespace DazaBestApplication.Pages
             {
                 try
                 {
-                   
+
                     Microsoft.Data.Sqlite.SqliteConnection.ClearAllPools();
 
                     RestoreDatabase(SelectedBackupFilePath, dbPath);
@@ -247,6 +247,38 @@ namespace DazaBestApplication.Pages
                     MessageBox.Show("Restore failed:\n" + ex.Message);
                 }
             }
+        }
+
+        private void bunifuButton3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string dbPath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                    "DazaBestApplication",
+                    "DazaBestApplication.db"
+                );
+
+                DriveServices driveServices = new DriveServices();
+                string tempPath = Path.Combine(Path.GetTempPath(), "DazaBestApplication_copy.db");
+                File.Copy(dbPath, tempPath, true);
+
+                bool uploadSuccess = driveServices.UploadFile(tempPath);
+                if (uploadSuccess)
+                {
+                    MessageBox.Show("Backup uploaded to Google Drive successfully!");
+                }
+                else
+                {
+                    MessageBox.Show("Failed to upload backup to Google Drive.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
         }
     }
 }
