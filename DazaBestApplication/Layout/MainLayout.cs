@@ -24,6 +24,7 @@ namespace DazaBestApplication
         //Button Index
         private List<BunifuButton2> bunifuButtons;
         private BunifuButton2 Activebutton = new();
+        private Panel loadingpanel;
 
 
         public MainPage()
@@ -323,8 +324,6 @@ namespace DazaBestApplication
                 return result == DialogResult.Yes;
             }
         }
-
-
         #endregion
 
 
