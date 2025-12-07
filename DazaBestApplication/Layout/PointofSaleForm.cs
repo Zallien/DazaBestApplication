@@ -590,7 +590,7 @@ namespace DazaBestApplication.Layout
         private async Task ShowVoidModal()
         {
             Form Backgroundmodal = new Form();
-            using (VoidModal modalcontent = new VoidModal())
+            using (VoidModalAdminPassword modalcontent = new VoidModalAdminPassword())
             {
                 var mainbounds = this.Bounds;
 

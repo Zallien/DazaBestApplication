@@ -330,6 +330,29 @@ namespace SystemBackEnd.Services
             }
             return totalAccounts;
         }
+        //Search for Admin Password if exists in the system
+        public async Task<bool> SearchAdminPassword(string password)
+        {
+            bool adminExists = false;
+            try
+            {
+                //adminExists = await _db.Accounts.AnyAsync(x => x.IsOwner == true && x.IsActive == true);
+                string hashedPassword = HashPassword(password);
+                var admins = await _db.Accounts.Where(x => x.IsOwner == true && x.IsActive == true).ToListAsync();
+                foreach (var admin in admins)
+                {
+                    if (VerifyPassword(password, admin.Password))
+                    {
+                        adminExists = true;
+                        break;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return adminExists;
+        }
 
 
     }
