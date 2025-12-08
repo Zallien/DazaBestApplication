@@ -19,11 +19,16 @@ namespace SystemBackEnd.Services
         {
             UserCredential credential;
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
-            string clientsecretPath = Path.Combine(basePath, @"SystemBackEnd\GoogleDriveJSONFolder\ClientSecret.json");
-            string absolutePath = "C://Users//Abdul//Desktop//CapstoneSystem//Dazabestapplicationv1//SystemBackEnd//GoogleDriveJSONFolder//ClientSecret.json";
-            using (var stream = new FileStream(absolutePath, FileMode.Open, FileAccess.Read))
+            string appDataFolder = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "DazaBestApplication"
+            );
+
+            string clientsecretPath = Path.Combine(appDataFolder, "ClientSecret.json");
+
+            using (var stream = new FileStream(clientsecretPath, FileMode.Open, FileAccess.Read))
             {
-                string credPath = "token.json";
+                string credPath = Path.Combine(appDataFolder, "token.json");
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
                     GoogleClientSecrets.Load(stream).Secrets,
                     new[] { DriveService.Scope.Drive },
@@ -73,7 +78,26 @@ namespace SystemBackEnd.Services
             }
         }
 
+        public async Task CreateClientSecretFileAsync()
+        {
+            string sourcePath = "ClientSecret.json";
 
+            string appDataFolder = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "DazaBestApplication"
+            );
 
+            // Ensure folder exists
+            Directory.CreateDirectory(appDataFolder);
+
+            // Destination path
+            string destPath = Path.Combine(appDataFolder, "ClientSecret.json");
+
+            // Copy file if not already there
+            if (!File.Exists(destPath))
+            {
+                File.Copy(sourcePath, destPath, true); // true = overwrite if needed
+            }
+        }
     }
 }

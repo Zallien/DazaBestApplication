@@ -327,6 +327,8 @@ namespace DazaBestApplication.Pages
                     return;
                 }
 
+                clouduploadbtn.Enabled = false;
+                clouduploadbtn.Cursor = Cursors.WaitCursor;
                 string dbPath = Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                     "DazaBestApplication",
@@ -352,6 +354,8 @@ namespace DazaBestApplication.Pages
                 {
                     MessageBox.Show("Failed to upload backup to Google Drive.");
                 }
+                clouduploadbtn.Cursor = Cursors.Default;
+                clouduploadbtn.Enabled = true;
             }
             catch (Exception ex)
             {
