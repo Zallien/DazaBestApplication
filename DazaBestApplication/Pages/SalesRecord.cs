@@ -213,7 +213,8 @@ namespace DazaBestApplication.Pages
                     SearchValue = SearchValue,
                     FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
                     ToDate = ToDateFilter,
-                    PageNumber = PageNumber
+                    PageNumber = PageNumber,
+                    ItemperPage = 99999
                 };
                 SaleReportDetailsforPrints = await SaleReportServices.GetSaleReportforPrinting(saleRecordFilterSearch);
                 MonthlySalesReportForm monthlySalesReportForm = new MonthlySalesReportForm(SaleReportDetailsforPrints, fromdatetxt.Value, todatetxt.Value);

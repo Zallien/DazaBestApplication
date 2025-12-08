@@ -35,6 +35,7 @@ namespace DazaBestApplication.Pages
         private Panel Loadingpanel;
         private BunifuLoader bunifuLoader;
         private string searchvalue = "";
+        private NotificationModel _notificationmodel;
 
         //Constructor
         public ItemInventory(Form _MainForm, Panel containerPanel)
@@ -308,7 +309,31 @@ namespace DazaBestApplication.Pages
             PaginationLabel.Text = $"{_pagenumber} / {_maxpagenumber}";//Pagination Label
             bunifuShadowPanel1.Visible = false;
         }
+        //Open Notification Modal
+        private void OpenNotificationModal()
+        {
+            Form ModalBackgorund = new();
+            using (NotificationModal modalcontent = new(_notificationmodel))
+            {
+                var mainBounds = Mainform.Bounds;
 
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = Mainform.Size;
+                ModalBackgorund.Location = Mainform.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(Mainform);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+                modalcontent.ShowDialog();
+                ModalBackgorund.Dispose();
+            }
+        }
 
 
 
@@ -406,11 +431,21 @@ namespace DazaBestApplication.Pages
 
                         if (await DeleteItems(AllSelectedID))
                         {
-                            MessageBox.Show("Deleted Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            _notificationmodel = new NotificationModel()
+                            {
+                                Title = "Item Deletion",
+                                Details = "The selected item(s) have been successfully deleted."
+                            };
+                            OpenNotificationModal();
                         }
                         else
                         {
-                            MessageBox.Show("Deleted Unsuccessfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            _notificationmodel = new NotificationModel()
+                            {
+                                Title = "Item Deletion",
+                                Details = "The selected item(s) could not be deleted. Please try again."
+                            };
+                            OpenNotificationModal();
                         }
                     }
                 }
@@ -441,11 +476,21 @@ namespace DazaBestApplication.Pages
 
                 if (await DeleteItems(AllSelectedID))
                 {
-                    MessageBox.Show("Deleted Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _notificationmodel = new NotificationModel()
+                    {
+                        Title = "Item Deletion",
+                        Details = "The selected item(s) have been successfully deleted."
+                    };
+                    OpenNotificationModal();
                 }
                 else
                 {
-                    MessageBox.Show("Deleted Unsuccessfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _notificationmodel = new NotificationModel()
+                    {
+                        Title = "Item Deletion",
+                        Details = "The selected item(s) could not be deleted. Please try again."
+                    };
+                    OpenNotificationModal();
                 }
             }
         }//Delete using Del Toolstrip
@@ -473,11 +518,21 @@ namespace DazaBestApplication.Pages
 
                 if (await DeleteItems(AllSelectedID))
                 {
-                    MessageBox.Show("Deleted Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _notificationmodel = new NotificationModel()
+                    {
+                        Title = "Item Deletion",
+                        Details = "The selected item(s) have been successfully deleted."
+                    };
+                    OpenNotificationModal();
                 }
                 else
                 {
-                    MessageBox.Show("Deleted Unsuccessfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _notificationmodel = new NotificationModel()
+                    {
+                        Title = "Item Deletion",
+                        Details = "The selected item(s) could not be deleted. Please try again."
+                    };
+                    OpenNotificationModal();
                 }
             }
         }

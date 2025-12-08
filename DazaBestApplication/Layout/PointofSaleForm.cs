@@ -752,6 +752,11 @@ namespace DazaBestApplication.Layout
         ///datagrid ulit
         private async void ProductOrdersDatagrid_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            if (ProductOrdersDatagrid.Columns[e.ColumnIndex].Name != "ActionCol")
+            {
+                return;
+            }
+
             _decision = new DecisionModel()
             {
                 DecisionQuestion = "Do you want to Remove this Item from the Ordered List?",

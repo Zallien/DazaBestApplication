@@ -144,7 +144,7 @@ namespace SystemBackEnd.Services
             {
                 //Accounts
                 var accounts = await _db.Accounts.Where(x => x.IsActive == true 
-                    && (x.FirstName + " " + x.LastName).ToLower().Contains(pagination.SearchValue.ToLower()) )
+                    && (x.FirstName + " " + x.LastName).ToLower().Contains(pagination.SearchValue.ToLower()))
                                                     .Skip((pagination.PageNumber - 1) * pagination.ItemperPage)
                                                     .Take(pagination.ItemperPage)
                                                     .ToListAsync();

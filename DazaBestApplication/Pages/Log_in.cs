@@ -26,6 +26,7 @@ namespace DazaBestApplication.Pages
         private RegisterAccount regAcc;
         private Panel loadingpanel;
         private LoggingInModel logInModel;
+        private NotificationModel _notificationmodel;
 
 
         public Log_in()
@@ -91,7 +92,12 @@ namespace DazaBestApplication.Pages
                     Usernametxtbox.Select();
                     Usernametxtbox.Clear();
                     Passwordtxtbox.Clear();
-                    MessageBox.Show("Account Not Found", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _notificationmodel = new NotificationModel()
+                    {
+                        Title = "Login Failed",
+                        Details = "The username or password you entered is incorrect. Please try again."
+                    };
+                    OpenNotificationModal();
                     return;
                 }
                 LoginServices = new LoginServices(new BackEndDBContext());
@@ -160,7 +166,31 @@ namespace DazaBestApplication.Pages
                 return result == DialogResult.Yes;
             }
         }
+        //Open Notification Modal
+        private void OpenNotificationModal()
+        {
+            Form ModalBackgorund = new();
+            using (NotificationModal modalcontent = new(_notificationmodel))
+            {
+                var mainBounds = this.Bounds;
 
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = this.Size;
+                ModalBackgorund.Location = this.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(this);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+                modalcontent.ShowDialog();
+                ModalBackgorund.Dispose();
+            }
+        }
 
 
         //Main Load
@@ -241,6 +271,11 @@ namespace DazaBestApplication.Pages
                 Login_btn.Focus();
                 await LoginUser();
             }
+        }
+
+        private void Usernametxtbox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

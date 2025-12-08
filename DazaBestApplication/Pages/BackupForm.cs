@@ -318,7 +318,7 @@ namespace DazaBestApplication.Pages
                 //Open Decision Modal AND Ask User Confirmation
                 _decision = new DecisionModel
                 {
-                    DecisionTitle = "Upload Backup to Google Drive",
+                    DecisionTitle = "Upload Backup",
                     DecisionQuestion = "Are you sure you want to upload the backup to Google Drive?"
                 };
                 bool userConfirmed = OpenDecisionModal();

@@ -206,7 +206,7 @@ namespace DazaBestApplication.Pages
                 FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
                 ToDate = ToDateFilter,
                 PageNumber = PageNumber,
-                ItemperPage = ItemPerPaeg
+                ItemperPage = 99999
             };
 
             stockindetailslist = await StockInReportServices.GetStockInDetails(RecordFilterSearch);

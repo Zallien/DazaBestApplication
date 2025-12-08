@@ -181,7 +181,7 @@ namespace DazaBestApplication.Pages
                 {
                     SearchValue = SearchValue,
                     PageNumber = PageNumber,
-                    ItemperPage = ItemPerPaeg
+                    ItemperPage = 99999
                 };
                 itemsReportDetailsList = new List<ItemsReportDetails>();
                 ItemReportServices = new ItemReportServices(new SystemBackEnd.BackEndDBContext());

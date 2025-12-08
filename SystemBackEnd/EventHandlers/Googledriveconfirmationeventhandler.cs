@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SystemBackEnd.EventHandlers
 {
-    public static class googledriveconfirmationeventhandler
+    public static class Googledriveconfirmationeventhandler
     {
         //Event that need to notify when item inventory changes Add, Update, Delete
         public static event Func<Task>? EventHandlerNotifier;

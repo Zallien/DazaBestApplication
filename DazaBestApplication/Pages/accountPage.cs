@@ -26,6 +26,7 @@ namespace DazaBestApplication.Pages
         private AccountEditInformation accountEditInformation = new AccountEditInformation();
         private AccountPagination AccountPagination;
         private DecisionModel _decision;
+        private NotificationModel _notificationmodel;
 
         //Pagination
         private int _itemperpage = 10;
@@ -135,12 +136,22 @@ namespace DazaBestApplication.Pages
                 bool isOwnerRemoved = await loginServices.RemoveAccount(accountIdsToRemove);
                 if (isOwnerRemoved == true)
                 {
-                    MessageBox.Show("Removed Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _notificationmodel = new NotificationModel()
+                    {
+                        Title = "Account Removed Successfully",
+                        Details = "Account Removed"
+                    };
+                    OpenNotificationModal();
                     await AccountEventHandlers.InvokeAccount();
                 }
                 else
                 {
-                    MessageBox.Show("Removed Unsuccessfully an Error Occured", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _notificationmodel = new NotificationModel()
+                    {
+                        Title = "Account Removal Failed",
+                        Details = "An error occured while removing the account."
+                    };
+                    OpenNotificationModal();
                 }
                 await PopulateDatagridAllAccounts();
             }
@@ -148,6 +159,32 @@ namespace DazaBestApplication.Pages
             
 
         }
+        //Open Notification Modal
+        private void OpenNotificationModal()
+        {
+            Form ModalBackgorund = new();
+            using (NotificationModal modalcontent = new(_notificationmodel))
+            {
+                var mainBounds = MainForm.Bounds;
+
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = MainForm.Size;
+                ModalBackgorund.Location = MainForm.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(MainForm);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+                modalcontent.ShowDialog();
+                ModalBackgorund.Dispose();
+            }
+        }
+
 
 
         //Pagination
@@ -287,7 +324,7 @@ namespace DazaBestApplication.Pages
         {
             _searchvalue = SearchBox.Text;
             await GetAllAccountCounts();
-            await GetAllAccountCounts();
+            await PopulateDatagridAllAccounts();
             PaginationLabel.Text = $"{_pagenumber} / {_maxpagenumber}";
         }
     }

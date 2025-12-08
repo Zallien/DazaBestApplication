@@ -20,6 +20,7 @@ namespace DazaBestApplication
         private Panel Loadingpanel;
         private BunifuLoader bunifuLoader;
         private DecisionModel _decision;
+        private Panel loadingpanel1;
 
         //Button Index
         private List<BunifuButton2> bunifuButtons;
@@ -58,6 +59,8 @@ namespace DazaBestApplication
             };
             Activebutton = NavButton_Home;
             await CheckActiveButton();
+
+
         }
 
 
@@ -137,6 +140,31 @@ namespace DazaBestApplication
                 modalcontent.ShowDialog();
                 ModalBackgorund.Dispose();
             }
+        }
+        //Show Panel for Uploading Googledrive
+        private async Task ShowLoadingpanelforGdriveUpload()
+        {
+            loadingpanel1 = new Panel()
+            {
+                Location = new Point(0, 0),
+                Size = this.Size,
+                BackColor = Color.FromArgb(20, 0, 0, 0),
+                Visible = false
+            };
+            this.Controls.Add(loadingpanel);
+            loadingpanel.BringToFront();
+            loadingpanel.Visible = true;
+            bunifuLoader = new BunifuLoader()
+            {
+                Size = new Size(200, 200),
+                BackColor = Color.BlanchedAlmond,
+                Visible = true
+            };
+            loadingpanel.Controls.Add(bunifuLoader);
+            bunifuLoader.Location = new Point(
+                (loadingpanel.Width - bunifuLoader.Width) / 2,
+                (loadingpanel.Height - bunifuLoader.Height) / 2
+            );
         }
 
 
