@@ -20,6 +20,23 @@ namespace DazaBestApplication.Modals
         private Guid AccountId;
         private LoggedinAccount theLoggedInAccount = Program.theLoggedInAccount;
 
+        private string[] Questions = new string[]
+        {
+            "What was your childhood nickname?",
+            "In what city did you meet your spouse/significant other?",
+            "What is the name of your favorite childhood friend?",
+            "What street did you live on in third grade?",
+            "What is your oldest sibling's birthday month and year? (e.g., January 1900)",
+            "What is the middle name of your youngest child?",
+            "What is your oldest sibling's middle name?",
+            "What school did you attend for sixth grade?",
+            "What was your childhood phone number including area code? (e.g., 000-000-0000)",
+            "What is your maternal grandmother's maiden name?"
+        };
+        private List<string> PickedQuestions = new List<string>() ;
+
+
+
         public SecurityQuestionModal(Form mainform)
         {
             InitializeComponent();
@@ -69,6 +86,45 @@ namespace DazaBestApplication.Modals
             }
 
         }
+        //Populate all Questions combo box
+        private async Task PopulateQuestionswithrandomquestion()
+        {
+            List<ComboBox> questionComboBoxes = new List<ComboBox>() { Question1, Question2, Question3 };
+            Random rand = new Random();
+            for (int i = 0; i < questionComboBoxes.Count; i++)
+            {
+                int index;
+                do
+                {
+                    index = rand.Next(Questions.Length);
+                } while (PickedQuestions.Contains(Questions[index]));
+                PickedQuestions.Add(Questions[index]);
+                questionComboBoxes[i].Text = Questions[index];
+            }
+            await RefreshItems();
+        }
+        private async Task RefreshItems()
+        {
+            //store selected questions
+            List<ComboBox> questionComboBoxes = new List<ComboBox>() { Question1, Question2, Question3 };
+            PickedQuestions = new();
+            foreach (var cb in questionComboBoxes)
+            {
+                PickedQuestions.Add(cb.Text);
+            }
+            foreach (var cb in questionComboBoxes)
+            {
+                cb.Items.Clear();
+                foreach (string q in Questions)
+                {
+                    if (PickedQuestions.Contains(q))
+                    {
+                        continue;
+                    }
+                    cb.Items.Add(q);
+                }
+            }
+        }
 
 
 
@@ -76,6 +132,21 @@ namespace DazaBestApplication.Modals
         private async void ValidateBtn_Click(object sender, EventArgs e)
         {
             await EnterSecurityQuestion();
+        }
+        private void Questions_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (sender is ComboBox cb)
+            {
+                RefreshItems();
+            }
+
+        }
+
+        private async void SecurityQuestionModal_Load(object sender, EventArgs e)
+        {
+            this.Opacity = 0;
+            await PopulateQuestionswithrandomquestion();
+            this.Opacity = 1;
         }
     }
 }

@@ -20,6 +20,7 @@ namespace DazaBestApplication.Modals
         private SucurityQuestionAnswerModel sucurityQuestionAnswerModel = new SucurityQuestionAnswerModel();
         private Panel overlay;
 
+
         public ForgotPasswordModal(Form mainForm)
         {
             InitializeComponent();

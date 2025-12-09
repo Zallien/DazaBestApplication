@@ -473,6 +473,7 @@
             Question3.Text = null;
             Question3.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             Question3.TextLeftMargin = 5;
+            Question3.SelectedValueChanged += Questions_SelectionChangeCommitted;
             // 
             // Question2
             // 
@@ -518,6 +519,7 @@
             Question2.Text = null;
             Question2.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             Question2.TextLeftMargin = 5;
+            Question2.SelectedValueChanged += Questions_SelectionChangeCommitted;
             // 
             // Question1
             // 
@@ -563,6 +565,7 @@
             Question1.Text = null;
             Question1.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             Question1.TextLeftMargin = 5;
+            Question1.SelectedValueChanged += Questions_SelectionChangeCommitted;
             // 
             // SecurityQuestionModal
             // 
@@ -574,6 +577,7 @@
             Name = "SecurityQuestionModal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SecurityQuestionModal";
+            Load += SecurityQuestionModal_Load;
             QuestionPanel.ResumeLayout(false);
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
