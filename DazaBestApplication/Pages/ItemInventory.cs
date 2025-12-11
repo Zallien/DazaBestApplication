@@ -345,7 +345,7 @@ namespace DazaBestApplication.Pages
         //Events
         private void EditusingEditToolstrip(object? sender, EventArgs e)
         {
-            if (AllItemsDatagrid.SelectedRows.Count > 0)
+            if (AllItemsDatagrid.SelectedRows.Count == 1)
             {
                 DataGridViewRow selectedrow = AllItemsDatagrid.SelectedRows[0];
                 _itemmodal = new ItemModal()
@@ -355,7 +355,7 @@ namespace DazaBestApplication.Pages
                     {
                         ItemID = Guid.Parse(selectedrow.Cells["IdCol"].Value.ToString()),
                         ItemName = selectedrow.Cells["ItemNameCol"].Value.ToString(),
-                        ItemPrice = decimal.Parse(selectedrow.Cells["PriceCol"].Value.ToString())
+                        ItemPrice = decimal.Parse(selectedrow.Cells["PriceCol"].Value.ToString().Replace("₱", ""))
                     }
                 };
                 OpenModal();
@@ -450,7 +450,7 @@ namespace DazaBestApplication.Pages
                     }
                 }
             }
-        }//Control + D Key For Deleting Item
+        } //Control + D Key For Deleting Item
         private async void DeleteusingDelToolstrip(object sender, EventArgs e)
         {
 
@@ -493,7 +493,7 @@ namespace DazaBestApplication.Pages
                     OpenNotificationModal();
                 }
             }
-        }//Delete using Del Toolstrip
+        } //Delete using Del Toolstrip
         private async void bunifuButton21_Click(object sender, EventArgs e)
         {
             _decision = new DecisionModel()
@@ -538,7 +538,7 @@ namespace DazaBestApplication.Pages
         }
         private void bunifuButton23_Click(object sender, EventArgs e)
         {
-            if (AllItemsDatagrid.SelectedRows.Count > 0)
+            if (AllItemsDatagrid.SelectedRows.Count == 1)
             {
                 DataGridViewRow selectedrow = AllItemsDatagrid.SelectedRows[0];
                 _itemmodal = new ItemModal()
@@ -548,7 +548,7 @@ namespace DazaBestApplication.Pages
                     {
                         ItemID = Guid.Parse(selectedrow.Cells["IdCol"].Value.ToString()),
                         ItemName = selectedrow.Cells["ItemNameCol"].Value.ToString(),
-                        ItemPrice = decimal.Parse(selectedrow.Cells["PriceCol"].Value.ToString())
+                        ItemPrice = decimal.Parse(selectedrow.Cells["PriceCol"].Value.ToString().Replace("₱", ""))
                     }
                 };
                 OpenModal();
@@ -565,6 +565,13 @@ namespace DazaBestApplication.Pages
         private void filterbutton_Click(object sender, EventArgs e)
         {
             bunifuShadowPanel1.Visible = !bunifuShadowPanel1.Visible;
+        }
+        private void productperpagetxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

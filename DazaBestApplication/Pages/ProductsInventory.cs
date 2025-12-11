@@ -516,12 +516,14 @@ namespace DazaBestApplication.Pages
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                e.Handled = true; // Block the input
+                e.Handled = true;
             }
         }
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
             SaveFilter();
         }
+
+
     }
 }

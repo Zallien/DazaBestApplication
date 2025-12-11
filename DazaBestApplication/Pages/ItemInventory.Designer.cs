@@ -160,6 +160,7 @@
             productperpagetxt.Name = "productperpagetxt";
             productperpagetxt.Size = new Size(195, 24);
             productperpagetxt.TabIndex = 4;
+            productperpagetxt.KeyPress += productperpagetxt_KeyPress;
             // 
             // label4
             // 
