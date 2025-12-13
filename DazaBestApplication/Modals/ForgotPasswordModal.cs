@@ -74,6 +74,7 @@ namespace DazaBestApplication.Modals
                     question1.Text = sucurityQuestionAnswerModel.SucurityQuestions[0].Question;
                     question2.Text = sucurityQuestionAnswerModel.SucurityQuestions[1].Question;
                     question3.Text = sucurityQuestionAnswerModel.SucurityQuestions[2].Question;
+                    ForgotUsernameTxt.Clear();
                 }
 
             }
@@ -110,6 +111,9 @@ namespace DazaBestApplication.Modals
                     sucurityQuestionAnswerModel.SucurityQuestions[2].Answer == answer3.Text)
                 {
                     //Show Reset Password Panel
+                    answer1.Clear();
+                    answer2.Clear();
+                    answer3.Clear();
                     await ShowResetPasswordPanel();
                 }
                 else
@@ -137,9 +141,9 @@ namespace DazaBestApplication.Modals
         {
             try
             {
-                if (newpasswordtxt.Text != reenterpasswordtxt.Text)
+                bool isValid = await ValidatePasswordInputs();
+                if (!isValid)
                 {
-                    MessageBox.Show("Passwords Not Matched", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 using (var context = new BackEndDBContext())
@@ -160,7 +164,43 @@ namespace DazaBestApplication.Modals
             }
             catch (Exception ex)
             {
+                MessageBox.Show("An Error Occured: " + ex.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        //Validate Password Inputs
+        private async Task<bool> ValidatePasswordInputs()
+        {
+            if (newpasswordtxt.Text == "" || reenterpasswordtxt.Text == "")
+            {
+                MessageBox.Show("Please Fill up all the Fields", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (newpasswordtxt.Text.Length < 8 || reenterpasswordtxt.Text.Length < 8)
+            {
+                MessageBox.Show("Password must be 8 characters or above", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!newpasswordtxt.Text.Any(char.IsUpper) || !reenterpasswordtxt.Text.Any(char.IsUpper))
+            {
+                MessageBox.Show("Password must contain at least one capital letter", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (newpasswordtxt.Text.Contains(" ") || reenterpasswordtxt.Text.Contains(" "))
+            {
+                MessageBox.Show("Password must not contain spaces", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (newpasswordtxt.Text != reenterpasswordtxt.Text)
+            {
+                MessageBox.Show("Passwords do not match", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
 
 
@@ -200,11 +240,16 @@ namespace DazaBestApplication.Modals
         {
             overlay.Dispose();
             ResetPassPanel.Visible = false;
+            newpasswordtxt.Clear();
+            reenterpasswordtxt.Clear();
         }
         private void BackBtn_Click(object sender, EventArgs e)
         {
             overlay.Dispose();
             QuestionPanel.Visible = false;
+            answer1.Clear();
+            answer2.Clear();
+            answer3.Clear();
         }
     }
 }

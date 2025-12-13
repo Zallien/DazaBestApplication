@@ -891,7 +891,7 @@
             ResetPassPanel.Controls.Add(panel2);
             ResetPassPanel.Location = new Point(1215, 81);
             ResetPassPanel.Name = "ResetPassPanel";
-            ResetPassPanel.Size = new Size(420, 260);
+            ResetPassPanel.Size = new Size(420, 268);
             ResetPassPanel.TabIndex = 7;
             // 
             // label5
@@ -1069,9 +1069,9 @@
             panel4.Controls.Add(CancelBtn2);
             panel4.Controls.Add(ResetPassBtn);
             panel4.Dock = DockStyle.Bottom;
-            panel4.Location = new Point(0, 225);
+            panel4.Location = new Point(0, 233);
             panel4.Name = "panel4";
-            panel4.Padding = new Padding(10, 2, 10, 2);
+            panel4.Padding = new Padding(10, 5, 10, 2);
             panel4.Size = new Size(420, 35);
             panel4.TabIndex = 3;
             // 
@@ -1080,6 +1080,7 @@
             CancelBtn2.AllowAnimations = true;
             CancelBtn2.AllowMouseEffects = true;
             CancelBtn2.AllowToggling = false;
+            CancelBtn2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             CancelBtn2.AnimationSpeed = 200;
             CancelBtn2.AutoGenerateColors = false;
             CancelBtn2.AutoRoundBorders = false;
@@ -1171,6 +1172,7 @@
             ResetPassBtn.AllowAnimations = true;
             ResetPassBtn.AllowMouseEffects = true;
             ResetPassBtn.AllowToggling = false;
+            ResetPassBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             ResetPassBtn.AnimationSpeed = 200;
             ResetPassBtn.AutoGenerateColors = false;
             ResetPassBtn.AutoRoundBorders = false;
@@ -1193,7 +1195,6 @@
             ResetPassBtn.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             ResetPassBtn.DisabledFillColor = Color.Empty;
             ResetPassBtn.DisabledForecolor = Color.Empty;
-            ResetPassBtn.Dock = DockStyle.Right;
             ResetPassBtn.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
             ResetPassBtn.Font = new Font("Courier New", 9F, FontStyle.Bold);
             ResetPassBtn.ForeColor = Color.White;
@@ -1249,7 +1250,7 @@
             ResetPassBtn.OnPressedState.ForeColor = Color.White;
             ResetPassBtn.OnPressedState.IconLeftImage = null;
             ResetPassBtn.OnPressedState.IconRightImage = null;
-            ResetPassBtn.Size = new Size(102, 31);
+            ResetPassBtn.Size = new Size(102, 30);
             ResetPassBtn.TabIndex = 0;
             ResetPassBtn.TextAlign = ContentAlignment.MiddleCenter;
             ResetPassBtn.TextAlignment = HorizontalAlignment.Center;
