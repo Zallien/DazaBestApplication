@@ -524,6 +524,10 @@ namespace DazaBestApplication.Modals
         }
         private async void removeitempickedbutton_Click(object sender, EventArgs e)
         {
+            if (AllPickedItems.SelectedRows.Count <= 0)
+            {
+                return;
+            }
             if (MessageBox.Show("Do you want to Delete All Selected Item/s?", "System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 AllowCalculating = false;

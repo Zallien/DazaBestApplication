@@ -494,6 +494,11 @@ namespace DazaBestApplication.Modals
         }
         private void removeitempickedbutton_Click(object sender, EventArgs e)
         {
+            if (AllPickedItems.SelectedRows.Count <= 0)
+            {
+                return;
+            }
+
             if (MessageBox.Show("Do you want to Removed It?", "System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 RemoveSelectedItemBTN();

@@ -677,7 +677,7 @@
             AllProductsContainer.Controls.Add(AllItemDatagridview);
             AllProductsContainer.FillStyle = Bunifu.UI.WinForms.BunifuShadowPanel.FillStyles.Solid;
             AllProductsContainer.GradientMode = Bunifu.UI.WinForms.BunifuShadowPanel.GradientModes.Vertical;
-            AllProductsContainer.Location = new Point(119, 46);
+            AllProductsContainer.Location = new Point(1119, 46);
             AllProductsContainer.Name = "AllProductsContainer";
             AllProductsContainer.Padding = new Padding(0, 10, 0, 0);
             AllProductsContainer.PanelColor = Color.WhiteSmoke;
