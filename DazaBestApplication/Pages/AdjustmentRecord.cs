@@ -35,7 +35,17 @@ namespace DazaBestApplication.Pages
         private int totalpages = 0;
 
         #endregion
-
+        private List<string> ReportFilter = new List<string>()
+        {
+            "Today",
+            "This Week",
+            "This Month",
+            "This Year",
+            "All",
+            "Custom"
+        };
+        private int Prevfrommonth;
+        private int Prevtomonth;
 
         //Contrutor
         public AdjustmentRecord(Form mainForm)
@@ -53,7 +63,7 @@ namespace DazaBestApplication.Pages
                 recordsFilterSearch = new RecordsFilterSearch()
                 {
                     SearchValue = SearchValue,
-                    FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
+                    FromDate = FromDateFilter,
                     ToDate = ToDateFilter,
                     PageNumber = PageNumber,
                     ItemperPage = ItemPerPaeg
@@ -92,6 +102,61 @@ namespace DazaBestApplication.Pages
             await CheckPageNumber();
             await PopulateAlldjustDetailsDatagrid();
         }
+        //Populate Date Filter
+        private async Task PopulateDateFilter()
+        {
+            RecordFilter.Items.Clear();
+            foreach (var filter in ReportFilter)
+            {
+                RecordFilter.Items.Add(filter);
+            }
+            RecordFilter.SelectedIndex = 0;
+            await ReportFilterChanged();
+        }
+        private async Task ReportFilterChanged()
+        {
+            bunifuButton2.Visible = false;
+            switch (RecordFilter.Text)
+            {
+                case "Today":
+                    FromDateFilter = DateTime.Now.Date;
+                    ToDateFilter = DateTime.Now.Date;
+                    break;
+                case "This Week":
+                    int diff = (7 + (DateTime.Now.DayOfWeek - DayOfWeek.Monday)) % 7;
+                    FromDateFilter = DateTime.Now.AddDays(-1 * diff).Date;
+                    ToDateFilter = DateTime.Now.Date;
+                    break;
+                case "This Month":
+                    FromDateFilter = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                    ToDateFilter = DateTime.Now.Date;
+                    break;
+                case "This Year":
+                    FromDateFilter = new DateTime(DateTime.Now.Year, 1, 1);
+                    ToDateFilter = DateTime.Now.Date;
+                    break;
+                case "All":
+                    FromDateFilter = DateTime.MinValue;
+                    ToDateFilter = DateTime.Now.Date;
+                    break;
+                case "Custom":
+                    fromdatetxt.Value = datenow;
+                    todatetxt.Value = datenow;
+                    bunifuButton2.Visible = true;
+                    daterangepanel.Parent = this;
+                    daterangepanel.Location = new Point((this.Width - daterangepanel.Width) / 2, (this.Height - daterangepanel.Height) / 2);
+                    daterangepanel.BringToFront();
+                    break;
+                default:
+                    break;
+            }
+
+            await PopulateAlldjustDetailsDatagrid();
+            await GetTotalPages();
+            await CheckPageNumber();
+        }
+
+
 
 
         #region pagination Logic
@@ -165,6 +230,26 @@ namespace DazaBestApplication.Pages
         //Change the Date Filter
         private async Task ChangeDateFilter()
         {
+            int newfrommonth = fromdatetxt.Value.Month;
+            int newtomonth = todatetxt.Value.Month;
+            if (newfrommonth != Prevfrommonth)
+            {
+                Prevfrommonth = newfrommonth;
+                int lastDay = DateTime.DaysInMonth(fromdatetxt.Value.Year, newfrommonth);
+                fromdatetxt.Value = new DateTime(fromdatetxt.Value.Year, newfrommonth, lastDay);
+            }
+            if (newtomonth != Prevtomonth)
+            {
+                Prevtomonth = newtomonth;
+                int lastDay = DateTime.DaysInMonth(todatetxt.Value.Year, newtomonth);
+                todatetxt.Value = new DateTime(todatetxt.Value.Year, newtomonth, lastDay);
+
+            }
+
+
+
+
+
             if (fromdatetxt.Value.Date <= todatetxt.Value.Date)
             {
                 FromDateFilter = fromdatetxt.Value;
@@ -194,6 +279,8 @@ namespace DazaBestApplication.Pages
             await GetTotalPages();
             await CheckPageNumber();
             await PopulateAlldjustDetailsDatagrid();
+            await PopulateDateFilter();
+            await ReportFilterChanged();
 
         }
 
@@ -246,5 +333,26 @@ namespace DazaBestApplication.Pages
             fromdatetxt.Value = datenow;
         }
         #endregion
+
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+            daterangepanel.Visible = false;
+        }
+
+        private void RecordFilter_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ReportFilterChanged();
+        }
+
+        private void bunifuButton2_Click(object sender, EventArgs e)
+        {
+            daterangepanel.Visible = true;
+        }
+
+        private void fromdatetxt_MouseEnter(object sender, EventArgs e)
+        {
+            Prevfrommonth = fromdatetxt.Value.Month;
+            Prevtomonth = todatetxt.Value.Month;
+        }
     }
 }

@@ -42,7 +42,8 @@ namespace DazaBestApplication.Pages
             "All",
             "Custom"
         };
-
+        private int Prevfrommonth;
+        private int Prevtomonth;
 
 
         public SalesRecord(Form mainForm)
@@ -180,6 +181,23 @@ namespace DazaBestApplication.Pages
         //Change the Date Filter
         private async Task ChangeDateFilter()
         {
+            int newfrommonth = fromdatetxt.Value.Month;
+            int newtomonth = todatetxt.Value.Month;
+            if (newfrommonth != Prevfrommonth)
+            {
+                Prevfrommonth = newfrommonth;
+                int lastDay = DateTime.DaysInMonth(fromdatetxt.Value.Year, newfrommonth);
+                fromdatetxt.Value = new DateTime(fromdatetxt.Value.Year, newfrommonth, lastDay);
+            }
+            if (newtomonth != Prevtomonth)
+            {
+                Prevtomonth = newtomonth;
+                int lastDay = DateTime.DaysInMonth(todatetxt.Value.Year, newtomonth);
+                todatetxt.Value = new DateTime(todatetxt.Value.Year, newtomonth, lastDay);
+
+            }
+
+
             if (fromdatetxt.Value.Date <= todatetxt.Value.Date)
             {
                 FromDateFilter = fromdatetxt.Value;
@@ -252,6 +270,8 @@ namespace DazaBestApplication.Pages
             }
 
             await PopulateAllSaleReportDatagrid();
+            await GetTotalPages();
+            await CheckPageNumber();
         }
 
 

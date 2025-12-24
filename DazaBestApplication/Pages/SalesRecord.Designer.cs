@@ -720,7 +720,7 @@
             daterangepanel.Controls.Add(bunifuLabel2);
             daterangepanel.FillStyle = Bunifu.UI.WinForms.BunifuShadowPanel.FillStyles.Solid;
             daterangepanel.GradientMode = Bunifu.UI.WinForms.BunifuShadowPanel.GradientModes.Vertical;
-            daterangepanel.Location = new Point(1210, 40);
+            daterangepanel.Location = new Point(210, 40);
             daterangepanel.Name = "daterangepanel";
             daterangepanel.PanelColor = Color.WhiteSmoke;
             daterangepanel.PanelColor2 = Color.WhiteSmoke;
