@@ -143,6 +143,14 @@
         RnxkxEdGfGTER0Z8ZMRHRnxkxEdGfGRWfPM9wn5j3nXmvXQwhm/DAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="clouduploadbtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAJ8AAAAjCAYAAACKE9juAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACESURBVHhe7dKhEYAwAATBlE6flJECgFgGG86sWPNvbxxj
+        nI8Lfnau+L4O2E58ZMRHRnxkxEdGfGTER0Z8ZMRHRnxkxEdGfGTER0Z8ZMRHRnxkxEdGfGTER0Z8ZMRH
+        RnxkxEdGfGTER0Z8ZMRHRnxkxEdGfGTER0Z8ZMRHZsU33yPsN+YNidqHRIHRltgAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="ManualBackupBTN.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAJ8AAAAjCAYAAACKE9juAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -157,14 +165,6 @@
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABnSURBVGhD7dIxEYAwAATBSMdnZEQAkI5hzkG22Oa/vXGN
         MV83fMwdRh0cThgkYZCEQRIGSRgkYZCEQRIGSRgkYZCEQRIGSRgkYZCEQRIGSRgkYZCEQRIGSRgkYZCE
         QdphrP/I6cZ6AO3eXTHsWMpKAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="clouduploadbtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAJ8AAAAjCAYAAACKE9juAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACESURBVHhe7dKhEYAwAATBlE6flJECgFgGG86sWPNvbxxj
-        nI8Lfnau+L4O2E58ZMRHRnxkxEdGfGTER0Z8ZMRHRnxkxEdGfGTER0Z8ZMRHRnxkxEdGfGTER0Z8ZMRH
-        RnxkxEdGfGTER0Z8ZMRHRnxkxEdGfGTER0Z8ZMRHZsU33yPsN+YNidqHRIHRltgAAAAASUVORK5CYII=
 </value>
   </data>
 </root>

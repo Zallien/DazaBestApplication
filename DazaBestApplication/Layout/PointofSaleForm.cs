@@ -756,16 +756,17 @@ namespace DazaBestApplication.Layout
             {
                 return;
             }
-
             _decision = new DecisionModel()
             {
                 DecisionQuestion = "Do you want to Remove this Item from the Ordered List?",
                 DecisionTitle = "Remove Item",
             };
+            await ShowVoidModal();
 
             bool result = OpenDecisionModal();
             if (result == true)
             {
+
                 IsEdittingdatagrid = true;
                 if (e.RowIndex >= 0 && ProductOrdersDatagrid.Columns[e.ColumnIndex].Name == "ActionCol")
                 {
