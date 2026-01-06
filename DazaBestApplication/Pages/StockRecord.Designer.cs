@@ -1044,7 +1044,7 @@
             AllPurchaseItemDetailsRecordsDatagrid.ReadOnly = true;
             AllPurchaseItemDetailsRecordsDatagrid.RowHeadersVisible = false;
             AllPurchaseItemDetailsRecordsDatagrid.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            AllPurchaseItemDetailsRecordsDatagrid.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64);
+            AllPurchaseItemDetailsRecordsDatagrid.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             AllPurchaseItemDetailsRecordsDatagrid.RowTemplate.Height = 40;
             AllPurchaseItemDetailsRecordsDatagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             AllPurchaseItemDetailsRecordsDatagrid.Size = new Size(830, 463);

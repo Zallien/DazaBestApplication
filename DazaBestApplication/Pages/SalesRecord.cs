@@ -254,7 +254,7 @@ namespace DazaBestApplication.Pages
                     ToDateFilter = DateTime.Now.Date;
                     break;
                 case "All":
-                    FromDateFilter = DateTime.MinValue;
+                    FromDateFilter = fromdatetxt.MinDate;
                     ToDateFilter = DateTime.Now.Date;
                     break;
                 case "Custom":
@@ -281,9 +281,11 @@ namespace DazaBestApplication.Pages
         private async void SalesRecord_Load(object sender, EventArgs e)
         {
             fromdatetxt.MaxDate = DateTime.Now;
+            fromdatetxt.MinDate = DateTime.Now.AddYears(-10);
             todatetxt.MaxDate = DateTime.Now;
             fromdatetxt.Value = FromDateFilter;
             todatetxt.Value = ToDateFilter;
+            daterangepanel.Visible = false;
             await GetTotalPages();
             await CheckPageNumber();
             await PopulateAllSaleReportDatagrid();
@@ -303,13 +305,13 @@ namespace DazaBestApplication.Pages
                 saleRecordFilterSearch = new RecordsFilterSearch()
                 {
                     SearchValue = SearchValue,
-                    FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
+                    FromDate = FromDateFilter,
                     ToDate = ToDateFilter,
                     PageNumber = PageNumber,
                     ItemperPage = 99999
                 };
                 SaleReportDetailsforPrints = await SaleReportServices.GetSaleReportforPrinting(saleRecordFilterSearch);
-                MonthlySalesReportForm monthlySalesReportForm = new MonthlySalesReportForm(SaleReportDetailsforPrints, fromdatetxt.Value, todatetxt.Value);
+                MonthlySalesReportForm monthlySalesReportForm = new MonthlySalesReportForm(SaleReportDetailsforPrints, FromDateFilter, ToDateFilter);
                 monthlySalesReportForm.Show();
             }
             catch (Exception ex)

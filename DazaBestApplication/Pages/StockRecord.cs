@@ -252,7 +252,7 @@ namespace DazaBestApplication.Pages
                     ToDateFilter = DateTime.Now.Date;
                     break;
                 case "All":
-                    FromDateFilter = DateTime.MinValue;
+                    FromDateFilter = fromdatetxt.MinDate;
                     ToDateFilter = DateTime.Now.Date;
                     break;
                 case "Custom":
@@ -288,14 +288,14 @@ namespace DazaBestApplication.Pages
             RecordFilterSearch = new RecordsFilterSearch()
             {
                 SearchValue = SearchValue,
-                FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
+                FromDate = FromDateFilter,
                 ToDate = ToDateFilter,
                 PageNumber = PageNumber,
                 ItemperPage = 99999
             };
 
             stockindetailslist = await StockInReportServices.GetStockInDetails(RecordFilterSearch);
-            StockInReportForm stockInReportForm = new StockInReportForm(stockindetailslist, fromdatetxt.Value, todatetxt.Value);
+            StockInReportForm stockInReportForm = new StockInReportForm(stockindetailslist, FromDateFilter, ToDateFilter);
             stockInReportForm.Show();
 
         }
@@ -306,9 +306,11 @@ namespace DazaBestApplication.Pages
         private async void StockRecord_Load(object sender, EventArgs e)
         {
             fromdatetxt.MaxDate = DateTime.Now.Date;
+            fromdatetxt.MinDate = DateTime.Now.AddYears(-10);
             todatetxt.MaxDate = DateTime.Now.Date;
             fromdatetxt.Value = datenow;
             todatetxt.Value = datenow;
+            daterangepanel.Visible = false;
             await GetTotalPages();
             await CheckPageNumber();
             await PopulateDatagrid();

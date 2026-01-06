@@ -136,7 +136,7 @@ namespace DazaBestApplication.Pages
                     ToDateFilter = DateTime.Now.Date;
                     break;
                 case "All":
-                    FromDateFilter = DateTime.MinValue;
+                    FromDateFilter = fromdatetxt.MinDate;
                     ToDateFilter = DateTime.Now.Date;
                     break;
                 case "Custom":
@@ -273,9 +273,11 @@ namespace DazaBestApplication.Pages
         {
             //Set DatePickers
             fromdatetxt.MaxDate = DateTime.Now;
+            fromdatetxt.MinDate = DateTime.Now.AddYears(-10);
             todatetxt.MaxDate = DateTime.Now;
             fromdatetxt.Value = FromDateFilter;
             todatetxt.Value = ToDateFilter;
+            daterangepanel.Visible = false;
             await GetTotalPages();
             await CheckPageNumber();
             await PopulateAlldjustDetailsDatagrid();
@@ -296,13 +298,13 @@ namespace DazaBestApplication.Pages
                 recordsFilterSearch = new RecordsFilterSearch()
                 {
                     SearchValue = SearchValue,
-                    FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
+                    FromDate = FromDateFilter,
                     ToDate = ToDateFilter,
                     PageNumber = 0,
                     ItemperPage = 99999
                 };
                 forprinting = await adjustmentreportservice.GetAdjustmentDetails(recordsFilterSearch);
-                AdjustmentReportForm adjustmentReportForm = new AdjustmentReportForm(forprinting, fromdatetxt.Value, todatetxt.Value);
+                AdjustmentReportForm adjustmentReportForm = new AdjustmentReportForm(forprinting, FromDateFilter, ToDateFilter);
                 adjustmentReportForm.Show();
 
             }
