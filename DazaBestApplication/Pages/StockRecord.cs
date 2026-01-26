@@ -341,7 +341,7 @@ namespace DazaBestApplication.Pages
         }
         private void bunifuButton2_Click(object sender, EventArgs e)
         {
-
+            daterangepanel.Visible = true;
         }
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {

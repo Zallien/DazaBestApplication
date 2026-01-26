@@ -307,7 +307,7 @@
             Restorebackuptxtbox.SelectionLength = 0;
             Restorebackuptxtbox.SelectionStart = 0;
             Restorebackuptxtbox.ShortcutsEnabled = true;
-            Restorebackuptxtbox.Size = new Size(309, 39);
+            Restorebackuptxtbox.Size = new Size(309, 32);
             Restorebackuptxtbox.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             Restorebackuptxtbox.TabIndex = 16;
             Restorebackuptxtbox.TextAlign = HorizontalAlignment.Left;
