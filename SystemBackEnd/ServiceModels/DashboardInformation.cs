@@ -20,6 +20,7 @@ namespace SystemBackEnd.ServiceModels
         public List<DashboardItems> TopSellingItems { get; set; }
         public List<DashboardItems> LeastSellingItems { get; set; }
         public List<DashboardItems> ForChart { get; set; }
+        public List<SalesChart> ChartforSale { get; set; }
     }
 
     public class DashboardItems
@@ -27,5 +28,11 @@ namespace SystemBackEnd.ServiceModels
         public Guid ProductId { get; set; }
         public string ProductName { get; set; }
         public int ProducsSold { get; set; }
+    }
+
+    public class SalesChart
+    {
+        public string Date { get; set; }
+        public decimal SalesValue { get; set; }
     }
 }

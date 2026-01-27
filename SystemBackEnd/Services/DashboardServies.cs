@@ -90,6 +90,50 @@ namespace SystemBackEnd.Services
                                                     ProducsSold = d.Count()
                                                 })
                                               .ToListAsync();
+                //Sales Chart Data
+                if (dashboardType != "Yearly")
+                {
+                    var rawData = await _db.TransactionHeader
+                        .Where(x => x.TransactionDate.Date >= fromDate && x.TransactionDate.Date <= toDate)
+                        .GroupBy(x => x.TransactionDate.Date)
+                        .Select(g => new
+                        {
+                            Date = g.Key, // keep as DateTime
+                            SalesValue = g.Sum(x => x.Grandtotal)
+                        })
+                        .OrderBy(x => x.Date)
+                        .ToListAsync();
+
+                    dashinfo.ChartforSale = rawData
+                        .Select(x => new SalesChart
+                        {
+                            Date = x.Date.ToString("yyyy-MM-dd"), // format AFTER query
+                            SalesValue = x.SalesValue
+                        })
+                        .ToList();
+                }
+                else
+                {
+                    var rawData = await _db.TransactionHeader
+                        .Where(x => x.TransactionDate.Date >= fromDate && x.TransactionDate.Date <= toDate)
+                        .GroupBy(x => x.TransactionDate.Month)
+                        .Select(g => new
+                        {
+                            Month = g.Key,
+                            SalesValue = g.Sum(x => x.Grandtotal)
+                        })
+                        .OrderBy(x => x.Month)
+                        .ToListAsync();
+
+                    dashinfo.ChartforSale = rawData
+                        .Select(x => new SalesChart
+                        {
+                            Date = new DateTime(fromDate.Year, x.Month, 1).ToString("MMM"), // Jan, Feb, etc.
+                            SalesValue = x.SalesValue
+                        })
+                        .ToList();
+                }
+
 
 
 
@@ -102,6 +146,6 @@ namespace SystemBackEnd.Services
 
             return dashinfo;
         }
-
+        
     }
 }

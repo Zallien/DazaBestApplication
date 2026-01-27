@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using SystemBackEnd;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
@@ -26,6 +27,7 @@ namespace DazaBestApplication.Pages
         {
             InitializeComponent();
             MainForm = mainForm;
+            DashboardTypeSelect.SelectedIndex = 0;
         }
         //Load Dashboard Information
         private async Task LoadDashboardInformation()
@@ -42,191 +44,67 @@ namespace DazaBestApplication.Pages
 
             }
         }
-        //Set DashboardInformations labels and tables
-        private async Task SetDashboard()
+        //Load Dashboard Information To Labels
+        private async Task LoadDashboardInformationToLabels()
         {
             await LoadDashboardInformation();
-            CultureInfo phCulture = new CultureInfo("en-PH");
+            //Set Labels
+            totalitemslabel.Text = DashboardInformation.ItemsCount.ToString("N0", CultureInfo.InvariantCulture);
+            totalsaleslabel.Text = DashboardInformation.TotalSale.ToString("C", CultureInfo.CurrentCulture);
+            totalorderslabel.Text = DashboardInformation.OrdersCount.ToString("N0", CultureInfo.InvariantCulture);
+            totalproductslabel.Text = DashboardInformation.ProductsCount.ToString("N0", CultureInfo.InvariantCulture);
 
-            string qoutal = await TransformLongAmount(DashboardInformation.Qouta);
-            qoutalabel.Text = "₱" + qoutal;
-            numberoforderslabel.Text = DashboardInformation.OrdersCount.ToString();
 
-            string totalsale = await TransformLongAmount(DashboardInformation.TotalSale);
-            salelabel.Text = "₱" + totalsale;
-
-            numberofitemslabel.Text = DashboardInformation.ItemsCount.ToString();
-            outofstocklabel.Text = DashboardInformation.OutofStockCount.ToString();
-            criticalitemslabel.Text = DashboardInformation.CriticalItems.ToString();
-            overstocklabel.Text = DashboardInformation.OverstockItems.ToString();
-
-            //Populate Tables or Datagrids for Top Selling and Least Selling Items
-            TopSellingTable.Rows.Clear();
-            int topsellingnumbering = 1;
-            foreach (var item in DashboardInformation.TopSellingItems)
-            {
-
-                int rowindex = TopSellingTable.Rows.Add();
-                DataGridViewRow row = TopSellingTable.Rows[rowindex];
-                row.Cells["NumberCol"].Value = topsellingnumbering;
-                row.Cells["ProductNameCol"].Value = item.ProductName;
-                row.Height = 24;
-                topsellingnumbering++;
-            }
-
-            LeastSellingTable.Rows.Clear();
-            int leastsellingnumbering = 1;
-            foreach (var item in DashboardInformation.LeastSellingItems)
-            {
-
-                int rowindex = LeastSellingTable.Rows.Add();
-                DataGridViewRow row = LeastSellingTable.Rows[rowindex];
-                row.Cells["NumberColLeast"].Value = leastsellingnumbering;
-                row.Cells["ProductNameColLeast"].Value = item.ProductName;
-                row.Height = 24;
-                leastsellingnumbering++;
-            }
-            //Populate Chart
-            await PopulateChart();
-
+            //Load Charts
+            await LoadSalesChart();
         }
-        //Populate Chart
-        private async Task PopulateChart()
+
+
+        //Sale Chart Load
+        private async Task LoadSalesChart()
         {
-            salesChart.Series["Sales"].Points.Clear();
-            var salesData = DashboardInformation.ForChart;
-            var series = salesChart.Series["Sales"];
-
-            series.IsXValueIndexed = true;
-            //salesChart.ChartAreas[0].AxisX.Interval = 1;
-            //salesChart.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
-            //salesChart.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
-
-            if (salesData == null || salesData.Count == 0)
+            try
             {
-                // Add a dummy point to show chart even with no data
-                series.Points.AddXY("No Data", 0);
-            }
-            else
-            {
-                foreach (var dataPoint in salesData)
+                // Clear any existing series
+                SaleChart.Series.Clear();
+
+                // Create a new series
+                var series = new Series("Sales")
                 {
-                    series.Points.AddXY(dataPoint.ProductName.Trim(), dataPoint.ProducsSold);
+                    ChartType = SeriesChartType.Line,   // Line chart
+                    XValueType = ChartValueType.String  // because your Date is string ("yyyy-MM-dd" or "MMM")
+                };
+
+                // Add points from your list
+                foreach (var item in DashboardInformation.ChartforSale)
+                {
+                    series.Points.AddXY(item.Date, item.SalesValue);
                 }
-            }
 
-        }
-        //Helper Function 
-        private async Task<string> TransformLongAmount(decimal convertthis)
-        {
-            string thevalue = null;
-            if (convertthis >= 1_000_000M)
+                // Add the series to the chart
+                SaleChart.Series.Add(series);
+
+                // Optional: format chart area
+                SaleChart.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
+                SaleChart.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
+            }
+            catch (Exception ex)
             {
-                thevalue = (convertthis / 1_000_000M).ToString("0.#") + "M";
+
             }
-            else if (convertthis >= 1_000M)
-            {
-                thevalue = (convertthis / 1_000M).ToString("0.#") + "K";
-            }
-            else
-            {
-                thevalue = convertthis.ToString("0");
-            }
-            return thevalue;
-        }
-
-
-        //Event Handlers
-        private void bunifuLabel2_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void panel9_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            color1.BackColor = Color.Maroon;
-            color2.BackColor = Color.White;
-            color3.BackColor = Color.White;
-            color4.BackColor = Color.White;
-        }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            color1.BackColor = Color.White;
-            color2.BackColor = Color.Maroon;
-            color3.BackColor = Color.White;
-            color4.BackColor = Color.White;
-        }
-        private void button3_Click(object sender, EventArgs e)
-        {
-            color1.BackColor = Color.White;
-            color2.BackColor = Color.White;
-            color3.BackColor = Color.Maroon;
-            color4.BackColor = Color.White;
-        }
-        private void button4_Click(object sender, EventArgs e)
-        {
-            color1.BackColor = Color.White;
-            color2.BackColor = Color.White;
-            color3.BackColor = Color.White;
-            color4.BackColor = Color.Maroon;
         }
 
 
         //Main Load
         private async void Dashboard_Load(object sender, EventArgs e)
         {
-            await SetDashboard();
+            await LoadDashboardInformationToLabels();
         }
-        private async void DailyBTM_Click(object sender, EventArgs e)
+
+        private async void bunifuDropdown1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (DashboardInformationType != "Daily")
-            {
-                DashboardInformationType = "Daily";
-                await SetDashboard();
-            }
-            color1.BackColor = Color.Maroon;
-            color2.BackColor = Color.White;
-            color3.BackColor = Color.White;
-            color4.BackColor = Color.White;
-        }
-        private async void WekklyBTN_Click(object sender, EventArgs e)
-        {
-            if (DashboardInformationType != "Weekly")
-            {
-                DashboardInformationType = "Weekly";
-                await SetDashboard();
-            }
-            color1.BackColor = Color.White;
-            color2.BackColor = Color.Maroon;
-            color3.BackColor = Color.White;
-            color4.BackColor = Color.White;
-        }
-        private async void MonthlyBTN_Click(object sender, EventArgs e)
-        {
-            if (DashboardInformationType != "Monthly")
-            {
-                DashboardInformationType = "Monthly";
-                await SetDashboard();
-            }
-            color1.BackColor = Color.White;
-            color2.BackColor = Color.White;
-            color3.BackColor = Color.Maroon;
-            color4.BackColor = Color.White;
-        }
-        private async void YearlyBTN_Click(object sender, EventArgs e)
-        {
-            if (DashboardInformationType != "Yearly")
-            {
-                DashboardInformationType = "Yearly";
-                await SetDashboard();
-            }
-            color1.BackColor = Color.White;
-            color2.BackColor = Color.White;
-            color3.BackColor = Color.White;
-            color4.BackColor = Color.Maroon;
+            DashboardInformationType = DashboardTypeSelect.Text;
+            await LoadDashboardInformationToLabels();
         }
     }
 }
