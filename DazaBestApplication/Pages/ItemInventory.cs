@@ -69,12 +69,12 @@ namespace DazaBestApplication.Pages
                 Visible = false
             };
 
-            // ✅ 2. Add panel to the form FIRST (important!)
+            
             this.Controls.Add(Loadingpanel);
             Loadingpanel.BringToFront();
             Loadingpanel.Visible = true;
 
-            // ✅ 3. Create the loader
+            
             bunifuLoader = new BunifuLoader()
             {
                 Size = new Size(200, 200),
@@ -82,10 +82,10 @@ namespace DazaBestApplication.Pages
                 Visible = true
             };
 
-            // ✅ 4. Add loader to the panel BEFORE centering it
+            
             Loadingpanel.Controls.Add(bunifuLoader);
 
-            // ✅ 5. Now center it safely
+            
             bunifuLoader.Location = new Point(
                 (Loadingpanel.Width - bunifuLoader.Width) / 2,
                 (Loadingpanel.Height - bunifuLoader.Height) / 2

@@ -58,6 +58,8 @@ namespace DazaBestApplication.Pages
             //Load Charts
             await LoadSalesChart();
             await LoadLowInventoryStockChart();
+            await LoadItemInventoryPreview();
+            await LoadTopSellingProducts();
         }
 
 
@@ -112,8 +114,9 @@ namespace DazaBestApplication.Pages
         {
             try
             {
-                var series = SaleChart.Series["Items Stocks"];
+                var series = LowInventoryChart.Series["Items Stocks"];
                 series.Points.Clear();
+                series.IsXValueIndexed = true;
 
                 foreach (var item in DashboardInformation.LowInventoryAlert)
                 {
@@ -127,7 +130,27 @@ namespace DazaBestApplication.Pages
                 MessageBox.Show(ex.Message);
             }
         }
-
+        private async Task LoadItemInventoryPreview()
+        {
+            InventoryStocks.Rows.Clear();
+            foreach (var item in DashboardInformation.InventoryPreview)
+            {
+                int rowindex = InventoryStocks.Rows.Add();
+                DataGridViewRow row = InventoryStocks.Rows[rowindex];
+                row.Cells["ItemCol"].Value = item.Itemname;
+                row.Cells["StockCol"].Value = item.CurrentStocks;
+            }
+        }
+        private async Task LoadTopSellingProducts()
+        {
+            var series = TopProductschart.Series["Top Products"];
+            series.Points.Clear();
+            series.IsXValueIndexed = true;
+            foreach (var item in DashboardInformation.TopSellingItems)
+            {
+                series.Points.AddXY(item.ProductName, item.ProducsSold);
+            }
+        }
 
         //Main Load
         private async void Dashboard_Load(object sender, EventArgs e)
