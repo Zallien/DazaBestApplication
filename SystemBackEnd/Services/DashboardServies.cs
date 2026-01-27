@@ -134,6 +134,17 @@ namespace SystemBackEnd.Services
                         .ToList();
                 }
 
+                //Low Inventory Alert
+                dashinfo.LowInventoryAlert = await _db.Items
+                        .Where(x => x.BalanceStocks < 5m)
+                        .OrderBy(x => x.BalanceStocks)
+                        .Select(x => new LowInventory
+                        {
+                            ItemName = x.ItemName,
+                            CurrentStocks = x.BalanceStocks
+                        })
+                        .Take(5)
+                        .ToListAsync();
 
 
 

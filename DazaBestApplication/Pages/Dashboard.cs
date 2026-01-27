@@ -57,6 +57,7 @@ namespace DazaBestApplication.Pages
 
             //Load Charts
             await LoadSalesChart();
+            await LoadLowInventoryStockChart();
         }
 
 
@@ -104,7 +105,26 @@ namespace DazaBestApplication.Pages
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private async Task LoadLowInventoryStockChart()
+        {
+            try
+            {
+                var series = SaleChart.Series["Items Stocks"];
+                series.Points.Clear();
 
+                foreach (var item in DashboardInformation.LowInventoryAlert)
+                {
+                    series.Points.AddXY(item.ItemName, item.CurrentStocks);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

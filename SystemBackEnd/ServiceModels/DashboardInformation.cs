@@ -21,6 +21,7 @@ namespace SystemBackEnd.ServiceModels
         public List<DashboardItems> LeastSellingItems { get; set; }
         public List<DashboardItems> ForChart { get; set; }
         public List<SalesChart> ChartforSale { get; set; }
+        public List<LowInventory> LowInventoryAlert { get; set; }
     }
 
     public class DashboardItems
@@ -34,5 +35,11 @@ namespace SystemBackEnd.ServiceModels
     {
         public DateTime Date { get; set; }
         public decimal SalesValue { get; set; }
+    }
+
+    public class LowInventory
+    {
+        public string ItemName { get; set; }
+        public decimal CurrentStocks { get; set; }
     }
 }
