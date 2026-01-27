@@ -48,9 +48,12 @@ namespace DazaBestApplication.Pages
         private async Task LoadDashboardInformationToLabels()
         {
             await LoadDashboardInformation();
+            CultureInfo phCulture = new CultureInfo("en-PH");
+
             //Set Labels
             totalitemslabel.Text = DashboardInformation.ItemsCount.ToString("N0", CultureInfo.InvariantCulture);
-            totalsaleslabel.Text = DashboardInformation.TotalSale.ToString("C", CultureInfo.CurrentCulture);
+            string totalsale = await TransformLongAmount(DashboardInformation.TotalSale);
+            totalsaleslabel.Text = $"₱ {totalsale}";
             totalorderslabel.Text = DashboardInformation.OrdersCount.ToString("N0", CultureInfo.InvariantCulture);
             totalproductslabel.Text = DashboardInformation.ProductsCount.ToString("N0", CultureInfo.InvariantCulture);
 
@@ -150,6 +153,24 @@ namespace DazaBestApplication.Pages
             {
                 series.Points.AddXY(item.ProductName, item.ProducsSold);
             }
+        }
+
+        private async Task<string> TransformLongAmount(decimal convertthis)
+        {
+            string thevalue = null;
+            if (convertthis >= 1_000_000M)
+            {
+                thevalue = (convertthis / 1_000_000M).ToString("0.#") + "M";
+            }
+            else if (convertthis >= 1_000M)
+            {
+                thevalue = (convertthis / 1_000M).ToString("0.#") + "K";
+            }
+            else
+            {
+                thevalue = convertthis.ToString("0");
+            }
+            return thevalue;
         }
 
         //Main Load
