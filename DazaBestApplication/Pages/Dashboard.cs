@@ -56,6 +56,7 @@ namespace DazaBestApplication.Pages
             totalsaleslabel.Text = $"₱ {totalsale}";
             totalorderslabel.Text = DashboardInformation.OrdersCount.ToString("N0", CultureInfo.InvariantCulture);
             totalproductslabel.Text = DashboardInformation.ProductsCount.ToString("N0", CultureInfo.InvariantCulture);
+            Userlabrl.Text = $"Welcome {Program.theLoggedInAccount.Fullname.Split(' ')[0]}!!";
 
 
             //Load Charts

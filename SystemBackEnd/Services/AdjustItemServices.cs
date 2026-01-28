@@ -56,7 +56,7 @@ namespace SystemBackEnd.Services
                 {
                     int countToday = await _db.ItemAdjustmentHeader
                         .CountAsync(x => x.DateOperated.Date == DateTime.Today);
-                    string referenceNumber = $"ADJ-{DateTime.Now:yyyyMMdd}-{(countToday + 1):D4}";
+                    string referenceNumber = $"ADJ-{DateTime.Now:yyyyMMdd}-{(countToday):D4}";
                     theheader.ReferenceNumber = referenceNumber;
                     _db.Update(theheader);
                     await _db.SaveChangesAsync();

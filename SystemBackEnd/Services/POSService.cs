@@ -134,7 +134,7 @@ namespace SystemBackEnd.Services
                 var countsperday = _db.TransactionHeader.Where(x => x.TransactionDate.Date == DateTime.Now.Date).Count();
                 if (theheader != null)
                 {
-                    theheader.TransactionNumber = $"{DateTime.Now.ToString("yyMMddHHmmss")} - {(countsperday + 1).ToString("D4")}";
+                    theheader.TransactionNumber = $"{DateTime.Now.ToString("yyMMddHHmmss")} - {(countsperday).ToString("D4")}";
                     _db.Update(theheader);
                     await _db.SaveChangesAsync();
                 }

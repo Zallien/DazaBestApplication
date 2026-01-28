@@ -29,7 +29,7 @@ namespace DazaBestApplication.Pages
         private string SearchValue = "";
         private int PageNumber = 1;
         private int ItemPerPaeg = 12;
-        private DateTime FromDateFilter = DateTime.Now;
+        private DateTime FromDateFilter = DateTime.Today;
         private DateTime ToDateFilter = DateTime.Now;
         private int totalpages = 0;
 
@@ -237,8 +237,8 @@ namespace DazaBestApplication.Pages
             switch (RecordFilter.Text)
             {
                 case "Today":
-                    FromDateFilter = DateTime.Now.Date;
-                    ToDateFilter = DateTime.Now.Date;
+                    FromDateFilter = DateTime.Today;
+                    ToDateFilter = DateTime.Now;
                     break;
                 case "This Week":
                     int diff = (7 + (DateTime.Now.DayOfWeek - DayOfWeek.Monday)) % 7;

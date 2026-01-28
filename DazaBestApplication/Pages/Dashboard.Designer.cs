@@ -31,16 +31,16 @@ namespace DazaBestApplication.Pages
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             TopPanel = new SmoothPanel();
             panel4 = new SmoothPanel();
             label1 = new Label();
@@ -85,7 +85,7 @@ namespace DazaBestApplication.Pages
             label4 = new Label();
             totalitemslabel = new Label();
             Topmainpanel = new Panel();
-            label2 = new Label();
+            Userlabrl = new Label();
             TopPanel.SuspendLayout();
             MainPanel.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -216,14 +216,14 @@ namespace DazaBestApplication.Pages
             InventoryStocks.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             InventoryStocks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             InventoryStocks.BackgroundColor = Color.FromArgb(251, 205, 119);
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.Maroon;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Maroon;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            InventoryStocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.Maroon;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.Maroon;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            InventoryStocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             InventoryStocks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             InventoryStocks.Columns.AddRange(new DataGridViewColumn[] { ItemCol, StockCol });
             InventoryStocks.Location = new Point(10, 47);
@@ -288,19 +288,19 @@ namespace DazaBestApplication.Pages
             // 
             TopProductschart.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             TopProductschart.BackColor = Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            TopProductschart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            TopProductschart.Legends.Add(legend1);
+            chartArea7.Name = "ChartArea1";
+            TopProductschart.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            TopProductschart.Legends.Add(legend7);
             TopProductschart.Location = new Point(16, 47);
             TopProductschart.Name = "TopProductschart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
-            series1.Color = Color.Maroon;
-            series1.Legend = "Legend1";
-            series1.Name = "Top Products";
-            series1.YValuesPerPoint = 3;
-            TopProductschart.Series.Add(series1);
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
+            series7.Color = Color.Maroon;
+            series7.Legend = "Legend1";
+            series7.Name = "Top Products";
+            series7.YValuesPerPoint = 3;
+            TopProductschart.Series.Add(series7);
             TopProductschart.Size = new Size(473, 171);
             TopProductschart.TabIndex = 0;
             TopProductschart.Text = "chart2";
@@ -365,22 +365,22 @@ namespace DazaBestApplication.Pages
             // 
             LowInventoryChart.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             LowInventoryChart.BackColor = Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            LowInventoryChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            LowInventoryChart.Legends.Add(legend2);
+            chartArea8.Name = "ChartArea1";
+            LowInventoryChart.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            LowInventoryChart.Legends.Add(legend8);
             LowInventoryChart.Location = new Point(16, 50);
             LowInventoryChart.Name = "LowInventoryChart";
-            series2.BackSecondaryColor = Color.White;
-            series2.BorderColor = Color.White;
-            series2.ChartArea = "ChartArea1";
-            series2.Color = Color.Maroon;
-            series2.LabelBackColor = Color.Transparent;
-            series2.Legend = "Legend1";
-            series2.MarkerColor = Color.Transparent;
-            series2.Name = "Items Stocks";
-            series2.YValuesPerPoint = 4;
-            LowInventoryChart.Series.Add(series2);
+            series8.BackSecondaryColor = Color.White;
+            series8.BorderColor = Color.White;
+            series8.ChartArea = "ChartArea1";
+            series8.Color = Color.Maroon;
+            series8.LabelBackColor = Color.Transparent;
+            series8.Legend = "Legend1";
+            series8.MarkerColor = Color.Transparent;
+            series8.Name = "Items Stocks";
+            series8.YValuesPerPoint = 4;
+            LowInventoryChart.Series.Add(series8);
             LowInventoryChart.Size = new Size(402, 180);
             LowInventoryChart.TabIndex = 0;
             LowInventoryChart.Text = "chart4";
@@ -466,24 +466,24 @@ namespace DazaBestApplication.Pages
             // 
             SaleChart.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             SaleChart.BackColor = Color.Transparent;
-            chartArea3.Name = "ChartArea1";
-            SaleChart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            SaleChart.Legends.Add(legend3);
+            chartArea9.Name = "ChartArea1";
+            SaleChart.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            SaleChart.Legends.Add(legend9);
             SaleChart.Location = new Point(16, 50);
             SaleChart.Name = "SaleChart";
-            series3.BackSecondaryColor = Color.White;
-            series3.BorderColor = Color.White;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Color = Color.Maroon;
-            series3.LabelBackColor = Color.Transparent;
-            series3.LabelForeColor = Color.Maroon;
-            series3.Legend = "Legend1";
-            series3.MarkerColor = Color.Transparent;
-            series3.Name = "Sales";
-            series3.YValuesPerPoint = 3;
-            SaleChart.Series.Add(series3);
+            series9.BackSecondaryColor = Color.White;
+            series9.BorderColor = Color.White;
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series9.Color = Color.Maroon;
+            series9.LabelBackColor = Color.Transparent;
+            series9.LabelForeColor = Color.Maroon;
+            series9.Legend = "Legend1";
+            series9.MarkerColor = Color.Transparent;
+            series9.Name = "Sales";
+            series9.YValuesPerPoint = 3;
+            SaleChart.Series.Add(series9);
             SaleChart.Size = new Size(401, 180);
             SaleChart.TabIndex = 0;
             SaleChart.Text = "chart1";
@@ -794,7 +794,7 @@ namespace DazaBestApplication.Pages
             // 
             // Topmainpanel
             // 
-            Topmainpanel.Controls.Add(label2);
+            Topmainpanel.Controls.Add(Userlabrl);
             Topmainpanel.Dock = DockStyle.Top;
             Topmainpanel.Location = new Point(0, 0);
             Topmainpanel.Name = "Topmainpanel";
@@ -802,16 +802,16 @@ namespace DazaBestApplication.Pages
             Topmainpanel.Size = new Size(875, 50);
             Topmainpanel.TabIndex = 0;
             // 
-            // label2
+            // Userlabrl
             // 
-            label2.Dock = DockStyle.Left;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(5, 3);
-            label2.Name = "label2";
-            label2.Size = new Size(300, 44);
-            label2.TabIndex = 0;
-            label2.Text = "Welcome User!";
-            label2.TextAlign = ContentAlignment.MiddleLeft;
+            Userlabrl.Dock = DockStyle.Left;
+            Userlabrl.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Userlabrl.Location = new Point(5, 3);
+            Userlabrl.Name = "Userlabrl";
+            Userlabrl.Size = new Size(436, 44);
+            Userlabrl.TabIndex = 0;
+            Userlabrl.Text = "Welcome User!";
+            Userlabrl.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // Dashboard
             // 
@@ -862,7 +862,7 @@ namespace DazaBestApplication.Pages
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel8;
         private Panel MainPanel;
         private Panel Topmainpanel;
-        private Label label2;
+        private Label Userlabrl;
         private Bunifu.UI.WinForms.BunifuDropdown DashboardTypeSelect;
         private TableLayoutPanel tableLayoutPanel1;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel4;

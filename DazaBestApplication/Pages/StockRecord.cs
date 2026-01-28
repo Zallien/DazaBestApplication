@@ -31,7 +31,7 @@ namespace DazaBestApplication.Pages
         private int PageNumber = 1;
         private int ItemPerPaeg = 12;
         private int totalpage = 0;
-        private DateTime FromDateFilter = DateTime.Now;
+        private DateTime FromDateFilter = DateTime.Today;
         private DateTime ToDateFilter = DateTime.Now;
 
         private List<string> ReportFilter = new List<string>()
@@ -235,8 +235,8 @@ namespace DazaBestApplication.Pages
             switch (RecordFilter.Text)
             {
                 case "Today":
-                    FromDateFilter = DateTime.Now.Date;
-                    ToDateFilter = DateTime.Now.Date;
+                    FromDateFilter = DateTime.Now;
+                    ToDateFilter = DateTime.Today;
                     break;
                 case "This Week":
                     int diff = (7 + (DateTime.Now.DayOfWeek - DayOfWeek.Monday)) % 7;
