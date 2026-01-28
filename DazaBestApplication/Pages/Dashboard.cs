@@ -70,6 +70,7 @@ namespace DazaBestApplication.Pages
 
                 series.ChartType = SeriesChartType.Line;
                 series.XValueType = ChartValueType.DateTime;
+                series.LabelForeColor = Color.Maroon;
 
                 if (DashboardInformationType != "Yearly")
                 {
