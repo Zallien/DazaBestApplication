@@ -98,7 +98,7 @@ namespace SystemBackEnd.Services
                         .GroupBy(x => x.TransactionDate.Date)
                         .Select(g => new
                         {
-                            Date = g.Key, // keep as DateTime
+                            Date = g.Key, // DateTime
                             SalesValue = g.Sum(x => x.Grandtotal)
                         })
                         .OrderBy(x => x.Date)
@@ -107,7 +107,7 @@ namespace SystemBackEnd.Services
                     dashinfo.ChartforSale = rawData
                         .Select(x => new SalesChart
                         {
-                            Date = x.Date.ToString("yyyy-MM-dd"), // format AFTER query
+                            Date = x.Date,              // keep as DateTime
                             SalesValue = x.SalesValue
                         })
                         .ToList();
@@ -128,7 +128,7 @@ namespace SystemBackEnd.Services
                     dashinfo.ChartforSale = rawData
                         .Select(x => new SalesChart
                         {
-                            Date = new DateTime(fromDate.Year, x.Month, 1).ToString("MMM"), // Jan, Feb, etc.
+                            Date = new DateTime(fromDate.Year, x.Month, 1), // first day of month
                             SalesValue = x.SalesValue
                         })
                         .ToList();

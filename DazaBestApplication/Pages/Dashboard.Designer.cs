@@ -469,6 +469,7 @@ namespace DazaBestApplication.Pages
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series3.Color = Color.Maroon;
             series3.LabelBackColor = Color.Transparent;
+            series3.LabelForeColor = Color.Maroon;
             series3.Legend = "Legend1";
             series3.MarkerColor = Color.Transparent;
             series3.Name = "Sales";

@@ -65,28 +65,41 @@ namespace DazaBestApplication.Pages
         {
             try
             {
-                // Clear any existing series
-                SaleChart.Series.Clear();
+                var series = SaleChart.Series["Sales"];
+                series.Points.Clear();
 
-                // Create a new series
-                var series = new Series("Sales")
-                {
-                    ChartType = SeriesChartType.Line,   // Line chart
-                    XValueType = ChartValueType.String  // because your Date is string ("yyyy-MM-dd" or "MMM")
-                };
+                series.ChartType = SeriesChartType.Line;
+                series.XValueType = ChartValueType.DateTime;
 
-                // Add points from your list
-                foreach (var item in DashboardInformation.ChartforSale)
+                if (DashboardInformationType != "Yearly")
                 {
-                    series.Points.AddXY(item.Date, item.SalesValue);
+                    foreach (var item in DashboardInformation.ChartforSale)
+                    {
+                        // Pass DateTime directly
+                        series.Points.AddXY(item.Date, item.SalesValue);
+                    }
+
+                    // Format axis labels for daily/weekly/monthly
+                    SaleChart.ChartAreas[0].AxisX.LabelStyle.Format = "yyyy-MM-dd";
+                    SaleChart.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Days;
+                    SaleChart.ChartAreas[0].AxisX.Interval = 1;
+                }
+                else
+                {
+                    foreach (var item in DashboardInformation.ChartforSale)
+                    {
+                        // Pass DateTime directly (e.g. 2026-01-01 for Jan, 2026-02-01 for Feb)
+                        series.Points.AddXY(item.Date, item.SalesValue);
+                    }
+
+                    // Format axis labels for yearly (month names)
+                    SaleChart.ChartAreas[0].AxisX.LabelStyle.Format = "MMM";
+                    SaleChart.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Months;
+                    SaleChart.ChartAreas[0].AxisX.Interval = 1;
                 }
 
-                // Add the series to the chart
-                SaleChart.Series.Add(series);
 
-                // Optional: format chart area
-                SaleChart.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
-                SaleChart.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
+
             }
             catch (Exception ex)
             {

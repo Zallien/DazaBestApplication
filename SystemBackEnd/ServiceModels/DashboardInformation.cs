@@ -32,7 +32,7 @@ namespace SystemBackEnd.ServiceModels
 
     public class SalesChart
     {
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         public decimal SalesValue { get; set; }
     }
 }
