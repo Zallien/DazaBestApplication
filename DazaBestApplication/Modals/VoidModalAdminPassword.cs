@@ -17,10 +17,12 @@ namespace DazaBestApplication.Modals
     public partial class VoidModalAdminPassword : Form
     {
         private LoginServices _loginServices;
+        private string acttype;
 
-        public VoidModalAdminPassword()
+        public VoidModalAdminPassword(string actionType)
         {
             InitializeComponent();
+            acttype = actionType;
         }
 
         //Verifypassword if admin exists
@@ -38,7 +40,14 @@ namespace DazaBestApplication.Modals
                 var isValid = await _loginServices.SearchAdminPassword(adminpasswordtxt.Text.Trim());
                 if (isValid)
                 {
-                    await VoidHistoryEventHandler.InvokeEventHandlerNotifier();
+                    if (acttype == "Cancel")
+                    {
+                        await VoidHistoryEventHandler.InvokeEventHandlerNotifier(VoidHistoryEventHandler.ActionType.Cancel);
+                    }
+                    else
+                    {
+                        await VoidHistoryEventHandler.InvokeEventHandlerNotifier(VoidHistoryEventHandler.ActionType.Remove);
+                    }
                     await closemodal();
                 }
                 else

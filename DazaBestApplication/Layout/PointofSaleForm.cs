@@ -362,7 +362,7 @@ namespace DazaBestApplication.Layout
                 bool userConfirmed = OpenDecisionModal(decisionModel);
                 if (userConfirmed == true && loggedaccount.IsOwner == false)
                 {
-                    await ShowVoidModal();
+                    await ShowVoidModal("Cancel");
                 }
                 else
                 {
@@ -587,10 +587,10 @@ namespace DazaBestApplication.Layout
             }
         }
         //Show VoidModal
-        private async Task ShowVoidModal()
+        private async Task ShowVoidModal(string ActionType)
         {
             Form Backgroundmodal = new Form();
-            using (VoidModalAdminPassword modalcontent = new VoidModalAdminPassword())
+            using (VoidModalAdminPassword modalcontent = new VoidModalAdminPassword(ActionType))
             {
                 var mainbounds = this.Bounds;
 
@@ -636,10 +636,54 @@ namespace DazaBestApplication.Layout
             };
 
             //Hook Event Handlers
-            VoidHistoryEventHandler.EventHandlerNotifier += async () =>
+            VoidHistoryEventHandler.EventHandlerNotifier += async (actiontype) =>
             {
-                await CancelResetOrder();
+                if (actiontype == VoidHistoryEventHandler.ActionType.Cancel)
+                {
+                    await CancelResetOrder();
+                }
+                else
+                {
+                    if (ProductOrdersDatagrid.SelectedRows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in ProductOrdersDatagrid.SelectedRows)
+                        {
+                            int rowIndex = row.Index;
+                            await RemoveOrderfrodDatagrid(rowIndex);
+                        }
+                    }
+                }
+
+
             };
+        }
+
+        //Remove Order
+        private async Task RemoveOrderfrodDatagrid(int rowIndex)
+        {
+            IsEdittingdatagrid = true;
+            if (rowIndex >= 0 && ProductOrdersDatagrid.Columns["ActionCol"] != null)
+            {
+
+                var cellValue = ProductOrdersDatagrid.Rows[rowIndex].Cells["ProductIdCol"].Value;
+
+                if (cellValue is Guid productId)
+                {
+                    // Remove from DataGridView
+                    ProductOrdersDatagrid.Rows.RemoveAt(rowIndex);
+
+                    // Remove from CurrentOrders list
+                    POSProductOrders orderToRemove = CurrentOrders.FirstOrDefault(o => o.ProductID == productId);
+                    if (orderToRemove != null)
+                    {
+                        CurrentOrders.Remove(orderToRemove);
+                    }
+
+                    // Recalculate subtotal
+                    await CalculateSubtotal();
+                }
+            }
+
         }
 
 
@@ -752,33 +796,57 @@ namespace DazaBestApplication.Layout
         ///datagrid ulit
         private async void ProductOrdersDatagrid_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (ProductOrdersDatagrid.Columns[e.ColumnIndex].Name != "ActionCol")
+            try
             {
-                return;
-            }
-            _decision = new DecisionModel()
-            {
-                DecisionQuestion = "Do you want to Remove this Item from the Ordered List?",
-                DecisionTitle = "Remove Item",
-            };
-            await ShowVoidModal();
-
-            bool result = OpenDecisionModal();
-            if (result == true)
-            {
-
-                IsEdittingdatagrid = true;
-                if (e.RowIndex >= 0 && ProductOrdersDatagrid.Columns[e.ColumnIndex].Name == "ActionCol")
+                if (ProductOrdersDatagrid.Columns[e.ColumnIndex].Name != "ActionCol")
                 {
-                    Guid productId = (Guid)ProductOrdersDatagrid.Rows[e.RowIndex].Cells["ProductIdCol"].Value;
-                    ProductOrdersDatagrid.Rows.RemoveAt(e.RowIndex);
-                    POSProductOrders orderToRemove = CurrentOrders.FirstOrDefault(o => o.ProductID == productId);
-                    if (orderToRemove != null)
-                    {
-                        CurrentOrders.Remove(orderToRemove);
-                    }
-                    await CalculateSubtotal();
+                    return;
                 }
+                _decision = new DecisionModel()
+                {
+                    DecisionQuestion = "Do you want to Remove this Item from the Ordered List?",
+                    DecisionTitle = "Remove Item",
+                };
+                if (loggedaccount.IsOwner == true)
+                {
+                    IsEdittingdatagrid = true;
+                    if (ProductOrdersDatagrid.SelectedRows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in ProductOrdersDatagrid.SelectedRows)
+                        {
+                            int rowIndex = row.Index;
+                            await RemoveOrderfrodDatagrid(rowIndex);
+                        }
+                    }
+                    return;
+                }
+                await ShowVoidModal("Remove");
+                
+
+                //bool result = OpenDecisionModal();
+                //if (result == true)
+                //{
+
+                //    IsEdittingdatagrid = true;
+                //    await RemoveOrderfrodDatagrid(e.RowIndex);
+
+                //    if (e.RowIndex >= 0 && ProductOrdersDatagrid.Columns[e.ColumnIndex].Name == "ActionCol")
+                //    {
+                //        var sample = ProductOrdersDatagrid.Rows[e.RowIndex].Cells["ProductIdCol"].Value;
+                //        Guid productId = (Guid)ProductOrdersDatagrid.Rows[e.RowIndex].Cells["ProductIdCol"].Value;
+                //        ProductOrdersDatagrid.Rows.RemoveAt(e.RowIndex);
+                //        POSProductOrders orderToRemove = CurrentOrders.FirstOrDefault(o => o.ProductID == productId);
+                //        if (orderToRemove != null)
+                //        {
+                //            CurrentOrders.Remove(orderToRemove);
+                //        }
+                //        await CalculateSubtotal();
+                //    }
+                //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
         private void ProductOrdersDatagrid_EditingControlShowing_1(object sender, DataGridViewEditingControlShowingEventArgs e)

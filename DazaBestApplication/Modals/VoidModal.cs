@@ -40,7 +40,7 @@ namespace DazaBestApplication.Modals
                 bool isAdded = await POSService.InsertVoidHistory(insertVoidHistory);
                 if (isAdded)
                 {
-                    await VoidHistoryEventHandler.InvokeEventHandlerNotifier();
+                    //await VoidHistoryEventHandler.InvokeEventHandlerNotifier();
                     MessageBox.Show("Transaction successfully voided!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     await CloseVoidModal();
                 }
