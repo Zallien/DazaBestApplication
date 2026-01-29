@@ -181,37 +181,49 @@ namespace DazaBestApplication.Pages
         //Change the Date Filter
         private async Task ChangeDateFilter()
         {
-            int newfrommonth = fromdatetxt.Value.Month;
-            int newtomonth = todatetxt.Value.Month;
-            if (newfrommonth != Prevfrommonth)
+            try
             {
-                Prevfrommonth = newfrommonth;
-                int lastDay = DateTime.DaysInMonth(fromdatetxt.Value.Year, newfrommonth);
-                fromdatetxt.Value = new DateTime(fromdatetxt.Value.Year, newfrommonth, lastDay);
-            }
-            if (newtomonth != Prevtomonth)
-            {
-                Prevtomonth = newtomonth;
-                int lastDay = DateTime.DaysInMonth(todatetxt.Value.Year, newtomonth);
-                todatetxt.Value = new DateTime(todatetxt.Value.Year, newtomonth, lastDay);
+                if (RecordFilter.Text != "Custom")
+                {
+                    return;
+                }
 
-            }
+                int newfrommonth = fromdatetxt.Value.Month;
+                int newtomonth = todatetxt.Value.Month;
+                if (newfrommonth != Prevfrommonth)
+                {
+                    Prevfrommonth = newfrommonth;
+                    int lastDay = DateTime.DaysInMonth(fromdatetxt.Value.Year, newfrommonth);
+                    fromdatetxt.Value = new DateTime(fromdatetxt.Value.Year, newfrommonth, lastDay);
+                }
+                if (newtomonth != Prevtomonth)
+                {
+                    Prevtomonth = newtomonth;
+                    int lastDay = DateTime.DaysInMonth(todatetxt.Value.Year, newtomonth);
+                    todatetxt.Value = new DateTime(todatetxt.Value.Year, newtomonth, lastDay);
+
+                }
 
 
-            if (fromdatetxt.Value.Date <= todatetxt.Value.Date)
-            {
-                FromDateFilter = fromdatetxt.Value;
-                ToDateFilter = todatetxt.Value;
-                await GetTotalPages();
-                await CheckPageNumber();
-                await PopulateAllSaleReportDatagrid();
-                PaginationLabel.Text = $"{PageNumber} / {totalpages}";//Pagination Label
+                if (fromdatetxt.Value.Date <= todatetxt.Value.Date)
+                {
+                    FromDateFilter = fromdatetxt.Value;
+                    ToDateFilter = todatetxt.Value;
+                    await GetTotalPages();
+                    await CheckPageNumber();
+                    await PopulateAllSaleReportDatagrid();
+                    PaginationLabel.Text = $"{PageNumber} / {totalpages}";//Pagination Label
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Date Range. Please ensure that the 'From' date is earlier than or equal to the 'To' date.", "Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    fromdatetxt.Value = FromDateFilter;
+                    todatetxt.Value = ToDateFilter;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Invalid Date Range. Please ensure that the 'From' date is earlier than or equal to the 'To' date.", "Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                fromdatetxt.Value = FromDateFilter;
-                todatetxt.Value = ToDateFilter;
+
             }
         }
         //Populate Date Filter
