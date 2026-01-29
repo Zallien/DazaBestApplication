@@ -35,6 +35,7 @@ namespace DazaBestApplication.Modals
                 label1.Text = "Add New Item";
                 AddItemButton.Text = "Add Item";
                 _actionbutton = "AddItem";
+                Thresholdtext.Text = "1";
             }
             else if (Item.Action == "EditItem")
             {
@@ -46,6 +47,7 @@ namespace DazaBestApplication.Modals
                     _updateitemid = Item.EditItem.ItemID;
                     ItemNametxt.Text = Item.EditItem.ItemName;
                     ItemPricetxt.Text = Item.EditItem.ItemPrice.ToString();
+                    Thresholdtext.Text = Item.EditItem.ItemThreshold.ToString();
                 }
             }
         }
@@ -54,6 +56,7 @@ namespace DazaBestApplication.Modals
         {
             FadeIn();
             label5.Text = DateTime.Now.ToString("MM/dd/yyyy");
+            
         }
         //FadeIn Animation
         private void FadeIn()
@@ -85,11 +88,13 @@ namespace DazaBestApplication.Modals
             string ItemName = ItemNametxt.Text.Trim();
             decimal ItemPrice = decimal.Parse(ItemPricetxt.Text.Trim());
             DateTime DateCreated = DateTime.Now;
+            decimal threshold = decimal.Parse(Thresholdtext.Text.Trim());
             var newitem = new InsertItem()
             {
                 ItemName = ItemName,
                 ItemPrice = ItemPrice,
-                DateCreated = DateCreated
+                DateCreated = DateCreated,
+                ItemThreshold = threshold
             };
             itemservices = new ItemServices(new BackEndDBContext());
             bool IsItemAdded = await itemservices.AddItem(newitem);
@@ -110,10 +115,12 @@ namespace DazaBestApplication.Modals
             string ItemName = ItemNametxt.Text.Trim();
             decimal ItemPrice = decimal.Parse(ItemPricetxt.Text.Trim());
             DateTime DateModified = DateTime.Now;
+            decimal threshold = decimal.Parse(Thresholdtext.Text.Trim());
             var updateditem = new InsertItem()
             {
                 ItemName = ItemName,
                 ItemPrice = ItemPrice,
+                ItemThreshold = threshold
             };
             itemservices = new ItemServices(new BackEndDBContext());
             bool IsItemUpdated = await itemservices.UpdateItem(_updateitemid, updateditem);
@@ -197,6 +204,14 @@ namespace DazaBestApplication.Modals
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Thresholdtext_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
         }
     }
 }

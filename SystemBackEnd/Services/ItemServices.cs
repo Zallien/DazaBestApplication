@@ -69,7 +69,8 @@ namespace SystemBackEnd.Services
                     ItemPrice = item.ItemPrice,
                     BalanceStocks = 0,
                     DateCreated = item.DateCreated,
-                    IsActive = true
+                    IsActive = true,
+                    ItemThreshold = item.ItemThreshold,
                 };
                 await _db.Items.AddAsync(newinserteditem);
                 await _db.SaveChangesAsync();
@@ -119,6 +120,7 @@ namespace SystemBackEnd.Services
                 Items _Theitem = await _db.Items.FirstOrDefaultAsync(x => x.ItemID == ItemID);
                 _Theitem.ItemName = item.ItemName;
                 _Theitem.ItemPrice = item.ItemPrice;
+                _Theitem.ItemThreshold = item.ItemThreshold;
                 _db.Items.Update(_Theitem);
                 await _db.SaveChangesAsync();
                 return true;

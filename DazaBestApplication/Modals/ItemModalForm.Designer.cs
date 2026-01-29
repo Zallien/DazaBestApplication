@@ -39,6 +39,10 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             panel1 = new Panel();
             panel3 = new Panel();
             CloseModal = new Bunifu.UI.WinForms.BunifuImageButton();
@@ -52,6 +56,8 @@
             label5 = new Label();
             ItemNametxt = new Bunifu.UI.WinForms.BunifuTextBox();
             ItemPricetxt = new Bunifu.UI.WinForms.BunifuTextBox();
+            Thresholdtext = new Bunifu.UI.WinForms.BunifuTextBox();
+            label6 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -128,7 +134,7 @@
             panel2.Controls.Add(bunifuButton2);
             panel2.Controls.Add(AddItemButton);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 225);
+            panel2.Location = new Point(0, 253);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(10, 2, 10, 2);
             panel2.Size = new Size(420, 35);
@@ -330,7 +336,7 @@
             // label3
             // 
             label3.Font = new Font("Courier New", 9F, FontStyle.Bold);
-            label3.Location = new Point(12, 102);
+            label3.Location = new Point(10, 102);
             label3.Name = "label3";
             label3.Size = new Size(129, 30);
             label3.TabIndex = 5;
@@ -340,7 +346,7 @@
             // label4
             // 
             label4.Font = new Font("Courier New", 9F, FontStyle.Bold);
-            label4.Location = new Point(12, 152);
+            label4.Location = new Point(12, 206);
             label4.Name = "label4";
             label4.Size = new Size(151, 30);
             label4.TabIndex = 8;
@@ -350,7 +356,7 @@
             // label5
             // 
             label5.Font = new Font("Courier New", 9F, FontStyle.Bold);
-            label5.Location = new Point(147, 152);
+            label5.Location = new Point(147, 206);
             label5.Name = "label5";
             label5.Size = new Size(261, 30);
             label5.TabIndex = 9;
@@ -509,11 +515,98 @@
             ItemPricetxt.TextChanged += ItemPricetxt_TextChanged;
             ItemPricetxt.KeyPress += ItemPricetxt_KeyPress;
             // 
+            // Thresholdtext
+            // 
+            Thresholdtext.AcceptsReturn = false;
+            Thresholdtext.AcceptsTab = false;
+            Thresholdtext.AnimationSpeed = 200;
+            Thresholdtext.AutoCompleteMode = AutoCompleteMode.None;
+            Thresholdtext.AutoCompleteSource = AutoCompleteSource.None;
+            Thresholdtext.AutoSizeHeight = true;
+            Thresholdtext.BackColor = Color.Transparent;
+            Thresholdtext.BackgroundImage = (Image)resources.GetObject("Thresholdtext.BackgroundImage");
+            Thresholdtext.BorderColorActive = Color.DodgerBlue;
+            Thresholdtext.BorderColorDisabled = Color.FromArgb(204, 204, 204);
+            Thresholdtext.BorderColorHover = Color.FromArgb(105, 181, 255);
+            Thresholdtext.BorderColorIdle = Color.Silver;
+            Thresholdtext.BorderRadius = 1;
+            Thresholdtext.BorderThickness = 1;
+            Thresholdtext.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
+            Thresholdtext.CharacterCasing = CharacterCasing.Normal;
+            Thresholdtext.DefaultFont = new Font("Segoe UI", 9.25F);
+            Thresholdtext.DefaultText = "";
+            Thresholdtext.FillColor = Color.White;
+            Thresholdtext.HideSelection = true;
+            Thresholdtext.IconLeft = null;
+            Thresholdtext.IconLeftCursor = Cursors.IBeam;
+            Thresholdtext.IconPadding = 10;
+            Thresholdtext.IconRight = null;
+            Thresholdtext.IconRightCursor = Cursors.IBeam;
+            Thresholdtext.Location = new Point(145, 153);
+            Thresholdtext.MaxLength = 5;
+            Thresholdtext.MinimumSize = new Size(1, 1);
+            Thresholdtext.Modified = false;
+            Thresholdtext.Multiline = false;
+            Thresholdtext.Name = "Thresholdtext";
+            stateProperties9.BorderColor = Color.DodgerBlue;
+            stateProperties9.FillColor = Color.Empty;
+            stateProperties9.ForeColor = Color.Empty;
+            stateProperties9.PlaceholderForeColor = Color.Empty;
+            Thresholdtext.OnActiveState = stateProperties9;
+            stateProperties10.BorderColor = Color.FromArgb(204, 204, 204);
+            stateProperties10.FillColor = Color.FromArgb(240, 240, 240);
+            stateProperties10.ForeColor = Color.FromArgb(109, 109, 109);
+            stateProperties10.PlaceholderForeColor = Color.DarkGray;
+            Thresholdtext.OnDisabledState = stateProperties10;
+            stateProperties11.BorderColor = Color.FromArgb(105, 181, 255);
+            stateProperties11.FillColor = Color.Empty;
+            stateProperties11.ForeColor = Color.Empty;
+            stateProperties11.PlaceholderForeColor = Color.Empty;
+            Thresholdtext.OnHoverState = stateProperties11;
+            stateProperties12.BorderColor = Color.Silver;
+            stateProperties12.FillColor = Color.White;
+            stateProperties12.ForeColor = Color.Empty;
+            stateProperties12.PlaceholderForeColor = Color.Empty;
+            Thresholdtext.OnIdleState = stateProperties12;
+            Thresholdtext.Padding = new Padding(3);
+            Thresholdtext.PasswordChar = '\0';
+            Thresholdtext.PlaceholderForeColor = Color.Silver;
+            Thresholdtext.PlaceholderText = "";
+            Thresholdtext.ReadOnly = false;
+            Thresholdtext.ScrollBars = ScrollBars.None;
+            Thresholdtext.SelectedText = "";
+            Thresholdtext.SelectionLength = 0;
+            Thresholdtext.SelectionStart = 0;
+            Thresholdtext.ShortcutsEnabled = true;
+            Thresholdtext.Size = new Size(261, 39);
+            Thresholdtext.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            Thresholdtext.TabIndex = 13;
+            Thresholdtext.TextAlign = HorizontalAlignment.Left;
+            Thresholdtext.TextMarginBottom = 0;
+            Thresholdtext.TextMarginLeft = 3;
+            Thresholdtext.TextMarginTop = 1;
+            Thresholdtext.TextPlaceholder = "";
+            Thresholdtext.UseSystemPasswordChar = false;
+            Thresholdtext.WordWrap = true;
+            Thresholdtext.KeyPress += Thresholdtext_KeyPress;
+            // 
+            // label6
+            // 
+            label6.Font = new Font("Courier New", 9F, FontStyle.Bold);
+            label6.Location = new Point(10, 153);
+            label6.Name = "label6";
+            label6.Size = new Size(129, 30);
+            label6.TabIndex = 12;
+            label6.Text = "Item Threshold :";
+            label6.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // ItemModalForm
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(420, 260);
+            ClientSize = new Size(420, 288);
+            Controls.Add(Thresholdtext);
+            Controls.Add(label6);
             Controls.Add(ItemPricetxt);
             Controls.Add(ItemNametxt);
             Controls.Add(label5);
@@ -547,5 +640,7 @@
         private Bunifu.UI.WinForms.BunifuImageButton CloseModal;
         private Panel panel3;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton2;
+        private Bunifu.UI.WinForms.BunifuTextBox Thresholdtext;
+        private Label label6;
     }
 }

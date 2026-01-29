@@ -233,7 +233,8 @@ namespace DazaBestApplication.Pages
                 row.Cells["ItemCodeCol"].Value = item.ItemCode;
                 row.Cells["ItemNameCol"].Value = item.ItemName;
                 row.Cells["StocksCol"].Value = item.BalanceStocks;
-                row.Cells["PriceCol"].Value = "₱" + item.ItemPrice.ToString();
+                row.Cells["PriceCol"].Value = "₱" + item.ItemPrice.ToString(); //ThresholdCol
+                row.Cells["ThresholdCol"].Value = item.ItemThreshold.ToString();
             }
         }
         //Open Item Modal
@@ -355,7 +356,8 @@ namespace DazaBestApplication.Pages
                     {
                         ItemID = Guid.Parse(selectedrow.Cells["IdCol"].Value.ToString()),
                         ItemName = selectedrow.Cells["ItemNameCol"].Value.ToString(),
-                        ItemPrice = decimal.Parse(selectedrow.Cells["PriceCol"].Value.ToString().Replace("₱", ""))
+                        ItemPrice = decimal.Parse(selectedrow.Cells["PriceCol"].Value.ToString().Replace("₱", "")),
+                        ItemThreshold = decimal.Parse(selectedrow.Cells["ThresholdCol"].Value.ToString())
                     }
                 };
                 OpenModal();
@@ -548,7 +550,8 @@ namespace DazaBestApplication.Pages
                     {
                         ItemID = Guid.Parse(selectedrow.Cells["IdCol"].Value.ToString()),
                         ItemName = selectedrow.Cells["ItemNameCol"].Value.ToString(),
-                        ItemPrice = decimal.Parse(selectedrow.Cells["PriceCol"].Value.ToString().Replace("₱", ""))
+                        ItemPrice = decimal.Parse(selectedrow.Cells["PriceCol"].Value.ToString().Replace("₱", "")),
+                        ItemThreshold = decimal.Parse(selectedrow.Cells["ThresholdCol"].Value.ToString())
                     }
                 };
                 OpenModal();

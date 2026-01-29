@@ -19,5 +19,6 @@ namespace SystemBackEnd.Models
         public DateTime DateCreated { get; set; }
         public bool IsActive { get; set; }
         public byte[]? ItemImage { get; set; }
+        public decimal ItemThreshold { get; set; }
     }
 }

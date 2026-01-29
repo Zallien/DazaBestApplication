@@ -140,7 +140,7 @@ namespace SystemBackEnd.Services
 
                 //Low Inventory Alert
                 dashinfo.LowInventoryAlert = await _db.Items
-                    .Where(x => (x.BalanceStocks < 5m && x.BalanceStocks > 0m) && x.IsActive == true)
+                    .Where(x => (x.BalanceStocks <= x.ItemThreshold && x.BalanceStocks > 0m) && x.IsActive == true)
                     .OrderBy(x => (double)x.BalanceStocks) // cast to double
                     .Select(x => new LowInventory
                     {
