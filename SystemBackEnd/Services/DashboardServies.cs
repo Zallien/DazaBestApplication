@@ -95,7 +95,7 @@ namespace SystemBackEnd.Services
                                                 })
                                               .ToListAsync();
                 //Sales Chart Data
-                if (dashboardType != "Yearly")
+                if (dashboardType != "Yearly" && dashboardType != "Daily")
                 {
                     var rawData = await _db.TransactionHeader
                         .Where(x => x.TransactionDate.Date >= fromDate && x.TransactionDate.Date <= toDate)
@@ -115,6 +115,27 @@ namespace SystemBackEnd.Services
                             SalesValue = x.SalesValue
                         })
                         .ToList();
+                }
+                else if(dashboardType == "Daily")
+                {
+                    var rawData = await _db.TransactionHeader
+                        .Where(x => x.TransactionDate.Date >= fromDate && x.TransactionDate.Date <= toDate)
+                        .Select(x => new
+                        {
+                            Date = x.TransactionDate,
+                            SalesValue = x.Grandtotal
+                        })
+                        .OrderBy(x => x.Date)
+                        .ToListAsync();
+
+                    dashinfo.ChartforSale = rawData
+                        .Select(x => new SalesChart
+                        {
+                            Date = x.Date,
+                            SalesValue = x.SalesValue
+                        })
+                        .ToList();
+
                 }
                 else
                 {

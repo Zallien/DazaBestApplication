@@ -79,7 +79,7 @@ namespace DazaBestApplication.Pages
                 series.XValueType = ChartValueType.DateTime;
                 series.LabelForeColor = Color.Maroon;
 
-                if (DashboardInformationType != "Yearly")
+                if (DashboardInformationType != "Yearly" && DashboardInformationType != "Daily")
                 {
                     foreach (var item in DashboardInformation.ChartforSale)
                     {
@@ -87,10 +87,71 @@ namespace DazaBestApplication.Pages
                         series.Points.AddXY(item.Date, item.SalesValue);
                     }
 
-                    // Format axis labels for daily/weekly/monthly
+                    // Format axis labels for weekly/monthly
                     SaleChart.ChartAreas[0].AxisX.LabelStyle.Format = "yyyy-MM-dd";
                     SaleChart.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Days;
                     SaleChart.ChartAreas[0].AxisX.Interval = 1;
+
+                    // Set minimum based on first data point
+                    if (DashboardInformation.ChartforSale.Any())
+                    {
+                        var minDate = DashboardInformation.ChartforSale.Min(x => x.Date);
+                        var maxDate = DashboardInformation.ChartforSale.Max(x => x.Date);
+
+                        // For weekly: snap to start and end of week
+                        if (DashboardInformationType == "Weekly")
+                        {
+                            var startOfWeek = minDate.AddDays(-(int)minDate.DayOfWeek);
+                            var endOfWeek = startOfWeek.AddDays(6);
+
+                            SaleChart.ChartAreas[0].AxisX.Minimum = startOfWeek.ToOADate();
+                            SaleChart.ChartAreas[0].AxisX.Maximum = endOfWeek.ToOADate();
+                        }
+                        // For monthly: snap to first and last day of month
+                        else if (DashboardInformationType == "Monthly")
+                        {
+                            var startOfMonth = new DateTime(minDate.Year, minDate.Month, 1);
+                            var endOfMonth = new DateTime(maxDate.Year, maxDate.Month,
+                                                          DateTime.DaysInMonth(maxDate.Year, maxDate.Month));
+
+                            SaleChart.ChartAreas[0].AxisX.Minimum = startOfMonth.ToOADate();
+                            SaleChart.ChartAreas[0].AxisX.Maximum = endOfMonth.ToOADate();
+                        }
+                        else
+                        {
+                            // fallback: use actual min/max transaction dates
+                            SaleChart.ChartAreas[0].AxisX.Minimum = minDate.ToOADate();
+                            SaleChart.ChartAreas[0].AxisX.Maximum = maxDate.ToOADate();
+                        }
+                    }
+
+
+                }
+                else if (DashboardInformationType == "Daily")
+                {
+                    foreach (var item in DashboardInformation.ChartforSale)
+                    {
+                        series.Points.AddXY(item.Date, item.SalesValue);
+                    }
+
+                    // Format axis labels for daily (show hours/minutes)
+                    SaleChart.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm"; // 24-hour format
+                    SaleChart.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Hours;
+                    SaleChart.ChartAreas[0].AxisX.Interval = 1;
+
+                    if (DashboardInformation.ChartforSale.Any())
+                    {
+                        var minDate = DashboardInformation.ChartforSale.Min(x => x.Date);
+                        var maxDate = DashboardInformation.ChartforSale.Max(x => x.Date);
+
+                        // Snap to start and end of the day
+                        var startOfDay = minDate.Date; // midnight
+                        var endOfDay = minDate.Date.AddDays(1).AddTicks(-1); // 23:59:59
+
+                        SaleChart.ChartAreas[0].AxisX.Minimum = startOfDay.ToOADate();
+                        SaleChart.ChartAreas[0].AxisX.Maximum = endOfDay.ToOADate();
+                    }
+
                 }
                 else
                 {
