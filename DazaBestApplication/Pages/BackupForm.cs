@@ -81,8 +81,6 @@ namespace DazaBestApplication.Pages
             {
                 source.Open();
                 dest.Open();
-
-                // ✅ SQLite-built-in restore function
                 source.BackupDatabase(dest);
             }
         }
@@ -201,11 +199,21 @@ namespace DazaBestApplication.Pages
         {
             try
             {
-                // ✅ Default folder from your settings
+                // Ensure all changes are saved and close all connections
+                using (var db = new BackEndDBContext())
+                {
+                    db.SaveChanges();
+                }
+
+                // Force close all pooled connections to the database
+                SqliteConnection.ClearAllPools();
+
+                // Give a brief moment for connections to fully close
+                System.Threading.Thread.Sleep(100);
+
                 string defaultBackupFolder = Program.theBackupSettings.BackupLocation;
                 Directory.CreateDirectory(defaultBackupFolder);
 
-                // ✅ DB path
                 string dbPath = Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                     "DazaBestApplication",
@@ -218,7 +226,6 @@ namespace DazaBestApplication.Pages
                     return;
                 }
 
-                // ✅ Configure SaveFileDialog
                 SaveFileDialog dlg = new SaveFileDialog
                 {
                     Title = "Save Backup File",
@@ -227,14 +234,10 @@ namespace DazaBestApplication.Pages
                     FileName = $"Backup_{DateTime.Now:yyyyMMdd_HHmmss}.db"
                 };
 
-                // ✅ Let user choose where and what name
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     string userSelectedPath = dlg.FileName;
-
-                    // ✅ Copy DB to user-chosen file
                     File.Copy(dbPath, userSelectedPath, true);
-
                     MessageBox.Show("Backup created:\n" + userSelectedPath);
                 }
             }

@@ -126,7 +126,7 @@ namespace DazaBestApplication.Layout
 
                 Label priceLabel = new Label
                 {
-                    Text = product.Price.ToString("C2"),
+                    Text = $"₱ {product.Price}",
                     Dock = DockStyle.Top, // <-- Fill the remaining space
                     TextAlign = ContentAlignment.MiddleLeft,
                     Font = new Font("Segoe UI", 10, FontStyle.Bold),
@@ -807,6 +807,12 @@ namespace DazaBestApplication.Layout
                     DecisionQuestion = "Do you want to Remove this Item from the Ordered List?",
                     DecisionTitle = "Remove Item",
                 };
+                bool userConfirmed = OpenDecisionModal(_decision);
+                if (userConfirmed != true)
+                {
+                    return;
+                }
+
                 if (loggedaccount.IsOwner == true)
                 {
                     IsEdittingdatagrid = true;
@@ -904,7 +910,7 @@ namespace DazaBestApplication.Layout
                     if (item != null)
                     {
                         item.Quantity = Convert.ToInt32(ProductOrdersDatagrid.Rows[e.RowIndex].Cells["QuantityCol"].Value);
-                        await CalculateTotal();
+                        await CalculateSubtotal();
                     }
                 }
             }

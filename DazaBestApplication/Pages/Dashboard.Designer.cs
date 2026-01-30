@@ -123,7 +123,7 @@ namespace DazaBestApplication.Pages
             TopPanel.Location = new Point(0, 0);
             TopPanel.Name = "TopPanel";
             TopPanel.Padding = new Padding(10, 0, 10, 0);
-            TopPanel.Size = new Size(875, 50);
+            TopPanel.Size = new Size(900, 50);
             TopPanel.TabIndex = 3;
             // 
             // panel4
@@ -132,7 +132,7 @@ namespace DazaBestApplication.Pages
             panel4.Dock = DockStyle.Bottom;
             panel4.Location = new Point(10, 45);
             panel4.Name = "panel4";
-            panel4.Size = new Size(855, 5);
+            panel4.Size = new Size(880, 5);
             panel4.TabIndex = 1;
             // 
             // label1
@@ -172,7 +172,7 @@ namespace DazaBestApplication.Pages
             MainPanel.Dock = DockStyle.Fill;
             MainPanel.Location = new Point(0, 50);
             MainPanel.Name = "MainPanel";
-            MainPanel.Size = new Size(875, 696);
+            MainPanel.Size = new Size(900, 696);
             MainPanel.TabIndex = 4;
             // 
             // tableLayoutPanel3
@@ -188,7 +188,7 @@ namespace DazaBestApplication.Pages
             tableLayoutPanel3.Padding = new Padding(3);
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Size = new Size(875, 245);
+            tableLayoutPanel3.Size = new Size(900, 245);
             tableLayoutPanel3.TabIndex = 3;
             // 
             // bunifuPanel11
@@ -202,11 +202,11 @@ namespace DazaBestApplication.Pages
             bunifuPanel11.Controls.Add(InventoryStocks);
             bunifuPanel11.Controls.Add(label13);
             bunifuPanel11.Dock = DockStyle.Fill;
-            bunifuPanel11.Location = new Point(512, 6);
+            bunifuPanel11.Location = new Point(527, 6);
             bunifuPanel11.Name = "bunifuPanel11";
             bunifuPanel11.Padding = new Padding(8);
             bunifuPanel11.ShowBorders = true;
-            bunifuPanel11.Size = new Size(357, 233);
+            bunifuPanel11.Size = new Size(367, 233);
             bunifuPanel11.TabIndex = 2;
             // 
             // InventoryStocks
@@ -237,7 +237,7 @@ namespace DazaBestApplication.Pages
             InventoryStocks.ScrollBars = ScrollBars.Vertical;
             InventoryStocks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             InventoryStocks.ShowRowErrors = false;
-            InventoryStocks.Size = new Size(336, 175);
+            InventoryStocks.Size = new Size(346, 175);
             InventoryStocks.TabIndex = 8;
             // 
             // ItemCol
@@ -283,7 +283,7 @@ namespace DazaBestApplication.Pages
             bunifuPanel12.Name = "bunifuPanel12";
             bunifuPanel12.Padding = new Padding(8);
             bunifuPanel12.ShowBorders = true;
-            bunifuPanel12.Size = new Size(500, 233);
+            bunifuPanel12.Size = new Size(515, 233);
             bunifuPanel12.TabIndex = 1;
             // 
             // TopProductschart
@@ -303,7 +303,7 @@ namespace DazaBestApplication.Pages
             series1.Name = "Top Products";
             series1.YValuesPerPoint = 3;
             TopProductschart.Series.Add(series1);
-            TopProductschart.Size = new Size(473, 171);
+            TopProductschart.Size = new Size(488, 171);
             TopProductschart.TabIndex = 0;
             TopProductschart.Text = "chart2";
             // 
@@ -331,7 +331,7 @@ namespace DazaBestApplication.Pages
             tableLayoutPanel2.Padding = new Padding(3);
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(875, 250);
+            tableLayoutPanel2.Size = new Size(900, 250);
             tableLayoutPanel2.TabIndex = 2;
             // 
             // bunifuPanel10
@@ -345,11 +345,11 @@ namespace DazaBestApplication.Pages
             bunifuPanel10.Controls.Add(label12);
             bunifuPanel10.Controls.Add(LowInventoryChart);
             bunifuPanel10.Dock = DockStyle.Fill;
-            bunifuPanel10.Location = new Point(440, 6);
+            bunifuPanel10.Location = new Point(453, 6);
             bunifuPanel10.Name = "bunifuPanel10";
             bunifuPanel10.Padding = new Padding(8);
             bunifuPanel10.ShowBorders = true;
-            bunifuPanel10.Size = new Size(429, 238);
+            bunifuPanel10.Size = new Size(441, 238);
             bunifuPanel10.TabIndex = 2;
             // 
             // label12
@@ -383,7 +383,7 @@ namespace DazaBestApplication.Pages
             series2.Name = "Items Stocks";
             series2.YValuesPerPoint = 4;
             LowInventoryChart.Series.Add(series2);
-            LowInventoryChart.Size = new Size(402, 180);
+            LowInventoryChart.Size = new Size(414, 180);
             LowInventoryChart.TabIndex = 0;
             LowInventoryChart.Text = "chart4";
             // 
@@ -403,7 +403,7 @@ namespace DazaBestApplication.Pages
             bunifuPanel9.Name = "bunifuPanel9";
             bunifuPanel9.Padding = new Padding(8);
             bunifuPanel9.ShowBorders = true;
-            bunifuPanel9.Size = new Size(428, 238);
+            bunifuPanel9.Size = new Size(441, 238);
             bunifuPanel9.TabIndex = 1;
             // 
             // DashboardTypeSelect
@@ -444,7 +444,7 @@ namespace DazaBestApplication.Pages
             DashboardTypeSelect.ItemHighLightForeColor = Color.Black;
             DashboardTypeSelect.Items.AddRange(new object[] { "Daily", "Weekly", "Monthly", "Yearly" });
             DashboardTypeSelect.ItemTopMargin = 3;
-            DashboardTypeSelect.Location = new Point(263, 8);
+            DashboardTypeSelect.Location = new Point(276, 8);
             DashboardTypeSelect.Name = "DashboardTypeSelect";
             DashboardTypeSelect.Size = new Size(154, 32);
             DashboardTypeSelect.TabIndex = 1;
@@ -486,7 +486,7 @@ namespace DazaBestApplication.Pages
             series3.Name = "Sales";
             series3.YValuesPerPoint = 3;
             SaleChart.Series.Add(series3);
-            SaleChart.Size = new Size(401, 180);
+            SaleChart.Size = new Size(414, 180);
             SaleChart.TabIndex = 0;
             SaleChart.Text = "chart1";
             // 
@@ -507,7 +507,7 @@ namespace DazaBestApplication.Pages
             tableLayoutPanel1.Padding = new Padding(5);
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(875, 130);
+            tableLayoutPanel1.Size = new Size(900, 130);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // bunifuPanel4
@@ -522,10 +522,10 @@ namespace DazaBestApplication.Pages
             bunifuPanel4.Controls.Add(label9);
             bunifuPanel4.Controls.Add(totalproductslabel);
             bunifuPanel4.Dock = DockStyle.Fill;
-            bunifuPanel4.Location = new Point(656, 8);
+            bunifuPanel4.Location = new Point(674, 8);
             bunifuPanel4.Name = "bunifuPanel4";
             bunifuPanel4.ShowBorders = true;
-            bunifuPanel4.Size = new Size(211, 114);
+            bunifuPanel4.Size = new Size(218, 114);
             bunifuPanel4.TabIndex = 3;
             // 
             // bunifuPanel8
@@ -538,11 +538,11 @@ namespace DazaBestApplication.Pages
             bunifuPanel8.BorderRadius = 3;
             bunifuPanel8.BorderThickness = 1;
             bunifuPanel8.Controls.Add(pictureBox4);
-            bunifuPanel8.Location = new Point(7, 19);
+            bunifuPanel8.Location = new Point(6, 18);
             bunifuPanel8.Name = "bunifuPanel8";
             bunifuPanel8.Padding = new Padding(5);
             bunifuPanel8.ShowBorders = true;
-            bunifuPanel8.Size = new Size(70, 70);
+            bunifuPanel8.Size = new Size(80, 80);
             bunifuPanel8.TabIndex = 6;
             // 
             // pictureBox4
@@ -552,7 +552,7 @@ namespace DazaBestApplication.Pages
             pictureBox4.Image = Properties.Resources.logistics;
             pictureBox4.Location = new Point(5, 5);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(60, 60);
+            pictureBox4.Size = new Size(70, 70);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 0;
             pictureBox4.TabStop = false;
@@ -562,7 +562,7 @@ namespace DazaBestApplication.Pages
             label9.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(80, 52);
+            label9.Location = new Point(87, 52);
             label9.Name = "label9";
             label9.Size = new Size(122, 30);
             label9.TabIndex = 5;
@@ -574,7 +574,7 @@ namespace DazaBestApplication.Pages
             totalproductslabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             totalproductslabel.BackColor = Color.Transparent;
             totalproductslabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            totalproductslabel.Location = new Point(80, 24);
+            totalproductslabel.Location = new Point(87, 24);
             totalproductslabel.Name = "totalproductslabel";
             totalproductslabel.Size = new Size(122, 30);
             totalproductslabel.TabIndex = 4;
@@ -593,10 +593,10 @@ namespace DazaBestApplication.Pages
             bunifuPanel3.Controls.Add(label7);
             bunifuPanel3.Controls.Add(totalorderslabel);
             bunifuPanel3.Dock = DockStyle.Fill;
-            bunifuPanel3.Location = new Point(440, 8);
+            bunifuPanel3.Location = new Point(452, 8);
             bunifuPanel3.Name = "bunifuPanel3";
             bunifuPanel3.ShowBorders = true;
-            bunifuPanel3.Size = new Size(210, 114);
+            bunifuPanel3.Size = new Size(216, 114);
             bunifuPanel3.TabIndex = 2;
             // 
             // bunifuPanel7
@@ -609,11 +609,11 @@ namespace DazaBestApplication.Pages
             bunifuPanel7.BorderRadius = 3;
             bunifuPanel7.BorderThickness = 1;
             bunifuPanel7.Controls.Add(pictureBox3);
-            bunifuPanel7.Location = new Point(6, 19);
+            bunifuPanel7.Location = new Point(9, 19);
             bunifuPanel7.Name = "bunifuPanel7";
             bunifuPanel7.Padding = new Padding(5);
             bunifuPanel7.ShowBorders = true;
-            bunifuPanel7.Size = new Size(70, 70);
+            bunifuPanel7.Size = new Size(80, 80);
             bunifuPanel7.TabIndex = 6;
             // 
             // pictureBox3
@@ -623,7 +623,7 @@ namespace DazaBestApplication.Pages
             pictureBox3.Image = Properties.Resources.purchase_order;
             pictureBox3.Location = new Point(5, 5);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(60, 60);
+            pictureBox3.Size = new Size(70, 70);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 0;
             pictureBox3.TabStop = false;
@@ -633,7 +633,7 @@ namespace DazaBestApplication.Pages
             label7.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(82, 52);
+            label7.Location = new Point(88, 52);
             label7.Name = "label7";
             label7.Size = new Size(122, 30);
             label7.TabIndex = 5;
@@ -645,7 +645,7 @@ namespace DazaBestApplication.Pages
             totalorderslabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             totalorderslabel.BackColor = Color.Transparent;
             totalorderslabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            totalorderslabel.Location = new Point(82, 24);
+            totalorderslabel.Location = new Point(88, 24);
             totalorderslabel.Name = "totalorderslabel";
             totalorderslabel.Size = new Size(122, 30);
             totalorderslabel.TabIndex = 4;
@@ -664,10 +664,10 @@ namespace DazaBestApplication.Pages
             bunifuPanel2.Controls.Add(label5);
             bunifuPanel2.Controls.Add(totalsaleslabel);
             bunifuPanel2.Dock = DockStyle.Fill;
-            bunifuPanel2.Location = new Point(224, 8);
+            bunifuPanel2.Location = new Point(230, 8);
             bunifuPanel2.Name = "bunifuPanel2";
             bunifuPanel2.ShowBorders = true;
-            bunifuPanel2.Size = new Size(210, 114);
+            bunifuPanel2.Size = new Size(216, 114);
             bunifuPanel2.TabIndex = 1;
             // 
             // bunifuPanel6
@@ -684,7 +684,7 @@ namespace DazaBestApplication.Pages
             bunifuPanel6.Name = "bunifuPanel6";
             bunifuPanel6.Padding = new Padding(5);
             bunifuPanel6.ShowBorders = true;
-            bunifuPanel6.Size = new Size(70, 70);
+            bunifuPanel6.Size = new Size(80, 80);
             bunifuPanel6.TabIndex = 6;
             // 
             // pictureBox2
@@ -694,7 +694,7 @@ namespace DazaBestApplication.Pages
             pictureBox2.Image = Properties.Resources.increase;
             pictureBox2.Location = new Point(5, 5);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(60, 60);
+            pictureBox2.Size = new Size(70, 70);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 0;
             pictureBox2.TabStop = false;
@@ -704,7 +704,7 @@ namespace DazaBestApplication.Pages
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(82, 52);
+            label5.Location = new Point(88, 52);
             label5.Name = "label5";
             label5.Size = new Size(122, 30);
             label5.TabIndex = 5;
@@ -716,7 +716,7 @@ namespace DazaBestApplication.Pages
             totalsaleslabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             totalsaleslabel.BackColor = Color.Transparent;
             totalsaleslabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            totalsaleslabel.Location = new Point(82, 24);
+            totalsaleslabel.Location = new Point(88, 24);
             totalsaleslabel.Name = "totalsaleslabel";
             totalsaleslabel.Size = new Size(122, 30);
             totalsaleslabel.TabIndex = 4;
@@ -738,7 +738,7 @@ namespace DazaBestApplication.Pages
             bunifuPanel1.Location = new Point(8, 8);
             bunifuPanel1.Name = "bunifuPanel1";
             bunifuPanel1.ShowBorders = true;
-            bunifuPanel1.Size = new Size(210, 114);
+            bunifuPanel1.Size = new Size(216, 114);
             bunifuPanel1.TabIndex = 0;
             // 
             // bunifuPanel5
@@ -751,11 +751,11 @@ namespace DazaBestApplication.Pages
             bunifuPanel5.BorderRadius = 3;
             bunifuPanel5.BorderThickness = 1;
             bunifuPanel5.Controls.Add(pictureBox1);
-            bunifuPanel5.Location = new Point(9, 19);
+            bunifuPanel5.Location = new Point(10, 17);
             bunifuPanel5.Name = "bunifuPanel5";
             bunifuPanel5.Padding = new Padding(5);
             bunifuPanel5.ShowBorders = true;
-            bunifuPanel5.Size = new Size(70, 70);
+            bunifuPanel5.Size = new Size(80, 80);
             bunifuPanel5.TabIndex = 3;
             // 
             // pictureBox1
@@ -765,7 +765,7 @@ namespace DazaBestApplication.Pages
             pictureBox1.Image = Properties.Resources.logistics;
             pictureBox1.Location = new Point(5, 5);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(60, 60);
+            pictureBox1.Size = new Size(70, 70);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -775,7 +775,7 @@ namespace DazaBestApplication.Pages
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(85, 52);
+            label4.Location = new Point(91, 52);
             label4.Name = "label4";
             label4.Size = new Size(122, 30);
             label4.TabIndex = 2;
@@ -787,7 +787,7 @@ namespace DazaBestApplication.Pages
             totalitemslabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             totalitemslabel.BackColor = Color.Transparent;
             totalitemslabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            totalitemslabel.Location = new Point(85, 24);
+            totalitemslabel.Location = new Point(91, 24);
             totalitemslabel.Name = "totalitemslabel";
             totalitemslabel.Size = new Size(122, 30);
             totalitemslabel.TabIndex = 1;
@@ -801,7 +801,7 @@ namespace DazaBestApplication.Pages
             Topmainpanel.Location = new Point(0, 0);
             Topmainpanel.Name = "Topmainpanel";
             Topmainpanel.Padding = new Padding(5, 3, 5, 3);
-            Topmainpanel.Size = new Size(875, 50);
+            Topmainpanel.Size = new Size(900, 50);
             Topmainpanel.TabIndex = 0;
             // 
             // Userlabrl
@@ -819,7 +819,7 @@ namespace DazaBestApplication.Pages
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(875, 746);
+            ClientSize = new Size(900, 746);
             Controls.Add(MainPanel);
             Controls.Add(TopPanel);
             FormBorderStyle = FormBorderStyle.None;
