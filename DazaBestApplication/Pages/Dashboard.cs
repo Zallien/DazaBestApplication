@@ -165,6 +165,19 @@ namespace DazaBestApplication.Pages
                     SaleChart.ChartAreas[0].AxisX.LabelStyle.Format = "MMM";
                     SaleChart.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Months;
                     SaleChart.ChartAreas[0].AxisX.Interval = 1;
+
+                    if (DashboardInformation.ChartforSale.Any())
+                    {
+                        var minDate = DashboardInformation.ChartforSale.Min(x => x.Date);
+                        var year = minDate.Year; // assume single-year view
+
+                        var startOfYear = new DateTime(year, 1, 1);
+                        var endOfYear = new DateTime(year, 12, 31);
+
+                        SaleChart.ChartAreas[0].AxisX.Minimum = startOfYear.ToOADate();
+                        SaleChart.ChartAreas[0].AxisX.Maximum = endOfYear.ToOADate();
+                    }
+                    
                 }
 
 

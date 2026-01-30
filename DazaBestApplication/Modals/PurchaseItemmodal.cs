@@ -52,7 +52,7 @@ namespace DazaBestApplication.Modals
             if (_purchaseitemmodal.Action == "AddItemStock")
             {
                 this.Text = "Add Purchase Item";
-                AddPurchaseItemButton.Text = "Add Purchase Item";
+                AddPurchaseItemButton.Text = "Purchased";
                 removeitempickedbutton.Visible = true;
                 preparedbylbl.Text = Program.theLoggedInAccount.Fullname;
             }

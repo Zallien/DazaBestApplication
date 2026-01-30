@@ -95,7 +95,7 @@ namespace DazaBestApplication.Pages
                     row.Cells["DateCol"].Value = item.Date;
                     row.Cells["ItemCol"].Value = item.ItemName;
                     row.Cells["QuantityCol"].Value = item.Quantity;
-                    row.Cells["TotalCol"].Value = item.TotalPrice;
+                    row.Cells["TotalCol"].Value = "₱" + item.TotalPrice;
                 }
             }
             catch (Exception e)
@@ -125,7 +125,7 @@ namespace DazaBestApplication.Pages
                 RecordFilterSearch = new RecordsFilterSearch()
                 {
                     SearchValue = SearchValue,
-                    FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
+                    FromDate =  FromDateFilter,
                     ToDate = ToDateFilter,
                     PageNumber = PageNumber,
                     ItemperPage = ItemPerPaeg
@@ -275,10 +275,11 @@ namespace DazaBestApplication.Pages
                 default:
                     break;
             }
-
+            PageNumber = 1;
             await PopulateDatagrid();
             await GetTotalPages();
             await CheckPageNumber();
+            PaginationLabel.Text = $"{PageNumber} / {totalpage}";//Pagination Label
         }
 
 

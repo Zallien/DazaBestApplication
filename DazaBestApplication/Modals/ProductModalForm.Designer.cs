@@ -100,22 +100,22 @@
             CloseModal.Image = Properties.Resources.close;
             CloseModal.ImageActive = null;
             CloseModal.ImageLocation = null;
-            CloseModal.ImageMargin = 20;
-            CloseModal.ImageSize = new Size(10, 10);
-            CloseModal.ImageZoomSize = new Size(30, 30);
+            CloseModal.ImageMargin = 10;
+            CloseModal.ImageSize = new Size(15, 15);
+            CloseModal.ImageZoomSize = new Size(25, 25);
             CloseModal.InitialImage = (Image)resources.GetObject("CloseModal.InitialImage");
-            CloseModal.Location = new Point(422, 3);
+            CloseModal.Location = new Point(426, 5);
             CloseModal.Name = "CloseModal";
             CloseModal.Rotation = 0;
             CloseModal.ShowActiveImage = true;
             CloseModal.ShowCursorChanges = true;
             CloseModal.ShowImageBorders = true;
             CloseModal.ShowSizeMarkers = false;
-            CloseModal.Size = new Size(30, 30);
+            CloseModal.Size = new Size(25, 25);
             CloseModal.TabIndex = 1;
             CloseModal.ToolTipText = "";
             CloseModal.WaitOnLoad = false;
-            CloseModal.Zoom = 20;
+            CloseModal.Zoom = 10;
             CloseModal.ZoomSpeed = 10;
             CloseModal.Click += CloseModal_Click;
             // 
@@ -394,7 +394,7 @@
             // label3
             // 
             label3.Font = new Font("Courier New", 9.75F);
-            label3.Location = new Point(146, 89);
+            label3.Location = new Point(146, 92);
             label3.Name = "label3";
             label3.Size = new Size(144, 28);
             label3.TabIndex = 6;
@@ -598,7 +598,7 @@
             // label1
             // 
             label1.Font = new Font("Courier New", 9.75F);
-            label1.Location = new Point(147, 150);
+            label1.Location = new Point(147, 153);
             label1.Name = "label1";
             label1.Size = new Size(144, 28);
             label1.TabIndex = 11;

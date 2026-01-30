@@ -122,7 +122,7 @@ namespace DazaBestApplication.Pages
                 saleRecordFilterSearch = new RecordsFilterSearch()
                 {
                     SearchValue = SearchValue,
-                    FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
+                    FromDate = FromDateFilter,
                     ToDate = ToDateFilter,
                     PageNumber = PageNumber,
                     ItemperPage = ItemPerPaeg
@@ -280,10 +280,11 @@ namespace DazaBestApplication.Pages
                 default:
                     break;
             }
-
+            PageNumber = 1;
             await PopulateAllSaleReportDatagrid();
             await GetTotalPages();
             await CheckPageNumber();
+            PaginationLabel.Text = $"{PageNumber} / {totalpages}";//Pagination Label
         }
 
 

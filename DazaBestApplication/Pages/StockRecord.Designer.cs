@@ -947,7 +947,7 @@
             bunifuImageButton1.ErrorImage = (Image)resources.GetObject("bunifuImageButton1.ErrorImage");
             bunifuImageButton1.FadeWhenInactive = false;
             bunifuImageButton1.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            bunifuImageButton1.Image = Properties.Resources.close;
+            bunifuImageButton1.Image = Properties.Resources.close1;
             bunifuImageButton1.ImageActive = null;
             bunifuImageButton1.ImageLocation = null;
             bunifuImageButton1.ImageMargin = 8;

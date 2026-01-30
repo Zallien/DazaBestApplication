@@ -150,10 +150,12 @@ namespace DazaBestApplication.Pages
                 default:
                     break;
             }
-
+            PageNumber = 1;
             await PopulateAlldjustDetailsDatagrid();
             await GetTotalPages();
             await CheckPageNumber();
+            
+            PaginationLabel.Text = $"{PageNumber} / {totalpages}";//Pagination Label
         }
 
 
@@ -170,7 +172,7 @@ namespace DazaBestApplication.Pages
                 recordsFilterSearch = new RecordsFilterSearch()
                 {
                     SearchValue = SearchValue,
-                    FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
+                    FromDate =  FromDateFilter,
                     ToDate = ToDateFilter,
                     PageNumber = PageNumber,
                     ItemperPage = ItemPerPaeg
@@ -283,6 +285,7 @@ namespace DazaBestApplication.Pages
             await PopulateAlldjustDetailsDatagrid();
             await PopulateDateFilter();
             await ReportFilterChanged();
+            PaginationLabel.Text = $"{PageNumber} / {totalpages}";//Pagination Label
 
         }
 
