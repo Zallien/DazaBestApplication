@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VoidModalAdminPassword));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             bunifuImageButton1 = new Bunifu.UI.WinForms.BunifuImageButton();
             panel1 = new Panel();
             panel3 = new Panel();
@@ -38,7 +38,9 @@
             label1 = new Label();
             adminpasswordtxt = new TextBox();
             bunifuButton1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            showhidebtn = new PictureBox();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)showhidebtn).BeginInit();
             SuspendLayout();
             // 
             // bunifuImageButton1
@@ -158,8 +160,9 @@
             adminpasswordtxt.Font = new Font("Courier New", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             adminpasswordtxt.Location = new Point(36, 86);
             adminpasswordtxt.Name = "adminpasswordtxt";
+            adminpasswordtxt.PasswordChar = '*';
             adminpasswordtxt.PlaceholderText = "Enter Admin Password";
-            adminpasswordtxt.Size = new Size(282, 24);
+            adminpasswordtxt.Size = new Size(251, 24);
             adminpasswordtxt.TabIndex = 5;
             // 
             // bunifuButton1
@@ -180,11 +183,11 @@
             bunifuButton1.ButtonTextMarginLeft = 0;
             bunifuButton1.ColorContrastOnClick = 45;
             bunifuButton1.ColorContrastOnHover = 45;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            bunifuButton1.CustomizableEdges = borderEdges1;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            bunifuButton1.CustomizableEdges = borderEdges2;
             bunifuButton1.DialogResult = DialogResult.None;
             bunifuButton1.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton1.DisabledFillColor = Color.Empty;
@@ -253,11 +256,23 @@
             bunifuButton1.UseDefaultRadiusAndThickness = true;
             bunifuButton1.Click += bunifuButton1_Click;
             // 
+            // showhidebtn
+            // 
+            showhidebtn.Image = Properties.Resources.view__1_;
+            showhidebtn.Location = new Point(293, 85);
+            showhidebtn.Name = "showhidebtn";
+            showhidebtn.Size = new Size(25, 25);
+            showhidebtn.SizeMode = PictureBoxSizeMode.StretchImage;
+            showhidebtn.TabIndex = 7;
+            showhidebtn.TabStop = false;
+            showhidebtn.Click += showhidebtn_Click;
+            // 
             // VoidModalAdminPassword
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(330, 180);
+            Controls.Add(showhidebtn);
             Controls.Add(bunifuButton1);
             Controls.Add(adminpasswordtxt);
             Controls.Add(label1);
@@ -267,6 +282,7 @@
             Name = "VoidModalAdminPassword";
             Text = "VoidModalAdminPassword";
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)showhidebtn).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -281,5 +297,6 @@
         private Label label1;
         private TextBox adminpasswordtxt;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton1;
+        private PictureBox showhidebtn;
     }
 }

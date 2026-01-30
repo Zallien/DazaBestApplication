@@ -11,6 +11,7 @@ using SystemBackEnd.Services;
 using SystemBackEnd;
 using SystemBackEnd.Models;
 using SystemBackEnd.EventHandlers;
+using DazaBestApplication.Properties;
 
 namespace DazaBestApplication.Modals
 {
@@ -76,6 +77,20 @@ namespace DazaBestApplication.Modals
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
             closemodal();
+        }
+
+        private void showhidebtn_Click(object sender, EventArgs e)
+        {
+            if (adminpasswordtxt.PasswordChar != '\0')
+            {
+                adminpasswordtxt.PasswordChar = '\0';
+                showhidebtn.Image = Resources.hide__2_;
+            }
+            else
+            {
+                adminpasswordtxt.PasswordChar = '*';
+                showhidebtn.Image = Resources.view__1_;
+            }
         }
     }
 }
