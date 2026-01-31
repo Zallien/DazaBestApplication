@@ -71,6 +71,7 @@ namespace SystemBackEnd.Services
                     DateCreated = item.DateCreated,
                     IsActive = true,
                     ItemThreshold = item.ItemThreshold,
+                    UnitMeasurement = item.UnitMeasurement,
                 };
                 await _db.Items.AddAsync(newinserteditem);
                 await _db.SaveChangesAsync();
@@ -121,6 +122,7 @@ namespace SystemBackEnd.Services
                 _Theitem.ItemName = item.ItemName;
                 _Theitem.ItemPrice = item.ItemPrice;
                 _Theitem.ItemThreshold = item.ItemThreshold;
+                _Theitem.UnitMeasurement = item.UnitMeasurement;
                 _db.Items.Update(_Theitem);
                 await _db.SaveChangesAsync();
                 return true;

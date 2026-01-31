@@ -71,6 +71,7 @@
             StocksCol = new DataGridViewTextBoxColumn();
             PriceCol = new DataGridViewTextBoxColumn();
             ThresholdCol = new DataGridViewTextBoxColumn();
+            UnitCol = new DataGridViewTextBoxColumn();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             bunifuShadowPanel1.SuspendLayout();
@@ -775,7 +776,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             AllItemsDatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             AllItemsDatagrid.ColumnHeadersHeight = 40;
-            AllItemsDatagrid.Columns.AddRange(new DataGridViewColumn[] { IdCol, RowCol, ItemCodeCol, ItemNameCol, StocksCol, PriceCol, ThresholdCol });
+            AllItemsDatagrid.Columns.AddRange(new DataGridViewColumn[] { IdCol, RowCol, ItemCodeCol, ItemNameCol, StocksCol, PriceCol, ThresholdCol, UnitCol });
             AllItemsDatagrid.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
             AllItemsDatagrid.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             AllItemsDatagrid.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
@@ -906,6 +907,13 @@
             ThresholdCol.SortMode = DataGridViewColumnSortMode.NotSortable;
             ThresholdCol.Visible = false;
             // 
+            // UnitCol
+            // 
+            UnitCol.HeaderText = "Unit";
+            UnitCol.Name = "UnitCol";
+            UnitCol.ReadOnly = true;
+            UnitCol.Visible = false;
+            // 
             // ItemInventory
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
@@ -962,5 +970,6 @@
         private DataGridViewTextBoxColumn StocksCol;
         private DataGridViewTextBoxColumn PriceCol;
         private DataGridViewTextBoxColumn ThresholdCol;
+        private DataGridViewTextBoxColumn UnitCol;
     }
 }

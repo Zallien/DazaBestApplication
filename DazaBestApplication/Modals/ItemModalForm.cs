@@ -21,6 +21,13 @@ namespace DazaBestApplication.Modals
         private Guid _updateitemid;
         private string _actionbutton;
 
+        private List<string> Unitmeasurements = new List<string>
+        {
+            "Kg",
+            "L",
+            "pcs",
+        };
+
         public ItemModalForm(ItemModal Item)
         {
             InitializeComponent();
@@ -48,6 +55,7 @@ namespace DazaBestApplication.Modals
                     ItemNametxt.Text = Item.EditItem.ItemName;
                     ItemPricetxt.Text = Item.EditItem.ItemPrice.ToString();
                     Thresholdtext.Text = Item.EditItem.ItemThreshold.ToString();
+                    unitdropdown.Text = Item.EditItem.UnitMeasurement;
                 }
             }
         }
@@ -56,6 +64,10 @@ namespace DazaBestApplication.Modals
         {
             FadeIn();
             label5.Text = DateTime.Now.ToString("MM/dd/yyyy");
+            foreach (var item in Unitmeasurements)
+            {
+                unitdropdown.Items.Add(item);
+            }
             
         }
         //FadeIn Animation
@@ -89,12 +101,14 @@ namespace DazaBestApplication.Modals
             decimal ItemPrice = decimal.Parse(ItemPricetxt.Text.Trim());
             DateTime DateCreated = DateTime.Now;
             decimal threshold = decimal.Parse(Thresholdtext.Text.Trim());
+            string uniwmeasurement = unitdropdown.Text.Trim();
             var newitem = new InsertItem()
             {
                 ItemName = ItemName,
                 ItemPrice = ItemPrice,
                 DateCreated = DateCreated,
-                ItemThreshold = threshold
+                ItemThreshold = threshold,
+                UnitMeasurement = uniwmeasurement
             };
             itemservices = new ItemServices(new BackEndDBContext());
             bool IsItemAdded = await itemservices.AddItem(newitem);
@@ -116,11 +130,13 @@ namespace DazaBestApplication.Modals
             decimal ItemPrice = decimal.Parse(ItemPricetxt.Text.Trim());
             DateTime DateModified = DateTime.Now;
             decimal threshold = decimal.Parse(Thresholdtext.Text.Trim());
+            string uniwmeasurement = unitdropdown.Text.Trim();
             var updateditem = new InsertItem()
             {
                 ItemName = ItemName,
                 ItemPrice = ItemPrice,
-                ItemThreshold = threshold
+                ItemThreshold = threshold,
+                UnitMeasurement = uniwmeasurement
             };
             itemservices = new ItemServices(new BackEndDBContext());
             bool IsItemUpdated = await itemservices.UpdateItem(_updateitemid, updateditem);

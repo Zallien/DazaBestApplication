@@ -20,5 +20,6 @@ namespace SystemBackEnd.Models
         public bool IsActive { get; set; }
         public byte[]? ItemImage { get; set; }
         public decimal ItemThreshold { get; set; }
+        public string UnitMeasurement { get; set; }
     }
 }

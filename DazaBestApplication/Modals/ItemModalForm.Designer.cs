@@ -58,6 +58,8 @@
             ItemPricetxt = new Bunifu.UI.WinForms.BunifuTextBox();
             Thresholdtext = new Bunifu.UI.WinForms.BunifuTextBox();
             label6 = new Label();
+            label7 = new Label();
+            unitdropdown = new Bunifu.UI.WinForms.BunifuDropdown();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -71,7 +73,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(420, 40);
+            panel1.Size = new Size(525, 40);
             panel1.TabIndex = 0;
             // 
             // panel3
@@ -80,7 +82,7 @@
             panel3.Dock = DockStyle.Bottom;
             panel3.Location = new Point(0, 35);
             panel3.Name = "panel3";
-            panel3.Size = new Size(420, 5);
+            panel3.Size = new Size(525, 5);
             panel3.TabIndex = 3;
             // 
             // CloseModal
@@ -99,11 +101,11 @@
             CloseModal.Image = Properties.Resources.close;
             CloseModal.ImageActive = null;
             CloseModal.ImageLocation = null;
-            CloseModal.ImageMargin = 20;
-            CloseModal.ImageSize = new Size(10, 10);
+            CloseModal.ImageMargin = 10;
+            CloseModal.ImageSize = new Size(20, 20);
             CloseModal.ImageZoomSize = new Size(30, 30);
             CloseModal.InitialImage = (Image)resources.GetObject("CloseModal.InitialImage");
-            CloseModal.Location = new Point(384, 3);
+            CloseModal.Location = new Point(489, 3);
             CloseModal.Name = "CloseModal";
             CloseModal.Rotation = 0;
             CloseModal.ShowActiveImage = true;
@@ -114,7 +116,7 @@
             CloseModal.TabIndex = 1;
             CloseModal.ToolTipText = "";
             CloseModal.WaitOnLoad = false;
-            CloseModal.Zoom = 20;
+            CloseModal.Zoom = 10;
             CloseModal.ZoomSpeed = 10;
             CloseModal.Click += CloseModal_Click;
             // 
@@ -137,7 +139,7 @@
             panel2.Location = new Point(0, 253);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(10, 2, 10, 2);
-            panel2.Size = new Size(420, 35);
+            panel2.Size = new Size(525, 35);
             panel2.TabIndex = 1;
             // 
             // bunifuButton2
@@ -188,7 +190,7 @@
             bunifuButton2.IdleIconLeftImage = null;
             bunifuButton2.IdleIconRightImage = null;
             bunifuButton2.IndicateFocus = false;
-            bunifuButton2.Location = new Point(249, 2);
+            bunifuButton2.Location = new Point(352, 2);
             bunifuButton2.Name = "bunifuButton2";
             bunifuButton2.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton2.OnDisabledState.BorderRadius = 1;
@@ -280,7 +282,7 @@
             AddItemButton.IdleIconLeftImage = null;
             AddItemButton.IdleIconRightImage = null;
             AddItemButton.IndicateFocus = false;
-            AddItemButton.Location = new Point(321, 2);
+            AddItemButton.Location = new Point(426, 2);
             AddItemButton.Name = "AddItemButton";
             AddItemButton.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             AddItemButton.OnDisabledState.BorderRadius = 1;
@@ -427,7 +429,7 @@
             ItemNametxt.SelectionLength = 0;
             ItemNametxt.SelectionStart = 0;
             ItemNametxt.ShortcutsEnabled = true;
-            ItemNametxt.Size = new Size(261, 39);
+            ItemNametxt.Size = new Size(366, 39);
             ItemNametxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             ItemNametxt.TabIndex = 10;
             ItemNametxt.TextAlign = HorizontalAlignment.Left;
@@ -502,7 +504,7 @@
             ItemPricetxt.SelectionLength = 0;
             ItemPricetxt.SelectionStart = 0;
             ItemPricetxt.ShortcutsEnabled = true;
-            ItemPricetxt.Size = new Size(261, 39);
+            ItemPricetxt.Size = new Size(366, 39);
             ItemPricetxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             ItemPricetxt.TabIndex = 11;
             ItemPricetxt.TextAlign = HorizontalAlignment.Left;
@@ -578,7 +580,7 @@
             Thresholdtext.SelectionLength = 0;
             Thresholdtext.SelectionStart = 0;
             Thresholdtext.ShortcutsEnabled = true;
-            Thresholdtext.Size = new Size(261, 39);
+            Thresholdtext.Size = new Size(106, 39);
             Thresholdtext.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             Thresholdtext.TabIndex = 13;
             Thresholdtext.TextAlign = HorizontalAlignment.Left;
@@ -600,11 +602,67 @@
             label6.Text = "Item Threshold :";
             label6.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // label7
+            // 
+            label7.Font = new Font("Courier New", 9F, FontStyle.Bold);
+            label7.Location = new Point(257, 155);
+            label7.Name = "label7";
+            label7.Size = new Size(82, 30);
+            label7.TabIndex = 14;
+            label7.Text = "Unit :";
+            label7.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // unitdropdown
+            // 
+            unitdropdown.BackColor = Color.Transparent;
+            unitdropdown.BackgroundColor = Color.White;
+            unitdropdown.BorderColor = Color.Silver;
+            unitdropdown.BorderRadius = 1;
+            unitdropdown.Color = Color.Silver;
+            unitdropdown.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
+            unitdropdown.DisabledBackColor = Color.FromArgb(240, 240, 240);
+            unitdropdown.DisabledBorderColor = Color.FromArgb(204, 204, 204);
+            unitdropdown.DisabledColor = Color.FromArgb(240, 240, 240);
+            unitdropdown.DisabledForeColor = Color.FromArgb(109, 109, 109);
+            unitdropdown.DisabledIndicatorColor = Color.DarkGray;
+            unitdropdown.DrawMode = DrawMode.OwnerDrawFixed;
+            unitdropdown.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
+            unitdropdown.DropDownStyle = ComboBoxStyle.DropDownList;
+            unitdropdown.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            unitdropdown.FillDropDown = true;
+            unitdropdown.FillIndicator = false;
+            unitdropdown.FlatStyle = FlatStyle.Flat;
+            unitdropdown.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            unitdropdown.ForeColor = Color.Black;
+            unitdropdown.FormattingEnabled = true;
+            unitdropdown.Icon = null;
+            unitdropdown.IndicatorAlignment = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            unitdropdown.IndicatorColor = Color.DarkGray;
+            unitdropdown.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            unitdropdown.IndicatorThickness = 2;
+            unitdropdown.IsDropdownOpened = false;
+            unitdropdown.ItemBackColor = Color.White;
+            unitdropdown.ItemBorderColor = Color.White;
+            unitdropdown.ItemForeColor = Color.Black;
+            unitdropdown.ItemHeight = 26;
+            unitdropdown.ItemHighLightColor = Color.DodgerBlue;
+            unitdropdown.ItemHighLightForeColor = Color.White;
+            unitdropdown.ItemTopMargin = 3;
+            unitdropdown.Location = new Point(345, 153);
+            unitdropdown.Name = "unitdropdown";
+            unitdropdown.Size = new Size(170, 32);
+            unitdropdown.TabIndex = 15;
+            unitdropdown.Text = null;
+            unitdropdown.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            unitdropdown.TextLeftMargin = 5;
+            // 
             // ItemModalForm
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(420, 288);
+            ClientSize = new Size(525, 288);
+            Controls.Add(unitdropdown);
+            Controls.Add(label7);
             Controls.Add(Thresholdtext);
             Controls.Add(label6);
             Controls.Add(ItemPricetxt);
@@ -642,5 +700,7 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton2;
         private Bunifu.UI.WinForms.BunifuTextBox Thresholdtext;
         private Label label6;
+        private Label label7;
+        private Bunifu.UI.WinForms.BunifuDropdown unitdropdown;
     }
 }
