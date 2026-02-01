@@ -89,6 +89,7 @@ namespace DazaBestApplication.Modals
             AllSelectedProducts = new List<Guid>();
             await CheckModalAction();
             Grandtotalvaluelabel.Text = "₱" + (_Grandtotal ?? 0).ToString("N2");
+            AllPickedItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
         //OpenAllProductsPanel
         private async Task OpenAllProductsPanel()
@@ -126,6 +127,7 @@ namespace DazaBestApplication.Modals
                 row.Height = 24;
                 row.Cells["ALLI_ItemCodeCol"].Value = item.ItemCode;
             }
+            AllItemDatagridview.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
         //Get All Available Products
         private async Task<List<Items>> GetAllAvailableProducts()

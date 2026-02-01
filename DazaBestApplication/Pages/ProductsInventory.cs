@@ -92,6 +92,7 @@ namespace DazaBestApplication.Pages
                     row.Cells["AvailabilityCol"].Value = item.IsAvailable == true ? Properties.Resources.check :
                                         Properties.Resources.cancel;
                 }
+                AllProductDatagridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             }
         }
         //Get All Products Count

@@ -36,8 +36,13 @@ namespace DazaBestApplication.Modals
         private void POSPaymentModal_Load(object sender, EventArgs e)
         {
             Totalvaluetext.Text = ProcessTransaction.Total.ToString("N2");
-            PaymentRecievedtextbox.Focus();
             PaymentRecievedtextbox.Text = AmountRecieved.ToString("N2");
+
+            this.BeginInvoke(new Action(() =>
+            {
+                PaymentRecievedtextbox.Focus();
+                PaymentRecievedtextbox.SelectAll();
+            }));
         }
 
         //Process Transaction

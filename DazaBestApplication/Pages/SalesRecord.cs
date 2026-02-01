@@ -100,6 +100,7 @@ namespace DazaBestApplication.Pages
 
 
             }
+            AllsaleDatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
         //Search Function
         private async Task SearchSaleRecords()
@@ -259,11 +260,11 @@ namespace DazaBestApplication.Pages
                     break;
                 case "This Month":
                     FromDateFilter = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-                    ToDateFilter = DateTime.Now.Date;
+                    ToDateFilter = DateTime.Now;
                     break;
                 case "This Year":
                     FromDateFilter = new DateTime(DateTime.Now.Year, 1, 1);
-                    ToDateFilter = DateTime.Now.Date;
+                    ToDateFilter = DateTime.Now;
                     break;
                 case "All":
                     FromDateFilter = fromdatetxt.MinDate;

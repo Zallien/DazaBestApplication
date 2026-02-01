@@ -48,5 +48,6 @@ namespace SystemBackEnd.ServiceModels
     {
         public string Itemname { get; set; }
         public decimal CurrentStocks { get; set; }
+        public string UnitMeasurement { get; set; }
     }
 }

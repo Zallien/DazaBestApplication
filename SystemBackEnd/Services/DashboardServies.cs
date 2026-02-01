@@ -177,7 +177,8 @@ namespace SystemBackEnd.Services
                     .Select(x => new ItemInventoryPreview
                     {
                         Itemname = x.ItemName,
-                        CurrentStocks = x.BalanceStocks
+                        CurrentStocks = x.BalanceStocks,
+                        UnitMeasurement = x.UnitMeasurement
                     })
                     .Take(10)
                     .ToListAsync();

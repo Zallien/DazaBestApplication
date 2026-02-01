@@ -83,6 +83,7 @@ namespace DazaBestApplication.Pages
                     row.Cells["OperatedDateCol"].Value = item.DateCreated;
                     row.Cells["AdjustedByCol"].Value = item.OperatedByName;
                 }
+                AllAdjustmentItemsDatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             }
             catch (Exception e)
             {

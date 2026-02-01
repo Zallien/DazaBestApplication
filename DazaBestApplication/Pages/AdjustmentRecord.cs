@@ -93,6 +93,7 @@ namespace DazaBestApplication.Pages
                 row.Cells["QuantityCol"].Value = item.Quantity;
                 row.Cells["ReasonCol"].Value = item.Reason;
             }
+            AllAdjustmentRecordsDatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
         //Search Box Text Changed
         private async Task SearchSaleRecords()
@@ -129,7 +130,7 @@ namespace DazaBestApplication.Pages
                     break;
                 case "This Month":
                     FromDateFilter = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-                    ToDateFilter = DateTime.Now.Date;
+                    ToDateFilter = DateTime.Now;
                     break;
                 case "This Year":
                     FromDateFilter = new DateTime(DateTime.Now.Year, 1, 1);

@@ -31,16 +31,18 @@ namespace DazaBestApplication.Pages
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             TopPanel = new SmoothPanel();
             panel4 = new SmoothPanel();
             label1 = new Label();
@@ -48,9 +50,6 @@ namespace DazaBestApplication.Pages
             MainPanel = new Panel();
             tableLayoutPanel3 = new TableLayoutPanel();
             bunifuPanel11 = new Bunifu.UI.WinForms.BunifuPanel();
-            InventoryStocks = new DataGridView();
-            ItemCol = new DataGridViewTextBoxColumn();
-            StockCol = new DataGridViewTextBoxColumn();
             label13 = new Label();
             bunifuPanel12 = new Bunifu.UI.WinForms.BunifuPanel();
             TopProductschart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -86,11 +85,13 @@ namespace DazaBestApplication.Pages
             totalitemslabel = new Label();
             Topmainpanel = new Panel();
             Userlabrl = new Label();
+            InventoryStocks = new Bunifu.UI.WinForms.BunifuDataGridView();
+            ItemCol = new DataGridViewTextBoxColumn();
+            StockCol = new DataGridViewTextBoxColumn();
             TopPanel.SuspendLayout();
             MainPanel.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             bunifuPanel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)InventoryStocks).BeginInit();
             bunifuPanel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TopProductschart).BeginInit();
             tableLayoutPanel2.SuspendLayout();
@@ -112,6 +113,7 @@ namespace DazaBestApplication.Pages
             bunifuPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             Topmainpanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)InventoryStocks).BeginInit();
             SuspendLayout();
             // 
             // TopPanel
@@ -209,54 +211,6 @@ namespace DazaBestApplication.Pages
             bunifuPanel11.Size = new Size(367, 233);
             bunifuPanel11.TabIndex = 2;
             // 
-            // InventoryStocks
-            // 
-            InventoryStocks.AllowUserToAddRows = false;
-            InventoryStocks.AllowUserToDeleteRows = false;
-            InventoryStocks.AllowUserToResizeColumns = false;
-            InventoryStocks.AllowUserToResizeRows = false;
-            InventoryStocks.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            InventoryStocks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            InventoryStocks.BackgroundColor = Color.FromArgb(251, 205, 119);
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.Maroon;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Maroon;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            InventoryStocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            InventoryStocks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            InventoryStocks.Columns.AddRange(new DataGridViewColumn[] { ItemCol, StockCol });
-            InventoryStocks.Location = new Point(10, 47);
-            InventoryStocks.Name = "InventoryStocks";
-            InventoryStocks.ReadOnly = true;
-            InventoryStocks.RowHeadersVisible = false;
-            InventoryStocks.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.Maroon;
-            InventoryStocks.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
-            InventoryStocks.ScrollBars = ScrollBars.Vertical;
-            InventoryStocks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            InventoryStocks.ShowRowErrors = false;
-            InventoryStocks.Size = new Size(346, 175);
-            InventoryStocks.TabIndex = 8;
-            // 
-            // ItemCol
-            // 
-            ItemCol.HeaderText = "Item";
-            ItemCol.Name = "ItemCol";
-            ItemCol.ReadOnly = true;
-            ItemCol.Resizable = DataGridViewTriState.False;
-            ItemCol.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // StockCol
-            // 
-            StockCol.FillWeight = 30F;
-            StockCol.HeaderText = "Stocks";
-            StockCol.Name = "StockCol";
-            StockCol.ReadOnly = true;
-            StockCol.Resizable = DataGridViewTriState.False;
-            StockCol.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
             // label13
             // 
             label13.BackColor = Color.Transparent;
@@ -290,19 +244,19 @@ namespace DazaBestApplication.Pages
             // 
             TopProductschart.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             TopProductschart.BackColor = Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            TopProductschart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            TopProductschart.Legends.Add(legend1);
+            chartArea4.Name = "ChartArea1";
+            TopProductschart.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            TopProductschart.Legends.Add(legend4);
             TopProductschart.Location = new Point(16, 47);
             TopProductschart.Name = "TopProductschart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
-            series1.Color = Color.Maroon;
-            series1.Legend = "Legend1";
-            series1.Name = "Top Products";
-            series1.YValuesPerPoint = 3;
-            TopProductschart.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
+            series4.Color = Color.Maroon;
+            series4.Legend = "Legend1";
+            series4.Name = "Top Products";
+            series4.YValuesPerPoint = 3;
+            TopProductschart.Series.Add(series4);
             TopProductschart.Size = new Size(488, 171);
             TopProductschart.TabIndex = 0;
             TopProductschart.Text = "chart2";
@@ -367,22 +321,22 @@ namespace DazaBestApplication.Pages
             // 
             LowInventoryChart.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             LowInventoryChart.BackColor = Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            LowInventoryChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            LowInventoryChart.Legends.Add(legend2);
+            chartArea5.Name = "ChartArea1";
+            LowInventoryChart.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            LowInventoryChart.Legends.Add(legend5);
             LowInventoryChart.Location = new Point(16, 50);
             LowInventoryChart.Name = "LowInventoryChart";
-            series2.BackSecondaryColor = Color.White;
-            series2.BorderColor = Color.White;
-            series2.ChartArea = "ChartArea1";
-            series2.Color = Color.Maroon;
-            series2.LabelBackColor = Color.Transparent;
-            series2.Legend = "Legend1";
-            series2.MarkerColor = Color.Transparent;
-            series2.Name = "Items Stocks";
-            series2.YValuesPerPoint = 4;
-            LowInventoryChart.Series.Add(series2);
+            series5.BackSecondaryColor = Color.White;
+            series5.BorderColor = Color.White;
+            series5.ChartArea = "ChartArea1";
+            series5.Color = Color.Maroon;
+            series5.LabelBackColor = Color.Transparent;
+            series5.Legend = "Legend1";
+            series5.MarkerColor = Color.Transparent;
+            series5.Name = "Items Stocks";
+            series5.YValuesPerPoint = 4;
+            LowInventoryChart.Series.Add(series5);
             LowInventoryChart.Size = new Size(414, 180);
             LowInventoryChart.TabIndex = 0;
             LowInventoryChart.Text = "chart4";
@@ -468,24 +422,24 @@ namespace DazaBestApplication.Pages
             // 
             SaleChart.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             SaleChart.BackColor = Color.Transparent;
-            chartArea3.Name = "ChartArea1";
-            SaleChart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            SaleChart.Legends.Add(legend3);
+            chartArea6.Name = "ChartArea1";
+            SaleChart.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            SaleChart.Legends.Add(legend6);
             SaleChart.Location = new Point(16, 50);
             SaleChart.Name = "SaleChart";
-            series3.BackSecondaryColor = Color.White;
-            series3.BorderColor = Color.White;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Color = Color.Maroon;
-            series3.LabelBackColor = Color.Transparent;
-            series3.LabelForeColor = Color.Maroon;
-            series3.Legend = "Legend1";
-            series3.MarkerColor = Color.Transparent;
-            series3.Name = "Sales";
-            series3.YValuesPerPoint = 3;
-            SaleChart.Series.Add(series3);
+            series6.BackSecondaryColor = Color.White;
+            series6.BorderColor = Color.White;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Color = Color.Maroon;
+            series6.LabelBackColor = Color.Transparent;
+            series6.LabelForeColor = Color.Maroon;
+            series6.Legend = "Legend1";
+            series6.MarkerColor = Color.Transparent;
+            series6.Name = "Sales";
+            series6.YValuesPerPoint = 3;
+            SaleChart.Series.Add(series6);
             SaleChart.Size = new Size(414, 180);
             SaleChart.TabIndex = 0;
             SaleChart.Text = "chart1";
@@ -815,6 +769,86 @@ namespace DazaBestApplication.Pages
             Userlabrl.Text = "Welcome User!";
             Userlabrl.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // InventoryStocks
+            // 
+            InventoryStocks.AllowCustomTheming = false;
+            InventoryStocks.AllowUserToAddRows = false;
+            InventoryStocks.AllowUserToDeleteRows = false;
+            InventoryStocks.AllowUserToResizeColumns = false;
+            InventoryStocks.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(223, 191, 191);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            InventoryStocks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            InventoryStocks.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            InventoryStocks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            InventoryStocks.BackgroundColor = Color.White;
+            InventoryStocks.BorderStyle = BorderStyle.None;
+            InventoryStocks.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            InventoryStocks.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.Maroon;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(102, 0, 0);
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            InventoryStocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            InventoryStocks.ColumnHeadersHeight = 30;
+            InventoryStocks.Columns.AddRange(new DataGridViewColumn[] { ItemCol, StockCol });
+            InventoryStocks.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
+            InventoryStocks.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            InventoryStocks.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
+            InventoryStocks.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            InventoryStocks.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.White;
+            InventoryStocks.CurrentTheme.BackColor = Color.Maroon;
+            InventoryStocks.CurrentTheme.GridColor = Color.FromArgb(216, 178, 178);
+            InventoryStocks.CurrentTheme.HeaderStyle.BackColor = Color.Maroon;
+            InventoryStocks.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            InventoryStocks.CurrentTheme.HeaderStyle.ForeColor = Color.White;
+            InventoryStocks.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(102, 0, 0);
+            InventoryStocks.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
+            InventoryStocks.CurrentTheme.Name = null;
+            InventoryStocks.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(229, 204, 204);
+            InventoryStocks.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            InventoryStocks.CurrentTheme.RowsStyle.ForeColor = Color.Black;
+            InventoryStocks.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            InventoryStocks.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(229, 204, 204);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            InventoryStocks.DefaultCellStyle = dataGridViewCellStyle6;
+            InventoryStocks.EnableHeadersVisualStyles = false;
+            InventoryStocks.GridColor = Color.FromArgb(216, 178, 178);
+            InventoryStocks.HeaderBackColor = Color.Maroon;
+            InventoryStocks.HeaderBgColor = Color.Empty;
+            InventoryStocks.HeaderForeColor = Color.White;
+            InventoryStocks.Location = new Point(16, 47);
+            InventoryStocks.Name = "InventoryStocks";
+            InventoryStocks.ReadOnly = true;
+            InventoryStocks.RowHeadersVisible = false;
+            InventoryStocks.RowTemplate.Height = 30;
+            InventoryStocks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            InventoryStocks.Size = new Size(340, 171);
+            InventoryStocks.TabIndex = 8;
+            InventoryStocks.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
+            // 
+            // ItemCol
+            // 
+            ItemCol.HeaderText = "Items";
+            ItemCol.Name = "ItemCol";
+            ItemCol.ReadOnly = true;
+            // 
+            // StockCol
+            // 
+            StockCol.FillWeight = 30F;
+            StockCol.HeaderText = "Stocks";
+            StockCol.Name = "StockCol";
+            StockCol.ReadOnly = true;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -831,7 +865,6 @@ namespace DazaBestApplication.Pages
             MainPanel.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             bunifuPanel11.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)InventoryStocks).EndInit();
             bunifuPanel12.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)TopProductschart).EndInit();
             tableLayoutPanel2.ResumeLayout(false);
@@ -853,6 +886,7 @@ namespace DazaBestApplication.Pages
             bunifuPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             Topmainpanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)InventoryStocks).EndInit();
             ResumeLayout(false);
         }
 
@@ -900,7 +934,7 @@ namespace DazaBestApplication.Pages
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel12;
         private Label label14;
         private System.Windows.Forms.DataVisualization.Charting.Chart LowInventoryChart;
-        private DataGridView InventoryStocks;
+        private Bunifu.UI.WinForms.BunifuDataGridView InventoryStocks;
         private DataGridViewTextBoxColumn ItemCol;
         private DataGridViewTextBoxColumn StockCol;
     }

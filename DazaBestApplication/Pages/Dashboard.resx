@@ -143,12 +143,6 @@
         z6Zx/3pKupmZrXK/4Z72u/Ml3WZm1towfAM5G4Fr2D7CnAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="ItemCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="StockCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="bunifuPanel12.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgMAAADpCAYAAAC5mzSaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -330,4 +324,10 @@
         1SineDkUvu4F9lM87ztW93EtXjpXg8Lnfl8Id66p8nuF0+FiAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="ItemCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="StockCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

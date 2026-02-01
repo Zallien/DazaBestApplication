@@ -97,6 +97,7 @@ namespace DazaBestApplication.Pages
                     row.Cells["QuantityCol"].Value = item.Quantity;
                     row.Cells["TotalCol"].Value = "₱" + item.TotalPrice;
                 }
+                AllPurchaseItemDetailsRecordsDatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             }
             catch (Exception e)
             {
@@ -254,7 +255,7 @@ namespace DazaBestApplication.Pages
                     break;
                 case "This Month":
                     FromDateFilter = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-                    ToDateFilter = DateTime.Now.Date;
+                    ToDateFilter = DateTime.Now;
                     break;
                 case "This Year":
                     FromDateFilter = new DateTime(DateTime.Now.Year, 1, 1);

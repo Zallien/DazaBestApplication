@@ -52,7 +52,7 @@
             // TitleLabel
             // 
             TitleLabel.Dock = DockStyle.Fill;
-            TitleLabel.Font = new Font("Courier New", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            TitleLabel.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             TitleLabel.Location = new Point(10, 0);
             TitleLabel.Name = "TitleLabel";
             TitleLabel.Size = new Size(340, 40);
@@ -63,7 +63,7 @@
             // detailslabel
             // 
             detailslabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            detailslabel.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            detailslabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             detailslabel.Location = new Point(6, 61);
             detailslabel.Name = "detailslabel";
             detailslabel.Size = new Size(348, 84);

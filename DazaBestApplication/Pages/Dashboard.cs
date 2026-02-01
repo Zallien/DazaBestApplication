@@ -216,8 +216,11 @@ namespace DazaBestApplication.Pages
                 int rowindex = InventoryStocks.Rows.Add();
                 DataGridViewRow row = InventoryStocks.Rows[rowindex];
                 row.Cells["ItemCol"].Value = item.Itemname;
-                row.Cells["StockCol"].Value = item.CurrentStocks;
+                row.Cells["StockCol"].Value = $"{item.CurrentStocks} {item.UnitMeasurement}";
             }
+            InventoryStocks.ColumnHeadersHeight = 30;
+            InventoryStocks.RowTemplate.Height = 28;
+            InventoryStocks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
         private async Task LoadTopSellingProducts()
         {

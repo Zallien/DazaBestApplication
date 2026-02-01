@@ -110,6 +110,7 @@ namespace DazaBestApplication.Pages
             CheckPageNumber();
             await HideLoadingScreen();
             Setfilterpanel();
+
         }
 
 
@@ -237,6 +238,7 @@ namespace DazaBestApplication.Pages
                 row.Cells["ThresholdCol"].Value = item.ItemThreshold.ToString();
                 row.Cells["UnitCol"].Value = item.UnitMeasurement;
             }
+            AllItemsDatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
         //Open Item Modal
         private void OpenModal()

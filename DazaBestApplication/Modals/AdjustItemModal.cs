@@ -92,6 +92,7 @@ namespace DazaBestApplication.Modals
                 row.Height = 24;
                 row.Resizable = DataGridViewTriState.False;
             }
+            AllItemDatagridview.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
         //Get All Available Products
         private async Task<List<Items>> GetAllAvailableProducts()
@@ -307,6 +308,7 @@ namespace DazaBestApplication.Modals
                 AddAdjustmentItemInformationsBTN.Visible = false;
                 bunifuButton2.Location = point;
                 preparedby.Text = adjustItemModalViewModel.OperatedBy;
+                AllPickedItems.ReadOnly = true;
             }
         }
         //Populate to Selected Item DatagridView
@@ -416,8 +418,8 @@ namespace DazaBestApplication.Modals
             preparedby.Text = theloggedaccount.Fullname;
             AllPickedItems.RowTemplate.Height = 32;
             pagenumberindicator.Text = $"{Productcurrentpage} / {Producttotalpage}";
+            AllPickedItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
-
 
 
         private void AllPickedItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
