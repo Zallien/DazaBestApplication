@@ -133,20 +133,33 @@ namespace DazaBestApplication.Modals
         //Payment Recieved Key Press Event
         private void PaymentRecievedtextbox_TextChange(object sender, KeyPressEventArgs e)
         {
+            TextBox textBox = sender as TextBox;
+
+            // Check if Enter key is pressed
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true; // Prevent the "ding" sound
+                PayTransaction(); // Call your payment function
+                return;
+            }
+
+            // Allow control characters (Backspace, Delete, etc.)
             if (char.IsControl(e.KeyChar))
                 return;
 
+            // Only allow digits and decimal point
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '.')
             {
                 e.Handled = true;
                 return;
             }
 
-            TextBox textBox = sender as TextBox;
+            // Prevent multiple decimal points
             if (e.KeyChar == '.' && textBox.Text.Contains('.'))
             {
                 e.Handled = true;
             }
+
         }
         //Payment OK Button Click Event
         private void PaymentOkButton_Click(object sender, EventArgs e)

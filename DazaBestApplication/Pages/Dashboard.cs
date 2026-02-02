@@ -72,6 +72,7 @@ namespace DazaBestApplication.Pages
         {
             try
             {
+
                 var series = SaleChart.Series["Sales"];
                 series.Points.Clear();
 
@@ -129,28 +130,37 @@ namespace DazaBestApplication.Pages
                 }
                 else if (DashboardInformationType == "Daily")
                 {
-                    foreach (var item in DashboardInformation.ChartforSale)
+                    bool hasData = DashboardInformation.ChartforSale.Any();
+
+                    if (!hasData)
                     {
-                        series.Points.AddXY(item.Date, item.SalesValue);
+                        // Add a transparent/invisible dummy point to force axis display
+                        series.Points.AddXY(DateTime.Today, 1000);
+                        series.Points[0].Color = Color.Transparent;
+                        series.Points[0].MarkerStyle = MarkerStyle.None;
+                    }
+                    else
+                    {
+                        foreach (var item in DashboardInformation.ChartforSale)
+                        {
+                            series.Points.AddXY(item.Date, item.SalesValue);
+                        }
                     }
 
-                    // Format axis labels for daily (show hours/minutes)
-                    SaleChart.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm"; // 24-hour format
+                    // Format axis labels for daily
+                    SaleChart.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm";
                     SaleChart.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Hours;
                     SaleChart.ChartAreas[0].AxisX.Interval = 1;
 
-                    if (DashboardInformation.ChartforSale.Any())
-                    {
-                        var minDate = DashboardInformation.ChartforSale.Min(x => x.Date);
-                        var maxDate = DashboardInformation.ChartforSale.Max(x => x.Date);
+                    DateTime targetDate = hasData
+                        ? DashboardInformation.ChartforSale.First().Date.Date
+                        : DateTime.Today;
 
-                        // Snap to start and end of the day
-                        var startOfDay = minDate.Date; // midnight
-                        var endOfDay = minDate.Date.AddDays(1).AddTicks(-1); // 23:59:59
+                    var startOfDay = targetDate;
+                    var endOfDay = targetDate.AddDays(1).AddTicks(-1);
 
-                        SaleChart.ChartAreas[0].AxisX.Minimum = startOfDay.ToOADate();
-                        SaleChart.ChartAreas[0].AxisX.Maximum = endOfDay.ToOADate();
-                    }
+                    SaleChart.ChartAreas[0].AxisX.Minimum = startOfDay.ToOADate();
+                    SaleChart.ChartAreas[0].AxisX.Maximum = endOfDay.ToOADate();
 
                 }
                 else
