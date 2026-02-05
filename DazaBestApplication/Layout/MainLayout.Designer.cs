@@ -486,7 +486,7 @@ namespace DazaBestApplication
             versionlabel.Name = "versionlabel";
             versionlabel.Size = new Size(200, 20);
             versionlabel.TabIndex = 10;
-            versionlabel.Text = "Ver 1.3.5";
+            versionlabel.Text = "Ver 1.3.20";
             versionlabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // bunifuButton21
