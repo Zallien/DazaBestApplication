@@ -245,22 +245,29 @@ namespace DazaBestApplication.Layout
         //Back from Inventory Form --To be Fixed Later--
         private void BackFromInventoryForm()
         {
-            //Add Logic Here Later
-            //Checks if the User has access to Inventory Form
             if (CurrentLoggedinAccount.IsOwner == true)
             {
                 this.Hide();
-                MainPage mainLayout = new MainPage();
-                mainLayout.Show();
+
+                using (MainPage mainLayout = new MainPage())
+                {
+                    mainLayout.ShowDialog(); // Use ShowDialog instead of Show
+                }
+
+                this.Close();
             }
             else
             {
                 if (MessageBox.Show("Do you want to Logout", "System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Program.theLoggedInAccount = null;
-                    Close();
-                    Log_in login = new();
-                    login.Show();
+                    this.Hide();
+
+                    using (Log_in login = new Log_in())
+                    {
+                        login.ShowDialog();
+                    }
+
                     this.Close();
                 }
             }

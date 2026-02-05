@@ -591,6 +591,7 @@ namespace DazaBestApplication
                 Close();
                 Log_in login = new();
                 login.Show();
+                this.Close();
             }
 
         }
@@ -615,9 +616,10 @@ namespace DazaBestApplication
         }
         private void POSButton_Click(object sender, EventArgs e)
         {
-            this.Close();
             PointofSaleForm posForm = new PointofSaleForm();
             posForm.Show();
+            this.Close();
+            this.Dispose();
         }
         private void MainContainer_Paint(object sender, PaintEventArgs e)
         {
