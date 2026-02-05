@@ -46,45 +46,72 @@ namespace DazaBestApplication.Modals
         //Insert Security Questions and Answers
         private async Task EnterSecurityQuestion()
         {
-            SecurityQuestionServices = new SecurityQuestionServices(new SystemBackEnd.BackEndDBContext());
-            insertSecurityQuestion = new InsertSecurityQuestion()
+            try
             {
-                AccountId = AccountId,
-                AllQuestionAnswers = new List<InsertSecurityQuestionAnswer>()
+                // Validate that all questions and answers are filled
+                if (string.IsNullOrWhiteSpace(Question1.Text) || string.IsNullOrWhiteSpace(Answer1.Text))
                 {
-                    new InsertSecurityQuestionAnswer()
-                    {
-                        Question = Question1.Text,
-                        Answer = Answer1.Text
-                    },
-                    new InsertSecurityQuestionAnswer()
-                    {
-                        Question = Question2.Text,
-                        Answer = Answer2.Text
-                    },
-                    new InsertSecurityQuestionAnswer()
-                    {
-                        Question = Question3.Text,
-                        Answer = Answer3.Text
-                    }
+                    MessageBox.Show("Please fill in Question 1 and Answer 1", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
-            };
-            bool isSuccess = await SecurityQuestionServices.AddSecurityQuestionAsync(insertSecurityQuestion);
-            if (!isSuccess)
-            {
-                MessageBox.Show("An Error Occured", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                if (theLoggedInAccount.NewlyLoggedIn == true)
-                {
-                    LoginServices loginServices = new LoginServices(new SystemBackEnd.BackEndDBContext());
-                    bool SuccessChangingFirstTimeLogout = await loginServices.ChangeFirstTimeLogout(theLoggedInAccount.AccountId);
-                }
-                this.Close();
-                this.DialogResult.Equals(DialogResult.OK);
-            }
 
+                if (string.IsNullOrWhiteSpace(Question2.Text) || string.IsNullOrWhiteSpace(Answer2.Text))
+                {
+                    MessageBox.Show("Please fill in Question 2 and Answer 2", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(Question3.Text) || string.IsNullOrWhiteSpace(Answer3.Text))
+                {
+                    MessageBox.Show("Please fill in Question 3 and Answer 3", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                SecurityQuestionServices = new SecurityQuestionServices(new SystemBackEnd.BackEndDBContext());
+                insertSecurityQuestion = new InsertSecurityQuestion()
+                {
+                    AccountId = AccountId,
+                    AllQuestionAnswers = new List<InsertSecurityQuestionAnswer>()
+            {
+                new InsertSecurityQuestionAnswer()
+                {
+                    Question = Question1.Text,
+                    Answer = Answer1.Text
+                },
+                new InsertSecurityQuestionAnswer()
+                {
+                    Question = Question2.Text,
+                    Answer = Answer2.Text
+                },
+                new InsertSecurityQuestionAnswer()
+                {
+                    Question = Question3.Text,
+                    Answer = Answer3.Text
+                }
+            }
+                };
+
+                bool isSuccess = await SecurityQuestionServices.AddSecurityQuestionAsync(insertSecurityQuestion);
+
+                if (!isSuccess)
+                {
+                    MessageBox.Show("An Error Occured", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    if (theLoggedInAccount.NewlyLoggedIn == true)
+                    {
+                        LoginServices loginServices = new LoginServices(new SystemBackEnd.BackEndDBContext());
+                        bool SuccessChangingFirstTimeLogout = await loginServices.ChangeFirstTimeLogout(theLoggedInAccount.AccountId);
+                    }
+                    this.Close();
+                    this.DialogResult = DialogResult.OK;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         //Populate all Questions combo box
         private async Task PopulateQuestionswithrandomquestion()
