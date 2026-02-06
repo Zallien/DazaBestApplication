@@ -82,8 +82,9 @@ namespace DazaBestApplication.Pages
                     row.Cells["ItemNameCol"].Value = item.ItemName;
                     row.Cells["ItemCodeCol"].Value = item.ItemCode;
                     row.Cells["DateCol"].Value = item.DateCreated.Date;
-                    row.Cells["StockCol"].Value = item.BalanceStock;
+                    row.Cells["StockCol"].Value = $"{item.BalanceStock} {item.UnitMeasurement}";
                     row.Cells["ItemPriceCol"].Value = item.Price;
+                    row.Cells["UnitCol"].Value = item.UnitMeasurement;
                 }
             }
             catch (Exception e)

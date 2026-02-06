@@ -107,6 +107,10 @@ namespace DazaBestApplication.Pages
         //Edit Account
         private async Task EditAccount()
         {
+            if (AllAccountsDatagridView.SelectedRows.Count > 1)
+            {
+                return;
+            }
             Guid theEditAccountId;
             theEditAccountId = Guid.Parse(AllAccountsDatagridView.SelectedRows[0].Cells["IdCol"].Value.ToString()!);
             loginServices = new LoginServices(new BackEndDBContext());
@@ -117,12 +121,31 @@ namespace DazaBestApplication.Pages
         //Remove All Selected Accounts
         private async Task RemoveSelectedAccounts()
         {
+            Guid CurrentUserID = Program.theLoggedInAccount.AccountId;
+
+            // Check if any of the selected accounts is the current user's account
+            bool isDeletingOwnAccount = false;
+            foreach (DataGridViewRow row in AllAccountsDatagridView.SelectedRows)
+            {
+                Guid accountId = Guid.Parse(row.Cells["IdCol"].Value.ToString()!);
+                if (CurrentUserID == accountId)
+                {
+                    isDeletingOwnAccount = true;
+                    break;
+                }
+            }
+
+            if (isDeletingOwnAccount)
+            {
+                MessageBox.Show("You cannot delete your own account.", "Action Restricted", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             _decision = new DecisionModel()
             {
                 DecisionQuestion = "Do you want to Remove this Account?",
                 DecisionTitle = "Remove Account",
             };
-
             bool result = OpenDecisionModal();
             if (result == true)
             {
@@ -156,7 +179,7 @@ namespace DazaBestApplication.Pages
                 await PopulateDatagridAllAccounts();
             }
 
-            
+
 
         }
         //Open Notification Modal
@@ -305,6 +328,7 @@ namespace DazaBestApplication.Pages
         }
         private void RemoveButton_Click(object sender, EventArgs e)
         {
+
             RemoveSelectedAccounts();
         }
         private void AllAccountsDatagridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

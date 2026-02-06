@@ -70,7 +70,7 @@ namespace SystemBackEnd.Services
         // ======= LOGIN ACCOUNT =======
         public async Task<bool> LoginAccountAsync(string username, string password)
         {
-            var user = await _db.Accounts.FirstOrDefaultAsync(x => x.Username == username);
+            var user = await _db.Accounts.FirstOrDefaultAsync(x => x.Username == username && x.IsActive == true);
             if (user == null)
                 return false;
 

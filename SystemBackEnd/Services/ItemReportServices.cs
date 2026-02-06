@@ -25,7 +25,9 @@ namespace SystemBackEnd.Services
             try
             {
                 result = await (from a in _db.Items
-                                where a.ItemName.Contains(searchitem.SearchValue)
+                                where (a.ItemName.ToLower().Contains(searchitem.SearchValue.ToLower()) ||
+                                       a.ItemCode.ToLower().Contains(searchitem.SearchValue.ToLower())) &&
+                                      a.IsActive == true
                                 select new ItemsReportDetails
                                 {
                                     ItemId = a.ItemID,
@@ -33,7 +35,8 @@ namespace SystemBackEnd.Services
                                     BalanceStock = a.BalanceStocks,
                                     Price = a.ItemPrice,
                                     DateCreated = a.DateCreated,
-                                    ItemCode = a.ItemCode
+                                    ItemCode = a.ItemCode,
+                                    UnitMeasurement = a.UnitMeasurement,
                                 })
                                 .Skip((searchitem.PageNumber - 1) * searchitem.ItemperPage)
                                 .Take(searchitem.ItemperPage)

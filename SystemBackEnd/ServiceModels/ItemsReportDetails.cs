@@ -15,6 +15,7 @@ namespace SystemBackEnd.ServiceModels
         public decimal Price { get; set; }
         public DateTime DateCreated { get; set; }
         public string ItemCode { get; set; }
+        public string UnitMeasurement { get; set; }
 
     }
 }
