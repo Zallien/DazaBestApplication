@@ -42,6 +42,7 @@ namespace SystemBackEnd.ServiceModels
     {
         public string ItemName { get; set; }
         public decimal CurrentStocks { get; set; }
+        public string Unimeasurement { get; set; }
     }
 
     public class ItemInventoryPreview

@@ -167,8 +167,8 @@ namespace SystemBackEnd.Services
                     {
                         ItemName = x.ItemName,
                         CurrentStocks = x.BalanceStocks,
+                        Unimeasurement = x.UnitMeasurement
                     })
-                    .Take(5)
                     .ToListAsync();
 
                 dashinfo.InventoryPreview = await _db.Items

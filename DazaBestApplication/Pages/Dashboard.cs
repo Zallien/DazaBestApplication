@@ -22,6 +22,11 @@ namespace DazaBestApplication.Pages
         private DashboardServices dashboardServices;
 
         private string DashboardInformationType = "Daily";
+        private string LowInventoryType = "Kg";
+        private System.Windows.Forms.Timer lowInventoryTimer;
+        private int currentUnitIndex = 0;
+        private string[] unitMeasurements = { "Kg", "pcs", "L" };
+
 
         public Dashboard(Form mainForm)
         {
@@ -200,18 +205,34 @@ namespace DazaBestApplication.Pages
         }
         private async Task LoadLowInventoryStockChart()
         {
+
+            //Label12 for Label Low Inventory
             try
             {
                 var series = LowInventoryChart.Series["Items Stocks"];
                 series.Points.Clear();
                 series.IsXValueIndexed = true;
 
-                foreach (var item in DashboardInformation.LowInventoryAlert)
+                // Filter items by current unit measurement type
+                var filteredItems = DashboardInformation.LowInventoryAlert
+                    .Where(item => item.Unimeasurement == LowInventoryType)
+                    .ToList();
+
+                foreach (var item in filteredItems)
                 {
                     series.Points.AddXY(item.ItemName, item.CurrentStocks);
                 }
 
+                // Update label to show current unit type
+                string unitDisplayName = LowInventoryType switch
+                {
+                    "Kg" => "Kilogram",
+                    "pcs" => "Pieces",
+                    "L" => "Liter",
+                    _ => LowInventoryType
+                };
 
+                label12.Text = $"Low Inventory Alert - {unitDisplayName}";
             }
             catch (Exception ex)
             {
@@ -243,6 +264,29 @@ namespace DazaBestApplication.Pages
             }
         }
 
+        private void InitializeLowInventoryTimer()
+        {
+            lowInventoryTimer = new System.Windows.Forms.Timer();
+            lowInventoryTimer.Interval = 4000; // 4 seconds
+            lowInventoryTimer.Tick += LowInventoryTimer_Tick;
+            lowInventoryTimer.Start();
+
+            // Load initial data
+            LoadLowInventoryStockChart();
+        }
+        private void LowInventoryTimer_Tick(object sender, EventArgs e)
+        {
+
+            // Move to next unit measurement
+            currentUnitIndex = (currentUnitIndex + 1) % unitMeasurements.Length;
+            LowInventoryType = unitMeasurements[currentUnitIndex];
+
+            // Reload chart with new filter
+            LoadLowInventoryStockChart();
+        }
+
+
+
         private async Task<string> TransformLongAmount(decimal convertthis)
         {
             string thevalue = null;
@@ -264,7 +308,9 @@ namespace DazaBestApplication.Pages
         //Main Load
         private async void Dashboard_Load(object sender, EventArgs e)
         {
+            
             await LoadDashboardInformationToLabels();
+            InitializeLowInventoryTimer();
         }
 
         private async void bunifuDropdown1_SelectedIndexChanged(object sender, EventArgs e)
