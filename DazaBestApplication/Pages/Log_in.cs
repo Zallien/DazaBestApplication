@@ -21,8 +21,8 @@ namespace DazaBestApplication.Pages
 {
     public partial class Log_in : SmoothForm
     {
-        private LoggedinAccount LoggedinAccount;
-        private LoginServices LoginServices;
+        private LoggedinAccount LoggedinAccount = null;
+        private LoginServices LoginServices = null;
         private RegisterAccount regAcc;
         private Panel loadingpanel;
         private LoggingInModel logInModel;

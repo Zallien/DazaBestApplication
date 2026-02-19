@@ -17,6 +17,11 @@
             {
                 components.Dispose();
             }
+            if (disposing)
+            {
+                ClearPOSItems();
+                components?.Dispose();
+            }
             base.Dispose(disposing);
         }
 

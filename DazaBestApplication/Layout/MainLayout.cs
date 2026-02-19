@@ -22,6 +22,7 @@ namespace DazaBestApplication
         private DecisionModel _decision;
         private Panel loadingpanel1;
 
+
         //Button Index
         private List<BunifuButton2> bunifuButtons;
         private BunifuButton2 Activebutton = new();
@@ -578,20 +579,43 @@ namespace DazaBestApplication
             //    Log_in login = new();
             //    login.Show();
             //}
-            _decision = new DecisionModel()
-            {
-                DecisionQuestion = "Do you want to Logout?",
-                DecisionTitle = "Logout",
-            };
 
-            bool result = OpenDecisionModal();
-            if (result == true)
+            //_decision = new DecisionModel()
+            //{
+            //    DecisionQuestion = "Do you want to Logout?",
+            //    DecisionTitle = "Logout",
+            //};
+
+            //bool result = OpenDecisionModal();
+            //if (result == true)
+            //{
+            //    Program.theLoggedInAccount = null;
+            //    Close();
+            //    Log_in login = new();
+            //    login.Show();
+            //    this.Close();
+            //}
+
+            try
             {
-                Program.theLoggedInAccount = null;
-                Close();
-                Log_in login = new();
-                login.Show();
-                this.Close();
+                _decision = new DecisionModel()
+                {
+                    DecisionQuestion = "Do you want to Logout?",
+                    DecisionTitle = "Logout",
+                };
+
+                bool result = OpenDecisionModal();
+                if (result)
+                {
+                    Program.theLoggedInAccount = null;
+                    Log_in login = new Log_in();
+                    login.Show();
+                    this.Dispose(); // closes and disposes the main page
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
         }
@@ -777,7 +801,6 @@ namespace DazaBestApplication
             POSButton.IdleIconLeftImage = Properties.Resources.payment_terminal;
             AccountsManagementBTN.IdleIconLeftImage = Properties.Resources.accounts;
         }
-
         private void voidsbutton_Click(object sender, EventArgs e)
         {
 

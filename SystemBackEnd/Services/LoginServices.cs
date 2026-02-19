@@ -354,6 +354,9 @@ namespace SystemBackEnd.Services
             return adminExists;
         }
 
-
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

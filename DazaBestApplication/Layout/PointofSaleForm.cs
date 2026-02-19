@@ -73,10 +73,101 @@ namespace DazaBestApplication.Layout
         //Populate POS Items
         private void PopulatePOSItems()
         {
-            int itemCount = 20; // Example item count
-            int cols = 4; // Number of columns in the grid
+            //int itemCount = 20; // Example item count
+            //int cols = 4; // Number of columns in the grid
+            //Size maindisplaysize = MainDisplay.Size;
+            //int panelWidth = maindisplaysize.Width / cols;
+            //foreach (Products product in AllavailableProducts)
+            //{
+            //    BunifuShadowPanel itemPanel = new BunifuShadowPanel
+            //    {
+            //        Width = panelWidth - 10,
+            //        Height = 150,
+            //        Margin = new Padding(5),
+            //        Tag = new ProductInformation
+            //        {
+            //            ProductCode = product.ProductCode,
+            //            ProductID = product.ProductID,
+            //            ProductPrice = product.Price,
+            //            ProductName = product.ProductName
+            //        },
+            //        /*GradientBottomLeft = ColorTranslator.FromHtml("#ffffff"),
+            //        GradientBottomRight = ColorTranslator.FromHtml("#ffffff"),
+            //        GradientTopLeft = ColorTranslator.FromHtml("#ffffff"),
+            //        GradientTopRight = ColorTranslator.FromHtml("#ffffff"),
+            //        BorderStyle = BorderStyle.FixedSingle,*/
+            //        PanelColor = Color.White,
+            //        PanelColor2 = Color.White,
+            //        ShadowColor = Color.Maroon,
+            //        Padding = new Padding(15),
+
+            //    };
+            //    PictureBox pictureBox = new PictureBox
+            //    {
+            //        Dock = DockStyle.Top,
+            //        Width = 100,
+            //        Height = 60,
+            //        SizeMode = PictureBoxSizeMode.Zoom,
+            //        BackColor = Color.White,
+            //        Margin = new Padding(0)
+            //    };
+
+            //    if (product.ProductImage != null)
+            //    {
+            //        using (var ms = new System.IO.MemoryStream(product.ProductImage))
+            //        {
+            //            pictureBox.Image = Image.FromStream(ms);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        pictureBox.Image = Properties.Resources.chicken_leg; // Default image
+            //    }
+
+            //    Label priceLabel = new Label
+            //    {
+            //        Text = $"₱ {product.Price}",
+            //        Dock = DockStyle.Top, // <-- Fill the remaining space
+            //        TextAlign = ContentAlignment.MiddleLeft,
+            //        Font = new Font("Segoe UI", 10, FontStyle.Bold),
+            //        Padding = new Padding(10, 0, 5, 0),
+            //        ForeColor = Color.Black
+            //    };
+
+            //    Label nameLabel = new Label
+            //    {
+            //        Text = product.ProductName,
+            //        Dock = DockStyle.Top, // <-- Fill the remaining space
+            //        TextAlign = ContentAlignment.MiddleLeft,
+            //        Font = new Font("Segoe UI", 10, FontStyle.Bold),
+            //        Padding = new Padding(10, 0, 5, 0),
+            //        ForeColor = Color.Black
+            //    };
+
+
+
+            //    // Add controls in correct order (IMPORTANT)
+            //    itemPanel.Controls.Add(priceLabel);
+            //    itemPanel.Controls.Add(nameLabel);
+            //    itemPanel.Controls.Add(pictureBox);
+
+            //    // Add click handlers
+            //    itemPanel.Click += OrderClicked;
+            //    nameLabel.Click += OrderClicked;
+            //    pictureBox.Click += OrderClicked;
+            //    priceLabel.Click += OrderClicked;
+
+            //    MainDisplay.Controls.Add(itemPanel); // <-- Add to parent here
+
+            //}
+
+
+            ClearPOSItems(); // Always clear first before repopulating
+
+            int cols = 4;
             Size maindisplaysize = MainDisplay.Size;
             int panelWidth = maindisplaysize.Width / cols;
+
             foreach (Products product in AllavailableProducts)
             {
                 BunifuShadowPanel itemPanel = new BunifuShadowPanel
@@ -91,17 +182,12 @@ namespace DazaBestApplication.Layout
                         ProductPrice = product.Price,
                         ProductName = product.ProductName
                     },
-                    /*GradientBottomLeft = ColorTranslator.FromHtml("#ffffff"),
-                    GradientBottomRight = ColorTranslator.FromHtml("#ffffff"),
-                    GradientTopLeft = ColorTranslator.FromHtml("#ffffff"),
-                    GradientTopRight = ColorTranslator.FromHtml("#ffffff"),
-                    BorderStyle = BorderStyle.FixedSingle,*/
                     PanelColor = Color.White,
                     PanelColor2 = Color.White,
                     ShadowColor = Color.Maroon,
                     Padding = new Padding(15),
-
                 };
+
                 PictureBox pictureBox = new PictureBox
                 {
                     Dock = DockStyle.Top,
@@ -115,19 +201,20 @@ namespace DazaBestApplication.Layout
                 if (product.ProductImage != null)
                 {
                     using (var ms = new System.IO.MemoryStream(product.ProductImage))
+                    using (var temp = Image.FromStream(ms))
                     {
-                        pictureBox.Image = Image.FromStream(ms);
+                        pictureBox.Image = new Bitmap(temp); // Independent copy, safe to dispose stream
                     }
                 }
                 else
                 {
-                    pictureBox.Image = Properties.Resources.chicken_leg; // Default image
+                    pictureBox.Image = new Bitmap(Properties.Resources.chicken_leg);
                 }
 
                 Label priceLabel = new Label
                 {
                     Text = $"₱ {product.Price}",
-                    Dock = DockStyle.Top, // <-- Fill the remaining space
+                    Dock = DockStyle.Top,
                     TextAlign = ContentAlignment.MiddleLeft,
                     Font = new Font("Segoe UI", 10, FontStyle.Bold),
                     Padding = new Padding(10, 0, 5, 0),
@@ -137,29 +224,45 @@ namespace DazaBestApplication.Layout
                 Label nameLabel = new Label
                 {
                     Text = product.ProductName,
-                    Dock = DockStyle.Top, // <-- Fill the remaining space
+                    Dock = DockStyle.Top,
                     TextAlign = ContentAlignment.MiddleLeft,
                     Font = new Font("Segoe UI", 10, FontStyle.Bold),
                     Padding = new Padding(10, 0, 5, 0),
                     ForeColor = Color.Black
                 };
 
-
-
-                // Add controls in correct order (IMPORTANT)
                 itemPanel.Controls.Add(priceLabel);
                 itemPanel.Controls.Add(nameLabel);
                 itemPanel.Controls.Add(pictureBox);
 
-                // Add click handlers
                 itemPanel.Click += OrderClicked;
                 nameLabel.Click += OrderClicked;
                 pictureBox.Click += OrderClicked;
                 priceLabel.Click += OrderClicked;
 
-                MainDisplay.Controls.Add(itemPanel); // <-- Add to parent here
+                MainDisplay.Controls.Add(itemPanel);
             }
+        }
+        private void ClearPOSItems()
+        {
+            foreach (Control ctrl in MainDisplay.Controls.OfType<BunifuShadowPanel>().ToList())
+            {
+                ctrl.Click -= OrderClicked;
 
+                foreach (Control child in ctrl.Controls)
+                {
+                    child.Click -= OrderClicked;
+                    if (child is PictureBox pb)
+                    {
+                        pb.Image?.Dispose();
+                        pb.Image = null;
+                    }
+                }
+
+                ctrl.Controls.Clear();
+                ctrl.Dispose();
+            }
+            MainDisplay.Controls.Clear();
         }
         //Get Parent Panel
         private BunifuShadowPanel GetParentPanel(Control control)
@@ -245,30 +348,51 @@ namespace DazaBestApplication.Layout
         //Back from Inventory Form --To be Fixed Later--
         private void BackFromInventoryForm()
         {
+            //if (CurrentLoggedinAccount.IsOwner == true)
+            //{
+            //    this.Hide();
+
+            //    using (MainPage mainLayout = new MainPage())
+            //    {
+            //        mainLayout.ShowDialog(); // Use ShowDialog instead of Show
+            //    }
+
+            //    this.Close();
+            //}
+            //else
+            //{
+            //    if (MessageBox.Show("Do you want to Logout", "System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            //    {
+            //        Program.theLoggedInAccount = null;
+            //        this.Hide();
+
+            //        using (Log_in login = new Log_in())
+            //        {
+            //            login.ShowDialog();
+            //        }
+
+            //        this.Close();
+            //    }
+            //}
+
             if (CurrentLoggedinAccount.IsOwner == true)
             {
-                this.Hide();
-
-                using (MainPage mainLayout = new MainPage())
-                {
-                    mainLayout.ShowDialog(); // Use ShowDialog instead of Show
-                }
-
-                this.Close();
+                // Fully dispose this form first, then open MainPage
+                var mainLayout = new MainPage();
+                mainLayout.FormClosed += (s, e) => mainLayout.Dispose();
+                this.Dispose(); // Close and dispose POS page first
+                mainLayout.Show();
             }
             else
             {
-                if (MessageBox.Show("Do you want to Logout", "System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Do you want to Logout", "System",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Program.theLoggedInAccount = null;
-                    this.Hide();
-
-                    using (Log_in login = new Log_in())
-                    {
-                        login.ShowDialog();
-                    }
-
-                    this.Close();
+                    var login = new Log_in();
+                    login.FormClosed += (s, e) => login.Dispose();
+                    this.Dispose(); // Close and dispose POS page first
+                    login.Show();
                 }
             }
         }
