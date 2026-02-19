@@ -256,7 +256,7 @@ namespace DazaBestApplication.Pages
                 case "This Week":
                     int diff = (7 + (DateTime.Now.DayOfWeek - DayOfWeek.Monday)) % 7;
                     FromDateFilter = DateTime.Now.AddDays(-1 * diff).Date;
-                    ToDateFilter = DateTime.Now.Date;
+                    ToDateFilter = DateTime.Now;
                     break;
                 case "This Month":
                     FromDateFilter = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
@@ -382,6 +382,11 @@ namespace DazaBestApplication.Pages
         private void bunifuButton2_Click(object sender, EventArgs e)
         {
             daterangepanel.Visible = true;
+        }
+
+        private void SearchBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

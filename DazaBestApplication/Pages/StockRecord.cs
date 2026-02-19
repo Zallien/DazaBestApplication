@@ -251,7 +251,7 @@ namespace DazaBestApplication.Pages
                 case "This Week":
                     int diff = (7 + (DateTime.Now.DayOfWeek - DayOfWeek.Monday)) % 7;
                     FromDateFilter = DateTime.Now.AddDays(-1 * diff).Date;
-                    ToDateFilter = DateTime.Now.Date;
+                    ToDateFilter = DateTime.Now;
                     break;
                 case "This Month":
                     FromDateFilter = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
