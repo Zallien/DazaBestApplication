@@ -91,6 +91,7 @@ namespace DazaBestApplication.Pages
                     row.Cells["PriceCol"].Value = "₱" + item.Price;
                     row.Cells["AvailabilityCol"].Value = item.IsAvailable == true ? Properties.Resources.check :
                                         Properties.Resources.cancel;
+                    row.Height = 80;
                 }
                 AllProductDatagridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             }

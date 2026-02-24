@@ -36,22 +36,55 @@ namespace SystemBackEnd.Services
             return _theitems;
         }
         //Get Data By Pagination
-        public async Task<List<Items>> GetAllItemsByPagination(SearchItem item)
+        public async Task<List<DisplayItem>> GetAllItemsByPagination(SearchItem item)
         {
-            List<Items> _theitems = new();
+            List<DisplayItem> _theitems = new();
+
             try
             {
-                _theitems = await _db.Items
-                                   .Where(x => x.IsActive == true)
-                                   .OrderByDescending(x => x.Row)
-                                   .Skip((item.PageNumber - 1) * item.ItemperPage)
-                                   .Take(item.ItemperPage)
-                                   .ToListAsync();
+                var latestUpdates =
+                    from d in _db.PurchaseItemDetails
+                    join h in _db.PurcahseItemHeader
+                        on d.Purchaseheaderid equals h.Purchaseheaderid
+                    group h by d.ItemID into g
+                    select new
+                    {
+                        ItemID = g.Key,
+                        LastUpdate = g.Max(x => (DateTime?)x.DateCreated) // 🔥 MAKE NULLABLE
+                    };
+
+                _theitems = await (
+                    from i in _db.Items
+                    join lu in latestUpdates
+                        on i.ItemID equals lu.ItemID into gj
+                    from sub in gj.DefaultIfEmpty()
+                    where i.IsActive
+                    orderby i.Row descending
+                    select new DisplayItem
+                    {
+                        ItemID = i.ItemID,
+                        ItemName = i.ItemName,
+                        ItemCode = i.ItemCode,
+                        ItemPrice = i.ItemPrice,
+                        BalanceStocks = i.BalanceStocks,
+                        DateCreated = i.DateCreated,
+                        IsActive = i.IsActive,
+                        ItemImage = i.ItemImage,
+                        ItemThreshold = i.ItemThreshold,
+                        UnitMeasurement = i.UnitMeasurement,
+
+                        // 🔥 SAFE NULL HANDLING
+                        LastUpdate = sub.LastUpdate ?? i.DateCreated
+                    })
+                    .Skip((item.PageNumber - 1) * item.ItemperPage)
+                    .Take(item.ItemperPage)
+                    .ToListAsync();
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             return _theitems;
         }
         //Add Item
@@ -150,24 +183,60 @@ namespace SystemBackEnd.Services
             return count;
         }
         //Search Items with Pagination
-        public async Task<List<Items>> SearchItems(SearchItem item)
+        public async Task<List<DisplayItem>> SearchItems(SearchItem item)
         {
-            List<Items> _theitems = new();
+            List<DisplayItem> _theitems = new();
+
             try
             {
-                _theitems = await _db.Items
-                                   .Where(x => x.IsActive == true &&
-                                               (x.ItemName!.ToLower().Contains(item.SearchValue.ToLower()) ||
-                                                x.ItemCode!.ToLower().Contains(item.SearchValue.ToLower())))
-                                   .OrderByDescending(x => x.Row)
-                                   .Skip((item.PageNumber - 1) * item.ItemperPage)
-                                   .Take(item.ItemperPage)
-                                   .ToListAsync();
+                var search = item.SearchValue.ToLower() ?? "";
+
+                var latestUpdates =
+                    from d in _db.PurchaseItemDetails
+                    join h in _db.PurcahseItemHeader
+                        on d.Purchaseheaderid equals h.Purchaseheaderid
+                    group h by d.ItemID into g
+                    select new
+                    {
+                        ItemID = g.Key,
+                        //MUST BE NULLABLE
+                        LastUpdate = g.Max(x => (DateTime?)x.DateCreated)
+                    };
+
+                _theitems = await (
+                    from i in _db.Items
+                    join lu in latestUpdates
+                        on i.ItemID equals lu.ItemID into gj
+                    from sub in gj.DefaultIfEmpty()
+                    where i.IsActive &&
+                          (i.ItemName.ToLower()!.Contains(search) ||
+                           i.ItemCode.ToLower()!.Contains(search))
+                    orderby i.Row descending
+                    select new DisplayItem
+                    {
+                        ItemID = i.ItemID,
+                        ItemName = i.ItemName,
+                        ItemCode = i.ItemCode,
+                        ItemPrice = i.ItemPrice,
+                        BalanceStocks = i.BalanceStocks,
+                        DateCreated = i.DateCreated,
+                        IsActive = i.IsActive,
+                        ItemImage = i.ItemImage,
+                        ItemThreshold = i.ItemThreshold,
+                        UnitMeasurement = i.UnitMeasurement,
+
+                        //SAFE NULL HANDLING
+                        LastUpdate = sub.LastUpdate ?? i.DateCreated
+                    })
+                    .Skip((item.PageNumber - 1) * item.ItemperPage)
+                    .Take(item.ItemperPage)
+                    .ToListAsync();
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             return _theitems;
         }
     }

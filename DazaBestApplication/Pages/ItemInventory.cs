@@ -24,7 +24,7 @@ namespace DazaBestApplication.Pages
         private ItemServices itemservices = new ItemServices(new BackEndDBContext());
         private Form Mainform;
         private Panel ContainerPanel;
-        private List<Items> _allitem;
+        private List<DisplayItem> _allitem;
         private ItemModal _itemmodal = new ItemModal();
         private DecisionModel _decision = new DecisionModel();
         private int _pagenumber = 1;
@@ -148,7 +148,7 @@ namespace DazaBestApplication.Pages
                 PageNumber = _pagenumber,
                 ItemperPage = _itemperpage
             };
-            _allitem = new List<Items>();
+            _allitem = new List<DisplayItem>();
             itemservices = new ItemServices(new BackEndDBContext());
             _allitem = await itemservices.GetAllItemsByPagination(Bypage);
             await PopulatAllItemDataGrid(_allitem);
@@ -220,16 +220,17 @@ namespace DazaBestApplication.Pages
             }
         }
         //Populate DataGrid
-        private async Task PopulatAllItemDataGrid(List<Items> _allitemparam)
+        private async Task PopulatAllItemDataGrid(List<DisplayItem> _allitemparam)
         {
-            _allitem = new List<Items>();
+            _allitem = new List<DisplayItem>();
             AllItemsDatagrid.Rows.Clear();
             CultureInfo phCulture = new CultureInfo("en-PH");
+            int temprow = 0;
             foreach (var item in _allitemparam)
             {
                 int rowindex = AllItemsDatagrid.Rows.Add();
                 DataGridViewRow row = AllItemsDatagrid.Rows[rowindex];
-                row.Cells["RowCol"].Value = item.Row;
+                row.Cells["RowCol"].Value = temprow;
                 row.Cells["IdCol"].Value = item.ItemID;
                 row.Cells["ItemCodeCol"].Value = item.ItemCode;
                 row.Cells["ItemNameCol"].Value = item.ItemName;
@@ -237,6 +238,8 @@ namespace DazaBestApplication.Pages
                 row.Cells["PriceCol"].Value = "₱" + item.ItemPrice.ToString(); //ThresholdCol
                 row.Cells["ThresholdCol"].Value = item.ItemThreshold.ToString();
                 row.Cells["UnitCol"].Value = item.UnitMeasurement;
+                row.Cells["LastUpdateCol"].Value = item.LastUpdate;
+                temprow++;
             }
             AllItemsDatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
@@ -391,7 +394,7 @@ namespace DazaBestApplication.Pages
         private async void SearchBox(object sender, EventArgs e)
         {
             searchvalue = SearchBoxTextBox.Text;
-            _allitem = new List<Items>();
+            _allitem = new List<DisplayItem>();
             _allitem = await itemservices.SearchItems(new SearchItem()
             {
                 SearchValue = searchvalue,
