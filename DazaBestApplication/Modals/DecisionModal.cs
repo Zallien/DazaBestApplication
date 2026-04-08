@@ -42,5 +42,10 @@ namespace DazaBestApplication.Modals
             TitleLabel.Text = _decision.DecisionTitle;
             QuestionLabel.Text = _decision.DecisionQuestion;
         }
+
+        private void QuestionLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

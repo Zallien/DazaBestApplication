@@ -317,6 +317,7 @@ namespace DazaBestApplication.Pages
             Usernametxtbox.TextPlaceholder = "Username";
             Usernametxtbox.UseSystemPasswordChar = false;
             Usernametxtbox.WordWrap = true;
+            Usernametxtbox.TextChanged += Usernametxtbox_TextChanged;
             Usernametxtbox.KeyPress += Passwordtxtbox_KeyPress;
             // 
             // Passwordtxtbox

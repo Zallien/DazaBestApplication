@@ -6,15 +6,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemBackEnd;
 using SystemBackEnd.EventHandlers;
 using SystemBackEnd.Models;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
-using SystemBackEnd;
 
 namespace DazaBestApplication.Pages
 {
@@ -23,7 +24,7 @@ namespace DazaBestApplication.Pages
         private ItemServices itemservices = new ItemServices(new BackEndDBContext());
         private Form Mainform;
         private Panel ContainerPanel;
-        private List<Items> _allitem;
+        private List<DisplayItem> _allitem;
         private ItemModal _itemmodal = new ItemModal();
         private DecisionModel _decision = new DecisionModel();
         private int _pagenumber = 1;
@@ -33,6 +34,8 @@ namespace DazaBestApplication.Pages
         private bool DesicionResult;
         private Panel Loadingpanel;
         private BunifuLoader bunifuLoader;
+        private string searchvalue = "";
+        private NotificationModel _notificationmodel;
 
         //Constructor
         public ItemInventory(Form _MainForm, Panel containerPanel)
@@ -66,12 +69,12 @@ namespace DazaBestApplication.Pages
                 Visible = false
             };
 
-            // ✅ 2. Add panel to the form FIRST (important!)
+            
             this.Controls.Add(Loadingpanel);
             Loadingpanel.BringToFront();
             Loadingpanel.Visible = true;
 
-            // ✅ 3. Create the loader
+            
             bunifuLoader = new BunifuLoader()
             {
                 Size = new Size(200, 200),
@@ -79,10 +82,10 @@ namespace DazaBestApplication.Pages
                 Visible = true
             };
 
-            // ✅ 4. Add loader to the panel BEFORE centering it
+            
             Loadingpanel.Controls.Add(bunifuLoader);
 
-            // ✅ 5. Now center it safely
+            
             bunifuLoader.Location = new Point(
                 (Loadingpanel.Width - bunifuLoader.Width) / 2,
                 (Loadingpanel.Height - bunifuLoader.Height) / 2
@@ -106,6 +109,8 @@ namespace DazaBestApplication.Pages
             PaginationLabel.Text = $"{_pagenumber} / {_maxpagenumber}";//Pagination Label
             CheckPageNumber();
             await HideLoadingScreen();
+            Setfilterpanel();
+
         }
 
 
@@ -139,11 +144,11 @@ namespace DazaBestApplication.Pages
         {
             SearchItem Bypage = new SearchItem()
             {
-                SearchValue = "",
+                SearchValue = searchvalue,
                 PageNumber = _pagenumber,
                 ItemperPage = _itemperpage
             };
-            _allitem = new List<Items>();
+            _allitem = new List<DisplayItem>();
             itemservices = new ItemServices(new BackEndDBContext());
             _allitem = await itemservices.GetAllItemsByPagination(Bypage);
             await PopulatAllItemDataGrid(_allitem);
@@ -215,21 +220,28 @@ namespace DazaBestApplication.Pages
             }
         }
         //Populate DataGrid
-        private async Task PopulatAllItemDataGrid(List<Items> _allitemparam)
+        private async Task PopulatAllItemDataGrid(List<DisplayItem> _allitemparam)
         {
-            _allitem = new List<Items>();
+            _allitem = new List<DisplayItem>();
             AllItemsDatagrid.Rows.Clear();
+            CultureInfo phCulture = new CultureInfo("en-PH");
+            int temprow = 0;
             foreach (var item in _allitemparam)
             {
                 int rowindex = AllItemsDatagrid.Rows.Add();
                 DataGridViewRow row = AllItemsDatagrid.Rows[rowindex];
-                row.Cells["RowCol"].Value = item.Row;
+                row.Cells["RowCol"].Value = temprow;
                 row.Cells["IdCol"].Value = item.ItemID;
                 row.Cells["ItemCodeCol"].Value = item.ItemCode;
                 row.Cells["ItemNameCol"].Value = item.ItemName;
-                row.Cells["StocksCol"].Value = item.BalanceStocks;
-                row.Cells["PriceCol"].Value = item.ItemPrice;
+                row.Cells["StocksCol"].Value = $"{item.BalanceStocks} {item.UnitMeasurement}";
+                row.Cells["PriceCol"].Value = "₱" + item.ItemPrice.ToString(); //ThresholdCol
+                row.Cells["ThresholdCol"].Value = item.ItemThreshold.ToString();
+                row.Cells["UnitCol"].Value = item.UnitMeasurement;
+                row.Cells["LastUpdateCol"].Value = item.LastUpdate;
+                temprow++;
             }
+            AllItemsDatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
         //Open Item Modal
         private void OpenModal()
@@ -285,8 +297,50 @@ namespace DazaBestApplication.Pages
                 return result == DialogResult.Yes;
             }
         }
+        //Set FilterPanel
+        private void Setfilterpanel()
+        {
+            bunifuShadowPanel1.Location = new Point(filterbutton.Location.X - (bunifuShadowPanel1.Width - filterbutton.Width), filterbutton.Location.Y + filterbutton.Height);
+
+            //Set Defult value of filter
+            productperpagetxt.Text = _itemperpage.ToString();
+        }
+        //Save Filter
+        private async Task SaveFilter()
+        {
+
+            _itemperpage = int.Parse(productperpagetxt.Text);
+            await GetAllItemCount();
+            await CheckPageNumber();
+            await GetData();
+            PaginationLabel.Text = $"{_pagenumber} / {_maxpagenumber}";//Pagination Label
+            bunifuShadowPanel1.Visible = false;
+        }
+        //Open Notification Modal
+        private void OpenNotificationModal()
+        {
+            Form ModalBackgorund = new();
+            using (NotificationModal modalcontent = new(_notificationmodel))
+            {
+                var mainBounds = Mainform.Bounds;
+
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = Mainform.Size;
+                ModalBackgorund.Location = Mainform.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(Mainform);
 
 
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+                modalcontent.ShowDialog();
+                ModalBackgorund.Dispose();
+            }
+        }
 
 
 
@@ -298,7 +352,7 @@ namespace DazaBestApplication.Pages
         //Events
         private void EditusingEditToolstrip(object? sender, EventArgs e)
         {
-            if (AllItemsDatagrid.SelectedRows.Count > 0)
+            if (AllItemsDatagrid.SelectedRows.Count == 1)
             {
                 DataGridViewRow selectedrow = AllItemsDatagrid.SelectedRows[0];
                 _itemmodal = new ItemModal()
@@ -308,7 +362,9 @@ namespace DazaBestApplication.Pages
                     {
                         ItemID = Guid.Parse(selectedrow.Cells["IdCol"].Value.ToString()),
                         ItemName = selectedrow.Cells["ItemNameCol"].Value.ToString(),
-                        ItemPrice = decimal.Parse(selectedrow.Cells["PriceCol"].Value.ToString())
+                        ItemPrice = decimal.Parse(selectedrow.Cells["PriceCol"].Value.ToString().Replace("₱", "")),
+                        ItemThreshold = decimal.Parse(selectedrow.Cells["ThresholdCol"].Value.ToString()),
+                        UnitMeasurement = selectedrow.Cells["UnitCol"].Value.ToString()
                     }
                 };
                 OpenModal();
@@ -337,11 +393,11 @@ namespace DazaBestApplication.Pages
         }
         private async void SearchBox(object sender, EventArgs e)
         {
-
-            _allitem = new List<Items>();
+            searchvalue = SearchBoxTextBox.Text;
+            _allitem = new List<DisplayItem>();
             _allitem = await itemservices.SearchItems(new SearchItem()
             {
-                SearchValue = SearchBoxTextBox.Text,
+                SearchValue = searchvalue,
                 PageNumber = 1,
                 ItemperPage = 10
             });
@@ -384,16 +440,26 @@ namespace DazaBestApplication.Pages
 
                         if (await DeleteItems(AllSelectedID))
                         {
-                            MessageBox.Show("Deleted Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            _notificationmodel = new NotificationModel()
+                            {
+                                Title = "Item Deletion",
+                                Details = "The selected item(s) have been successfully deleted."
+                            };
+                            OpenNotificationModal();
                         }
                         else
                         {
-                            MessageBox.Show("Deleted Unsuccessfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            _notificationmodel = new NotificationModel()
+                            {
+                                Title = "Item Deletion",
+                                Details = "The selected item(s) could not be deleted. Please try again."
+                            };
+                            OpenNotificationModal();
                         }
                     }
                 }
             }
-        }//Control + D Key For Deleting Item
+        } //Control + D Key For Deleting Item
         private async void DeleteusingDelToolstrip(object sender, EventArgs e)
         {
 
@@ -419,14 +485,24 @@ namespace DazaBestApplication.Pages
 
                 if (await DeleteItems(AllSelectedID))
                 {
-                    MessageBox.Show("Deleted Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _notificationmodel = new NotificationModel()
+                    {
+                        Title = "Item Deletion",
+                        Details = "The selected item(s) have been successfully deleted."
+                    };
+                    OpenNotificationModal();
                 }
                 else
                 {
-                    MessageBox.Show("Deleted Unsuccessfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _notificationmodel = new NotificationModel()
+                    {
+                        Title = "Item Deletion",
+                        Details = "The selected item(s) could not be deleted. Please try again."
+                    };
+                    OpenNotificationModal();
                 }
             }
-        }//Delete using Del Toolstrip
+        } //Delete using Del Toolstrip
         private async void bunifuButton21_Click(object sender, EventArgs e)
         {
             _decision = new DecisionModel()
@@ -451,17 +527,27 @@ namespace DazaBestApplication.Pages
 
                 if (await DeleteItems(AllSelectedID))
                 {
-                    MessageBox.Show("Deleted Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _notificationmodel = new NotificationModel()
+                    {
+                        Title = "Item Deletion",
+                        Details = "The selected item(s) have been successfully deleted."
+                    };
+                    OpenNotificationModal();
                 }
                 else
                 {
-                    MessageBox.Show("Deleted Unsuccessfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _notificationmodel = new NotificationModel()
+                    {
+                        Title = "Item Deletion",
+                        Details = "The selected item(s) could not be deleted. Please try again."
+                    };
+                    OpenNotificationModal();
                 }
             }
         }
         private void bunifuButton23_Click(object sender, EventArgs e)
         {
-            if (AllItemsDatagrid.SelectedRows.Count > 0)
+            if (AllItemsDatagrid.SelectedRows.Count == 1)
             {
                 DataGridViewRow selectedrow = AllItemsDatagrid.SelectedRows[0];
                 _itemmodal = new ItemModal()
@@ -471,7 +557,9 @@ namespace DazaBestApplication.Pages
                     {
                         ItemID = Guid.Parse(selectedrow.Cells["IdCol"].Value.ToString()),
                         ItemName = selectedrow.Cells["ItemNameCol"].Value.ToString(),
-                        ItemPrice = decimal.Parse(selectedrow.Cells["PriceCol"].Value.ToString())
+                        ItemPrice = decimal.Parse(selectedrow.Cells["PriceCol"].Value.ToString().Replace("₱", "")),
+                        ItemThreshold = decimal.Parse(selectedrow.Cells["ThresholdCol"].Value.ToString()),
+                        UnitMeasurement = selectedrow.Cells["UnitCol"].Value.ToString()
                     }
                 };
                 OpenModal();
@@ -480,6 +568,21 @@ namespace DazaBestApplication.Pages
         private void AllItemsDatagrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
+        }
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+            SaveFilter();
+        }
+        private void filterbutton_Click(object sender, EventArgs e)
+        {
+            bunifuShadowPanel1.Visible = !bunifuShadowPanel1.Visible;
+        }
+        private void productperpagetxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

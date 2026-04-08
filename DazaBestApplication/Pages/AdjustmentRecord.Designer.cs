@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdjustmentRecord));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
@@ -43,19 +44,25 @@
             label1 = new Label();
             panel1 = new Panel();
             panel5 = new Panel();
+            bunifuButton2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            RecordFilter = new Bunifu.UI.WinForms.BunifuDropdown();
+            PrintBtn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
             bunifuButton22 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             fromdatetxt = new Bunifu.UI.WinForms.BunifuDatePicker();
             bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             todatetxt = new Bunifu.UI.WinForms.BunifuDatePicker();
-            PrintBtn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            SearchBox = new Bunifu.UI.WinForms.BunifuTextBox();
             panel2 = new Panel();
             Pagination = new Panel();
             PaginationLabel = new Label();
             PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
             PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
             panel3 = new Panel();
+            daterangepanel = new Bunifu.UI.WinForms.BunifuShadowPanel();
+            panel6 = new Panel();
+            bunifuImageButton1 = new Bunifu.UI.WinForms.BunifuImageButton();
+            label2 = new Label();
+            bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             AllAdjustmentRecordsDatagrid = new Bunifu.UI.WinForms.BunifuDataGridView();
             IdCol = new DataGridViewTextBoxColumn();
             ReferenceNumberCol = new DataGridViewTextBoxColumn();
@@ -68,6 +75,8 @@
             panel2.SuspendLayout();
             Pagination.SuspendLayout();
             panel3.SuspendLayout();
+            daterangepanel.SuspendLayout();
+            panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllAdjustmentRecordsDatagrid).BeginInit();
             SuspendLayout();
             // 
@@ -116,193 +125,149 @@
             // 
             // panel5
             // 
-            panel5.Controls.Add(bunifuButton22);
-            panel5.Controls.Add(bunifuLabel1);
-            panel5.Controls.Add(fromdatetxt);
-            panel5.Controls.Add(bunifuLabel2);
-            panel5.Controls.Add(todatetxt);
+            panel5.Controls.Add(bunifuButton2);
+            panel5.Controls.Add(RecordFilter);
             panel5.Dock = DockStyle.Left;
             panel5.Location = new Point(10, 0);
             panel5.Name = "panel5";
             panel5.Size = new Size(500, 73);
             panel5.TabIndex = 14;
             // 
-            // bunifuButton22
+            // bunifuButton2
             // 
-            bunifuButton22.AllowAnimations = true;
-            bunifuButton22.AllowMouseEffects = true;
-            bunifuButton22.AllowToggling = false;
-            bunifuButton22.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            bunifuButton22.AnimationSpeed = 200;
-            bunifuButton22.AutoGenerateColors = false;
-            bunifuButton22.AutoRoundBorders = false;
-            bunifuButton22.AutoSizeLeftIcon = true;
-            bunifuButton22.AutoSizeRightIcon = true;
-            bunifuButton22.BackColor = Color.Transparent;
-            bunifuButton22.BackColor1 = Color.FromArgb(220, 220, 221);
-            bunifuButton22.BackgroundImage = (Image)resources.GetObject("bunifuButton22.BackgroundImage");
-            bunifuButton22.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            bunifuButton22.ButtonText = "Reset";
-            bunifuButton22.ButtonTextMarginLeft = 0;
-            bunifuButton22.ColorContrastOnClick = 45;
-            bunifuButton22.ColorContrastOnHover = 45;
+            bunifuButton2.AllowAnimations = true;
+            bunifuButton2.AllowMouseEffects = true;
+            bunifuButton2.AllowToggling = false;
+            bunifuButton2.AnimationSpeed = 200;
+            bunifuButton2.AutoGenerateColors = false;
+            bunifuButton2.AutoRoundBorders = false;
+            bunifuButton2.AutoSizeLeftIcon = true;
+            bunifuButton2.AutoSizeRightIcon = true;
+            bunifuButton2.BackColor = Color.Transparent;
+            bunifuButton2.BackColor1 = Color.FromArgb(51, 122, 183);
+            bunifuButton2.BackgroundImage = (Image)resources.GetObject("bunifuButton2.BackgroundImage");
+            bunifuButton2.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            bunifuButton2.ButtonText = "Change Date";
+            bunifuButton2.ButtonTextMarginLeft = 0;
+            bunifuButton2.ColorContrastOnClick = 45;
+            bunifuButton2.ColorContrastOnHover = 45;
             borderEdges1.BottomLeft = true;
             borderEdges1.BottomRight = true;
             borderEdges1.TopLeft = true;
             borderEdges1.TopRight = true;
-            bunifuButton22.CustomizableEdges = borderEdges1;
-            bunifuButton22.DialogResult = DialogResult.None;
-            bunifuButton22.DisabledBorderColor = Color.FromArgb(191, 191, 191);
-            bunifuButton22.DisabledFillColor = Color.FromArgb(204, 204, 204);
-            bunifuButton22.DisabledForecolor = Color.FromArgb(168, 160, 168);
-            bunifuButton22.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            bunifuButton22.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            bunifuButton22.ForeColor = Color.Black;
-            bunifuButton22.IconLeftAlign = ContentAlignment.MiddleLeft;
-            bunifuButton22.IconLeftCursor = Cursors.Default;
-            bunifuButton22.IconLeftPadding = new Padding(11, 3, 3, 3);
-            bunifuButton22.IconMarginLeft = 11;
-            bunifuButton22.IconPadding = 10;
-            bunifuButton22.IconRightAlign = ContentAlignment.MiddleRight;
-            bunifuButton22.IconRightCursor = Cursors.Default;
-            bunifuButton22.IconRightPadding = new Padding(3, 3, 7, 3);
-            bunifuButton22.IconSize = 25;
-            bunifuButton22.IdleBorderColor = Color.FromArgb(220, 220, 221);
-            bunifuButton22.IdleBorderRadius = 1;
-            bunifuButton22.IdleBorderThickness = 1;
-            bunifuButton22.IdleFillColor = Color.FromArgb(220, 220, 221);
-            bunifuButton22.IdleIconLeftImage = Properties.Resources.gear;
-            bunifuButton22.IdleIconRightImage = null;
-            bunifuButton22.IndicateFocus = false;
-            bunifuButton22.Location = new Point(318, 29);
-            bunifuButton22.Name = "bunifuButton22";
-            bunifuButton22.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
-            bunifuButton22.OnDisabledState.BorderRadius = 1;
-            bunifuButton22.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            bunifuButton22.OnDisabledState.BorderThickness = 1;
-            bunifuButton22.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
-            bunifuButton22.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
-            bunifuButton22.OnDisabledState.IconLeftImage = null;
-            bunifuButton22.OnDisabledState.IconRightImage = null;
-            bunifuButton22.onHoverState.BorderColor = Color.Black;
-            bunifuButton22.onHoverState.BorderRadius = 1;
-            bunifuButton22.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            bunifuButton22.onHoverState.BorderThickness = 1;
-            bunifuButton22.onHoverState.FillColor = Color.FromArgb(205, 205, 207);
-            bunifuButton22.onHoverState.ForeColor = Color.Black;
-            bunifuButton22.onHoverState.IconLeftImage = null;
-            bunifuButton22.onHoverState.IconRightImage = null;
-            bunifuButton22.OnIdleState.BorderColor = Color.FromArgb(220, 220, 221);
-            bunifuButton22.OnIdleState.BorderRadius = 1;
-            bunifuButton22.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            bunifuButton22.OnIdleState.BorderThickness = 1;
-            bunifuButton22.OnIdleState.FillColor = Color.FromArgb(220, 220, 221);
-            bunifuButton22.OnIdleState.ForeColor = Color.Black;
-            bunifuButton22.OnIdleState.IconLeftImage = Properties.Resources.gear;
-            bunifuButton22.OnIdleState.IconRightImage = null;
-            bunifuButton22.OnPressedState.BorderColor = Color.FromArgb(161, 205, 220);
-            bunifuButton22.OnPressedState.BorderRadius = 1;
-            bunifuButton22.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            bunifuButton22.OnPressedState.BorderThickness = 1;
-            bunifuButton22.OnPressedState.FillColor = Color.FromArgb(161, 205, 220);
-            bunifuButton22.OnPressedState.ForeColor = Color.Black;
-            bunifuButton22.OnPressedState.IconLeftImage = null;
-            bunifuButton22.OnPressedState.IconRightImage = null;
-            bunifuButton22.Size = new Size(99, 32);
-            bunifuButton22.TabIndex = 13;
-            bunifuButton22.TextAlign = ContentAlignment.MiddleLeft;
-            bunifuButton22.TextAlignment = HorizontalAlignment.Center;
-            bunifuButton22.TextMarginLeft = 0;
-            bunifuButton22.TextPadding = new Padding(35, 0, 0, 0);
-            bunifuButton22.UseDefaultRadiusAndThickness = true;
-            bunifuButton22.Click += bunifuButton22_Click;
+            bunifuButton2.CustomizableEdges = borderEdges1;
+            bunifuButton2.DialogResult = DialogResult.None;
+            bunifuButton2.DisabledBorderColor = Color.FromArgb(191, 191, 191);
+            bunifuButton2.DisabledFillColor = Color.Empty;
+            bunifuButton2.DisabledForecolor = Color.Empty;
+            bunifuButton2.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            bunifuButton2.Font = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bunifuButton2.ForeColor = Color.Black;
+            bunifuButton2.IconLeft = null;
+            bunifuButton2.IconLeftAlign = ContentAlignment.MiddleLeft;
+            bunifuButton2.IconLeftCursor = Cursors.Default;
+            bunifuButton2.IconLeftPadding = new Padding(11, 3, 3, 3);
+            bunifuButton2.IconMarginLeft = 11;
+            bunifuButton2.IconPadding = 10;
+            bunifuButton2.IconRight = null;
+            bunifuButton2.IconRightAlign = ContentAlignment.MiddleRight;
+            bunifuButton2.IconRightCursor = Cursors.Default;
+            bunifuButton2.IconRightPadding = new Padding(3, 3, 7, 3);
+            bunifuButton2.IconSize = 25;
+            bunifuButton2.IdleBorderColor = Color.Empty;
+            bunifuButton2.IdleBorderRadius = 0;
+            bunifuButton2.IdleBorderThickness = 0;
+            bunifuButton2.IdleFillColor = Color.Empty;
+            bunifuButton2.IdleIconLeftImage = null;
+            bunifuButton2.IdleIconRightImage = null;
+            bunifuButton2.IndicateFocus = false;
+            bunifuButton2.Location = new Point(358, 27);
+            bunifuButton2.Name = "bunifuButton2";
+            bunifuButton2.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
+            bunifuButton2.OnDisabledState.BorderRadius = 1;
+            bunifuButton2.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            bunifuButton2.OnDisabledState.BorderThickness = 1;
+            bunifuButton2.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
+            bunifuButton2.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
+            bunifuButton2.OnDisabledState.IconLeftImage = null;
+            bunifuButton2.OnDisabledState.IconRightImage = null;
+            bunifuButton2.onHoverState.BorderColor = Color.Maroon;
+            bunifuButton2.onHoverState.BorderRadius = 1;
+            bunifuButton2.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            bunifuButton2.onHoverState.BorderThickness = 1;
+            bunifuButton2.onHoverState.FillColor = Color.Transparent;
+            bunifuButton2.onHoverState.ForeColor = Color.Maroon;
+            bunifuButton2.onHoverState.IconLeftImage = null;
+            bunifuButton2.onHoverState.IconRightImage = null;
+            bunifuButton2.OnIdleState.BorderColor = Color.Maroon;
+            bunifuButton2.OnIdleState.BorderRadius = 1;
+            bunifuButton2.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            bunifuButton2.OnIdleState.BorderThickness = 1;
+            bunifuButton2.OnIdleState.FillColor = Color.Transparent;
+            bunifuButton2.OnIdleState.ForeColor = Color.Black;
+            bunifuButton2.OnIdleState.IconLeftImage = null;
+            bunifuButton2.OnIdleState.IconRightImage = null;
+            bunifuButton2.OnPressedState.BorderColor = Color.FromArgb(40, 96, 144);
+            bunifuButton2.OnPressedState.BorderRadius = 1;
+            bunifuButton2.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            bunifuButton2.OnPressedState.BorderThickness = 1;
+            bunifuButton2.OnPressedState.FillColor = Color.FromArgb(40, 96, 144);
+            bunifuButton2.OnPressedState.ForeColor = Color.White;
+            bunifuButton2.OnPressedState.IconLeftImage = null;
+            bunifuButton2.OnPressedState.IconRightImage = null;
+            bunifuButton2.Size = new Size(103, 31);
+            bunifuButton2.TabIndex = 3;
+            bunifuButton2.TextAlign = ContentAlignment.MiddleCenter;
+            bunifuButton2.TextAlignment = HorizontalAlignment.Center;
+            bunifuButton2.TextMarginLeft = 0;
+            bunifuButton2.TextPadding = new Padding(0);
+            bunifuButton2.UseDefaultRadiusAndThickness = true;
+            bunifuButton2.Click += bunifuButton2_Click;
             // 
-            // bunifuLabel1
+            // RecordFilter
             // 
-            bunifuLabel1.AllowParentOverrides = false;
-            bunifuLabel1.AutoEllipsis = false;
-            bunifuLabel1.CursorType = Cursors.Default;
-            bunifuLabel1.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bunifuLabel1.Location = new Point(8, 5);
-            bunifuLabel1.Name = "bunifuLabel1";
-            bunifuLabel1.RightToLeft = RightToLeft.No;
-            bunifuLabel1.Size = new Size(110, 18);
-            bunifuLabel1.TabIndex = 9;
-            bunifuLabel1.Text = "Date Range:";
-            bunifuLabel1.TextAlignment = ContentAlignment.TopLeft;
-            bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // fromdatetxt
-            // 
-            fromdatetxt.BackColor = Color.White;
-            fromdatetxt.BorderColor = Color.Black;
-            fromdatetxt.BorderRadius = 1;
-            fromdatetxt.Color = Color.Black;
-            fromdatetxt.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
-            fromdatetxt.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            fromdatetxt.DisabledColor = Color.Gray;
-            fromdatetxt.DisplayWeekNumbers = false;
-            fromdatetxt.DPHeight = 0;
-            fromdatetxt.DropDownAlign = LeftRightAlignment.Right;
-            fromdatetxt.FillDatePicker = false;
-            fromdatetxt.Font = new Font("Courier New", 9.75F, FontStyle.Bold);
-            fromdatetxt.ForeColor = Color.Black;
-            fromdatetxt.Format = DateTimePickerFormat.Custom;
-            fromdatetxt.Icon = (Image)resources.GetObject("fromdatetxt.Icon");
-            fromdatetxt.IconColor = Color.Gray;
-            fromdatetxt.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
-            fromdatetxt.LeftTextMargin = 5;
-            fromdatetxt.Location = new Point(31, 30);
-            fromdatetxt.MaxDate = new DateTime(2025, 10, 25, 0, 0, 0, 0);
-            fromdatetxt.MinimumSize = new Size(0, 32);
-            fromdatetxt.Name = "fromdatetxt";
-            fromdatetxt.Size = new Size(130, 32);
-            fromdatetxt.TabIndex = 10;
-            fromdatetxt.Value = new DateTime(2025, 10, 25, 0, 0, 0, 0);
-            fromdatetxt.ValueChanged += todatetxt_ValueChanged;
-            // 
-            // bunifuLabel2
-            // 
-            bunifuLabel2.AllowParentOverrides = false;
-            bunifuLabel2.AutoEllipsis = false;
-            bunifuLabel2.CursorType = Cursors.Default;
-            bunifuLabel2.Font = new Font("Arial", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bunifuLabel2.Location = new Point(166, 33);
-            bunifuLabel2.Name = "bunifuLabel2";
-            bunifuLabel2.RightToLeft = RightToLeft.No;
-            bunifuLabel2.Size = new Size(7, 24);
-            bunifuLabel2.TabIndex = 12;
-            bunifuLabel2.Text = "-";
-            bunifuLabel2.TextAlignment = ContentAlignment.TopLeft;
-            bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // todatetxt
-            // 
-            todatetxt.BackColor = Color.White;
-            todatetxt.BorderColor = Color.Black;
-            todatetxt.BorderRadius = 1;
-            todatetxt.CalendarFont = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            todatetxt.Color = Color.Black;
-            todatetxt.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
-            todatetxt.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            todatetxt.DisabledColor = Color.Gray;
-            todatetxt.DisplayWeekNumbers = false;
-            todatetxt.DPHeight = 0;
-            todatetxt.DropDownAlign = LeftRightAlignment.Right;
-            todatetxt.FillDatePicker = false;
-            todatetxt.Font = new Font("Courier New", 9.75F, FontStyle.Bold);
-            todatetxt.ForeColor = Color.Black;
-            todatetxt.Format = DateTimePickerFormat.Custom;
-            todatetxt.Icon = (Image)resources.GetObject("todatetxt.Icon");
-            todatetxt.IconColor = Color.Gray;
-            todatetxt.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
-            todatetxt.LeftTextMargin = 5;
-            todatetxt.Location = new Point(179, 30);
-            todatetxt.MinimumSize = new Size(0, 32);
-            todatetxt.Name = "todatetxt";
-            todatetxt.Size = new Size(130, 32);
-            todatetxt.TabIndex = 11;
-            todatetxt.ValueChanged += todatetxt_ValueChanged;
+            RecordFilter.BackColor = Color.Transparent;
+            RecordFilter.BackgroundColor = Color.White;
+            RecordFilter.BorderColor = Color.Silver;
+            RecordFilter.BorderRadius = 1;
+            RecordFilter.Color = Color.Silver;
+            RecordFilter.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
+            RecordFilter.DisabledBackColor = Color.FromArgb(240, 240, 240);
+            RecordFilter.DisabledBorderColor = Color.FromArgb(204, 204, 204);
+            RecordFilter.DisabledColor = Color.FromArgb(240, 240, 240);
+            RecordFilter.DisabledForeColor = Color.FromArgb(109, 109, 109);
+            RecordFilter.DisabledIndicatorColor = Color.DarkGray;
+            RecordFilter.DrawMode = DrawMode.OwnerDrawFixed;
+            RecordFilter.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
+            RecordFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+            RecordFilter.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            RecordFilter.FillDropDown = true;
+            RecordFilter.FillIndicator = false;
+            RecordFilter.FlatStyle = FlatStyle.Flat;
+            RecordFilter.Font = new Font("Segoe UI", 9F);
+            RecordFilter.ForeColor = Color.Black;
+            RecordFilter.FormattingEnabled = true;
+            RecordFilter.Icon = null;
+            RecordFilter.IndicatorAlignment = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            RecordFilter.IndicatorColor = Color.DarkGray;
+            RecordFilter.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            RecordFilter.IndicatorThickness = 2;
+            RecordFilter.IsDropdownOpened = false;
+            RecordFilter.ItemBackColor = Color.White;
+            RecordFilter.ItemBorderColor = Color.White;
+            RecordFilter.ItemForeColor = Color.Black;
+            RecordFilter.ItemHeight = 26;
+            RecordFilter.ItemHighLightColor = Color.DodgerBlue;
+            RecordFilter.ItemHighLightForeColor = Color.White;
+            RecordFilter.ItemTopMargin = 3;
+            RecordFilter.Location = new Point(25, 26);
+            RecordFilter.Name = "RecordFilter";
+            RecordFilter.Size = new Size(327, 32);
+            RecordFilter.TabIndex = 2;
+            RecordFilter.Text = null;
+            RecordFilter.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            RecordFilter.TextLeftMargin = 5;
+            RecordFilter.SelectedValueChanged += RecordFilter_SelectedValueChanged;
             // 
             // PrintBtn
             // 
@@ -470,6 +435,170 @@
             SearchBox.WordWrap = true;
             SearchBox.TextChange += SearchBox_TextChange;
             // 
+            // bunifuButton22
+            // 
+            bunifuButton22.AllowAnimations = true;
+            bunifuButton22.AllowMouseEffects = true;
+            bunifuButton22.AllowToggling = false;
+            bunifuButton22.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            bunifuButton22.AnimationSpeed = 200;
+            bunifuButton22.AutoGenerateColors = false;
+            bunifuButton22.AutoRoundBorders = false;
+            bunifuButton22.AutoSizeLeftIcon = true;
+            bunifuButton22.AutoSizeRightIcon = true;
+            bunifuButton22.BackColor = Color.Transparent;
+            bunifuButton22.BackColor1 = Color.FromArgb(220, 220, 221);
+            bunifuButton22.BackgroundImage = (Image)resources.GetObject("bunifuButton22.BackgroundImage");
+            bunifuButton22.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            bunifuButton22.ButtonText = "Reset";
+            bunifuButton22.ButtonTextMarginLeft = 0;
+            bunifuButton22.ColorContrastOnClick = 45;
+            bunifuButton22.ColorContrastOnHover = 45;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            bunifuButton22.CustomizableEdges = borderEdges3;
+            bunifuButton22.DialogResult = DialogResult.None;
+            bunifuButton22.DisabledBorderColor = Color.FromArgb(191, 191, 191);
+            bunifuButton22.DisabledFillColor = Color.FromArgb(204, 204, 204);
+            bunifuButton22.DisabledForecolor = Color.FromArgb(168, 160, 168);
+            bunifuButton22.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            bunifuButton22.Font = new Font("Courier New", 12F, FontStyle.Bold);
+            bunifuButton22.ForeColor = Color.Black;
+            bunifuButton22.IconLeftAlign = ContentAlignment.MiddleLeft;
+            bunifuButton22.IconLeftCursor = Cursors.Default;
+            bunifuButton22.IconLeftPadding = new Padding(11, 3, 3, 3);
+            bunifuButton22.IconMarginLeft = 11;
+            bunifuButton22.IconPadding = 10;
+            bunifuButton22.IconRightAlign = ContentAlignment.MiddleRight;
+            bunifuButton22.IconRightCursor = Cursors.Default;
+            bunifuButton22.IconRightPadding = new Padding(3, 3, 7, 3);
+            bunifuButton22.IconSize = 25;
+            bunifuButton22.IdleBorderColor = Color.FromArgb(220, 220, 221);
+            bunifuButton22.IdleBorderRadius = 1;
+            bunifuButton22.IdleBorderThickness = 1;
+            bunifuButton22.IdleFillColor = Color.FromArgb(220, 220, 221);
+            bunifuButton22.IdleIconLeftImage = Properties.Resources.gear;
+            bunifuButton22.IdleIconRightImage = null;
+            bunifuButton22.IndicateFocus = false;
+            bunifuButton22.Location = new Point(302, 36);
+            bunifuButton22.Name = "bunifuButton22";
+            bunifuButton22.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
+            bunifuButton22.OnDisabledState.BorderRadius = 1;
+            bunifuButton22.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            bunifuButton22.OnDisabledState.BorderThickness = 1;
+            bunifuButton22.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
+            bunifuButton22.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
+            bunifuButton22.OnDisabledState.IconLeftImage = null;
+            bunifuButton22.OnDisabledState.IconRightImage = null;
+            bunifuButton22.onHoverState.BorderColor = Color.Black;
+            bunifuButton22.onHoverState.BorderRadius = 1;
+            bunifuButton22.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            bunifuButton22.onHoverState.BorderThickness = 1;
+            bunifuButton22.onHoverState.FillColor = Color.FromArgb(205, 205, 207);
+            bunifuButton22.onHoverState.ForeColor = Color.Black;
+            bunifuButton22.onHoverState.IconLeftImage = null;
+            bunifuButton22.onHoverState.IconRightImage = null;
+            bunifuButton22.OnIdleState.BorderColor = Color.FromArgb(220, 220, 221);
+            bunifuButton22.OnIdleState.BorderRadius = 1;
+            bunifuButton22.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            bunifuButton22.OnIdleState.BorderThickness = 1;
+            bunifuButton22.OnIdleState.FillColor = Color.FromArgb(220, 220, 221);
+            bunifuButton22.OnIdleState.ForeColor = Color.Black;
+            bunifuButton22.OnIdleState.IconLeftImage = Properties.Resources.gear;
+            bunifuButton22.OnIdleState.IconRightImage = null;
+            bunifuButton22.OnPressedState.BorderColor = Color.FromArgb(161, 205, 220);
+            bunifuButton22.OnPressedState.BorderRadius = 1;
+            bunifuButton22.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            bunifuButton22.OnPressedState.BorderThickness = 1;
+            bunifuButton22.OnPressedState.FillColor = Color.FromArgb(161, 205, 220);
+            bunifuButton22.OnPressedState.ForeColor = Color.Black;
+            bunifuButton22.OnPressedState.IconLeftImage = null;
+            bunifuButton22.OnPressedState.IconRightImage = null;
+            bunifuButton22.Size = new Size(99, 32);
+            bunifuButton22.TabIndex = 13;
+            bunifuButton22.TextAlign = ContentAlignment.MiddleLeft;
+            bunifuButton22.TextAlignment = HorizontalAlignment.Center;
+            bunifuButton22.TextMarginLeft = 0;
+            bunifuButton22.TextPadding = new Padding(35, 0, 0, 0);
+            bunifuButton22.UseDefaultRadiusAndThickness = true;
+            bunifuButton22.Click += bunifuButton22_Click;
+            // 
+            // fromdatetxt
+            // 
+            fromdatetxt.BackColor = Color.White;
+            fromdatetxt.BorderColor = Color.Black;
+            fromdatetxt.BorderRadius = 1;
+            fromdatetxt.Color = Color.Black;
+            fromdatetxt.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
+            fromdatetxt.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
+            fromdatetxt.DisabledColor = Color.Gray;
+            fromdatetxt.DisplayWeekNumbers = false;
+            fromdatetxt.DPHeight = 0;
+            fromdatetxt.DropDownAlign = LeftRightAlignment.Right;
+            fromdatetxt.FillDatePicker = false;
+            fromdatetxt.Font = new Font("Courier New", 9.75F, FontStyle.Bold);
+            fromdatetxt.ForeColor = Color.Black;
+            fromdatetxt.Format = DateTimePickerFormat.Custom;
+            fromdatetxt.Icon = (Image)resources.GetObject("fromdatetxt.Icon");
+            fromdatetxt.IconColor = Color.Gray;
+            fromdatetxt.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
+            fromdatetxt.LeftTextMargin = 5;
+            fromdatetxt.Location = new Point(15, 37);
+            fromdatetxt.MaxDate = new DateTime(2025, 10, 25, 0, 0, 0, 0);
+            fromdatetxt.MinimumSize = new Size(0, 32);
+            fromdatetxt.Name = "fromdatetxt";
+            fromdatetxt.Size = new Size(130, 32);
+            fromdatetxt.TabIndex = 10;
+            fromdatetxt.Value = new DateTime(2025, 10, 25, 0, 0, 0, 0);
+            fromdatetxt.ValueChanged += todatetxt_ValueChanged;
+            fromdatetxt.MouseEnter += fromdatetxt_MouseEnter;
+            // 
+            // bunifuLabel2
+            // 
+            bunifuLabel2.AllowParentOverrides = false;
+            bunifuLabel2.AutoEllipsis = false;
+            bunifuLabel2.CursorType = Cursors.Default;
+            bunifuLabel2.Font = new Font("Arial", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bunifuLabel2.Location = new Point(150, 40);
+            bunifuLabel2.Name = "bunifuLabel2";
+            bunifuLabel2.RightToLeft = RightToLeft.No;
+            bunifuLabel2.Size = new Size(7, 24);
+            bunifuLabel2.TabIndex = 12;
+            bunifuLabel2.Text = "-";
+            bunifuLabel2.TextAlignment = ContentAlignment.TopLeft;
+            bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // todatetxt
+            // 
+            todatetxt.BackColor = Color.White;
+            todatetxt.BorderColor = Color.Black;
+            todatetxt.BorderRadius = 1;
+            todatetxt.CalendarFont = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            todatetxt.Color = Color.Black;
+            todatetxt.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
+            todatetxt.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
+            todatetxt.DisabledColor = Color.Gray;
+            todatetxt.DisplayWeekNumbers = false;
+            todatetxt.DPHeight = 0;
+            todatetxt.DropDownAlign = LeftRightAlignment.Right;
+            todatetxt.FillDatePicker = false;
+            todatetxt.Font = new Font("Courier New", 9.75F, FontStyle.Bold);
+            todatetxt.ForeColor = Color.Black;
+            todatetxt.Format = DateTimePickerFormat.Custom;
+            todatetxt.Icon = (Image)resources.GetObject("todatetxt.Icon");
+            todatetxt.IconColor = Color.Gray;
+            todatetxt.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
+            todatetxt.LeftTextMargin = 5;
+            todatetxt.Location = new Point(163, 37);
+            todatetxt.MinimumSize = new Size(0, 32);
+            todatetxt.Name = "todatetxt";
+            todatetxt.Size = new Size(130, 32);
+            todatetxt.TabIndex = 11;
+            todatetxt.ValueChanged += todatetxt_ValueChanged;
+            todatetxt.MouseEnter += fromdatetxt_MouseEnter;
+            // 
             // panel2
             // 
             panel2.Controls.Add(Pagination);
@@ -573,6 +702,7 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(daterangepanel);
             panel3.Controls.Add(AllAdjustmentRecordsDatagrid);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 123);
@@ -580,6 +710,109 @@
             panel3.Padding = new Padding(35, 10, 35, 10);
             panel3.Size = new Size(900, 489);
             panel3.TabIndex = 6;
+            // 
+            // daterangepanel
+            // 
+            daterangepanel.BackColor = Color.Transparent;
+            daterangepanel.BorderColor = Color.WhiteSmoke;
+            daterangepanel.BorderRadius = 1;
+            daterangepanel.BorderThickness = 1;
+            daterangepanel.Controls.Add(bunifuButton22);
+            daterangepanel.Controls.Add(panel6);
+            daterangepanel.Controls.Add(fromdatetxt);
+            daterangepanel.Controls.Add(bunifuLabel3);
+            daterangepanel.Controls.Add(bunifuLabel2);
+            daterangepanel.Controls.Add(todatetxt);
+            daterangepanel.FillStyle = Bunifu.UI.WinForms.BunifuShadowPanel.FillStyles.Solid;
+            daterangepanel.GradientMode = Bunifu.UI.WinForms.BunifuShadowPanel.GradientModes.Vertical;
+            daterangepanel.Location = new Point(244, 58);
+            daterangepanel.Name = "daterangepanel";
+            daterangepanel.PanelColor = Color.WhiteSmoke;
+            daterangepanel.PanelColor2 = Color.WhiteSmoke;
+            daterangepanel.ShadowColor = Color.DarkGray;
+            daterangepanel.ShadowDept = 2;
+            daterangepanel.ShadowDepth = 5;
+            daterangepanel.ShadowStyle = Bunifu.UI.WinForms.BunifuShadowPanel.ShadowStyles.Surrounded;
+            daterangepanel.ShadowTopLeftVisible = false;
+            daterangepanel.Size = new Size(421, 86);
+            daterangepanel.Style = Bunifu.UI.WinForms.BunifuShadowPanel.BevelStyles.Flat;
+            daterangepanel.TabIndex = 5;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.Maroon;
+            panel6.Controls.Add(bunifuImageButton1);
+            panel6.Controls.Add(label2);
+            panel6.Dock = DockStyle.Top;
+            panel6.Location = new Point(0, 0);
+            panel6.Name = "panel6";
+            panel6.Padding = new Padding(10, 0, 5, 0);
+            panel6.Size = new Size(421, 30);
+            panel6.TabIndex = 2;
+            // 
+            // bunifuImageButton1
+            // 
+            bunifuImageButton1.ActiveImage = null;
+            bunifuImageButton1.AllowAnimations = true;
+            bunifuImageButton1.AllowBuffering = false;
+            bunifuImageButton1.AllowToggling = false;
+            bunifuImageButton1.AllowZooming = true;
+            bunifuImageButton1.AllowZoomingOnFocus = false;
+            bunifuImageButton1.BackColor = Color.Transparent;
+            bunifuImageButton1.DialogResult = DialogResult.None;
+            bunifuImageButton1.Dock = DockStyle.Right;
+            bunifuImageButton1.ErrorImage = (Image)resources.GetObject("bunifuImageButton1.ErrorImage");
+            bunifuImageButton1.FadeWhenInactive = false;
+            bunifuImageButton1.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            bunifuImageButton1.Image = Properties.Resources.close1;
+            bunifuImageButton1.ImageActive = null;
+            bunifuImageButton1.ImageLocation = null;
+            bunifuImageButton1.ImageMargin = 8;
+            bunifuImageButton1.ImageSize = new Size(22, 22);
+            bunifuImageButton1.ImageZoomSize = new Size(30, 30);
+            bunifuImageButton1.InitialImage = (Image)resources.GetObject("bunifuImageButton1.InitialImage");
+            bunifuImageButton1.Location = new Point(386, 0);
+            bunifuImageButton1.Name = "bunifuImageButton1";
+            bunifuImageButton1.Rotation = 0;
+            bunifuImageButton1.ShowActiveImage = true;
+            bunifuImageButton1.ShowCursorChanges = true;
+            bunifuImageButton1.ShowImageBorders = true;
+            bunifuImageButton1.ShowSizeMarkers = false;
+            bunifuImageButton1.Size = new Size(30, 30);
+            bunifuImageButton1.TabIndex = 3;
+            bunifuImageButton1.ToolTipText = "";
+            bunifuImageButton1.WaitOnLoad = false;
+            bunifuImageButton1.Zoom = 8;
+            bunifuImageButton1.ZoomSpeed = 10;
+            bunifuImageButton1.Click += bunifuImageButton1_Click;
+            // 
+            // label2
+            // 
+            label2.BackColor = Color.Maroon;
+            label2.Dock = DockStyle.Left;
+            label2.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(10, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(367, 30);
+            label2.TabIndex = 1;
+            label2.Text = "Date Range";
+            label2.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // bunifuLabel3
+            // 
+            bunifuLabel3.AllowParentOverrides = false;
+            bunifuLabel3.AutoEllipsis = false;
+            bunifuLabel3.CursorType = Cursors.Default;
+            bunifuLabel3.Font = new Font("Arial", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bunifuLabel3.Location = new Point(155, 39);
+            bunifuLabel3.Name = "bunifuLabel3";
+            bunifuLabel3.RightToLeft = RightToLeft.No;
+            bunifuLabel3.Size = new Size(7, 24);
+            bunifuLabel3.TabIndex = 3;
+            bunifuLabel3.Text = "-";
+            bunifuLabel3.TextAlignment = ContentAlignment.TopLeft;
+            bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // AllAdjustmentRecordsDatagrid
             // 
@@ -698,10 +931,12 @@
             TopPanel.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel5.ResumeLayout(false);
-            panel5.PerformLayout();
             panel2.ResumeLayout(false);
             Pagination.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            daterangepanel.ResumeLayout(false);
+            daterangepanel.PerformLayout();
+            panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)AllAdjustmentRecordsDatagrid).EndInit();
             ResumeLayout(false);
         }
@@ -725,12 +960,18 @@
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
         private Bunifu.UI.WinForms.BunifuDatePicker todatetxt;
         private Bunifu.UI.WinForms.BunifuDatePicker fromdatetxt;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
         private Panel panel5;
         private DataGridViewTextBoxColumn IdCol;
         private DataGridViewTextBoxColumn ReferenceNumberCol;
         private DataGridViewTextBoxColumn ItemNameCol;
         private DataGridViewTextBoxColumn QuantityCol;
         private DataGridViewTextBoxColumn ReasonCol;
+        private Bunifu.UI.WinForms.BunifuShadowPanel daterangepanel;
+        private Panel panel6;
+        private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton1;
+        private Label label2;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton2;
+        private Bunifu.UI.WinForms.BunifuDropdown RecordFilter;
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Bunifu.UI.WinForms.BunifuButton;
+using DazaBestApplication.Reports;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,10 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemBackEnd;
 using SystemBackEnd.ServiceModels;
 using SystemBackEnd.Services;
-using SystemBackEnd;
-using DazaBestApplication.Reports;
 
 namespace DazaBestApplication.Pages
 {
@@ -28,10 +29,21 @@ namespace DazaBestApplication.Pages
         private string SearchValue = "";
         private int PageNumber = 1;
         private int ItemPerPaeg = 12;
-        private DateTime FromDateFilter = DateTime.Now;
+        private DateTime FromDateFilter = DateTime.Today;
         private DateTime ToDateFilter = DateTime.Now;
         private int totalpages = 0;
 
+        private List<string> ReportFilter = new List<string>()
+        {
+            "Today",
+            "This Week",
+            "This Month",
+            "This Year",
+            "All",
+            "Custom"
+        };
+        private int Prevfrommonth;
+        private int Prevtomonth;
 
 
         public SalesRecord(Form mainForm)
@@ -51,7 +63,7 @@ namespace DazaBestApplication.Pages
                 saleRecordFilterSearch = new RecordsFilterSearch()
                 {
                     SearchValue = SearchValue,
-                    FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
+                    FromDate = FromDateFilter,
                     ToDate = ToDateFilter,
                     PageNumber = PageNumber,
                     ItemperPage = ItemPerPaeg
@@ -88,6 +100,7 @@ namespace DazaBestApplication.Pages
 
 
             }
+            AllsaleDatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
         //Search Function
         private async Task SearchSaleRecords()
@@ -110,7 +123,7 @@ namespace DazaBestApplication.Pages
                 saleRecordFilterSearch = new RecordsFilterSearch()
                 {
                     SearchValue = SearchValue,
-                    FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
+                    FromDate = FromDateFilter,
                     ToDate = ToDateFilter,
                     PageNumber = PageNumber,
                     ItemperPage = ItemPerPaeg
@@ -169,34 +182,129 @@ namespace DazaBestApplication.Pages
         //Change the Date Filter
         private async Task ChangeDateFilter()
         {
-            if (fromdatetxt.Value.Date <= todatetxt.Value.Date)
+            try
             {
-                FromDateFilter = fromdatetxt.Value;
-                ToDateFilter = todatetxt.Value;
-                await GetTotalPages();
-                await CheckPageNumber();
-                await PopulateAllSaleReportDatagrid();
-                PaginationLabel.Text = $"{PageNumber} / {totalpages}";//Pagination Label
+                if (RecordFilter.Text != "Custom")
+                {
+                    return;
+                }
+
+                int newfrommonth = fromdatetxt.Value.Month;
+                int newtomonth = todatetxt.Value.Month;
+                if (newfrommonth != Prevfrommonth)
+                {
+                    Prevfrommonth = newfrommonth;
+                    int lastDay = DateTime.DaysInMonth(fromdatetxt.Value.Year, newfrommonth);
+                    fromdatetxt.Value = new DateTime(fromdatetxt.Value.Year, newfrommonth, lastDay);
+                }
+                if (newtomonth != Prevtomonth)
+                {
+                    Prevtomonth = newtomonth;
+                    int lastDay = DateTime.DaysInMonth(todatetxt.Value.Year, newtomonth);
+                    todatetxt.Value = new DateTime(todatetxt.Value.Year, newtomonth, lastDay);
+
+                }
+
+
+                if (fromdatetxt.Value.Date <= todatetxt.Value.Date)
+                {
+                    FromDateFilter = fromdatetxt.Value;
+                    ToDateFilter = todatetxt.Value;
+                    await GetTotalPages();
+                    await CheckPageNumber();
+                    await PopulateAllSaleReportDatagrid();
+                    PaginationLabel.Text = $"{PageNumber} / {totalpages}";//Pagination Label
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Date Range. Please ensure that the 'From' date is earlier than or equal to the 'To' date.", "Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    fromdatetxt.Value = FromDateFilter;
+                    todatetxt.Value = ToDateFilter;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Invalid Date Range. Please ensure that the 'From' date is earlier than or equal to the 'To' date.", "Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                fromdatetxt.Value = FromDateFilter;
-                todatetxt.Value = ToDateFilter;
+
             }
         }
+        //Populate Date Filter
+        private async Task PopulateDateFilter()
+        {
+            RecordFilter.Items.Clear();
+            foreach (var filter in ReportFilter)
+            {
+                RecordFilter.Items.Add(filter);
+            }
+            RecordFilter.SelectedIndex = 0;
+            await ReportFilterChanged();
+        }
+
+
+
+
+
+
+        private async Task ReportFilterChanged()
+        {
+            bunifuButton2.Visible = false;
+            switch (RecordFilter.Text)
+            {
+                case "Today":
+                    FromDateFilter = DateTime.Today;
+                    ToDateFilter = DateTime.Now;
+                    break;
+                case "This Week":
+                    int diff = (7 + (DateTime.Now.DayOfWeek - DayOfWeek.Monday)) % 7;
+                    FromDateFilter = DateTime.Now.AddDays(-1 * diff).Date;
+                    ToDateFilter = DateTime.Now;
+                    break;
+                case "This Month":
+                    FromDateFilter = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                    ToDateFilter = DateTime.Now;
+                    break;
+                case "This Year":
+                    FromDateFilter = new DateTime(DateTime.Now.Year, 1, 1);
+                    ToDateFilter = DateTime.Now;
+                    break;
+                case "All":
+                    FromDateFilter = fromdatetxt.MinDate;
+                    ToDateFilter = DateTime.Now.Date;
+                    break;
+                case "Custom":
+                    fromdatetxt.Value = datenow;
+                    todatetxt.Value = datenow;
+                    bunifuButton2.Visible = true;
+                    daterangepanel.Parent = this;
+                    daterangepanel.Location = new Point((this.Width - daterangepanel.Width) / 2, (this.Height - daterangepanel.Height) / 2);
+                    daterangepanel.BringToFront();
+                    break;
+                default:
+                    break;
+            }
+            PageNumber = 1;
+            await PopulateAllSaleReportDatagrid();
+            await GetTotalPages();
+            await CheckPageNumber();
+            PaginationLabel.Text = $"{PageNumber} / {totalpages}";//Pagination Label
+        }
+
+
         #endregion
 
         //Main Load
         private async void SalesRecord_Load(object sender, EventArgs e)
         {
             fromdatetxt.MaxDate = DateTime.Now;
+            fromdatetxt.MinDate = DateTime.Now.AddYears(-10);
             todatetxt.MaxDate = DateTime.Now;
             fromdatetxt.Value = FromDateFilter;
             todatetxt.Value = ToDateFilter;
+            daterangepanel.Visible = false;
             await GetTotalPages();
             await CheckPageNumber();
             await PopulateAllSaleReportDatagrid();
+            await PopulateDateFilter();
+            await ReportFilterChanged();
             PaginationLabel.Text = $"{PageNumber} / {totalpages}";//Pagination Label
         }
 
@@ -211,12 +319,13 @@ namespace DazaBestApplication.Pages
                 saleRecordFilterSearch = new RecordsFilterSearch()
                 {
                     SearchValue = SearchValue,
-                    FromDate = (FromDateFilter.Date == DateTime.Now.Date) ? null : FromDateFilter,
+                    FromDate = FromDateFilter,
                     ToDate = ToDateFilter,
-                    PageNumber = PageNumber
+                    PageNumber = PageNumber,
+                    ItemperPage = 99999
                 };
                 SaleReportDetailsforPrints = await SaleReportServices.GetSaleReportforPrinting(saleRecordFilterSearch);
-                MonthlySalesReportForm monthlySalesReportForm = new MonthlySalesReportForm(SaleReportDetailsforPrints, fromdatetxt.Value, todatetxt.Value);
+                MonthlySalesReportForm monthlySalesReportForm = new MonthlySalesReportForm(SaleReportDetailsforPrints, FromDateFilter, ToDateFilter);
                 monthlySalesReportForm.Show();
             }
             catch (Exception ex)
@@ -254,5 +363,30 @@ namespace DazaBestApplication.Pages
             SearchSaleRecords();
         }
         #endregion
+
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+            daterangepanel.Visible = false;
+        }
+
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RecordFilter_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ReportFilterChanged();
+        }
+
+        private void bunifuButton2_Click(object sender, EventArgs e)
+        {
+            daterangepanel.Visible = true;
+        }
+
+        private void SearchBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

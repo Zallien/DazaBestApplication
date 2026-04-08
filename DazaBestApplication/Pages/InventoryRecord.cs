@@ -82,8 +82,9 @@ namespace DazaBestApplication.Pages
                     row.Cells["ItemNameCol"].Value = item.ItemName;
                     row.Cells["ItemCodeCol"].Value = item.ItemCode;
                     row.Cells["DateCol"].Value = item.DateCreated.Date;
-                    row.Cells["StockCol"].Value = item.BalanceStock;
+                    row.Cells["StockCol"].Value = $"{item.BalanceStock} {item.UnitMeasurement}";
                     row.Cells["ItemPriceCol"].Value = item.Price;
+                    row.Cells["UnitCol"].Value = item.UnitMeasurement;
                 }
             }
             catch (Exception e)
@@ -181,7 +182,7 @@ namespace DazaBestApplication.Pages
                 {
                     SearchValue = SearchValue,
                     PageNumber = PageNumber,
-                    ItemperPage = ItemPerPaeg
+                    ItemperPage = 99999
                 };
                 itemsReportDetailsList = new List<ItemsReportDetails>();
                 ItemReportServices = new ItemReportServices(new SystemBackEnd.BackEndDBContext());

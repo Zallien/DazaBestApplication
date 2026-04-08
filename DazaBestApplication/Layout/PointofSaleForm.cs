@@ -3,6 +3,7 @@ using Bunifu.UI.WinForms.BunifuButton;
 using DazaBestApplication.Modals;
 using DazaBestApplication.Pages;
 using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,7 +24,7 @@ namespace DazaBestApplication.Layout
 {
     public partial class PointofSaleForm : Form
     {
-
+        private LoggedinAccount loggedaccount = Program.theLoggedInAccount;
         private List<Products> AllavailableProducts;
         private List<POSProductOrders> CurrentOrders = new List<POSProductOrders>();
         private decimal Total;
@@ -32,6 +33,7 @@ namespace DazaBestApplication.Layout
         private LoggedinAccount CurrentLoggedinAccount = Program.theLoggedInAccount;
         private LoggedinAccount theLoggedInAccount = Program.theLoggedInAccount;
         private PosItemFilter theFilter;
+        private DecisionModel _decision;
         private List<string> NavigationButtons = new List<string>()
         {
             "All",
@@ -40,11 +42,18 @@ namespace DazaBestApplication.Layout
             "Barkada Meal",
             "Meals"
         };
+        private List<string> Foodstallcategories = new List<string>()
+        {
+            "All",
+            "Lechon",
+            "Fried/Prito",
+        };
 
         //For PosItemFIlter
         private string SearchValue = "";
         private string SelectedCategory = "All";
         private bool IsEdittingdatagrid = false;
+        private string CurrentBusiness = "Karinderya";
 
 
         public PointofSaleForm()
@@ -64,10 +73,101 @@ namespace DazaBestApplication.Layout
         //Populate POS Items
         private void PopulatePOSItems()
         {
-            int itemCount = 20; // Example item count
-            int cols = 4; // Number of columns in the grid
+            //int itemCount = 20; // Example item count
+            //int cols = 4; // Number of columns in the grid
+            //Size maindisplaysize = MainDisplay.Size;
+            //int panelWidth = maindisplaysize.Width / cols;
+            //foreach (Products product in AllavailableProducts)
+            //{
+            //    BunifuShadowPanel itemPanel = new BunifuShadowPanel
+            //    {
+            //        Width = panelWidth - 10,
+            //        Height = 150,
+            //        Margin = new Padding(5),
+            //        Tag = new ProductInformation
+            //        {
+            //            ProductCode = product.ProductCode,
+            //            ProductID = product.ProductID,
+            //            ProductPrice = product.Price,
+            //            ProductName = product.ProductName
+            //        },
+            //        /*GradientBottomLeft = ColorTranslator.FromHtml("#ffffff"),
+            //        GradientBottomRight = ColorTranslator.FromHtml("#ffffff"),
+            //        GradientTopLeft = ColorTranslator.FromHtml("#ffffff"),
+            //        GradientTopRight = ColorTranslator.FromHtml("#ffffff"),
+            //        BorderStyle = BorderStyle.FixedSingle,*/
+            //        PanelColor = Color.White,
+            //        PanelColor2 = Color.White,
+            //        ShadowColor = Color.Maroon,
+            //        Padding = new Padding(15),
+
+            //    };
+            //    PictureBox pictureBox = new PictureBox
+            //    {
+            //        Dock = DockStyle.Top,
+            //        Width = 100,
+            //        Height = 60,
+            //        SizeMode = PictureBoxSizeMode.Zoom,
+            //        BackColor = Color.White,
+            //        Margin = new Padding(0)
+            //    };
+
+            //    if (product.ProductImage != null)
+            //    {
+            //        using (var ms = new System.IO.MemoryStream(product.ProductImage))
+            //        {
+            //            pictureBox.Image = Image.FromStream(ms);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        pictureBox.Image = Properties.Resources.chicken_leg; // Default image
+            //    }
+
+            //    Label priceLabel = new Label
+            //    {
+            //        Text = $"₱ {product.Price}",
+            //        Dock = DockStyle.Top, // <-- Fill the remaining space
+            //        TextAlign = ContentAlignment.MiddleLeft,
+            //        Font = new Font("Segoe UI", 10, FontStyle.Bold),
+            //        Padding = new Padding(10, 0, 5, 0),
+            //        ForeColor = Color.Black
+            //    };
+
+            //    Label nameLabel = new Label
+            //    {
+            //        Text = product.ProductName,
+            //        Dock = DockStyle.Top, // <-- Fill the remaining space
+            //        TextAlign = ContentAlignment.MiddleLeft,
+            //        Font = new Font("Segoe UI", 10, FontStyle.Bold),
+            //        Padding = new Padding(10, 0, 5, 0),
+            //        ForeColor = Color.Black
+            //    };
+
+
+
+            //    // Add controls in correct order (IMPORTANT)
+            //    itemPanel.Controls.Add(priceLabel);
+            //    itemPanel.Controls.Add(nameLabel);
+            //    itemPanel.Controls.Add(pictureBox);
+
+            //    // Add click handlers
+            //    itemPanel.Click += OrderClicked;
+            //    nameLabel.Click += OrderClicked;
+            //    pictureBox.Click += OrderClicked;
+            //    priceLabel.Click += OrderClicked;
+
+            //    MainDisplay.Controls.Add(itemPanel); // <-- Add to parent here
+
+            //}
+
+
+            ClearPOSItems(); // Always clear first before repopulating
+
+            int cols = 4;
             Size maindisplaysize = MainDisplay.Size;
             int panelWidth = maindisplaysize.Width / cols;
+
             foreach (Products product in AllavailableProducts)
             {
                 BunifuShadowPanel itemPanel = new BunifuShadowPanel
@@ -82,17 +182,12 @@ namespace DazaBestApplication.Layout
                         ProductPrice = product.Price,
                         ProductName = product.ProductName
                     },
-                    /*GradientBottomLeft = ColorTranslator.FromHtml("#ffffff"),
-                    GradientBottomRight = ColorTranslator.FromHtml("#ffffff"),
-                    GradientTopLeft = ColorTranslator.FromHtml("#ffffff"),
-                    GradientTopRight = ColorTranslator.FromHtml("#ffffff"),
-                    BorderStyle = BorderStyle.FixedSingle,*/
                     PanelColor = Color.White,
                     PanelColor2 = Color.White,
                     ShadowColor = Color.Maroon,
                     Padding = new Padding(15),
-
                 };
+
                 PictureBox pictureBox = new PictureBox
                 {
                     Dock = DockStyle.Top,
@@ -106,19 +201,20 @@ namespace DazaBestApplication.Layout
                 if (product.ProductImage != null)
                 {
                     using (var ms = new System.IO.MemoryStream(product.ProductImage))
+                    using (var temp = Image.FromStream(ms))
                     {
-                        pictureBox.Image = Image.FromStream(ms);
+                        pictureBox.Image = new Bitmap(temp); // Independent copy, safe to dispose stream
                     }
                 }
                 else
                 {
-                    pictureBox.Image = Properties.Resources.chicken_leg; // Default image
+                    pictureBox.Image = new Bitmap(Properties.Resources.chicken_leg);
                 }
 
                 Label priceLabel = new Label
                 {
-                    Text = product.Price.ToString("C2"),
-                    Dock = DockStyle.Top, // <-- Fill the remaining space
+                    Text = $"₱ {product.Price}",
+                    Dock = DockStyle.Top,
                     TextAlign = ContentAlignment.MiddleLeft,
                     Font = new Font("Segoe UI", 10, FontStyle.Bold),
                     Padding = new Padding(10, 0, 5, 0),
@@ -128,29 +224,45 @@ namespace DazaBestApplication.Layout
                 Label nameLabel = new Label
                 {
                     Text = product.ProductName,
-                    Dock = DockStyle.Top, // <-- Fill the remaining space
+                    Dock = DockStyle.Top,
                     TextAlign = ContentAlignment.MiddleLeft,
                     Font = new Font("Segoe UI", 10, FontStyle.Bold),
                     Padding = new Padding(10, 0, 5, 0),
                     ForeColor = Color.Black
                 };
 
-
-
-                // Add controls in correct order (IMPORTANT)
                 itemPanel.Controls.Add(priceLabel);
                 itemPanel.Controls.Add(nameLabel);
                 itemPanel.Controls.Add(pictureBox);
 
-                // Add click handlers
                 itemPanel.Click += OrderClicked;
                 nameLabel.Click += OrderClicked;
                 pictureBox.Click += OrderClicked;
                 priceLabel.Click += OrderClicked;
 
-                MainDisplay.Controls.Add(itemPanel); // <-- Add to parent here
+                MainDisplay.Controls.Add(itemPanel);
             }
+        }
+        private void ClearPOSItems()
+        {
+            foreach (Control ctrl in MainDisplay.Controls.OfType<BunifuShadowPanel>().ToList())
+            {
+                ctrl.Click -= OrderClicked;
 
+                foreach (Control child in ctrl.Controls)
+                {
+                    child.Click -= OrderClicked;
+                    if (child is PictureBox pb)
+                    {
+                        pb.Image?.Dispose();
+                        pb.Image = null;
+                    }
+                }
+
+                ctrl.Controls.Clear();
+                ctrl.Dispose();
+            }
+            MainDisplay.Controls.Clear();
         }
         //Get Parent Panel
         private BunifuShadowPanel GetParentPanel(Control control)
@@ -236,23 +348,51 @@ namespace DazaBestApplication.Layout
         //Back from Inventory Form --To be Fixed Later--
         private void BackFromInventoryForm()
         {
-            //Add Logic Here Later
-            //Checks if the User has access to Inventory Form
+            //if (CurrentLoggedinAccount.IsOwner == true)
+            //{
+            //    this.Hide();
+
+            //    using (MainPage mainLayout = new MainPage())
+            //    {
+            //        mainLayout.ShowDialog(); // Use ShowDialog instead of Show
+            //    }
+
+            //    this.Close();
+            //}
+            //else
+            //{
+            //    if (MessageBox.Show("Do you want to Logout", "System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            //    {
+            //        Program.theLoggedInAccount = null;
+            //        this.Hide();
+
+            //        using (Log_in login = new Log_in())
+            //        {
+            //            login.ShowDialog();
+            //        }
+
+            //        this.Close();
+            //    }
+            //}
+
             if (CurrentLoggedinAccount.IsOwner == true)
             {
-                this.Hide();
-                MainPage mainLayout = new MainPage();
+                // Fully dispose this form first, then open MainPage
+                var mainLayout = new MainPage();
+                mainLayout.FormClosed += (s, e) => mainLayout.Dispose();
+                this.Dispose(); // Close and dispose POS page first
                 mainLayout.Show();
             }
             else
             {
-                if (MessageBox.Show("Do you want to Logout", "System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Do you want to Logout", "System",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Program.theLoggedInAccount = null;
-                    Close();
-                    Log_in login = new();
+                    var login = new Log_in();
+                    login.FormClosed += (s, e) => login.Dispose();
+                    this.Dispose(); // Close and dispose POS page first
                     login.Show();
-                    this.Close();
                 }
             }
         }
@@ -351,7 +491,11 @@ namespace DazaBestApplication.Layout
                     DecisionQuestion = "Are you sure you want to cancel/new order?"
                 };
                 bool userConfirmed = OpenDecisionModal(decisionModel);
-                if (userConfirmed)
+                if (userConfirmed == true && loggedaccount.IsOwner == false)
+                {
+                    await ShowVoidModal("Cancel");
+                }
+                else
                 {
                     await CancelResetOrder();
                 }
@@ -407,52 +551,102 @@ namespace DazaBestApplication.Layout
             float percentage = 100f / NavigationButtons.Count;
 
             int col = 0;
-
-            foreach (string category in NavigationButtons)
+            if (CurrentBusiness == "Karinderya")
             {
-                var navButton = new BunifuButton
+                foreach (string category in NavigationButtons)
                 {
-                    Text = category,
-                    AutoSize = false,
-                    Margin = new Padding(5),
-                    Tag = category,
-                    Dock = DockStyle.Fill,
-                    Width = 150,
-
-                };
-
-
-                navButton.onHoverState.BorderColor = Color.FromArgb(255, 240, 221);
-                navButton.onHoverState.FillColor = Color.FromArgb(255, 240, 221);
-                navButton.onHoverState.ForeColor = Color.Black;
-                navButton.OnIdleState.BorderColor = Color.Maroon;
-                navButton.OnIdleState.FillColor = Color.Maroon;
-                navButton.OnIdleState.ForeColor = Color.White;
-                navButton.OnPressedState.BorderColor = Color.Black;
-                navButton.OnPressedState.FillColor = Color.FromArgb(198, 40, 40);
-                navButton.OnPressedState.ForeColor = Color.White;
-
-                navButton.Click += async (s, e) =>
-                {
-                    SelectedCategory = (string)navButton.Tag;
-
-                    MainDisplay.Controls.Clear();
-                    await GetAllAvailableProducts(new PosItemFilter
+                    var navButton = new BunifuButton
                     {
-                        SearchValue = SearchValue,
-                        Category = SelectedCategory
-                    });
-                };
+                        Text = category,
+                        AutoSize = false,
+                        Margin = new Padding(5),
+                        Tag = category,
+                        Dock = DockStyle.Fill,
+                        Width = 150,
 
-                // Add autosizing column
-                tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, percentage));
+                    };
 
-                // Add button at specific column/row
-                tableLayoutPanel1.Controls.Add(navButton, col, 0);
 
-                col++;
+                    navButton.onHoverState.BorderColor = Color.FromArgb(255, 240, 221);
+                    navButton.onHoverState.FillColor = Color.FromArgb(255, 240, 221);
+                    navButton.onHoverState.ForeColor = Color.Black;
+                    navButton.OnIdleState.BorderColor = Color.Maroon;
+                    navButton.OnIdleState.FillColor = Color.Maroon;
+                    navButton.OnIdleState.ForeColor = Color.White;
+                    navButton.OnPressedState.BorderColor = Color.Black;
+                    navButton.OnPressedState.FillColor = Color.FromArgb(198, 40, 40);
+                    navButton.OnPressedState.ForeColor = Color.White;
+
+                    navButton.Click += async (s, e) =>
+                    {
+                        SelectedCategory = (string)navButton.Tag;
+
+                        MainDisplay.Controls.Clear();
+                        await GetAllAvailableProducts(new PosItemFilter
+                        {
+                            SearchValue = SearchValue,
+                            Category = SelectedCategory,
+                            Business = CurrentBusiness
+                        });
+                    };
+
+                    // Add autosizing column
+                    tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, percentage));
+
+                    // Add button at specific column/row
+                    tableLayoutPanel1.Controls.Add(navButton, col, 0);
+
+                    col++;
+                }
             }
+            else
+            {
+                foreach (string category in Foodstallcategories)
+                {
+                    var navButton = new BunifuButton
+                    {
+                        Text = category,
+                        AutoSize = false,
+                        Margin = new Padding(5),
+                        Tag = category,
+                        Dock = DockStyle.Fill,
+                        Width = 150,
 
+                    };
+
+
+                    navButton.onHoverState.BorderColor = Color.FromArgb(255, 240, 221);
+                    navButton.onHoverState.FillColor = Color.FromArgb(255, 240, 221);
+                    navButton.onHoverState.ForeColor = Color.Black;
+                    navButton.OnIdleState.BorderColor = Color.Maroon;
+                    navButton.OnIdleState.FillColor = Color.Maroon;
+                    navButton.OnIdleState.ForeColor = Color.White;
+                    navButton.OnPressedState.BorderColor = Color.Black;
+                    navButton.OnPressedState.FillColor = Color.FromArgb(198, 40, 40);
+                    navButton.OnPressedState.ForeColor = Color.White;
+
+                    navButton.Click += async (s, e) =>
+                    {
+                        SelectedCategory = (string)navButton.Tag;
+
+                        MainDisplay.Controls.Clear();
+                        await GetAllAvailableProducts(new PosItemFilter
+                        {
+                            SearchValue = SearchValue,
+                            Category = SelectedCategory,
+                            Business = CurrentBusiness
+                        });
+                    };
+
+                    // Add autosizing column
+                    tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, percentage));
+
+                    // Add button at specific column/row
+                    tableLayoutPanel1.Controls.Add(navButton, col, 0);
+
+                    col++;
+                }
+            }
         }
         //Show ForgotPassswordSetupModal
         private async Task ShowForgotPassswordSetup()
@@ -494,7 +688,59 @@ namespace DazaBestApplication.Layout
             }
 
         }
+        //Open Decision Modal
+        private bool OpenDecisionModal()
+        {
+            Form ModalBackgorund = new();
+            using (DecisionModal modalcontent = new(_decision))
+            {
+                var mainBounds = this.Bounds;
 
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = this.Size;
+                ModalBackgorund.Location = this.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(this);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+
+                var result = modalcontent.ShowDialog();
+
+                ModalBackgorund.Dispose();
+
+                return result == DialogResult.Yes;
+            }
+        }
+        //Show VoidModal
+        private async Task ShowVoidModal(string ActionType)
+        {
+            Form Backgroundmodal = new Form();
+            using (VoidModalAdminPassword modalcontent = new VoidModalAdminPassword(ActionType))
+            {
+                var mainbounds = this.Bounds;
+
+                Backgroundmodal.StartPosition = FormStartPosition.Manual;
+                Backgroundmodal.FormBorderStyle = FormBorderStyle.None;
+                Backgroundmodal.Opacity = .60d;
+                Backgroundmodal.BackColor = Color.Black;
+                Backgroundmodal.Bounds = mainbounds;
+                Backgroundmodal.Size = this.Size;
+                Backgroundmodal.Location = this.Location;
+                Backgroundmodal.ShowInTaskbar = false;
+                Backgroundmodal.Show(this);
+
+                modalcontent.Owner = Backgroundmodal;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+                modalcontent.ShowDialog();
+                Backgroundmodal.Dispose();
+            }
+        }
 
 
         //Main Load
@@ -505,7 +751,8 @@ namespace DazaBestApplication.Layout
             theFilter = new PosItemFilter()
             {
                 SearchValue = SearchValue,
-                Category = SelectedCategory
+                Category = SelectedCategory,
+                Business = CurrentBusiness
             };
 
             await GetAllAvailableProducts(theFilter);
@@ -518,6 +765,56 @@ namespace DazaBestApplication.Layout
             {
                 await CancelResetOrder();
             };
+
+            //Hook Event Handlers
+            VoidHistoryEventHandler.EventHandlerNotifier += async (actiontype) =>
+            {
+                if (actiontype == VoidHistoryEventHandler.ActionType.Cancel)
+                {
+                    await CancelResetOrder();
+                }
+                else
+                {
+                    if (ProductOrdersDatagrid.SelectedRows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in ProductOrdersDatagrid.SelectedRows)
+                        {
+                            int rowIndex = row.Index;
+                            await RemoveOrderfrodDatagrid(rowIndex);
+                        }
+                    }
+                }
+
+
+            };
+        }
+
+        //Remove Order
+        private async Task RemoveOrderfrodDatagrid(int rowIndex)
+        {
+            IsEdittingdatagrid = true;
+            if (rowIndex >= 0 && ProductOrdersDatagrid.Columns["ActionCol"] != null)
+            {
+
+                var cellValue = ProductOrdersDatagrid.Rows[rowIndex].Cells["ProductIdCol"].Value;
+
+                if (cellValue is Guid productId)
+                {
+                    // Remove from DataGridView
+                    ProductOrdersDatagrid.Rows.RemoveAt(rowIndex);
+
+                    // Remove from CurrentOrders list
+                    POSProductOrders orderToRemove = CurrentOrders.FirstOrDefault(o => o.ProductID == productId);
+                    if (orderToRemove != null)
+                    {
+                        CurrentOrders.Remove(orderToRemove);
+                    }
+
+                    // Recalculate subtotal
+                    await CalculateSubtotal();
+                }
+            }
+
         }
 
 
@@ -587,7 +884,6 @@ namespace DazaBestApplication.Layout
 
             await CancelResetOrderValidation();
         }
-
         private void ProductOrdersDatagrid_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -595,7 +891,6 @@ namespace DazaBestApplication.Layout
                 e.Handled = true;
             }
         }
-
         //Para sa number lang yung mailagay sa datagridview
         private void NumbersOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -619,7 +914,6 @@ namespace DazaBestApplication.Layout
                 }
             }
         }
-
         private void bunifuTextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -633,17 +927,63 @@ namespace DazaBestApplication.Layout
         ///datagrid ulit
         private async void ProductOrdersDatagrid_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            IsEdittingdatagrid = true;
-            if (e.RowIndex >= 0 && ProductOrdersDatagrid.Columns[e.ColumnIndex].Name == "ActionCol")
+            try
             {
-                Guid productId = (Guid)ProductOrdersDatagrid.Rows[e.RowIndex].Cells["ProductIdCol"].Value;
-                ProductOrdersDatagrid.Rows.RemoveAt(e.RowIndex);
-                POSProductOrders orderToRemove = CurrentOrders.FirstOrDefault(o => o.ProductID == productId);
-                if (orderToRemove != null)
+                if (ProductOrdersDatagrid.Columns[e.ColumnIndex].Name != "ActionCol")
                 {
-                    CurrentOrders.Remove(orderToRemove);
+                    return;
                 }
-                await CalculateSubtotal();
+                _decision = new DecisionModel()
+                {
+                    DecisionQuestion = "Do you want to Remove this Item from the Ordered List?",
+                    DecisionTitle = "Remove Item",
+                };
+                bool userConfirmed = OpenDecisionModal(_decision);
+                if (userConfirmed != true)
+                {
+                    return;
+                }
+
+                if (loggedaccount.IsOwner == true)
+                {
+                    IsEdittingdatagrid = true;
+                    if (ProductOrdersDatagrid.SelectedRows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in ProductOrdersDatagrid.SelectedRows)
+                        {
+                            int rowIndex = row.Index;
+                            await RemoveOrderfrodDatagrid(rowIndex);
+                        }
+                    }
+                    return;
+                }
+                await ShowVoidModal("Remove");
+                
+
+                //bool result = OpenDecisionModal();
+                //if (result == true)
+                //{
+
+                //    IsEdittingdatagrid = true;
+                //    await RemoveOrderfrodDatagrid(e.RowIndex);
+
+                //    if (e.RowIndex >= 0 && ProductOrdersDatagrid.Columns[e.ColumnIndex].Name == "ActionCol")
+                //    {
+                //        var sample = ProductOrdersDatagrid.Rows[e.RowIndex].Cells["ProductIdCol"].Value;
+                //        Guid productId = (Guid)ProductOrdersDatagrid.Rows[e.RowIndex].Cells["ProductIdCol"].Value;
+                //        ProductOrdersDatagrid.Rows.RemoveAt(e.RowIndex);
+                //        POSProductOrders orderToRemove = CurrentOrders.FirstOrDefault(o => o.ProductID == productId);
+                //        if (orderToRemove != null)
+                //        {
+                //            CurrentOrders.Remove(orderToRemove);
+                //        }
+                //        await CalculateSubtotal();
+                //    }
+                //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
         private void ProductOrdersDatagrid_EditingControlShowing_1(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -661,7 +1001,6 @@ namespace DazaBestApplication.Layout
                 }
             }
         }
-
         private async void PaymentButton_Click_1(object sender, EventArgs e)
         {
             if (ProductOrdersDatagrid.Rows.Count == 0)
@@ -674,12 +1013,10 @@ namespace DazaBestApplication.Layout
                 await ShowPaymentModal();
             }
         }
-
         private async void bunifuButton1_Click(object sender, EventArgs e)
         {
             await CancelResetOrderValidation();
         }
-
         private void bunifuTextBox1_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '.')
@@ -687,12 +1024,10 @@ namespace DazaBestApplication.Layout
                 e.Handled = true;
             }
         }
-
         private void MainDisplay_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private async void ProductOrdersDatagrid_CellValueChanged_1(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -706,7 +1041,7 @@ namespace DazaBestApplication.Layout
                     if (item != null)
                     {
                         item.Quantity = Convert.ToInt32(ProductOrdersDatagrid.Rows[e.RowIndex].Cells["QuantityCol"].Value);
-                        await CalculateTotal();
+                        await CalculateSubtotal();
                     }
                 }
             }
@@ -715,10 +1050,46 @@ namespace DazaBestApplication.Layout
                 throw;
             }
         }
-
         private void ProductOrdersDatagrid_MouseClick(object sender, MouseEventArgs e)
         {
             IsEdittingdatagrid = true;
+        }
+        private async void foodstallbutton_Click(object sender, EventArgs e)
+        {
+            MainDisplay.Controls.Clear();
+            CurrentBusiness = "Food Stall";
+            SelectedCategory = "All";
+            await GetAllAvailableProducts(new PosItemFilter
+            {
+                SearchValue = SearchValue,
+                Category = SelectedCategory,
+                Business = CurrentBusiness
+            });
+            PopulateNavigationButtons();
+        }
+        private async void karinderyabutton_Click(object sender, EventArgs e)
+        {
+            MainDisplay.Controls.Clear();
+            CurrentBusiness = "Karinderya";
+            SelectedCategory = "All";
+            await GetAllAvailableProducts(new PosItemFilter
+            {
+                SearchValue = SearchValue,
+                Category = SelectedCategory,
+                Business = CurrentBusiness
+            });
+            PopulateNavigationButtons();
+        }
+        private async void Searchbox_TextChange(object sender, EventArgs e)
+        {
+            MainDisplay.Controls.Clear();
+            SearchValue = Searchbox.Text;
+            await GetAllAvailableProducts(new PosItemFilter
+            {
+                SearchValue = SearchValue,
+                Category = SelectedCategory,
+                Business = CurrentBusiness
+            });
         }
     }
 

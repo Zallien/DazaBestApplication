@@ -11,6 +11,8 @@ namespace SystemBackEnd.ServiceModels
         public Guid ItemID { get; set; }
         public string ItemName { get; set; }
         public decimal ItemPrice { get; set; }
+        public decimal ItemThreshold { get; set; }
         public byte[]? ItemImage { get; set; }
+        public string UnitMeasurement { get; set; }
     }
 }

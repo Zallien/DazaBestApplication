@@ -54,6 +54,7 @@
             ItemNameCol = new DataGridViewTextBoxColumn();
             ItemCodeCol = new DataGridViewTextBoxColumn();
             DateCol = new DataGridViewTextBoxColumn();
+            UnitCol = new DataGridViewTextBoxColumn();
             StockCol = new DataGridViewTextBoxColumn();
             ItemPriceCol = new DataGridViewTextBoxColumn();
             TopPanel.SuspendLayout();
@@ -407,7 +408,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             AllItemDatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             AllItemDatagrid.ColumnHeadersHeight = 40;
-            AllItemDatagrid.Columns.AddRange(new DataGridViewColumn[] { IdCol, ItemNameCol, ItemCodeCol, DateCol, StockCol, ItemPriceCol });
+            AllItemDatagrid.Columns.AddRange(new DataGridViewColumn[] { IdCol, ItemNameCol, ItemCodeCol, DateCol, UnitCol, StockCol, ItemPriceCol });
             AllItemDatagrid.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
             AllItemDatagrid.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             AllItemDatagrid.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
@@ -476,6 +477,13 @@
             DateCol.HeaderText = "Date";
             DateCol.Name = "DateCol";
             DateCol.ReadOnly = true;
+            DateCol.Visible = false;
+            // 
+            // UnitCol
+            // 
+            UnitCol.HeaderText = "Unit";
+            UnitCol.Name = "UnitCol";
+            UnitCol.ReadOnly = true;
             // 
             // StockCol
             // 
@@ -531,6 +539,7 @@
         private DataGridViewTextBoxColumn ItemNameCol;
         private DataGridViewTextBoxColumn ItemCodeCol;
         private DataGridViewTextBoxColumn DateCol;
+        private DataGridViewTextBoxColumn UnitCol;
         private DataGridViewTextBoxColumn StockCol;
         private DataGridViewTextBoxColumn ItemPriceCol;
     }

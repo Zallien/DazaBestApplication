@@ -229,7 +229,7 @@
                                   <Value>=Fields!ItemName.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -264,7 +264,7 @@
                                   <Value>=Fields!ItemQuantity.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -299,14 +299,14 @@
                                   <Value>₱</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                                 <TextRun>
                                   <Value>=Fields!ItemPrice.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -341,14 +341,14 @@
                                   <Value>₱</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                                 <TextRun>
                                   <Value>=Fields!ItemTotal.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -440,7 +440,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox21</rd:DefaultName>
             <Top>1.71372cm</Top>
-            <Left>2.58713cm</Left>
+            <Left>2.26963cm</Left>
             <Height>0.6cm</Height>
             <Width>2.60583cm</Width>
             <ZIndex>1</ZIndex>
@@ -476,7 +476,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox23</rd:DefaultName>
             <Top>1.74019cm</Top>
-            <Left>0.87463cm</Left>
+            <Left>0.9525cm</Left>
             <Height>0.6cm</Height>
             <Width>1.7125cm</Width>
             <ZIndex>2</ZIndex>
@@ -512,7 +512,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox23</rd:DefaultName>
             <Top>2.37546cm</Top>
-            <Left>0.87463cm</Left>
+            <Left>0.9525cm</Left>
             <Height>0.6cm</Height>
             <Width>1.7125cm</Width>
             <ZIndex>3</ZIndex>
@@ -548,7 +548,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox23</rd:DefaultName>
             <Top>2.97546cm</Top>
-            <Left>0.87463cm</Left>
+            <Left>0.9525cm</Left>
             <Height>0.6cm</Height>
             <Width>1.7125cm</Width>
             <ZIndex>4</ZIndex>
@@ -597,7 +597,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox21</rd:DefaultName>
             <Top>2.349cm</Top>
-            <Left>2.58713cm</Left>
+            <Left>2.26963cm</Left>
             <Height>0.6cm</Height>
             <Width>2.60583cm</Width>
             <ZIndex>5</ZIndex>
@@ -646,7 +646,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox21</rd:DefaultName>
             <Top>2.949cm</Top>
-            <Left>2.58713cm</Left>
+            <Left>2.26963cm</Left>
             <Height>0.6cm</Height>
             <Width>2.60583cm</Width>
             <ZIndex>6</ZIndex>
@@ -841,6 +841,7 @@
                       <Value>=Parameters!DateTime.Value</Value>
                       <Style>
                         <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>8pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -849,9 +850,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox7</rd:DefaultName>
               <Top>7.25387cm</Top>
-              <Left>2.0388cm</Left>
+              <Left>2.00352cm</Left>
               <Height>0.6cm</Height>
-              <Width>3.74097cm</Width>
+              <Width>3.60411cm</Width>
               <ZIndex>5</ZIndex>
               <Style>
                 <Border>
@@ -939,6 +940,7 @@
                       <Value>=Parameters!EmployeeName.Value</Value>
                       <Style>
                         <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>8pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -949,7 +951,7 @@
               <Top>5.91276cm</Top>
               <Left>2.03987cm</Left>
               <Height>0.6cm</Height>
-              <Width>3.74097cm</Width>
+              <Width>3.56776cm</Width>
               <ZIndex>8</ZIndex>
               <Style>
                 <Border>
@@ -971,6 +973,7 @@
                       <Value>=Parameters!ORno.Value</Value>
                       <Style>
                         <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>8pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -981,7 +984,7 @@
               <Top>6.61859cm</Top>
               <Left>2.00352cm</Left>
               <Height>0.6cm</Height>
-              <Width>3.77733cm</Width>
+              <Width>3.60411cm</Width>
               <ZIndex>9</ZIndex>
               <Style>
                 <Border>

@@ -10,5 +10,6 @@ namespace SystemBackEnd.ServiceModels
     {
         public string SearchValue { get; set; }
         public string Category { get; set; }
+        public string Business { get; set; }
     }
 }

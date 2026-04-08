@@ -53,6 +53,7 @@ namespace DazaBestApplication
             NavButton_PurchaseItem = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             bunifuPictureBox1 = new Bunifu.UI.WinForms.BunifuPictureBox();
             LogOut_btn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            versionlabel = new Label();
             bunifuButton21 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             NavButton_Reports = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             contextMenuStrip1 = new ContextMenuStrip(components);
@@ -88,6 +89,7 @@ namespace DazaBestApplication
             SideNav.Controls.Add(NavButton_PurchaseItem);
             SideNav.Controls.Add(bunifuPictureBox1);
             SideNav.Controls.Add(LogOut_btn);
+            SideNav.Controls.Add(versionlabel);
             SideNav.Controls.Add(bunifuButton21);
             SideNav.Controls.Add(NavButton_Reports);
             SideNav.Controls.Add(NavButton_Products);
@@ -433,7 +435,7 @@ namespace DazaBestApplication
             LogOut_btn.IdleIconLeftImage = null;
             LogOut_btn.IdleIconRightImage = null;
             LogOut_btn.IndicateFocus = false;
-            LogOut_btn.Location = new Point(0, 650);
+            LogOut_btn.Location = new Point(0, 630);
             LogOut_btn.Name = "LogOut_btn";
             LogOut_btn.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             LogOut_btn.OnDisabledState.BorderRadius = 1;
@@ -475,6 +477,17 @@ namespace DazaBestApplication
             LogOut_btn.TextPadding = new Padding(0);
             LogOut_btn.UseDefaultRadiusAndThickness = true;
             LogOut_btn.Click += LogOut_btn_Click;
+            // 
+            // versionlabel
+            // 
+            versionlabel.Dock = DockStyle.Bottom;
+            versionlabel.Font = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            versionlabel.Location = new Point(0, 670);
+            versionlabel.Name = "versionlabel";
+            versionlabel.Size = new Size(200, 20);
+            versionlabel.TabIndex = 10;
+            versionlabel.Text = "Ver 1.1.5";
+            versionlabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // bunifuButton21
             // 
@@ -1007,7 +1020,7 @@ namespace DazaBestApplication
             panel1.Controls.Add(bunifuButton22);
             panel1.Location = new Point(200, 390);
             panel1.Name = "panel1";
-            panel1.Size = new Size(200, 161);
+            panel1.Size = new Size(200, 160);
             panel1.TabIndex = 10;
             panel1.Visible = false;
             // 
@@ -1622,5 +1635,6 @@ namespace DazaBestApplication
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 PurchaseItemBTN;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 AdjustStockBTN;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 AccountsManagementBTN;
+        private Label versionlabel;
     }
 }
