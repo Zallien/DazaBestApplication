@@ -23,10 +23,10 @@ namespace DazaBestApplication.Modals
         private LoginServices loginServices = new LoginServices(new BackEndDBContext());
         private AccountEditInformation accountEditInformation = new AccountEditInformation();
         private string ActionType;
+        private NotificationModel _notificationmodel;
 
 
-
-        public AccountModal(Form mainPage, AccountEditInformation accountEditInformation,string actionModal)
+        public AccountModal(Form mainPage, AccountEditInformation accountEditInformation, string actionModal)
         {
             InitializeComponent();
             MainPage = mainPage;
@@ -57,13 +57,23 @@ namespace DazaBestApplication.Modals
 
                 if (isRegistered)
                 {
-                    MessageBox.Show("Account successfully created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _notificationmodel = new NotificationModel
+                    {
+                        Title = "Account Created",
+                        Details = "The account has been created successfully."
+                    };
+                    OpenNotificationModal();
                     await CloseAddAccountModal();
                     await AccountEventHandlers.InvokeAccount();
                 }
                 else
                 {
-                    MessageBox.Show("Username already exists. Please choose a different username.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _notificationmodel = new NotificationModel
+                    {
+                        Title = "Account Creation Failed",
+                        Details = "The username already exists. Please choose a different username."
+                    };
+                    OpenNotificationModal();
                 }
 
 
@@ -118,7 +128,31 @@ namespace DazaBestApplication.Modals
             {
             }
         }
+        //Open Notification Modal
+        private void OpenNotificationModal()
+        {
+            Form ModalBackgorund = new();
+            using (NotificationModal modalcontent = new(_notificationmodel))
+            {
+                var mainBounds = MainPage.Bounds;
 
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = MainPage.Size;
+                ModalBackgorund.Location = MainPage.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(MainPage);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+                modalcontent.ShowDialog();
+                ModalBackgorund.Dispose();
+            }
+        }
 
 
 
@@ -157,7 +191,12 @@ namespace DazaBestApplication.Modals
 
             if (FirstNametxt.Text == "" || LastNametxt.Text == "" || Usernametxt.Text == "" || Passwordtxt.Text == "")
             {
-                MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                _notificationmodel = new NotificationModel
+                {
+                    Title = "Validation Error",
+                    Details = "Please fill in all fields."
+                };
+                OpenNotificationModal();
                 return;
             }
             else
@@ -172,10 +211,10 @@ namespace DazaBestApplication.Modals
         }
         private void FirstNametxt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            //if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            //{
+            //    e.Handled = true;
+            //}
         }
         private void LastNametxt_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -186,10 +225,15 @@ namespace DazaBestApplication.Modals
         }
         private void Usernametxt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            //if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            //{
+            //    e.Handled = true;
+            //}
+        }
+
+        private void Usernametxt_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

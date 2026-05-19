@@ -17,7 +17,7 @@ namespace DazaBestApplication.Layout
 {
     public partial class Loadingscreen : Form
     {
-        private LoginServices LoginServices;
+        private LoginServices LoginServices = null;
         private Size clientsize = Program.WorkspaceSize;
         private System.Windows.Forms.Timer loadingTimer;
         private int Timerprogress = 0;
@@ -58,30 +58,51 @@ namespace DazaBestApplication.Layout
         //LoginUser Function
         private async Task LoginUser()
         {
+            //bool loginsuccess = false;
+            //string username;
+            //string password;
+            //username = LoginInfo.Username;
+            //password = LoginInfo.Password;
+            //LoginServices = new LoginServices(new BackEndDBContext());
+
+            //try
+            //{
+            //    loginsuccess = await LoginServices.LoginAccountAsync(username, password);
+            //    if (loginsuccess == true)
+            //    {
+            //        Timerprogress = 100;
+            //        this.Close();
+            //        this.DialogResult = DialogResult.Yes;
+            //        return;
+            //    }
+
+            //    Timerprogress = 100;
+            //    this.Close();
+            //    this.DialogResult = DialogResult.No;
+            //    this.Dispose();
+            //    return;
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    throw;
+            //}
+
             bool loginsuccess = false;
-            string username;
-            string password;
-            username = LoginInfo.Username;
-            password = LoginInfo.Password;
-            LoginServices = new LoginServices(new BackEndDBContext());
+
             try
             {
-                loginsuccess = await LoginServices.LoginAccountAsync(username, password);
-                if (loginsuccess == true)
-                {
-                    Timerprogress = 100;
-                    this.Close();
-                    this.DialogResult = DialogResult.Yes;
-                    return;
-                }
+                using var context = new BackEndDBContext();
+                var loginServices = new LoginServices(context);
+
+                loginsuccess = await loginServices.LoginAccountAsync(LoginInfo.Username, LoginInfo.Password);
+
                 Timerprogress = 100;
+                this.DialogResult = loginsuccess ? DialogResult.Yes : DialogResult.No;
                 this.Close();
-                this.DialogResult = DialogResult.No;
-                return;
             }
             catch (Exception ex)
             {
-
                 throw;
             }
 

@@ -27,7 +27,13 @@ namespace DazaBestApplication.Pages
         private int _totalproducts;
         private int _maxpages;
         private DecisionModel _decision;
-
+        private string ProductsBusiness = "Karinderya";
+        private List<string> Businesses = new List<string>()
+        {
+            "Karinderya",
+            "Food Stall"
+        };
+        private NotificationModel _notificationmodel;
 
         //Constructor
         public ProductsInventory(Form _MainForm)
@@ -46,8 +52,8 @@ namespace DazaBestApplication.Pages
             await LoadProducts();
             PaginationLabel.Text = $"{_currentPage} / {_maxpages}";//Pagination Label
             HookEvents();
+            Setfilterpanel();
 
-            
         }
 
         //Hook Events
@@ -64,10 +70,10 @@ namespace DazaBestApplication.Pages
             _theproducts = await _productservices.GetAllProductsByPagination(new SearchItem
             {
                 PageNumber = _currentPage,
-                ItemperPage = _productsperpage
+                ItemperPage = _productsperpage,
+                ProductBusiness = ProductsBusiness
             });
             PopulateProductsDatagrid(_theproducts);
-
         }
         //Populate ProductDatagrid
         private void PopulateProductsDatagrid(List<Products> _productsparam)
@@ -76,17 +82,18 @@ namespace DazaBestApplication.Pages
             if (_productsparam.Count > 0)
             {
                 foreach (var item in _productsparam)
-                {
+                {   
                     int rowindex = AllProductDatagridView.Rows.Add();
                     DataGridViewRow row = AllProductDatagridView.Rows[rowindex];
                     row.Cells["IdCol"].Value = item.ProductID;
                     row.Cells["ProductCodeCol"].Value = item.ProductCode;
                     row.Cells["ProductNameCol"].Value = item.ProductName;
-                    row.Cells["QuantityCol"].Value = item.Quantity;
-                    row.Cells["PriceCol"].Value = item.Price;
+                    row.Cells["PriceCol"].Value = "₱" + item.Price;
                     row.Cells["AvailabilityCol"].Value = item.IsAvailable == true ? Properties.Resources.check :
                                         Properties.Resources.cancel;
+                    row.Height = 80;
                 }
+                AllProductDatagridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             }
         }
         //Get All Products Count
@@ -258,11 +265,21 @@ namespace DazaBestApplication.Pages
             if (_isSuccess)
             {
                 await ProductEventHandlers.InvokeProductChanged();
-                MessageBox.Show("Changed Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+                _notificationmodel = new NotificationModel()
+                {
+                    Title = "Availability Changed",
+                    Details = "The product availability status has been successfully changed."
+                };
+                OpenNotificationModal();
+            } 
             else
             {
-                MessageBox.Show("Changed Not Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _notificationmodel = new NotificationModel()
+                {
+                    Title = "Availability Change Failed",
+                    Details = "The product availability status change has failed. Please try again."
+                };
+                OpenNotificationModal();
             }
         }
         //Edit Product
@@ -272,19 +289,75 @@ namespace DazaBestApplication.Pages
             if (AllProductDatagridView.SelectedRows.Count == 1)
             {
                 DataGridViewRow selectedRow = AllProductDatagridView.SelectedRows[0];
-                _editproduct.ProductPrice = decimal.Parse(selectedRow.Cells["PriceCol"].Value.ToString());
+                _editproduct.ProductPrice = decimal.Parse(
+                   selectedRow.Cells["PriceCol"].Value.ToString().Replace("₱", "")
+                );
                 _editproduct.ProductName = selectedRow.Cells["ProductNameCol"].Value.ToString();
                 _editproduct.ProductID = Guid.Parse(selectedRow.Cells["IdCol"].Value.ToString());
                 _editproduct.ProductImage = await new ProductServices(new BackEndDBContext())
                                             .GetProductImageByID(_editproduct.ProductID);
                 _editproduct.Category = await new ProductServices(new BackEndDBContext())
                                             .GetProductCategoryByID(_editproduct.ProductID);
+                _editproduct.BusinessCategory = await new ProductServices(new BackEndDBContext())
+                                             .GetProductBusinessCategory(_editproduct.ProductID);
                 _productmodal = new ProductModal()
                 {
                     Action = "EditProduct",
                     EditItem = _editproduct
                 };
                 OpenProductModal();
+            }
+        }
+        //Set FilterPanel
+        private void Setfilterpanel()
+        {
+            bunifuShadowPanel1.Location = new Point(filterbutton.Location.X - (bunifuShadowPanel1.Width - filterbutton.Width), filterbutton.Location.Y + filterbutton.Height);
+
+            //populate dropdown in filter
+            businesscategorypicked.Items.Clear();
+            foreach (var item in Businesses)
+            {
+                businesscategorypicked.Items.Add(item.ToString());
+            }
+            //Set Defult value of filter
+            businesscategorypicked.Text = ProductsBusiness;
+            productperpagetxt.Text = _productsperpage.ToString();
+        }
+        //Save Filter
+        private async Task SaveFilter()
+        {
+
+            ProductsBusiness = businesscategorypicked.Text;
+            _productsperpage = int.Parse(productperpagetxt.Text);
+            await CheckAllProductsCount();
+            await CheckPageNumber();
+            await LoadProducts();
+            PaginationLabel.Text = $"{_currentPage} / {_maxpages}";//Pagination Label
+            bunifuShadowPanel1.Visible = false;
+        }
+        //Open Notification Modal
+        private void OpenNotificationModal()
+        {
+            Form ModalBackgorund = new();
+            using (NotificationModal modalcontent = new(_notificationmodel))
+            {
+                var mainBounds = Mainform.Bounds;
+
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = Mainform.Size;
+                ModalBackgorund.Location = Mainform.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(Mainform);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+                modalcontent.ShowDialog();
+                ModalBackgorund.Dispose();
             }
         }
 
@@ -328,11 +401,21 @@ namespace DazaBestApplication.Pages
 
                 if (await DeleteProduct(AllSelectedID))
                 {
-                    MessageBox.Show("Deleted Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _notificationmodel = new NotificationModel()
+                    {
+                        Title = "Product Deleted",
+                        Details = "The selected product(s) have been successfully deleted."
+                    };
+                    OpenNotificationModal();
                 }
                 else
                 {
-                    MessageBox.Show("Deleted Unsuccessfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _notificationmodel = new NotificationModel()
+                    {
+                        Title = "Product Deletion Failed",
+                        Details = "The selected product(s) deletion has failed. Please try again."
+                    };
+                    OpenNotificationModal();
                 }
             }
         }//Delete using Del Toolstrip
@@ -388,11 +471,21 @@ namespace DazaBestApplication.Pages
 
                 if (await DeleteProduct(AllSelectedID))
                 {
-                    MessageBox.Show("Deleted Successfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _notificationmodel = new NotificationModel()
+                    {
+                        Title = "Product Deleted",
+                        Details = "The selected product(s) have been successfully deleted."
+                    };
+                    OpenNotificationModal();
                 }
                 else
                 {
-                    MessageBox.Show("Deleted Unsuccessfully", "System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _notificationmodel = new NotificationModel()
+                    {
+                        Title = "Product Deletion Failed",
+                        Details = "The selected product(s) deletion has failed. Please try again."
+                    };
+                    OpenNotificationModal();
                 }
             }
         }
@@ -404,7 +497,6 @@ namespace DazaBestApplication.Pages
         {
             EditProduct();
         }
-
         private void AllProductDatagridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             // Customize Action Button Style
@@ -418,5 +510,22 @@ namespace DazaBestApplication.Pages
                 buttonCell.FlatStyle = FlatStyle.Flat;
             }
         }
+        private void filterbutton_Click(object sender, EventArgs e)
+        {
+            bunifuShadowPanel1.Visible = !bunifuShadowPanel1.Visible;
+        }
+        private void productperpagetxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+            SaveFilter();
+        }
+
+
     }
 }

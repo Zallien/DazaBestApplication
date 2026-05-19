@@ -8,7 +8,6 @@ namespace DazaBestApplication.Pages
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -19,6 +18,16 @@ namespace DazaBestApplication.Pages
             {
                 components.Dispose();
             }
+
+            if (disposing)
+            {
+                if (lowInventoryTimer != null)
+                {
+                    lowInventoryTimer.Stop();
+                    lowInventoryTimer.Dispose();
+                }
+            }
+
             base.Dispose(disposing);
         }
 
@@ -30,107 +39,92 @@ namespace DazaBestApplication.Pages
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
+            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            Bunifu.UI.WinForms.BunifuAnimatorNS.Animation animation1 = new Bunifu.UI.WinForms.BunifuAnimatorNS.Animation();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             TopPanel = new SmoothPanel();
             panel4 = new SmoothPanel();
             label1 = new Label();
             bunifuLabel8 = new Bunifu.UI.WinForms.BunifuLabel();
-            panelwhole = new SmoothPanel();
-            panel15 = new SmoothPanel();
-            tableLayoutPanel6 = new TableLayoutPanel();
-            panel19 = new SmoothPanel();
-            TopSellingTable = new Bunifu.UI.WinForms.BunifuDataGridView();
-            NumberCol = new DataGridViewTextBoxColumn();
-            ProductNameCol = new DataGridViewTextBoxColumn();
-            label11 = new Label();
-            panel16 = new SmoothPanel();
-            LeastSellingTable = new Bunifu.UI.WinForms.BunifuDataGridView();
-            NumberColLeast = new DataGridViewTextBoxColumn();
-            ProductNameColLeast = new DataGridViewTextBoxColumn();
-            label10 = new Label();
-            panel10 = new SmoothPanel();
-            tableLayoutPanel4 = new TableLayoutPanel();
-            tableLayoutPanel5 = new TableLayoutPanel();
-            panel11 = new SmoothPanel();
-            numberofitemslabel = new Bunifu.UI.WinForms.BunifuLabel();
-            label6 = new Label();
-            panel12 = new SmoothPanel();
-            overstocklabel = new Bunifu.UI.WinForms.BunifuLabel();
-            label7 = new Label();
-            panel13 = new SmoothPanel();
-            outofstocklabel = new Bunifu.UI.WinForms.BunifuLabel();
-            label8 = new Label();
-            panel14 = new SmoothPanel();
-            criticalitemslabel = new Bunifu.UI.WinForms.BunifuLabel();
-            label9 = new Label();
-            panel9 = new SmoothPanel();
-            salesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            panel3 = new SmoothPanel();
-            tableLayoutPanel2 = new TableLayoutPanel();
+            MainPanel = new Panel();
             tableLayoutPanel3 = new TableLayoutPanel();
-            panel5 = new SmoothPanel();
-            qoutalabel = new Bunifu.UI.WinForms.BunifuLabel();
-            label2 = new Label();
-            panel8 = new SmoothPanel();
-            salelabel = new Bunifu.UI.WinForms.BunifuLabel();
-            label5 = new Label();
-            panel7 = new SmoothPanel();
-            numberoforderslabel = new Bunifu.UI.WinForms.BunifuLabel();
-            label4 = new Label();
-            panel1 = new SmoothPanel();
+            bunifuPanel11 = new Bunifu.UI.WinForms.BunifuPanel();
+            InventoryStocks = new Bunifu.UI.WinForms.BunifuDataGridView();
+            ItemCol = new DataGridViewTextBoxColumn();
+            StockCol = new DataGridViewTextBoxColumn();
+            label13 = new Label();
+            bunifuPanel12 = new Bunifu.UI.WinForms.BunifuPanel();
+            TopProductschart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            label14 = new Label();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            bunifuPanel10 = new Bunifu.UI.WinForms.BunifuPanel();
+            label12 = new Label();
+            LowInventoryChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            bunifuPanel9 = new Bunifu.UI.WinForms.BunifuPanel();
+            DashboardTypeSelect = new Bunifu.UI.WinForms.BunifuDropdown();
+            label11 = new Label();
+            SaleChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             tableLayoutPanel1 = new TableLayoutPanel();
-            panel2 = new SmoothPanel();
-            panelbtn4 = new SmoothPanel();
-            color4 = new SmoothPanel();
-            YearlyBTN = new Button();
-            panelbtn3 = new SmoothPanel();
-            color3 = new SmoothPanel();
-            MonthlyBTN = new Button();
-            panelbtn2 = new SmoothPanel();
-            color2 = new SmoothPanel();
-            WekklyBTN = new Button();
-            panelbutton = new SmoothPanel();
-            color1 = new SmoothPanel();
-            DailyBTM = new Button();
+            bunifuPanel4 = new Bunifu.UI.WinForms.BunifuPanel();
+            bunifuPanel8 = new Bunifu.UI.WinForms.BunifuPanel();
+            pictureBox4 = new PictureBox();
+            label9 = new Label();
+            totalproductslabel = new Label();
+            bunifuPanel3 = new Bunifu.UI.WinForms.BunifuPanel();
+            bunifuPanel7 = new Bunifu.UI.WinForms.BunifuPanel();
+            pictureBox3 = new PictureBox();
+            label7 = new Label();
+            totalorderslabel = new Label();
+            bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
+            bunifuPanel6 = new Bunifu.UI.WinForms.BunifuPanel();
+            pictureBox2 = new PictureBox();
+            label5 = new Label();
+            totalsaleslabel = new Label();
+            bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
+            bunifuPanel5 = new Bunifu.UI.WinForms.BunifuPanel();
+            pictureBox1 = new PictureBox();
+            label4 = new Label();
+            totalitemslabel = new Label();
+            Topmainpanel = new Panel();
+            Userlabrl = new Label();
             TopPanel.SuspendLayout();
-            panelwhole.SuspendLayout();
-            panel15.SuspendLayout();
-            tableLayoutPanel6.SuspendLayout();
-            panel19.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)TopSellingTable).BeginInit();
-            panel16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)LeastSellingTable).BeginInit();
-            panel10.SuspendLayout();
-            tableLayoutPanel4.SuspendLayout();
-            tableLayoutPanel5.SuspendLayout();
-            panel11.SuspendLayout();
-            panel12.SuspendLayout();
-            panel13.SuspendLayout();
-            panel14.SuspendLayout();
-            panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)salesChart).BeginInit();
-            panel3.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
+            MainPanel.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
-            panel5.SuspendLayout();
-            panel8.SuspendLayout();
-            panel7.SuspendLayout();
-            panel1.SuspendLayout();
+            bunifuPanel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)InventoryStocks).BeginInit();
+            bunifuPanel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)TopProductschart).BeginInit();
+            tableLayoutPanel2.SuspendLayout();
+            bunifuPanel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)LowInventoryChart).BeginInit();
+            bunifuPanel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)SaleChart).BeginInit();
             tableLayoutPanel1.SuspendLayout();
-            panel2.SuspendLayout();
-            panelbtn4.SuspendLayout();
-            panelbtn3.SuspendLayout();
-            panelbtn2.SuspendLayout();
-            panelbutton.SuspendLayout();
+            bunifuPanel4.SuspendLayout();
+            bunifuPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            bunifuPanel3.SuspendLayout();
+            bunifuPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            bunifuPanel2.SuspendLayout();
+            bunifuPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            bunifuPanel1.SuspendLayout();
+            bunifuPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            Topmainpanel.SuspendLayout();
             SuspendLayout();
             // 
             // TopPanel
@@ -181,72 +175,69 @@ namespace DazaBestApplication.Pages
             bunifuLabel8.TextAlignment = ContentAlignment.MiddleCenter;
             bunifuLabel8.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // panelwhole
+            // MainPanel
             // 
-            panelwhole.AutoScroll = true;
-            panelwhole.Controls.Add(panel15);
-            panelwhole.Controls.Add(panel10);
-            panelwhole.Controls.Add(panel9);
-            panelwhole.Controls.Add(panel3);
-            panelwhole.Controls.Add(panel1);
-            panelwhole.Dock = DockStyle.Fill;
-            panelwhole.Location = new Point(0, 50);
-            panelwhole.Name = "panelwhole";
-            panelwhole.Padding = new Padding(0, 0, 0, 20);
-            panelwhole.Size = new Size(900, 738);
-            panelwhole.TabIndex = 4;
+            MainPanel.AutoScroll = true;
+            MainPanel.Controls.Add(tableLayoutPanel3);
+            MainPanel.Controls.Add(tableLayoutPanel2);
+            MainPanel.Controls.Add(tableLayoutPanel1);
+            MainPanel.Controls.Add(Topmainpanel);
+            MainPanel.Dock = DockStyle.Fill;
+            MainPanel.Location = new Point(0, 50);
+            MainPanel.Name = "MainPanel";
+            MainPanel.Size = new Size(900, 696);
+            MainPanel.TabIndex = 4;
             // 
-            // panel15
+            // tableLayoutPanel3
             // 
-            panel15.Controls.Add(tableLayoutPanel6);
-            panel15.Dock = DockStyle.Top;
-            panel15.Location = new Point(0, 565);
-            panel15.Name = "panel15";
-            panel15.Size = new Size(900, 144);
-            panel15.TabIndex = 10;
+            tableLayoutPanel3.ColumnCount = 2;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 58.3333321F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 41.6666679F));
+            tableLayoutPanel3.Controls.Add(bunifuPanel11, 1, 0);
+            tableLayoutPanel3.Controls.Add(bunifuPanel12, 0, 0);
+            tableLayoutPanel3.Dock = DockStyle.Top;
+            tableLayoutPanel3.Location = new Point(0, 440);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.Padding = new Padding(3);
+            tableLayoutPanel3.RowCount = 1;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel3.Size = new Size(900, 245);
+            tableLayoutPanel3.TabIndex = 3;
             // 
-            // tableLayoutPanel6
+            // bunifuPanel11
             // 
-            tableLayoutPanel6.ColumnCount = 2;
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.Controls.Add(panel19, 0, 0);
-            tableLayoutPanel6.Controls.Add(panel16, 1, 0);
-            tableLayoutPanel6.Dock = DockStyle.Fill;
-            tableLayoutPanel6.Location = new Point(0, 0);
-            tableLayoutPanel6.Name = "tableLayoutPanel6";
-            tableLayoutPanel6.RowCount = 1;
-            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.Size = new Size(900, 144);
-            tableLayoutPanel6.TabIndex = 4;
+            bunifuPanel11.BackgroundColor = Color.FromArgb(251, 205, 119);
+            bunifuPanel11.BackgroundImage = (Image)resources.GetObject("bunifuPanel11.BackgroundImage");
+            bunifuPanel11.BackgroundImageLayout = ImageLayout.Stretch;
+            bunifuPanel11.BorderColor = Color.White;
+            bunifuPanel11.BorderRadius = 3;
+            bunifuPanel11.BorderThickness = 1;
+            bunifuPanel11.Controls.Add(InventoryStocks);
+            bunifuPanel11.Controls.Add(label13);
+            bunifuPanel11.Dock = DockStyle.Fill;
+            bunifuPanel11.Location = new Point(527, 6);
+            bunifuPanel11.Name = "bunifuPanel11";
+            bunifuPanel11.Padding = new Padding(8);
+            bunifuPanel11.ShowBorders = true;
+            bunifuPanel11.Size = new Size(367, 233);
+            bunifuPanel11.TabIndex = 2;
             // 
-            // panel19
+            // InventoryStocks
             // 
-            panel19.BackColor = Color.White;
-            panel19.Controls.Add(TopSellingTable);
-            panel19.Controls.Add(label11);
-            panel19.Dock = DockStyle.Fill;
-            panel19.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel19.Location = new Point(3, 3);
-            panel19.Name = "panel19";
-            panel19.Size = new Size(444, 138);
-            panel19.TabIndex = 0;
-            // 
-            // TopSellingTable
-            // 
-            TopSellingTable.AllowCustomTheming = false;
-            TopSellingTable.AllowUserToAddRows = false;
-            TopSellingTable.AllowUserToDeleteRows = false;
-            TopSellingTable.AllowUserToResizeColumns = false;
-            TopSellingTable.AllowUserToResizeRows = false;
+            InventoryStocks.AllowCustomTheming = false;
+            InventoryStocks.AllowUserToAddRows = false;
+            InventoryStocks.AllowUserToDeleteRows = false;
+            InventoryStocks.AllowUserToResizeColumns = false;
+            InventoryStocks.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(223, 191, 191);
             dataGridViewCellStyle1.ForeColor = Color.Black;
-            TopSellingTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            TopSellingTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            TopSellingTable.BackgroundColor = Color.White;
-            TopSellingTable.BorderStyle = BorderStyle.None;
-            TopSellingTable.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            TopSellingTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            InventoryStocks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            InventoryStocks.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            InventoryStocks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            InventoryStocks.BackgroundColor = Color.White;
+            InventoryStocks.BorderStyle = BorderStyle.None;
+            InventoryStocks.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            InventoryStocks.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.Maroon;
             dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
@@ -254,27 +245,27 @@ namespace DazaBestApplication.Pages
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(102, 0, 0);
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            TopSellingTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            TopSellingTable.ColumnHeadersHeight = 40;
-            TopSellingTable.Columns.AddRange(new DataGridViewColumn[] { NumberCol, ProductNameCol });
-            TopSellingTable.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
-            TopSellingTable.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            TopSellingTable.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
-            TopSellingTable.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            TopSellingTable.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.White;
-            TopSellingTable.CurrentTheme.BackColor = Color.Maroon;
-            TopSellingTable.CurrentTheme.GridColor = Color.FromArgb(216, 178, 178);
-            TopSellingTable.CurrentTheme.HeaderStyle.BackColor = Color.Maroon;
-            TopSellingTable.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
-            TopSellingTable.CurrentTheme.HeaderStyle.ForeColor = Color.White;
-            TopSellingTable.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(102, 0, 0);
-            TopSellingTable.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
-            TopSellingTable.CurrentTheme.Name = null;
-            TopSellingTable.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(229, 204, 204);
-            TopSellingTable.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            TopSellingTable.CurrentTheme.RowsStyle.ForeColor = Color.Black;
-            TopSellingTable.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            TopSellingTable.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
+            InventoryStocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            InventoryStocks.ColumnHeadersHeight = 40;
+            InventoryStocks.Columns.AddRange(new DataGridViewColumn[] { ItemCol, StockCol });
+            InventoryStocks.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
+            InventoryStocks.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            InventoryStocks.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
+            InventoryStocks.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            InventoryStocks.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.White;
+            InventoryStocks.CurrentTheme.BackColor = Color.Maroon;
+            InventoryStocks.CurrentTheme.GridColor = Color.FromArgb(216, 178, 178);
+            InventoryStocks.CurrentTheme.HeaderStyle.BackColor = Color.Maroon;
+            InventoryStocks.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            InventoryStocks.CurrentTheme.HeaderStyle.ForeColor = Color.White;
+            InventoryStocks.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(102, 0, 0);
+            InventoryStocks.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
+            InventoryStocks.CurrentTheme.Name = null;
+            InventoryStocks.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(229, 204, 204);
+            InventoryStocks.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            InventoryStocks.CurrentTheme.RowsStyle.ForeColor = Color.Black;
+            InventoryStocks.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
+            InventoryStocks.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(229, 204, 204);
             dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
@@ -282,749 +273,617 @@ namespace DazaBestApplication.Pages
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(178, 102, 102);
             dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            TopSellingTable.DefaultCellStyle = dataGridViewCellStyle3;
-            TopSellingTable.Dock = DockStyle.Fill;
-            TopSellingTable.EnableHeadersVisualStyles = false;
-            TopSellingTable.GridColor = Color.FromArgb(216, 178, 178);
-            TopSellingTable.HeaderBackColor = Color.Maroon;
-            TopSellingTable.HeaderBgColor = Color.Empty;
-            TopSellingTable.HeaderForeColor = Color.White;
-            TopSellingTable.Location = new Point(0, 23);
-            TopSellingTable.Name = "TopSellingTable";
-            TopSellingTable.ReadOnly = true;
-            TopSellingTable.RowHeadersVisible = false;
-            TopSellingTable.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TopSellingTable.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            TopSellingTable.RowTemplate.Height = 40;
-            TopSellingTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            TopSellingTable.Size = new Size(444, 115);
-            TopSellingTable.TabIndex = 6;
-            TopSellingTable.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
+            InventoryStocks.DefaultCellStyle = dataGridViewCellStyle3;
+            InventoryStocks.EnableHeadersVisualStyles = false;
+            InventoryStocks.GridColor = Color.FromArgb(216, 178, 178);
+            InventoryStocks.HeaderBackColor = Color.Maroon;
+            InventoryStocks.HeaderBgColor = Color.Empty;
+            InventoryStocks.HeaderForeColor = Color.White;
+            InventoryStocks.Location = new Point(16, 47);
+            InventoryStocks.Name = "InventoryStocks";
+            InventoryStocks.ReadOnly = true;
+            InventoryStocks.RowHeadersVisible = false;
+            InventoryStocks.RowTemplate.Height = 40;
+            InventoryStocks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            InventoryStocks.Size = new Size(340, 171);
+            InventoryStocks.TabIndex = 8;
+            InventoryStocks.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             // 
-            // NumberCol
+            // ItemCol
             // 
-            NumberCol.FillWeight = 20F;
-            NumberCol.HeaderText = "#";
-            NumberCol.Name = "NumberCol";
-            NumberCol.ReadOnly = true;
+            ItemCol.HeaderText = "Items";
+            ItemCol.Name = "ItemCol";
+            ItemCol.ReadOnly = true;
             // 
-            // ProductNameCol
+            // StockCol
             // 
-            ProductNameCol.HeaderText = "Products";
-            ProductNameCol.Name = "ProductNameCol";
-            ProductNameCol.ReadOnly = true;
+            StockCol.FillWeight = 30F;
+            StockCol.HeaderText = "Stocks";
+            StockCol.Name = "StockCol";
+            StockCol.ReadOnly = true;
             // 
-            // label11
+            // label13
             // 
-            label11.BorderStyle = BorderStyle.FixedSingle;
-            label11.Dock = DockStyle.Top;
-            label11.Location = new Point(0, 0);
-            label11.Name = "label11";
-            label11.Size = new Size(444, 23);
-            label11.TabIndex = 5;
-            label11.Text = "Top Selling Products";
-            label11.TextAlign = ContentAlignment.MiddleCenter;
+            label13.BackColor = Color.Transparent;
+            label13.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label13.Location = new Point(16, 8);
+            label13.Name = "label13";
+            label13.Size = new Size(207, 30);
+            label13.TabIndex = 7;
+            label13.Text = "Inventory Stocks";
+            label13.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // panel16
+            // bunifuPanel12
             // 
-            panel16.BackColor = Color.White;
-            panel16.Controls.Add(LeastSellingTable);
-            panel16.Controls.Add(label10);
-            panel16.Dock = DockStyle.Fill;
-            panel16.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel16.Location = new Point(453, 3);
-            panel16.Name = "panel16";
-            panel16.Size = new Size(444, 138);
-            panel16.TabIndex = 3;
+            bunifuPanel12.BackgroundColor = Color.FromArgb(251, 205, 119);
+            bunifuPanel12.BackgroundImage = (Image)resources.GetObject("bunifuPanel12.BackgroundImage");
+            bunifuPanel12.BackgroundImageLayout = ImageLayout.Stretch;
+            bunifuPanel12.BorderColor = Color.White;
+            bunifuPanel12.BorderRadius = 3;
+            bunifuPanel12.BorderThickness = 1;
+            bunifuPanel12.Controls.Add(TopProductschart);
+            bunifuPanel12.Controls.Add(label14);
+            bunifuPanel12.Dock = DockStyle.Fill;
+            bunifuPanel12.Location = new Point(6, 6);
+            bunifuPanel12.Name = "bunifuPanel12";
+            bunifuPanel12.Padding = new Padding(8);
+            bunifuPanel12.ShowBorders = true;
+            bunifuPanel12.Size = new Size(515, 233);
+            bunifuPanel12.TabIndex = 1;
             // 
-            // LeastSellingTable
+            // TopProductschart
             // 
-            LeastSellingTable.AllowCustomTheming = false;
-            LeastSellingTable.AllowUserToAddRows = false;
-            LeastSellingTable.AllowUserToDeleteRows = false;
-            LeastSellingTable.AllowUserToResizeColumns = false;
-            LeastSellingTable.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(223, 191, 191);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            LeastSellingTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            LeastSellingTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            LeastSellingTable.BackgroundColor = Color.White;
-            LeastSellingTable.BorderStyle = BorderStyle.None;
-            LeastSellingTable.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            LeastSellingTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.Maroon;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(102, 0, 0);
-            dataGridViewCellStyle5.SelectionForeColor = Color.White;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            LeastSellingTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            LeastSellingTable.ColumnHeadersHeight = 40;
-            LeastSellingTable.Columns.AddRange(new DataGridViewColumn[] { NumberColLeast, ProductNameColLeast });
-            LeastSellingTable.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(223, 191, 191);
-            LeastSellingTable.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            LeastSellingTable.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
-            LeastSellingTable.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            LeastSellingTable.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.White;
-            LeastSellingTable.CurrentTheme.BackColor = Color.Maroon;
-            LeastSellingTable.CurrentTheme.GridColor = Color.FromArgb(216, 178, 178);
-            LeastSellingTable.CurrentTheme.HeaderStyle.BackColor = Color.Maroon;
-            LeastSellingTable.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
-            LeastSellingTable.CurrentTheme.HeaderStyle.ForeColor = Color.White;
-            LeastSellingTable.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(102, 0, 0);
-            LeastSellingTable.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
-            LeastSellingTable.CurrentTheme.Name = null;
-            LeastSellingTable.CurrentTheme.RowsStyle.BackColor = Color.FromArgb(229, 204, 204);
-            LeastSellingTable.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            LeastSellingTable.CurrentTheme.RowsStyle.ForeColor = Color.Black;
-            LeastSellingTable.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            LeastSellingTable.CurrentTheme.RowsStyle.SelectionForeColor = Color.White;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(229, 204, 204);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            dataGridViewCellStyle6.ForeColor = Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(178, 102, 102);
-            dataGridViewCellStyle6.SelectionForeColor = Color.White;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            LeastSellingTable.DefaultCellStyle = dataGridViewCellStyle6;
-            LeastSellingTable.Dock = DockStyle.Fill;
-            LeastSellingTable.EnableHeadersVisualStyles = false;
-            LeastSellingTable.GridColor = Color.FromArgb(216, 178, 178);
-            LeastSellingTable.HeaderBackColor = Color.Maroon;
-            LeastSellingTable.HeaderBgColor = Color.Empty;
-            LeastSellingTable.HeaderForeColor = Color.White;
-            LeastSellingTable.Location = new Point(0, 23);
-            LeastSellingTable.Name = "LeastSellingTable";
-            LeastSellingTable.ReadOnly = true;
-            LeastSellingTable.RowHeadersVisible = false;
-            LeastSellingTable.RowTemplate.DefaultCellStyle.Font = new Font("Cambria", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LeastSellingTable.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            LeastSellingTable.RowTemplate.Height = 40;
-            LeastSellingTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            LeastSellingTable.Size = new Size(444, 115);
-            LeastSellingTable.TabIndex = 4;
-            LeastSellingTable.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
-            // 
-            // NumberColLeast
-            // 
-            NumberColLeast.FillWeight = 20F;
-            NumberColLeast.HeaderText = "#";
-            NumberColLeast.Name = "NumberColLeast";
-            NumberColLeast.ReadOnly = true;
-            // 
-            // ProductNameColLeast
-            // 
-            ProductNameColLeast.HeaderText = "Products";
-            ProductNameColLeast.Name = "ProductNameColLeast";
-            ProductNameColLeast.ReadOnly = true;
-            // 
-            // label10
-            // 
-            label10.BorderStyle = BorderStyle.FixedSingle;
-            label10.Dock = DockStyle.Top;
-            label10.Location = new Point(0, 0);
-            label10.Name = "label10";
-            label10.Size = new Size(444, 23);
-            label10.TabIndex = 0;
-            label10.Text = "Least Selling Products";
-            label10.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // panel10
-            // 
-            panel10.Controls.Add(tableLayoutPanel4);
-            panel10.Dock = DockStyle.Top;
-            panel10.Location = new Point(0, 451);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(900, 114);
-            panel10.TabIndex = 9;
-            // 
-            // tableLayoutPanel4
-            // 
-            tableLayoutPanel4.ColumnCount = 2;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Controls.Add(tableLayoutPanel5, 1, 0);
-            tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(0, 0);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 1;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Size = new Size(900, 114);
-            tableLayoutPanel4.TabIndex = 5;
-            // 
-            // tableLayoutPanel5
-            // 
-            tableLayoutPanel5.ColumnCount = 4;
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel5.Controls.Add(panel11, 0, 0);
-            tableLayoutPanel5.Controls.Add(panel12, 3, 0);
-            tableLayoutPanel5.Controls.Add(panel13, 1, 0);
-            tableLayoutPanel5.Controls.Add(panel14, 2, 0);
-            tableLayoutPanel5.Dock = DockStyle.Fill;
-            tableLayoutPanel5.Location = new Point(83, 3);
-            tableLayoutPanel5.Name = "tableLayoutPanel5";
-            tableLayoutPanel5.RowCount = 1;
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel5.Size = new Size(814, 108);
-            tableLayoutPanel5.TabIndex = 0;
-            // 
-            // panel11
-            // 
-            panel11.BackColor = Color.White;
-            panel11.BackgroundImage = Properties.Resources._4;
-            panel11.BackgroundImageLayout = ImageLayout.Zoom;
-            panel11.BorderStyle = BorderStyle.FixedSingle;
-            panel11.Controls.Add(numberofitemslabel);
-            panel11.Controls.Add(label6);
-            panel11.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel11.Location = new Point(3, 3);
-            panel11.Name = "panel11";
-            panel11.Padding = new Padding(15, 15, 0, 0);
-            panel11.Size = new Size(185, 101);
-            panel11.TabIndex = 0;
-            // 
-            // numberofitemslabel
-            // 
-            numberofitemslabel.AllowParentOverrides = false;
-            numberofitemslabel.AutoEllipsis = false;
-            numberofitemslabel.AutoSize = false;
-            numberofitemslabel.CursorType = Cursors.Default;
-            numberofitemslabel.Dock = DockStyle.Fill;
-            numberofitemslabel.Font = new Font("Courier New", 15.75F, FontStyle.Bold);
-            numberofitemslabel.ForeColor = Color.Black;
-            numberofitemslabel.Location = new Point(15, 33);
-            numberofitemslabel.Name = "numberofitemslabel";
-            numberofitemslabel.RightToLeft = RightToLeft.No;
-            numberofitemslabel.Size = new Size(168, 66);
-            numberofitemslabel.TabIndex = 2;
-            numberofitemslabel.Text = "10";
-            numberofitemslabel.TextAlignment = ContentAlignment.MiddleCenter;
-            numberofitemslabel.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // label6
-            // 
-            label6.BackColor = Color.Transparent;
-            label6.Dock = DockStyle.Top;
-            label6.ForeColor = Color.Black;
-            label6.Location = new Point(15, 15);
-            label6.Name = "label6";
-            label6.Size = new Size(168, 18);
-            label6.TabIndex = 0;
-            label6.Text = "No of Items";
-            // 
-            // panel12
-            // 
-            panel12.BackColor = Color.White;
-            panel12.BackgroundImage = Properties.Resources._3__1_;
-            panel12.BackgroundImageLayout = ImageLayout.Zoom;
-            panel12.BorderStyle = BorderStyle.FixedSingle;
-            panel12.Controls.Add(overstocklabel);
-            panel12.Controls.Add(label7);
-            panel12.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel12.Location = new Point(612, 3);
-            panel12.Name = "panel12";
-            panel12.Padding = new Padding(15, 15, 0, 0);
-            panel12.Size = new Size(185, 101);
-            panel12.TabIndex = 3;
-            // 
-            // overstocklabel
-            // 
-            overstocklabel.AllowParentOverrides = false;
-            overstocklabel.AutoEllipsis = true;
-            overstocklabel.AutoSize = false;
-            overstocklabel.CursorType = Cursors.Default;
-            overstocklabel.Dock = DockStyle.Fill;
-            overstocklabel.Font = new Font("Courier New", 15.75F, FontStyle.Bold);
-            overstocklabel.ForeColor = Color.Black;
-            overstocklabel.Location = new Point(15, 33);
-            overstocklabel.Name = "overstocklabel";
-            overstocklabel.RightToLeft = RightToLeft.No;
-            overstocklabel.Size = new Size(168, 66);
-            overstocklabel.TabIndex = 3;
-            overstocklabel.Text = "10";
-            overstocklabel.TextAlignment = ContentAlignment.MiddleCenter;
-            overstocklabel.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // label7
-            // 
-            label7.BackColor = Color.Transparent;
-            label7.Dock = DockStyle.Top;
-            label7.ForeColor = Color.Black;
-            label7.Location = new Point(15, 15);
-            label7.Name = "label7";
-            label7.Size = new Size(168, 18);
-            label7.TabIndex = 2;
-            label7.Text = "Over Stock Items";
-            // 
-            // panel13
-            // 
-            panel13.BackColor = Color.White;
-            panel13.BackgroundImage = Properties.Resources._2__1_;
-            panel13.BackgroundImageLayout = ImageLayout.Zoom;
-            panel13.BorderStyle = BorderStyle.FixedSingle;
-            panel13.Controls.Add(outofstocklabel);
-            panel13.Controls.Add(label8);
-            panel13.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel13.Location = new Point(206, 3);
-            panel13.Name = "panel13";
-            panel13.Padding = new Padding(15, 15, 0, 0);
-            panel13.Size = new Size(185, 101);
-            panel13.TabIndex = 1;
-            // 
-            // outofstocklabel
-            // 
-            outofstocklabel.AllowParentOverrides = false;
-            outofstocklabel.AutoEllipsis = false;
-            outofstocklabel.AutoSize = false;
-            outofstocklabel.CursorType = Cursors.Default;
-            outofstocklabel.Dock = DockStyle.Fill;
-            outofstocklabel.Font = new Font("Courier New", 15.75F, FontStyle.Bold);
-            outofstocklabel.ForeColor = Color.Black;
-            outofstocklabel.Location = new Point(15, 33);
-            outofstocklabel.Name = "outofstocklabel";
-            outofstocklabel.RightToLeft = RightToLeft.No;
-            outofstocklabel.Size = new Size(168, 66);
-            outofstocklabel.TabIndex = 3;
-            outofstocklabel.Text = "10";
-            outofstocklabel.TextAlignment = ContentAlignment.MiddleCenter;
-            outofstocklabel.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // label8
-            // 
-            label8.BackColor = Color.Transparent;
-            label8.Dock = DockStyle.Top;
-            label8.ForeColor = Color.Black;
-            label8.Location = new Point(15, 15);
-            label8.Name = "label8";
-            label8.Size = new Size(168, 18);
-            label8.TabIndex = 1;
-            label8.Text = "Out of Stock";
-            // 
-            // panel14
-            // 
-            panel14.BackColor = Color.White;
-            panel14.BackgroundImage = Properties.Resources._1;
-            panel14.BackgroundImageLayout = ImageLayout.Zoom;
-            panel14.BorderStyle = BorderStyle.FixedSingle;
-            panel14.Controls.Add(criticalitemslabel);
-            panel14.Controls.Add(label9);
-            panel14.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel14.Location = new Point(409, 3);
-            panel14.Name = "panel14";
-            panel14.Padding = new Padding(15, 15, 0, 0);
-            panel14.Size = new Size(185, 101);
-            panel14.TabIndex = 2;
-            // 
-            // criticalitemslabel
-            // 
-            criticalitemslabel.AllowParentOverrides = false;
-            criticalitemslabel.AutoEllipsis = false;
-            criticalitemslabel.AutoSize = false;
-            criticalitemslabel.CursorType = Cursors.Default;
-            criticalitemslabel.Dock = DockStyle.Fill;
-            criticalitemslabel.Font = new Font("Courier New", 15.75F, FontStyle.Bold);
-            criticalitemslabel.ForeColor = Color.Black;
-            criticalitemslabel.Location = new Point(15, 33);
-            criticalitemslabel.Name = "criticalitemslabel";
-            criticalitemslabel.RightToLeft = RightToLeft.No;
-            criticalitemslabel.Size = new Size(168, 66);
-            criticalitemslabel.TabIndex = 3;
-            criticalitemslabel.Text = "10";
-            criticalitemslabel.TextAlignment = ContentAlignment.MiddleCenter;
-            criticalitemslabel.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // label9
-            // 
-            label9.BackColor = Color.Transparent;
-            label9.Dock = DockStyle.Top;
-            label9.ForeColor = Color.Black;
-            label9.Location = new Point(15, 15);
-            label9.Name = "label9";
-            label9.Size = new Size(168, 18);
-            label9.TabIndex = 2;
-            label9.Text = "Critical Items";
-            // 
-            // panel9
-            // 
-            panel9.Controls.Add(salesChart);
-            panel9.Dock = DockStyle.Top;
-            panel9.Location = new Point(0, 206);
-            panel9.Name = "panel9";
-            panel9.Padding = new Padding(15);
-            panel9.Size = new Size(900, 245);
-            panel9.TabIndex = 8;
-            // 
-            // salesChart
-            // 
+            TopProductschart.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            TopProductschart.BackColor = Color.Transparent;
             chartArea1.Name = "ChartArea1";
-            salesChart.ChartAreas.Add(chartArea1);
-            salesChart.Dock = DockStyle.Fill;
+            TopProductschart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            salesChart.Legends.Add(legend1);
-            salesChart.Location = new Point(15, 15);
-            salesChart.Name = "salesChart";
-            salesChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            salesChart.PaletteCustomColors = new Color[]
-    {
-    Color.Maroon
-    };
+            TopProductschart.Legends.Add(legend1);
+            TopProductschart.Location = new Point(16, 47);
+            TopProductschart.Name = "TopProductschart";
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
+            series1.Color = Color.Maroon;
             series1.Legend = "Legend1";
-            series1.Name = "Sales";
-            salesChart.Series.Add(series1);
-            salesChart.Size = new Size(870, 215);
-            salesChart.TabIndex = 0;
-            salesChart.Text = "chart1";
+            series1.Name = "Top Products";
+            series1.YValuesPerPoint = 3;
+            TopProductschart.Series.Add(series1);
+            TopProductschart.Size = new Size(488, 171);
+            TopProductschart.TabIndex = 0;
+            TopProductschart.Text = "chart2";
             // 
-            // panel3
+            // label14
             // 
-            panel3.Controls.Add(tableLayoutPanel2);
-            panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(0, 63);
-            panel3.Name = "panel3";
-            panel3.Padding = new Padding(15);
-            panel3.Size = new Size(900, 143);
-            panel3.TabIndex = 7;
+            label14.BackColor = Color.Transparent;
+            label14.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label14.Location = new Point(16, 8);
+            label14.Name = "label14";
+            label14.Size = new Size(207, 30);
+            label14.TabIndex = 7;
+            label14.Text = "Top Products / Menu";
+            label14.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 1, 0);
-            tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(15, 15);
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Controls.Add(bunifuPanel10, 1, 0);
+            tableLayoutPanel2.Controls.Add(bunifuPanel9, 0, 0);
+            tableLayoutPanel2.Dock = DockStyle.Top;
+            tableLayoutPanel2.Location = new Point(0, 180);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.Padding = new Padding(3);
             tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(870, 113);
-            tableLayoutPanel2.TabIndex = 4;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new Size(900, 260);
+            tableLayoutPanel2.TabIndex = 2;
             // 
-            // tableLayoutPanel3
+            // bunifuPanel10
             // 
-            tableLayoutPanel3.ColumnCount = 4;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3344421F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 0F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3311157F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.334446F));
-            tableLayoutPanel3.Controls.Add(panel5, 0, 0);
-            tableLayoutPanel3.Controls.Add(panel8, 3, 0);
-            tableLayoutPanel3.Controls.Add(panel7, 2, 0);
-            tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(83, 3);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 1;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Size = new Size(784, 107);
-            tableLayoutPanel3.TabIndex = 0;
+            bunifuPanel10.BackgroundColor = Color.FromArgb(251, 205, 119);
+            bunifuPanel10.BackgroundImage = (Image)resources.GetObject("bunifuPanel10.BackgroundImage");
+            bunifuPanel10.BackgroundImageLayout = ImageLayout.Stretch;
+            bunifuPanel10.BorderColor = Color.White;
+            bunifuPanel10.BorderRadius = 3;
+            bunifuPanel10.BorderThickness = 1;
+            bunifuPanel10.Controls.Add(label12);
+            bunifuPanel10.Controls.Add(LowInventoryChart);
+            bunifuPanel10.Dock = DockStyle.Fill;
+            bunifuPanel10.Location = new Point(453, 6);
+            bunifuPanel10.Name = "bunifuPanel10";
+            bunifuPanel10.Padding = new Padding(8);
+            bunifuPanel10.ShowBorders = true;
+            bunifuPanel10.Size = new Size(441, 248);
+            bunifuPanel10.TabIndex = 2;
             // 
-            // panel5
+            // label12
             // 
-            panel5.BackColor = Color.White;
-            panel5.BackgroundImage = Properties.Resources.target__1_1;
-            panel5.BackgroundImageLayout = ImageLayout.Zoom;
-            panel5.BorderStyle = BorderStyle.FixedSingle;
-            panel5.Controls.Add(qoutalabel);
-            panel5.Controls.Add(label2);
-            panel5.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel5.Location = new Point(3, 3);
-            panel5.Name = "panel5";
-            panel5.Padding = new Padding(15, 15, 0, 0);
-            panel5.Size = new Size(185, 101);
-            panel5.TabIndex = 0;
+            label12.BackColor = Color.Transparent;
+            label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.Location = new Point(16, 8);
+            label12.Name = "label12";
+            label12.Size = new Size(381, 30);
+            label12.TabIndex = 7;
+            label12.Text = "Low Inventory Alert";
+            label12.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // qoutalabel
+            // LowInventoryChart
             // 
-            qoutalabel.AllowParentOverrides = false;
-            qoutalabel.AutoEllipsis = false;
-            qoutalabel.AutoSize = false;
-            qoutalabel.CursorType = Cursors.Default;
-            qoutalabel.Dock = DockStyle.Fill;
-            qoutalabel.Font = new Font("Courier New", 15.75F, FontStyle.Bold);
-            qoutalabel.ForeColor = Color.Black;
-            qoutalabel.Location = new Point(15, 33);
-            qoutalabel.Name = "qoutalabel";
-            qoutalabel.RightToLeft = RightToLeft.No;
-            qoutalabel.Size = new Size(168, 66);
-            qoutalabel.TabIndex = 2;
-            qoutalabel.Text = "₱ 5,000.00";
-            qoutalabel.TextAlignment = ContentAlignment.MiddleCenter;
-            qoutalabel.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            LowInventoryChart.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            LowInventoryChart.BackColor = Color.Transparent;
+            chartArea2.Name = "ChartArea1";
+            LowInventoryChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            LowInventoryChart.Legends.Add(legend2);
+            LowInventoryChart.Location = new Point(16, 60);
+            LowInventoryChart.Name = "LowInventoryChart";
+            series2.BackSecondaryColor = Color.White;
+            series2.BorderColor = Color.White;
+            series2.ChartArea = "ChartArea1";
+            series2.Color = Color.Maroon;
+            series2.LabelBackColor = Color.Transparent;
+            series2.Legend = "Legend1";
+            series2.MarkerColor = Color.Transparent;
+            series2.Name = "Items Stocks";
+            series2.YValuesPerPoint = 4;
+            LowInventoryChart.Series.Add(series2);
+            LowInventoryChart.Size = new Size(414, 180);
+            LowInventoryChart.TabIndex = 0;
+            LowInventoryChart.Text = "chart4";
             // 
-            // label2
+            // bunifuPanel9
             // 
-            label2.BackColor = Color.Transparent;
-            label2.Dock = DockStyle.Top;
-            label2.ForeColor = Color.Black;
-            label2.Location = new Point(15, 15);
-            label2.Name = "label2";
-            label2.Size = new Size(168, 18);
-            label2.TabIndex = 0;
-            label2.Text = "Qouta";
+            bunifuPanel9.BackgroundColor = Color.FromArgb(251, 205, 119);
+            bunifuPanel9.BackgroundImage = (Image)resources.GetObject("bunifuPanel9.BackgroundImage");
+            bunifuPanel9.BackgroundImageLayout = ImageLayout.Stretch;
+            bunifuPanel9.BorderColor = Color.White;
+            bunifuPanel9.BorderRadius = 3;
+            bunifuPanel9.BorderThickness = 1;
+            bunifuPanel9.Controls.Add(DashboardTypeSelect);
+            bunifuPanel9.Controls.Add(label11);
+            bunifuPanel9.Controls.Add(SaleChart);
+            bunifuPanel9.Dock = DockStyle.Fill;
+            bunifuPanel9.Location = new Point(6, 6);
+            bunifuPanel9.Name = "bunifuPanel9";
+            bunifuPanel9.Padding = new Padding(8);
+            bunifuPanel9.ShowBorders = true;
+            bunifuPanel9.Size = new Size(441, 248);
+            bunifuPanel9.TabIndex = 1;
             // 
-            // panel8
+            // DashboardTypeSelect
             // 
-            panel8.BackColor = Color.White;
-            panel8.BackgroundImage = Properties.Resources.sales__1___1_;
-            panel8.BackgroundImageLayout = ImageLayout.Zoom;
-            panel8.BorderStyle = BorderStyle.FixedSingle;
-            panel8.Controls.Add(salelabel);
-            panel8.Controls.Add(label5);
-            panel8.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel8.Location = new Point(525, 3);
-            panel8.Name = "panel8";
-            panel8.Padding = new Padding(15, 15, 0, 0);
-            panel8.Size = new Size(185, 101);
-            panel8.TabIndex = 3;
+            DashboardTypeSelect.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            DashboardTypeSelect.BackColor = Color.Transparent;
+            DashboardTypeSelect.BackgroundColor = Color.FromArgb(251, 205, 119);
+            DashboardTypeSelect.BorderColor = Color.White;
+            DashboardTypeSelect.BorderRadius = 1;
+            DashboardTypeSelect.Color = Color.White;
+            DashboardTypeSelect.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
+            DashboardTypeSelect.DisabledBackColor = Color.FromArgb(240, 240, 240);
+            DashboardTypeSelect.DisabledBorderColor = Color.FromArgb(204, 204, 204);
+            DashboardTypeSelect.DisabledColor = Color.FromArgb(240, 240, 240);
+            DashboardTypeSelect.DisabledForeColor = Color.FromArgb(109, 109, 109);
+            DashboardTypeSelect.DisabledIndicatorColor = Color.DarkGray;
+            DashboardTypeSelect.DrawMode = DrawMode.OwnerDrawFixed;
+            DashboardTypeSelect.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
+            DashboardTypeSelect.DropDownStyle = ComboBoxStyle.DropDownList;
+            DashboardTypeSelect.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            DashboardTypeSelect.FillDropDown = true;
+            DashboardTypeSelect.FillIndicator = false;
+            DashboardTypeSelect.FlatStyle = FlatStyle.Flat;
+            DashboardTypeSelect.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DashboardTypeSelect.ForeColor = Color.Black;
+            DashboardTypeSelect.FormattingEnabled = true;
+            DashboardTypeSelect.Icon = null;
+            DashboardTypeSelect.IndicatorAlignment = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            DashboardTypeSelect.IndicatorColor = Color.White;
+            DashboardTypeSelect.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            DashboardTypeSelect.IndicatorThickness = 2;
+            DashboardTypeSelect.IsDropdownOpened = false;
+            DashboardTypeSelect.ItemBackColor = Color.White;
+            DashboardTypeSelect.ItemBorderColor = Color.White;
+            DashboardTypeSelect.ItemForeColor = Color.Black;
+            DashboardTypeSelect.ItemHeight = 26;
+            DashboardTypeSelect.ItemHighLightColor = Color.FromArgb(251, 205, 119);
+            DashboardTypeSelect.ItemHighLightForeColor = Color.Black;
+            DashboardTypeSelect.Items.AddRange(new object[] { "Daily", "Weekly", "Monthly", "Yearly" });
+            DashboardTypeSelect.ItemTopMargin = 3;
+            DashboardTypeSelect.Location = new Point(276, 8);
+            DashboardTypeSelect.Name = "DashboardTypeSelect";
+            DashboardTypeSelect.Size = new Size(154, 32);
+            DashboardTypeSelect.TabIndex = 1;
+            DashboardTypeSelect.Text = null;
+            DashboardTypeSelect.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            DashboardTypeSelect.TextLeftMargin = 5;
+            DashboardTypeSelect.SelectedIndexChanged += bunifuDropdown1_SelectedIndexChanged;
             // 
-            // salelabel
+            // label11
             // 
-            salelabel.AllowParentOverrides = false;
-            salelabel.AutoEllipsis = false;
-            salelabel.AutoSize = false;
-            salelabel.CursorType = Cursors.Default;
-            salelabel.Dock = DockStyle.Fill;
-            salelabel.Font = new Font("Courier New", 15.75F, FontStyle.Bold);
-            salelabel.ForeColor = Color.Black;
-            salelabel.Location = new Point(15, 33);
-            salelabel.Name = "salelabel";
-            salelabel.RightToLeft = RightToLeft.No;
-            salelabel.Size = new Size(168, 66);
-            salelabel.TabIndex = 3;
-            salelabel.Text = "₱ 5,000.00";
-            salelabel.TextAlignment = ContentAlignment.MiddleCenter;
-            salelabel.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            label11.BackColor = Color.Transparent;
+            label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.Location = new Point(16, 8);
+            label11.Name = "label11";
+            label11.Size = new Size(207, 30);
+            label11.TabIndex = 7;
+            label11.Text = "Sales";
+            label11.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // label5
+            // SaleChart
             // 
-            label5.BackColor = Color.Transparent;
-            label5.Dock = DockStyle.Top;
-            label5.ForeColor = Color.Black;
-            label5.Location = new Point(15, 15);
-            label5.Name = "label5";
-            label5.Size = new Size(168, 18);
-            label5.TabIndex = 2;
-            label5.Text = "Total Sales";
-            // 
-            // panel7
-            // 
-            panel7.BackColor = Color.White;
-            panel7.BackgroundImage = Properties.Resources.shopping_cart__1_;
-            panel7.BackgroundImageLayout = ImageLayout.Zoom;
-            panel7.BorderStyle = BorderStyle.FixedSingle;
-            panel7.Controls.Add(numberoforderslabel);
-            panel7.Controls.Add(label4);
-            panel7.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            panel7.Location = new Point(264, 3);
-            panel7.Name = "panel7";
-            panel7.Padding = new Padding(15, 15, 0, 0);
-            panel7.Size = new Size(185, 101);
-            panel7.TabIndex = 2;
-            // 
-            // numberoforderslabel
-            // 
-            numberoforderslabel.AllowParentOverrides = false;
-            numberoforderslabel.AutoEllipsis = false;
-            numberoforderslabel.AutoSize = false;
-            numberoforderslabel.CursorType = Cursors.Default;
-            numberoforderslabel.Dock = DockStyle.Fill;
-            numberoforderslabel.Font = new Font("Courier New", 15.75F, FontStyle.Bold);
-            numberoforderslabel.ForeColor = Color.Black;
-            numberoforderslabel.Location = new Point(15, 33);
-            numberoforderslabel.Name = "numberoforderslabel";
-            numberoforderslabel.RightToLeft = RightToLeft.No;
-            numberoforderslabel.Size = new Size(168, 66);
-            numberoforderslabel.TabIndex = 3;
-            numberoforderslabel.Text = "₱ 5,000.00";
-            numberoforderslabel.TextAlignment = ContentAlignment.MiddleCenter;
-            numberoforderslabel.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // label4
-            // 
-            label4.BackColor = Color.Transparent;
-            label4.Dock = DockStyle.Top;
-            label4.ForeColor = Color.Black;
-            label4.Location = new Point(15, 15);
-            label4.Name = "label4";
-            label4.Size = new Size(168, 18);
-            label4.TabIndex = 2;
-            label4.Text = "No of Orders";
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(tableLayoutPanel1);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(900, 63);
-            panel1.TabIndex = 6;
+            SaleChart.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            SaleChart.BackColor = Color.Transparent;
+            chartArea3.Name = "ChartArea1";
+            SaleChart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            SaleChart.Legends.Add(legend3);
+            SaleChart.Location = new Point(16, 60);
+            SaleChart.Name = "SaleChart";
+            series3.BackSecondaryColor = Color.White;
+            series3.BorderColor = Color.White;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = Color.Maroon;
+            series3.LabelBackColor = Color.Transparent;
+            series3.LabelForeColor = Color.Maroon;
+            series3.Legend = "Legend1";
+            series3.MarkerColor = Color.Transparent;
+            series3.Name = "Sales";
+            series3.YValuesPerPoint = 3;
+            SaleChart.Series.Add(series3);
+            SaleChart.Size = new Size(414, 180);
+            SaleChart.TabIndex = 0;
+            SaleChart.Text = "chart1";
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 500F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel1.Controls.Add(panel2, 1, 0);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.ColumnCount = 4;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.Controls.Add(bunifuPanel4, 3, 0);
+            tableLayoutPanel1.Controls.Add(bunifuPanel3, 2, 0);
+            tableLayoutPanel1.Controls.Add(bunifuPanel2, 1, 0);
+            tableLayoutPanel1.Controls.Add(bunifuPanel1, 0, 0);
+            tableLayoutPanel1.Dock = DockStyle.Top;
+            tableLayoutPanel1.Location = new Point(0, 50);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.Padding = new Padding(5);
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(900, 63);
+            tableLayoutPanel1.Size = new Size(900, 130);
             tableLayoutPanel1.TabIndex = 1;
             // 
-            // panel2
+            // bunifuPanel4
             // 
-            panel2.Controls.Add(panelbtn4);
-            panel2.Controls.Add(panelbtn3);
-            panel2.Controls.Add(panelbtn2);
-            panel2.Controls.Add(panelbutton);
-            panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(303, 3);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(494, 57);
-            panel2.TabIndex = 0;
+            bunifuPanel4.BackgroundColor = Color.FromArgb(251, 205, 119);
+            bunifuPanel4.BackgroundImage = (Image)resources.GetObject("bunifuPanel4.BackgroundImage");
+            bunifuPanel4.BackgroundImageLayout = ImageLayout.Stretch;
+            bunifuPanel4.BorderColor = Color.FromArgb(251, 205, 119);
+            bunifuPanel4.BorderRadius = 3;
+            bunifuPanel4.BorderThickness = 1;
+            bunifuPanel4.Controls.Add(bunifuPanel8);
+            bunifuPanel4.Controls.Add(label9);
+            bunifuPanel4.Controls.Add(totalproductslabel);
+            bunifuPanel4.Dock = DockStyle.Fill;
+            bunifuPanel4.Location = new Point(674, 8);
+            bunifuPanel4.Name = "bunifuPanel4";
+            bunifuPanel4.ShowBorders = true;
+            bunifuPanel4.Size = new Size(218, 114);
+            bunifuPanel4.TabIndex = 3;
             // 
-            // panelbtn4
+            // bunifuPanel8
             // 
-            panelbtn4.Controls.Add(color4);
-            panelbtn4.Controls.Add(YearlyBTN);
-            panelbtn4.Location = new Point(357, 9);
-            panelbtn4.Name = "panelbtn4";
-            panelbtn4.Size = new Size(107, 41);
-            panelbtn4.TabIndex = 7;
+            bunifuPanel8.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            bunifuPanel8.BackgroundColor = Color.FromArgb(251, 205, 119);
+            bunifuPanel8.BackgroundImage = (Image)resources.GetObject("bunifuPanel8.BackgroundImage");
+            bunifuPanel8.BackgroundImageLayout = ImageLayout.Stretch;
+            bunifuPanel8.BorderColor = Color.White;
+            bunifuPanel8.BorderRadius = 3;
+            bunifuPanel8.BorderThickness = 1;
+            bunifuPanel8.Controls.Add(pictureBox4);
+            bunifuPanel8.Location = new Point(6, 18);
+            bunifuPanel8.Name = "bunifuPanel8";
+            bunifuPanel8.Padding = new Padding(5);
+            bunifuPanel8.ShowBorders = true;
+            bunifuPanel8.Size = new Size(80, 80);
+            bunifuPanel8.TabIndex = 6;
             // 
-            // color4
+            // pictureBox4
             // 
-            color4.Dock = DockStyle.Bottom;
-            color4.Location = new Point(0, 38);
-            color4.Name = "color4";
-            color4.Size = new Size(107, 3);
-            color4.TabIndex = 1;
+            pictureBox4.BackColor = Color.Transparent;
+            pictureBox4.Dock = DockStyle.Fill;
+            pictureBox4.Image = Properties.Resources.logistics;
+            pictureBox4.Location = new Point(5, 5);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(70, 70);
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 0;
+            pictureBox4.TabStop = false;
             // 
-            // YearlyBTN
+            // label9
             // 
-            YearlyBTN.BackColor = Color.White;
-            YearlyBTN.Dock = DockStyle.Fill;
-            YearlyBTN.FlatAppearance.BorderSize = 0;
-            YearlyBTN.FlatStyle = FlatStyle.Flat;
-            YearlyBTN.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            YearlyBTN.Location = new Point(0, 0);
-            YearlyBTN.Name = "YearlyBTN";
-            YearlyBTN.Size = new Size(107, 41);
-            YearlyBTN.TabIndex = 0;
-            YearlyBTN.Text = "Annually";
-            YearlyBTN.UseVisualStyleBackColor = false;
-            YearlyBTN.Click += YearlyBTN_Click;
+            label9.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            label9.BackColor = Color.Transparent;
+            label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Location = new Point(87, 52);
+            label9.Name = "label9";
+            label9.Size = new Size(122, 30);
+            label9.TabIndex = 5;
+            label9.Text = "Total Products";
+            label9.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // panelbtn3
+            // totalproductslabel
             // 
-            panelbtn3.Controls.Add(color3);
-            panelbtn3.Controls.Add(MonthlyBTN);
-            panelbtn3.Location = new Point(244, 9);
-            panelbtn3.Name = "panelbtn3";
-            panelbtn3.Size = new Size(107, 41);
-            panelbtn3.TabIndex = 6;
+            totalproductslabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            totalproductslabel.BackColor = Color.Transparent;
+            totalproductslabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            totalproductslabel.Location = new Point(87, 24);
+            totalproductslabel.Name = "totalproductslabel";
+            totalproductslabel.Size = new Size(122, 30);
+            totalproductslabel.TabIndex = 4;
+            totalproductslabel.Text = "1000";
+            totalproductslabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // color3
+            // bunifuPanel3
             // 
-            color3.Dock = DockStyle.Bottom;
-            color3.Location = new Point(0, 38);
-            color3.Name = "color3";
-            color3.Size = new Size(107, 3);
-            color3.TabIndex = 1;
+            bunifuPanel3.BackgroundColor = Color.FromArgb(251, 205, 119);
+            bunifuPanel3.BackgroundImage = (Image)resources.GetObject("bunifuPanel3.BackgroundImage");
+            bunifuPanel3.BackgroundImageLayout = ImageLayout.Stretch;
+            bunifuPanel3.BorderColor = Color.FromArgb(251, 205, 119);
+            bunifuPanel3.BorderRadius = 3;
+            bunifuPanel3.BorderThickness = 1;
+            bunifuPanel3.Controls.Add(bunifuPanel7);
+            bunifuPanel3.Controls.Add(label7);
+            bunifuPanel3.Controls.Add(totalorderslabel);
+            bunifuPanel3.Dock = DockStyle.Fill;
+            bunifuPanel3.Location = new Point(452, 8);
+            bunifuPanel3.Name = "bunifuPanel3";
+            bunifuPanel3.ShowBorders = true;
+            bunifuPanel3.Size = new Size(216, 114);
+            bunifuPanel3.TabIndex = 2;
             // 
-            // MonthlyBTN
+            // bunifuPanel7
             // 
-            MonthlyBTN.BackColor = Color.White;
-            MonthlyBTN.Dock = DockStyle.Fill;
-            MonthlyBTN.FlatAppearance.BorderSize = 0;
-            MonthlyBTN.FlatStyle = FlatStyle.Flat;
-            MonthlyBTN.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            MonthlyBTN.Location = new Point(0, 0);
-            MonthlyBTN.Name = "MonthlyBTN";
-            MonthlyBTN.Size = new Size(107, 41);
-            MonthlyBTN.TabIndex = 0;
-            MonthlyBTN.Text = "Monthly";
-            MonthlyBTN.UseVisualStyleBackColor = false;
-            MonthlyBTN.Click += MonthlyBTN_Click;
+            bunifuPanel7.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            bunifuPanel7.BackgroundColor = Color.FromArgb(251, 205, 119);
+            bunifuPanel7.BackgroundImage = (Image)resources.GetObject("bunifuPanel7.BackgroundImage");
+            bunifuPanel7.BackgroundImageLayout = ImageLayout.Stretch;
+            bunifuPanel7.BorderColor = Color.White;
+            bunifuPanel7.BorderRadius = 3;
+            bunifuPanel7.BorderThickness = 1;
+            bunifuPanel7.Controls.Add(pictureBox3);
+            bunifuPanel7.Location = new Point(9, 19);
+            bunifuPanel7.Name = "bunifuPanel7";
+            bunifuPanel7.Padding = new Padding(5);
+            bunifuPanel7.ShowBorders = true;
+            bunifuPanel7.Size = new Size(80, 80);
+            bunifuPanel7.TabIndex = 6;
             // 
-            // panelbtn2
+            // pictureBox3
             // 
-            panelbtn2.Controls.Add(color2);
-            panelbtn2.Controls.Add(WekklyBTN);
-            panelbtn2.Location = new Point(131, 9);
-            panelbtn2.Name = "panelbtn2";
-            panelbtn2.Size = new Size(107, 41);
-            panelbtn2.TabIndex = 5;
+            pictureBox3.BackColor = Color.Transparent;
+            pictureBox3.Dock = DockStyle.Fill;
+            pictureBox3.Image = Properties.Resources.purchase_order;
+            pictureBox3.Location = new Point(5, 5);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(70, 70);
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 0;
+            pictureBox3.TabStop = false;
             // 
-            // color2
+            // label7
             // 
-            color2.Dock = DockStyle.Bottom;
-            color2.Location = new Point(0, 38);
-            color2.Name = "color2";
-            color2.Size = new Size(107, 3);
-            color2.TabIndex = 1;
+            label7.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            label7.BackColor = Color.Transparent;
+            label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(88, 52);
+            label7.Name = "label7";
+            label7.Size = new Size(122, 30);
+            label7.TabIndex = 5;
+            label7.Text = "Total Orders";
+            label7.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // WekklyBTN
+            // totalorderslabel
             // 
-            WekklyBTN.BackColor = Color.White;
-            WekklyBTN.Dock = DockStyle.Fill;
-            WekklyBTN.FlatAppearance.BorderSize = 0;
-            WekklyBTN.FlatStyle = FlatStyle.Flat;
-            WekklyBTN.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            WekklyBTN.Location = new Point(0, 0);
-            WekklyBTN.Name = "WekklyBTN";
-            WekklyBTN.Size = new Size(107, 41);
-            WekklyBTN.TabIndex = 0;
-            WekklyBTN.Text = "Weekly";
-            WekklyBTN.UseVisualStyleBackColor = false;
-            WekklyBTN.Click += WekklyBTN_Click;
+            totalorderslabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            totalorderslabel.BackColor = Color.Transparent;
+            totalorderslabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            totalorderslabel.Location = new Point(88, 24);
+            totalorderslabel.Name = "totalorderslabel";
+            totalorderslabel.Size = new Size(122, 30);
+            totalorderslabel.TabIndex = 4;
+            totalorderslabel.Text = "1000";
+            totalorderslabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // panelbutton
+            // bunifuPanel2
             // 
-            panelbutton.Controls.Add(color1);
-            panelbutton.Controls.Add(DailyBTM);
-            panelbutton.Location = new Point(18, 9);
-            panelbutton.Name = "panelbutton";
-            panelbutton.Size = new Size(107, 41);
-            panelbutton.TabIndex = 4;
+            bunifuPanel2.BackgroundColor = Color.FromArgb(251, 205, 119);
+            bunifuPanel2.BackgroundImage = (Image)resources.GetObject("bunifuPanel2.BackgroundImage");
+            bunifuPanel2.BackgroundImageLayout = ImageLayout.Stretch;
+            bunifuPanel2.BorderColor = Color.FromArgb(251, 205, 119);
+            bunifuPanel2.BorderRadius = 3;
+            bunifuPanel2.BorderThickness = 1;
+            bunifuPanel2.Controls.Add(bunifuPanel6);
+            bunifuPanel2.Controls.Add(label5);
+            bunifuPanel2.Controls.Add(totalsaleslabel);
+            bunifuPanel2.Dock = DockStyle.Fill;
+            bunifuPanel2.Location = new Point(230, 8);
+            bunifuPanel2.Name = "bunifuPanel2";
+            bunifuPanel2.ShowBorders = true;
+            bunifuPanel2.Size = new Size(216, 114);
+            bunifuPanel2.TabIndex = 1;
             // 
-            // color1
+            // bunifuPanel6
             // 
-            color1.BackColor = Color.Maroon;
-            color1.Dock = DockStyle.Bottom;
-            color1.Location = new Point(0, 38);
-            color1.Name = "color1";
-            color1.Size = new Size(107, 3);
-            color1.TabIndex = 1;
+            bunifuPanel6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            bunifuPanel6.BackgroundColor = Color.FromArgb(251, 205, 119);
+            bunifuPanel6.BackgroundImage = (Image)resources.GetObject("bunifuPanel6.BackgroundImage");
+            bunifuPanel6.BackgroundImageLayout = ImageLayout.Stretch;
+            bunifuPanel6.BorderColor = Color.White;
+            bunifuPanel6.BorderRadius = 3;
+            bunifuPanel6.BorderThickness = 1;
+            bunifuPanel6.Controls.Add(pictureBox2);
+            bunifuPanel6.Location = new Point(6, 19);
+            bunifuPanel6.Name = "bunifuPanel6";
+            bunifuPanel6.Padding = new Padding(5);
+            bunifuPanel6.ShowBorders = true;
+            bunifuPanel6.Size = new Size(80, 80);
+            bunifuPanel6.TabIndex = 6;
             // 
-            // DailyBTM
+            // pictureBox2
             // 
-            DailyBTM.BackColor = Color.White;
-            DailyBTM.Dock = DockStyle.Fill;
-            DailyBTM.FlatAppearance.BorderSize = 0;
-            DailyBTM.FlatStyle = FlatStyle.Flat;
-            DailyBTM.Font = new Font("Courier New", 12F, FontStyle.Bold);
-            DailyBTM.Location = new Point(0, 0);
-            DailyBTM.Name = "DailyBTM";
-            DailyBTM.Size = new Size(107, 41);
-            DailyBTM.TabIndex = 0;
-            DailyBTM.Text = "Daily";
-            DailyBTM.UseVisualStyleBackColor = false;
-            DailyBTM.Click += DailyBTM_Click;
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.Dock = DockStyle.Fill;
+            pictureBox2.Image = Properties.Resources.increase;
+            pictureBox2.Location = new Point(5, 5);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(70, 70);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 0;
+            pictureBox2.TabStop = false;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(88, 52);
+            label5.Name = "label5";
+            label5.Size = new Size(122, 30);
+            label5.TabIndex = 5;
+            label5.Text = "Total Sales";
+            label5.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // totalsaleslabel
+            // 
+            totalsaleslabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            totalsaleslabel.BackColor = Color.Transparent;
+            totalsaleslabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            totalsaleslabel.Location = new Point(88, 24);
+            totalsaleslabel.Name = "totalsaleslabel";
+            totalsaleslabel.Size = new Size(122, 30);
+            totalsaleslabel.TabIndex = 4;
+            totalsaleslabel.Text = "1000";
+            totalsaleslabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // bunifuPanel1
+            // 
+            bunifuPanel1.BackgroundColor = Color.FromArgb(251, 205, 119);
+            bunifuPanel1.BackgroundImage = (Image)resources.GetObject("bunifuPanel1.BackgroundImage");
+            bunifuPanel1.BackgroundImageLayout = ImageLayout.Stretch;
+            bunifuPanel1.BorderColor = Color.FromArgb(251, 205, 119);
+            bunifuPanel1.BorderRadius = 3;
+            bunifuPanel1.BorderThickness = 1;
+            bunifuPanel1.Controls.Add(bunifuPanel5);
+            bunifuPanel1.Controls.Add(label4);
+            bunifuPanel1.Controls.Add(totalitemslabel);
+            bunifuPanel1.Dock = DockStyle.Fill;
+            bunifuPanel1.Location = new Point(8, 8);
+            bunifuPanel1.Name = "bunifuPanel1";
+            bunifuPanel1.ShowBorders = true;
+            bunifuPanel1.Size = new Size(216, 114);
+            bunifuPanel1.TabIndex = 0;
+            // 
+            // bunifuPanel5
+            // 
+            bunifuPanel5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            bunifuPanel5.BackgroundColor = Color.FromArgb(251, 205, 119);
+            bunifuPanel5.BackgroundImage = (Image)resources.GetObject("bunifuPanel5.BackgroundImage");
+            bunifuPanel5.BackgroundImageLayout = ImageLayout.Stretch;
+            bunifuPanel5.BorderColor = Color.White;
+            bunifuPanel5.BorderRadius = 3;
+            bunifuPanel5.BorderThickness = 1;
+            bunifuPanel5.Controls.Add(pictureBox1);
+            bunifuPanel5.Location = new Point(10, 17);
+            bunifuPanel5.Name = "bunifuPanel5";
+            bunifuPanel5.Padding = new Padding(5);
+            bunifuPanel5.ShowBorders = true;
+            bunifuPanel5.Size = new Size(80, 80);
+            bunifuPanel5.TabIndex = 3;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = Properties.Resources.logistics;
+            pictureBox1.Location = new Point(5, 5);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(70, 70);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(91, 52);
+            label4.Name = "label4";
+            label4.Size = new Size(122, 30);
+            label4.TabIndex = 2;
+            label4.Text = "Total Items";
+            label4.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // totalitemslabel
+            // 
+            totalitemslabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            totalitemslabel.BackColor = Color.Transparent;
+            totalitemslabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            totalitemslabel.Location = new Point(91, 24);
+            totalitemslabel.Name = "totalitemslabel";
+            totalitemslabel.Size = new Size(122, 30);
+            totalitemslabel.TabIndex = 1;
+            totalitemslabel.Text = "1000";
+            totalitemslabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // Topmainpanel
+            // 
+            Topmainpanel.Controls.Add(Userlabrl);
+            Topmainpanel.Dock = DockStyle.Top;
+            Topmainpanel.Location = new Point(0, 0);
+            Topmainpanel.Name = "Topmainpanel";
+            Topmainpanel.Padding = new Padding(5, 3, 5, 3);
+            Topmainpanel.Size = new Size(900, 50);
+            Topmainpanel.TabIndex = 0;
+            // 
+            // Userlabrl
+            // 
+            Userlabrl.Dock = DockStyle.Left;
+            Userlabrl.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Userlabrl.Location = new Point(5, 3);
+            Userlabrl.Name = "Userlabrl";
+            Userlabrl.Size = new Size(436, 44);
+            Userlabrl.TabIndex = 0;
+            Userlabrl.Text = "Welcome User!";
+            Userlabrl.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // bunifuTransition1
+            // 
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = (PointF)resources.GetObject("animation1.BlindCoeff");
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = (PointF)resources.GetObject("animation1.MosaicCoeff");
+            animation1.MosaicShift = (PointF)resources.GetObject("animation1.MosaicShift");
+            animation1.MosaicSize = 0;
+            animation1.Padding = new Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = (PointF)resources.GetObject("animation1.ScaleCoeff");
+            animation1.SlideCoeff = (PointF)resources.GetObject("animation1.SlideCoeff");
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
             // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(900, 788);
-            Controls.Add(panelwhole);
+            ClientSize = new Size(900, 746);
+            Controls.Add(MainPanel);
             Controls.Add(TopPanel);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Dashboard";
@@ -1032,35 +891,31 @@ namespace DazaBestApplication.Pages
             Text = "Dashboard";
             Load += Dashboard_Load;
             TopPanel.ResumeLayout(false);
-            panelwhole.ResumeLayout(false);
-            panel15.ResumeLayout(false);
-            tableLayoutPanel6.ResumeLayout(false);
-            panel19.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)TopSellingTable).EndInit();
-            panel16.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)LeastSellingTable).EndInit();
-            panel10.ResumeLayout(false);
-            tableLayoutPanel4.ResumeLayout(false);
-            tableLayoutPanel5.ResumeLayout(false);
-            panel11.ResumeLayout(false);
-            panel12.ResumeLayout(false);
-            panel13.ResumeLayout(false);
-            panel14.ResumeLayout(false);
-            panel9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)salesChart).EndInit();
-            panel3.ResumeLayout(false);
-            tableLayoutPanel2.ResumeLayout(false);
+            MainPanel.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
-            panel5.ResumeLayout(false);
-            panel8.ResumeLayout(false);
-            panel7.ResumeLayout(false);
-            panel1.ResumeLayout(false);
+            bunifuPanel11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)InventoryStocks).EndInit();
+            bunifuPanel12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)TopProductschart).EndInit();
+            tableLayoutPanel2.ResumeLayout(false);
+            bunifuPanel10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)LowInventoryChart).EndInit();
+            bunifuPanel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)SaleChart).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panelbtn4.ResumeLayout(false);
-            panelbtn3.ResumeLayout(false);
-            panelbtn2.ResumeLayout(false);
-            panelbutton.ResumeLayout(false);
+            bunifuPanel4.ResumeLayout(false);
+            bunifuPanel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            bunifuPanel3.ResumeLayout(false);
+            bunifuPanel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            bunifuPanel2.ResumeLayout(false);
+            bunifuPanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            bunifuPanel1.ResumeLayout(false);
+            bunifuPanel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Topmainpanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -1070,62 +925,46 @@ namespace DazaBestApplication.Pages
         private SmoothPanel panel4;
         private Label label1;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel8;
-        private SmoothPanel panelwhole;
-        private SmoothPanel panel1;
+        private Panel MainPanel;
+        private Panel Topmainpanel;
+        private Label Userlabrl;
+        private Bunifu.UI.WinForms.BunifuDropdown DashboardTypeSelect;
         private TableLayoutPanel tableLayoutPanel1;
-        private SmoothPanel panel2;
-        private SmoothPanel panelbtn4;
-        private SmoothPanel color4;
-        private Button YearlyBTN;
-        private SmoothPanel panelbtn3;
-        private SmoothPanel color3;
-        private Button MonthlyBTN;
-        private SmoothPanel panelbtn2;
-        private SmoothPanel color2;
-        private Button WekklyBTN;
-        private SmoothPanel panelbutton;
-        private SmoothPanel color1;
-        private Button DailyBTM;
-        private SmoothPanel panel3;
-        private TableLayoutPanel tableLayoutPanel2;
-        private TableLayoutPanel tableLayoutPanel3;
-        private SmoothPanel panel5;
-        private Bunifu.UI.WinForms.BunifuLabel qoutalabel;
-        private Label label2;
-        private SmoothPanel panel8;
-        private Bunifu.UI.WinForms.BunifuLabel salelabel;
-        private Label label5;
-        private SmoothPanel panel7;
-        private Bunifu.UI.WinForms.BunifuLabel numberoforderslabel;
+        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel4;
+        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel3;
+        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel2;
+        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel1;
+        private Label totalitemslabel;
+        private PictureBox pictureBox1;
         private Label label4;
-        private SmoothPanel panel9;
-        private System.Windows.Forms.DataVisualization.Charting.Chart salesChart;
-        private SmoothPanel panel10;
-        private TableLayoutPanel tableLayoutPanel4;
-        private TableLayoutPanel tableLayoutPanel5;
-        private SmoothPanel panel11;
-        private Bunifu.UI.WinForms.BunifuLabel numberofitemslabel;
-        private Label label6;
-        private SmoothPanel panel12;
-        private Bunifu.UI.WinForms.BunifuLabel overstocklabel;
+        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel5;
+        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel6;
+        private PictureBox pictureBox2;
+        private Label label5;
+        private Label totalsaleslabel;
+        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel7;
+        private PictureBox pictureBox3;
         private Label label7;
-        private SmoothPanel panel13;
-        private Bunifu.UI.WinForms.BunifuLabel outofstocklabel;
-        private Label label8;
-        private SmoothPanel panel14;
-        private Bunifu.UI.WinForms.BunifuLabel criticalitemslabel;
+        private Label totalorderslabel;
+        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel8;
+        private PictureBox pictureBox4;
         private Label label9;
-        private SmoothPanel panel15;
-        private TableLayoutPanel tableLayoutPanel6;
-        private SmoothPanel panel19;
-        private Bunifu.UI.WinForms.BunifuDataGridView TopSellingTable;
+        private Label totalproductslabel;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel9;
+        private System.Windows.Forms.DataVisualization.Charting.Chart SaleChart;
         private Label label11;
-        private SmoothPanel panel16;
-        private Bunifu.UI.WinForms.BunifuDataGridView LeastSellingTable;
-        private Label label10;
-        private DataGridViewTextBoxColumn NumberCol;
-        private DataGridViewTextBoxColumn ProductNameCol;
-        private DataGridViewTextBoxColumn NumberColLeast;
-        private DataGridViewTextBoxColumn ProductNameColLeast;
+        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel10;
+        private Label label12;
+        private System.Windows.Forms.DataVisualization.Charting.Chart TopProductschart;
+        private TableLayoutPanel tableLayoutPanel3;
+        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel11;
+        private Label label13;
+        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel12;
+        private Label label14;
+        private System.Windows.Forms.DataVisualization.Charting.Chart LowInventoryChart;
+        private Bunifu.UI.WinForms.BunifuDataGridView InventoryStocks;
+        private DataGridViewTextBoxColumn ItemCol;
+        private DataGridViewTextBoxColumn StockCol;
     }
 }

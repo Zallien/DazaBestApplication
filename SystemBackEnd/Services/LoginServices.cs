@@ -70,7 +70,7 @@ namespace SystemBackEnd.Services
         // ======= LOGIN ACCOUNT =======
         public async Task<bool> LoginAccountAsync(string username, string password)
         {
-            var user = await _db.Accounts.FirstOrDefaultAsync(x => x.Username == username);
+            var user = await _db.Accounts.FirstOrDefaultAsync(x => x.Username == username && x.IsActive == true);
             if (user == null)
                 return false;
 
@@ -137,13 +137,17 @@ namespace SystemBackEnd.Services
 
         }
         //Get All Accounts with SecurityQuestion
-        public async Task<List<AccountDisplay>> GetAllAccountwithQuestion()
+        public async Task<List<AccountDisplay>> GetAllAccountwithQuestion(AccountPagination pagination)
         {
             List<AccountDisplay> accountDisplays = new List<AccountDisplay>();
             try
             {
                 //Accounts
-                var accounts = await _db.Accounts.Where(x => x.IsActive == true).ToListAsync();
+                var accounts = await _db.Accounts.Where(x => x.IsActive == true 
+                    && (x.FirstName + " " + x.LastName).ToLower().Contains(pagination.SearchValue.ToLower()))
+                                                    .Skip((pagination.PageNumber - 1) * pagination.ItemperPage)
+                                                    .Take(pagination.ItemperPage)
+                                                    .ToListAsync();
                 if (accounts.Count > 0)
                 {
                     //Get Questions Based On AccountId
@@ -313,6 +317,46 @@ namespace SystemBackEnd.Services
             }
             return accountFirstLoginInformation;
         }
+        //Get Total Accounts Count
+        public async Task<int> GetTotalAccountsCount()
+        {
+            int totalAccounts = 0;
+            try
+            {
+                totalAccounts = await _db.Accounts.Where(x => x.IsActive == true).CountAsync();
+            }
+            catch (Exception e)
+            {
+            }
+            return totalAccounts;
+        }
+        //Search for Admin Password if exists in the system
+        public async Task<bool> SearchAdminPassword(string password)
+        {
+            bool adminExists = false;
+            try
+            {
+                //adminExists = await _db.Accounts.AnyAsync(x => x.IsOwner == true && x.IsActive == true);
+                string hashedPassword = HashPassword(password);
+                var admins = await _db.Accounts.Where(x => x.IsOwner == true && x.IsActive == true).ToListAsync();
+                foreach (var admin in admins)
+                {
+                    if (VerifyPassword(password, admin.Password))
+                    {
+                        adminExists = true;
+                        break;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return adminExists;
+        }
 
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

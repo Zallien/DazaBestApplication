@@ -1,10 +1,12 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using DazaBestApplication.Modals;
+using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,7 +31,8 @@ namespace DazaBestApplication.Pages
                                                     "Weekly",
                                                     "Monthly"
                                                 };
-
+        Panel loadingPanel;
+        private DecisionModel _decision;
 
         public BackupForm(Form mainForm)
         {
@@ -42,7 +45,7 @@ namespace DazaBestApplication.Pages
             backupdirectorytxtbox.Text = Program.theBackupSettings.BackupLocation;
             backupscheduledropdown.Text = Program.theBackupSettings.AutoBackupSchedule;
             await PopulateDropdown();
-            
+
         }
         //Update Backup Settings Values
         private async Task UpdateBackupSettings()
@@ -78,8 +81,6 @@ namespace DazaBestApplication.Pages
             {
                 source.Open();
                 dest.Open();
-
-                // ✅ SQLite-built-in restore function
                 source.BackupDatabase(dest);
             }
         }
@@ -95,8 +96,59 @@ namespace DazaBestApplication.Pages
                 backupdirectorytxtbox.Text = Program.theBackupSettings.BackupLocation;
                 backupscheduledropdown.Text = Program.theBackupSettings.AutoBackupSchedule;
             }
-            
+
         }
+        //Create a panel while the file is uploading to Google Drive
+        private Panel CreateLoadingPanel()
+        {
+            loadingPanel = new Panel
+            {
+                Size = new Size(200, 100),
+                BackColor = Color.LightGray,
+                BorderStyle = BorderStyle.FixedSingle,
+                Location = new Point((this.ClientSize.Width - 200) / 2, (this.ClientSize.Height - 100) / 2)
+            };
+            Label loadingLabel = new Label
+            {
+                Text = "Uploading to Google Drive...",
+                AutoSize = true,
+                Location = new Point((loadingPanel.Width - 150) / 2, (loadingPanel.Height - 20) / 2)
+            };
+            loadingPanel.Controls.Add(loadingLabel);
+            this.Controls.Add(loadingPanel);
+            loadingPanel.BringToFront();
+            return loadingPanel;
+        }
+        //Open Decision Modal
+        private bool OpenDecisionModal()
+        {
+            Form ModalBackgorund = new();
+            using (DecisionModal modalcontent = new(_decision))
+            {
+                var mainBounds = MainForm.Bounds;
+
+                ModalBackgorund.StartPosition = FormStartPosition.Manual;
+                ModalBackgorund.FormBorderStyle = FormBorderStyle.None;
+                ModalBackgorund.Opacity = .60d;
+                ModalBackgorund.BackColor = Color.Black;
+                ModalBackgorund.Bounds = mainBounds;
+                ModalBackgorund.Size = MainForm.Size;
+                ModalBackgorund.Location = MainForm.Location;
+                ModalBackgorund.ShowInTaskbar = false;
+                ModalBackgorund.Show(MainForm);
+
+
+                modalcontent.Owner = ModalBackgorund;
+                modalcontent.StartPosition = FormStartPosition.CenterParent;
+
+                var result = modalcontent.ShowDialog();
+
+                ModalBackgorund.Dispose();
+
+                return result == DialogResult.Yes;
+            }
+        }
+
 
 
 
@@ -147,11 +199,21 @@ namespace DazaBestApplication.Pages
         {
             try
             {
-                // ✅ Default folder from your settings
+                // Ensure all changes are saved and close all connections
+                using (var db = new BackEndDBContext())
+                {
+                    db.SaveChanges();
+                }
+
+                // Force close all pooled connections to the database
+                SqliteConnection.ClearAllPools();
+
+                // Give a brief moment for connections to fully close
+                System.Threading.Thread.Sleep(100);
+
                 string defaultBackupFolder = Program.theBackupSettings.BackupLocation;
                 Directory.CreateDirectory(defaultBackupFolder);
 
-                // ✅ DB path
                 string dbPath = Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                     "DazaBestApplication",
@@ -164,7 +226,6 @@ namespace DazaBestApplication.Pages
                     return;
                 }
 
-                // ✅ Configure SaveFileDialog
                 SaveFileDialog dlg = new SaveFileDialog
                 {
                     Title = "Save Backup File",
@@ -173,14 +234,10 @@ namespace DazaBestApplication.Pages
                     FileName = $"Backup_{DateTime.Now:yyyyMMdd_HHmmss}.db"
                 };
 
-                // ✅ Let user choose where and what name
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     string userSelectedPath = dlg.FileName;
-
-                    // ✅ Copy DB to user-chosen file
                     File.Copy(dbPath, userSelectedPath, true);
-
                     MessageBox.Show("Backup created:\n" + userSelectedPath);
                 }
             }
@@ -233,7 +290,7 @@ namespace DazaBestApplication.Pages
             {
                 try
                 {
-                   
+
                     Microsoft.Data.Sqlite.SqliteConnection.ClearAllPools();
 
                     RestoreDatabase(SelectedBackupFilePath, dbPath);
@@ -248,5 +305,67 @@ namespace DazaBestApplication.Pages
                 }
             }
         }
+
+        private void bunifuButton3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Checks for Internet Connection
+                if (!NetworkInterface.GetIsNetworkAvailable())
+                {
+                    MessageBox.Show("Please Connect to the Internet to Upload Backup to Google Drive.",
+                        "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                //Open Decision Modal AND Ask User Confirmation
+                _decision = new DecisionModel
+                {
+                    DecisionTitle = "Upload Backup",
+                    DecisionQuestion = "Are you sure you want to upload the backup to Google Drive?"
+                };
+                bool userConfirmed = OpenDecisionModal();
+                if (!userConfirmed)
+                {
+                    return;
+                }
+
+                clouduploadbtn.Enabled = false;
+                clouduploadbtn.Cursor = Cursors.WaitCursor;
+                string dbPath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                    "DazaBestApplication",
+                    "DazaBestApplication.db"
+                );
+
+                DriveServices driveServices = new DriveServices();
+                // Create a dynamic filename with date and time
+                string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                string dynamicFileName = $"DazaBestApplication_{timestamp}.db";
+
+                // Save to temp folder with dynamic name
+                string tempPath = Path.Combine(Path.GetTempPath(), dynamicFileName);
+                File.Copy(dbPath, tempPath, true);
+
+                // Upload with dynamic filename
+                bool uploadSuccess = driveServices.UploadFile(tempPath);
+                if (uploadSuccess)
+                {
+                    MessageBox.Show("Backup uploaded to Google Drive successfully!");
+                }
+                else
+                {
+                    MessageBox.Show("Failed to upload backup to Google Drive.");
+                }
+                clouduploadbtn.Cursor = Cursors.Default;
+                clouduploadbtn.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
     }
 }

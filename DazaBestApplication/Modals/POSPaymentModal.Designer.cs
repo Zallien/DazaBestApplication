@@ -163,7 +163,6 @@
             stateProperties4.ForeColor = Color.Empty;
             stateProperties4.PlaceholderForeColor = Color.Empty;
             PaymentRecievedtextbox.OnIdleState = stateProperties4;
-            PaymentRecievedtextbox.Padding = new Padding(3);
             PaymentRecievedtextbox.PasswordChar = '\0';
             PaymentRecievedtextbox.PlaceholderForeColor = Color.Silver;
             PaymentRecievedtextbox.PlaceholderText = "0.000";
@@ -173,7 +172,7 @@
             PaymentRecievedtextbox.SelectionLength = 0;
             PaymentRecievedtextbox.SelectionStart = 0;
             PaymentRecievedtextbox.ShortcutsEnabled = true;
-            PaymentRecievedtextbox.Size = new Size(209, 37);
+            PaymentRecievedtextbox.Size = new Size(209, 28);
             PaymentRecievedtextbox.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             PaymentRecievedtextbox.TabIndex = 5;
             PaymentRecievedtextbox.TextAlign = HorizontalAlignment.Left;

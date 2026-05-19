@@ -20,10 +20,13 @@ namespace DazaBestApplication
         private Panel Loadingpanel;
         private BunifuLoader bunifuLoader;
         private DecisionModel _decision;
+        private Panel loadingpanel1;
+
 
         //Button Index
         private List<BunifuButton2> bunifuButtons;
         private BunifuButton2 Activebutton = new();
+        private Panel loadingpanel;
 
 
         public MainPage()
@@ -34,7 +37,7 @@ namespace DazaBestApplication
         //Main Load Event
         private async void MainPage_Load(object sender, EventArgs e)
         {
-            
+
             await ShowloadingScreeen();
             await startup();
             theLoggedInAccount = Program.theLoggedInAccount;
@@ -57,7 +60,10 @@ namespace DazaBestApplication
             };
             Activebutton = NavButton_Home;
             await CheckActiveButton();
+
+
         }
+
 
         private async Task startup()
         {
@@ -135,6 +141,31 @@ namespace DazaBestApplication
                 modalcontent.ShowDialog();
                 ModalBackgorund.Dispose();
             }
+        }
+        //Show Panel for Uploading Googledrive
+        private async Task ShowLoadingpanelforGdriveUpload()
+        {
+            loadingpanel1 = new Panel()
+            {
+                Location = new Point(0, 0),
+                Size = this.Size,
+                BackColor = Color.FromArgb(20, 0, 0, 0),
+                Visible = false
+            };
+            this.Controls.Add(loadingpanel);
+            loadingpanel.BringToFront();
+            loadingpanel.Visible = true;
+            bunifuLoader = new BunifuLoader()
+            {
+                Size = new Size(200, 200),
+                BackColor = Color.BlanchedAlmond,
+                Visible = true
+            };
+            loadingpanel.Controls.Add(bunifuLoader);
+            bunifuLoader.Location = new Point(
+                (loadingpanel.Width - bunifuLoader.Width) / 2,
+                (loadingpanel.Height - bunifuLoader.Height) / 2
+            );
         }
 
 
@@ -322,8 +353,6 @@ namespace DazaBestApplication
                 return result == DialogResult.Yes;
             }
         }
-
-
         #endregion
 
 
@@ -364,7 +393,7 @@ namespace DazaBestApplication
             Loadingpanel.Dispose();
         }
 
-        
+
         #region Routing Each Pages
         private void ShowItemPage()
         {
@@ -509,6 +538,20 @@ namespace DazaBestApplication
             MainContainer.Controls.Add(MainContainerForm);
             MainContainerForm.Show();
         }
+        private void ShowBusinessForm()
+        {
+            if (MainContainerForm != null)
+            {
+                MainContainer.Controls.Remove(MainContainerForm);
+                MainContainerForm = null;
+            }
+            MainContainerForm = new BusinessFormPage(this);
+            MainContainerForm.TopLevel = false;
+            MainContainerForm.Dock = DockStyle.Fill;
+            MainContainer.Controls.Add(MainContainerForm);
+            MainContainerForm.Show();
+        }
+
         #endregion
 
 
@@ -536,19 +579,43 @@ namespace DazaBestApplication
             //    Log_in login = new();
             //    login.Show();
             //}
-            _decision = new DecisionModel()
-            {
-                DecisionQuestion = "Do you want to Logout?",
-                DecisionTitle = "Logout",
-            };
 
-            bool result = OpenDecisionModal();
-            if (result == true)
+            //_decision = new DecisionModel()
+            //{
+            //    DecisionQuestion = "Do you want to Logout?",
+            //    DecisionTitle = "Logout",
+            //};
+
+            //bool result = OpenDecisionModal();
+            //if (result == true)
+            //{
+            //    Program.theLoggedInAccount = null;
+            //    Close();
+            //    Log_in login = new();
+            //    login.Show();
+            //    this.Close();
+            //}
+
+            try
             {
-                Program.theLoggedInAccount = null;
-                Close();
-                Log_in login = new();
-                login.Show();
+                _decision = new DecisionModel()
+                {
+                    DecisionQuestion = "Do you want to Logout?",
+                    DecisionTitle = "Logout",
+                };
+
+                bool result = OpenDecisionModal();
+                if (result)
+                {
+                    Program.theLoggedInAccount = null;
+                    Log_in login = new Log_in();
+                    login.Show();
+                    this.Dispose(); // closes and disposes the main page
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
         }
@@ -573,9 +640,10 @@ namespace DazaBestApplication
         }
         private void POSButton_Click(object sender, EventArgs e)
         {
-            this.Close();
             PointofSaleForm posForm = new PointofSaleForm();
             posForm.Show();
+            this.Close();
+            this.Dispose();
         }
         private void MainContainer_Paint(object sender, PaintEventArgs e)
         {
@@ -732,6 +800,10 @@ namespace DazaBestApplication
             bunifuButton21.IdleIconLeftImage = Properties.Resources.gear; // Backup and Restore
             POSButton.IdleIconLeftImage = Properties.Resources.payment_terminal;
             AccountsManagementBTN.IdleIconLeftImage = Properties.Resources.accounts;
+        }
+        private void voidsbutton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

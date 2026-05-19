@@ -71,7 +71,7 @@ namespace SystemBackEnd.Services
                 _newheader = new PurchaseItemHeader();
                 _newheader = await _db.PurcahseItemHeader.Where(x => x.Purchaseheaderid == _PurchaseItemHeaderID).FirstOrDefaultAsync();
                 var countsperday = await _db.PurcahseItemHeader.Where(x => x.DateCreated.Date == DateTime.Now.Date).CountAsync();
-                _newheader.Purchasenumber = $"P-{DateTime.Now.ToString("yyyyMMddHHmmss")}-{(countsperday + 1).ToString("D4")}";
+                _newheader.Purchasenumber = $"P-{DateTime.Now.ToString("yyyyMMddHHmmss")}-{(countsperday).ToString("D4")}";
                 _db.PurcahseItemHeader.Update(_newheader);
                 await _db.SaveChangesAsync();
 

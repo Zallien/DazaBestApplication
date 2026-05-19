@@ -21,5 +21,7 @@ namespace SystemBackEnd.Models
         public byte[]? ProductImage { get; set; }
         public bool IsAvailable { get; set; }
         public string Category { get; set; }
+        public string BusinessCategory { get; set; }
+
     }
 }

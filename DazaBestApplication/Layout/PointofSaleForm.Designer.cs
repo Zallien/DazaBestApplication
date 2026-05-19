@@ -17,6 +17,11 @@
             {
                 components.Dispose();
             }
+            if (disposing)
+            {
+                ClearPOSItems();
+                components?.Dispose();
+            }
             base.Dispose(disposing);
         }
 
@@ -29,19 +34,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PointofSaleForm));
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bottomnavbar = new Panel();
+            foodstallbutton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            karinderyabutton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             bunifuImageButton4 = new Bunifu.UI.WinForms.BunifuImageButton();
             Sidebar = new Panel();
             ProductOrdersDatagrid = new Bunifu.UI.WinForms.BunifuDataGridView();
@@ -85,12 +94,192 @@
             // 
             Bottomnavbar.BackColor = Color.FromArgb(251, 205, 119);
             Bottomnavbar.BorderStyle = BorderStyle.FixedSingle;
+            Bottomnavbar.Controls.Add(foodstallbutton);
+            Bottomnavbar.Controls.Add(karinderyabutton);
             Bottomnavbar.Controls.Add(bunifuImageButton4);
             Bottomnavbar.Dock = DockStyle.Bottom;
             Bottomnavbar.Location = new Point(0, 580);
             Bottomnavbar.Name = "Bottomnavbar";
             Bottomnavbar.Size = new Size(1020, 70);
             Bottomnavbar.TabIndex = 0;
+            // 
+            // foodstallbutton
+            // 
+            foodstallbutton.AllowAnimations = true;
+            foodstallbutton.AllowMouseEffects = true;
+            foodstallbutton.AllowToggling = false;
+            foodstallbutton.AnimationSpeed = 200;
+            foodstallbutton.AutoGenerateColors = false;
+            foodstallbutton.AutoRoundBorders = false;
+            foodstallbutton.AutoSizeLeftIcon = true;
+            foodstallbutton.AutoSizeRightIcon = true;
+            foodstallbutton.BackColor = Color.Transparent;
+            foodstallbutton.BackColor1 = Color.Red;
+            foodstallbutton.BackgroundImage = (Image)resources.GetObject("foodstallbutton.BackgroundImage");
+            foodstallbutton.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            foodstallbutton.ButtonText = "Food Stalls";
+            foodstallbutton.ButtonTextMarginLeft = 0;
+            foodstallbutton.ColorContrastOnClick = 45;
+            foodstallbutton.ColorContrastOnHover = 45;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            foodstallbutton.CustomizableEdges = borderEdges1;
+            foodstallbutton.DialogResult = DialogResult.None;
+            foodstallbutton.DisabledBorderColor = Color.FromArgb(191, 191, 191);
+            foodstallbutton.DisabledFillColor = Color.FromArgb(204, 204, 204);
+            foodstallbutton.DisabledForecolor = Color.FromArgb(168, 160, 168);
+            foodstallbutton.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            foodstallbutton.Font = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            foodstallbutton.ForeColor = Color.White;
+            foodstallbutton.IconLeftAlign = ContentAlignment.MiddleLeft;
+            foodstallbutton.IconLeftCursor = Cursors.Default;
+            foodstallbutton.IconLeftPadding = new Padding(11, 3, 3, 3);
+            foodstallbutton.IconMarginLeft = 11;
+            foodstallbutton.IconPadding = 10;
+            foodstallbutton.IconRightAlign = ContentAlignment.MiddleRight;
+            foodstallbutton.IconRightCursor = Cursors.Default;
+            foodstallbutton.IconRightPadding = new Padding(3, 3, 7, 3);
+            foodstallbutton.IconSize = 25;
+            foodstallbutton.IdleBorderColor = Color.White;
+            foodstallbutton.IdleBorderRadius = 1;
+            foodstallbutton.IdleBorderThickness = 1;
+            foodstallbutton.IdleFillColor = Color.Red;
+            foodstallbutton.IdleIconLeftImage = null;
+            foodstallbutton.IdleIconRightImage = null;
+            foodstallbutton.IndicateFocus = false;
+            foodstallbutton.Location = new Point(178, 17);
+            foodstallbutton.Name = "foodstallbutton";
+            foodstallbutton.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
+            foodstallbutton.OnDisabledState.BorderRadius = 1;
+            foodstallbutton.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            foodstallbutton.OnDisabledState.BorderThickness = 1;
+            foodstallbutton.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
+            foodstallbutton.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
+            foodstallbutton.OnDisabledState.IconLeftImage = null;
+            foodstallbutton.OnDisabledState.IconRightImage = null;
+            foodstallbutton.onHoverState.BorderColor = Color.FromArgb(255, 128, 128);
+            foodstallbutton.onHoverState.BorderRadius = 1;
+            foodstallbutton.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            foodstallbutton.onHoverState.BorderThickness = 1;
+            foodstallbutton.onHoverState.FillColor = Color.FromArgb(192, 0, 0);
+            foodstallbutton.onHoverState.ForeColor = Color.White;
+            foodstallbutton.onHoverState.IconLeftImage = null;
+            foodstallbutton.onHoverState.IconRightImage = null;
+            foodstallbutton.OnIdleState.BorderColor = Color.White;
+            foodstallbutton.OnIdleState.BorderRadius = 1;
+            foodstallbutton.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            foodstallbutton.OnIdleState.BorderThickness = 1;
+            foodstallbutton.OnIdleState.FillColor = Color.Red;
+            foodstallbutton.OnIdleState.ForeColor = Color.White;
+            foodstallbutton.OnIdleState.IconLeftImage = null;
+            foodstallbutton.OnIdleState.IconRightImage = null;
+            foodstallbutton.OnPressedState.BorderColor = Color.FromArgb(192, 0, 0);
+            foodstallbutton.OnPressedState.BorderRadius = 1;
+            foodstallbutton.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            foodstallbutton.OnPressedState.BorderThickness = 1;
+            foodstallbutton.OnPressedState.FillColor = Color.White;
+            foodstallbutton.OnPressedState.ForeColor = Color.Black;
+            foodstallbutton.OnPressedState.IconLeftImage = null;
+            foodstallbutton.OnPressedState.IconRightImage = null;
+            foodstallbutton.Size = new Size(150, 39);
+            foodstallbutton.TabIndex = 5;
+            foodstallbutton.TextAlign = ContentAlignment.MiddleCenter;
+            foodstallbutton.TextAlignment = HorizontalAlignment.Center;
+            foodstallbutton.TextMarginLeft = 0;
+            foodstallbutton.TextPadding = new Padding(0);
+            foodstallbutton.UseDefaultRadiusAndThickness = true;
+            foodstallbutton.Click += foodstallbutton_Click;
+            // 
+            // karinderyabutton
+            // 
+            karinderyabutton.AllowAnimations = true;
+            karinderyabutton.AllowMouseEffects = true;
+            karinderyabutton.AllowToggling = false;
+            karinderyabutton.AnimationSpeed = 200;
+            karinderyabutton.AutoGenerateColors = false;
+            karinderyabutton.AutoRoundBorders = false;
+            karinderyabutton.AutoSizeLeftIcon = true;
+            karinderyabutton.AutoSizeRightIcon = true;
+            karinderyabutton.BackColor = Color.Transparent;
+            karinderyabutton.BackColor1 = Color.Red;
+            karinderyabutton.BackgroundImage = (Image)resources.GetObject("karinderyabutton.BackgroundImage");
+            karinderyabutton.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            karinderyabutton.ButtonText = "Karinderya";
+            karinderyabutton.ButtonTextMarginLeft = 0;
+            karinderyabutton.ColorContrastOnClick = 45;
+            karinderyabutton.ColorContrastOnHover = 45;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            karinderyabutton.CustomizableEdges = borderEdges2;
+            karinderyabutton.DialogResult = DialogResult.None;
+            karinderyabutton.DisabledBorderColor = Color.FromArgb(191, 191, 191);
+            karinderyabutton.DisabledFillColor = Color.FromArgb(204, 204, 204);
+            karinderyabutton.DisabledForecolor = Color.FromArgb(168, 160, 168);
+            karinderyabutton.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            karinderyabutton.Font = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            karinderyabutton.ForeColor = Color.White;
+            karinderyabutton.IconLeftAlign = ContentAlignment.MiddleLeft;
+            karinderyabutton.IconLeftCursor = Cursors.Default;
+            karinderyabutton.IconLeftPadding = new Padding(11, 3, 3, 3);
+            karinderyabutton.IconMarginLeft = 11;
+            karinderyabutton.IconPadding = 10;
+            karinderyabutton.IconRightAlign = ContentAlignment.MiddleRight;
+            karinderyabutton.IconRightCursor = Cursors.Default;
+            karinderyabutton.IconRightPadding = new Padding(3, 3, 7, 3);
+            karinderyabutton.IconSize = 25;
+            karinderyabutton.IdleBorderColor = Color.White;
+            karinderyabutton.IdleBorderRadius = 1;
+            karinderyabutton.IdleBorderThickness = 1;
+            karinderyabutton.IdleFillColor = Color.Red;
+            karinderyabutton.IdleIconLeftImage = null;
+            karinderyabutton.IdleIconRightImage = null;
+            karinderyabutton.IndicateFocus = false;
+            karinderyabutton.Location = new Point(11, 17);
+            karinderyabutton.Name = "karinderyabutton";
+            karinderyabutton.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
+            karinderyabutton.OnDisabledState.BorderRadius = 1;
+            karinderyabutton.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            karinderyabutton.OnDisabledState.BorderThickness = 1;
+            karinderyabutton.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
+            karinderyabutton.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
+            karinderyabutton.OnDisabledState.IconLeftImage = null;
+            karinderyabutton.OnDisabledState.IconRightImage = null;
+            karinderyabutton.onHoverState.BorderColor = Color.FromArgb(255, 128, 128);
+            karinderyabutton.onHoverState.BorderRadius = 1;
+            karinderyabutton.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            karinderyabutton.onHoverState.BorderThickness = 1;
+            karinderyabutton.onHoverState.FillColor = Color.FromArgb(192, 0, 0);
+            karinderyabutton.onHoverState.ForeColor = Color.White;
+            karinderyabutton.onHoverState.IconLeftImage = null;
+            karinderyabutton.onHoverState.IconRightImage = null;
+            karinderyabutton.OnIdleState.BorderColor = Color.White;
+            karinderyabutton.OnIdleState.BorderRadius = 1;
+            karinderyabutton.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            karinderyabutton.OnIdleState.BorderThickness = 1;
+            karinderyabutton.OnIdleState.FillColor = Color.Red;
+            karinderyabutton.OnIdleState.ForeColor = Color.White;
+            karinderyabutton.OnIdleState.IconLeftImage = null;
+            karinderyabutton.OnIdleState.IconRightImage = null;
+            karinderyabutton.OnPressedState.BorderColor = Color.FromArgb(192, 0, 0);
+            karinderyabutton.OnPressedState.BorderRadius = 1;
+            karinderyabutton.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            karinderyabutton.OnPressedState.BorderThickness = 1;
+            karinderyabutton.OnPressedState.FillColor = Color.White;
+            karinderyabutton.OnPressedState.ForeColor = Color.Black;
+            karinderyabutton.OnPressedState.IconLeftImage = null;
+            karinderyabutton.OnPressedState.IconRightImage = null;
+            karinderyabutton.Size = new Size(150, 39);
+            karinderyabutton.TabIndex = 4;
+            karinderyabutton.TextAlign = ContentAlignment.MiddleCenter;
+            karinderyabutton.TextAlignment = HorizontalAlignment.Center;
+            karinderyabutton.TextMarginLeft = 0;
+            karinderyabutton.TextPadding = new Padding(0);
+            karinderyabutton.UseDefaultRadiusAndThickness = true;
+            karinderyabutton.Click += karinderyabutton_Click;
             // 
             // bunifuImageButton4
             // 
@@ -298,11 +487,11 @@
             bunifuButton1.ButtonTextMarginLeft = 0;
             bunifuButton1.ColorContrastOnClick = 45;
             bunifuButton1.ColorContrastOnHover = 45;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            bunifuButton1.CustomizableEdges = borderEdges1;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            bunifuButton1.CustomizableEdges = borderEdges3;
             bunifuButton1.DialogResult = DialogResult.None;
             bunifuButton1.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton1.DisabledFillColor = Color.Empty;
@@ -390,11 +579,11 @@
             PaymentButton.ButtonTextMarginLeft = 0;
             PaymentButton.ColorContrastOnClick = 45;
             PaymentButton.ColorContrastOnHover = 45;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            PaymentButton.CustomizableEdges = borderEdges2;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            PaymentButton.CustomizableEdges = borderEdges4;
             PaymentButton.DialogResult = DialogResult.None;
             PaymentButton.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             PaymentButton.DisabledFillColor = Color.Empty;
@@ -599,6 +788,7 @@
             Searchbox.TextPlaceholder = "Search by Product Name";
             Searchbox.UseSystemPasswordChar = false;
             Searchbox.WordWrap = true;
+            Searchbox.TextChange += Searchbox_TextChange;
             // 
             // label1
             // 
@@ -657,11 +847,11 @@
             bunifuButton5.ButtonTextMarginLeft = 0;
             bunifuButton5.ColorContrastOnClick = 45;
             bunifuButton5.ColorContrastOnHover = 45;
-            borderEdges3.BottomLeft = true;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = true;
-            borderEdges3.TopRight = true;
-            bunifuButton5.CustomizableEdges = borderEdges3;
+            borderEdges5.BottomLeft = true;
+            borderEdges5.BottomRight = true;
+            borderEdges5.TopLeft = true;
+            borderEdges5.TopRight = true;
+            bunifuButton5.CustomizableEdges = borderEdges5;
             bunifuButton5.DialogResult = DialogResult.None;
             bunifuButton5.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             bunifuButton5.DisabledFillColor = Color.Empty;
@@ -837,5 +1027,7 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton5;
         private FlowLayoutPanel MainDisplay;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 foodstallbutton;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 karinderyabutton;
     }
 }

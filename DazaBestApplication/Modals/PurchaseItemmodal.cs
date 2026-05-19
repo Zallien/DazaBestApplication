@@ -52,7 +52,7 @@ namespace DazaBestApplication.Modals
             if (_purchaseitemmodal.Action == "AddItemStock")
             {
                 this.Text = "Add Purchase Item";
-                AddPurchaseItemButton.Text = "Add Purchase Item";
+                AddPurchaseItemButton.Text = "Purchased";
                 removeitempickedbutton.Visible = true;
                 preparedbylbl.Text = Program.theLoggedInAccount.Fullname;
             }
@@ -89,6 +89,7 @@ namespace DazaBestApplication.Modals
             AllSelectedProducts = new List<Guid>();
             await CheckModalAction();
             Grandtotalvaluelabel.Text = "₱" + (_Grandtotal ?? 0).ToString("N2");
+            AllPickedItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
         //OpenAllProductsPanel
         private async Task OpenAllProductsPanel()
@@ -126,6 +127,7 @@ namespace DazaBestApplication.Modals
                 row.Height = 24;
                 row.Cells["ALLI_ItemCodeCol"].Value = item.ItemCode;
             }
+            AllItemDatagridview.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
         //Get All Available Products
         private async Task<List<Items>> GetAllAvailableProducts()
@@ -524,6 +526,10 @@ namespace DazaBestApplication.Modals
         }
         private async void removeitempickedbutton_Click(object sender, EventArgs e)
         {
+            if (AllPickedItems.SelectedRows.Count <= 0)
+            {
+                return;
+            }
             if (MessageBox.Show("Do you want to Delete All Selected Item/s?", "System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 AllowCalculating = false;

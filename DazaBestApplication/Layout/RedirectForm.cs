@@ -38,6 +38,7 @@ namespace DazaBestApplication.Layout
                     mainPage.Show();
                 }
                 this.Close();
+                this.Dispose();
             }
             catch (Exception ex)
             {

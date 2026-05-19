@@ -11,5 +11,6 @@ namespace SystemBackEnd.ServiceModels
         public string? SearchValue { get; set; }
         public int PageNumber { get; set; }
         public int ItemperPage { get; set; }
+        public string? ProductBusiness { get; set; }
     }
 }

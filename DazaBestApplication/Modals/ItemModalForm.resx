@@ -576,20 +576,31 @@
   </data>
   <data name="ItemNametxt.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAQUAAAAnCAYAAAAGhV0YAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACrSURBVHhe7dRBDcMwAARB80flyDAKowAaWUof20LwjHSf
-        A7AD4M9a6zXn/JjZudsdeJIwxj6As+0OPEkQBUAUgB+iAIQoACEKQIgCEKIAhCgAIQpAiAIQogCEKAAh
-        CkCIAhCiAIQoACEKQIgCEKIAhCgAIQpAiAIQogCEKAAhCkCIAhCiAIQoACEKQIgCEKIAhCgAIQpAiAIQ
-        icJ1Xe99mNm52x14kgDwNcYNbah8ftlXwEsAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAAW4AAAAnCAYAAAAvgqKfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADHSURBVHhe7dRBCQQxAATB+FeVJTJOxgm4JZDPOUhDFcxn
+        BPQAIGit9Zlz/szM7N7tVp9sj7EPAO62W32yLdwABcINECPcADHCDRAj3AAxwg0QI9wAMcINECPcADHC
+        DRAj3AAxwg0QI9wAMcINECPcADHCDRAj3AAxwg0QI9wAMcINECPcADHCDRAj3AAxwg0QI9wAMcINECPc
+        ADHCDRAj3AAxwg0QI9wAMcINECPcADHCDRDzF+7neb77MDOze7dbfbINQMcYL74UXERKw3YyAAAAAElF
+        TkSuQmCC
 </value>
   </data>
   <data name="ItemPricetxt.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAQUAAAAnCAYAAAAGhV0YAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACrSURBVHhe7dRBDcMwAARB80flyDAKowAaWUof20LwjHSf
-        A7AD4M9a6zXn/JjZudsdeJIwxj6As+0OPEkQBUAUgB+iAIQoACEKQIgCEKIAhCgAIQpAiAIQogCEKAAh
-        CkCIAhCiAIQoACEKQIgCEKIAhCgAIQpAiAIQogCEKAAhCkCIAhCiAIQoACEKQIgCEKIAhCgAIQpAiAIQ
-        icJ1Xe99mNm52x14kgDwNcYNbah8ftlXwEsAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAAW4AAAAnCAYAAAAvgqKfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADHSURBVHhe7dRBCQQxAATB+FeVJTJOxgm4JZDPOUhDFcxn
+        BPQAIGit9Zlz/szM7N7tVp9sj7EPAO62W32yLdwABcINECPcADHCDRAj3AAxwg0QI9wAMcINECPcADHC
+        DRAj3AAxwg0QI9wAMcINECPcADHCDRAj3AAxwg0QI9wAMcINECPcADHCDRAj3AAxwg0QI9wAMcINECPc
+        ADHCDRAj3AAxwg0QI9wAMcINECPcADHCDRDzF+7neb77MDOze7dbfbINQMcYL74UXERKw3YyAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="Thresholdtext.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAGoAAAAnCAYAAADn590lAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACUSURBVHhe7dGxCQMxAARB9V+VHpXhMlyAH4ESd6CFWbjk
+        0hkKtdb6zDl/dt+2zWEaYx+6s21zmEDdHKhIoCKBigQqEqhIoCKBigQqEqhIoCKBigQqEqhIoCKBigQq
+        EqhIoCKBigQqEqhIoCKBigQqEqhIoCKBigQqEqhIoCKBigQqEqhIf1DP83z3Yfdt2xwm3d8YL9hWGdBX
+        z87ZAAAAAElFTkSuQmCC
 </value>
   </data>
 </root>

@@ -29,6 +29,16 @@ namespace DazaBestApplication.Modals
             "Meals",
             "Beverage"
         };
+        private List<string> Businesses = new List<string>()
+        {
+            "Karinderya",
+            "Food Stall"
+        };
+        private List<string> FoodStallCategories = new List<string>()
+        {
+            "Lechon",
+            "Prito/Fried"
+        };
 
 
 
@@ -39,12 +49,12 @@ namespace DazaBestApplication.Modals
             _productmodal = product;
         }
 
-        
+
         //Main Load
         private void ProductModalForm_Load(object sender, EventArgs e)
         {
             CheckModalType();
-            PopulateCategories();
+            PopulateBusinesses();
         }
         //Close Modal
         private void Closemodal()
@@ -68,9 +78,11 @@ namespace DazaBestApplication.Modals
                 ProductNametxt.Text = _productmodal.EditItem.ProductName;
                 Productpricetxt.Text = _productmodal.EditItem.ProductPrice.ToString("#.##0");
                 ProductCategories.Text = _productmodal.EditItem.Category;
+                Businessdropdown.Text = _productmodal.EditItem.BusinessCategory;
                 if (_productmodal.EditItem.ProductImage != null)
                 {
                     AddProductPic.Image = Image.FromStream(new MemoryStream(_productmodal.EditItem.ProductImage)!);
+                    Pic = _productmodal.EditItem.ProductImage;
                 }
             }
         }
@@ -83,7 +95,9 @@ namespace DazaBestApplication.Modals
                 ProductName = ProductNametxt.Text,
                 ProductPrice = decimal.Parse(Productpricetxt.Text),
                 ProductPicture = Pic,
-                Category = ProductCategories.Text.ToString()
+                Category = ProductCategories.Text.ToString(),
+                BusinessCategory = Businessdropdown.Text.ToString()
+
             };
             bool IsAdded = await _productservices.AddProduct(newproduct);
             if (IsAdded)
@@ -106,7 +120,9 @@ namespace DazaBestApplication.Modals
                 ProductID = ProducteditID,
                 ProductName = ProductNametxt.Text,
                 ProductPrice = decimal.Parse(Productpricetxt.Text),
-                ProductImage = Pic
+                ProductImage = Pic,
+                Category = ProductCategories.Text,
+                BusinessCategory = Businessdropdown.Text
             };
             bool IsEdited = await _productservices.UpdateProduct(editproduct);
             if (IsEdited)
@@ -123,13 +139,40 @@ namespace DazaBestApplication.Modals
         //Populate Categories
         private void PopulateCategories()
         {
+            if (Businessdropdown.Text.ToString() == "" || !Businesses.Contains(Businessdropdown.Text.ToString()))
+            {
+                MessageBox.Show("Please select a valid business category first.", "System", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (Businessdropdown.Text.ToString() == "Food Stall")
+            {
+                ProductCategories.Items.Clear();
+                foreach (var category in FoodStallCategories)
+                {
+                    ProductCategories.Items.Add(category);
+                }
+                return;
+            }
             ProductCategories.Items.Clear();
             foreach (var category in Categories)
             {
                 ProductCategories.Items.Add(category);
             }
-        }
 
+
+
+
+
+        }
+        //Populate Businesses
+        private void PopulateBusinesses()
+        {
+            Businessdropdown.Items.Clear();
+            foreach (var category in Businesses)
+            {
+                Businessdropdown.Items.Add(category);
+            }
+        }
 
 
 
@@ -144,7 +187,7 @@ namespace DazaBestApplication.Modals
         {
             if (_productmodal.Action == "AddProduct")
             {
-                if(string.IsNullOrWhiteSpace(ProductNametxt.Text) || string.IsNullOrWhiteSpace(Productpricetxt.Text) || AddProductPic.Image is null || ProductCategories.SelectedIndex ==-1)
+                if (string.IsNullOrWhiteSpace(ProductNametxt.Text) || string.IsNullOrWhiteSpace(Productpricetxt.Text) || AddProductPic.Image is null || ProductCategories.SelectedIndex == -1)
                 {
                     MessageBox.Show("Please fill in all required fields.", "System", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -153,7 +196,7 @@ namespace DazaBestApplication.Modals
                 {
                     AddNewProduct();
                 }
-                
+
             }
             else
             {
@@ -205,6 +248,12 @@ namespace DazaBestApplication.Modals
             {
                 e.Handled = true;
             }
+        }
+
+        private void Businessdropdown_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ProductCategories.Text = "";
+            PopulateCategories();
         }
     }
 }

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DecisionModal));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             panel1 = new Panel();
             TitleLabel = new Label();
             QuestionLabel = new Label();
@@ -53,11 +53,11 @@
             // 
             // TitleLabel
             // 
-            TitleLabel.Dock = DockStyle.Left;
-            TitleLabel.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            TitleLabel.Dock = DockStyle.Fill;
+            TitleLabel.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             TitleLabel.Location = new Point(10, 0);
             TitleLabel.Name = "TitleLabel";
-            TitleLabel.Size = new Size(256, 40);
+            TitleLabel.Size = new Size(350, 40);
             TitleLabel.TabIndex = 0;
             TitleLabel.Text = "System";
             TitleLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -65,13 +65,14 @@
             // QuestionLabel
             // 
             QuestionLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            QuestionLabel.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            QuestionLabel.Font = new Font("Courier New", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             QuestionLabel.Location = new Point(10, 61);
             QuestionLabel.Name = "QuestionLabel";
             QuestionLabel.Size = new Size(348, 64);
             QuestionLabel.TabIndex = 1;
             QuestionLabel.Text = "Do you want to ...";
             QuestionLabel.TextAlign = ContentAlignment.MiddleLeft;
+            QuestionLabel.Click += QuestionLabel_Click;
             // 
             // YesButton
             // 
@@ -92,11 +93,11 @@
             YesButton.ButtonTextMarginLeft = 0;
             YesButton.ColorContrastOnClick = 45;
             YesButton.ColorContrastOnHover = 45;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            YesButton.CustomizableEdges = borderEdges1;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            YesButton.CustomizableEdges = borderEdges3;
             YesButton.DialogResult = DialogResult.None;
             YesButton.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             YesButton.DisabledFillColor = Color.Empty;
@@ -184,11 +185,11 @@
             NoButton.ButtonTextMarginLeft = 0;
             NoButton.ColorContrastOnClick = 45;
             NoButton.ColorContrastOnHover = 45;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            NoButton.CustomizableEdges = borderEdges2;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            NoButton.CustomizableEdges = borderEdges4;
             NoButton.DialogResult = DialogResult.None;
             NoButton.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             NoButton.DisabledFillColor = Color.Empty;

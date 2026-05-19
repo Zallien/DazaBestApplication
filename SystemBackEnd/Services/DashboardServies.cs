@@ -49,20 +49,24 @@ namespace SystemBackEnd.Services
                 dashinfo.CriticalItems =  await _db.Items.Where(x => (x.BalanceStocks > 0.0m && x.BalanceStocks <= 3.0m) && x.IsActive == true).CountAsync();
                 dashinfo.OutofStockCount =  await _db.Items.Where(x => x.BalanceStocks == 0m && x.IsActive == true).CountAsync();
                 dashinfo.OverstockItems =  await _db.Items.Where(x => x.BalanceStocks >= 10.0m && x.IsActive == true).CountAsync();
-                var Topsellingtable = await (from a in _db.TransactionDetails
-                                                  join b in _db.Products on a.ProductId equals b.ProductID
-                                                  join c in _db.TransactionHeader on a.TransactionHeaderId equals c.TransactionHeaderId
-                                                  where b.Category != "Beverage"
-                                                  group a by new { a.ProductId, b.ProductName } into d
-                                                  orderby d.Count() descending
-                                                  select new DashboardItems()
-                                                  {
-                                                      ProductId = d.Key.ProductId,
-                                                      ProductName = d.Key.ProductName
-                                                  })
-                                             .Take(3)
-                                             .ToListAsync();
+                var Topsellingtable = await (
+                    from a in _db.TransactionDetails
+                    join b in _db.Products on a.ProductId equals b.ProductID
+                    join c in _db.TransactionHeader on a.TransactionHeaderId equals c.TransactionHeaderId
+                    where b.Category != "Beverage"
+                    group a by new { a.ProductId, b.ProductName } into d
+                    orderby d.Sum(x => x.Quantity) descending // order by total quantity sold
+                    select new DashboardItems
+                    {
+                        ProductId = d.Key.ProductId,
+                        ProductName = d.Key.ProductName,
+                        ProducsSold = d.Sum(x => x.Quantity) // sum of quantities per product
+                    })
+                    .Take(5)
+                    .ToListAsync();
+
                 dashinfo.TopSellingItems = Topsellingtable;
+
                 var leastsellingtalbe = await (from a in _db.TransactionDetails
                                                     join b in _db.Products on a.ProductId equals b.ProductID
                                                     join c in _db.TransactionHeader on a.TransactionHeaderId equals c.TransactionHeaderId
@@ -90,7 +94,94 @@ namespace SystemBackEnd.Services
                                                     ProducsSold = d.Count()
                                                 })
                                               .ToListAsync();
+                //Sales Chart Data
+                if (dashboardType != "Yearly" && dashboardType != "Daily")
+                {
+                    var rawData = await _db.TransactionHeader
+                        .Where(x => x.TransactionDate.Date >= fromDate && x.TransactionDate.Date <= toDate)
+                        .GroupBy(x => x.TransactionDate.Date)
+                        .Select(g => new
+                        {
+                            Date = g.Key, // DateTime
+                            SalesValue = g.Sum(x => x.Grandtotal)
+                        })
+                        .OrderBy(x => x.Date)
+                        .ToListAsync();
 
+                    dashinfo.ChartforSale = rawData
+                        .Select(x => new SalesChart
+                        {
+                            Date = x.Date,              // keep as DateTime
+                            SalesValue = x.SalesValue
+                        })
+                        .ToList();
+                }
+                else if(dashboardType == "Daily")
+                {
+                    var rawData = await _db.TransactionHeader
+                        .Where(x => x.TransactionDate.Date >= fromDate && x.TransactionDate.Date <= toDate)
+                        .Select(x => new
+                        {
+                            Date = x.TransactionDate,
+                            SalesValue = x.Grandtotal
+                        })
+                        .OrderBy(x => x.Date)
+                        .ToListAsync();
+
+                    dashinfo.ChartforSale = rawData
+                        .Select(x => new SalesChart
+                        {
+                            Date = x.Date,
+                            SalesValue = x.SalesValue
+                        })
+                        .ToList();
+
+                }
+                else
+                {
+                    var rawData = await _db.TransactionHeader
+                        .Where(x => x.TransactionDate.Date >= fromDate && x.TransactionDate.Date <= toDate)
+                        .GroupBy(x => x.TransactionDate.Month)
+                        .Select(g => new
+                        {
+                            Month = g.Key,
+                            SalesValue = g.Sum(x => x.Grandtotal)
+                        })
+                        .OrderBy(x => x.Month)
+                        .ToListAsync();
+
+                    dashinfo.ChartforSale = rawData
+                        .Select(x => new SalesChart
+                        {
+                            Date = new DateTime(fromDate.Year, x.Month, 1), // first day of month
+                            SalesValue = x.SalesValue
+                        })
+                        .ToList();
+                }
+
+                //Low Inventory Alert
+                dashinfo.LowInventoryAlert = await _db.Items
+                    .Where(x => (x.BalanceStocks <= x.ItemThreshold && x.BalanceStocks > 0m) && x.IsActive == true)
+                    .OrderBy(x => (double)x.BalanceStocks) // cast to double
+                    .Select(x => new LowInventory
+                    {
+                        ItemName = x.ItemName,
+                        CurrentStocks = x.BalanceStocks,
+                        Unimeasurement = x.UnitMeasurement
+                    })
+                    .ToListAsync();
+
+                dashinfo.InventoryPreview = await _db.Items
+                    .Where(x => x.IsActive == true)
+                    .OrderBy(x => (double)x.BalanceStocks)
+                    .Select(x => new ItemInventoryPreview
+                    {
+                        Itemname = x.ItemName,
+                        CurrentStocks = x.BalanceStocks,
+                        UnitMeasurement = x.UnitMeasurement
+                    })
+                    .Take(10)
+                    .ToListAsync();
 
 
 
@@ -102,6 +193,6 @@ namespace SystemBackEnd.Services
 
             return dashinfo;
         }
-
+        
     }
 }

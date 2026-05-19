@@ -85,6 +85,33 @@ namespace SystemBackEnd.Migrations
                     b.ToTable("BackupSettings", (string)null);
                 });
 
+            modelBuilder.Entity("SystemBackEnd.Models.BusinessType", b =>
+                {
+                    b.Property<int>("Row")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid>("AddedBy")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("BusinessId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("BusinessName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Row");
+
+                    b.ToTable("BusinessType", (string)null);
+                });
+
             modelBuilder.Entity("SystemBackEnd.Models.IngredientsByProduct", b =>
                 {
                     b.Property<int>("Row")
@@ -199,6 +226,13 @@ namespace SystemBackEnd.Migrations
                     b.Property<decimal>("ItemPrice")
                         .HasColumnType("TEXT");
 
+                    b.Property<decimal>("ItemThreshold")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UnitMeasurement")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Row");
 
                     b.ToTable("Items", (string)null);
@@ -289,30 +323,32 @@ namespace SystemBackEnd.Migrations
                     b.ToTable("POSTransactionHeader", (string)null);
                 });
 
-            modelBuilder.Entity("SystemBackEnd.Models.POSTransactionHistory", b =>
+            modelBuilder.Entity("SystemBackEnd.Models.POSTransactionVoidHistory", b =>
                 {
                     b.Property<int>("Row")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<Guid>("TransactionHeaderId")
+                    b.Property<Guid>("AccountId")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("TransactionHistoryDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TransactionHistoryDetails")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("TransactionHistoryId")
+                    b.Property<Guid>("TransactionVoidHistoryId")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("TransactionHistoryTitle")
+                    b.Property<string>("TransactionVoidHistoryNumber")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Row");
 
-                    b.ToTable("POSTransactionHistory", (string)null);
+                    b.ToTable("POSTransactionVoidHistory", (string)null);
                 });
 
             modelBuilder.Entity("SystemBackEnd.Models.Products", b =>
@@ -320,6 +356,10 @@ namespace SystemBackEnd.Migrations
                     b.Property<int>("Row")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("BusinessCategory")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Category")
                         .IsRequired()

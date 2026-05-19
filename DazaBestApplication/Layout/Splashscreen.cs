@@ -1,4 +1,5 @@
 ﻿using DazaBestApplication.Pages;
+using Google.Apis.Drive.v3;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemBackEnd.Services;
 
 namespace DazaBestApplication.Layout
 {
@@ -66,10 +68,12 @@ namespace DazaBestApplication.Layout
                 frames.Add(new Bitmap(gif)); 
             }
         }
-        private void OnGifFinished()
+        private async void OnGifFinished()
         {
             Task.Delay(500).Wait();
             this.Hide();
+            DriveServices driveService = new DriveServices();
+            await driveService.CreateClientSecretFileAsync();
             Log_in log_In = new Log_in();
             log_In.Show();
         }

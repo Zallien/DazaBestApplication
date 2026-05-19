@@ -121,17 +121,17 @@
   <data name="YesButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFYAAAAaCAYAAAAtzKvgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABqSURBVGhD7dCxEYMwAMBAD2HGghm9F2MwALm0SQnqvvhG
-        pcax5nms7eZN8xz/kTcYGzE2YmzE2IixEWMjxkaMjRgbMTZibMTYiLERYyPGRoyNGBsxNmJsxNiIsRFj
-        I8ZGxr7m9Rt55vv0A9W+ihJrwcSKAAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABrSURBVGhD7dAxAcAgEMBARDyyQOP7QsYLoBXA1JItw03Z
+        0mbGmtm3bor1jj0F/eVYiGMhjoU4FuJYiGMhjoU4FuJYiGMhjoU4FuJYiGMhjoU4FuJYiGMhjoU4FuJY
+        iGMhjoW0kVGnoO9GRj3VvooSpnK0BAAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="NoButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFYAAAAaCAYAAAAtzKvgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABmSURBVGhD7dChEcMwEABB9d+iXlWkAHtMM2HxsQVLDt6a
-        OXvmXLxqrx+RFxgbMTZibMTYiLERYyPGRoyNGBsxNmJsxNiIsRFjI8ZGjI0YGzE2YmzE2IixEWMjxkbW
-        3vP5jvzneXoD97xCHNKh6FoAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABlSURBVGhD7dChAYRAEMBA+m9xjyooAP49CogbMSou21r7
+        /Jx8av5j7wIvGRsxNmJsxNiIsRFjI8ZGjI0YGzE2YmzE2IixEWMjxkaMjRgbMTZibMTYiLERYyPGRraZ
+        ddwFnptZxwX3vEIcUJoN1wAAAABJRU5ErkJggg==
 </value>
   </data>
 </root>

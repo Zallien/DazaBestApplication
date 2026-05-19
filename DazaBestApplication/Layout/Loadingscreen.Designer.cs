@@ -17,6 +17,11 @@
             {
                 components.Dispose();
             }
+            if (disposing)
+            {
+                loadingTimer?.Stop();
+                loadingTimer?.Dispose();
+            }
             base.Dispose(disposing);
         }
 

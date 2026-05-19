@@ -239,11 +239,11 @@
             CloseAllPModal.OnIdleState.ForeColor = Color.White;
             CloseAllPModal.OnIdleState.IconLeftImage = null;
             CloseAllPModal.OnIdleState.IconRightImage = null;
-            CloseAllPModal.OnPressedState.BorderColor = Color.FromArgb(40, 96, 144);
+            CloseAllPModal.OnPressedState.BorderColor = Color.White;
             CloseAllPModal.OnPressedState.BorderRadius = 1;
             CloseAllPModal.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             CloseAllPModal.OnPressedState.BorderThickness = 1;
-            CloseAllPModal.OnPressedState.FillColor = Color.FromArgb(40, 96, 144);
+            CloseAllPModal.OnPressedState.FillColor = Color.Maroon;
             CloseAllPModal.OnPressedState.ForeColor = Color.White;
             CloseAllPModal.OnPressedState.IconLeftImage = null;
             CloseAllPModal.OnPressedState.IconRightImage = null;

@@ -13,5 +13,6 @@ namespace SystemBackEnd.ServiceModels
         public DateTime? DateCreated { get; set; }
         public byte[]? ProductPicture { get; set; }
         public string Category { get; set; }
+        public string BusinessCategory { get; set; }
     }
 }

@@ -24,7 +24,7 @@ namespace SystemBackEnd.Services
         //Get SaleReportHeader
         public async Task<List<SaleReportDetails>> GetSaleReportDetails(RecordsFilterSearch salefilter)
         {
-            List<SaleReportDetails> theHeaderList = new List<SaleReportDetails>();
+             List<SaleReportDetails> theHeaderList = new List<SaleReportDetails>();
             try
             {
                 theHeaderList = await ( from a in _db.TransactionHeader

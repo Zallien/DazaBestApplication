@@ -44,6 +44,10 @@
             label1 = new Label();
             MainContainer = new Panel();
             AllAccountsDatagridView = new Bunifu.UI.WinForms.BunifuDataGridView();
+            IdCol = new DataGridViewTextBoxColumn();
+            NameCol = new DataGridViewTextBoxColumn();
+            UsernameCol = new DataGridViewTextBoxColumn();
+            PositionCol = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
             panel4 = new Panel();
             RemoveButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
@@ -56,10 +60,6 @@
             PaginationLabel = new Label();
             PaginationPREV = new Bunifu.UI.WinForms.BunifuImageButton();
             PaginationNext = new Bunifu.UI.WinForms.BunifuImageButton();
-            IdCol = new DataGridViewTextBoxColumn();
-            NameCol = new DataGridViewTextBoxColumn();
-            UsernameCol = new DataGridViewTextBoxColumn();
-            PositionCol = new DataGridViewTextBoxColumn();
             TopPanel.SuspendLayout();
             MainContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AllAccountsDatagridView).BeginInit();
@@ -79,7 +79,7 @@
             TopPanel.Location = new Point(0, 0);
             TopPanel.Name = "TopPanel";
             TopPanel.Padding = new Padding(10, 0, 10, 0);
-            TopPanel.Size = new Size(900, 50);
+            TopPanel.Size = new Size(950, 50);
             TopPanel.TabIndex = 4;
             // 
             // panel5
@@ -88,7 +88,7 @@
             panel5.Dock = DockStyle.Bottom;
             panel5.Location = new Point(10, 45);
             panel5.Name = "panel5";
-            panel5.Size = new Size(880, 5);
+            panel5.Size = new Size(930, 5);
             panel5.TabIndex = 2;
             // 
             // label1
@@ -109,8 +109,8 @@
             MainContainer.Dock = DockStyle.Fill;
             MainContainer.Location = new Point(0, 50);
             MainContainer.Name = "MainContainer";
-            MainContainer.Padding = new Padding(0, 10, 0, 0);
-            MainContainer.Size = new Size(900, 612);
+            MainContainer.Padding = new Padding(0, 20, 0, 0);
+            MainContainer.Size = new Size(950, 630);
             MainContainer.TabIndex = 5;
             // 
             // AllAccountsDatagridView
@@ -123,6 +123,7 @@
             dataGridViewCellStyle1.BackColor = Color.FromArgb(223, 191, 191);
             dataGridViewCellStyle1.ForeColor = Color.Black;
             AllAccountsDatagridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            AllAccountsDatagridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AllAccountsDatagridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             AllAccountsDatagridView.BackgroundColor = Color.White;
             AllAccountsDatagridView.BorderStyle = BorderStyle.None;
@@ -164,32 +165,59 @@
             dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             AllAccountsDatagridView.DefaultCellStyle = dataGridViewCellStyle3;
-            AllAccountsDatagridView.Dock = DockStyle.Fill;
             AllAccountsDatagridView.EnableHeadersVisualStyles = false;
             AllAccountsDatagridView.GridColor = Color.FromArgb(216, 178, 178);
             AllAccountsDatagridView.HeaderBackColor = Color.Maroon;
             AllAccountsDatagridView.HeaderBgColor = Color.Empty;
             AllAccountsDatagridView.HeaderForeColor = Color.White;
-            AllAccountsDatagridView.Location = new Point(0, 70);
+            AllAccountsDatagridView.Location = new Point(10, 86);
             AllAccountsDatagridView.Name = "AllAccountsDatagridView";
             AllAccountsDatagridView.ReadOnly = true;
             AllAccountsDatagridView.RowHeadersVisible = false;
             AllAccountsDatagridView.RowTemplate.Height = 40;
             AllAccountsDatagridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            AllAccountsDatagridView.Size = new Size(900, 492);
+            AllAccountsDatagridView.Size = new Size(930, 482);
             AllAccountsDatagridView.TabIndex = 11;
             AllAccountsDatagridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             AllAccountsDatagridView.CellDoubleClick += AllAccountsDatagridView_CellDoubleClick;
+            // 
+            // IdCol
+            // 
+            IdCol.HeaderText = "ID";
+            IdCol.Name = "IdCol";
+            IdCol.ReadOnly = true;
+            IdCol.Visible = false;
+            // 
+            // NameCol
+            // 
+            NameCol.FillWeight = 70F;
+            NameCol.HeaderText = "Name";
+            NameCol.Name = "NameCol";
+            NameCol.ReadOnly = true;
+            // 
+            // UsernameCol
+            // 
+            UsernameCol.FillWeight = 30F;
+            UsernameCol.HeaderText = "Username";
+            UsernameCol.Name = "UsernameCol";
+            UsernameCol.ReadOnly = true;
+            // 
+            // PositionCol
+            // 
+            PositionCol.FillWeight = 30F;
+            PositionCol.HeaderText = "Position";
+            PositionCol.Name = "PositionCol";
+            PositionCol.ReadOnly = true;
             // 
             // panel1
             // 
             panel1.Controls.Add(panel4);
             panel1.Controls.Add(panel3);
             panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 10);
+            panel1.Location = new Point(0, 20);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(10, 0, 10, 0);
-            panel1.Size = new Size(900, 60);
+            panel1.Size = new Size(950, 60);
             panel1.TabIndex = 8;
             // 
             // panel4
@@ -200,7 +228,7 @@
             panel4.Dock = DockStyle.Fill;
             panel4.Location = new Point(10, 0);
             panel4.Name = "panel4";
-            panel4.Size = new Size(519, 60);
+            panel4.Size = new Size(460, 60);
             panel4.TabIndex = 15;
             // 
             // RemoveButton
@@ -477,9 +505,9 @@
             // 
             panel3.Controls.Add(SearchBox);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(529, 0);
+            panel3.Location = new Point(470, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(361, 60);
+            panel3.Size = new Size(470, 60);
             panel3.TabIndex = 14;
             // 
             // SearchBox
@@ -510,7 +538,7 @@
             SearchBox.IconPadding = 10;
             SearchBox.IconRight = null;
             SearchBox.IconRightCursor = Cursors.IBeam;
-            SearchBox.Location = new Point(6, 10);
+            SearchBox.Location = new Point(73, 10);
             SearchBox.MaxLength = 32767;
             SearchBox.MinimumSize = new Size(1, 1);
             SearchBox.Modified = false;
@@ -546,7 +574,7 @@
             SearchBox.SelectionLength = 0;
             SearchBox.SelectionStart = 0;
             SearchBox.ShortcutsEnabled = true;
-            SearchBox.Size = new Size(349, 39);
+            SearchBox.Size = new Size(394, 39);
             SearchBox.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             SearchBox.TabIndex = 13;
             SearchBox.TextAlign = HorizontalAlignment.Left;
@@ -556,15 +584,16 @@
             SearchBox.TextPlaceholder = "Search by Name";
             SearchBox.UseSystemPasswordChar = false;
             SearchBox.WordWrap = true;
+            SearchBox.TextChange += SearchBox_TextChange;
             // 
             // panel2
             // 
             panel2.Controls.Add(Pagination);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 562);
+            panel2.Location = new Point(0, 580);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(10, 0, 10, 0);
-            panel2.Size = new Size(900, 50);
+            panel2.Size = new Size(950, 50);
             panel2.TabIndex = 7;
             // 
             // Pagination
@@ -621,6 +650,7 @@
             PaginationPREV.WaitOnLoad = false;
             PaginationPREV.Zoom = 20;
             PaginationPREV.ZoomSpeed = 10;
+            PaginationPREV.Click += PaginationPREV_Click;
             // 
             // PaginationNext
             // 
@@ -655,40 +685,13 @@
             PaginationNext.WaitOnLoad = false;
             PaginationNext.Zoom = 20;
             PaginationNext.ZoomSpeed = 10;
-            // 
-            // IdCol
-            // 
-            IdCol.HeaderText = "ID";
-            IdCol.Name = "IdCol";
-            IdCol.ReadOnly = true;
-            IdCol.Visible = false;
-            // 
-            // NameCol
-            // 
-            NameCol.FillWeight = 70F;
-            NameCol.HeaderText = "Name";
-            NameCol.Name = "NameCol";
-            NameCol.ReadOnly = true;
-            // 
-            // UsernameCol
-            // 
-            UsernameCol.FillWeight = 30F;
-            UsernameCol.HeaderText = "Username";
-            UsernameCol.Name = "UsernameCol";
-            UsernameCol.ReadOnly = true;
-            // 
-            // PositionCol
-            // 
-            PositionCol.FillWeight = 30F;
-            PositionCol.HeaderText = "Position";
-            PositionCol.Name = "PositionCol";
-            PositionCol.ReadOnly = true;
+            PaginationNext.Click += PaginationNext_Click;
             // 
             // accountPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(900, 662);
+            ClientSize = new Size(950, 680);
             Controls.Add(MainContainer);
             Controls.Add(TopPanel);
             FormBorderStyle = FormBorderStyle.None;

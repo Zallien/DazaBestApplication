@@ -55,6 +55,8 @@
             ProductModalButton = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             label1 = new Label();
             ProductCategories = new Bunifu.UI.WinForms.BunifuDropdown();
+            label4 = new Label();
+            Businessdropdown = new Bunifu.UI.WinForms.BunifuDropdown();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AddProductPic).BeginInit();
             panel2.SuspendLayout();
@@ -69,7 +71,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(450, 40);
+            panel1.Size = new Size(460, 40);
             panel1.TabIndex = 1;
             // 
             // panel3
@@ -78,7 +80,7 @@
             panel3.Dock = DockStyle.Bottom;
             panel3.Location = new Point(0, 35);
             panel3.Name = "panel3";
-            panel3.Size = new Size(450, 5);
+            panel3.Size = new Size(460, 5);
             panel3.TabIndex = 2;
             // 
             // CloseModal
@@ -98,22 +100,22 @@
             CloseModal.Image = Properties.Resources.close;
             CloseModal.ImageActive = null;
             CloseModal.ImageLocation = null;
-            CloseModal.ImageMargin = 20;
-            CloseModal.ImageSize = new Size(10, 10);
-            CloseModal.ImageZoomSize = new Size(30, 30);
+            CloseModal.ImageMargin = 10;
+            CloseModal.ImageSize = new Size(15, 15);
+            CloseModal.ImageZoomSize = new Size(25, 25);
             CloseModal.InitialImage = (Image)resources.GetObject("CloseModal.InitialImage");
-            CloseModal.Location = new Point(412, 3);
+            CloseModal.Location = new Point(426, 5);
             CloseModal.Name = "CloseModal";
             CloseModal.Rotation = 0;
             CloseModal.ShowActiveImage = true;
             CloseModal.ShowCursorChanges = true;
             CloseModal.ShowImageBorders = true;
             CloseModal.ShowSizeMarkers = false;
-            CloseModal.Size = new Size(30, 30);
+            CloseModal.Size = new Size(25, 25);
             CloseModal.TabIndex = 1;
             CloseModal.ToolTipText = "";
             CloseModal.WaitOnLoad = false;
-            CloseModal.Zoom = 20;
+            CloseModal.Zoom = 10;
             CloseModal.ZoomSpeed = 10;
             CloseModal.Click += CloseModal_Click;
             // 
@@ -232,7 +234,7 @@
             // label2
             // 
             label2.Font = new Font("Courier New", 9.75F);
-            label2.Location = new Point(146, 34);
+            label2.Location = new Point(146, 36);
             label2.Name = "label2";
             label2.Size = new Size(144, 27);
             label2.TabIndex = 4;
@@ -302,7 +304,7 @@
             ProductNametxt.SelectionLength = 0;
             ProductNametxt.SelectionStart = 0;
             ProductNametxt.ShortcutsEnabled = true;
-            ProductNametxt.Size = new Size(292, 40);
+            ProductNametxt.Size = new Size(305, 40);
             ProductNametxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             ProductNametxt.TabIndex = 5;
             ProductNametxt.TextAlign = HorizontalAlignment.Left;
@@ -341,7 +343,7 @@
             Productpricetxt.IconPadding = 10;
             Productpricetxt.IconRight = null;
             Productpricetxt.IconRightCursor = Cursors.IBeam;
-            Productpricetxt.Location = new Point(146, 125);
+            Productpricetxt.Location = new Point(146, 118);
             Productpricetxt.MaxLength = 5;
             Productpricetxt.MinimumSize = new Size(1, 1);
             Productpricetxt.Modified = false;
@@ -377,7 +379,7 @@
             Productpricetxt.SelectionLength = 0;
             Productpricetxt.SelectionStart = 0;
             Productpricetxt.ShortcutsEnabled = true;
-            Productpricetxt.Size = new Size(292, 40);
+            Productpricetxt.Size = new Size(305, 40);
             Productpricetxt.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             Productpricetxt.TabIndex = 7;
             Productpricetxt.TextAlign = HorizontalAlignment.Left;
@@ -392,7 +394,7 @@
             // label3
             // 
             label3.Font = new Font("Courier New", 9.75F);
-            label3.Location = new Point(146, 96);
+            label3.Location = new Point(146, 92);
             label3.Name = "label3";
             label3.Size = new Size(144, 28);
             label3.TabIndex = 6;
@@ -404,10 +406,10 @@
             panel2.Controls.Add(bunifuButton2);
             panel2.Controls.Add(ProductModalButton);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 222);
+            panel2.Location = new Point(0, 280);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(0, 5, 10, 5);
-            panel2.Size = new Size(450, 40);
+            panel2.Size = new Size(460, 40);
             panel2.TabIndex = 10;
             // 
             // bunifuButton2
@@ -550,7 +552,7 @@
             ProductModalButton.IdleIconLeftImage = null;
             ProductModalButton.IdleIconRightImage = null;
             ProductModalButton.IndicateFocus = false;
-            ProductModalButton.Location = new Point(330, 5);
+            ProductModalButton.Location = new Point(340, 5);
             ProductModalButton.Name = "ProductModalButton";
             ProductModalButton.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             ProductModalButton.OnDisabledState.BorderRadius = 1;
@@ -596,11 +598,11 @@
             // label1
             // 
             label1.Font = new Font("Courier New", 9.75F);
-            label1.Location = new Point(147, 157);
+            label1.Location = new Point(147, 153);
             label1.Name = "label1";
             label1.Size = new Size(144, 28);
             label1.TabIndex = 11;
-            label1.Text = "Category :";
+            label1.Text = "Belong to :";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // ProductCategories
@@ -639,20 +641,77 @@
             ProductCategories.ItemHighLightColor = Color.DodgerBlue;
             ProductCategories.ItemHighLightForeColor = Color.White;
             ProductCategories.ItemTopMargin = 3;
-            ProductCategories.Location = new Point(147, 184);
+            ProductCategories.Location = new Point(147, 232);
             ProductCategories.Name = "ProductCategories";
-            ProductCategories.Size = new Size(292, 32);
+            ProductCategories.Size = new Size(305, 32);
             ProductCategories.TabIndex = 12;
             ProductCategories.Text = null;
             ProductCategories.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             ProductCategories.TextLeftMargin = 5;
+            // 
+            // label4
+            // 
+            label4.Font = new Font("Courier New", 9.75F);
+            label4.Location = new Point(146, 212);
+            label4.Name = "label4";
+            label4.Size = new Size(144, 17);
+            label4.TabIndex = 13;
+            label4.Text = "Categories :";
+            label4.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // Businessdropdown
+            // 
+            Businessdropdown.BackColor = Color.Transparent;
+            Businessdropdown.BackgroundColor = Color.White;
+            Businessdropdown.BorderColor = Color.Silver;
+            Businessdropdown.BorderRadius = 1;
+            Businessdropdown.Color = Color.Silver;
+            Businessdropdown.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
+            Businessdropdown.DisabledBackColor = Color.FromArgb(240, 240, 240);
+            Businessdropdown.DisabledBorderColor = Color.FromArgb(204, 204, 204);
+            Businessdropdown.DisabledColor = Color.FromArgb(240, 240, 240);
+            Businessdropdown.DisabledForeColor = Color.FromArgb(109, 109, 109);
+            Businessdropdown.DisabledIndicatorColor = Color.DarkGray;
+            Businessdropdown.DrawMode = DrawMode.OwnerDrawFixed;
+            Businessdropdown.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
+            Businessdropdown.DropDownStyle = ComboBoxStyle.DropDownList;
+            Businessdropdown.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            Businessdropdown.FillDropDown = true;
+            Businessdropdown.FillIndicator = false;
+            Businessdropdown.FlatStyle = FlatStyle.Flat;
+            Businessdropdown.Font = new Font("Segoe UI", 9F);
+            Businessdropdown.ForeColor = Color.Black;
+            Businessdropdown.FormattingEnabled = true;
+            Businessdropdown.Icon = null;
+            Businessdropdown.IndicatorAlignment = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            Businessdropdown.IndicatorColor = Color.DarkGray;
+            Businessdropdown.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            Businessdropdown.IndicatorThickness = 2;
+            Businessdropdown.IsDropdownOpened = false;
+            Businessdropdown.ItemBackColor = Color.White;
+            Businessdropdown.ItemBorderColor = Color.White;
+            Businessdropdown.ItemForeColor = Color.Black;
+            Businessdropdown.ItemHeight = 26;
+            Businessdropdown.ItemHighLightColor = Color.DodgerBlue;
+            Businessdropdown.ItemHighLightForeColor = Color.White;
+            Businessdropdown.ItemTopMargin = 3;
+            Businessdropdown.Location = new Point(147, 177);
+            Businessdropdown.Name = "Businessdropdown";
+            Businessdropdown.Size = new Size(305, 32);
+            Businessdropdown.TabIndex = 14;
+            Businessdropdown.Text = null;
+            Businessdropdown.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            Businessdropdown.TextLeftMargin = 5;
+            Businessdropdown.SelectedValueChanged += Businessdropdown_SelectedValueChanged;
             // 
             // ProductModalForm
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(450, 262);
+            ClientSize = new Size(460, 320);
+            Controls.Add(Businessdropdown);
+            Controls.Add(label4);
             Controls.Add(ProductCategories);
             Controls.Add(panel2);
             Controls.Add(Productpricetxt);
@@ -692,5 +751,7 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton2;
         private Label label1;
         private Bunifu.UI.WinForms.BunifuDropdown ProductCategories;
+        private Label label4;
+        private Bunifu.UI.WinForms.BunifuDropdown Businessdropdown;
     }
 }

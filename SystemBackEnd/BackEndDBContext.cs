@@ -36,11 +36,12 @@ namespace SystemBackEnd
             modelBuilder.Entity<POSTransactionHeader>().ToTable("POSTransactionHeader");
             modelBuilder.Entity<POSTransactionDetails>().ToTable("POSTransactionDetails");
             modelBuilder.Entity<POSPaymentTransaction>().ToTable("POSPaymentTransaction");
-            modelBuilder.Entity<POSTransactionHistory>().ToTable("POSTransactionHistory");
+            modelBuilder.Entity<POSTransactionVoidHistory>().ToTable("POSTransactionVoidHistory");
             modelBuilder.Entity<ItemAdjustmentHeader>().ToTable("ItemAdjustmentHeader");
             modelBuilder.Entity<ItemAdjustmentDetails>().ToTable("ItemAdjustmentDetails");
             modelBuilder.Entity<SecurityQuestions>().ToTable("SecurityQuestions");
             modelBuilder.Entity<BackupSettings>().ToTable("BackupSettings");
+            modelBuilder.Entity<BusinessType>().ToTable("BusinessType");
         }
 
         public DbSet<Accounts> Accounts { get; set; }
@@ -52,11 +53,12 @@ namespace SystemBackEnd
         public DbSet<POSTransactionHeader> TransactionHeader { get; set; }
         public DbSet<POSTransactionDetails> TransactionDetails { get; set; }
         public DbSet<POSPaymentTransaction> PaymentTransaction { get; set; }
-        public DbSet<POSTransactionHistory> MyProperty { get; set; }
+        public DbSet<POSTransactionVoidHistory> POSTransactionVoidHistory { get; set; }
         public DbSet<ItemAdjustmentHeader> ItemAdjustmentHeader { get; set; }
         public DbSet<ItemAdjustmentDetails> ItemAdjustmentDetails { get; set; }
         public DbSet<SecurityQuestions> SecurityQuestions { get; set; }
         public DbSet<BackupSettings> BackupSettings { get; set; }
+        public DbSet<BusinessType> BusinessType { get; set; }
 
     }
 }
